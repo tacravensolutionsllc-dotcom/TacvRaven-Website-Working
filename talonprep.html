@@ -70,6 +70,22 @@
         .site-nav-link.active::after { width: 100%; }
         .site-nav-cta { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; font-family: var(--font-heading); font-size: 14px; font-weight: 600; text-decoration: none; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--black); text-transform: uppercase; letter-spacing: 1px; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); transition: all 0.3s ease; }
         .site-nav-cta:hover { background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%); transform: translateY(-2px); }
+        
+        /* Dropdown Menu */
+        .site-nav-dropdown { position: relative; }
+        .site-nav-dropdown-toggle { font-family: var(--font-heading); font-size: 15px; font-weight: 500; color: var(--gray-300); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; position: relative; display: flex; align-items: center; gap: 6px; cursor: pointer; background: none; border: none; padding: 0; }
+        .site-nav-dropdown-toggle::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.3s ease; }
+        .site-nav-dropdown-toggle:hover { color: var(--white); }
+        .site-nav-dropdown-toggle:hover::after { width: 100%; }
+        .site-nav-dropdown-toggle svg { width: 12px; height: 12px; transition: transform 0.3s ease; }
+        .site-nav-dropdown:hover .site-nav-dropdown-toggle svg { transform: rotate(180deg); }
+        .site-nav-dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 200px; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(212, 160, 18, 0.2); padding: 12px 0; opacity: 0; visibility: hidden; transition: all 0.3s ease; margin-top: 16px; z-index: 1000; }
+        .site-nav-dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid rgba(212, 160, 18, 0.2); }
+        .site-nav-dropdown:hover .site-nav-dropdown-menu { opacity: 1; visibility: visible; margin-top: 12px; }
+        .site-nav-dropdown-item { display: block; padding: 12px 24px; font-family: var(--font-heading); font-size: 14px; font-weight: 500; color: var(--gray-300); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; }
+        .site-nav-dropdown-item:hover { color: var(--gold); background: rgba(212, 160, 18, 0.1); padding-left: 28px; }
+        .site-nav-dropdown-item span { display: block; font-size: 11px; color: var(--gray-500); font-weight: 400; text-transform: none; letter-spacing: 0; margin-top: 2px; }
+        
         .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
         .mobile-menu-btn span { width: 28px; height: 2px; background: var(--white); transition: all 0.3s ease; }
         .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -344,11 +360,28 @@
             </a>
             <ul class="site-nav-menu">
                 <li><a href="index.html" class="site-nav-link">Home</a></li>
-                <li><a href="index.html#blackfeather" class="site-nav-link">Black Feather</a></li>
-                <li><a href="index.html#corvus" class="site-nav-link">Corvus Engine</a></li>
+                <li class="site-nav-dropdown">
+                    <button class="site-nav-dropdown-toggle">
+                        Tools
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="site-nav-dropdown-menu">
+                        <a href="index.html#blackfeather" class="site-nav-dropdown-item">
+                            Black Feather
+                            <span>Threat Intelligence Platform</span>
+                        </a>
+                        <a href="index.html#corvus" class="site-nav-dropdown-item">
+                            Corvus Engine
+                            <span>Log Analysis Utility</span>
+                        </a>
+                    </div>
+                </li>
                 <li><a href="index.html#features" class="site-nav-link">Features</a></li>
                 <li><a href="pricing.html" class="site-nav-link">Pricing</a></li>
                 <li><a href="talonprep.html" class="site-nav-link active">TalonPrep</a></li>
+                <li><a href="cyber-news.html" class="site-nav-link">Cyber News</a></li>
                 <li><a href="about.html" class="site-nav-link">About</a></li>
                 <li><a href="index.html#contact" class="site-nav-cta">Contact Us</a></li>
             </ul>
@@ -362,10 +395,13 @@
     <div class="mobile-menu-overlay" id="mobile-menu">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#blackfeather">Black Feather</a></li>
-            <li><a href="index.html#corvus">Corvus Engine</a></li>
+            <li style="margin-top: 30px; margin-bottom: 10px;"><span style="font-size: 14px; color: var(--gold); letter-spacing: 3px;">— TOOLS —</span></li>
+            <li><a href="index.html#blackfeather" style="font-size: 20px;">Black Feather</a></li>
+            <li><a href="index.html#corvus" style="font-size: 20px;">Corvus Engine</a></li>
+            <li style="margin-top: 30px;"><a href="index.html#features">Features</a></li>
             <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="talonprep.html">TalonPrep</a></li>
+            <li><a href="talonprep.html" style="color: var(--gold);">TalonPrep</a></li>
+            <li><a href="cyber-news.html">Cyber News</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="index.html#contact">Contact Us</a></li>
         </ul>
