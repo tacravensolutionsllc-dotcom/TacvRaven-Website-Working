@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | TacRaven Solutions</title>
+    <meta name="description" content="TacRaven Solutions LLC Terms of Service - Terms and conditions governing the use of our products and services.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Terms of Service | TacRaven Solutions">
+    <meta property="og:description" content="TacRaven Solutions LLC Terms of Service - Terms and conditions governing the use of our products and services.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tacravensolutions.com/terms.html">
+    <meta property="og:image" content="https://tacravensolutions.com/og-image.png">
+    <meta property="og:site_name" content="TacRaven Solutions">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Terms of Service | TacRaven Solutions">
+    <meta name="twitter:description" content="TacRaven Solutions LLC Terms of Service - Terms and conditions governing the use of our products and services.">
+    <meta name="twitter:image" content="https://tacravensolutions.com/og-image.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --black-lighter: #111111;
+            --black-card: #161616;
+            --gold: #d4a012;
+            --gold-light: #f5c842;
+            --gold-dark: #9a7209;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-300: #a0a0a0;
+            --gray-500: #6b6b6b;
+            --gray-700: #333333;
+            --gray-800: #1a1a1a;
+            --font-display: 'Orbitron', sans-serif;
+            --font-heading: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(212, 160, 18, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 160, 18, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.1);
+        }
+
+        .nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .nav-logo-text span {
+            color: var(--gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 36px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(212, 160, 18, 0.4);
+        }
+
+        .nav-cta {
+            padding: 12px 28px;
+            font-size: 14px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            width: 28px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu-overlay ul {
+            list-style: none;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu-overlay li {
+            margin: 20px 0;
+        }
+
+        .mobile-menu-overlay a {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-overlay a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-menu-overlay .mobile-contact-btn {
+            margin-top: 30px;
+            padding: 18px 48px;
+            font-size: 18px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 160px 0 80px;
+            position: relative;
+            background: linear-gradient(180deg, var(--black) 0%, var(--black-light) 100%);
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            margin-bottom: 24px;
+        }
+
+        .page-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .page-badge-text {
+            font-family: var(--font-display);
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .page-title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            color: var(--gray-300);
+            max-width: 600px;
+        }
+
+        /* Legal Content */
+        .legal-content {
+            padding: 80px 0;
+            background: var(--black-light);
+        }
+
+        .legal-container {
+            max-width: 800px;
+        }
+
+        .legal-updated {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .legal-section {
+            margin-bottom: 48px;
+        }
+
+        .legal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .legal-section h2 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .legal-section p {
+            color: var(--gray-300);
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .legal-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .legal-section ul {
+            color: var(--gray-300);
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .legal-section ul li {
+            margin-bottom: 8px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .legal-section a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .legal-section a:hover {
+            color: var(--gold-light);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black-lighter);
+            padding: 60px 0 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-top: 20px;
+            max-width: 280px;
+        }
+
+        .footer-title {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            font-size: 14px;
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .page-header {
+                padding: 140px 0 60px;
+            }
+
+            .legal-content {
+                padding: 60px 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .footer {
+                padding-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-logo-text">TAC<span>RAVEN</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#blackfeather" class="nav-link">Black Feather</a></li>
+                <li><a href="index.html#corvus" class="nav-link">Corvus Engine</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="btn btn-primary nav-cta">Contact Us Now</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <ul>
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="index.html#blackfeather" class="mobile-nav-link">Black Feather</a></li>
+            <li><a href="index.html#corvus" class="mobile-nav-link">Corvus Engine</a></li>
+            <li><a href="about.html" class="mobile-nav-link">About</a></li>
+            <li><a href="index.html#contact" class="mobile-nav-link mobile-contact-btn">Contact Us Now</a></li>
+        </ul>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="grid-bg"></div>
+        <div class="container">
+            <div class="page-header-content">
+                <div class="page-badge">
+                    <span class="page-badge-dot"></span>
+                    <span class="page-badge-text">Legal</span>
+                </div>
+                <h1 class="page-title">Terms of Service</h1>
+                <p class="page-subtitle">Terms and conditions governing the use of our products and services.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Legal Content -->
+    <main class="legal-content">
+        <div class="container legal-container">
+            <p class="legal-updated">Last Updated: January 2025</p>
+
+            <section class="legal-section">
+                <h2>Agreement to Terms</h2>
+                <p>By accessing our website or using products and services provided by TacRaven Solutions LLC ("Company," "we," "our," or "us"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Products and Services</h2>
+                <p>TacRaven Solutions provides cybersecurity software tools, including but not limited to Black Feather and Corvus Engine, as well as related training and educational materials. Our products are designed for lawful cybersecurity education, training, and defensive purposes only.</p>
+                <p>Product availability, features, and specifications are subject to change without notice. We reserve the right to modify, suspend, or discontinue any product or service at any time.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Permitted Use</h2>
+                <p>Our products and services are intended for:</p>
+                <ul>
+                    <li>Lawful cybersecurity education and training</li>
+                    <li>Defensive security operations and threat analysis</li>
+                    <li>Legitimate research and analysis within authorized environments</li>
+                    <li>Professional development in cybersecurity fields</li>
+                </ul>
+                <p>You agree not to use our products or services for any unlawful purpose or in any way that could damage, disable, or impair our services or interfere with any other party's use of our services.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Prohibited Uses</h2>
+                <p>You expressly agree not to use our products or services to:</p>
+                <ul>
+                    <li>Conduct unauthorized access to computer systems or networks</li>
+                    <li>Engage in any form of cyberattack, hacking, or malicious activity</li>
+                    <li>Violate any applicable local, state, national, or international law</li>
+                    <li>Infringe upon the intellectual property rights of others</li>
+                    <li>Reverse engineer, decompile, or disassemble our software except as permitted by law</li>
+                    <li>Redistribute, sublicense, or resell our products without authorization</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>Intellectual Property</h2>
+                <p>All content, features, and functionality of our website and products—including but not limited to software, text, graphics, logos, and images—are owned by TacRaven Solutions LLC and are protected by United States and international copyright, trademark, patent, and other intellectual property laws.</p>
+                <p>Black Feather™ and Corvus Engine™ are proprietary technologies with patent applications pending. Unauthorized use, reproduction, or distribution is strictly prohibited.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Licensing</h2>
+                <p>Products purchased or licensed from TacRaven Solutions are provided under specific license terms that will be included with each product. These Terms of Service do not grant you any rights to use our trademarks, service marks, or logos without prior written consent.</p>
+                <p>License terms, including permitted users, deployment scope, and duration, are specified in individual license agreements. Contact us for licensing inquiries.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Disclaimer of Warranties</h2>
+                <p>OUR PRODUCTS AND SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+                <p>We do not warrant that our products will be uninterrupted, error-free, or completely secure. We do not warrant that defects will be corrected or that our products are free of viruses or other harmful components.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Limitation of Liability</h2>
+                <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, TACRAVEN SOLUTIONS LLC SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, USE, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:</p>
+                <ul>
+                    <li>Your use or inability to use our products or services</li>
+                    <li>Any unauthorized access to or alteration of your data</li>
+                    <li>Any third-party conduct related to our products or services</li>
+                    <li>Any other matter relating to our products or services</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>Indemnification</h2>
+                <p>You agree to indemnify, defend, and hold harmless TacRaven Solutions LLC and its officers, directors, employees, and agents from any claims, liabilities, damages, losses, and expenses (including reasonable attorneys' fees) arising out of or related to your use of our products or services, your violation of these Terms, or your violation of any rights of a third party.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Export Compliance</h2>
+                <p>You acknowledge that our products may be subject to U.S. export control laws and regulations. You agree to comply with all applicable export and re-export restrictions and not to transfer our products to prohibited destinations, entities, or individuals without appropriate government authorization.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Governing Law</h2>
+                <p>These Terms of Service shall be governed by and construed in accordance with the laws of the United States and the State in which TacRaven Solutions LLC is incorporated, without regard to conflict of law principles.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Changes to Terms</h2>
+                <p>We reserve the right to modify these Terms of Service at any time. We will provide notice of significant changes by posting the updated terms on our website. Your continued use of our products or services after any changes constitutes your acceptance of the new terms.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Severability</h2>
+                <p>If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining provisions shall remain in full force and effect.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>Contact Information</h2>
+                <p>For questions about these Terms of Service, please contact us through the <a href="index.html#contact">contact form</a> on our website.</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <span class="nav-logo-text">TAC<span>RAVEN</span></span>
+                    </a>
+                    <p>Cybersecurity education and threat intelligence tools. Empowering defenders with the knowledge and capabilities to protect their organizations.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#blackfeather">Black Feather</a></li>
+                        <li><a href="index.html#corvus">Corvus Engine</a></li>
+                        <li><a href="index.html#features">All Features</a></li>
+                        <li><a href="index.html#contact">Request Demo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
+</body>
+</html>
