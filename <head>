@@ -1,0 +1,22 @@
+<head>
+  <title>TacRaven Solutions | Cybersecurity Tools & Training</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="TacRaven Solutions provides offline-capable cybersecurity tools, threat intelligence analysis, SOC-ready tooling, and Security+ exam prep for professionals and teams.">
+
+  <meta name="keywords" content="cybersecurity tools, threat intelligence, SOC tools, air gapped cybersecurity, security plus prep, cyber training, tacraven">
+
+  <meta name="author" content="TacRaven Solutions LLC">
+
+  <!-- Open Graph (for Google + LinkedIn + previews) -->
+  <meta property="og:title" content="TacRaven Solutions">
+  <meta property="og:description" content="Offline-capable cybersecurity tools, threat intelligence, and training built for real operations.">
+  <meta property="og:image" content="https://tacraven.com/og-image.png">
+  <meta property="og:url" content="https://tacraven.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image">
+</head>
