@@ -44,9 +44,19 @@
             --blue: #3b82f6;
             --blue-dark: #1e3a8a;
             --green: #22c55e;
+            --cyan: #06b6d4;
+            --purple: #a855f7;
+            --orange: #f97316;
             --font-display: 'Orbitron', sans-serif;
             --font-heading: 'Rajdhani', sans-serif;
             --font-body: 'Inter', sans-serif;
+            
+            /* Source-specific colors */
+            --color-cisa: #0066cc;
+            --color-hackernews: #e53935;
+            --color-darkreading: #7c3aed;
+            --color-threatpost: #059669;
+            --color-schneier: #ea580c;
         }
 
         * {
@@ -69,6 +79,64 @@
             50% { opacity: 0.5; }
         }
 
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px var(--gold), 0 0 10px rgba(212, 160, 18, 0.3); }
+            50% { box-shadow: 0 0 10px var(--gold), 0 0 20px rgba(212, 160, 18, 0.5); }
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { 
+                border-color: rgba(220, 38, 38, 0.6);
+                box-shadow: 0 0 20px rgba(220, 38, 38, 0.3), inset 0 0 20px rgba(220, 38, 38, 0.05);
+            }
+            50% { 
+                border-color: rgba(220, 38, 38, 1);
+                box-shadow: 0 0 40px rgba(220, 38, 38, 0.5), inset 0 0 30px rgba(220, 38, 38, 0.1);
+            }
+        }
+
+        @keyframes criticalPulse {
+            0%, 100% { 
+                background-position: 0% 50%;
+            }
+            50% { 
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(0); opacity: 0.5; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+
+        @keyframes elasticBounce {
+            0% { transform: translateY(0); }
+            30% { transform: translateY(-12px); }
+            50% { transform: translateY(-8px); }
+            70% { transform: translateY(-10px); }
+            100% { transform: translateY(-8px); }
+        }
+
+        @keyframes titleShift {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(4px); }
+        }
+
         body {
             font-family: var(--font-body);
             background-color: var(--black);
@@ -78,7 +146,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -545,21 +613,56 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
         }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .filter-btn[data-source="cisa"]::before { background: var(--color-cisa); }
+        .filter-btn[data-source="thehackernews"]::before { background: var(--color-hackernews); }
+        .filter-btn[data-source="darkreading"]::before { background: var(--color-darkreading); }
+        .filter-btn[data-source="threatpost"]::before { background: var(--color-threatpost); }
+        .filter-btn[data-source="schneier"]::before { background: var(--color-schneier); }
 
         .filter-btn:hover {
             background: rgba(212, 160, 18, 0.1);
             border-color: rgba(212, 160, 18, 0.3);
             color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .filter-btn:hover::before {
+            opacity: 1;
+        }
+
+        .filter-btn:active {
+            transform: translateY(0);
         }
 
         .filter-btn.active {
             background: rgba(212, 160, 18, 0.2);
             border-color: var(--gold);
             color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 160, 18, 0.2);
+        }
+
+        .filter-btn.active::before {
+            opacity: 1;
         }
 
         .refresh-btn {
@@ -587,7 +690,7 @@
             animation: spin 1s linear infinite;
         }
 
-        /* News Grid */
+        /* News Grid - Dynamic Layout */
         .news-section {
             padding: 60px 0 100px;
             min-height: 60vh;
@@ -595,25 +698,299 @@
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(12, 1fr);
             gap: 24px;
         }
 
+        /* Base Card Styles */
         .news-card {
             background: var(--black-card);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            position: relative;
+            animation: slideIn 0.5s ease forwards;
+            transform-origin: center bottom;
         }
 
         .news-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(212, 160, 18, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(212, 160, 18, 0.5);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(212, 160, 18, 0.15);
+            z-index: 10;
         }
 
+        /* Ripple effect container */
+        .news-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: rgba(212, 160, 18, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .news-card:active::after {
+            animation: ripple 0.6s ease-out;
+        }
+
+        /* BREAKING / CRITICAL NEWS - Attention-grabbing styles */
+        .news-card--critical {
+            border: 2px solid rgba(220, 38, 38, 0.6);
+            animation: slideIn 0.5s ease forwards, borderGlow 2s ease-in-out infinite;
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(220, 38, 38, 0.08) 100%);
+        }
+
+        .news-card--critical::before {
+            height: 4px !important;
+            background: linear-gradient(90deg, var(--red), #ff6b6b, var(--red)) !important;
+            background-size: 200% 100%;
+            animation: criticalPulse 2s ease infinite;
+        }
+
+        .news-card--critical:hover {
+            border-color: var(--red);
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.6),
+                0 0 50px rgba(220, 38, 38, 0.3),
+                inset 0 0 30px rgba(220, 38, 38, 0.05);
+            transform: translateY(-10px) scale(1.03);
+        }
+
+        /* Critical card shimmer effect */
+        .news-card--critical .news-card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        /* HOT / TRENDING NEWS */
+        .news-card--hot {
+            border: 1px solid rgba(249, 115, 22, 0.4);
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(249, 115, 22, 0.05) 100%);
+        }
+
+        .news-card--hot::before {
+            background: linear-gradient(90deg, var(--orange), var(--gold), var(--orange)) !important;
+            background-size: 200% 100%;
+        }
+
+        .news-card--hot:hover {
+            border-color: var(--orange);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(249, 115, 22, 0.2);
+        }
+
+        /* NEW articles - subtle highlight */
+        .news-card--new-article {
+            border: 1px solid rgba(212, 160, 18, 0.3);
+        }
+
+        .news-card--new-article:hover {
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 35px rgba(212, 160, 18, 0.25);
+        }
+
+        /* Source Color Accent */
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold);
+            z-index: 1;
+        }
+
+        .news-card[data-source="cisa"]::before { background: var(--color-cisa); }
+        .news-card[data-source="thehackernews"]::before { background: var(--color-hackernews); }
+        .news-card[data-source="darkreading"]::before { background: var(--color-darkreading); }
+        .news-card[data-source="threatpost"]::before { background: var(--color-threatpost); }
+        .news-card[data-source="schneier"]::before { background: var(--color-schneier); }
+
+        /* Card Size Variants */
+        .news-card--featured {
+            grid-column: span 8;
+            flex-direction: row;
+            min-height: 320px;
+        }
+
+        .news-card--large {
+            grid-column: span 6;
+        }
+
+        .news-card--medium {
+            grid-column: span 4;
+        }
+
+        .news-card--small {
+            grid-column: span 4;
+        }
+
+        .news-card--compact {
+            grid-column: span 3;
+        }
+
+        /* Card Image */
+        .news-card-image {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--black-lighter) 0%, var(--black-card) 100%);
+        }
+
+        .news-card--featured .news-card-image {
+            width: 45%;
+            min-width: 300px;
+            flex-shrink: 0;
+        }
+
+        .news-card--large .news-card-image,
+        .news-card--medium .news-card-image {
+            height: 200px;
+        }
+
+        .news-card--small .news-card-image {
+            height: 160px;
+        }
+
+        .news-card--compact .news-card-image {
+            height: 120px;
+        }
+
+        .news-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+            filter: brightness(0.9);
+        }
+
+        .news-card:hover .news-card-image img {
+            transform: scale(1.12);
+            filter: brightness(1);
+        }
+
+        .news-card--critical:hover .news-card-image img {
+            filter: brightness(1.1) saturate(1.2);
+        }
+
+        .news-card-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .news-card:hover .news-card-image-overlay {
+            opacity: 0.7;
+        }
+
+        /* Placeholder image pattern */
+        .news-card-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--black-lighter) 0%, var(--black-card) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-card-image-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 160, 18, 0.03) 0%, transparent 25%),
+                radial-gradient(circle at 80% 20%, rgba(212, 160, 18, 0.02) 0%, transparent 20%),
+                radial-gradient(circle at 60% 80%, rgba(212, 160, 18, 0.03) 0%, transparent 30%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
+            50% { transform: translate(10%, 10%) rotate(180deg); }
+        }
+
+        .news-card-image-placeholder svg {
+            width: 48px;
+            height: 48px;
+            color: rgba(212, 160, 18, 0.2);
+            z-index: 1;
+        }
+
+        .news-card[data-source="cisa"] .news-card-image-placeholder svg { color: rgba(0, 102, 204, 0.3); }
+        .news-card[data-source="thehackernews"] .news-card-image-placeholder svg { color: rgba(229, 57, 53, 0.3); }
+        .news-card[data-source="darkreading"] .news-card-image-placeholder svg { color: rgba(124, 58, 237, 0.3); }
+        .news-card[data-source="threatpost"] .news-card-image-placeholder svg { color: rgba(5, 150, 105, 0.3); }
+        .news-card[data-source="schneier"] .news-card-image-placeholder svg { color: rgba(234, 88, 12, 0.3); }
+
+        /* Card Badge */
+        .news-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 6px 12px;
+            font-family: var(--font-display);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .news-badge--breaking {
+            background: var(--red);
+            color: var(--white);
+            animation: badgePulse 1.5s ease-in-out infinite, glow 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+
+        .news-badge--hot {
+            background: linear-gradient(135deg, var(--orange) 0%, #ff6b35 100%);
+            color: var(--white);
+            animation: badgePulse 2s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+        }
+
+        .news-badge--new {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .news-badge--trending {
+            background: var(--purple);
+            color: var(--white);
+        }
+
+        .news-card:hover .news-badge {
+            transform: scale(1.1);
+        }
+
+        /* Card Header */
         .news-card-header {
             padding: 20px 24px 12px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
@@ -622,17 +999,80 @@
             align-items: center;
         }
 
+        .news-card--featured .news-card-header {
+            padding: 24px 28px 16px;
+        }
+
         .news-source {
             font-family: var(--font-display);
             font-size: 10px;
             letter-spacing: 2px;
-            color: var(--gold);
             text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
         }
+
+        .news-source::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover .news-source::before {
+            transform: scale(1.3);
+            box-shadow: 0 0 8px currentColor;
+        }
+
+        .news-card--critical .news-source::before {
+            background: var(--red);
+            animation: pulse 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        }
+
+        .news-card--hot .news-source::before {
+            background: var(--orange);
+            box-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
+        }
+
+        .news-card[data-source="cisa"] .news-source { color: var(--color-cisa); }
+        .news-card[data-source="cisa"] .news-source::before { background: var(--color-cisa); }
+        .news-card[data-source="thehackernews"] .news-source { color: var(--color-hackernews); }
+        .news-card[data-source="thehackernews"] .news-source::before { background: var(--color-hackernews); }
+        .news-card[data-source="darkreading"] .news-source { color: var(--color-darkreading); }
+        .news-card[data-source="darkreading"] .news-source::before { background: var(--color-darkreading); }
+        .news-card[data-source="threatpost"] .news-source { color: var(--color-threatpost); }
+        .news-card[data-source="threatpost"] .news-source::before { background: var(--color-threatpost); }
+        .news-card[data-source="schneier"] .news-source { color: var(--color-schneier); }
+        .news-card[data-source="schneier"] .news-source::before { background: var(--color-schneier); }
 
         .news-date {
             font-size: 12px;
             color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .news-date svg {
+            width: 12px;
+            height: 12px;
+            opacity: 0.6;
+        }
+
+        /* Card Content */
+        .news-card-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .news-card--featured .news-card-body {
+            width: 55%;
         }
 
         .news-card-content {
@@ -640,6 +1080,10 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+        }
+
+        .news-card--featured .news-card-content {
+            padding: 20px 28px 28px;
         }
 
         .news-title {
@@ -655,14 +1099,42 @@
             overflow: hidden;
         }
 
+        .news-card--featured .news-title {
+            font-size: 24px;
+            -webkit-line-clamp: 4;
+        }
+
+        .news-card--compact .news-title {
+            font-size: 15px;
+            -webkit-line-clamp: 2;
+        }
+
         .news-title a {
             color: inherit;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            background-size: 0% 2px;
+            background-position: 0 100%;
+            background-repeat: no-repeat;
         }
 
         .news-title a:hover {
             color: var(--gold);
+            background-size: 100% 2px;
+        }
+
+        .news-card:hover .news-title a {
+            transform: translateX(2px);
+        }
+
+        .news-card--critical .news-title a:hover {
+            color: #ff6b6b;
+            background: linear-gradient(90deg, var(--red), #ff6b6b);
+            background-size: 100% 2px;
+            background-position: 0 100%;
+            background-repeat: no-repeat;
         }
 
         .news-description {
@@ -676,12 +1148,46 @@
             flex-grow: 1;
         }
 
+        .news-card--featured .news-description {
+            font-size: 15px;
+            -webkit-line-clamp: 4;
+        }
+
+        .news-card--compact .news-description {
+            font-size: 13px;
+            -webkit-line-clamp: 2;
+        }
+
+        /* Card Footer */
         .news-card-footer {
             padding: 16px 24px;
             background: rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover .news-card-footer {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .news-card--critical .news-card-footer {
+            background: rgba(220, 38, 38, 0.1);
+            border-top: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .news-card--critical:hover .news-card-footer {
+            background: rgba(220, 38, 38, 0.15);
+        }
+
+        .news-card--hot .news-card-footer {
+            background: rgba(249, 115, 22, 0.05);
+            border-top: 1px solid rgba(249, 115, 22, 0.15);
+        }
+
+        .news-card--featured .news-card-footer {
+            padding: 18px 28px;
         }
 
         .read-more {
@@ -695,19 +1201,63 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .read-more::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
         }
 
         .read-more:hover {
-            gap: 12px;
+            gap: 14px;
+            color: var(--gold-light);
+        }
+
+        .read-more:hover::before {
+            width: 100%;
         }
 
         .read-more svg {
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .read-more:hover svg {
-            transform: translateX(4px);
+            transform: translateX(6px);
+        }
+
+        .news-card--critical .read-more {
+            color: #ff6b6b;
+        }
+
+        .news-card--critical .read-more::before {
+            background: #ff6b6b;
+        }
+
+        .news-card--critical .read-more:hover {
+            color: #ff8a8a;
+        }
+
+        /* Reading Time */
+        .reading-time {
+            font-size: 11px;
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .reading-time svg {
+            width: 12px;
+            height: 12px;
         }
 
         /* Loading State */
@@ -718,6 +1268,7 @@
             justify-content: center;
             padding: 80px 20px;
             text-align: center;
+            grid-column: 1 / -1;
         }
 
         .loading-spinner {
@@ -746,6 +1297,7 @@
             justify-content: center;
             padding: 80px 20px;
             text-align: center;
+            grid-column: 1 / -1;
         }
 
         .error-icon {
@@ -800,33 +1352,57 @@
         /* Footer */
         .footer {
             background: var(--black-card);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding: 60px 0 30px;
-            border-top: 1px solid rgba(212, 160, 18, 0.1);
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 48px;
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .footer-brand p {
-            color: var(--gray-500);
-            margin-top: 16px;
-            font-size: 14px;
-            line-height: 1.7;
+        .footer-brand {
             max-width: 300px;
         }
 
-        .footer-title {
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            text-decoration: none;
+        }
+
+        .footer-logo-text {
             font-family: var(--font-display);
-            font-size: 12px;
+            font-size: 18px;
             font-weight: 700;
-            color: var(--gold);
+            color: var(--white);
             letter-spacing: 2px;
+        }
+
+        .footer-logo-text span {
+            color: var(--gold);
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        .footer-links-section h4 {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
             text-transform: uppercase;
-            margin-bottom: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
         }
 
         .footer-links {
@@ -834,13 +1410,13 @@
         }
 
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .footer-links a {
-            color: var(--gray-500);
-            text-decoration: none;
             font-size: 14px;
+            color: var(--gray-300);
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
@@ -848,28 +1424,14 @@
             color: var(--gold);
         }
 
-        .footer-legal-notice {
-            padding: 32px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 24px;
-        }
-
-        .footer-legal-notice p {
-            font-size: 12px;
-            color: var(--gray-500);
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-
-        .footer-legal-notice p:last-child {
-            margin-bottom: 0;
-        }
-
         .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
         .footer-copyright {
@@ -893,18 +1455,57 @@
             color: var(--gold);
         }
 
+        /* Source Legend */
+        .source-legend {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: 12px 0;
+            margin-bottom: 24px;
+        }
+
+        .source-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .source-legend-item::before {
+            content: '';
+            width: 12px;
+            height: 3px;
+        }
+
+        .source-legend-item--cisa::before { background: var(--color-cisa); }
+        .source-legend-item--hackernews::before { background: var(--color-hackernews); }
+        .source-legend-item--darkreading::before { background: var(--color-darkreading); }
+        .source-legend-item--threatpost::before { background: var(--color-threatpost); }
+        .source-legend-item--schneier::before { background: var(--color-schneier); }
+
         /* Responsive */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 1200px) {
+            .news-card--featured {
+                grid-column: span 12;
+            }
+            .news-card--large {
+                grid-column: span 6;
+            }
+            .news-card--medium {
+                grid-column: span 6;
+            }
+            .news-card--small {
+                grid-column: span 6;
+            }
+            .news-card--compact {
+                grid-column: span 4;
             }
         }
 
-        @media (max-width: 768px) {
-            .section {
-                padding: 60px 0;
-            }
-
+        @media (max-width: 992px) {
             .nav-menu {
                 display: none;
             }
@@ -913,8 +1514,38 @@
                 display: flex;
             }
 
+            .news-card--featured {
+                flex-direction: column;
+            }
+
+            .news-card--featured .news-card-image {
+                width: 100%;
+                height: 220px;
+                min-width: unset;
+            }
+
+            .news-card--featured .news-card-body {
+                width: 100%;
+            }
+
+            .news-card--large,
+            .news-card--medium,
+            .news-card--small {
+                grid-column: span 6;
+            }
+
+            .news-card--compact {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
             .filter-bar {
-                top: 56px;
+                top: 50px;
             }
 
             .filter-container {
@@ -923,25 +1554,41 @@
             }
 
             .filter-sources {
-                justify-content: center;
+                overflow-x: auto;
+                padding-bottom: 8px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .filter-btn {
+                flex-shrink: 0;
             }
 
             .news-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
+            .news-card--featured,
+            .news-card--large,
+            .news-card--medium,
+            .news-card--small,
+            .news-card--compact {
+                grid-column: span 1;
+            }
+
+            .news-card--featured .news-card-image {
+                height: 180px;
+            }
+
+            .news-card--featured .news-title {
+                font-size: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
             }
 
             .footer-bottom {
-                flex-direction: column;
-                gap: 16px;
-                text-align: center;
-            }
-
-            .stats-content {
                 flex-direction: column;
                 text-align: center;
             }
@@ -953,35 +1600,37 @@
     <nav class="nav" id="nav">
         <div class="container nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="nav-logo-text">TAC<span>RAVEN</span></span>
+                <div class="nav-logo-text">TAC<span>RAVEN</span></div>
             </a>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-dropdown">
                     <button class="nav-dropdown-toggle">
-                        Tools
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="index.html#blackfeather" class="nav-dropdown-item">
-                            Black Feather
-                            <span>Threat Intelligence Platform</span>
+                        <a href="blackfeather.html" class="nav-dropdown-item">
+                            BlackFeather
+                            <span>Threat Intel Platform</span>
                         </a>
-                        <a href="index.html#corvus" class="nav-dropdown-item">
+                        <a href="corvus-engine.html" class="nav-dropdown-item">
                             Corvus Engine
-                            <span>Log Analysis Utility</span>
+                            <span>Log Processing Utility</span>
+                        </a>
+                        <a href="talonprep.html" class="nav-dropdown-item">
+                            TalonPrep
+                            <span>Security+ Test Prep</span>
                         </a>
                     </div>
                 </li>
-                <li><a href="index.html#features" class="nav-link">Features</a></li>
-                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-                <li><a href="talonprep.html" class="nav-link">TalonPrep</a></li>
-                <li><a href="cyber-news.html" class="nav-link active">Cyber News</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="index.html#contact" class="btn btn-primary nav-cta">Contact Us</a></li>
+                <li><a href="cyber-news.html" class="nav-link active">News</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
+            <a href="contact.html" class="btn btn-primary nav-cta">Get Started</a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -991,18 +1640,15 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobile-menu">
+    <div class="mobile-menu-overlay">
         <ul>
-            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
-            <li style="margin-top: 30px; margin-bottom: 10px;"><span style="font-size: 14px; color: var(--gold); letter-spacing: 3px;">— TOOLS —</span></li>
-            <li><a href="index.html#blackfeather" class="mobile-nav-link" style="font-size: 20px;">Black Feather</a></li>
-            <li><a href="index.html#corvus" class="mobile-nav-link" style="font-size: 20px;">Corvus Engine</a></li>
-            <li style="margin-top: 30px;"><a href="index.html#features" class="mobile-nav-link">Features</a></li>
-            <li><a href="pricing.html" class="mobile-nav-link">Pricing</a></li>
-            <li><a href="talonprep.html" class="mobile-nav-link">TalonPrep</a></li>
-            <li><a href="cyber-news.html" class="mobile-nav-link" style="color: var(--gold);">Cyber News</a></li>
-            <li><a href="about.html" class="mobile-nav-link">About</a></li>
-            <li><a href="index.html#contact" class="mobile-nav-link btn btn-primary" style="margin-top: 20px;">Contact Us</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blackfeather.html">BlackFeather</a></li>
+            <li><a href="corvus-engine.html">Corvus Engine</a></li>
+            <li><a href="talonprep.html">TalonPrep</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="cyber-news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
 
@@ -1011,12 +1657,12 @@
         <div class="grid-bg"></div>
         <div class="container">
             <div class="page-header-content">
+                <h1 class="page-title">CYBER <span>NEWS</span></h1>
+                <p class="page-subtitle">Stay informed with the latest cybersecurity news aggregated from trusted sources across the industry.</p>
                 <div class="live-indicator">
                     <span class="live-dot"></span>
                     Live Feed
                 </div>
-                <h1 class="page-title">CYBER <span>NEWS</span></h1>
-                <p class="page-subtitle">Stay informed with the latest cybersecurity news, threat intelligence, and security advisories aggregated from trusted industry sources.</p>
             </div>
         </div>
     </header>
@@ -1027,10 +1673,10 @@
             <div class="filter-container">
                 <div class="filter-sources">
                     <button class="filter-btn active" data-source="all">All Sources</button>
-                    <button class="filter-btn" data-source="bleepingcomputer">BleepingComputer</button>
-                    <button class="filter-btn" data-source="thehackernews">The Hacker News</button>
+                    <button class="filter-btn" data-source="cisa">CISA</button>
+                    <button class="filter-btn" data-source="thehackernews">Hacker News</button>
                     <button class="filter-btn" data-source="darkreading">Dark Reading</button>
-                    <button class="filter-btn" data-source="threatpost">Krebs on Security</button>
+                    <button class="filter-btn" data-source="threatpost">Krebs</button>
                     <button class="filter-btn" data-source="schneier">Schneier</button>
                 </div>
                 <button class="refresh-btn" id="refresh-btn">
@@ -1050,15 +1696,25 @@
         <div class="container">
             <div class="stats-bar">
                 <div class="stats-content">
-                    <span class="stats-count"><strong id="article-count">0</strong> articles loaded</span>
-                    <span class="last-updated">Last updated: <span id="last-updated">--</span></span>
+                    <div class="stats-count">
+                        Showing <strong id="article-count">0</strong> articles
+                    </div>
+                    <div class="last-updated">
+                        Last updated: <span id="last-updated">--:--</span>
+                    </div>
                 </div>
             </div>
-            <div id="news-container">
-                <div class="loading-container">
-                    <div class="loading-spinner"></div>
-                    <p class="loading-text">Fetching latest cyber news...</p>
-                </div>
+
+            <div class="source-legend">
+                <div class="source-legend-item source-legend-item--cisa">CISA</div>
+                <div class="source-legend-item source-legend-item--hackernews">Hacker News</div>
+                <div class="source-legend-item source-legend-item--darkreading">Dark Reading</div>
+                <div class="source-legend-item source-legend-item--threatpost">Krebs</div>
+                <div class="source-legend-item source-legend-item--schneier">Schneier</div>
+            </div>
+
+            <div id="news-container" class="news-grid">
+                <!-- Articles will be loaded here -->
             </div>
         </div>
     </section>
@@ -1066,35 +1722,37 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="index.html" class="nav-logo">
-                        <span class="nav-logo-text">TAC<span>RAVEN</span></span>
+                    <a href="index.html" class="footer-logo">
+                        <div class="footer-logo-text">TAC<span>RAVEN</span></div>
                     </a>
-                    <p>Cybersecurity education and threat intelligence tools. Empowering defenders with the knowledge and capabilities to protect their organizations.</p>
+                    <p class="footer-tagline">Air-gapped cybersecurity solutions for government, defense, and critical infrastructure.</p>
                 </div>
-                <div>
-                    <h4 class="footer-title">Products</h4>
+                <div class="footer-links-section">
+                    <h4>Products</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html#blackfeather">Black Feather</a></li>
-                        <li><a href="index.html#corvus">Corvus Engine</a></li>
-                        <li><a href="index.html#features">All Features</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blackfeather.html">BlackFeather</a></li>
+                        <li><a href="corvus-engine.html">Corvus Engine</a></li>
                         <li><a href="talonprep.html">TalonPrep</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="footer-title">Company</h4>
+                <div class="footer-links-section">
+                    <h4>Company</h4>
                     <ul class="footer-links">
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="cyber-news.html">Cyber News</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="footer-legal-notice">
-                <p><strong>Patent Pending:</strong> Black Feather™ and Corvus Engine™ are proprietary technologies of TacRaven Solutions LLC. Patent applications have been filed with the United States Patent and Trademark Office.</p>
-                <p><strong>Legal Disclaimer:</strong> The information, software, products, and services provided by TacRaven Solutions LLC are intended for lawful cybersecurity education, training, and defensive purposes only. Black Feather and Corvus Engine are provided "as is" without warranty of any kind, express or implied.</p>
+                <div class="footer-links-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p class="footer-copyright">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
@@ -1108,11 +1766,8 @@
 
     <script>
         // Navigation scroll effect
-        const nav = document.getElementById('nav');
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
         window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
             if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
             } else {
@@ -1121,27 +1776,29 @@
         });
 
         // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenuBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        mobileMenuOverlay.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenuBtn.classList.remove('active');
-                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
                 document.body.style.overflow = '';
             });
         });
 
-        // RSS Feed Configuration
+        // RSS Feeds configuration
         const RSS_FEEDS = [
             {
-                name: 'BleepingComputer',
-                url: 'https://www.bleepingcomputer.com/feed/',
-                key: 'bleepingcomputer'
+                name: 'CISA',
+                url: 'https://www.cisa.gov/news.xml',
+                key: 'cisa'
             },
             {
                 name: 'The Hacker News',
@@ -1171,6 +1828,45 @@
         // Using rss2json.com API (free tier: 10,000 requests/day)
         const RSS2JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
+        // Extract image from various sources
+        function extractImage(item) {
+            // Check thumbnail first (most common)
+            if (item.thumbnail && item.thumbnail.length > 0) {
+                return item.thumbnail;
+            }
+            
+            // Check enclosure
+            if (item.enclosure && item.enclosure.link) {
+                return item.enclosure.link;
+            }
+            
+            // Try to extract from content
+            if (item.content) {
+                const imgMatch = item.content.match(/<img[^>]+src=["']([^"']+)["']/i);
+                if (imgMatch && imgMatch[1]) {
+                    return imgMatch[1];
+                }
+            }
+            
+            // Try to extract from description
+            if (item.description) {
+                const imgMatch = item.description.match(/<img[^>]+src=["']([^"']+)["']/i);
+                if (imgMatch && imgMatch[1]) {
+                    return imgMatch[1];
+                }
+            }
+            
+            return null;
+        }
+
+        // Estimate reading time
+        function estimateReadingTime(text) {
+            const wordsPerMinute = 200;
+            const wordCount = text.split(/\s+/).length;
+            const minutes = Math.ceil(wordCount / wordsPerMinute);
+            return Math.max(1, minutes);
+        }
+
         // Fetch RSS Feed via rss2json
         async function fetchFeed(feed) {
             try {
@@ -1192,7 +1888,9 @@
                         .replace(/&lt;/g, '<')
                         .replace(/&gt;/g, '>')
                         .replace(/&quot;/g, '"')
-                        .substring(0, 200);
+                        .substring(0, 300);
+                    
+                    const image = extractImage(item);
                     
                     return {
                         title: item.title || 'No title',
@@ -1200,7 +1898,9 @@
                         description: cleanDescription,
                         pubDate: item.pubDate ? new Date(item.pubDate) : new Date(),
                         source: feed.name,
-                        sourceKey: feed.key
+                        sourceKey: feed.key,
+                        image: image,
+                        readingTime: estimateReadingTime(cleanDescription)
                     };
                 });
                 
@@ -1257,6 +1957,93 @@
             refreshBtn.classList.remove('loading');
         }
 
+        // Determine card size based on position and content
+        function getCardSize(index, article, totalFiltered) {
+            const hoursOld = (new Date() - article.pubDate) / (1000 * 60 * 60);
+            const hasImage = !!article.image;
+            
+            // First article is always featured
+            if (index === 0) return 'featured';
+            
+            // Recent articles with images get larger cards
+            if (index < 3 && hasImage && hoursOld < 12) return 'large';
+            
+            // Articles 1-4 get medium size
+            if (index < 5) return 'medium';
+            
+            // Vary the remaining cards
+            if (hasImage && index % 4 === 0) return 'medium';
+            if (index % 5 === 0) return 'small';
+            
+            return 'small';
+        }
+
+        // Get badge type based on article age
+        function getBadge(article) {
+            const hoursOld = (new Date() - article.pubDate) / (1000 * 60 * 60);
+            
+            if (hoursOld < 2) return { type: 'breaking', text: 'Breaking' };
+            if (hoursOld < 4) return { type: 'hot', text: 'Hot' };
+            if (hoursOld < 8) return { type: 'new', text: 'New' };
+            return null;
+        }
+
+        // Detect if article is "big news" based on keywords
+        function getArticleUrgency(article) {
+            const hoursOld = (new Date() - article.pubDate) / (1000 * 60 * 60);
+            const titleLower = article.title.toLowerCase();
+            const descLower = article.description.toLowerCase();
+            const combined = titleLower + ' ' + descLower;
+            
+            // Critical keywords - major security events
+            const criticalKeywords = [
+                'zero-day', 'zero day', '0-day', '0day',
+                'ransomware attack', 'data breach', 'breached',
+                'critical vulnerability', 'actively exploited',
+                'nation-state', 'apt', 'emergency', 'urgent',
+                'millions affected', 'billions', 'massive',
+                'russian', 'chinese', 'north korea', 'iran',
+                'cve-2025', 'cve-2024', 'rce', 'remote code execution',
+                'supply chain', 'widespread', 'critical flaw',
+                'patch now', 'under attack', 'exploitation'
+            ];
+            
+            // Hot keywords - important but not critical
+            const hotKeywords = [
+                'vulnerability', 'exploit', 'malware', 'phishing',
+                'hacker', 'attack', 'threat', 'security flaw',
+                'patch', 'update', 'warning', 'alert',
+                'backdoor', 'trojan', 'botnet', 'ddos',
+                'leak', 'exposed', 'compromised'
+            ];
+            
+            // Check for critical keywords
+            const isCritical = criticalKeywords.some(keyword => combined.includes(keyword));
+            
+            // Check for hot keywords  
+            const isHot = hotKeywords.some(keyword => combined.includes(keyword));
+            
+            // Determine urgency level
+            if (isCritical && hoursOld < 12) return 'critical';
+            if (isCritical && hoursOld < 24) return 'hot';
+            if (isHot && hoursOld < 6) return 'hot';
+            if (hoursOld < 8) return 'new-article';
+            
+            return null;
+        }
+
+        // Render placeholder SVG
+        function getPlaceholderIcon(sourceKey) {
+            const icons = {
+                cisa: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>`,
+                thehackernews: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line><path d="M6 8h.01M10 8h8"></path><path d="M6 12h.01M10 12h8"></path></svg>`,
+                darkreading: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>`,
+                threatpost: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"></path><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"></path><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"></path><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"></path><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"></path><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"></path></svg>`,
+                schneier: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>`
+            };
+            return icons[sourceKey] || icons.thehackernews;
+        }
+
         // Render articles
         function renderArticles() {
             const newsContainer = document.getElementById('news-container');
@@ -1277,33 +2064,83 @@
                 return;
             }
             
-            const articlesHTML = filteredArticles.map(article => `
-                <article class="news-card">
-                    <div class="news-card-header">
-                        <span class="news-source">${escapeHtml(article.source)}</span>
-                        <span class="news-date">${formatDate(article.pubDate)}</span>
+            const articlesHTML = filteredArticles.map((article, index) => {
+                const cardSize = getCardSize(index, article, filteredArticles.length);
+                const badge = getBadge(article);
+                const urgency = getArticleUrgency(article);
+                const hasImage = !!article.image;
+                
+                // Build urgency class
+                const urgencyClass = urgency ? `news-card--${urgency}` : '';
+                
+                const badgeHTML = badge ? `
+                    <span class="news-badge news-badge--${badge.type}">${badge.text}</span>
+                ` : '';
+                
+                const imageHTML = hasImage ? `
+                    <div class="news-card-image">
+                        ${badgeHTML}
+                        <img src="${escapeHtml(article.image)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML = '<div class=\\'news-card-image-placeholder\\'>${getPlaceholderIcon(article.sourceKey)}</div>'">
+                        <div class="news-card-image-overlay"></div>
                     </div>
-                    <div class="news-card-content">
-                        <h3 class="news-title">
-                            <a href="${escapeHtml(article.link)}" target="_blank" rel="noopener noreferrer">
-                                ${escapeHtml(article.title)}
-                            </a>
-                        </h3>
-                        <p class="news-description">${escapeHtml(article.description)}...</p>
+                ` : (cardSize === 'featured' || cardSize === 'large' ? `
+                    <div class="news-card-image">
+                        ${badgeHTML}
+                        <div class="news-card-image-placeholder">
+                            ${getPlaceholderIcon(article.sourceKey)}
+                        </div>
                     </div>
-                    <div class="news-card-footer">
-                        <a href="${escapeHtml(article.link)}" target="_blank" rel="noopener noreferrer" class="read-more">
-                            Read Full Article
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-            `).join('');
+                ` : '');
+                
+                const inlineBadge = !hasImage && cardSize !== 'featured' && cardSize !== 'large' && badge ? `
+                    <span class="news-badge news-badge--${badge.type}" style="position:relative;top:auto;left:auto;margin-bottom:12px;display:inline-block;">${badge.text}</span>
+                ` : '';
+                
+                return `
+                    <article class="news-card news-card--${cardSize} ${urgencyClass}" data-source="${article.sourceKey}" style="animation-delay: ${index * 0.05}s">
+                        ${imageHTML}
+                        <div class="news-card-body">
+                            <div class="news-card-header">
+                                <span class="news-source">${escapeHtml(article.source)}</span>
+                                <span class="news-date">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    ${formatDate(article.pubDate)}
+                                </span>
+                            </div>
+                            <div class="news-card-content">
+                                ${inlineBadge}
+                                <h3 class="news-title">
+                                    <a href="${escapeHtml(article.link)}" target="_blank" rel="noopener noreferrer">
+                                        ${escapeHtml(article.title)}
+                                    </a>
+                                </h3>
+                                <p class="news-description">${escapeHtml(article.description)}...</p>
+                            </div>
+                            <div class="news-card-footer">
+                                <a href="${escapeHtml(article.link)}" target="_blank" rel="noopener noreferrer" class="read-more">
+                                    Read Full Article
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </a>
+                                <span class="reading-time">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                    </svg>
+                                    ${article.readingTime} min
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
             
-            newsContainer.innerHTML = `<div class="news-grid">${articlesHTML}</div>`;
+            newsContainer.innerHTML = articlesHTML;
             document.getElementById('article-count').textContent = filteredArticles.length;
         }
 
