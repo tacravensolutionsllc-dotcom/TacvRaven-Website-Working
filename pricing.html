@@ -265,25 +265,6 @@
             color: var(--gold);
         }
 
-        .airgap-badge {
-            display: none;
-            font-family: var(--font-display);
-            font-size: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--gold);
-            background: rgba(212, 160, 18, 0.1);
-            border: 1px solid rgba(212, 160, 18, 0.3);
-            padding: 6px 12px;
-        }
-
-        @media (min-width: 900px) {
-            .airgap-badge {
-                display: inline-block;
-            }
-        }
-
         .nav-menu {
             display: flex;
             align-items: center;
@@ -333,6 +314,122 @@
         .nav-cta {
             padding: 12px 28px;
             font-size: 14px;
+        }
+
+        /* Dropdown Menu */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .nav-dropdown-toggle::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-dropdown-toggle:hover {
+            color: var(--white);
+        }
+
+        .nav-dropdown-toggle:hover::after {
+            width: 100%;
+        }
+
+        .nav-dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 200px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+            z-index: 1000;
+        }
+
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid rgba(212, 160, 18, 0.2);
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 12px;
+        }
+
+        .nav-dropdown-item {
+            display: block;
+            padding: 12px 24px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-300);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown-item:hover {
+            color: var(--gold);
+            background: rgba(212, 160, 18, 0.1);
+            padding-left: 28px;
+        }
+
+        .nav-dropdown-item span {
+            display: block;
+            font-size: 11px;
+            color: var(--gray-500);
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 0;
+            margin-top: 2px;
         }
 
         /* Mobile Menu Button */
@@ -1191,14 +1288,32 @@
                 <a href="index.html" class="nav-logo" aria-label="TacRaven Solutions Home">
                     <span class="nav-logo-text">TAC<span>RAVEN</span></span>
                 </a>
-                <span class="airgap-badge">Air-Gapped / Offline-First</span>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="index.html#blackfeather" class="nav-link">Tools</a></li>
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-toggle">
+                        Tools
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="index.html#blackfeather" class="nav-dropdown-item">
+                            Black Feather
+                            <span>Threat Intelligence Platform</span>
+                        </a>
+                        <a href="index.html#corvus" class="nav-dropdown-item">
+                            Corvus Engine
+                            <span>Log Analysis Utility</span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="index.html#features" class="nav-link">Features</a></li>
                 <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
                 <li><a href="talonprep.html" class="nav-link">TalonPrep</a></li>
-                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="cyber-news.html" class="nav-link">Cyber News</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="index.html#contact" class="btn btn-primary nav-cta">Contact Us</a></li>
             </ul>
             <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
@@ -1213,10 +1328,14 @@
     <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
         <ul>
             <li><a href="index.html" class="mobile-nav-link">Home</a></li>
-            <li><a href="index.html#blackfeather" class="mobile-nav-link">Tools</a></li>
-            <li><a href="pricing.html" class="mobile-nav-link">Pricing</a></li>
+            <li style="margin-top: 30px; margin-bottom: 10px;"><span style="font-size: 14px; color: var(--gold); letter-spacing: 3px;">— TOOLS —</span></li>
+            <li><a href="index.html#blackfeather" class="mobile-nav-link" style="font-size: 20px;">Black Feather</a></li>
+            <li><a href="index.html#corvus" class="mobile-nav-link" style="font-size: 20px;">Corvus Engine</a></li>
+            <li style="margin-top: 30px;"><a href="index.html#features" class="mobile-nav-link">Features</a></li>
+            <li><a href="pricing.html" class="mobile-nav-link" style="color: var(--gold);">Pricing</a></li>
             <li><a href="talonprep.html" class="mobile-nav-link">TalonPrep</a></li>
-            <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+            <li><a href="cyber-news.html" class="mobile-nav-link">Cyber News</a></li>
+            <li><a href="about.html" class="mobile-nav-link">About</a></li>
             <li><a href="index.html#contact" class="mobile-nav-link mobile-contact-btn">Contact Us</a></li>
         </ul>
     </div>
