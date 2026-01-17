@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | TacRaven Solutions - Cybersecurity Training & Threat Intelligence</title>
+    <meta name="description" content="Learn about TacRaven Solutions LLC - our story, our approach, and why we build air-gapped cybersecurity tools for those who need them most.">
+    <meta name="keywords" content="TacRaven, about us, cybersecurity company, threat intelligence, security training, MITRE ATT&CK, air-gapped security">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="About Us | TacRaven Solutions">
+    <meta property="og:description" content="Learn about TacRaven Solutions - our story, our approach, and why we build air-gapped cybersecurity tools for those who need them most.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tacravensolutions.com/about.html">
+    <meta property="og:image" content="https://tacravensolutions.com/og-image.png">
+    <meta property="og:site_name" content="TacRaven Solutions">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Us | TacRaven Solutions">
+    <meta name="twitter:description" content="Learn about TacRaven Solutions - our story, our approach, and why we build air-gapped cybersecurity tools for those who need them most.">
+    <meta name="twitter:image" content="https://tacravensolutions.com/og-image.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --black-lighter: #111111;
+            --black-card: #161616;
+            --gold: #d4a012;
+            --gold-light: #f5c842;
+            --gold-dark: #9a7209;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-300: #a0a0a0;
+            --gray-500: #6b6b6b;
+            --gray-700: #333333;
+            --gray-800: #1a1a1a;
+            --red: #dc2626;
+            --red-dark: #7f1d1d;
+            --blue: #3b82f6;
+            --blue-dark: #1e3a8a;
+            --green: #22c55e;
+            --font-display: 'Orbitron', sans-serif;
+            --font-heading: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 36px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(212, 160, 18, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 160, 18, 0.1);
+        }
+
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(212, 160, 18, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 160, 18, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.1);
+        }
+
+        .nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .nav-logo-text span {
+            color: var(--gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--gold);
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 12px 28px;
+            font-size: 14px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            width: 28px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-menu-overlay ul {
+            list-style: none;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu-overlay li {
+            margin: 20px 0;
+        }
+
+        .mobile-menu-overlay a {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-overlay a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-menu-overlay .mobile-contact-btn {
+            margin-top: 30px;
+            padding: 18px 48px;
+            font-size: 18px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 120px;
+            padding-bottom: 60px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 70%, rgba(127, 29, 29, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, rgba(30, 58, 138, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(212, 160, 18, 0.05) 0%, transparent 70%),
+                linear-gradient(180deg, var(--black) 0%, var(--black-light) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-badge-text {
+            font-family: var(--font-display);
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+        }
+
+        .hero-title .highlight {
+            color: var(--gold);
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--gray-300);
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 2px solid rgba(212, 160, 18, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            display: block;
+        }
+
+        /* Story Section */
+        .story {
+            background: var(--black-light);
+        }
+
+        .story-content {
+            max-width: 800px;
+        }
+
+        .story-content p {
+            color: var(--gray-300);
+            margin-bottom: 24px;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .story-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-highlight {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .story-quote {
+            border-left: 3px solid var(--gold);
+            padding-left: 24px;
+            margin: 40px 0;
+            font-style: italic;
+            color: var(--gray-100);
+            font-size: 20px;
+            line-height: 1.7;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: var(--black);
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .philosophy-content p {
+            color: var(--gray-300);
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .philosophy-card {
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            padding: 40px;
+            position: relative;
+        }
+
+        .philosophy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dark) 100%);
+        }
+
+        .philosophy-card-title {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--gold);
+        }
+
+        .philosophy-card-text {
+            color: var(--gray-300);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .philosophy-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .philosophy-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--gray-300);
+            font-size: 15px;
+        }
+
+        .philosophy-list li::before {
+            content: '—';
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Approach Section */
+        .approach {
+            background: var(--black-light);
+        }
+
+        .approach-intro {
+            max-width: 700px;
+            margin-bottom: 60px;
+        }
+
+        .approach-intro p {
+            color: var(--gray-300);
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .approach-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 36px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .approach-card:hover {
+            border-color: rgba(212, 160, 18, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .approach-number {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--gold);
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+
+        .approach-title {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .approach-text {
+            color: var(--gray-300);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Focus Section */
+        .focus {
+            background: var(--black);
+        }
+
+        .focus-content {
+            max-width: 800px;
+        }
+
+        .focus-content p {
+            color: var(--gray-300);
+            margin-bottom: 24px;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .focus-areas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .focus-area {
+            background: linear-gradient(135deg, rgba(212, 160, 18, 0.05) 0%, var(--black-card) 100%);
+            border: 1px solid rgba(212, 160, 18, 0.15);
+            padding: 32px;
+        }
+
+        .focus-area-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--gold);
+        }
+
+        .focus-area-text {
+            color: var(--gray-300);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--black-light) 0%, var(--black) 100%);
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 50% 50%, rgba(212, 160, 18, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-label {
+            font-family: var(--font-display);
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .cta-description {
+            font-size: 18px;
+            color: var(--gray-300);
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black-lighter);
+            padding: 60px 0 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-top: 20px;
+            max-width: 280px;
+        }
+
+        .footer-title {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-legal-notice {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .patent-notice,
+        .legal-disclaimer {
+            font-size: 12px;
+            color: var(--gray-500);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .patent-notice strong,
+        .legal-disclaimer strong {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            font-size: 14px;
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .approach-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto 30px;
+                order: -1;
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .approach-grid,
+            .focus-areas {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer {
+                padding-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-logo-text">TAC<span>RAVEN</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#blackfeather" class="nav-link">Black Feather</a></li>
+                <li><a href="index.html#corvus" class="nav-link">Corvus Engine</a></li>
+                <li><a href="talonprep.html" class="nav-link">TalonPrep</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="index.html#contact" class="btn btn-primary nav-cta">Contact Us Now</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <ul>
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="index.html#blackfeather" class="mobile-nav-link">Black Feather</a></li>
+            <li><a href="index.html#corvus" class="mobile-nav-link">Corvus Engine</a></li>
+            <li><a href="talonprep.html" class="mobile-nav-link">TalonPrep</a></li>
+            <li><a href="pricing.html" class="mobile-nav-link">Pricing</a></li>
+            <li><a href="about.html" class="mobile-nav-link">About</a></li>
+            <li><a href="index.html#contact" class="mobile-nav-link mobile-contact-btn">Contact Us Now</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="grid-bg"></div>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        <span class="hero-badge-text">About Us</span>
+                    </div>
+                    <h1 class="hero-title">Built by <span class="highlight">Practitioners</span></h1>
+                    <p class="hero-description">
+                        TacRaven Solutions exists because we saw a gap, and we decided to fill it ourselves.
+                    </p>
+                    <a href="https://www.linkedin.com/company/tacraven-solutions-llc" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="margin-top: 24px; border-color: var(--gold); box-shadow: 0 0 15px rgba(212, 160, 18, 0.5), 0 0 30px rgba(212, 160, 18, 0.3);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        Follow Us on LinkedIn
+                    </a>
+                </div>
+                <img src="data:image/png;base64,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" alt="TacRaven Solutions Logo" class="hero-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="section story">
+        <div class="grid-bg"></div>
+        <div class="container">
+            <div class="story-content">
+                <div class="section-label">Our Story</div>
+                <h2 class="section-title">Why We Do This</h2>
+                <p>
+                    We've spent years working in environments where the stakes are real, where a missed indicator means a compromised network, and where training needs to prepare people for threats they'll actually face, not theoretical scenarios from a textbook.
+                </p>
+                <p>
+                    What we kept running into was a frustrating reality: <span class="story-highlight">the best tools required internet connectivity</span>. The most comprehensive threat intelligence platforms needed constant cloud access. The training simulations worth using couldn't run in the environments where they were needed most.
+                </p>
+                <p>
+                    So we built what we wished existed.
+                </p>
+                <div class="story-quote">
+                    "If your threat intelligence platform needs to phone home, it's not built for the people who need threat intelligence the most."
+                </div>
+                <p>
+                    TacRaven Solutions started with a simple idea: security professionals in air-gapped environments deserve tools that are just as capable as what's available to everyone else. No compromises. No "you'll need to request an exception for network access." Just tools that work.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="section philosophy">
+        <div class="grid-bg"></div>
+        <div class="container">
+            <div class="section-label">Our Philosophy</div>
+            <h2 class="section-title">How We Think About Building</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-content">
+                    <p>
+                        Every product we ship is a single file. No dependencies to manage, no installation wizards, no "works on my machine" problems. You copy it to a thumb drive, walk it into your facility, and it runs.
+                    </p>
+                    <p>
+                        This isn't a technical limitation we're working around. It's a design philosophy. Complexity is the enemy of security. Every external dependency is a potential vulnerability. Every network call is an exfiltration risk.
+                    </p>
+                    <p>
+                        We obsess over the details because those details matter. The people using our tools are making decisions that affect real missions. They don't have time to troubleshoot dependency conflicts or wait for IT to approve a software request.
+                    </p>
+                </div>
+                <div class="philosophy-card">
+                    <h3 class="philosophy-card-title">What We Won't Compromise On</h3>
+                    <p class="philosophy-card-text">There are certain things we refuse to trade away, no matter how much easier it would make development:</p>
+                    <ul class="philosophy-list">
+                        <li>Zero external network calls. Ever.</li>
+                        <li>No telemetry, no analytics, no "anonymous usage data"</li>
+                        <li>Single-file deployment with no installation</li>
+                        <li>Works offline from day one, not as an afterthought</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="section approach">
+        <div class="grid-bg"></div>
+        <div class="container">
+            <div class="section-label">Our Approach</div>
+            <h2 class="section-title">How We Work</h2>
+            <div class="approach-intro">
+                <p>
+                    We build tools we'd want to use ourselves. That sounds simple, but it changes everything about how we approach development.
+                </p>
+            </div>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-number">01</div>
+                    <h3 class="approach-title">Start With the Problem</h3>
+                    <p class="approach-text">We don't build features because they'd look good in a demo. Every capability exists because someone needed it in the field and couldn't find it anywhere else.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-number">02</div>
+                    <h3 class="approach-title">Build for Constraints</h3>
+                    <p class="approach-text">We design for the hardest deployment scenario first. If it works air-gapped with zero dependencies, it'll work anywhere. No shortcuts, no "we'll add offline mode later."</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-number">03</div>
+                    <h3 class="approach-title">Ship and Support</h3>
+                    <p class="approach-text">We stand behind what we build. When you have questions or find edge cases, you're talking to the people who wrote the code, not a support tier reading from a script.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Focus Section -->
+    <section class="section focus">
+        <div class="grid-bg"></div>
+        <div class="container">
+            <div class="focus-content">
+                <div class="section-label">What We Focus On</div>
+                <h2 class="section-title">Our Areas of Expertise</h2>
+                <p>
+                    We've deliberately stayed focused. We're not trying to be everything to everyone. We build tools for threat intelligence analysis and security education, and we aim to build the best versions of those tools that exist.
+                </p>
+                <p>
+                    That means deep integration with frameworks like MITRE ATT&CK. It means understanding how analysts actually work and what slows them down. It means building training that prepares people for real scenarios, not checkbox compliance.
+                </p>
+            </div>
+            <div class="focus-areas">
+                <div class="focus-area">
+                    <h3 class="focus-area-title">Threat Intelligence</h3>
+                    <p class="focus-area-text">APT attribution, TTP extraction, MITRE ATT&CK mapping, and incident response playbook generation, all in tools that never touch the network.</p>
+                </div>
+                <div class="focus-area">
+                    <h3 class="focus-area-title">Security Education</h3>
+                    <p class="focus-area-text">Training simulations and educational tools that go beyond multiple choice questions. Scenario-based learning that mirrors real operational challenges.</p>
+                </div>
+                <div class="focus-area">
+                    <h3 class="focus-area-title">Air-Gapped Deployment</h3>
+                    <p class="focus-area-text">Single-file applications with zero external dependencies. Copy to a drive, run anywhere. No installers, no configurations, no network required.</p>
+                </div>
+                <div class="focus-area">
+                    <h3 class="focus-area-title">Log Analysis</h3>
+                    <p class="focus-area-text">Processing and analysis utilities built for speed and clarity. Turn raw logs into actionable intelligence without waiting for cloud processing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="grid-bg"></div>
+        <div class="cta-content">
+            <div class="cta-label">Let's Talk</div>
+            <h2 class="cta-title">Interested in Working Together?</h2>
+            <p class="cta-description">
+                Whether you're looking for tools, training, or just want to discuss what we're building, we'd like to hear from you.
+            </p>
+            <div class="cta-buttons">
+                <a href="index.html#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="index.html#blackfeather" class="btn btn-secondary">See Our Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <span class="nav-logo-text">TAC<span>RAVEN</span></span>
+                    </a>
+                    <p>Cybersecurity education and threat intelligence tools. Empowering defenders with the knowledge and capabilities to protect their organizations.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#blackfeather">Black Feather</a></li>
+                        <li><a href="index.html#corvus">Corvus Engine</a></li>
+                        <li><a href="talonprep.html">TalonPrep</a></li>
+                        <li><a href="index.html#features">All Features</a></li>
+                        <li><a href="index.html#contact">Request Demo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="https://www.linkedin.com/company/tacraven-solutions-llc" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-legal-notice">
+                <p class="patent-notice"><strong>Patent Pending:</strong> Black Feather™ and Corvus Engine™ are proprietary technologies of TacRaven Solutions LLC. Patent applications have been filed with the United States Patent and Trademark Office.</p>
+                <p class="legal-disclaimer"><strong>Legal Disclaimer:</strong> The information, software, products, and services provided by TacRaven Solutions LLC are intended for lawful cybersecurity education, training, and defensive purposes only. Black Feather and Corvus Engine are provided "as is" without warranty of any kind, express or implied. TacRaven Solutions LLC shall not be liable for any damages arising from the use of these products. Users are solely responsible for ensuring their use complies with all applicable laws and regulations. Product features and specifications are subject to change without notice.</p>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Fade in animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.approach-card, .focus-area').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
