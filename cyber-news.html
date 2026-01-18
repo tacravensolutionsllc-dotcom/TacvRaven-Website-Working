@@ -2263,6 +2263,11 @@
         // Using rss2json.com API (free tier: 10,000 requests/day)
         const RSS2JSON_API = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
+        // Generate cache-busting parameter (changes every 5 minutes)
+        function getCacheBuster() {
+            return Math.floor(Date.now() / (5 * 60 * 1000));
+        }
+
         // Extract image from various sources
         function extractImage(item) {
             // Check thumbnail first (most common)
@@ -2305,7 +2310,9 @@
         // Fetch RSS Feed via rss2json
         async function fetchFeed(feed) {
             try {
-                const response = await fetch(RSS2JSON_API + encodeURIComponent(feed.url));
+                const cacheBuster = getCacheBuster();
+                const apiUrl = `${RSS2JSON_API}${encodeURIComponent(feed.url)}&_cb=${cacheBuster}`;
+                const response = await fetch(apiUrl);
                 if (!response.ok) throw new Error('Network response was not ok');
                 
                 const data = await response.json();
@@ -2588,6 +2595,7 @@
                 hour12: true 
             });
             document.getElementById('last-updated').textContent = timeString;
+            console.log(`[Cyber News] Feed refreshed at ${timeString} - ${allArticles.length} articles loaded`);
         }
 
         // Format date
@@ -2661,7 +2669,9 @@
 
         async function fetchKEV() {
             try {
-                const response = await fetch(RAVENEYE_CONFIG.kevUrl);
+                const cacheBuster = getCacheBuster();
+                const kevUrl = `${RAVENEYE_CONFIG.kevUrl}?_cb=${cacheBuster}`;
+                const response = await fetch(kevUrl);
                 const data = await response.json();
                 
                 const recentKEV = data.vulnerabilities
@@ -2685,10 +2695,12 @@
 
         async function fetchCriticalNews() {
             const criticalArticles = [];
+            const cacheBuster = getCacheBuster();
             
             for (const feed of RAVENEYE_CONFIG.feeds) {
                 try {
-                    const response = await fetch(RAVENEYE_CONFIG.rssProxy + encodeURIComponent(feed.url));
+                    const apiUrl = `${RAVENEYE_CONFIG.rssProxy}${encodeURIComponent(feed.url)}&_cb=${cacheBuster}`;
+                    const response = await fetch(apiUrl);
                     const data = await response.json();
                     
                     if (data.status === 'ok' && data.items) {
