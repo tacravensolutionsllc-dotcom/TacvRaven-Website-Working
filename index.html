@@ -259,6 +259,11 @@
             scroll-behavior: smooth;
         }
 
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         body {
             font-family: var(--font-body);
             background-color: var(--black);
@@ -2215,37 +2220,35 @@
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: start;
+            gap: 80px;
         }
 
         .contact-content p {
-            font-size: 16px;
             color: var(--gray-300);
             margin-bottom: 32px;
-            line-height: 1.8;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
         }
 
         .contact-item {
             display: flex;
+            align-items: center;
             gap: 16px;
         }
 
         .contact-item-icon {
             width: 48px;
             height: 48px;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(212, 160, 18, 0.1);
-            border: 1px solid rgba(212, 160, 18, 0.2);
-            border-radius: 8px;
+            color: var(--gold);
             flex-shrink: 0;
         }
 
@@ -2259,7 +2262,7 @@
             font-family: var(--font-heading);
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .contact-item-content p {
@@ -2268,17 +2271,27 @@
             margin: 0;
         }
 
+        .contact-item-content a {
+            color: var(--gray-300);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--gold);
+        }
+
         .contact-form-container {
             background: var(--black-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 40px;
+            padding: 48px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .contact-form-title {
             font-family: var(--font-heading);
             font-size: 24px;
             font-weight: 600;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
         }
 
         .form-row {
@@ -2288,7 +2301,7 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .form-label {
@@ -2298,36 +2311,42 @@
             font-weight: 500;
             color: var(--gray-300);
             margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .form-input,
-        .form-select,
-        .form-textarea {
+        .form-textarea,
+        .form-select {
             width: 100%;
-            padding: 14px 16px;
-            background: var(--black);
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--white);
             font-family: var(--font-body);
-            font-size: 14px;
+            font-size: 15px;
             transition: all 0.3s ease;
         }
 
         .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
+        .form-textarea:focus,
+        .form-select:focus {
             outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212, 160, 18, 0.1);
+            background: rgba(212, 160, 18, 0.05);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
         }
 
         .form-select {
             cursor: pointer;
         }
 
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
+        .form-select option {
+            background: var(--black);
         }
 
         @media (max-width: 900px) {
@@ -3097,7 +3116,7 @@
                             </div>
                             <div class="contact-item-content">
                                 <h4>LinkedIn</h4>
-                                <p><a href="https://www.linkedin.com/company/tacraven-solutions-llc" target="_blank" style="color: var(--gold); text-decoration: none;">TacRaven Solutions LLC</a></p>
+                                <p><a href="https://www.linkedin.com/company/tacraven-solutions-llc" target="_blank">TacRaven Solutions LLC</a></p>
                             </div>
                         </div>
                     </div>
@@ -3356,42 +3375,78 @@
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
-            btn.textContent = 'Sending...';
-            btn.disabled = true;
-
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                company: document.getElementById('company').value,
-                role: document.getElementById('role').value,
-                interest: document.getElementById('interest').value,
-                message: document.getElementById('message').value
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span style="display: inline-flex; align-items: center; gap: 8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"/></svg> Sending...</span>';
+            
+            // Format role and interest labels
+            const roleLabels = {
+                'soc-analyst': 'SOC Analyst',
+                'threat-hunter': 'Threat Hunter',
+                'ir-lead': 'IR Team Lead',
+                'ciso': 'CISO / Security Director',
+                'consultant': 'Security Consultant',
+                'other': 'Other'
             };
-
-            emailjs.send('service_yz7r3mq', 'template_1qynumn', formData)
-                .then(function() {
-                    btn.textContent = 'Message Sent!';
-                    btn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+            
+            const interestLabels = {
+                'demo': 'Schedule a Demo',
+                'pricing': 'Pricing Information',
+                'partnership': 'Partnership Inquiry',
+                'support': 'Technical Support',
+                'general': 'General Inquiry'
+            };
+            
+            // Gather form data
+            const roleValue = document.getElementById('role').value;
+            const interestValue = document.getElementById('interest').value;
+            
+            const templateParams = {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                role: roleLabels[roleValue] || roleValue || 'Not specified',
+                interest: interestLabels[interestValue] || interestValue || 'Not specified',
+                message: document.getElementById('message').value || 'No message provided'
+            };
+            
+            // Send via EmailJS
+            emailjs.send('service_911pwxf', 'template_yu6rum3', templateParams)
+                .then(function(response) {
+                    console.log('EmailJS Success:', response.status, response.text);
+                    
+                    // Show success message
+                    submitBtn.innerHTML = '<span style="display: inline-flex; align-items: center; gap: 8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Message Sent!</span>';
+                    submitBtn.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+                    
+                    // Reset form
                     document.getElementById('contact-form').reset();
                     
-                    setTimeout(() => {
-                        btn.textContent = originalText;
-                        btn.style.background = '';
-                        btn.disabled = false;
+                    // Reset button after delay
+                    setTimeout(function() {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.style.background = '';
                     }, 3000);
-                })
-                .catch(function(error) {
-                    console.error('EmailJS error:', error);
-                    btn.textContent = 'Error - Try Again';
-                    btn.style.background = 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)';
                     
-                    setTimeout(() => {
-                        btn.textContent = originalText;
-                        btn.style.background = '';
-                        btn.disabled = false;
+                }, function(error) {
+                    console.error('EmailJS Error:', error);
+                    
+                    // Show error message
+                    submitBtn.innerHTML = '<span style="display: inline-flex; align-items: center; gap: 8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Failed to Send</span>';
+                    submitBtn.style.background = 'linear-gradient(135deg, #dc2626 0%, #991b1b 100%)';
+                    
+                    // Reset button after delay
+                    setTimeout(function() {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.style.background = '';
                     }, 3000);
+                    
+                    alert('There was an error sending your message. Please try again or contact us directly.');
                 });
         });
     </script>
