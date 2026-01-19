@@ -929,8 +929,8 @@
             right: 0;
             height: 100%;
             background: linear-gradient(180deg, rgba(212, 160, 18, 0.03) 0%, transparent 20%);
-            pointer-events: none;
-            z-index: 10;
+            pointer-events: none !important;
+            z-index: 0;
         }
 
         #threat-map {
@@ -946,16 +946,32 @@
         .leaflet-container {
             background: var(--black) !important;
             font-family: var(--font-body) !important;
+            /* Let Leaflet handle all touch events for proper pinch-zoom and pan */
+            touch-action: none;
+            -webkit-touch-callout: none;
         }
 
         .leaflet-tile-pane {
             filter: brightness(0.7) saturate(0.4) sepia(0.15);
         }
 
-        /* Keep all Leaflet controls below fixed headers */
+        /* Ensure map pane doesn't block control touches */
+        .leaflet-map-pane {
+            z-index: 1;
+        }
+
+        /* Keep all Leaflet controls above overlays and properly clickable */
         .leaflet-top,
         .leaflet-bottom {
-            z-index: 400 !important;
+            z-index: 1000 !important;
+        }
+
+        .leaflet-control-container {
+            pointer-events: none;
+        }
+
+        .leaflet-control-container .leaflet-control {
+            pointer-events: auto;
         }
 
         .leaflet-control-zoom {
@@ -963,6 +979,7 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
             margin-top: 10px !important;
             margin-left: 10px !important;
+            z-index: 1000 !important;
         }
 
         .leaflet-control-zoom a {
@@ -974,10 +991,20 @@
             height: 34px !important;
             line-height: 34px !important;
             font-size: 18px !important;
+            cursor: pointer !important;
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: rgba(212, 160, 18, 0.3) !important;
+            user-select: none !important;
+            -webkit-user-select: none !important;
         }
 
         .leaflet-control-zoom a:hover {
             background: rgba(212, 160, 18, 0.1) !important;
+        }
+
+        .leaflet-control-zoom a:active {
+            background: rgba(212, 160, 18, 0.2) !important;
+            transform: scale(0.95);
         }
 
         /* Mobile touch-friendly zoom controls */
@@ -988,11 +1015,19 @@
             }
 
             .leaflet-control-zoom a {
-                width: 40px !important;
-                height: 40px !important;
-                line-height: 40px !important;
-                font-size: 20px !important;
+                width: 44px !important;
+                height: 44px !important;
+                line-height: 44px !important;
+                font-size: 22px !important;
+                /* Ensure minimum touch target size */
+                min-width: 44px !important;
+                min-height: 44px !important;
             }
+        }
+
+        /* Ensure Leaflet controls are above everything */
+        .leaflet-top.leaflet-left {
+            z-index: 1000 !important;
         }
 
         .leaflet-control-attribution {
@@ -2238,6 +2273,20 @@
             .panel-content {
                 scroll-behavior: smooth;
             }
+
+            /* Ensure zoom controls are touch-friendly */
+            .leaflet-control-zoom a {
+                width: 48px !important;
+                height: 48px !important;
+                line-height: 48px !important;
+                font-size: 24px !important;
+            }
+
+            /* Add active state for touch feedback */
+            .leaflet-control-zoom a:active {
+                background: rgba(212, 160, 18, 0.3) !important;
+                transform: scale(0.92);
+            }
         }
 
         /* Landscape orientation on mobile */
@@ -2663,7 +2712,7 @@
             map: {
                 center: [20, 0],
                 zoom: 2,
-                minZoom: 2,
+                minZoom: 1,  // Allow zooming out to see full global view on mobile
                 maxZoom: 10
             }
         };
@@ -2843,25 +2892,38 @@
         // ============================================
         
         function initMap() {
-            // Initialize Leaflet map
+            // Initialize Leaflet map with explicit touch support
             state.map = L.map('threat-map', {
                 center: CONFIG.map.center,
                 zoom: CONFIG.map.zoom,
                 minZoom: CONFIG.map.minZoom,
                 maxZoom: CONFIG.map.maxZoom,
                 zoomControl: true,
-                attributionControl: true
+                attributionControl: true,
+                // Explicitly enable touch interactions for mobile
+                tap: true,
+                tapTolerance: 15,
+                touchZoom: true,
+                dragging: true,
+                scrollWheelZoom: true,
+                doubleClickZoom: true,
+                boxZoom: true
             });
+
+            // Position zoom control for better mobile accessibility
+            state.map.zoomControl.setPosition('topleft');
 
             // Dark map tiles - Esri Dark Gray (reliable, no API key needed)
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
                 attribution: '&copy; Esri, HERE, Garmin, FAO, NOAA, USGS',
+                minZoom: 1,
                 maxZoom: 16
             }).addTo(state.map);
             
             // Add reference layer for country labels
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
                 attribution: '',
+                minZoom: 1,
                 maxZoom: 16
             }).addTo(state.map);
 
