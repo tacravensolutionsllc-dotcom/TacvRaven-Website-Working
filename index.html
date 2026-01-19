@@ -1966,6 +1966,8 @@
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
+            text-decoration: none;
+            color: inherit;
         }
 
         .raveneye-item::before {
@@ -3286,25 +3288,25 @@
 
 
 
-        // RavenEye - Static demo data
+        // RavenEye - Static demo data with links
         const raveneyeData = [
-            { badge: 'KEV', badgeType: 'kev', text: 'CVE-2024-3400: PAN-OS Command Injection — Due: Jan 20', source: 'CISA KEV' },
-            { badge: 'ZERO-DAY', badgeType: 'critical', text: 'Microsoft Patches Critical Zero-Day in Windows Kernel', source: 'Hacker News' },
-            { badge: 'CRITICAL', badgeType: 'critical', text: 'Ivanti VPN Zero-Day Actively Exploited in the Wild', source: 'Dark Reading' },
-            { badge: 'KEV', badgeType: 'kev', text: 'CVE-2024-21887: Ivanti Connect Secure — Due: Jan 22', source: 'CISA KEV' },
-            { badge: 'ALERT', badgeType: 'alert', text: 'Ransomware Group Targets Healthcare Sector', source: 'Krebs' },
-            { badge: 'CRITICAL', badgeType: 'critical', text: 'CISA Emergency Directive: Disconnect Affected Devices', source: 'CISA' },
+            { badge: 'KEV', badgeType: 'kev', text: 'CVE-2024-3400: PAN-OS Command Injection — Due: Jan 20', source: 'CISA KEV', url: 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog' },
+            { badge: 'ZERO-DAY', badgeType: 'critical', text: 'Microsoft Patches Critical Zero-Day in Windows Kernel', source: 'Hacker News', url: 'https://thehackernews.com/' },
+            { badge: 'CRITICAL', badgeType: 'critical', text: 'Ivanti VPN Zero-Day Actively Exploited in the Wild', source: 'Dark Reading', url: 'https://www.darkreading.com/' },
+            { badge: 'KEV', badgeType: 'kev', text: 'CVE-2024-21887: Ivanti Connect Secure — Due: Jan 22', source: 'CISA KEV', url: 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog' },
+            { badge: 'ALERT', badgeType: 'alert', text: 'Ransomware Group Targets Healthcare Sector', source: 'Krebs', url: 'https://krebsonsecurity.com/' },
+            { badge: 'CRITICAL', badgeType: 'critical', text: 'CISA Emergency Directive: Disconnect Affected Devices', source: 'CISA', url: 'https://www.cisa.gov/news-events/directives' },
         ];
 
         function renderRaveneyeTicker() {
             const container = document.getElementById('raveneye-scroll');
             if (!container) return;
             const itemsHTML = raveneyeData.map(item => `
-                <div class="raveneye-item">
+                <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="raveneye-item">
                     <span class="raveneye-badge raveneye-badge--${item.badgeType}">${item.badge}</span>
                     <span class="raveneye-text">${item.text}</span>
                     <span class="raveneye-source">${item.source}</span>
-                </div>
+                </a>
             `).join('');
             container.innerHTML = itemsHTML + itemsHTML; // Duplicate for seamless scroll
         }
@@ -3393,4 +3395,5 @@
                 });
         });
     </script>
-</body
+</body>
+</html>
