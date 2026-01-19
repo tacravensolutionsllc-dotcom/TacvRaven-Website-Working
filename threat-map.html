@@ -2341,11 +2341,6 @@
             box-shadow: 0 0 6px var(--green);
         }
 
-        .source-status.demo {
-            background: var(--gold);
-            box-shadow: 0 0 6px var(--gold);
-        }
-
         .source-name {
             font-family: var(--font-display);
             font-size: 9px;
@@ -2372,11 +2367,11 @@
                         </svg>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="blackfeather.html" class="nav-dropdown-item">
+                        <a href="tools.html#blackfeather" class="nav-dropdown-item">
                             BlackFeather
                             <span>Threat Intel Platform</span>
                         </a>
-                        <a href="corvus-engine.html" class="nav-dropdown-item">
+                        <a href="tools.html#corvus" class="nav-dropdown-item">
                             Corvus Engine
                             <span>Log Conversion Utility</span>
                         </a>
@@ -2386,7 +2381,8 @@
                         </a>
                     </div>
                 </li>
-                <li><a href="tools.html" class="nav-link active">Tools</a></li>
+                <li><a href="tools.html" class="nav-link">Tools</a></li>
+                <li><a href="threat-map.html" class="nav-link active">Threat Map</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li><a href="cyber-news.html" class="nav-link">News</a></li>
@@ -2403,10 +2399,11 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
         <a href="index.html" class="mobile-nav-link">Home</a>
-        <a href="blackfeather.html" class="mobile-nav-link">BlackFeather</a>
-        <a href="corvus-engine.html" class="mobile-nav-link">Corvus Engine</a>
+        <a href="tools.html#blackfeather" class="mobile-nav-link">BlackFeather</a>
+        <a href="tools.html#corvus" class="mobile-nav-link">Corvus Engine</a>
         <a href="talonprep.html" class="mobile-nav-link">TalonPrep</a>
         <a href="tools.html" class="mobile-nav-link">Tools</a>
+        <a href="threat-map.html" class="mobile-nav-link" style="color: var(--gold);">Threat Map</a>
         <a href="about.html" class="mobile-nav-link">About</a>
         <a href="pricing.html" class="mobile-nav-link">Pricing</a>
         <a href="cyber-news.html" class="mobile-nav-link">News</a>
@@ -2530,13 +2527,6 @@
                         </div>
                     </div>
 
-                    <!-- Data Source Indicator -->
-                    <div class="data-source-indicator">
-                        <div class="source-item">
-                            <div class="source-status demo"></div>
-                            <span class="source-name">Demo Mode</span>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Side Panels -->
@@ -3496,9 +3486,8 @@
 %c   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝
 
 %cGlobal Cyber Threat Map v1.0
-%cDemo Mode: ${CONFIG.demo.enabled ? 'ACTIVE' : 'DISABLED'}
 
-%cTo enable live data feeds, update CONFIG.apis in the script.
+%cPowered by open-source threat intelligence feeds.
 Data sources: AbuseIPDB, Feodo Tracker, CISA KEV
 
 © TacRaven Solutions LLC | https://www.tacraven.com
@@ -3506,7 +3495,6 @@ Data sources: AbuseIPDB, Feodo Tracker, CISA KEV
         'color: #d4a012', 'color: #d4a012', 'color: #d4a012', 
         'color: #d4a012', 'color: #d4a012', 'color: #d4a012',
         'color: #fff; font-weight: bold', 
-        'color: #22c55e',
         'color: #a0a0a0'
         );
     </script>
