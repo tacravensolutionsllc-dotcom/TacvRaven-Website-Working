@@ -1,0 +1,2650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Cyber Threat Map | TacRaven Solutions</title>
+    <meta name="description" content="Real-time global cyber threat visualization. Monitor active attacks, botnet C2 servers, and exploited vulnerabilities with TacRaven's threat intelligence map.">
+    <meta name="keywords" content="cyber threat map, live attack map, threat intelligence visualization, real-time cyber attacks, botnet tracker, CISA KEV, malware tracking, TacRaven">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Live Cyber Threat Map | TacRaven Solutions">
+    <meta property="og:description" content="Real-time global cyber threat visualization. Monitor active attacks, botnet C2 servers, and actively exploited vulnerabilities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tacraven.com/threat-map.html">
+    <meta property="og:site_name" content="TacRaven Solutions">
+    
+    <!-- SEO -->
+    <link rel="canonical" href="https://www.tacraven.com/threat-map.html">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="TacRaven Solutions LLC">
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        /* ========================================
+           CSS VARIABLES
+           ======================================== */
+        :root {
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --black-lighter: #111111;
+            --black-card: #161616;
+            --black-panel: #0d0d0d;
+            --gold: #d4a012;
+            --gold-light: #f5c842;
+            --gold-dark: #9a7209;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-300: #a0a0a0;
+            --gray-500: #6b6b6b;
+            --gray-700: #333333;
+            --gray-800: #1a1a1a;
+            --red: #dc2626;
+            --red-light: #ff6b6b;
+            --red-dark: #7f1d1d;
+            --orange: #f97316;
+            --orange-light: #fb923c;
+            --blue: #3b82f6;
+            --green: #22c55e;
+            --cyan: #06b6d4;
+            --purple: #a855f7;
+            --font-display: 'Orbitron', sans-serif;
+            --font-heading: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========================================
+           ANIMATIONS
+           ======================================== */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+        }
+
+        @keyframes pulseRing {
+            0% { 
+                transform: translate(-50%, -50%) scale(1); 
+                opacity: 0.8; 
+            }
+            100% { 
+                transform: translate(-50%, -50%) scale(4); 
+                opacity: 0; 
+            }
+        }
+
+        @keyframes attackLine {
+            0% { stroke-dashoffset: 100%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { stroke-dashoffset: 0%; opacity: 0; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(212, 160, 18, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(212, 160, 18, 0.5); }
+        }
+
+        @keyframes scanLine {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        @keyframes dataStream {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(0); opacity: 0.5; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+
+        /* ========================================
+           BUTTONS
+           ======================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 36px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(212, 160, 18, 0.4);
+        }
+
+        .btn-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+
+        /* ========================================
+           NAVIGATION
+           ======================================== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+        }
+
+        .nav.scrolled {
+            padding: 12px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .nav-logo-text span {
+            color: var(--gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            text-decoration: none;
+            padding: 10px 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--white);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 30px;
+        }
+
+        .nav-cta {
+            padding: 10px 24px;
+            font-size: 14px;
+        }
+
+        /* Nav Dropdown */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            background: none;
+            border: none;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown-toggle:hover {
+            color: var(--white);
+        }
+
+        .nav-dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 240px;
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            color: var(--gray-300);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-dropdown-item:hover {
+            background: rgba(212, 160, 18, 0.1);
+            color: var(--gold);
+        }
+
+        .nav-dropdown-item span {
+            display: block;
+            font-size: 12px;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--black);
+            z-index: 999;
+            padding: 100px 24px 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--gold);
+        }
+
+        @media (max-width: 900px) {
+            .nav-menu, .nav-cta {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: flex;
+            }
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* ========================================
+           HEADER STATS BAR
+           ======================================== */
+        .stats-bar {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.95) 100%);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.15);
+            padding: 12px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-bar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .stats-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .stats-bar-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stats-bar-title h1 {
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            border-radius: 4px;
+        }
+
+        .live-indicator-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .live-indicator-text {
+            font-family: var(--font-display);
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--red-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stats-bar-metrics {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 6px;
+        }
+
+        .stat-icon svg {
+            width: 16px;
+            height: 16px;
+            color: var(--gold);
+        }
+
+        .stat-icon.red {
+            background: rgba(220, 38, 38, 0.1);
+            border-color: rgba(220, 38, 38, 0.3);
+        }
+
+        .stat-icon.red svg {
+            color: var(--red-light);
+        }
+
+        .stat-icon.orange {
+            background: rgba(249, 115, 22, 0.1);
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+
+        .stat-icon.orange svg {
+            color: var(--orange-light);
+        }
+
+        .stat-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: var(--font-heading);
+            font-size: 11px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 1100px) {
+            .stats-bar-metrics {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-bar-title h1 {
+                display: none;
+            }
+        }
+
+        /* ========================================
+           MAIN LAYOUT
+           ======================================== */
+        .threat-map-layout {
+            padding-top: 140px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .map-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .map-row {
+            display: flex;
+            gap: 20px;
+            flex: 1;
+        }
+
+        /* ========================================
+           MAP CONTAINER
+           ======================================== */
+        .map-wrapper {
+            flex: 1;
+            position: relative;
+            background: var(--black-panel);
+            border: 1px solid rgba(212, 160, 18, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .map-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(212, 160, 18, 0.03) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        #threat-map {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            background: var(--black);
+        }
+
+        /* Leaflet customizations */
+        .leaflet-container {
+            background: var(--black) !important;
+            font-family: var(--font-body) !important;
+        }
+
+        .leaflet-tile-pane {
+            filter: brightness(0.7) saturate(0.4) sepia(0.15);
+        }
+
+        .leaflet-control-zoom {
+            border: none !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .leaflet-control-zoom a {
+            background: var(--black-card) !important;
+            color: var(--gold) !important;
+            border: 1px solid rgba(212, 160, 18, 0.3) !important;
+            font-family: var(--font-display) !important;
+        }
+
+        .leaflet-control-zoom a:hover {
+            background: rgba(212, 160, 18, 0.1) !important;
+        }
+
+        .leaflet-control-attribution {
+            background: rgba(0, 0, 0, 0.8) !important;
+            color: var(--gray-500) !important;
+            font-size: 10px !important;
+        }
+
+        /* Map overlay elements */
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .map-legend {
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 6px;
+            padding: 12px 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .legend-title {
+            font-family: var(--font-display);
+            font-size: 10px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .legend-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .legend-dot.red {
+            background: var(--red);
+            box-shadow: 0 0 8px var(--red);
+        }
+
+        .legend-dot.orange {
+            background: var(--orange);
+            box-shadow: 0 0 8px var(--orange);
+        }
+
+        .legend-dot.purple {
+            background: var(--purple);
+            box-shadow: 0 0 8px var(--purple);
+        }
+
+        .legend-text {
+            font-family: var(--font-body);
+            font-size: 11px;
+            color: var(--gray-300);
+        }
+
+        /* Custom map markers */
+        .threat-marker-container {
+            background: transparent !important;
+            border: none !important;
+        }
+
+        .threat-marker {
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+
+        .threat-marker-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .threat-marker-dot.attack {
+            background: radial-gradient(circle, var(--red-light) 0%, var(--red) 70%);
+            box-shadow: 0 0 8px var(--red), 0 0 16px rgba(220, 38, 38, 0.6), inset 0 0 4px rgba(255,255,255,0.3);
+        }
+
+        .threat-marker-dot.botnet {
+            background: radial-gradient(circle, var(--orange-light) 0%, var(--orange) 70%);
+            box-shadow: 0 0 8px var(--orange), 0 0 16px rgba(249, 115, 22, 0.6), inset 0 0 4px rgba(255,255,255,0.3);
+        }
+
+        .threat-marker-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid;
+            animation: pulseRing 1.5s ease-out infinite;
+            z-index: 1;
+        }
+
+        .threat-marker-ring.attack {
+            border-color: var(--red);
+        }
+
+        .threat-marker-ring.botnet {
+            border-color: var(--orange);
+        }
+
+        .threat-marker-ring:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        /* Attack lines SVG overlay */
+        .attack-lines-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 500;
+            overflow: visible;
+        }
+
+        /* Main attack line */
+        .attack-line {
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .attack-line.attack {
+            stroke: var(--red);
+            filter: drop-shadow(0 0 3px var(--red)) drop-shadow(0 0 6px rgba(220, 38, 38, 0.5));
+        }
+
+        .attack-line.botnet {
+            stroke: var(--orange);
+            filter: drop-shadow(0 0 3px var(--orange)) drop-shadow(0 0 6px rgba(249, 115, 22, 0.5));
+        }
+
+        /* Animated tracer that travels along the line */
+        .attack-tracer {
+            fill: none;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+
+        .attack-tracer.attack {
+            stroke: var(--red-light);
+            filter: drop-shadow(0 0 4px var(--red)) drop-shadow(0 0 8px var(--red));
+        }
+
+        .attack-tracer.botnet {
+            stroke: var(--orange-light);
+            filter: drop-shadow(0 0 4px var(--orange)) drop-shadow(0 0 8px var(--orange));
+        }
+
+        /* Arrowhead marker */
+        .attack-arrow {
+            fill: var(--red);
+            filter: drop-shadow(0 0 2px var(--red));
+        }
+
+        .attack-arrow.botnet {
+            fill: var(--orange);
+            filter: drop-shadow(0 0 2px var(--orange));
+        }
+
+        /* Impact burst at target */
+        .impact-ring {
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .impact-ring.attack {
+            stroke: var(--red);
+        }
+
+        .impact-ring.botnet {
+            stroke: var(--orange);
+        }
+
+        @keyframes tracerMove {
+            0% {
+                stroke-dashoffset: 100;
+                opacity: 1;
+            }
+            100% {
+                stroke-dashoffset: 0;
+                opacity: 1;
+            }
+        }
+
+        @keyframes impactBurst {
+            0% {
+                r: 5;
+                opacity: 1;
+                stroke-width: 3;
+            }
+            100% {
+                r: 30;
+                opacity: 0;
+                stroke-width: 1;
+            }
+        }
+
+        @keyframes fadeInLine {
+            0% { opacity: 0; }
+            20% { opacity: 0.3; }
+            100% { opacity: 0.3; }
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        /* ========================================
+           SIDE PANELS
+           ======================================== */
+        .side-panel {
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel {
+            background: var(--black-panel);
+            border: 1px solid rgba(212, 160, 18, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: linear-gradient(180deg, rgba(212, 160, 18, 0.08) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.1);
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .panel-title-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 6px;
+        }
+
+        .panel-title-icon svg {
+            width: 14px;
+            height: 14px;
+            color: var(--gold);
+        }
+
+        .panel-title-icon.red {
+            background: rgba(220, 38, 38, 0.1);
+            border-color: rgba(220, 38, 38, 0.3);
+        }
+
+        .panel-title-icon.red svg {
+            color: var(--red-light);
+        }
+
+        .panel-title h3 {
+            font-family: var(--font-display);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .panel-badge {
+            padding: 4px 8px;
+            background: rgba(212, 160, 18, 0.15);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: 4px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+        .panel-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .panel-content::-webkit-scrollbar-track {
+            background: var(--black-lighter);
+        }
+
+        .panel-content::-webkit-scrollbar-thumb {
+            background: rgba(212, 160, 18, 0.3);
+            border-radius: 3px;
+        }
+
+        .panel-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(212, 160, 18, 0.5);
+        }
+
+        /* ========================================
+           LIVE THREAT FEED
+           ======================================== */
+        .threat-feed {
+            flex: 1;
+        }
+
+        .feed-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            transition: background 0.2s ease;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .feed-item:hover {
+            background: rgba(212, 160, 18, 0.03);
+        }
+
+        .feed-item:last-child {
+            border-bottom: none;
+        }
+
+        .feed-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .feed-icon.attack {
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        .feed-icon.attack svg {
+            color: var(--red-light);
+            width: 14px;
+            height: 14px;
+        }
+
+        .feed-icon.botnet {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .feed-icon.botnet svg {
+            color: var(--orange-light);
+            width: 14px;
+            height: 14px;
+        }
+
+        .feed-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .feed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .feed-route {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .feed-route .arrow {
+            color: var(--gold);
+            margin: 0 6px;
+        }
+
+        .feed-time {
+            font-family: var(--font-display);
+            font-size: 10px;
+            color: var(--gray-500);
+        }
+
+        .feed-details {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .feed-tag {
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: var(--font-display);
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feed-tag.type {
+            background: rgba(212, 160, 18, 0.15);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+        }
+
+        .feed-tag.malware {
+            background: rgba(168, 85, 247, 0.15);
+            color: #c084fc;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .feed-tag.confidence {
+            background: rgba(220, 38, 38, 0.15);
+            color: var(--red-light);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+
+        /* ========================================
+           CISA KEV PANEL
+           ======================================== */
+        .kev-item {
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            transition: background 0.2s ease;
+        }
+
+        .kev-item:hover {
+            background: rgba(220, 38, 38, 0.03);
+        }
+
+        .kev-item:last-child {
+            border-bottom: none;
+        }
+
+        .kev-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .kev-cve {
+            font-family: var(--font-display);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--red-light);
+        }
+
+        .kev-severity {
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: var(--font-display);
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .kev-severity.critical {
+            background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+            color: var(--white);
+        }
+
+        .kev-severity.high {
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            color: var(--white);
+        }
+
+        .kev-severity.medium {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+        }
+
+        .kev-vendor {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .kev-description {
+            font-size: 12px;
+            color: var(--gray-500);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .kev-date {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            color: var(--gray-500);
+        }
+
+        .kev-date svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* ========================================
+           BOTTOM STATS ROW
+           ======================================== */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stats-panel {
+            background: var(--black-panel);
+            border: 1px solid rgba(212, 160, 18, 0.15);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .stats-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .stats-panel-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stats-panel-title svg {
+            width: 18px;
+            height: 18px;
+            color: var(--gold);
+        }
+
+        .stats-panel-title h4 {
+            font-family: var(--font-display);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stats-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .stats-list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stats-rank {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 4px;
+            font-family: var(--font-display);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stats-bar-wrapper {
+            flex: 1;
+        }
+
+        .stats-bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .stats-bar-name {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .stats-bar-value {
+            font-family: var(--font-display);
+            font-size: 11px;
+            color: var(--gold);
+        }
+
+        .stats-bar-track {
+            height: 6px;
+            background: var(--black-lighter);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .stats-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dark) 0%, var(--gold) 100%);
+            border-radius: 3px;
+            transition: width 1s ease-out;
+        }
+
+        .stats-bar-fill.red {
+            background: linear-gradient(90deg, var(--red-dark) 0%, var(--red) 100%);
+        }
+
+        .stats-bar-fill.orange {
+            background: linear-gradient(90deg, #ea580c 0%, var(--orange) 100%);
+        }
+
+        .stats-bar-fill.purple {
+            background: linear-gradient(90deg, #7c3aed 0%, var(--purple) 100%);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .threat-map-footer {
+            background: var(--black-panel);
+            border-top: 1px solid rgba(212, 160, 18, 0.1);
+            padding: 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-sources {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+
+        .footer-sources span {
+            color: var(--gray-300);
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+
+        .footer-copyright a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .footer-copyright a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 1200px) {
+            .map-row {
+                flex-direction: column;
+            }
+
+            .side-panel {
+                width: 100%;
+                flex-direction: row;
+            }
+
+            .panel {
+                flex: 1;
+            }
+
+            .panel-content {
+                max-height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-bar {
+                top: 60px;
+            }
+
+            .threat-map-layout {
+                padding-top: 120px;
+            }
+
+            .map-section {
+                padding: 12px;
+                gap: 12px;
+            }
+
+            .map-wrapper {
+                min-height: 350px;
+            }
+
+            #threat-map {
+                min-height: 350px;
+            }
+
+            .side-panel {
+                flex-direction: column;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .map-legend {
+                display: none;
+            }
+        }
+
+        /* ========================================
+           LOADING STATE
+           ======================================== */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .loading-spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid rgba(212, 160, 18, 0.1);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 16px;
+            font-family: var(--font-display);
+            font-size: 12px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ========================================
+           DATA SOURCE INDICATOR
+           ======================================== */
+        .data-source-indicator {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .source-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .source-status {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .source-status.active {
+            background: var(--green);
+            box-shadow: 0 0 6px var(--green);
+        }
+
+        .source-status.demo {
+            background: var(--gold);
+            box-shadow: 0 0 6px var(--gold);
+        }
+
+        .source-name {
+            font-family: var(--font-display);
+            font-size: 9px;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-text">TAC<span>RAVEN</span></div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-toggle">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="tools.html#blackfeather" class="nav-dropdown-item">
+                            BlackFeather
+                            <span>Threat Intel Platform</span>
+                        </a>
+                        <a href="tools.html#corvus" class="nav-dropdown-item">
+                            Corvus Engine
+                            <span>Log Conversion Utility</span>
+                        </a>
+                        <a href="talonprep.html" class="nav-dropdown-item">
+                            TalonPrep
+                            <span>Security+ Test Prep</span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="tools.html" class="nav-link">Tools</a></li>
+                <li><a href="threat-map.html" class="nav-link active">Threat Map</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="cyber-news.html" class="nav-link">News</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-primary nav-cta">Contact</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="tools.html#blackfeather" class="mobile-nav-link">BlackFeather</a>
+        <a href="tools.html#corvus" class="mobile-nav-link">Corvus Engine</a>
+        <a href="talonprep.html" class="mobile-nav-link">TalonPrep</a>
+        <a href="tools.html" class="mobile-nav-link">Tools</a>
+        <a href="threat-map.html" class="mobile-nav-link" style="color: var(--gold);">Threat Map</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+        <a href="cyber-news.html" class="mobile-nav-link">News</a>
+        <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="container stats-bar-container">
+            <div class="stats-bar-left">
+                <div class="stats-bar-title">
+                    <h1>Global Threat Map</h1>
+                    <div class="live-indicator">
+                        <div class="live-indicator-dot"></div>
+                        <span class="live-indicator-text">Live</span>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-bar-metrics">
+                <div class="stat-item">
+                    <div class="stat-icon red">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="attacks-today">12,847</div>
+                        <div class="stat-label">Attacks Today</div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon orange">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="active-botnets">847</div>
+                        <div class="stat-label">Active C2 Servers</div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="active-kevs">1,247</div>
+                        <div class="stat-label">Active KEVs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="threat-map-layout">
+        <div class="map-section">
+            <div class="map-row">
+                <!-- Map Container -->
+                <div class="map-wrapper">
+                    <div id="threat-map"></div>
+                    
+                    <!-- Map Legend -->
+                    <div class="map-overlay">
+                        <div class="map-legend">
+                            <div class="legend-title">Threat Types</div>
+                            <div class="legend-item">
+                                <div class="legend-dot red"></div>
+                                <span class="legend-text">Active Attack (AbuseIPDB)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot orange"></div>
+                                <span class="legend-text">Botnet C2 (Feodo)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-dot purple"></div>
+                                <span class="legend-text">Target Location</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Source Indicator -->
+                    <div class="data-source-indicator">
+                        <div class="source-item">
+                            <div class="source-status demo"></div>
+                            <span class="source-name">Demo Mode</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Panels -->
+                <div class="side-panel">
+                    <!-- Live Threat Feed -->
+                    <div class="panel threat-feed">
+                        <div class="panel-header">
+                            <div class="panel-title">
+                                <div class="panel-title-icon red">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                    </svg>
+                                </div>
+                                <h3>Live Threat Feed</h3>
+                            </div>
+                            <div class="panel-badge" id="feed-count">24 NEW</div>
+                        </div>
+                        <div class="panel-content" id="threat-feed-list">
+                            <!-- Feed items populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- CISA KEV Panel -->
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title">
+                                <div class="panel-title-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    </svg>
+                                </div>
+                                <h3>CISA KEV Alerts</h3>
+                            </div>
+                            <div class="panel-badge" id="kev-count">12 ACTIVE</div>
+                        </div>
+                        <div class="panel-content" id="kev-list">
+                            <!-- KEV items populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="stats-row">
+                <!-- Top Attacked Countries -->
+                <div class="stats-panel">
+                    <div class="stats-panel-header">
+                        <div class="stats-panel-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                            <h4>Top Targeted Countries</h4>
+                        </div>
+                    </div>
+                    <div class="stats-list" id="top-countries">
+                        <!-- Stats populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Top Malware Families -->
+                <div class="stats-panel">
+                    <div class="stats-panel-header">
+                        <div class="stats-panel-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                            <h4>Top Malware Families</h4>
+                        </div>
+                    </div>
+                    <div class="stats-list" id="top-malware">
+                        <!-- Stats populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="threat-map-footer">
+            <div class="container footer-content">
+                <div class="footer-sources">
+                    Powered by <span>CISA KEV</span> • <span>abuse.ch</span> • <span>AbuseIPDB</span>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 <a href="https://www.tacraven.com">TacRaven Solutions LLC</a>. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // ============================================
+        // TACRAVEN THREAT MAP - CONFIGURATION
+        // ============================================
+        
+        const CONFIG = {
+            // API Configuration (for future integration)
+            apis: {
+                abuseipdb: {
+                    enabled: false,
+                    key: '', // Add your API key here
+                    endpoint: 'https://api.abuseipdb.com/api/v2/blacklist',
+                    rateLimit: 1000 // per day
+                },
+                feodo: {
+                    enabled: false,
+                    endpoint: 'https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.json'
+                },
+                cisaKev: {
+                    enabled: false,
+                    endpoint: 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json'
+                },
+                ipGeo: {
+                    endpoint: 'http://ip-api.com/json/'
+                }
+            },
+            // Demo mode settings
+            demo: {
+                enabled: true,
+                attackInterval: 2000, // ms between simulated attacks
+                maxFeedItems: 50
+            },
+            // Map settings
+            map: {
+                center: [20, 0],
+                zoom: 2,
+                minZoom: 2,
+                maxZoom: 10
+            }
+        };
+
+        // ============================================
+        // MOCK DATA FOR DEMO MODE
+        // ============================================
+        
+        const MOCK_DATA = {
+            countries: [
+                { code: 'US', name: 'United States', lat: 37.0902, lng: -95.7129 },
+                { code: 'CN', name: 'China', lat: 35.8617, lng: 104.1954 },
+                { code: 'RU', name: 'Russia', lat: 61.5240, lng: 105.3188 },
+                { code: 'DE', name: 'Germany', lat: 51.1657, lng: 10.4515 },
+                { code: 'GB', name: 'United Kingdom', lat: 55.3781, lng: -3.4360 },
+                { code: 'FR', name: 'France', lat: 46.2276, lng: 2.2137 },
+                { code: 'JP', name: 'Japan', lat: 36.2048, lng: 138.2529 },
+                { code: 'KR', name: 'South Korea', lat: 35.9078, lng: 127.7669 },
+                { code: 'BR', name: 'Brazil', lat: -14.2350, lng: -51.9253 },
+                { code: 'IN', name: 'India', lat: 20.5937, lng: 78.9629 },
+                { code: 'NL', name: 'Netherlands', lat: 52.1326, lng: 5.2913 },
+                { code: 'AU', name: 'Australia', lat: -25.2744, lng: 133.7751 },
+                { code: 'UA', name: 'Ukraine', lat: 48.3794, lng: 31.1656 },
+                { code: 'PL', name: 'Poland', lat: 51.9194, lng: 19.1451 },
+                { code: 'IR', name: 'Iran', lat: 32.4279, lng: 53.6880 },
+                { code: 'VN', name: 'Vietnam', lat: 14.0583, lng: 108.2772 },
+                { code: 'ID', name: 'Indonesia', lat: -0.7893, lng: 113.9213 },
+                { code: 'TW', name: 'Taiwan', lat: 23.6978, lng: 120.9605 },
+                { code: 'SG', name: 'Singapore', lat: 1.3521, lng: 103.8198 },
+                { code: 'CA', name: 'Canada', lat: 56.1304, lng: -106.3468 }
+            ],
+            attackTypes: [
+                'SSH Brute Force',
+                'HTTP Flood',
+                'SQL Injection',
+                'DDoS',
+                'Port Scan',
+                'Credential Stuffing',
+                'Malware Distribution',
+                'Phishing',
+                'Ransomware',
+                'Command Injection',
+                'XSS Attack',
+                'DNS Amplification'
+            ],
+            malwareFamilies: [
+                { name: 'Emotet', count: 2847 },
+                { name: 'Dridex', count: 1923 },
+                { name: 'TrickBot', count: 1456 },
+                { name: 'QakBot', count: 1234 },
+                { name: 'IcedID', count: 987 },
+                { name: 'BazarLoader', count: 765 },
+                { name: 'Cobalt Strike', count: 654 },
+                { name: 'AsyncRAT', count: 543 }
+            ],
+            kevs: [
+                {
+                    cve: 'CVE-2024-3400',
+                    vendor: 'Palo Alto Networks',
+                    product: 'PAN-OS GlobalProtect',
+                    description: 'Command injection vulnerability in GlobalProtect gateway that allows unauthenticated remote code execution.',
+                    severity: 'critical',
+                    dateAdded: '2024-04-12'
+                },
+                {
+                    cve: 'CVE-2024-21887',
+                    vendor: 'Ivanti',
+                    product: 'Connect Secure VPN',
+                    description: 'Authentication bypass vulnerability allowing unauthorized access to restricted resources.',
+                    severity: 'critical',
+                    dateAdded: '2024-01-10'
+                },
+                {
+                    cve: 'CVE-2024-1709',
+                    vendor: 'ConnectWise',
+                    product: 'ScreenConnect',
+                    description: 'Authentication bypass using alternate path vulnerability allowing unauthorized access.',
+                    severity: 'critical',
+                    dateAdded: '2024-02-22'
+                },
+                {
+                    cve: 'CVE-2024-27198',
+                    vendor: 'JetBrains',
+                    product: 'TeamCity',
+                    description: 'Authentication bypass vulnerability in the web component allowing unauthenticated code execution.',
+                    severity: 'critical',
+                    dateAdded: '2024-03-07'
+                },
+                {
+                    cve: 'CVE-2024-20353',
+                    vendor: 'Cisco',
+                    product: 'ASA/FTD Software',
+                    description: 'Denial of service vulnerability in web services interface.',
+                    severity: 'high',
+                    dateAdded: '2024-04-24'
+                },
+                {
+                    cve: 'CVE-2024-4577',
+                    vendor: 'PHP Group',
+                    product: 'PHP CGI',
+                    description: 'Argument injection vulnerability leading to remote code execution on Windows systems.',
+                    severity: 'critical',
+                    dateAdded: '2024-06-13'
+                },
+                {
+                    cve: 'CVE-2024-23897',
+                    vendor: 'Jenkins',
+                    product: 'Jenkins Core',
+                    description: 'Arbitrary file read vulnerability through CLI argument parsing.',
+                    severity: 'high',
+                    dateAdded: '2024-01-26'
+                },
+                {
+                    cve: 'CVE-2024-21762',
+                    vendor: 'Fortinet',
+                    product: 'FortiOS SSL VPN',
+                    description: 'Out-of-bounds write vulnerability enabling remote code execution.',
+                    severity: 'critical',
+                    dateAdded: '2024-02-09'
+                },
+                {
+                    cve: 'CVE-2024-0519',
+                    vendor: 'Google',
+                    product: 'Chrome V8',
+                    description: 'Out-of-bounds memory access vulnerability in V8 JavaScript engine.',
+                    severity: 'high',
+                    dateAdded: '2024-01-17'
+                },
+                {
+                    cve: 'CVE-2024-38856',
+                    vendor: 'Apache',
+                    product: 'OFBiz',
+                    description: 'Pre-auth remote code execution vulnerability in Apache OFBiz.',
+                    severity: 'critical',
+                    dateAdded: '2024-08-07'
+                },
+                {
+                    cve: 'CVE-2024-29824',
+                    vendor: 'Ivanti',
+                    product: 'EPM Cloud Services',
+                    description: 'SQL injection vulnerability allowing unauthorized database access.',
+                    severity: 'high',
+                    dateAdded: '2024-05-21'
+                },
+                {
+                    cve: 'CVE-2024-5217',
+                    vendor: 'ServiceNow',
+                    product: 'Now Platform',
+                    description: 'Incomplete input validation leading to remote code execution.',
+                    severity: 'critical',
+                    dateAdded: '2024-07-29'
+                }
+            ]
+        };
+
+        // ============================================
+        // STATE MANAGEMENT
+        // ============================================
+        
+        const state = {
+            map: null,
+            markers: [],
+            attackLines: [],
+            feedItems: [],
+            isMapMoving: false,
+            stats: {
+                attacksToday: 12847,
+                activeBotnets: 847,
+                activeKevs: MOCK_DATA.kevs.length,
+                countryStats: {},
+                malwareStats: {}
+            }
+        };
+
+        // ============================================
+        // MAP INITIALIZATION
+        // ============================================
+        
+        function initMap() {
+            // Initialize Leaflet map
+            state.map = L.map('threat-map', {
+                center: CONFIG.map.center,
+                zoom: CONFIG.map.zoom,
+                minZoom: CONFIG.map.minZoom,
+                maxZoom: CONFIG.map.maxZoom,
+                zoomControl: true,
+                attributionControl: true
+            });
+
+            // Dark map tiles - Esri Dark Gray (reliable, no API key needed)
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                attribution: '&copy; Esri, HERE, Garmin, FAO, NOAA, USGS',
+                maxZoom: 16
+            }).addTo(state.map);
+            
+            // Add reference layer for country labels
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+                attribution: '',
+                maxZoom: 16
+            }).addTo(state.map);
+
+            // Add custom SVG overlay for attack lines
+            const svgOverlay = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svgOverlay.setAttribute('class', 'attack-lines-svg');
+            const mapContainer = document.getElementById('threat-map');
+            svgOverlay.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 500; overflow: visible;';
+            mapContainer.parentElement.appendChild(svgOverlay);
+        }
+
+        // ============================================
+        // MARKER MANAGEMENT
+        // ============================================
+        
+        function createThreatMarker(lat, lng, type) {
+            // Don't create markers if map is being moved
+            if (state.isMapMoving) return null;
+            
+            const markerHtml = `
+                <div class="threat-marker">
+                    <div class="threat-marker-ring ${type}"></div>
+                    <div class="threat-marker-ring ${type}" style="animation-delay: 0.5s;"></div>
+                    <div class="threat-marker-dot ${type}"></div>
+                </div>
+            `;
+            
+            const icon = L.divIcon({
+                className: 'threat-marker-container',
+                html: markerHtml,
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+
+            const marker = L.marker([lat, lng], { icon }).addTo(state.map);
+            state.markers.push(marker);
+            
+            // Auto-remove marker after animation
+            setTimeout(() => {
+                if (marker && state.map.hasLayer(marker)) {
+                    state.map.removeLayer(marker);
+                }
+                const idx = state.markers.indexOf(marker);
+                if (idx > -1) state.markers.splice(idx, 1);
+            }, 4000);
+
+            return marker;
+        }
+
+        // ============================================
+        // ATTACK LINE ANIMATION (IMPROVED)
+        // ============================================
+        
+        function drawAttackLine(source, target, type = 'attack') {
+            // Don't draw if map is being moved/dragged
+            if (state.isMapMoving) return;
+            
+            const svg = document.querySelector('.attack-lines-svg');
+            if (!svg) return;
+
+            // Get the map container bounds for proper sizing
+            const mapContainer = document.getElementById('threat-map');
+            const rect = mapContainer.getBoundingClientRect();
+            
+            // Update SVG viewBox to match container
+            svg.setAttribute('viewBox', `0 0 ${rect.width} ${rect.height}`);
+            svg.setAttribute('width', rect.width);
+            svg.setAttribute('height', rect.height);
+
+            // Convert lat/lng to pixel coordinates
+            const sourcePoint = state.map.latLngToContainerPoint([source.lat, source.lng]);
+            const targetPoint = state.map.latLngToContainerPoint([target.lat, target.lng]);
+
+            // Calculate distance and angle
+            const dx = targetPoint.x - sourcePoint.x;
+            const dy = targetPoint.y - sourcePoint.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const angle = Math.atan2(dy, dx);
+
+            // Calculate control point for curved line (arc away from straight line)
+            const midX = (sourcePoint.x + targetPoint.x) / 2;
+            const midY = (sourcePoint.y + targetPoint.y) / 2;
+            
+            // Curve perpendicular to line, amount based on distance
+            const curvature = Math.min(distance * 0.2, 80);
+            const curveAngle = angle - Math.PI / 2; // Perpendicular
+            const controlX = midX + Math.cos(curveAngle) * curvature;
+            const controlY = midY + Math.sin(curveAngle) * curvature;
+
+            // Create group for this attack
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            group.setAttribute('class', 'attack-group');
+
+            // Create the path data
+            const pathData = `M ${sourcePoint.x} ${sourcePoint.y} Q ${controlX} ${controlY} ${targetPoint.x} ${targetPoint.y}`;
+
+            // 1. Background line (dim, persistent during animation)
+            const bgLine = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            bgLine.setAttribute('d', pathData);
+            bgLine.setAttribute('class', `attack-line ${type}`);
+            bgLine.style.opacity = '0';
+            bgLine.style.animation = 'fadeInLine 0.5s ease-out forwards';
+            group.appendChild(bgLine);
+
+            // 2. Animated tracer (bright line that travels along path)
+            const tracer = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            tracer.setAttribute('d', pathData);
+            tracer.setAttribute('class', `attack-tracer ${type}`);
+            const pathLength = distance * 1.2; // Approximate curved length
+            tracer.style.strokeDasharray = `${pathLength * 0.15} ${pathLength}`;
+            tracer.style.strokeDashoffset = pathLength;
+            group.appendChild(tracer);
+
+            // 3. Arrowhead at target
+            const arrowSize = 8;
+            
+            // Calculate angle at end of curve (tangent to curve at target)
+            const t = 0.98; // Point near end of bezier
+            const endTangentX = 2 * (1 - t) * (controlX - sourcePoint.x) + 2 * t * (targetPoint.x - controlX);
+            const endTangentY = 2 * (1 - t) * (controlY - sourcePoint.y) + 2 * t * (targetPoint.y - controlY);
+            const endAngle = Math.atan2(endTangentY, endTangentX);
+
+            const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+            const arrowPoints = [
+                [targetPoint.x, targetPoint.y],
+                [targetPoint.x - arrowSize * 2 * Math.cos(endAngle - 0.4), targetPoint.y - arrowSize * 2 * Math.sin(endAngle - 0.4)],
+                [targetPoint.x - arrowSize * 1.2 * Math.cos(endAngle), targetPoint.y - arrowSize * 1.2 * Math.sin(endAngle)],
+                [targetPoint.x - arrowSize * 2 * Math.cos(endAngle + 0.4), targetPoint.y - arrowSize * 2 * Math.sin(endAngle + 0.4)]
+            ];
+            arrow.setAttribute('points', arrowPoints.map(p => p.join(',')).join(' '));
+            arrow.setAttribute('class', `attack-arrow ${type}`);
+            arrow.style.opacity = '0';
+            group.appendChild(arrow);
+
+            // 4. Impact ring at target
+            const impactRing = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            impactRing.setAttribute('cx', targetPoint.x);
+            impactRing.setAttribute('cy', targetPoint.y);
+            impactRing.setAttribute('r', '5');
+            impactRing.setAttribute('class', `impact-ring ${type}`);
+            impactRing.style.opacity = '0';
+            group.appendChild(impactRing);
+
+            // 5. Source pulse
+            const sourcePulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            sourcePulse.setAttribute('cx', sourcePoint.x);
+            sourcePulse.setAttribute('cy', sourcePoint.y);
+            sourcePulse.setAttribute('r', '4');
+            sourcePulse.setAttribute('fill', type === 'attack' ? 'var(--red)' : 'var(--orange)');
+            sourcePulse.setAttribute('filter', `drop-shadow(0 0 4px ${type === 'attack' ? 'var(--red)' : 'var(--orange)'})`);
+            group.appendChild(sourcePulse);
+
+            svg.appendChild(group);
+
+            // Animate the tracer moving along the path
+            const duration = 1500; // ms
+            const startTime = performance.now();
+
+            function animateTracer(currentTime) {
+                // Cancel animation if map is moving
+                if (state.isMapMoving) {
+                    group.remove();
+                    return;
+                }
+                
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Ease out cubic
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                
+                // Move tracer along path
+                const currentOffset = pathLength * (1 - easeProgress);
+                tracer.style.strokeDashoffset = currentOffset;
+
+                // Show arrow when tracer reaches ~80%
+                if (progress > 0.7) {
+                    arrow.style.opacity = '1';
+                }
+
+                // Trigger impact at end
+                if (progress >= 0.95 && !impactRing.dataset.triggered) {
+                    impactRing.dataset.triggered = 'true';
+                    impactRing.style.opacity = '1';
+                    
+                    // Animate impact ring expanding
+                    let impactStart = performance.now();
+                    function animateImpact(time) {
+                        const impactElapsed = time - impactStart;
+                        const impactProgress = Math.min(impactElapsed / 500, 1);
+                        const radius = 5 + impactProgress * 25;
+                        const opacity = 1 - impactProgress;
+                        impactRing.setAttribute('r', radius);
+                        impactRing.style.opacity = opacity;
+                        if (impactProgress < 1) {
+                            requestAnimationFrame(animateImpact);
+                        }
+                    }
+                    requestAnimationFrame(animateImpact);
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(animateTracer);
+                }
+            }
+
+            requestAnimationFrame(animateTracer);
+
+            // Remove after animation completes
+            setTimeout(() => {
+                group.style.transition = 'opacity 0.5s ease-out';
+                group.style.opacity = '0';
+                setTimeout(() => group.remove(), 500);
+            }, duration + 800);
+        }
+
+        // ============================================
+        // THREAT FEED
+        // ============================================
+        
+        function addFeedItem(data) {
+            const feedList = document.getElementById('threat-feed-list');
+            
+            const item = document.createElement('div');
+            item.className = 'feed-item';
+            item.innerHTML = `
+                <div class="feed-icon ${data.type}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        ${data.type === 'attack' 
+                            ? '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'
+                            : '<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>'}
+                    </svg>
+                </div>
+                <div class="feed-content">
+                    <div class="feed-header">
+                        <span class="feed-route">
+                            ${data.source}<span class="arrow">→</span>${data.target}
+                        </span>
+                        <span class="feed-time">${data.time}</span>
+                    </div>
+                    <div class="feed-details">
+                        <span class="feed-tag type">${data.attackType}</span>
+                        ${data.malware ? `<span class="feed-tag malware">${data.malware}</span>` : ''}
+                        ${data.confidence ? `<span class="feed-tag confidence">${data.confidence}% conf</span>` : ''}
+                    </div>
+                </div>
+            `;
+
+            feedList.insertBefore(item, feedList.firstChild);
+
+            // Limit feed items
+            while (feedList.children.length > CONFIG.demo.maxFeedItems) {
+                feedList.removeChild(feedList.lastChild);
+            }
+
+            // Update counter
+            const feedCount = document.getElementById('feed-count');
+            feedCount.textContent = `${feedList.children.length} NEW`;
+        }
+
+        // ============================================
+        // STATISTICS UPDATES
+        // ============================================
+        
+        function updateCountryStats(country) {
+            if (!state.stats.countryStats[country]) {
+                state.stats.countryStats[country] = 0;
+            }
+            state.stats.countryStats[country]++;
+            renderCountryStats();
+        }
+
+        function renderCountryStats() {
+            const container = document.getElementById('top-countries');
+            const sorted = Object.entries(state.stats.countryStats)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5);
+
+            const maxValue = sorted[0] ? sorted[0][1] : 100;
+            const colors = ['', 'red', 'orange', 'purple', ''];
+
+            container.innerHTML = sorted.map(([country, count], i) => `
+                <div class="stats-list-item">
+                    <div class="stats-rank">${i + 1}</div>
+                    <div class="stats-bar-wrapper">
+                        <div class="stats-bar-label">
+                            <span class="stats-bar-name">${country}</span>
+                            <span class="stats-bar-value">${count.toLocaleString()}</span>
+                        </div>
+                        <div class="stats-bar-track">
+                            <div class="stats-bar-fill ${colors[i] || ''}" style="width: ${(count / maxValue) * 100}%"></div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderMalwareStats() {
+            const container = document.getElementById('top-malware');
+            const data = MOCK_DATA.malwareFamilies.slice(0, 5);
+            const maxValue = data[0].count;
+            const colors = ['orange', 'purple', 'red', '', ''];
+
+            container.innerHTML = data.map((item, i) => `
+                <div class="stats-list-item">
+                    <div class="stats-rank">${i + 1}</div>
+                    <div class="stats-bar-wrapper">
+                        <div class="stats-bar-label">
+                            <span class="stats-bar-name">${item.name}</span>
+                            <span class="stats-bar-value">${item.count.toLocaleString()}</span>
+                        </div>
+                        <div class="stats-bar-track">
+                            <div class="stats-bar-fill ${colors[i] || ''}" style="width: ${(item.count / maxValue) * 100}%"></div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ============================================
+        // KEV LIST
+        // ============================================
+        
+        function renderKevList() {
+            const container = document.getElementById('kev-list');
+            
+            container.innerHTML = MOCK_DATA.kevs.map(kev => `
+                <div class="kev-item">
+                    <div class="kev-header">
+                        <span class="kev-cve">${kev.cve}</span>
+                        <span class="kev-severity ${kev.severity}">${kev.severity}</span>
+                    </div>
+                    <div class="kev-vendor">${kev.vendor} — ${kev.product}</div>
+                    <div class="kev-description">${kev.description}</div>
+                    <div class="kev-date">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        Added: ${kev.dateAdded}
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('kev-count').textContent = `${MOCK_DATA.kevs.length} ACTIVE`;
+        }
+
+        // ============================================
+        // DEMO MODE - SIMULATED ATTACKS
+        // ============================================
+        
+        function simulateAttack() {
+            if (!CONFIG.demo.enabled) return;
+            
+            // Don't simulate attacks while map is being moved
+            if (state.isMapMoving) return;
+
+            const sourceCountry = MOCK_DATA.countries[Math.floor(Math.random() * MOCK_DATA.countries.length)];
+            let targetCountry = MOCK_DATA.countries[Math.floor(Math.random() * MOCK_DATA.countries.length)];
+            
+            // Ensure different source and target
+            while (targetCountry.code === sourceCountry.code) {
+                targetCountry = MOCK_DATA.countries[Math.floor(Math.random() * MOCK_DATA.countries.length)];
+            }
+
+            const attackType = MOCK_DATA.attackTypes[Math.floor(Math.random() * MOCK_DATA.attackTypes.length)];
+            const isBotnet = Math.random() > 0.7;
+            const malware = isBotnet ? MOCK_DATA.malwareFamilies[Math.floor(Math.random() * MOCK_DATA.malwareFamilies.length)].name : null;
+            const confidence = Math.floor(Math.random() * 30) + 70;
+
+            // Add slight randomness to coordinates (reduced for cleaner visuals)
+            const sourceOffset = { lat: (Math.random() - 0.5) * 5, lng: (Math.random() - 0.5) * 5 };
+            const targetOffset = { lat: (Math.random() - 0.5) * 5, lng: (Math.random() - 0.5) * 5 };
+
+            const source = {
+                lat: sourceCountry.lat + sourceOffset.lat,
+                lng: sourceCountry.lng + sourceOffset.lng
+            };
+            const target = {
+                lat: targetCountry.lat + targetOffset.lat,
+                lng: targetCountry.lng + targetOffset.lng
+            };
+
+            // Create source marker first
+            createThreatMarker(source.lat, source.lng, isBotnet ? 'botnet' : 'attack');
+            
+            // Draw attack line (will create its own source indicator)
+            drawAttackLine(source, target, isBotnet ? 'botnet' : 'attack');
+            
+            // Create target marker - but only if map isn't moving
+            setTimeout(() => {
+                if (!state.isMapMoving) {
+                    createThreatMarker(target.lat, target.lng, 'attack');
+                }
+            }, 1400); // Sync with line animation reaching target
+
+            // Add to feed
+            const now = new Date();
+            addFeedItem({
+                type: isBotnet ? 'botnet' : 'attack',
+                source: sourceCountry.name,
+                target: targetCountry.name,
+                attackType: attackType,
+                malware: malware,
+                confidence: confidence,
+                time: now.toLocaleTimeString('en-US', { hour12: false })
+            });
+
+            // Update stats
+            updateCountryStats(targetCountry.name);
+            state.stats.attacksToday++;
+            document.getElementById('attacks-today').textContent = state.stats.attacksToday.toLocaleString();
+        }
+
+        // ============================================
+        // NAVIGATION
+        // ============================================
+        
+        function initNavigation() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Scroll behavior for nav
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // ============================================
+        // BUTTON RIPPLE EFFECT
+        // ============================================
+        
+        function initButtonEffects() {
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.className = 'btn-ripple';
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+        }
+
+        // ============================================
+        // API INTEGRATION (For future use)
+        // ============================================
+        
+        async function fetchAbuseIPDB() {
+            if (!CONFIG.apis.abuseipdb.enabled || !CONFIG.apis.abuseipdb.key) return [];
+            
+            try {
+                const response = await fetch(CONFIG.apis.abuseipdb.endpoint, {
+                    headers: {
+                        'Key': CONFIG.apis.abuseipdb.key,
+                        'Accept': 'application/json'
+                    }
+                });
+                return await response.json();
+            } catch (error) {
+                console.error('AbuseIPDB fetch error:', error);
+                return [];
+            }
+        }
+
+        async function fetchFeodoTracker() {
+            if (!CONFIG.apis.feodo.enabled) return [];
+            
+            try {
+                // Note: May require CORS proxy
+                const response = await fetch(CONFIG.apis.feodo.endpoint);
+                return await response.json();
+            } catch (error) {
+                console.error('Feodo Tracker fetch error:', error);
+                return [];
+            }
+        }
+
+        async function fetchCISAKev() {
+            if (!CONFIG.apis.cisaKev.enabled) return [];
+            
+            try {
+                const response = await fetch(CONFIG.apis.cisaKev.endpoint);
+                const data = await response.json();
+                return data.vulnerabilities || [];
+            } catch (error) {
+                console.error('CISA KEV fetch error:', error);
+                return [];
+            }
+        }
+
+        async function geolocateIP(ip) {
+            try {
+                const response = await fetch(`${CONFIG.apis.ipGeo.endpoint}${ip}`);
+                return await response.json();
+            } catch (error) {
+                console.error('IP Geolocation error:', error);
+                return null;
+            }
+        }
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize components
+            initMap();
+            initNavigation();
+            initButtonEffects();
+
+            // Render static data
+            renderKevList();
+            renderMalwareStats();
+
+            // Initialize country stats with some data
+            MOCK_DATA.countries.slice(0, 8).forEach(country => {
+                state.stats.countryStats[country.name] = Math.floor(Math.random() * 500) + 100;
+            });
+            renderCountryStats();
+
+            // Start demo simulation
+            if (CONFIG.demo.enabled) {
+                // Initial burst of attacks
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => simulateAttack(), i * 500);
+                }
+
+                // Continuous simulation
+                setInterval(simulateAttack, CONFIG.demo.attackInterval);
+            }
+
+            // Track map interaction state and clear lines during movement
+            state.map.on('movestart dragstart zoomstart', () => {
+                state.isMapMoving = true;
+                const svg = document.querySelector('.attack-lines-svg');
+                if (svg) {
+                    svg.innerHTML = '';
+                }
+                // Also clear transient markers when map starts moving
+                state.markers.forEach(marker => {
+                    if (state.map.hasLayer(marker)) {
+                        state.map.removeLayer(marker);
+                    }
+                });
+                state.markers = [];
+            });
+
+            state.map.on('moveend dragend zoomend', () => {
+                state.isMapMoving = false;
+            });
+
+            // Also clear on continuous move events
+            state.map.on('move', () => {
+                const svg = document.querySelector('.attack-lines-svg');
+                if (svg && svg.children.length > 0) {
+                    svg.innerHTML = '';
+                }
+            });
+
+            // Keep SVG sized correctly on window resize
+            window.addEventListener('resize', () => {
+                const svg = document.querySelector('.attack-lines-svg');
+                const mapContainer = document.getElementById('threat-map');
+                if (svg && mapContainer) {
+                    const rect = mapContainer.getBoundingClientRect();
+                    svg.setAttribute('viewBox', `0 0 ${rect.width} ${rect.height}`);
+                    svg.setAttribute('width', rect.width);
+                    svg.setAttribute('height', rect.height);
+                }
+            });
+        });
+
+        // ============================================
+        // CONSOLE INFO FOR DEVELOPERS
+        // ============================================
+        
+        console.log(`
+%c████████╗ █████╗  ██████╗██████╗  █████╗ ██╗   ██╗███████╗███╗   ██╗
+%c╚══██╔══╝██╔══██╗██╔════╝██╔══██╗██╔══██╗██║   ██║██╔════╝████╗  ██║
+%c   ██║   ███████║██║     ██████╔╝███████║██║   ██║█████╗  ██╔██╗ ██║
+%c   ██║   ██╔══██║██║     ██╔══██╗██╔══██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║
+%c   ██║   ██║  ██║╚██████╗██║  ██║██║  ██║ ╚████╔╝ ███████╗██║ ╚████║
+%c   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝
+
+%cGlobal Cyber Threat Map v1.0
+%cDemo Mode: ${CONFIG.demo.enabled ? 'ACTIVE' : 'DISABLED'}
+
+%cTo enable live data feeds, update CONFIG.apis in the script.
+Data sources: AbuseIPDB, Feodo Tracker, CISA KEV
+
+© TacRaven Solutions LLC | https://www.tacraven.com
+        `, 
+        'color: #d4a012', 'color: #d4a012', 'color: #d4a012', 
+        'color: #d4a012', 'color: #d4a012', 'color: #d4a012',
+        'color: #fff; font-weight: bold', 
+        'color: #22c55e',
+        'color: #a0a0a0'
+        );
+    </script>
+</body>
+</html>
