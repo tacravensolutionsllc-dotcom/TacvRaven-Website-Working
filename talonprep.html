@@ -70,44 +70,39 @@
         .site-nav.scrolled { background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); padding: 12px 0; border-bottom: 1px solid rgba(212, 160, 18, 0.2); }
         .site-nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .site-nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .site-nav-logo-text { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--white); letter-spacing: 2px; }
+        .site-nav-logo-text { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--white); letter-spacing: 2px; }
         .site-nav-logo-text span { color: var(--gold); }
-        .site-nav-menu { display: flex; align-items: center; gap: 36px; list-style: none; }
-        .site-nav-link { font-family: var(--font-heading); font-size: 15px; font-weight: 500; color: var(--gray-300); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; position: relative; }
-        .site-nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.3s ease; }
-        .site-nav-link:hover { color: var(--white); }
-        .site-nav-link:hover::after { width: 100%; }
-        .site-nav-link.active { color: var(--gold); }
-        .site-nav-link.active::after { width: 100%; }
-        .site-nav-cta { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; font-family: var(--font-heading); font-size: 14px; font-weight: 600; text-decoration: none; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--black); text-transform: uppercase; letter-spacing: 1px; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); transition: all 0.3s ease; }
+        .site-nav-menu { display: flex; align-items: center; gap: 8px; list-style: none; }
+        .site-nav-link { font-family: var(--font-heading); font-size: 15px; font-weight: 500; color: var(--gray-300); text-decoration: none; padding: 10px 16px; transition: all 0.3s ease; position: relative; }
+        .site-nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--gold); transition: width 0.3s ease; }
+        .site-nav-link:hover, .site-nav-link.active { color: var(--white); }
+        .site-nav-link:hover::after, .site-nav-link.active::after { width: 30px; }
+        .site-nav-cta { display: inline-flex; align-items: center; justify-content: center; padding: 10px 24px; font-family: var(--font-heading); font-size: 14px; font-weight: 600; text-decoration: none; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--black); text-transform: uppercase; letter-spacing: 1px; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); transition: all 0.3s ease; }
         .site-nav-cta:hover { background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%); transform: translateY(-2px); }
         
-        /* Dropdown Menu */
+        /* Nav Dropdown */
         .site-nav-dropdown { position: relative; }
-        .site-nav-dropdown-toggle { font-family: var(--font-heading); font-size: 15px; font-weight: 500; color: var(--gray-300); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; position: relative; display: flex; align-items: center; gap: 6px; cursor: pointer; background: none; border: none; padding: 0; }
-        .site-nav-dropdown-toggle::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.3s ease; }
+        .site-nav-dropdown-toggle { display: flex; align-items: center; gap: 6px; font-family: var(--font-heading); font-size: 15px; font-weight: 500; color: var(--gray-300); background: none; border: none; padding: 10px 16px; cursor: pointer; transition: all 0.3s ease; }
         .site-nav-dropdown-toggle:hover { color: var(--white); }
-        .site-nav-dropdown-toggle:hover::after { width: 100%; }
         .site-nav-dropdown-toggle svg { width: 12px; height: 12px; transition: transform 0.3s ease; }
         .site-nav-dropdown:hover .site-nav-dropdown-toggle svg { transform: rotate(180deg); }
-        .site-nav-dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 200px; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(212, 160, 18, 0.2); padding: 12px 0; opacity: 0; visibility: hidden; transition: all 0.3s ease; margin-top: 16px; z-index: 1000; }
-        .site-nav-dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid rgba(212, 160, 18, 0.2); }
-        .site-nav-dropdown:hover .site-nav-dropdown-menu { opacity: 1; visibility: visible; margin-top: 12px; }
-        .site-nav-dropdown-item { display: block; padding: 12px 24px; font-family: var(--font-heading); font-size: 14px; font-weight: 500; color: var(--gray-300); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; }
-        .site-nav-dropdown-item:hover { color: var(--gold); background: rgba(212, 160, 18, 0.1); padding-left: 28px; }
-        .site-nav-dropdown-item span { display: block; font-size: 11px; color: var(--gray-500); font-weight: 400; text-transform: none; letter-spacing: 0; margin-top: 2px; }
+        .site-nav-dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 240px; background: var(--black-card); border: 1px solid rgba(212, 160, 18, 0.2); border-radius: 8px; padding: 12px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 100; }
+        .site-nav-dropdown:hover .site-nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .site-nav-dropdown-item { display: block; padding: 12px 16px; color: var(--gray-300); text-decoration: none; border-radius: 6px; transition: all 0.2s ease; }
+        .site-nav-dropdown-item:hover { background: rgba(212, 160, 18, 0.1); color: var(--gold); }
+        .site-nav-dropdown-item span { display: block; font-size: 12px; color: var(--gray-500); margin-top: 2px; }
         
-        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
-        .mobile-menu-btn span { width: 28px; height: 2px; background: var(--white); transition: all 0.3s ease; }
-        .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
-        .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-        .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.98); z-index: 999; flex-direction: column; justify-content: center; align-items: center; }
-        .mobile-menu-overlay.active { display: flex; }
-        .mobile-menu-overlay ul { list-style: none; text-align: center; }
-        .mobile-menu-overlay li { margin: 20px 0; }
-        .mobile-menu-overlay a { font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--white); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; }
-        .mobile-menu-overlay a:hover { color: var(--gold); }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; }
+        .mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.3s ease; }
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--black); z-index: 999; padding: 100px 24px 40px; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-nav-link { display: block; font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--white); text-decoration: none; padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); transition: color 0.3s ease; }
+        .mobile-nav-link:hover { color: var(--gold); }
+        @media (max-width: 900px) {
+            .site-nav-menu, .site-nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .mobile-menu { display: block; }
+        }
 
         /* Hero Section */
         .site-hero { min-height: 45vh; display: flex; align-items: center; position: relative; padding-top: 120px; padding-bottom: 50px; overflow: hidden; }
@@ -367,23 +362,23 @@
     <nav class="site-nav" id="site-nav">
         <div class="site-nav-container">
             <a href="index.html" class="site-nav-logo">
-                <span class="site-nav-logo-text">TAC<span>RAVEN</span></span>
+                <div class="site-nav-logo-text">TAC<span>RAVEN</span></div>
             </a>
             <ul class="site-nav-menu">
                 <li><a href="index.html" class="site-nav-link">Home</a></li>
                 <li class="site-nav-dropdown">
                     <button class="site-nav-dropdown-toggle">
                         Products
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </button>
                     <div class="site-nav-dropdown-menu">
-                        <a href="blackfeather.html" class="site-nav-dropdown-item">
+                        <a href="tools.html#blackfeather" class="site-nav-dropdown-item">
                             BlackFeather
                             <span>Threat Intel Platform</span>
                         </a>
-                        <a href="corvus-engine.html" class="site-nav-dropdown-item">
+                        <a href="tools.html#corvus" class="site-nav-dropdown-item">
                             Corvus Engine
                             <span>Log Conversion Utility</span>
                         </a>
@@ -394,31 +389,32 @@
                     </div>
                 </li>
                 <li><a href="tools.html" class="site-nav-link">Tools</a></li>
+                <li><a href="threat-map.html" class="site-nav-link">Threat Map</a></li>
+                <li><a href="/intel/weekly/" class="site-nav-link">Weekly Reports</a></li>
                 <li><a href="about.html" class="site-nav-link">About</a></li>
                 <li><a href="pricing.html" class="site-nav-link">Pricing</a></li>
                 <li><a href="cyber-news.html" class="site-nav-link">News</a></li>
-                <li><a href="index.html#contact" class="site-nav-cta">Contact</a></li>
             </ul>
+            <a href="index.html#contact" class="site-nav-cta">Contact</a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobile-menu">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li style="margin-top: 20px; margin-bottom: 10px;"><span style="font-size: 14px; color: var(--gold); letter-spacing: 3px;">— PRODUCTS —</span></li>
-            <li><a href="blackfeather.html" style="font-size: 20px;">BlackFeather</a></li>
-            <li><a href="corvus-engine.html" style="font-size: 20px;">Corvus Engine</a></li>
-            <li><a href="talonprep.html" style="font-size: 20px; color: var(--gold);">TalonPrep</a></li>
-            <li style="margin-top: 20px;"><a href="tools.html">Tools</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="cyber-news.html">News</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-        </ul>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="tools.html#blackfeather" class="mobile-nav-link">BlackFeather</a>
+        <a href="tools.html#corvus" class="mobile-nav-link">Corvus Engine</a>
+        <a href="talonprep.html" class="mobile-nav-link" style="color: var(--gold);">TalonPrep</a>
+        <a href="tools.html" class="mobile-nav-link">Tools</a>
+        <a href="threat-map.html" class="mobile-nav-link">Threat Map</a>
+        <a href="/intel/weekly/" class="mobile-nav-link">Weekly Reports</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+        <a href="cyber-news.html" class="mobile-nav-link">News</a>
+        <a href="index.html#contact" class="mobile-nav-link">Contact</a>
     </div>
 
     <!-- Hero Section -->
