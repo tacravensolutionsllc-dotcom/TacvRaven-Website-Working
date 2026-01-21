@@ -1,0 +1,51 @@
+name: Weekly Threat Report Generation
+
+on:
+  schedule:
+    - cron: '30 4 * * 1'
+  workflow_dispatch:
+    inputs:
+      week_override:
+        description: 'Override week (format: YYYY-WXX)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install || true
+
+      - name: Ensure output directory exists
+        run: mkdir -p ./intel/weekly
+
+      - name: Generate weekly report
+        run: node generate-report.js --output ./intel/weekly
+
+      - name: Update archive index
+        run: |
+          if [ -f "./scripts/update-archive-index.js" ]; then
+            node ./scripts/update-archive-index.js --dir ./intel/weekly
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git diff --staged --quiet || git commit -m "📊 Weekly Threat Report: $(date +%G-W%V)"
+          git push
