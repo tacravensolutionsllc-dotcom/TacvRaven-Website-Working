@@ -1685,29 +1685,30 @@
         }
         .threat-level-ring {
             position: relative;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
         }
         .threat-level-ring svg {
             transform: rotate(-90deg);
-        }
-        .threat-level-ring circle {
-            fill: none;
-            stroke-width: 6;
+            width: 100%;
+            height: 100%;
         }
         .threat-level-ring .ring-bg {
+            fill: none;
             stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 8;
         }
         .threat-level-ring .ring-fill {
+            fill: none;
             stroke: var(--gold);
+            stroke-width: 8;
+            stroke-linecap: round;
             stroke-dasharray: 220;
             stroke-dashoffset: 220;
-            stroke-linecap: round;
             transition: stroke-dashoffset 1.5s ease-out;
-            filter: drop-shadow(0 0 6px var(--gold));
         }
-        .threat-level-ring.critical .ring-fill { stroke: #ef4444; filter: drop-shadow(0 0 8px #ef4444); }
-        .threat-level-ring.high .ring-fill { stroke: #f97316; filter: drop-shadow(0 0 6px #f97316); }
+        .threat-level-ring.critical .ring-fill { stroke: #ef4444; }
+        .threat-level-ring.high .ring-fill { stroke: #f97316; }
         .threat-level-ring.elevated .ring-fill { stroke: var(--gold); }
         .threat-level-ring.moderate .ring-fill { stroke: #22c55e; }
         .threat-level-text {
@@ -2133,7 +2134,7 @@
                 <div class="threat-meter">
                     <div class="threat-level-display">
                         <div class="threat-level-ring critical" data-level="100">
-                            <svg width="80" height="80" viewBox="0 0 80 80">
+                            <svg viewBox="0 0 80 80">
                                 <circle class="ring-bg" cx="40" cy="40" r="35"/>
                                 <circle class="ring-fill" cx="40" cy="40" r="35"/>
                             </svg>
@@ -3304,9 +3305,14 @@
             const ring = document.querySelector('.ring-fill');
             if (ring) {
                 const level = ring.closest('.threat-level-ring').dataset.level || 70;
+                // Start hidden (full offset), then animate to show the ring
+                ring.style.strokeDashoffset = 220;
                 setTimeout(() => {
-                    ring.style.strokeDashoffset = 220 - (220 * level / 100);
-                }, 500);
+                    // For 100% level, show full circle (offset = 0)
+                    // For lower levels, show partial circle
+                    const targetOffset = 220 * (1 - level / 100);
+                    ring.style.strokeDashoffset = targetOffset;
+                }, 300);
             }
         }
         
