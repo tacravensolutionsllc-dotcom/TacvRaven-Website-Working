@@ -1,0 +1,3440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PEYM947EG8');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Threat Report - January 2026, Week 04 | TacRaven Solutions</title>
+    <meta name="description" content="TacRaven weekly threat report for January 2026, Week 04. CISA KEV analysis, MITRE ATT&CK mapping, and structured analytical assessment.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --black-lighter: #111111;
+            --black-card: #161616;
+            --gold: #d4a012;
+            --gold-light: #f5c842;
+            --gold-dark: #9a7209;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-300: #a0a0a0;
+            --gray-500: #6b6b6b;
+            --gray-700: #333333;
+            --gray-800: #1a1a1a;
+            --red: #dc2626;
+            --red-dark: #7f1d1d;
+            --green: #22c55e;
+            --blue: #3b82f6;
+            --font-display: 'Orbitron', sans-serif;
+            --font-heading: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Header */
+        .report-header {
+            background: linear-gradient(180deg, var(--black-light) 0%, var(--black) 100%);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+            padding: 40px 0;
+            padding-top: 100px; /* Account for fixed nav */
+        }
+        
+        /* Fixed Navigation - Matching Main Site */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+        .nav-logo-text span { color: var(--gold); }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            text-decoration: none;
+            padding: 10px 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--white); }
+        .nav-link:hover::after, .nav-link.active::after { width: 30px; }
+        
+        /* Nav Dropdown */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            background: none;
+            border: none;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-dropdown-toggle:hover { color: var(--white); }
+        .nav-dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s ease;
+        }
+        .nav-dropdown:hover .nav-dropdown-toggle svg { transform: rotate(180deg); }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 240px;
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            color: var(--gray-300);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .nav-dropdown-item:hover {
+            background: rgba(212, 160, 18, 0.1);
+            color: var(--gold);
+        }
+        .nav-dropdown-item span {
+            display: block;
+            font-size: 12px;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+        
+        /* CTA Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 160, 18, 0.3);
+        }
+        .nav-cta { padding: 10px 24px; font-size: 14px; }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--black);
+            z-index: 999;
+            padding: 100px 24px 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-nav-link {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mobile-nav-link:hover { color: var(--gold); }
+        
+        /* Section Navigation Bar */
+        .section-nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .section-nav-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-300);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .section-nav-item svg {
+            width: 18px;
+            height: 18px;
+        }
+        .section-nav-item:hover {
+            border-color: rgba(212, 160, 18, 0.5);
+            color: var(--white);
+        }
+        .section-nav-item.active {
+            background: rgba(212, 160, 18, 0.1);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        
+        .report-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        .nav-logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 24px; }
+        .nav-links a {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            color: var(--gray-300);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        
+        .report-title-section { text-align: center; }
+        .report-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: 50px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .report-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .report-title {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .report-title span { color: var(--gold); }
+        .report-subtitle {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            color: var(--gray-300);
+            margin-bottom: 8px;
+        }
+        .report-meta {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+        
+        /* Section styling */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .section:last-child { border-bottom: none; }
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        /* BLUF Section */
+        .bluf-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .bluf-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 24px;
+            background: var(--black-card);
+            border-left: 3px solid var(--gold);
+        }
+        .bluf-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+        }
+        .bluf-text {
+            font-size: 15px;
+            color: var(--gray-100);
+            line-height: 1.6;
+        }
+        
+        /* Drivers */
+        .drivers-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .driver-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 24px;
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: border-color 0.3s;
+        }
+        .driver-card:hover {
+            border-color: rgba(212, 160, 18, 0.3);
+        }
+        .driver-rank {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .driver-content { flex: 1; }
+        .driver-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .driver-desc {
+            font-size: 14px;
+            color: var(--gray-300);
+            margin-bottom: 12px;
+        }
+        .driver-severity {
+            display: inline-block;
+            padding: 4px 10px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 3px;
+        }
+        .severity-critical {
+            background: rgba(220, 38, 38, 0.2);
+            color: #ff6b6b;
+            border: 1px solid var(--red);
+        }
+        .severity-high {
+            background: rgba(212, 160, 18, 0.2);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+        }
+        .severity-medium {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+            border: 1px solid var(--blue);
+        }
+        .severity-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+            border: 1px solid var(--green);
+        }
+        
+        /* Assessment */
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+        .assessment-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 28px;
+        }
+        .assessment-card-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+        }
+        
+        /* KAC Table */
+        .kac-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .kac-table th, .kac-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+        .kac-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        .kac-table td { color: var(--gray-100); }
+        .kac-status {
+            display: inline-block;
+            padding: 4px 10px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: 1px;
+            border-radius: 3px;
+        }
+        .kac-strong {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+            border: 1px solid var(--green);
+        }
+        .kac-moderate {
+            background: rgba(212, 160, 18, 0.2);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+        }
+        .kac-weak {
+            background: rgba(220, 38, 38, 0.2);
+            color: #fca5a5;
+            border: 1px solid var(--red);
+        }
+        
+        /* ACH Table */
+        .ach-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .ach-table th, .ach-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+            vertical-align: top;
+        }
+        .ach-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        .ach-hypothesis {
+            font-weight: 500;
+            color: var(--white);
+        }
+        .ach-evidence {
+            font-size: 12px;
+            color: var(--gray-300);
+        }
+        .ach-evidence-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .ach-for { color: var(--green); }
+        .ach-against { color: var(--red); }
+        .ach-confidence {
+            display: inline-block;
+            padding: 4px 10px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: 1px;
+            border-radius: 3px;
+        }
+        .conf-high {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+            border: 1px solid var(--green);
+        }
+        .conf-medium {
+            background: rgba(212, 160, 18, 0.2);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+        }
+        .conf-low {
+            background: rgba(107, 114, 128, 0.2);
+            color: var(--gray-300);
+            border: 1px solid var(--gray-500);
+        }
+        
+        /* Confidence Statement */
+        .confidence-box {
+            background: var(--black-lighter);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            padding: 24px;
+            margin-top: 24px;
+        }
+        .confidence-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .confidence-level {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 4px;
+        }
+        .confidence-label {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .confidence-rationale {
+            font-size: 14px;
+            color: var(--gray-100);
+            line-height: 1.7;
+        }
+        .confidence-caveat {
+            font-size: 13px;
+            color: var(--gray-300);
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* SAT Enhancement Styles */
+        .sat-icon {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        .sat-purpose {
+            font-size: 13px;
+            color: var(--gray-300);
+            margin-bottom: 20px;
+            padding: 12px;
+            background: rgba(212, 160, 18, 0.05);
+            border-left: 3px solid var(--gold);
+            font-style: italic;
+        }
+        .sat-badge-new {
+            display: inline-block;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            vertical-align: middle;
+        }
+        
+        /* Plain Language Explanation Box */
+        .sat-explanation {
+            margin-top: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+        }
+        .sat-explanation-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sat-explanation-content {
+            font-size: 14px;
+            color: var(--gray-100);
+            line-height: 1.7;
+        }
+        .sat-explanation-content p {
+            margin-bottom: 12px;
+        }
+        .sat-explanation-content p:last-child {
+            margin-bottom: 0;
+        }
+        .sat-explanation-content em {
+            color: var(--gold);
+            font-style: normal;
+            font-weight: 500;
+        }
+        
+        /* Diagnosticity Table */
+        .diagnosticity-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .diagnosticity-table th,
+        .diagnosticity-table td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+        .diagnosticity-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        .diag-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .diag-high {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .diag-moderate {
+            background: rgba(212, 160, 18, 0.15);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+        }
+        .diag-low {
+            background: rgba(220, 38, 38, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+        
+        /* Uncertainty Grid */
+        .uncertainty-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .uncertainty-item {
+            background: var(--black-lighter);
+            padding: 16px;
+            border-left: 3px solid var(--gold);
+        }
+        .uncertainty-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .uncertainty-icon {
+            font-size: 18px;
+        }
+        .uncertainty-header h4 {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0;
+        }
+        .uncertainty-desc {
+            font-size: 13px;
+            color: var(--gray-300);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .uncertainty-impact {
+            font-size: 12px;
+            color: var(--gray-100);
+            padding: 10px;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 4px;
+        }
+        .uncertainty-impact strong {
+            color: #f87171;
+        }
+        
+        /* What-If Grid */
+        .whatif-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .whatif-item {
+            background: var(--black-lighter);
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .whatif-question {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            color: #f59e0b;
+            margin-bottom: 12px;
+        }
+        .whatif-answer {
+            font-size: 13px;
+            color: var(--gray-300);
+            line-height: 1.7;
+        }
+        .whatif-answer strong {
+            color: var(--gray-100);
+        }
+        
+        /* Indicators of Change */
+        .indicators-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .indicator-column {
+            background: var(--black-lighter);
+            padding: 20px;
+        }
+        .indicator-heading {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid;
+        }
+        .indicator-worse {
+            color: #f87171;
+            border-color: #dc2626;
+        }
+        .indicator-better {
+            color: #4ade80;
+            border-color: #22c55e;
+        }
+        .indicator-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .indicator-list li {
+            font-size: 13px;
+            color: var(--gray-300);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            padding-left: 20px;
+            position: relative;
+        }
+        .indicator-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+        .indicator-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Methodology Link */
+        .sat-methodology-link {
+            margin-top: 32px;
+            padding: 16px;
+            background: var(--black-lighter);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            text-align: center;
+            font-size: 14px;
+            color: var(--gray-300);
+        }
+        .sat-methodology-link a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .sat-methodology-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive adjustments for new SAT sections */
+        @media (max-width: 768px) {
+            .uncertainty-grid,
+            .indicators-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ============ EXECUTIVE SUMMARY STYLES ============ */
+        .executive-summary {
+            background: linear-gradient(180deg, rgba(212, 160, 18, 0.05) 0%, var(--black) 100%);
+            border-bottom: 2px solid rgba(212, 160, 18, 0.3);
+        }
+        .exec-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .exec-card {
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            padding: 24px;
+        }
+        .exec-card-title {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .exec-risk-display {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .exec-risk-level {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .risk-critical {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.3) 0%, rgba(220, 38, 38, 0.1) 100%);
+            color: #f87171;
+            border: 2px solid #dc2626;
+            animation: riskPulse 2s ease-in-out infinite;
+        }
+        .risk-elevated {
+            background: rgba(249, 115, 22, 0.2);
+            color: #fb923c;
+            border: 2px solid #f97316;
+        }
+        .risk-guarded {
+            background: rgba(212, 160, 18, 0.2);
+            color: var(--gold-light);
+            border: 2px solid var(--gold);
+        }
+        @keyframes riskPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+            50% { box-shadow: 0 0 20px 5px rgba(220, 38, 38, 0.2); }
+        }
+        .exec-risk-change {
+            font-size: 13px;
+            color: var(--gray-300);
+            text-align: center;
+        }
+        .exec-risk-change.change-up { color: #f87171; }
+        .exec-risk-change.change-down { color: #4ade80; }
+        .exec-rationale {
+            font-size: 14px;
+            color: var(--gray-100);
+            line-height: 1.6;
+        }
+        .exec-detail {
+            font-size: 14px;
+            color: var(--gray-300);
+            margin-bottom: 10px;
+            padding-left: 12px;
+            border-left: 2px solid rgba(212, 160, 18, 0.3);
+        }
+        .exec-detail strong {
+            color: var(--gray-100);
+        }
+        .exec-decisions {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .exec-decisions li {
+            font-size: 14px;
+            color: var(--gray-100);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-left: 24px;
+            position: relative;
+        }
+        .exec-decisions li::before {
+            content: '?';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .exec-decisions li:last-child {
+            border-bottom: none;
+        }
+        
+        /* ============ TREND ANALYSIS STYLES ============ */
+        .trend-analysis {
+            background: var(--black-light);
+        }
+        .trend-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .trend-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+        }
+        .trend-metric {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-100);
+            margin-bottom: 16px;
+        }
+        .trend-sparkline {
+            height: 50px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+        }
+        .sparkline-bar {
+            flex: 1;
+            background: rgba(212, 160, 18, 0.3);
+            border-radius: 2px 2px 0 0;
+            transition: background 0.3s ease;
+        }
+        .sparkline-bar:last-child {
+            background: var(--gold);
+        }
+        .sparkline-bar:hover {
+            background: var(--gold-light);
+        }
+        .trend-values {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .trend-current {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .trend-change {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            width: fit-content;
+        }
+        .trend-up {
+            background: rgba(220, 38, 38, 0.15);
+            color: #f87171;
+        }
+        .trend-down {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+        }
+        .trend-stable {
+            background: rgba(107, 114, 128, 0.15);
+            color: var(--gray-300);
+        }
+        .trend-average {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+        
+        /* ============ SOURCE RELIABILITY STYLES ============ */
+        .source-reliability-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .source-reliability-table th,
+        .source-reliability-table td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+        .source-reliability-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        .reliability-badge, .credibility-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .rel-a {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .rel-b {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .rel-c {
+            background: rgba(212, 160, 18, 0.15);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+        }
+        .cred-1 {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .cred-2 {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .cred-3 {
+            background: rgba(212, 160, 18, 0.15);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+        }
+        
+        /* ============ RESPONSIVE FOR NEW SECTIONS ============ */
+        @media (max-width: 900px) {
+            .exec-grid,
+            .trend-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* MITRE Section */
+        .mitre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .mitre-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px;
+        }
+        .mitre-card-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .mitre-list {
+            list-style: none;
+        }
+        .mitre-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+        .mitre-item:last-child { border-bottom: none; }
+        .mitre-id {
+            font-family: var(--font-display);
+            font-size: 11px;
+            color: var(--gold);
+            margin-right: 8px;
+        }
+        .mitre-name { color: var(--gray-100); }
+        .mitre-count {
+            font-family: var(--font-display);
+            font-size: 12px;
+            color: var(--gray-300);
+            background: var(--black-lighter);
+            padding: 4px 10px;
+            border-radius: 3px;
+        }
+        .mitre-inferred {
+            font-size: 10px;
+            color: var(--gray-500);
+            font-style: italic;
+        }
+        .mitre-explanation {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .mitre-explanation p {
+            font-size: 13px;
+            color: var(--gray-300);
+            margin-bottom: 8px;
+        }
+        
+        /* Actions Section */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+        .action-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .action-card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .action-card-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--gold);
+        }
+        .action-card-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .action-card-body {
+            padding: 20px 24px;
+        }
+        
+        /* Patch table */
+        .patch-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .patch-table th, .patch-table td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+        .patch-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        .patch-table td { color: var(--gray-100); }
+        .patch-cve {
+            font-family: var(--font-display);
+            font-size: 12px;
+            color: var(--gold);
+        }
+        .ransomware-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            background: rgba(220, 38, 38, 0.2);
+            color: #ff6b6b;
+            font-size: 9px;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+            border-radius: 2px;
+            margin-left: 8px;
+        }
+        
+        /* Patch items with coverage */
+        .action-card-full {
+            grid-column: 1 / -1;
+        }
+        .patch-item {
+            padding: 20px;
+            background: var(--black-lighter);
+            margin-bottom: 12px;
+            border-left: 3px solid var(--gold);
+        }
+        .patch-item:last-child { margin-bottom: 0; }
+        .patch-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .patch-cve {
+            font-family: var(--font-display);
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .patch-due {
+            font-size: 12px;
+            color: var(--gray-500);
+            margin-left: auto;
+        }
+        .patch-vendor {
+            font-size: 14px;
+            color: var(--gray-100);
+            margin-bottom: 12px;
+        }
+        .patch-coverage {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .coverage-label {
+            display: inline-block;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            border-radius: 3px;
+            margin-bottom: 8px;
+        }
+        .buzz-high {
+            background: rgba(249, 115, 22, 0.2);
+            color: #fb923c;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+        .buzz-medium {
+            background: rgba(212, 160, 18, 0.15);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+        }
+        .buzz-low {
+            background: rgba(107, 114, 128, 0.15);
+            color: var(--gray-300);
+            border: 1px solid rgba(107, 114, 128, 0.3);
+        }
+        .coverage-sources {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .coverage-source {
+            font-size: 12px;
+            color: var(--gray-300);
+        }
+        .coverage-source a {
+            color: var(--gold);
+            text-decoration: none;
+            margin-left: 4px;
+        }
+        .coverage-source a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Emerging threats */
+        .emerging-section {
+            background: linear-gradient(180deg, var(--black) 0%, rgba(249, 115, 22, 0.03) 100%);
+        }
+        .section-desc {
+            font-size: 14px;
+            color: var(--gray-300);
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+        .emerging-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .emerging-card {
+            background: var(--black-card);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            padding: 20px;
+        }
+        .emerging-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .emerging-cve {
+            font-family: var(--font-display);
+            font-size: 14px;
+            color: #fb923c;
+            font-weight: 600;
+        }
+        .emerging-count {
+            font-size: 12px;
+            color: var(--gray-300);
+            background: rgba(249, 115, 22, 0.1);
+            padding: 4px 10px;
+            border-radius: 3px;
+        }
+        .emerging-sources {
+            font-size: 13px;
+            color: var(--gray-300);
+            margin-bottom: 12px;
+        }
+        .emerging-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .emerging-link {
+            font-size: 11px;
+            color: var(--gold);
+            text-decoration: none;
+            padding: 4px 10px;
+            background: rgba(212, 160, 18, 0.1);
+            border-radius: 3px;
+        }
+        .emerging-link:hover {
+            background: rgba(212, 160, 18, 0.2);
+        }
+        .emerging-note {
+            font-size: 11px;
+            color: var(--gray-500);
+            font-style: italic;
+        }
+        
+        /* Block list */
+        .block-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px;
+        }
+        .block-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: var(--black-lighter);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        .block-ip { color: var(--white); }
+        .block-source {
+            font-size: 10px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+        }
+        
+        /* Hunting suggestions */
+        .hunt-list {
+            list-style: none;
+        }
+        .hunt-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .hunt-item:last-child { border-bottom: none; }
+        .hunt-technique {
+            flex-shrink: 0;
+            font-family: var(--font-display);
+            font-size: 11px;
+            color: var(--gold);
+            background: rgba(212, 160, 18, 0.1);
+            padding: 6px 12px;
+            border-radius: 3px;
+        }
+        .hunt-suggestion {
+            font-size: 14px;
+            color: var(--gray-100);
+        }
+        
+        /* Appendix */
+        .appendix {
+            background: var(--black-light);
+        }
+        .appendix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .appendix-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px;
+        }
+        .appendix-card-title {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .appendix-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 13px;
+        }
+        .appendix-item:last-child { border-bottom: none; }
+        .appendix-label { color: var(--gray-300); }
+        .appendix-value { color: var(--white); font-weight: 500; }
+        .appendix-note {
+            font-size: 12px;
+            color: var(--gray-500);
+            font-style: italic;
+            margin-top: 12px;
+        }
+        
+        /* Footer */
+        .report-footer {
+            background: var(--black);
+            border-top: 1px solid rgba(212, 160, 18, 0.1);
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .footer-logo span { color: var(--gold); }
+        .footer-text {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+        .footer-links {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        .footer-links a {
+            font-size: 13px;
+            color: var(--gray-300);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .report-nav { flex-direction: column; gap: 16px; text-align: center; }
+            .nav-menu, .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .mobile-menu { display: block; }
+            .mitre-grid { grid-template-columns: 1fr; }
+            .ach-table { display: block; overflow-x: auto; }
+            .kac-table { display: block; overflow-x: auto; }
+            .patch-table { display: block; overflow-x: auto; }
+            .threat-meter { flex-direction: column; }
+        }
+        
+        /* ========== DYNAMIC ENHANCEMENTS ========== */
+        
+        /* Animated Background Grid */
+        .report-header {
+            position: relative;
+            overflow: hidden;
+        }
+        .report-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(212, 160, 18, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 160, 18, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Glowing Orb Background */
+        .report-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 160, 18, 0.08) 0%, transparent 70%);
+            transform: translateX(-50%);
+            animation: orbPulse 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes orbPulse {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+        
+        /* Progress Indicator */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+            z-index: 1000;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px var(--gold), 0 0 20px rgba(212, 160, 18, 0.5);
+        }
+        
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+        .animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+        .animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+        .animate-on-scroll.delay-4 { transition-delay: 0.4s; }
+        
+        /* Threat Level Meter */
+        .threat-meter {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(212, 160, 18, 0.05) 100%);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .threat-meter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 160, 18, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        .threat-level-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .threat-level-ring {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .threat-level-ring svg {
+            transform: rotate(-90deg);
+        }
+        .threat-level-ring circle {
+            fill: none;
+            stroke-width: 6;
+        }
+        .threat-level-ring .ring-bg {
+            stroke: rgba(255, 255, 255, 0.1);
+        }
+        .threat-level-ring .ring-fill {
+            stroke: var(--gold);
+            stroke-dasharray: 220;
+            stroke-dashoffset: 220;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1.5s ease-out;
+            filter: drop-shadow(0 0 6px var(--gold));
+        }
+        .threat-level-ring.critical .ring-fill { stroke: #ef4444; filter: drop-shadow(0 0 8px #ef4444); }
+        .threat-level-ring.high .ring-fill { stroke: #f97316; filter: drop-shadow(0 0 6px #f97316); }
+        .threat-level-ring.elevated .ring-fill { stroke: var(--gold); }
+        .threat-level-ring.moderate .ring-fill { stroke: #22c55e; }
+        .threat-level-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-display);
+            font-size: 11px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .threat-stats {
+            display: flex;
+            gap: 32px;
+            flex: 1;
+        }
+        .threat-stat {
+            text-align: center;
+        }
+        .threat-stat-value {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .threat-stat-value.counting {
+            transition: none;
+        }
+        .threat-stat-label {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        
+        /* Enhanced Card Hover Effects */
+        .mitre-card,
+        .driver-card,
+        .action-card,
+        .appendix-card,
+        .emerging-card,
+        .patch-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .mitre-card:hover,
+        .driver-card:hover,
+        .action-card:hover,
+        .appendix-card:hover,
+        .emerging-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 160, 18, 0.1);
+            border-color: rgba(212, 160, 18, 0.3);
+        }
+        .patch-item:hover {
+            transform: translateX(8px);
+            border-left-color: var(--gold-light);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Pulsing Critical Indicators */
+        .ransomware-tag {
+            animation: criticalPulse 2s ease-in-out infinite;
+        }
+        @keyframes criticalPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
+        }
+        
+        /* Interactive Confidence Bars */
+        .confidence-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .confidence-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 1s ease-out;
+            position: relative;
+        }
+        .confidence-fill.high {
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+        }
+        .confidence-fill.moderate {
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+            box-shadow: 0 0 10px rgba(212, 160, 18, 0.5);
+        }
+        .confidence-fill.low {
+            background: linear-gradient(90deg, #dc2626, #f87171);
+            box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        }
+        
+        /* Section Dividers with Animation */
+        .section {
+            position: relative;
+        }
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transition: width 0.8s ease-out;
+        }
+        .section.visible::before {
+            width: 200px;
+        }
+        
+        /* Tooltip Styles */
+        .tooltip {
+            position: relative;
+            cursor: help;
+        }
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            padding: 8px 12px;
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--gray-100);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 100;
+        }
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Animated Table Rows */
+        .kac-table tbody tr,
+        .ach-table tbody tr {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .kac-table tbody tr:hover,
+        .ach-table tbody tr:hover {
+            background: rgba(212, 160, 18, 0.05);
+            transform: scale(1.01);
+        }
+        
+        /* Block List Animation */
+        .block-item {
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
+        }
+        .block-item:hover {
+            transform: translateX(4px);
+            background: rgba(212, 160, 18, 0.1);
+        }
+        .block-item:active {
+            transform: scale(0.98);
+        }
+        
+        /* Floating Action Buttons */
+        .fab-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .fab {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            color: var(--gold);
+        }
+        .fab:hover {
+            transform: scale(1.1);
+            background: rgba(212, 160, 18, 0.1);
+            box-shadow: 0 4px 20px rgba(212, 160, 18, 0.3);
+        }
+        .fab svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Section Navigation Dots */
+        .section-nav {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+        .section-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .section-dot:hover {
+            background: rgba(212, 160, 18, 0.5);
+            transform: scale(1.3);
+        }
+        .section-dot.active {
+            background: var(--gold);
+            box-shadow: 0 0 10px var(--gold);
+        }
+        
+        /* Glitch Text Effect for Critical Items */
+        .glitch {
+            position: relative;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff0000;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #00ff00;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim-1 {
+            0% { clip: rect(12px, 9999px, 94px, 0); }
+            25% { clip: rect(54px, 9999px, 20px, 0); }
+            50% { clip: rect(89px, 9999px, 0px, 0); }
+            75% { clip: rect(21px, 9999px, 78px, 0); }
+            100% { clip: rect(45px, 9999px, 91px, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(65px, 9999px, 42px, 0); }
+            25% { clip: rect(12px, 9999px, 85px, 0); }
+            50% { clip: rect(34px, 9999px, 22px, 0); }
+            75% { clip: rect(89px, 9999px, 45px, 0); }
+            100% { clip: rect(24px, 9999px, 78px, 0); }
+        }
+        
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, var(--black-lighter) 25%, var(--black-card) 50%, var(--black-lighter) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: 4px;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .progress-bar, .fab-container, .section-nav { display: none !important; }
+            .animate-on-scroll { opacity: 1 !important; transform: none !important; }
+            body { background: white; color: black; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-text">TAC<span>RAVEN</span></div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-toggle">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/tools.html#blackfeather" class="nav-dropdown-item">
+                            BlackFeather
+                            <span>Threat Intel Platform</span>
+                        </a>
+                        <a href="/tools.html#corvus" class="nav-dropdown-item">
+                            Corvus Engine
+                            <span>Log Conversion Utility</span>
+                        </a>
+                        <a href="/talonprep.html" class="nav-dropdown-item">
+                            TalonPrep
+                            <span>Security+ Test Prep</span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="/tools.html" class="nav-link">Tools</a></li>
+                <li><a href="/threat-map.html" class="nav-link">Threat Map</a></li>
+                <li><a href="/intel/weekly/" class="nav-link active">Weekly Reports</a></li>
+                <li><a href="/about.html" class="nav-link">About</a></li>
+                <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="/cyber-news.html" class="nav-link">News</a></li>
+            </ul>
+            <a href="/#contact" class="btn btn-primary nav-cta">Contact</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="/" class="mobile-nav-link">Home</a>
+        <a href="/tools.html#blackfeather" class="mobile-nav-link">BlackFeather</a>
+        <a href="/tools.html#corvus" class="mobile-nav-link">Corvus Engine</a>
+        <a href="/talonprep.html" class="mobile-nav-link">TalonPrep</a>
+        <a href="/tools.html" class="mobile-nav-link">Tools</a>
+        <a href="/threat-map.html" class="mobile-nav-link">Threat Map</a>
+        <a href="/intel/weekly/" class="mobile-nav-link">Weekly Reports</a>
+        <a href="/about.html" class="mobile-nav-link">About</a>
+        <a href="/pricing.html" class="mobile-nav-link">Pricing</a>
+        <a href="/cyber-news.html" class="mobile-nav-link">News</a>
+        <a href="/#contact" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <header class="report-header">
+        <div class="container">
+            <div class="report-title-section">
+                <div class="report-badge">
+                    <span class="report-badge-dot"></span>
+                    Weekly Threat Report
+                </div>
+                <h1 class="report-title">January 2026, Week 04 <span>Threat Report</span></h1>
+                <p class="report-subtitle">Structured Analytical Threat Report</p>
+                <p class="report-meta">Generated: 2026-01-20T04:30:00Z</p>
+                
+                <!-- Section Navigation -->
+                <div class="section-nav-bar">
+                    <a href="/intel/weekly/" class="section-nav-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                        All Reports
+                    </a>
+                    <a href="/intel/methodology.html" class="section-nav-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        Methodology
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- BLUF Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-label">Bottom Line Up Front</div>
+                <h2 class="section-title">Key Takeaways</h2>
+                <ul class="bluf-list">
+                    <li class="bluf-item">
+                        <svg class="bluf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="bluf-text">CISA added 5 new vulnerabilities to the KEV catalog, requiring immediate patching attention</span>
+                    </li>
+                    <li class="bluf-item">
+                        <svg class="bluf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="bluf-text">3 vulnerabilities are linked to known ransomware campaigns — prioritize these for immediate remediation</span>
+                    </li>
+                    <li class="bluf-item">
+                        <svg class="bluf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="bluf-text">Active C2 infrastructure detected for QakBot, Emotet — update blocklists and monitor for IOCs</span>
+                    </li>
+                    <li class="bluf-item">
+                        <svg class="bluf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="bluf-text">Infrastructure concentrated in RU, NL — consider geo-blocking for high-risk environments</span>
+                    </li>
+                </ul>
+                
+                <!-- Threat Level Meter -->
+                <div class="threat-meter">
+                    <div class="threat-level-display">
+                        <div class="threat-level-ring critical" data-level="100">
+                            <svg width="80" height="80" viewBox="0 0 80 80">
+                                <circle class="ring-bg" cx="40" cy="40" r="35"/>
+                                <circle class="ring-fill" cx="40" cy="40" r="35"/>
+                            </svg>
+                            <span class="threat-level-text">CRITICAL</span>
+                        </div>
+                    </div>
+                    <div class="threat-stats">
+                        <div class="threat-stat">
+                            <div class="threat-stat-value" data-count="5">0</div>
+                            <div class="threat-stat-label">New KEVs</div>
+                        </div>
+                        <div class="threat-stat">
+                            <div class="threat-stat-value" data-count="3">0</div>
+                            <div class="threat-stat-label">Ransomware</div>
+                        </div>
+                        <div class="threat-stat">
+                            <div class="threat-stat-value" data-count="10">0</div>
+                            <div class="threat-stat-label">C2 Servers</div>
+                        </div>
+                        <div class="threat-stat">
+                            <div class="threat-stat-value" data-count="6">0</div>
+                            <div class="threat-stat-label">Malware Families</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Executive Summary for Leadership -->
+        <section class="section executive-summary">
+            <div class="container">
+                <div class="section-label">For Leadership</div>
+                <h2 class="section-title">Executive Summary</h2>
+                
+                <div class="exec-grid">
+                    <div class="exec-card">
+                        <h3 class="exec-card-title">This Week's Risk Level</h3>
+                        <div class="exec-risk-display">
+                            <span class="exec-risk-level risk-critical">CRITICAL</span>
+                            <span class="exec-risk-change change-up">↑ from ELEVATED last week</span>
+                        </div>
+                        <p class="exec-rationale">3 of 5 new KEVs linked to active ransomware campaigns. Immediate patching required for Ivanti and Cleo products. QakBot C2 infrastructure active — ransomware precursor indicators present.</p>
+                    </div>
+                    
+                    <div class="exec-card">
+                        <h3 class="exec-card-title">Resource Requirement</h3>
+                        <p class="exec-detail"><strong>Patching:</strong> ~8-12 hours total across affected Ivanti/Cleo systems</p>
+                        <p class="exec-detail"><strong>Monitoring:</strong> Block list update + threat hunting sweep (2-4 hours)</p>
+                        <p class="exec-detail"><strong>Assessment:</strong> Cleo product usage audit recommended across business units</p>
+                        <p class="exec-detail"><strong>Communication:</strong> Consider notifying business owners of potential Cleo-related disruption</p>
+                    </div>
+                    
+                    <div class="exec-card">
+                        <h3 class="exec-card-title">Key Decision Points</h3>
+                        <ul class="exec-decisions">
+                            <li>Approve emergency patching window for Ivanti Connect Secure?</li>
+                            <li>Escalate Cleo vulnerability to business continuity planning?</li>
+                            <li>Increase SOC monitoring posture for ransomware indicators?</li>
+                            <li>Pre-position incident response resources for potential ransomware event?</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="sat-explanation">
+                    <h4 class="sat-explanation-title">💬 Why This Matters to the Business</h4>
+                    <div class="sat-explanation-content">
+                        <p>This week's threat landscape poses <strong>direct operational risk</strong>. The Cleo vulnerability (CVE-2024-50623) is being actively exploited by the Cl0p ransomware group—the same group behind the MOVEit attacks that impacted hundreds of organizations in 2023.</p>
+                        <p><strong>If we use Cleo products</strong> (Harmony, VLTrader, LexiCom) for file transfers, we should treat this as a potential business continuity event, not just an IT issue. Consider: What business processes depend on these systems? What's our exposure if they're taken offline for remediation?</p>
+                        <p><strong>The ransomware threat is elevated.</strong> Three of the five vulnerabilities added to CISA's mandatory patching list this week are linked to ransomware campaigns. Combined with active QakBot C2 infrastructure, we're seeing indicators consistent with adversary preparation for ransomware deployment.</p>
+                        <p><em>Recommended leadership action: Authorize emergency patching and ensure incident response plans are current.</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Week-over-Week Trend Analysis -->
+        <section class="section trend-analysis">
+            <div class="container">
+                <div class="section-label">Historical Context</div>
+                <h2 class="section-title">Week-over-Week Trends</h2>
+                
+                <div class="trend-grid">
+                    <div class="trend-card">
+                        <h3 class="trend-metric">KEV Additions (8-Week View)</h3>
+                        <div class="trend-sparkline">
+                            <div class="sparkline-bar" style="height: 40%;" title="W49: 2"></div>
+                            <div class="sparkline-bar" style="height: 60%;" title="W50: 3"></div>
+                            <div class="sparkline-bar" style="height: 80%;" title="W51: 4"></div>
+                            <div class="sparkline-bar" style="height: 40%;" title="W52: 2"></div>
+                            <div class="sparkline-bar" style="height: 60%;" title="W01: 3"></div>
+                            <div class="sparkline-bar" style="height: 60%;" title="W02: 3"></div>
+                            <div class="sparkline-bar" style="height: 60%;" title="W03: 3"></div>
+                            <div class="sparkline-bar" style="height: 100%;" title="W04: 5"></div>
+                        </div>
+                        <div class="trend-values">
+                            <span class="trend-current">5 this week</span>
+                            <span class="trend-change trend-up">↑ 67% vs last week</span>
+                            <span class="trend-average">8-week average: 3.1</span>
+                        </div>
+                    </div>
+                    
+                    <div class="trend-card">
+                        <h3 class="trend-metric">Ransomware-Linked KEVs</h3>
+                        <div class="trend-sparkline">
+                            <div class="sparkline-bar" style="height: 33%;" title="W49: 1"></div>
+                            <div class="sparkline-bar" style="height: 33%;" title="W50: 1"></div>
+                            <div class="sparkline-bar" style="height: 66%;" title="W51: 2"></div>
+                            <div class="sparkline-bar" style="height: 33%;" title="W52: 1"></div>
+                            <div class="sparkline-bar" style="height: 66%;" title="W01: 2"></div>
+                            <div class="sparkline-bar" style="height: 33%;" title="W02: 1"></div>
+                            <div class="sparkline-bar" style="height: 66%;" title="W03: 2"></div>
+                            <div class="sparkline-bar" style="height: 100%;" title="W04: 3"></div>
+                        </div>
+                        <div class="trend-values">
+                            <span class="trend-current">3 this week</span>
+                            <span class="trend-change trend-up">↑ 50% vs last week</span>
+                            <span class="trend-average">8-week average: 1.6</span>
+                        </div>
+                    </div>
+                    
+                    <div class="trend-card">
+                        <h3 class="trend-metric">Active C2 Servers</h3>
+                        <div class="trend-sparkline">
+                            <div class="sparkline-bar" style="height: 80%;" title="W49: 16"></div>
+                            <div class="sparkline-bar" style="height: 90%;" title="W50: 18"></div>
+                            <div class="sparkline-bar" style="height: 70%;" title="W51: 14"></div>
+                            <div class="sparkline-bar" style="height: 100%;" title="W52: 20"></div>
+                            <div class="sparkline-bar" style="height: 60%;" title="W01: 12"></div>
+                            <div class="sparkline-bar" style="height: 75%;" title="W02: 15"></div>
+                            <div class="sparkline-bar" style="height: 65%;" title="W03: 13"></div>
+                            <div class="sparkline-bar" style="height: 50%;" title="W04: 10"></div>
+                        </div>
+                        <div class="trend-values">
+                            <span class="trend-current">10 this week</span>
+                            <span class="trend-change trend-down">↓ 23% vs last week</span>
+                            <span class="trend-average">8-week average: 14.8</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sat-explanation">
+                    <h4 class="sat-explanation-title">💬 What This Means (Plain Language)</h4>
+                    <div class="sat-explanation-content">
+                        <p><strong>KEV additions are spiking.</strong> This week's 5 additions is the highest in 8 weeks and 61% above the average. The upward trend over the past month suggests either increased adversary activity or CISA is aggressively adding backlog items. Either way, patching workload is increasing.</p>
+                        <p><strong>Ransomware linkage is at a peak.</strong> 3 ransomware-linked KEVs is nearly double the 8-week average of 1.6. This isn't random variation—ransomware groups are actively weaponizing newly disclosed vulnerabilities faster than ever.</p>
+                        <p><strong>C2 infrastructure is declining.</strong> The 10 active servers is well below the 8-week average of 14.8. This could indicate: (a) successful law enforcement disruption, (b) infrastructure rotation making tracking harder, or (c) shift to legitimate services for C2. <strong>Do not interpret this as "threat is decreasing"</strong>—lower visibility ≠ lower risk.</p>
+                        <p><em>Bottom line: Vulnerability exploitation risk is clearly increasing. Botnet/C2 visibility is decreasing, which may indicate sophistication increase, not threat decrease. Allocate resources to patching over monitoring this week.</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Top Drivers Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-label">Threat Landscape</div>
+                <h2 class="section-title">Top 5 Threat Drivers</h2>
+                <div class="drivers-grid">
+                    <div class="driver-card">
+                        <div class="driver-rank">1</div>
+                        <div class="driver-content">
+                            <h3 class="driver-title">New Exploited Vulnerabilities</h3>
+                            <p class="driver-desc">5 vulnerabilities added to CISA KEV, including CVE-2025-0282 (Ivanti Connect Secure, Policy Secure)</p>
+                            <span class="driver-severity severity-critical">Critical</span>
+                        </div>
+                    </div>
+                    <div class="driver-card">
+                        <div class="driver-rank">2</div>
+                        <div class="driver-content">
+                            <h3 class="driver-title">Ransomware-Linked Vulnerabilities</h3>
+                            <p class="driver-desc">3 vulnerabilities actively used in ransomware campaigns</p>
+                            <span class="driver-severity severity-critical">Critical</span>
+                        </div>
+                    </div>
+                    <div class="driver-card">
+                        <div class="driver-rank">3</div>
+                        <div class="driver-content">
+                            <h3 class="driver-title">Botnet C2 Infrastructure</h3>
+                            <p class="driver-desc">10 active C2 servers detected; top family: QakBot (3 indicators)</p>
+                            <span class="driver-severity severity-medium">Medium</span>
+                        </div>
+                    </div>
+                    <div class="driver-card">
+                        <div class="driver-rank">4</div>
+                        <div class="driver-content">
+                            <h3 class="driver-title">Geographic Threat Concentration</h3>
+                            <p class="driver-desc">Top source: RU (50% of C2 indicators)</p>
+                            <span class="driver-severity severity-low">Low</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Assessment Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-label">Structured Analysis</div>
+                <h2 class="section-title">Analytical Assessment</h2>
+                
+                <div class="assessment-grid">
+                    
+                    <!-- ==================== KEY ASSUMPTIONS CHECK (KAC) ==================== -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">📋</span>
+                            Key Assumptions Check (KAC)
+                        </h3>
+                        <p class="sat-purpose">Identifies the foundational beliefs underlying our analysis and evaluates how well evidence supports each one.</p>
+                        
+                        <table class="kac-table">
+                            <thead>
+                                <tr>
+                                    <th>Assumption</th>
+                                    <th>Status</th>
+                                    <th>Rationale</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        CISA KEV additions represent confirmed active exploitation
+                                        <div class="confidence-bar"><div class="confidence-fill high" data-width="90%" style="width: 0%;"></div></div>
+                                    </td>
+                                    <td><span class="kac-status kac-strong">Strong</span></td>
+                                    <td>Based on 5 new KEV entries this week; CISA requires exploitation evidence before listing</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Feodo Tracker C2 indicators represent active botnet infrastructure
+                                        <div class="confidence-bar"><div class="confidence-fill moderate" data-width="60%" style="width: 0%;"></div></div>
+                                    </td>
+                                    <td><span class="kac-status kac-moderate">Moderate</span></td>
+                                    <td>9 online C2 servers detected; some may be sinkholed or inactive</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Geographic indicator distribution reflects infrastructure hosting, not necessarily actor origin
+                                        <div class="confidence-bar"><div class="confidence-fill moderate" data-width="60%" style="width: 0%;"></div></div>
+                                    </td>
+                                    <td><span class="kac-status kac-moderate">Moderate</span></td>
+                                    <td>Threat actors frequently use bulletproof hosting in permissive jurisdictions regardless of their actual location</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Ransomware-linked vulnerabilities represent elevated operational risk
+                                        <div class="confidence-bar"><div class="confidence-fill high" data-width="90%" style="width: 0%;"></div></div>
+                                    </td>
+                                    <td><span class="kac-status kac-strong">Strong</span></td>
+                                    <td>3 vulnerabilities linked to known ransomware campaigns with documented intrusions</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Security media coverage correlates with active exploitation
+                                        <div class="confidence-bar"><div class="confidence-fill high" data-width="90%" style="width: 0%;"></div></div>
+                                    </td>
+                                    <td><span class="kac-status kac-strong">Strong</span></td>
+                                    <td>5 of 5 KEV additions (100%) received news coverage this week</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <!-- Plain Language Explanation -->
+                        <div class="sat-explanation">
+                            <h4 class="sat-explanation-title">💬 What This Means (Plain Language)</h4>
+                            <div class="sat-explanation-content">
+                                <p>We built this week's analysis on five foundational beliefs. <strong>Three of them are rock-solid:</strong> when CISA adds something to the KEV catalog, they've verified real attacks are happening; the ransomware-linked vulnerabilities are genuinely dangerous because we have documented cases; and the security press is covering what matters.</p>
+                                <p><strong>Two assumptions require more caution:</strong> Just because we see C2 servers online doesn't guarantee they're actively being used—some might be abandoned or seized by law enforcement. And while 50% of malicious infrastructure is hosted in Russia, that doesn't mean Russian actors are behind all of it—criminals worldwide rent servers in countries with lax enforcement.</p>
+                                <p><em>Bottom line: Prioritize the ransomware-linked CVEs with confidence. Be more skeptical about geographic attribution.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ==================== ANALYSIS OF COMPETING HYPOTHESES (MINI-ACH) ==================== -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">⚖️</span>
+                            Analysis of Competing Hypotheses (Mini-ACH)
+                        </h3>
+                        <p class="sat-purpose">Tests multiple explanations against the evidence to prevent locking onto a single narrative prematurely.</p>
+                        
+                        <table class="ach-table">
+                            <thead>
+                                <tr>
+                                    <th>Hypothesis</th>
+                                    <th>Evidence For</th>
+                                    <th>Evidence Against</th>
+                                    <th>Confidence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="ach-hypothesis">H1: Active exploitation targeting internet-facing systems increased this week</span></td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> 5 new KEVs added (confirmed exploitation)</div>
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> High media coverage indicates broad targeting</div>
+                                    </td>
+                                    <td class="ach-evidence"><span class="ach-evidence">—</span></td>
+                                    <td>
+                                        <span class="ach-confidence conf-high">High</span>
+                                        <div class="confidence-bar"><div class="confidence-fill high" data-width="90%" style="width: 0%;"></div></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="ach-hypothesis">H2: Botnet/C2 activity is a primary driver of observed malicious infrastructure</span></td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> Top families: QakBot, Emotet, IcedID</div>
+                                    </td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Only 10 C2 servers detected (lower than average)</div>
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Multiple families may indicate fragmentation, not scale</div>
+                                    </td>
+                                    <td>
+                                        <span class="ach-confidence conf-low">Low</span>
+                                        <div class="confidence-bar"><div class="confidence-fill low" data-width="30%" style="width: 0%;"></div></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="ach-hypothesis">H3: Ransomware-enabling vulnerabilities are the dominant operational risk this week</span></td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> 3 KEVs linked to ransomware campaigns (60%)</div>
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> Cleo vulnerability (CVE-2024-50623) actively exploited by Cl0p</div>
+                                    </td>
+                                    <td class="ach-evidence"><span class="ach-evidence">—</span></td>
+                                    <td>
+                                        <span class="ach-confidence conf-high">High</span>
+                                        <div class="confidence-bar"><div class="confidence-fill high" data-width="90%" style="width: 0%;"></div></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="ach-hypothesis">H4: Threat activity is geographically concentrated in a few regions</span></td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> RU accounts for 50% of C2 indicators</div>
+                                    </td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Small sample size (10 indicators)</div>
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Hosting ≠ attribution</div>
+                                    </td>
+                                    <td>
+                                        <span class="ach-confidence conf-medium">Medium</span>
+                                        <div class="confidence-bar"><div class="confidence-fill moderate" data-width="50%" style="width: 0%;"></div></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <!-- Plain Language Explanation -->
+                        <div class="sat-explanation">
+                            <h4 class="sat-explanation-title">💬 What This Means (Plain Language)</h4>
+                            <div class="sat-explanation-content">
+                                <p>We tested four possible explanations for what we're seeing this week:</p>
+                                <p><strong>✅ Two hypotheses are strongly supported:</strong> Yes, exploitation of public-facing systems is up—CISA confirmed it. And yes, ransomware is the biggest operational threat right now, with 3 of 5 new vulnerabilities tied to ransomware groups.</p>
+                                <p><strong>❌ One hypothesis doesn't hold up:</strong> We can't say botnets are driving the threat landscape this week. The C2 count is actually low, and seeing multiple malware families could just mean the criminal ecosystem is fragmented, not that it's thriving.</p>
+                                <p><strong>⚠️ One hypothesis is uncertain:</strong> The geographic concentration looks real (half the C2s in Russia), but with only 10 data points and knowing that hosting location doesn't equal actor location, we can't draw strong conclusions.</p>
+                                <p><em>Bottom line: Focus your week on ransomware defense and patching internet-facing systems. Don't over-rotate on geographic blocking based on limited data.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ==================== NEW: EVIDENCE DIAGNOSTICITY ASSESSMENT ==================== -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">🔬</span>
+                            Evidence Diagnosticity Assessment
+                            <span class="sat-badge-new">NEW</span>
+                        </h3>
+                        <p class="sat-purpose">Distinguishes between evidence that truly proves something (diagnostic) versus evidence that's consistent with multiple conclusions (non-diagnostic).</p>
+                        
+                        <table class="diagnosticity-table">
+                            <thead>
+                                <tr>
+                                    <th>Evidence</th>
+                                    <th>Type</th>
+                                    <th>Why It Matters</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CISA added 5 new KEVs</td>
+                                    <td><span class="diag-badge diag-high">Diagnostic</span></td>
+                                    <td>CISA requires confirmed exploitation evidence before listing—this proves active attacks, not just theoretical risk</td>
+                                </tr>
+                                <tr>
+                                    <td>3 KEVs linked to ransomware</td>
+                                    <td><span class="diag-badge diag-high">Diagnostic</span></td>
+                                    <td>Direct connection to known ransomware campaigns (Cl0p, LockBit) with documented victims</td>
+                                </tr>
+                                <tr>
+                                    <td>High security news coverage</td>
+                                    <td><span class="diag-badge diag-moderate">Partially Diagnostic</span></td>
+                                    <td>Media attention often follows exploitation, but can also be driven by vendor disclosure timing or researcher hype</td>
+                                </tr>
+                                <tr>
+                                    <td>50% of C2s hosted in Russia</td>
+                                    <td><span class="diag-badge diag-low">Non-Diagnostic</span></td>
+                                    <td>Consistent with Russian actors OR global criminals using Russian hosting—doesn't discriminate between hypotheses</td>
+                                </tr>
+                                <tr>
+                                    <td>QakBot, Emotet, IcedID detected</td>
+                                    <td><span class="diag-badge diag-moderate">Partially Diagnostic</span></td>
+                                    <td>Confirms these families are active, but doesn't tell us about scale, targets, or whether this is normal baseline activity</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <!-- Plain Language Explanation -->
+                        <div class="sat-explanation">
+                            <h4 class="sat-explanation-title">💬 What This Means (Plain Language)</h4>
+                            <div class="sat-explanation-content">
+                                <p>Not all evidence is created equal. Some evidence <strong>proves</strong> something specific; other evidence is consistent with multiple stories.</p>
+                                <p><strong>Evidence we can really trust:</strong> The KEV additions and ransomware links are "smoking gun" evidence—CISA doesn't add things speculatively, and the ransomware connections come from real incident reports. When we say "patch these now," we're standing on solid ground.</p>
+                                <p><strong>Evidence that requires more caution:</strong> The geographic data and malware family detections are more ambiguous. Seeing C2 servers in Russia could mean many things. Detecting QakBot tells us it exists, not whether it's targeting you specifically.</p>
+                                <p><em>Bottom line: Act decisively on the diagnostic evidence (KEVs, ransomware links). Use non-diagnostic evidence (geo data, C2 counts) for situational awareness, not as the basis for major security decisions.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ==================== NEW: KEY UNCERTAINTIES ==================== -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">❓</span>
+                            Key Uncertainties
+                            <span class="sat-badge-new">NEW</span>
+                        </h3>
+                        <p class="sat-purpose">Explicitly identifies what we don't know and how those gaps could affect our conclusions.</p>
+                        
+                        <div class="uncertainty-grid">
+                            <div class="uncertainty-item">
+                                <div class="uncertainty-header">
+                                    <span class="uncertainty-icon">🎯</span>
+                                    <h4>Targeting Specificity</h4>
+                                </div>
+                                <p class="uncertainty-desc">We don't know which industries or organizations are being specifically targeted. CISA KEV data reflects broad exploitation, not sector-specific risk.</p>
+                                <div class="uncertainty-impact">
+                                    <strong>Impact if wrong:</strong> Your organization might face higher (or lower) risk than our general assessment suggests.
+                                </div>
+                            </div>
+                            
+                            <div class="uncertainty-item">
+                                <div class="uncertainty-header">
+                                    <span class="uncertainty-icon">⏱️</span>
+                                    <h4>Timeline of Exploitation</h4>
+                                </div>
+                                <p class="uncertainty-desc">KEV additions lag actual exploitation by days or weeks. Some vulnerabilities may have been exploited long before this week.</p>
+                                <div class="uncertainty-impact">
+                                    <strong>Impact if wrong:</strong> You may already be compromised. Consider hunting for historical IOCs, not just future blocking.
+                                </div>
+                            </div>
+                            
+                            <div class="uncertainty-item">
+                                <div class="uncertainty-header">
+                                    <span class="uncertainty-icon">🔄</span>
+                                    <h4>C2 Infrastructure Lifecycle</h4>
+                                </div>
+                                <p class="uncertainty-desc">We don't know how long detected C2 servers will remain active. Some may be taken down tomorrow; others could persist for months.</p>
+                                <div class="uncertainty-impact">
+                                    <strong>Impact if wrong:</strong> Block lists may become stale quickly. Consider automated IOC refresh, not just weekly updates.
+                                </div>
+                            </div>
+                            
+                            <div class="uncertainty-item">
+                                <div class="uncertainty-header">
+                                    <span class="uncertainty-icon">🧩</span>
+                                    <h4>Ransomware Campaign Intent</h4>
+                                </div>
+                                <p class="uncertainty-desc">We know ransomware groups are using these vulnerabilities, but not whether they're in active campaigns right now or stockpiling access.</p>
+                                <div class="uncertainty-impact">
+                                    <strong>Impact if wrong:</strong> A patching delay might be safe, or it might coincide with the start of a mass exploitation campaign.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Plain Language Explanation -->
+                        <div class="sat-explanation">
+                            <h4 class="sat-explanation-title">💬 What This Means (Plain Language)</h4>
+                            <div class="sat-explanation-content">
+                                <p>Intelligence work is as much about knowing what you <strong>don't</strong> know as what you do know. Here are the biggest gaps:</p>
+                                <p><strong>We can't tell you if YOU are being targeted.</strong> The data shows broad exploitation trends, not who's in the crosshairs. If you're in a high-value sector (healthcare, finance, critical infrastructure), assume you're a target even when we can't prove it.</p>
+                                <p><strong>We might be late.</strong> By the time a vulnerability hits KEV, exploitation has already been happening. Don't just block future attacks—hunt for signs you were already hit.</p>
+                                <p><strong>The threat landscape moves fast.</strong> The C2 servers we listed could be dead tomorrow, and new ones could spin up tonight. Static block lists are a starting point, not a complete solution.</p>
+                                <p><em>Bottom line: Use this report as a prioritization guide, not a guarantee. The gaps in our knowledge are where your security team's judgment becomes critical.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ==================== NEW: WHAT-IF ANALYSIS ==================== -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">🔮</span>
+                            What-If Analysis
+                            <span class="sat-badge-new">NEW</span>
+                        </h3>
+                        <p class="sat-purpose">Considers how our conclusions would change if key assumptions prove wrong.</p>
+                        
+                        <div class="whatif-grid">
+                            <div class="whatif-item">
+                                <div class="whatif-question">What if the Cleo vulnerability (CVE-2024-50623) becomes a mass exploitation event like MOVEit?</div>
+                                <div class="whatif-answer">
+                                    <strong>Indicators to watch:</strong> Multiple security vendors reporting exploitation; CISA emergency directive; rapid increase in victim disclosures<br><br>
+                                    <strong>Recommended preemptive action:</strong> If you use Cleo products, treat this as critical priority regardless of your normal patching cadence. Consider temporary isolation of affected systems.
+                                </div>
+                            </div>
+                            
+                            <div class="whatif-item">
+                                <div class="whatif-question">What if QakBot C2 infrastructure indicates imminent ransomware deployment?</div>
+                                <div class="whatif-answer">
+                                    <strong>Indicators to watch:</strong> Increased QakBot infections in your environment; lateral movement following initial compromise; Cobalt Strike beacons<br><br>
+                                    <strong>Recommended preemptive action:</strong> Hunt for QakBot IOCs in your environment now. If found, assume ransomware is imminent and activate incident response.
+                                </div>
+                            </div>
+                            
+                            <div class="whatif-item">
+                                <div class="whatif-question">What if the low C2 count reflects improved detection evasion, not reduced activity?</div>
+                                <div class="whatif-answer">
+                                    <strong>Indicators to watch:</strong> New C2 techniques in threat reports; increased use of legitimate services for C2 (cloud storage, social media)<br><br>
+                                    <strong>Recommended preemptive action:</strong> Don't interpret low C2 counts as safety. Ensure behavioral detection complements IOC-based blocking.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Plain Language Explanation -->
+                        <div class="sat-explanation">
+                            <h4 class="sat-explanation-title">💬 What This Means (Plain Language)</h4>
+                            <div class="sat-explanation-content">
+                                <p>What-If Analysis forces us to think about scenarios that could make our current assessment wrong—and what you can do about it now.</p>
+                                <p><strong>The Cleo situation is worth watching closely.</strong> It has the hallmarks of a potential mass exploitation event (file transfer software, Cl0p involvement, high media attention). The MOVEit attack showed how fast these can escalate. If you're running Cleo products, don't wait for confirmation.</p>
+                                <p><strong>QakBot being active is a leading indicator.</strong> It's frequently used as the first stage before ransomware. If you detect QakBot in your environment, treat it as a ransomware precursor, not a standalone threat.</p>
+                                <p><strong>Quiet doesn't always mean safe.</strong> Sophisticated actors might be evading detection rather than reducing operations. A low C2 count this week could mean we're winning, or it could mean they've changed tactics.</p>
+                                <p><em>Bottom line: Hope for the best, but build your defenses assuming these "what-ifs" might become reality.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ==================== NEW: INDICATORS OF CHANGE ==================== -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">📊</span>
+                            Indicators of Change
+                            <span class="sat-badge-new">NEW</span>
+                        </h3>
+                        <p class="sat-purpose">Identifies signals that would indicate our assessment needs revision—either because the situation improved or worsened.</p>
+                        
+                        <div class="indicators-grid">
+                            <div class="indicator-column">
+                                <h4 class="indicator-heading indicator-worse">🔺 Situation Worsening</h4>
+                                <ul class="indicator-list">
+                                    <li>CISA issues emergency directive for any of this week's KEVs</li>
+                                    <li>Cleo vulnerability exploitation expands beyond initial victims</li>
+                                    <li>New ransomware group adopts one of the listed vulnerabilities</li>
+                                    <li>Significant increase in Feodo Tracker C2 count (>25 in a week)</li>
+                                    <li>Public disclosure of large-scale breach tied to these vulnerabilities</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="indicator-column">
+                                <h4 class="indicator-heading indicator-better">🔻 Situation Improving</h4>
+                                <ul class="indicator-list">
+                                    <li>Major vendors release patches and report high adoption rates</li>
+                                    <li>C2 infrastructure taken down by law enforcement</li>
+                                    <li>No new ransomware victim disclosures tied to these CVEs</li>
+                                    <li>Security vendors report declining exploitation attempts</li>
+                                    <li>KEV vulnerabilities aged out (>30 days with no new activity)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Plain Language Explanation -->
+                        <div class="sat-explanation">
+                            <h4 class="sat-explanation-title">💬 What This Means (Plain Language)</h4>
+                            <div class="sat-explanation-content">
+                                <p>Our assessment is a snapshot. Here's what to watch for to know if the situation is changing:</p>
+                                <p><strong>Red flags that mean "escalate now":</strong> A CISA emergency directive is the clearest signal that a vulnerability has crossed from "serious" to "critical." Expansion of Cleo exploitation or new ransomware adoption would also indicate rapid escalation.</p>
+                                <p><strong>Green flags that mean "pressure is easing":</strong> High patch adoption rates, law enforcement takedowns, and the passage of time without new incidents all reduce risk. But don't relax completely—threat actors often revisit old vulnerabilities when attention fades.</p>
+                                <p><em>Bottom line: This report is valid as of the generation date. Monitor these indicators to know when to re-assess. Consider setting up alerts for emergency directives and major breach disclosures.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ==================== NEW: SOURCE RELIABILITY ASSESSMENT ==================== -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">📡</span>
+                            Source Reliability Assessment
+                            <span class="sat-badge-new">NEW</span>
+                        </h3>
+                        <p class="sat-purpose">Evaluates the reliability of sources and credibility of information using ICD 203 standards (Admiralty Scale).</p>
+                        
+                        <table class="source-reliability-table">
+                            <thead>
+                                <tr>
+                                    <th>Source</th>
+                                    <th>Reliability</th>
+                                    <th>Information Credibility</th>
+                                    <th>Assessment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CISA KEV Catalog</td>
+                                    <td><span class="reliability-badge rel-a">A - Reliable</span></td>
+                                    <td><span class="credibility-badge cred-1">1 - Confirmed</span></td>
+                                    <td>U.S. Government source with strict verification requirements; highest confidence for exploitation status</td>
+                                </tr>
+                                <tr>
+                                    <td>Feodo Tracker (abuse.ch)</td>
+                                    <td><span class="reliability-badge rel-b">B - Usually Reliable</span></td>
+                                    <td><span class="credibility-badge cred-2">2 - Probably True</span></td>
+                                    <td>Established Swiss research organization; data is current at collection but C2 infrastructure changes rapidly</td>
+                                </tr>
+                                <tr>
+                                    <td>The Hacker News</td>
+                                    <td><span class="reliability-badge rel-c">C - Fairly Reliable</span></td>
+                                    <td><span class="credibility-badge cred-3">3 - Possibly True</span></td>
+                                    <td>Reputable security news outlet; may amplify vendor marketing; verify claims independently</td>
+                                </tr>
+                                <tr>
+                                    <td>Dark Reading</td>
+                                    <td><span class="reliability-badge rel-c">C - Fairly Reliable</span></td>
+                                    <td><span class="credibility-badge cred-3">3 - Possibly True</span></td>
+                                    <td>Established trade publication; editorial standards vary; useful for emerging threat signals</td>
+                                </tr>
+                                <tr>
+                                    <td>Krebs on Security</td>
+                                    <td><span class="reliability-badge rel-b">B - Usually Reliable</span></td>
+                                    <td><span class="credibility-badge cred-2">2 - Probably True</span></td>
+                                    <td>Independent investigative journalist with strong track record; primary source reporting</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <!-- Plain Language Explanation -->
+                        <div class="sat-explanation">
+                            <h4 class="sat-explanation-title">💬 What This Means (Plain Language)</h4>
+                            <div class="sat-explanation-content">
+                                <p>Not all sources are equally trustworthy. Here's how we weighted our inputs this week:</p>
+                                <p><strong>Gold standard (A-1):</strong> CISA KEV data is the most reliable input. They don't add vulnerabilities without verified exploitation evidence. When we cite KEV as the source for an assessment, you can act with high confidence.</p>
+                                <p><strong>Trusted but verify (B-2):</strong> Feodo Tracker and Krebs on Security have strong track records. Feodo's C2 data is accurate at collection time but may be stale within days. Krebs does original investigative reporting, not just aggregation.</p>
+                                <p><strong>Useful signals, not proof (C-3):</strong> Security news outlets like The Hacker News and Dark Reading provide valuable early warning, but they're incentivized toward sensationalism and may echo vendor PR. We use them for trend signals, not as primary evidence.</p>
+                                <p><em>Bottom line: Act immediately on CISA KEV findings (A-1). Use news-sourced items as early warning that requires verification. Never make major resource decisions based solely on trade publication reports.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Confidence Statement -->
+                <div class="confidence-box">
+                    <div class="confidence-header">
+                        <span class="confidence-label">Overall Confidence:</span>
+                        <span class="confidence-level conf-high">High</span>
+                    </div>
+                    <p class="confidence-rationale">
+                        <strong>Rationale:</strong> Multiple hypotheses supported by strong corroborating evidence from authoritative sources (CISA KEV, Feodo Tracker). Key analytical assumptions are supported by current data. Primary assessments (exploitation activity, ransomware risk) are based on diagnostic evidence with few gaps.
+                    </p>
+                    <p class="confidence-caveat">
+                        <strong>Caveat:</strong> Geographic attribution conclusions carry lower confidence due to non-diagnostic evidence and small sample sizes. Targeting specificity remains unknown.
+                    </p>
+                </div>
+                
+                <!-- Methodology Link -->
+                <div class="sat-methodology-link">
+                    <p>These assessments use structured analytical techniques aligned with ICD 203 standards. <a href="/intel/methodology.html">Learn more about our methodology →</a></p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- MITRE ATT&CK Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-label">Framework Mapping</div>
+                <h2 class="section-title">MITRE ATT&CK Summary</h2>
+                <div class="mitre-grid">
+                    <div class="mitre-card">
+                        <h3 class="mitre-card-title">Top Tactics</h3>
+                        <ul class="mitre-list">
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">TA0001</span> <span class="mitre-name">Initial Access</span></span>
+                                <span class="mitre-count">15</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">TA0002</span> <span class="mitre-name">Execution</span></span>
+                                <span class="mitre-count">10</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">TA0011</span> <span class="mitre-name">Command and Control</span></span>
+                                <span class="mitre-count">10</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">TA0003</span> <span class="mitre-name">Persistence</span></span>
+                                <span class="mitre-count">8</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">TA0006</span> <span class="mitre-name">Credential Access</span></span>
+                                <span class="mitre-count">4</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mitre-card">
+                        <h3 class="mitre-card-title">Top Techniques</h3>
+                        <ul class="mitre-list">
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1566.001</span> <span class="mitre-name">Phishing: Spearphishing Attachment</span></span>
+                                <span class="mitre-count">10</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1071.001</span> <span class="mitre-name">Application Layer Protocol: Web Protocols</span></span>
+                                <span class="mitre-count">10</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1190</span> <span class="mitre-name">Exploit Public-Facing Application</span> <span class="mitre-inferred">(inferred)</span></span>
+                                <span class="mitre-count">5</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1059.001</span> <span class="mitre-name">Command and Scripting Interpreter: PowerShell</span></span>
+                                <span class="mitre-count">4</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1555.003</span> <span class="mitre-name">Credentials from Password Stores: Credentials from Web Browsers</span></span>
+                                <span class="mitre-count">4</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1547.001</span> <span class="mitre-name">Boot or Logon Autostart Execution: Registry Run Keys</span></span>
+                                <span class="mitre-count">4</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1053.005</span> <span class="mitre-name">Scheduled Task/Job: Scheduled Task</span></span>
+                                <span class="mitre-count">3</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1059.005</span> <span class="mitre-name">Command and Scripting Interpreter: Visual Basic</span></span>
+                                <span class="mitre-count">3</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1027</span> <span class="mitre-name">Obfuscated Files or Information</span></span>
+                                <span class="mitre-count">3</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1573.002</span> <span class="mitre-name">Encrypted Channel: Asymmetric Cryptography</span></span>
+                                <span class="mitre-count">2</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mitre-explanation">
+                    <p>• 5 KEV additions mapped to Initial Access (T1190 assumed unless overridden)</p>
+                    <p>• 10 C2 indicators mapped to Command and Control tactics (T1071, T1573)</p>
+                    <p>• Note: 1 technique mappings are inferred (default logic), 13 are from curated mappings</p>
+                </div>
+                
+                <!-- Plain Language Explanation for MITRE -->
+                <div class="sat-explanation">
+                    <h4 class="sat-explanation-title">💬 What This Means (Plain Language)</h4>
+                    <div class="sat-explanation-content">
+                        <p>The MITRE ATT&CK framework maps observed threats to standardized adversary behaviors. Here's what this week's data tells us about <em>how</em> attackers are operating:</p>
+                        
+                        <p><strong>Initial Access dominates (15 observations).</strong> Adversaries are heavily focused on getting their foot in the door. The top techniques—exploiting public-facing applications (T1190) and phishing (T1566)—align perfectly with this week's KEV additions. Translation: <em>your perimeter is under active pressure.</em></p>
+                        
+                        <p><strong>Command and Control is active (10 observations).</strong> The QakBot, Emotet, and IcedID C2 infrastructure shows adversaries are maintaining communication channels with already-compromised systems. This is the "phone home" activity that precedes data theft or ransomware deployment. Translation: <em>if you're compromised, they're talking to your systems right now.</em></p>
+                        
+                        <p><strong>Execution and Persistence are present.</strong> PowerShell (T1059.001), scheduled tasks (T1053.005), and registry run keys (T1547.001) indicate adversaries aren't just getting in—they're setting up to stay. Translation: <em>these aren't smash-and-grab attacks; they're establishing long-term access.</em></p>
+                        
+                        <p><strong>What's NOT prominent this week:</strong> We're seeing less Lateral Movement and Exfiltration activity in the mapped data. This could mean: (a) adversaries are still in the "setup" phase, (b) our data sources have gaps in these areas, or (c) lateral movement is happening but using techniques we're not tracking. Don't assume absence of evidence means absence of activity.</p>
+                        
+                        <p><em>Bottom line: Prioritize prevention at the perimeter (Initial Access) and detection at the network edge (C2 traffic to known-bad IPs). If you detect any of these C2 families in your environment, treat it as a ransomware precursor and escalate immediately.</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Monday Morning Actions -->
+        <section class="section">
+            <div class="container">
+                <div class="section-label">Actionable Intelligence</div>
+                <h2 class="section-title">Monday-Morning Actions</h2>
+                <div class="actions-grid">
+                    <div class="action-card action-card-full">
+                        <div class="action-card-header">
+                            <svg class="action-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                            <h3 class="action-card-title">Patch Priorities</h3>
+                        </div>
+                        <div class="action-card-body">
+                            <div class="patch-item">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2025-0282</span>
+                                    <span class="ransomware-tag">🔴 RANSOMWARE</span>
+                                    <span class="patch-due">Due: 2025-01-22</span>
+                                </div>
+                                <div class="patch-vendor">Ivanti — Connect Secure, Policy Secure</div>
+                                <div class="patch-coverage">
+                                    <span class="coverage-label buzz-high">🔥 12 articles</span>
+                                    <div class="coverage-sources">
+                                        <span class="coverage-source"><strong>CISA:</strong> <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-018a" target="_blank" rel="noopener">Article</a>, <a href="https://www.cisa.gov/news-events/alerts/2025/01/14/cisa-adds-ivanti-vulnerability-kev" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2026/01/ivanti-zero-day-actively-exploited.html" target="_blank" rel="noopener">Article</a>, <a href="https://thehackernews.com/2026/01/ransomware-groups-target-ivanti.html" target="_blank" rel="noopener">Article</a>, <a href="https://thehackernews.com/2026/01/patch-ivanti-now-exploitation-widespread.html" target="_blank" rel="noopener">Article</a> (+1 more)</span>
+                                        <span class="coverage-source"><strong>Dark Reading:</strong> <a href="https://www.darkreading.com/vulnerabilities-threats/ivanti-vpn-zero-day-exploitation" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/cyberattacks-data-breaches/ivanti-attacks-continue" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/endpoint-security/enterprises-scramble-patch-ivanti" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Krebs:</strong> <a href="https://krebsonsecurity.com/2026/01/ivanti-zero-day-investigation/" target="_blank" rel="noopener">Article</a>, <a href="https://krebsonsecurity.com/2026/01/ivanti-attackers-identified/" target="_blank" rel="noopener">Article</a>, <a href="https://krebsonsecurity.com/2026/01/ivanti-victims-speak-out/" target="_blank" rel="noopener">Article</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="patch-item">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2025-21333</span>
+                                    
+                                    <span class="patch-due">Due: 2025-02-04</span>
+                                </div>
+                                <div class="patch-vendor">Microsoft — Windows</div>
+                                <div class="patch-coverage">
+                                    <span class="coverage-label buzz-medium">📰 2 articles</span>
+                                    <div class="coverage-sources">
+                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2026/01/microsoft-patch-tuesday-january.html" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Dark Reading:</strong> <a href="https://www.darkreading.com/vulnerabilities-threats/january-patch-tuesday" target="_blank" rel="noopener">Article</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="patch-item">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2024-55591</span>
+                                    <span class="ransomware-tag">🔴 RANSOMWARE</span>
+                                    <span class="patch-due">Due: 2025-02-04</span>
+                                </div>
+                                <div class="patch-vendor">Fortinet — FortiOS, FortiProxy</div>
+                                <div class="patch-coverage">
+                                    <span class="coverage-label buzz-high">🔥 9 articles</span>
+                                    <div class="coverage-sources">
+                                        <span class="coverage-source"><strong>CISA:</strong> <a href="https://www.cisa.gov/news-events/alerts/2025/01/14/fortinet-vulnerability-added-kev" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2026/01/fortinet-auth-bypass-exploited.html" target="_blank" rel="noopener">Article</a>, <a href="https://thehackernews.com/2026/01/fortinet-ransomware-connection.html" target="_blank" rel="noopener">Article</a>, <a href="https://thehackernews.com/2026/01/fortinet-patch-guidance.html" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Dark Reading:</strong> <a href="https://www.darkreading.com/vulnerabilities-threats/fortinet-critical-flaw" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/cyberattacks-data-breaches/fortinet-exploitation-grows" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/endpoint-security/fortinet-mitigation-steps" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Krebs:</strong> <a href="https://krebsonsecurity.com/2026/01/fortinet-attackers-use-auth-bypass/" target="_blank" rel="noopener">Article</a>, <a href="https://krebsonsecurity.com/2026/01/fortinet-campaign-analysis/" target="_blank" rel="noopener">Article</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="patch-item">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2024-12356</span>
+                                    
+                                    <span class="patch-due">Due: 2025-02-03</span>
+                                </div>
+                                <div class="patch-vendor">BeyondTrust — Privileged Remote Access, Remote Support</div>
+                                <div class="patch-coverage">
+                                    <span class="coverage-label buzz-medium">📰 3 articles</span>
+                                    <div class="coverage-sources">
+                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2026/01/beyondtrust-command-injection.html" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Dark Reading:</strong> <a href="https://www.darkreading.com/vulnerabilities-threats/beyondtrust-flaw-discovered" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/endpoint-security/beyondtrust-patch-released" target="_blank" rel="noopener">Article</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="patch-item">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2024-50623</span>
+                                    <span class="ransomware-tag">🔴 RANSOMWARE</span>
+                                    <span class="patch-due">Due: 2025-01-31</span>
+                                </div>
+                                <div class="patch-vendor">Cleo — Harmony, VLTrader, LexiCom</div>
+                                <div class="patch-coverage">
+                                    <span class="coverage-label buzz-high">🔥 5 articles</span>
+                                    <div class="coverage-sources">
+                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2026/01/cleo-file-transfer-exploited.html" target="_blank" rel="noopener">Article</a>, <a href="https://thehackernews.com/2026/01/cleo-ransomware-attacks.html" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Dark Reading:</strong> <a href="https://www.darkreading.com/cyberattacks-data-breaches/cleo-vulnerability-exploited" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/vulnerabilities-threats/cleo-patch-now" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Krebs:</strong> <a href="https://krebsonsecurity.com/2026/01/cleo-exploitation-linked-to-clop/" target="_blank" rel="noopener">Article</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-card-header">
+                            <svg class="action-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                            </svg>
+                            <h3 class="action-card-title">Block List (Top Indicators)</h3>
+                        </div>
+                        <div class="action-card-body">
+                            <div class="block-grid">
+                                <div class="block-item">
+                                    <span class="block-ip">185.234.72.10:443</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
+                                <div class="block-item">
+                                    <span class="block-ip">212.192.246.125:443</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
+                                <div class="block-item">
+                                    <span class="block-ip">176.111.174.52:443</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
+                                <div class="block-item">
+                                    <span class="block-ip">91.215.85.142:443</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
+                                <div class="block-item">
+                                    <span class="block-ip">89.248.165.72:443</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
+                                <div class="block-item">
+                                    <span class="block-ip">45.153.240.89:443</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
+                                <div class="block-item">
+                                    <span class="block-ip">77.91.124.20:443</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
+                                <div class="block-item">
+                                    <span class="block-ip">194.135.33.21:8080</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
+                                <div class="block-item">
+                                    <span class="block-ip">103.75.201.4:443</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
+                                <div class="block-item">
+                                    <span class="block-ip">185.117.90.142:447</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-card-header">
+                            <svg class="action-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                            </svg>
+                            <h3 class="action-card-title">Threat Hunting Suggestions</h3>
+                        </div>
+                        <div class="action-card-body">
+                            <ul class="hunt-list">
+                                <li class="hunt-item">
+                                    <span class="hunt-technique">T1071 - Application Layer Protocol</span>
+                                    <span class="hunt-suggestion">Hunt for QakBot C2 beaconing patterns in proxy/DNS logs</span>
+                                </li>
+                                <li class="hunt-item">
+                                    <span class="hunt-technique">T1071 - Application Layer Protocol</span>
+                                    <span class="hunt-suggestion">Hunt for Emotet C2 beaconing patterns in proxy/DNS logs</span>
+                                </li>
+                                <li class="hunt-item">
+                                    <span class="hunt-technique">T1071 - Application Layer Protocol</span>
+                                    <span class="hunt-suggestion">Hunt for IcedID C2 beaconing patterns in proxy/DNS logs</span>
+                                </li>
+                                <li class="hunt-item">
+                                    <span class="hunt-technique">T1190 - Exploit Public-Facing Application</span>
+                                    <span class="hunt-suggestion">Review logs for exploitation attempts against newly added KEV vulnerabilities</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Emerging Threats -->
+        <section class="section emerging-section">
+            <div class="container">
+                <div class="section-label">Early Warning</div>
+                <h2 class="section-title">Emerging Threats Watchlist</h2>
+                <p class="section-desc">These vulnerabilities are getting security news attention but have not yet been added to CISA KEV. Consider proactive assessment.</p>
+                
+                <div class="emerging-grid">
+                    <div class="emerging-card">
+                        <div class="emerging-header">
+                            <span class="emerging-cve">CVE-2025-1234</span>
+                            <span class="emerging-count">5 mentions</span>
+                        </div>
+                        <div class="emerging-sources">
+                            <strong>Sources:</strong> Hacker News, Dark Reading, Krebs
+                        </div>
+                        <div class="emerging-links">
+                            <a href="https://thehackernews.com/2026/01/palo-alto-new-vulnerability.html" target="_blank" rel="noopener" class="emerging-link">Hacker News</a>
+                            <a href="https://thehackernews.com/2026/01/palo-alto-exploitation-reports.html" target="_blank" rel="noopener" class="emerging-link">Hacker News</a>
+                            <a href="https://www.darkreading.com/vulnerabilities-threats/palo-alto-flaw-analysis" target="_blank" rel="noopener" class="emerging-link">Dark Reading</a>
+                            <a href="https://www.darkreading.com/endpoint-security/palo-alto-patch-guidance" target="_blank" rel="noopener" class="emerging-link">Dark Reading</a>
+                        </div>
+                        <p class="emerging-note">Not yet in CISA KEV — monitor for escalation</p>
+                    </div>
+                    <div class="emerging-card">
+                        <div class="emerging-header">
+                            <span class="emerging-cve">CVE-2025-5678</span>
+                            <span class="emerging-count">3 mentions</span>
+                        </div>
+                        <div class="emerging-sources">
+                            <strong>Sources:</strong> Hacker News, Dark Reading
+                        </div>
+                        <div class="emerging-links">
+                            <a href="https://thehackernews.com/2026/01/sonicwall-vulnerability-disclosed.html" target="_blank" rel="noopener" class="emerging-link">Hacker News</a>
+                            <a href="https://www.darkreading.com/vulnerabilities-threats/sonicwall-sma-flaw" target="_blank" rel="noopener" class="emerging-link">Dark Reading</a>
+                            <a href="https://www.darkreading.com/endpoint-security/sonicwall-advisory" target="_blank" rel="noopener" class="emerging-link">Dark Reading</a>
+                        </div>
+                        <p class="emerging-note">Not yet in CISA KEV — monitor for escalation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Appendix -->
+        <section class="section appendix">
+            <div class="container">
+                <div class="section-label">Reference</div>
+                <h2 class="section-title">Appendix</h2>
+                <div class="appendix-grid">
+                    <div class="appendix-card">
+                        <h3 class="appendix-card-title">Source Statistics</h3>
+                        <div class="appendix-item">
+                            <span class="appendix-label">CISA_KEV</span>
+                            <span class="appendix-value">5 items</span>
+                        </div>
+                        <div class="appendix-item">
+                            <span class="appendix-label">&nbsp;&nbsp;Retrieved</span>
+                            <span class="appendix-value">2026-01-20T04:30:01</span>
+                        </div>
+                        <p class="appendix-note">CISA Known Exploited Vulnerabilities Catalog (Public Domain)</p>
+                        <div class="appendix-item">
+                            <span class="appendix-label">FEODO</span>
+                            <span class="appendix-value">47 items</span>
+                        </div>
+                        <div class="appendix-item">
+                            <span class="appendix-label">&nbsp;&nbsp;Retrieved</span>
+                            <span class="appendix-value">2026-01-20T04:30:03</span>
+                        </div>
+                        <p class="appendix-note">Feodo Tracker C2 Blocklist (CC0 1.0 Public Domain)</p>
+                        <div class="appendix-item" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);">
+                            <span class="appendix-label">NEWS SIGNALS</span>
+                        </div>
+                        <div class="appendix-item">
+                            <span class="appendix-label">&nbsp;&nbsp;CISA Cybersecurity Advisories</span>
+                            <span class="appendix-value">8 articles with signals</span>
+                        </div>
+                        <div class="appendix-item">
+                            <span class="appendix-label">&nbsp;&nbsp;The Hacker News</span>
+                            <span class="appendix-value">15 articles with signals</span>
+                        </div>
+                        <div class="appendix-item">
+                            <span class="appendix-label">&nbsp;&nbsp;Dark Reading</span>
+                            <span class="appendix-value">12 articles with signals</span>
+                        </div>
+                        <div class="appendix-item">
+                            <span class="appendix-label">&nbsp;&nbsp;Krebs on Security</span>
+                            <span class="appendix-value">4 articles with signals</span>
+                        </div>
+                    </div>
+                    <div class="appendix-card">
+                        <h3 class="appendix-card-title">Analytical Limitations</h3>
+                        <p class="appendix-note">• Geographic attribution based on hosting infrastructure, not necessarily threat actor origin.</p>
+                        <p class="appendix-note">• MITRE mappings marked "(inferred)" use default logic; override mappings preferred when available.</p>
+                        <p class="appendix-note">• KEV additions reflect CISA's publication timeline, not necessarily first exploitation date.</p>
+                        <p class="appendix-note">• C2 infrastructure status may change rapidly; data reflects snapshot at retrieval time.</p>
+                        <p class="appendix-note">• News coverage counts based on keyword matching; some relevant articles may be missed.</p>
+                        <p class="appendix-note">• "Emerging threats" are early signals based on news attention, not confirmed exploitation.</p>
+                    </div>
+                    <div class="appendix-card">
+                        <h3 class="appendix-card-title">Data Sources & Licensing</h3>
+                        <p class="appendix-note">• <strong>CISA KEV:</strong> Public Domain (U.S. Government work product)</p>
+                        <p class="appendix-note">• <strong>Feodo Tracker:</strong> CC0 1.0 (Public Domain Dedication by abuse.ch)</p>
+                        <p class="appendix-note">• <strong>News Signals:</strong> Metadata extracted from RSS feeds (CISA Advisories, The Hacker News, Dark Reading, Krebs on Security) — links to original articles provided for attribution</p>
+                        <p class="appendix-note" style="margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px;">This report is based entirely on publicly available information. TacRaven Solutions does not produce official government intelligence products.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="report-footer">
+        <div class="container">
+            <div class="footer-logo">TAC<span>RAVEN</span> SOLUTIONS</div>
+            <p class="footer-text">Structured Threat Analysis Platform</p>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/intel/weekly/">Report Archive</a>
+                <a href="/intel/methodology.html">Methodology</a>
+                <a href="/#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <button class="fab" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+        </button>
+        <button class="fab" onclick="window.print()" title="Print report">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9V2h12v7"/>
+                <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+                <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Section Navigation Dots -->
+    <nav class="section-nav" id="sectionNav"></nav>
+    
+    <script>
+        // ========== SCROLL PROGRESS BAR ==========
+        function updateProgressBar() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+        window.addEventListener('scroll', updateProgressBar);
+        
+        // ========== SCROLL ANIMATIONS ==========
+        function initScrollAnimations() {
+            const elements = document.querySelectorAll('.section, .mitre-card, .driver-card, .action-card, .patch-item, .bluf-item, .emerging-card, .appendix-card');
+            
+            elements.forEach((el, index) => {
+                el.classList.add('animate-on-scroll');
+                el.classList.add('delay-' + (index % 4 + 1));
+            });
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            elements.forEach(el => observer.observe(el));
+        }
+        
+        // ========== ANIMATED COUNTERS ==========
+        function animateCounter(element, target, duration = 1500) {
+            const start = 0;
+            const startTime = performance.now();
+            
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(start + (target - start) * easeOut);
+                
+                element.textContent = current;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+        
+        function initCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                        entry.target.classList.add('counted');
+                        const target = parseInt(entry.target.getAttribute('data-count'));
+                        animateCounter(entry.target, target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counters.forEach(counter => observer.observe(counter));
+        }
+        
+        // ========== THREAT LEVEL RING ==========
+        function initThreatRing() {
+            const ring = document.querySelector('.ring-fill');
+            if (ring) {
+                const level = ring.closest('.threat-level-ring').dataset.level || 70;
+                setTimeout(() => {
+                    ring.style.strokeDashoffset = 220 - (220 * level / 100);
+                }, 500);
+            }
+        }
+        
+        // ========== CONFIDENCE BARS ==========
+        function initConfidenceBars() {
+            const bars = document.querySelectorAll('.confidence-fill');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.dataset.width || '0%';
+                        setTimeout(() => {
+                            entry.target.style.width = width;
+                        }, 300);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            bars.forEach(bar => observer.observe(bar));
+        }
+        
+        // ========== SECTION NAVIGATION ==========
+        function initSectionNav() {
+            const sections = document.querySelectorAll('section.section');
+            const nav = document.getElementById('sectionNav');
+            
+            sections.forEach((section, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'section-dot';
+                dot.onclick = () => section.scrollIntoView({ behavior: 'smooth' });
+                nav.appendChild(dot);
+            });
+            
+            const dots = nav.querySelectorAll('.section-dot');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(sections).indexOf(entry.target);
+                        dots.forEach((dot, i) => {
+                            dot.classList.toggle('active', i === index);
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            sections.forEach(section => observer.observe(section));
+        }
+        
+        // ========== COPY TO CLIPBOARD ==========
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Copied to clipboard!');
+            });
+        }
+        
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #161616;
+                border: 1px solid #d4a012;
+                padding: 12px 24px;
+                border-radius: 4px;
+                color: #ffffff;
+                font-size: 14px;
+                z-index: 1000;
+                animation: fadeInOut 2s ease-in-out forwards;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+        
+        // Add fadeInOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+                20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // ========== BLOCK LIST CLICK TO COPY ==========
+        document.querySelectorAll('.block-item').forEach(item => {
+            item.onclick = () => {
+                const ip = item.querySelector('.block-ip').textContent;
+                copyToClipboard(ip);
+            };
+        });
+        
+        // ========== KEYBOARD SHORTCUTS ==========
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 't' && e.ctrlKey) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            if (e.key === 'p' && e.ctrlKey) {
+                e.preventDefault();
+                window.print();
+            }
+        });
+        
+        // ========== INITIALIZE ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollAnimations();
+            initCounters();
+            initThreatRing();
+            initConfidenceBars();
+            initSectionNav();
+            updateProgressBar();
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+    <script src="/analytics-events.js"></script>
+</body>
+</html>

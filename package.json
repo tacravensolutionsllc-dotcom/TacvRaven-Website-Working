@@ -1,0 +1,33 @@
+{
+  "name": "tacraven-weekly-report-generator",
+  "version": "1.0.0",
+  "description": "Automated weekly threat intelligence report generator for TacRaven Solutions",
+  "main": "generate-report.js",
+  "scripts": {
+    "generate": "node generate-report.js",
+    "generate:test": "node generate-report.js --output ./test-output",
+    "test": "node test-generator.js",
+    "update-archive": "node scripts/update-archive-index.js",
+    "validate": "node scripts/validate-report.js"
+  },
+  "keywords": [
+    "threat-intelligence",
+    "cybersecurity",
+    "cisa-kev",
+    "mitre-attack",
+    "automated-reporting"
+  ],
+  "author": "TacRaven Solutions",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tacraven/weekly-threat-reports.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tacraven/weekly-threat-reports/issues"
+  },
+  "homepage": "https://tacravensolutions.com/intel/weekly/"
+}

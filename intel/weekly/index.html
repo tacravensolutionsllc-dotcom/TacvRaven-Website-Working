@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PEYM947EG8');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Threat Reports Archive | TacRaven Solutions</title>
+    <meta name="description" content="Archive of TacRaven weekly threat reports with CISA KEV analysis, MITRE ATT&CK mapping, and structured analytical assessments.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --black-card: #161616;
+            --gold: #d4a012;
+            --gold-light: #f5c842;
+            --gold-dark: #9a7209;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-300: #a0a0a0;
+            --gray-500: #6b6b6b;
+            --red: #dc2626;
+            --font-display: 'Orbitron', sans-serif;
+            --font-heading: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navigation - Matching Main Site */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+        .nav-logo-text span { color: var(--gold); }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            text-decoration: none;
+            padding: 10px 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--white); }
+        .nav-link:hover::after, .nav-link.active::after { width: 30px; }
+        
+        /* Nav Dropdown */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            background: none;
+            border: none;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-dropdown-toggle:hover { color: var(--white); }
+        .nav-dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s ease;
+        }
+        .nav-dropdown:hover .nav-dropdown-toggle svg { transform: rotate(180deg); }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 240px;
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            color: var(--gray-300);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .nav-dropdown-item:hover {
+            background: rgba(212, 160, 18, 0.1);
+            color: var(--gold);
+        }
+        .nav-dropdown-item span {
+            display: block;
+            font-size: 12px;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+        
+        /* CTA Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 160, 18, 0.3);
+        }
+        .nav-cta { padding: 10px 24px; font-size: 14px; }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--black);
+            z-index: 999;
+            padding: 100px 24px 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-nav-link {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mobile-nav-link:hover { color: var(--gold); }
+        
+        .header {
+            background: linear-gradient(180deg, var(--black-light) 0%, var(--black) 100%);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+            padding: 40px 0;
+            padding-top: 100px; /* Account for fixed nav */
+        }
+        
+        .page-title {
+            text-align: center;
+        }
+        .page-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: 50px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .page-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        h1 span { color: var(--gold); }
+        .subtitle {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            color: var(--gray-300);
+        }
+        
+        /* Section Navigation Bar */
+        .section-nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .section-nav-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-300);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .section-nav-item svg {
+            width: 18px;
+            height: 18px;
+        }
+        .section-nav-item:hover {
+            border-color: rgba(212, 160, 18, 0.5);
+            color: var(--white);
+        }
+        .section-nav-item.active {
+            background: rgba(212, 160, 18, 0.1);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        
+        .archive-section {
+            padding: 60px 0;
+        }
+        .archive-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .archive-card {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 24px;
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .archive-card:hover {
+            border-color: rgba(212, 160, 18, 0.3);
+            transform: translateX(8px);
+        }
+        .archive-week {
+            flex-shrink: 0;
+            width: 130px;
+            text-align: center;
+        }
+        .archive-week-id {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .archive-week-date {
+            font-size: 12px;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+        .archive-content { flex: 1; }
+        .archive-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .archive-summary {
+            font-size: 14px;
+            color: var(--gray-300);
+        }
+        .archive-arrow {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s;
+        }
+        .archive-card:hover .archive-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .footer {
+            background: var(--black);
+            border-top: 1px solid rgba(212, 160, 18, 0.1);
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .footer-logo span { color: var(--gold); }
+        .footer-text {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+        
+        @media (max-width: 900px) {
+            .nav-menu, .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .mobile-menu { display: block; }
+            .archive-card { flex-direction: column; text-align: center; }
+            .archive-arrow { display: none; }
+        }
+        
+        /* Animations */
+        .header {
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(212, 160, 18, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 160, 18, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        .page-badge-dot {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .archive-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .archive-card:nth-child(1) { animation-delay: 0.1s; }
+        .archive-card:nth-child(2) { animation-delay: 0.2s; }
+        .archive-card:nth-child(3) { animation-delay: 0.3s; }
+        .archive-card:nth-child(4) { animation-delay: 0.4s; }
+        .archive-card:nth-child(5) { animation-delay: 0.5s; }
+        .archive-card:nth-child(6) { animation-delay: 0.6s; }
+        .archive-card:nth-child(n+7) { animation-delay: 0.7s; }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+            z-index: 1001;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-text">TAC<span>RAVEN</span></div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-toggle">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/tools.html#blackfeather" class="nav-dropdown-item">
+                            BlackFeather
+                            <span>Threat Intel Platform</span>
+                        </a>
+                        <a href="/tools.html#corvus" class="nav-dropdown-item">
+                            Corvus Engine
+                            <span>Log Conversion Utility</span>
+                        </a>
+                        <a href="/talonprep.html" class="nav-dropdown-item">
+                            TalonPrep
+                            <span>Security+ Test Prep</span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="/tools.html" class="nav-link">Tools</a></li>
+                <li><a href="/threat-map.html" class="nav-link">Threat Map</a></li>
+                <li><a href="/intel/weekly/" class="nav-link active">Weekly Reports</a></li>
+                <li><a href="/about.html" class="nav-link">About</a></li>
+                <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="/cyber-news.html" class="nav-link">News</a></li>
+            </ul>
+            <a href="/#contact" class="btn btn-primary nav-cta">Contact</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="/" class="mobile-nav-link">Home</a>
+        <a href="/tools.html#blackfeather" class="mobile-nav-link">BlackFeather</a>
+        <a href="/tools.html#corvus" class="mobile-nav-link">Corvus Engine</a>
+        <a href="/talonprep.html" class="mobile-nav-link">TalonPrep</a>
+        <a href="/tools.html" class="mobile-nav-link">Tools</a>
+        <a href="/threat-map.html" class="mobile-nav-link">Threat Map</a>
+        <a href="/intel/weekly/" class="mobile-nav-link">Weekly Reports</a>
+        <a href="/about.html" class="mobile-nav-link">About</a>
+        <a href="/pricing.html" class="mobile-nav-link">Pricing</a>
+        <a href="/cyber-news.html" class="mobile-nav-link">News</a>
+        <a href="/#contact" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="page-title">
+                <div class="page-badge">
+                    <span class="page-badge-dot"></span>
+                    Threat Analysis Archive
+                </div>
+                <h1>Weekly <span>Threat Reports</span></h1>
+                <p class="subtitle">Structured weekly threat assessments using public data sources</p>
+                
+                <!-- Section Navigation -->
+                <div class="section-nav-bar">
+                    <a href="/intel/weekly/" class="section-nav-item active">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                        Report Archive
+                    </a>
+                    <a href="/intel/methodology.html" class="section-nav-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        Methodology
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="archive-section">
+        <div class="container">
+            <div class="archive-grid">
+                <a href="2026-W04.html" class="archive-card">
+                    <div class="archive-week">
+                        <div class="archive-week-id">JAN W04</div>
+                        <div class="archive-week-date">January 20, 2026</div>
+                    </div>
+                    <div class="archive-content">
+                        <h2 class="archive-title">January 2026, Week 04 Threat Report</h2>
+                        <p class="archive-summary">5 KEV additions, 10 C2 indicators</p>
+                    </div>
+                    <svg class="archive-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">TAC<span>RAVEN</span> SOLUTIONS</div>
+            <p class="footer-text">Structured Threat Analysis Platform</p>
+        </div>
+    </footer>
+    
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <script>
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+    </script>
+    <script src="/analytics-events.js"></script>
+</body>
+</html>

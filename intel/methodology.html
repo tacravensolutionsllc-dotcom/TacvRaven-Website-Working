@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PEYM947EG8');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytical Methodology | TacRaven Solutions</title>
+    <meta name="description" content="TacRaven weekly threat report methodology: public data sources, structured analytical techniques, MITRE ATT&CK mapping approach, and confidence assessment framework.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --black-lighter: #111111;
+            --black-card: #161616;
+            --gold: #d4a012;
+            --gold-light: #f5c842;
+            --gold-dark: #9a7209;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-300: #a0a0a0;
+            --gray-500: #6b6b6b;
+            --gray-700: #333333;
+            --red: #dc2626;
+            --green: #22c55e;
+            --blue: #3b82f6;
+            --font-display: 'Orbitron', sans-serif;
+            --font-heading: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navigation - Matching Main Site */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+        .nav-logo-text span { color: var(--gold); }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            text-decoration: none;
+            padding: 10px 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--white); }
+        .nav-link:hover::after, .nav-link.active::after { width: 30px; }
+        
+        /* Nav Dropdown */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            background: none;
+            border: none;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-dropdown-toggle:hover { color: var(--white); }
+        .nav-dropdown-toggle svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s ease;
+        }
+        .nav-dropdown:hover .nav-dropdown-toggle svg { transform: rotate(180deg); }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 240px;
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            color: var(--gray-300);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .nav-dropdown-item:hover {
+            background: rgba(212, 160, 18, 0.1);
+            color: var(--gold);
+        }
+        .nav-dropdown-item span {
+            display: block;
+            font-size: 12px;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+        
+        /* CTA Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 160, 18, 0.3);
+        }
+        .nav-cta { padding: 10px 24px; font-size: 14px; }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--black);
+            z-index: 999;
+            padding: 100px 24px 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-nav-link {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .mobile-nav-link:hover { color: var(--gold); }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(180deg, var(--black-light) 0%, var(--black) 100%);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+            padding: 40px 0;
+            padding-top: 100px; /* Account for fixed nav */
+        }
+        
+        .page-title { text-align: center; }
+        .page-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: 50px;
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        h1 span { color: var(--gold); }
+        .subtitle {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            color: var(--gray-300);
+        }
+        
+        /* Section Navigation Bar */
+        .section-nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .section-nav-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-300);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .section-nav-item svg {
+            width: 18px;
+            height: 18px;
+        }
+        .section-nav-item:hover {
+            border-color: rgba(212, 160, 18, 0.5);
+            color: var(--white);
+        }
+        .section-nav-item.active {
+            background: rgba(212, 160, 18, 0.1);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        
+        /* Content */
+        .content {
+            padding: 60px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section:last-child { margin-bottom: 0; }
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        
+        p {
+            font-size: 15px;
+            color: var(--gray-100);
+            margin-bottom: 16px;
+        }
+        p:last-child { margin-bottom: 0; }
+        
+        .highlight-box {
+            background: var(--black-card);
+            border-left: 3px solid var(--gold);
+            padding: 20px 24px;
+            margin: 24px 0;
+        }
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--gray-100);
+        }
+        
+        /* Source Cards */
+        .source-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .source-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 28px;
+        }
+        .source-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .source-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 160, 18, 0.1);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: 8px;
+        }
+        .source-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+        }
+        .source-name {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .source-desc {
+            font-size: 14px;
+            color: var(--gray-300);
+            margin-bottom: 16px;
+        }
+        .source-details {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+        .source-details strong {
+            color: var(--gray-300);
+        }
+        .source-url {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .source-url:hover {
+            text-decoration: underline;
+        }
+        
+        /* Technique Cards */
+        .technique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .technique-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px;
+        }
+        .technique-name {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .technique-desc {
+            font-size: 13px;
+            color: var(--gray-300);
+        }
+        
+        /* Confidence Table */
+        .confidence-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+        .confidence-table th,
+        .confidence-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+        .confidence-table th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+        .confidence-table td {
+            color: var(--gray-100);
+        }
+        .conf-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 1px;
+            border-radius: 3px;
+        }
+        .conf-high {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+            border: 1px solid var(--green);
+        }
+        .conf-moderate {
+            background: rgba(212, 160, 18, 0.2);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+        }
+        .conf-low {
+            background: rgba(107, 114, 128, 0.2);
+            color: var(--gray-300);
+            border: 1px solid var(--gray-500);
+        }
+        
+        /* MITRE section */
+        .mitre-approach {
+            background: var(--black-lighter);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            padding: 28px;
+            margin-top: 24px;
+        }
+        .mitre-approach h4 {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .mitre-list {
+            list-style: none;
+        }
+        .mitre-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+            color: var(--gray-100);
+        }
+        .mitre-list li:last-child { border-bottom: none; }
+        .mitre-list li::before {
+            content: '→';
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--black);
+            border-top: 1px solid rgba(212, 160, 18, 0.1);
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .footer-logo span { color: var(--gold); }
+        .footer-text {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+        .footer-links {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        .footer-links a {
+            font-size: 13px;
+            color: var(--gray-300);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        
+        @media (max-width: 900px) {
+            .nav-menu, .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .mobile-menu { display: block; }
+            .confidence-table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-text">TAC<span>RAVEN</span></div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-toggle">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/tools.html#blackfeather" class="nav-dropdown-item">
+                            BlackFeather
+                            <span>Threat Intel Platform</span>
+                        </a>
+                        <a href="/tools.html#corvus" class="nav-dropdown-item">
+                            Corvus Engine
+                            <span>Log Conversion Utility</span>
+                        </a>
+                        <a href="/talonprep.html" class="nav-dropdown-item">
+                            TalonPrep
+                            <span>Security+ Test Prep</span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="/tools.html" class="nav-link">Tools</a></li>
+                <li><a href="/threat-map.html" class="nav-link">Threat Map</a></li>
+                <li><a href="/intel/weekly/" class="nav-link active">Weekly Reports</a></li>
+                <li><a href="/about.html" class="nav-link">About</a></li>
+                <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="/cyber-news.html" class="nav-link">News</a></li>
+            </ul>
+            <a href="/#contact" class="btn btn-primary nav-cta">Contact</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="/" class="mobile-nav-link">Home</a>
+        <a href="/tools.html#blackfeather" class="mobile-nav-link">BlackFeather</a>
+        <a href="/tools.html#corvus" class="mobile-nav-link">Corvus Engine</a>
+        <a href="/talonprep.html" class="mobile-nav-link">TalonPrep</a>
+        <a href="/tools.html" class="mobile-nav-link">Tools</a>
+        <a href="/threat-map.html" class="mobile-nav-link">Threat Map</a>
+        <a href="/intel/weekly/" class="mobile-nav-link">Weekly Reports</a>
+        <a href="/about.html" class="mobile-nav-link">About</a>
+        <a href="/pricing.html" class="mobile-nav-link">Pricing</a>
+        <a href="/cyber-news.html" class="mobile-nav-link">News</a>
+        <a href="/#contact" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="page-title">
+                <div class="page-badge">Documentation</div>
+                <h1>Analytical <span>Methodology</span></h1>
+                <p class="subtitle">How we produce weekly threat reports</p>
+                
+                <!-- Section Navigation -->
+                <div class="section-nav-bar">
+                    <a href="/intel/weekly/" class="section-nav-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                        Report Archive
+                    </a>
+                    <a href="/intel/methodology.html" class="section-nav-item active">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        Methodology
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="content">
+        <div class="container">
+            <!-- Overview -->
+            <section class="section">
+                <div class="section-label">Overview</div>
+                <h2 class="section-title">Assessment Philosophy</h2>
+                <p>TacRaven's weekly threat reports are designed to provide actionable, defensible assessments using structured analytical techniques. Our goal is to move beyond simple aggregation toward genuine analysis that helps defenders prioritize resources and make informed decisions.</p>
+                
+                <div class="highlight-box">
+                    <p><strong>Key Principle:</strong> Every assessment includes explicit confidence levels, documented assumptions, and transparent methodology. We distinguish clearly between observed facts and analytical judgments.</p>
+                </div>
+                
+                <p>Reports are generated automatically every Sunday evening (US Eastern) and published Monday morning, giving security teams a fresh intelligence picture to start their week.</p>
+            </section>
+            
+            <!-- Data Sources -->
+            <section class="section">
+                <div class="section-label">Data Sources</div>
+                <h2 class="section-title">Public Data Sources</h2>
+                <p>We pull from two primary sources, each providing different visibility into the threat landscape:</p>
+                
+                <div class="source-grid">
+                    <div class="source-card">
+                        <div class="source-header">
+                            <div class="source-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <h3 class="source-name">CISA Known Exploited Vulnerabilities (KEV)</h3>
+                        </div>
+                        <p class="source-desc">The authoritative catalog of vulnerabilities confirmed to be actively exploited in the wild. CISA adds entries only when they have credible evidence of exploitation, making this our highest-confidence source for exploitation activity.</p>
+                        <p class="source-details">
+                            <strong>Update Frequency:</strong> Multiple times per week<br>
+                            <strong>Data Quality:</strong> High — government-verified exploitation evidence<br>
+                            <strong>Limitations:</strong> May lag behind initial exploitation; focused on US federal relevance
+                        </p>
+                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" class="source-url" target="_blank" rel="noopener">→ CISA KEV Catalog</a>
+                    </div>
+                    
+                    <div class="source-card">
+                        <div class="source-header">
+                            <div class="source-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="2" y1="12" x2="22" y2="12"/>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                            </div>
+                            <h3 class="source-name">abuse.ch Feodo Tracker</h3>
+                        </div>
+                        <p class="source-desc">Tracks command-and-control (C2) infrastructure for major botnet families including Emotet, QakBot, IcedID, and others. Provides IP addresses, ports, malware family attribution, and activity status.</p>
+                        <p class="source-details">
+                            <strong>Update Frequency:</strong> Near real-time<br>
+                            <strong>Data Quality:</strong> High — community-verified with researcher attribution<br>
+                            <strong>Limitations:</strong> Focused on specific malware families; may miss emerging threats
+                        </p>
+                        <a href="https://feodotracker.abuse.ch/" class="source-url" target="_blank" rel="noopener">→ Feodo Tracker</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Weekly Snapshot Process -->
+            <section class="section">
+                <div class="section-label">Process</div>
+                <h2 class="section-title">Weekly Snapshot Creation</h2>
+                <p>Every Sunday evening, our automated pipeline performs the following steps:</p>
+                
+                <ol style="margin-left: 24px; margin-top: 16px; color: var(--gray-100);">
+                    <li style="margin-bottom: 12px;"><strong>Data Collection:</strong> Fresh pulls from both sources with timestamps</li>
+                    <li style="margin-bottom: 12px;"><strong>Normalization:</strong> Converting disparate formats into a unified JSON schema</li>
+                    <li style="margin-bottom: 12px;"><strong>Deduplication:</strong> Removing duplicate indicators across sources</li>
+                    <li style="margin-bottom: 12px;"><strong>Enrichment:</strong> Adding geographic data, malware family context, and MITRE mappings</li>
+                    <li style="margin-bottom: 12px;"><strong>Analysis:</strong> Running structured analytical techniques to generate assessments</li>
+                    <li style="margin-bottom: 12px;"><strong>Report Generation:</strong> Rendering final HTML with all sections</li>
+                </ol>
+                
+                <div class="highlight-box">
+                    <p>The raw weekly snapshot (JSON) is preserved alongside the HTML report, enabling trend analysis and historical comparisons over time.</p>
+                </div>
+            </section>
+            
+            <!-- Analytical Techniques -->
+            <section class="section">
+                <div class="section-label">Analytical Framework</div>
+                <h2 class="section-title">Structured Analytical Techniques</h2>
+                <p>We employ standardized analytical methods to reduce bias and improve rigor:</p>
+                
+                <div class="technique-grid">
+                    <div class="technique-card">
+                        <h3 class="technique-name">Key Assumptions Check (KAC)</h3>
+                        <p class="technique-desc">Explicitly lists the assumptions underlying each assessment and evaluates their strength based on available evidence. Helps identify where analysis could be wrong.</p>
+                    </div>
+                    
+                    <div class="technique-card">
+                        <h3 class="technique-name">Analysis of Competing Hypotheses (Mini-ACH)</h3>
+                        <p class="technique-desc">Tests multiple explanations for observed data by weighing evidence for and against each hypothesis. Prevents premature convergence on a single narrative.</p>
+                    </div>
+                    
+                    <div class="technique-card">
+                        <h3 class="technique-name">Confidence Level Framework</h3>
+                        <p class="technique-desc">Applies standardized confidence levels (High/Moderate/Low) with explicit rationale, making analytical uncertainty transparent to the reader.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Confidence Levels -->
+            <section class="section">
+                <div class="section-label">Standards</div>
+                <h2 class="section-title">Confidence Level Definitions</h2>
+                <p>We use three standardized confidence levels to communicate analytical certainty:</p>
+                
+                <table class="confidence-table">
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Definition</th>
+                            <th>Evidence Standard</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="conf-badge conf-high">High</span></td>
+                            <td>Assessment is well-supported by multiple authoritative sources with strong corroboration</td>
+                            <td>Multiple independent sources; verified exploitation; clear patterns</td>
+                        </tr>
+                        <tr>
+                            <td><span class="conf-badge conf-moderate">Moderate</span></td>
+                            <td>Assessment is reasonably supported but has some gaps or relies on inferential logic</td>
+                            <td>Single authoritative source; some corroboration; plausible reasoning</td>
+                        </tr>
+                        <tr>
+                            <td><span class="conf-badge conf-low">Low</span></td>
+                            <td>Assessment is based on limited data, fragmented sources, or significant assumptions</td>
+                            <td>Limited data; weak corroboration; heavy reliance on inference</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- MITRE Mapping -->
+            <section class="section">
+                <div class="section-label">Framework</div>
+                <h2 class="section-title">MITRE ATT&CK Mapping</h2>
+                <p>We map observed indicators to the MITRE ATT&CK framework to provide tactical context. Our approach prioritizes accuracy over completeness:</p>
+                
+                <div class="mitre-approach">
+                    <h4>Mapping Methodology</h4>
+                    <ul class="mitre-list">
+                        <li><strong>Curated Malware Mappings:</strong> Known malware families (Emotet, QakBot, etc.) are mapped using our curated database of confirmed TTPs</li>
+                        <li><strong>KEV Override Mappings:</strong> Specific CVEs with documented exploitation patterns have custom technique assignments</li>
+                        <li><strong>Default Inference:</strong> When no curated mapping exists, we apply conservative defaults (e.g., KEV vulnerabilities → T1190 Exploit Public-Facing Application)</li>
+                        <li><strong>Transparency:</strong> Inferred mappings are clearly labeled as such in reports</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>Continuous Improvement:</strong> Our mapping files are version-controlled and updated as new intelligence becomes available. Contributors can submit improvements via our GitHub repository.</p>
+                </div>
+            </section>
+            
+            <!-- Limitations -->
+            <section class="section">
+                <div class="section-label">Caveats</div>
+                <h2 class="section-title">Known Limitations</h2>
+                <p>No analytical product is perfect. Key limitations to consider:</p>
+                
+                <ul style="margin-left: 24px; margin-top: 16px; color: var(--gray-300);">
+                    <li style="margin-bottom: 12px;"><strong>Geographic Attribution:</strong> IP geolocation reflects hosting infrastructure, not necessarily threat actor origin or target</li>
+                    <li style="margin-bottom: 12px;"><strong>Publication Lag:</strong> CISA KEV additions may lag behind initial exploitation by days or weeks</li>
+                    <li style="margin-bottom: 12px;"><strong>C2 Volatility:</strong> Botnet infrastructure changes rapidly; status reflects snapshot at collection time</li>
+                    <li style="margin-bottom: 12px;"><strong>Inference Uncertainty:</strong> MITRE mappings marked "inferred" use default logic and may not reflect actual adversary TTPs</li>
+                    <li style="margin-bottom: 12px;"><strong>Sector Blindness:</strong> Sources don't indicate targeted sectors; all observations are treated as general threats</li>
+                </ul>
+            </section>
+            
+            <!-- Data Licensing -->
+            <section class="section">
+                <div class="section-label">Legal</div>
+                <h2 class="section-title">Data Source Licensing</h2>
+                <p>All data sources used in these reports are publicly available and appropriately licensed for use:</p>
+                
+                <div class="source-grid">
+                    <div class="source-card">
+                        <div class="source-header">
+                            <h3 class="source-name">CISA KEV Catalog</h3>
+                        </div>
+                        <p class="source-desc"><strong>License:</strong> Public Domain (U.S. Government Work Product)</p>
+                        <p class="source-details">As a work of the U.S. federal government, the KEV catalog is not subject to copyright protection and is freely available for any use without restriction.</p>
+                    </div>
+                    
+                    <div class="source-card">
+                        <div class="source-header">
+                            <h3 class="source-name">abuse.ch Feodo Tracker</h3>
+                        </div>
+                        <p class="source-desc"><strong>License:</strong> CC0 1.0 Universal (Public Domain Dedication)</p>
+                        <p class="source-details">abuse.ch releases their threat intelligence data under CC0, waiving all copyright and related rights. Data may be used freely for any purpose without attribution requirement (though we provide it for transparency).</p>
+                        <a href="https://abuse.ch/faq/" class="source-url" target="_blank" rel="noopener">→ abuse.ch FAQ</a>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>Disclaimer:</strong> These reports are based entirely on publicly available information. TacRaven Solutions makes no claims of government affiliation and does not produce classified or official intelligence products. All analysis represents our own assessment based on public data.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">TAC<span>RAVEN</span> SOLUTIONS</div>
+            <p class="footer-text">Structured Threat Analysis Platform</p>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/intel/weekly/">Report Archive</a>
+                <a href="/#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+    </script>
+    <script src="/analytics-events.js"></script>
+</body>
+</html>
