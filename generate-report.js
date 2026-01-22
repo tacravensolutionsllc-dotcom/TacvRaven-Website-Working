@@ -362,13 +362,30 @@ function renderReport(reportData) {
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weekly Threat Report - ${metadata.monthName} ${metadata.week.year}, Week ${String(metadata.week.week).padStart(2, '0')} | TacRaven Solutions</title>
-    <meta name="description" content="TacRaven weekly threat report for ${metadata.monthName} ${metadata.week.year}, Week ${String(metadata.week.week).padStart(2, '0')}. CISA KEV analysis, MITRE ATT&CK mapping, and structured analytical assessment.">
+    <title>Weekly Cybersecurity Threat Report - ${metadata.monthName} ${metadata.week.year}, Week ${String(metadata.week.week).padStart(2, '0')} | TacRaven Solutions</title>
+    <meta name="description" content="TacRaven weekly cybersecurity threat report for ${metadata.monthName} ${metadata.week.year}, Week ${String(metadata.week.week).padStart(2, '0')}. CISA KEV analysis, MITRE ATT&CK mapping, and structured analytical assessment.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tacravensolutions.com/intel/weekly/${metadata.week.year}-W${String(metadata.week.week).padStart(2, '0')}.html">
+    <meta property="og:title" content="Weekly Cybersecurity Threat Report - ${metadata.monthName} ${metadata.week.year}, Week ${String(metadata.week.week).padStart(2, '0')}">
+    <meta property="og:description" content="${stats.kevCount} new CISA KEV vulnerabilities, ${stats.ransomwareCount} linked to ransomware campaigns. Includes MITRE ATT&CK mapping and structured analytical assessment.">
+    <meta property="og:image" content="https://tacravensolutions.com/images/threat-report-og.png">
+    <meta property="og:site_name" content="TacRaven Solutions">
+    <meta property="article:published_time" content="${metadata.generated}">
+    <meta property="article:section" content="Threat Intelligence">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Weekly Cybersecurity Threat Report - ${metadata.monthName} ${metadata.week.year}, Week ${String(metadata.week.week).padStart(2, '0')}">
+    <meta name="twitter:description" content="${stats.kevCount} new KEV vulnerabilities, ${stats.ransomwareCount} linked to ransomware. MITRE ATT&CK mapping included.">
+    <meta name="twitter:image" content="https://tacravensolutions.com/images/threat-report-og.png">
+    
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 ${generateStyles()}
 </head>
 <body>
@@ -381,20 +398,67 @@ ${generateStyles()}
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 Back to Archive
             </a>
-            <div class="report-title">
+            <div class="report-title-section">
                 <div class="report-badge">
                     <span class="report-badge-dot"></span>
-                    Weekly Threat Report
+                    Weekly Cybersecurity Threat Report
                 </div>
-                <h1>${metadata.monthName} <span>Week ${String(metadata.week.week).padStart(2, '0')}</span></h1>
-                <p class="report-date">${dateStr}</p>
+                <h1 class="report-title">
+                    <span class="report-title-date">${metadata.monthName} ${metadata.week.year}, Week ${String(metadata.week.week).padStart(2, '0')}</span>
+                    <span class="report-title-name">Cybersecurity Threat Report</span>
+                </h1>
+                <p class="report-meta">Generated: ${metadata.generated}</p>
+                
+                <!-- Previous / Next Report Navigation -->
+                <div class="report-nav-links">
+                    <a href="/intel/weekly/${metadata.week.year}-W${String(metadata.week.week - 1).padStart(2, '0')}.html" class="report-nav-link${metadata.week.week <= 1 ? ' disabled' : ''}">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        <div class="report-nav-link-info">
+                            <span class="report-nav-link-label">Previous</span>
+                            <span class="report-nav-link-title">Week ${String(metadata.week.week - 1).padStart(2, '0')}</span>
+                        </div>
+                    </a>
+                    <div class="report-nav-center">
+                        <span class="report-nav-current">${dateStr}</span>
+                    </div>
+                    <a href="/intel/weekly/${metadata.week.year}-W${String(metadata.week.week + 1).padStart(2, '0')}.html" class="report-nav-link disabled">
+                        <div class="report-nav-link-info">
+                            <span class="report-nav-link-label">Next</span>
+                            <span class="report-nav-link-title">Week ${String(metadata.week.week + 1).padStart(2, '0')}</span>
+                        </div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
     
+    <!-- Disclaimer Banner -->
+    <div class="disclaimer-banner">
+        <div class="disclaimer-content">
+            <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span class="disclaimer-text">
+                This report is <strong>automatically generated every Monday at 4:30 AM EST</strong> using live data from CISA KEV, Feodo Tracker, and security news sources.
+            </span>
+            <span class="disclaimer-highlight">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                100% Free
+            </span>
+        </div>
+    </div>
+    
     <main>
         <!-- BLUF Section -->
-        <section class="section">
+        <section class="section anchor-target" id="bluf">
             <div class="container">
                 <div class="section-label">Bottom Line Up Front</div>
                 <h2 class="section-title">Key Takeaways</h2>
@@ -436,16 +500,63 @@ ${blufItems}
         </section>
         
         <!-- Executive Summary -->
-        <section class="section executive-summary">
+        <section class="section executive-summary anchor-target" id="executive-summary">
             <div class="container">
                 <div class="section-label">For Leadership</div>
                 <h2 class="section-title">Executive Summary</h2>
 ${execSummary}
+                
+                <!-- Export Options -->
+                <div class="export-bar" id="export-bar">
+                    <div class="export-header">
+                        <div class="export-title">
+                            <div class="export-title-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                            </div>
+                            <span class="export-title-text">Export <span>This Report</span></span>
+                        </div>
+                        <span class="export-free-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Always Free
+                        </span>
+                    </div>
+                    <div class="export-buttons">
+                        <button class="export-btn primary" onclick="downloadPDF()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="12" y1="18" x2="12" y2="12"/>
+                                <polyline points="9 15 12 18 15 15"/>
+                            </svg>
+                            Download PDF
+                        </button>
+                        <button class="export-btn" onclick="copyExecutiveSummary()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            Copy Summary
+                        </button>
+                        <button class="export-btn" onclick="copyCVEList()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                            </svg>
+                            Copy CVE List
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
         
         <!-- Week-over-Week Trends -->
-        <section class="section trend-analysis">
+        <section class="section trend-analysis anchor-target" id="trends">
             <div class="container">
                 <div class="section-label">Historical Context</div>
                 <h2 class="section-title">Week-over-Week Trends</h2>
@@ -757,7 +868,7 @@ ${h.evidenceAgainst.length > 0 ? h.evidenceAgainst.map(e => `                   
                                 </tr>`).join('\n');
     
     return `        <!-- Structured Analytical Techniques -->
-        <section class="section sat-section">
+        <section class="section sat-section anchor-target" id="sat-analysis">
             <div class="container">
                 <div class="section-label">Intelligence Analysis</div>
                 <h2 class="section-title">Structured Analytical Techniques</h2>
@@ -827,7 +938,7 @@ function generateMITRESection(data) {
                             </li>`).join('\n');
     
     return `        <!-- MITRE ATT&CK Section -->
-        <section class="section">
+        <section class="section anchor-target" id="mitre-attack">
             <div class="container">
                 <div class="section-label">Framework Mapping</div>
                 <h2 class="section-title">MITRE ATT&CK Summary</h2>
@@ -850,14 +961,24 @@ ${techniquesHtml}
 }
 
 function generateActionSection(data) {
-    // Patch priorities
+    // Get unique vendors for filter bar
+    const uniqueVendors = [...new Set(data.recentKEVs.slice(0, 5).map(k => k.vendorProject))].slice(0, 4);
+    
+    // Generate filter bar HTML
+    const filterBarHtml = `                            <div class="filter-bar">
+                                <button class="filter-btn active" data-filter="all">All</button>
+                                <button class="filter-btn" data-filter="ransomware">🔴 Ransomware</button>
+${uniqueVendors.map(v => `                                <button class="filter-btn" data-filter="${escapeHtml(v)}">${escapeHtml(v)}</button>`).join('\n')}
+                            </div>`;
+    
+    // Patch priorities with data attributes
     const patchHtml = data.recentKEVs.slice(0, 5).map(kev => {
         const isRansomware = data.ransomwareKEVs.some(r => r.cveID === kev.cveID);
         const coverage = data.newsCoverage[kev.cveID] || [];
         const buzzLevel = coverage.length >= 5 ? 'high' : (coverage.length >= 2 ? 'medium' : 'low');
         const buzzIcon = coverage.length >= 5 ? '🔥' : '📰';
         
-        return `                            <div class="patch-item">
+        return `                            <div class="patch-item" data-vendor="${escapeHtml(kev.vendorProject)}" data-ransomware="${isRansomware}">
                                 <div class="patch-header">
                                     <span class="patch-cve">${kev.cveID}</span>
                                     ${isRansomware ? '<span class="ransomware-tag">🔴 RANSOMWARE</span>' : ''}
@@ -888,7 +1009,7 @@ function generateActionSection(data) {
                                 </li>`;
     
     return `        <!-- Actionable Intelligence -->
-        <section class="section">
+        <section class="section anchor-target" id="actionable-intelligence">
             <div class="container">
                 <div class="section-label">Take Action</div>
                 <h2 class="section-title">Actionable Intelligence</h2>
@@ -902,6 +1023,7 @@ function generateActionSection(data) {
                             <h3 class="action-card-title">Patch Priorities</h3>
                         </div>
                         <div class="action-card-body">
+${filterBarHtml}
 ${patchHtml}
                         </div>
                     </div>
@@ -1294,19 +1416,520 @@ function generateStyles() {
         /* Progress Bar */
         .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light)); z-index: 1001; transition: width 0.1s ease-out; box-shadow: 0 0 10px var(--gold); }
         
+        /* ============================================
+           NEW ENHANCED STYLES 
+           ============================================ */
+        
+        /* Disclaimer Banner */
+        .disclaimer-banner { 
+            background: linear-gradient(90deg, rgba(212, 160, 18, 0.1) 0%, rgba(212, 160, 18, 0.05) 50%, rgba(212, 160, 18, 0.1) 100%);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+            padding: 12px 0;
+        }
+        .disclaimer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .disclaimer-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .disclaimer-text {
+            color: var(--gray-300);
+            font-size: 13px;
+        }
+        .disclaimer-text strong {
+            color: var(--gold);
+        }
+        .disclaimer-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .disclaimer-highlight svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        /* Export Bar */
+        .export-bar {
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(22, 22, 22, 0.8) 100%);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+        .export-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .export-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .export-title-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 160, 18, 0.1);
+            border-radius: 8px;
+        }
+        .export-title-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+        }
+        .export-title-text {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .export-title-text span {
+            color: var(--gold);
+        }
+        .export-free-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+        .export-free-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+        .export-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .export-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--gray-300);
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .export-btn:hover {
+            background: var(--black-lighter);
+            border-color: rgba(212, 160, 18, 0.3);
+            color: var(--white);
+        }
+        .export-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        .export-btn.primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-color: transparent;
+            color: var(--black);
+        }
+        .export-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 160, 18, 0.3);
+        }
+        
+        /* Report Navigation Links */
+        .report-nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .report-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--gray-300);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .report-nav-link:hover:not(.disabled) {
+            background: var(--black-lighter);
+            border-color: rgba(212, 160, 18, 0.3);
+            color: var(--gold);
+        }
+        .report-nav-link.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .report-nav-link svg {
+            width: 16px;
+            height: 16px;
+        }
+        .report-nav-link-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .report-nav-link-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-500);
+        }
+        .report-nav-link-title {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .report-nav-center {
+            padding: 0 24px;
+        }
+        .report-nav-current {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+        
+        /* Report Title (Stacked Layout) */
+        .report-title-section {
+            text-align: center;
+        }
+        .report-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .report-title-date {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1.2;
+        }
+        .report-title-name {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.3;
+        }
+        .report-meta {
+            color: var(--gray-500);
+            font-size: 13px;
+        }
+        
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 8px 16px;
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: var(--gray-300);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            border-color: rgba(212, 160, 18, 0.3);
+            color: var(--white);
+        }
+        .filter-btn.active {
+            background: rgba(212, 160, 18, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        
+        /* Mobile Table Cards */
+        .table-card-mobile {
+            display: none;
+        }
+        .table-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .table-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .table-card-title {
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .table-card-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+        .table-card-row:last-child {
+            border-bottom: none;
+        }
+        .table-card-label {
+            color: var(--gray-500);
+        }
+        .table-card-value {
+            color: var(--gray-100);
+        }
+        
+        /* Anchor Links / Deep Linking */
+        .anchor-target {
+            scroll-margin-top: 100px;
+        }
+        .anchor-link {
+            color: var(--gold);
+            text-decoration: none;
+            opacity: 0;
+            margin-left: 8px;
+            font-size: 0.8em;
+            transition: opacity 0.2s ease;
+        }
+        .section-title:hover .anchor-link,
+        .anchor-link:focus {
+            opacity: 1;
+        }
+        .linkable-item:target {
+            animation: highlight-pulse 2s ease;
+        }
+        @keyframes highlight-pulse {
+            0%, 100% { background-color: transparent; }
+            25% { background-color: rgba(212, 160, 18, 0.2); }
+            75% { background-color: rgba(212, 160, 18, 0.1); }
+        }
+        
+        /* Collapsible Sections */
+        .collapsible {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--black-card);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .collapsible-header:hover {
+            background: var(--black-lighter);
+        }
+        .collapsible-header svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gray-500);
+            transition: transform 0.3s ease;
+        }
+        .collapsible.open .collapsible-header svg {
+            transform: rotate(180deg);
+        }
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .collapsible.open .collapsible-content {
+            max-height: 2000px;
+        }
+        .collapsible-inner {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: 8px;
+            padding: 16px 24px;
+            color: var(--white);
+            font-size: 14px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            z-index: 1002;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast-success {
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+        .toast-success::before {
+            content: '✓';
+            margin-right: 8px;
+            color: #22c55e;
+        }
+        
+        /* Professional Print Stylesheet */
+        @media print {
+            /* Hide navigation and interactive elements */
+            .nav, .mobile-menu, .progress-bar, .export-bar, .report-nav-links, 
+            .back-link, .filter-bar, .toast { display: none !important; }
+            
+            /* Reset background and colors for printing */
+            body { 
+                background: white !important; 
+                color: #111 !important; 
+                font-size: 11pt;
+            }
+            .container { max-width: 100%; padding: 0; }
+            
+            /* Section styling */
+            .section { 
+                padding: 24px 0; 
+                border-bottom: 1px solid #ddd !important;
+                page-break-inside: avoid;
+            }
+            .section-label { color: #9a7209 !important; }
+            .section-title { color: #111 !important; font-size: 18pt; }
+            
+            /* Card styling */
+            .exec-card, .trend-card, .driver-card, .source-card, .emerging-card,
+            .assessment-card, .mitre-card, .action-card, .bluf-item, .block-item {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+                color: #111 !important;
+            }
+            
+            /* Text colors */
+            .bluf-text, .exec-rationale, .exec-detail, .driver-desc, 
+            .source-desc, .emerging-desc, .sat-purpose, .hunt-suggestion,
+            .patch-vendor, .trend-average, .mitre-name { color: #333 !important; }
+            
+            /* Gold accents to dark gold for print */
+            .threat-stat-value, .driver-rank, .patch-cve, .mitre-id, .mitre-count,
+            .block-ip, .hunt-technique { color: #9a7209 !important; }
+            
+            /* Header styling */
+            .report-header { 
+                background: #f5f5f5 !important; 
+                border-bottom: 2px solid #9a7209 !important;
+                padding: 24px 0;
+            }
+            .report-title-date { color: #9a7209 !important; font-size: 24pt; }
+            .report-title-name { color: #111 !important; font-size: 18pt; }
+            .report-badge { 
+                background: #f5f5f5 !important; 
+                border-color: #9a7209 !important;
+                color: #9a7209 !important;
+            }
+            
+            /* Footer */
+            .footer { 
+                background: #f5f5f5 !important;
+                border-top: 2px solid #9a7209 !important;
+            }
+            .footer-logo { color: #111 !important; }
+            .footer-logo span { color: #9a7209 !important; }
+            
+            /* TacRaven branding in print header */
+            .report-header::before {
+                content: 'TACRAVEN SOLUTIONS - Weekly Threat Intelligence Report';
+                display: block;
+                font-family: var(--font-display);
+                font-size: 10pt;
+                color: #666;
+                text-align: center;
+                margin-bottom: 16px;
+            }
+            
+            /* Page breaks */
+            .sat-section, .mitre-section, .action-section { page-break-before: always; }
+            
+            /* Table styling */
+            .kac-table, .ach-table { font-size: 10pt; }
+            .kac-table th, .ach-table th { background: #eee !important; color: #111 !important; }
+            .kac-table td, .ach-table td { color: #333 !important; }
+            
+            /* Disclaimer banner */
+            .disclaimer-banner { display: none !important; }
+        }
+        
         /* Responsive */
         @media (max-width: 1024px) {
             .exec-grid, .trend-grid, .action-grid, .sources-grid { grid-template-columns: 1fr; }
             .mitre-grid { grid-template-columns: 1fr; }
             .threat-meter { flex-direction: column; text-align: center; }
             .threat-stats { flex-wrap: wrap; justify-content: center; }
+            .report-nav-links { gap: 12px; }
+            .report-nav-center { display: none; }
+            .export-buttons { justify-content: center; }
         }
         @media (max-width: 768px) {
             .nav-menu, .nav-cta { display: none; }
             .mobile-menu-btn { display: flex; }
-            .report-title h1 { font-size: 32px; }
+            .report-title-date { font-size: 28px; }
+            .report-title-name { font-size: 20px; }
             .block-grid { grid-template-columns: 1fr; }
             .emerging-grid { grid-template-columns: 1fr; }
+            .disclaimer-content { flex-direction: column; text-align: center; }
+            .export-bar { padding: 16px; }
+            .export-header { flex-direction: column; text-align: center; }
+            .export-buttons { flex-direction: column; }
+            .export-btn { justify-content: center; }
+            .report-nav-link { padding: 10px 16px; }
+            .report-nav-link-info { display: none; }
+            /* Show mobile cards, hide desktop tables on mobile */
+            .table-card-mobile { display: block; }
+            .kac-table, .ach-table { display: none; }
         }
     </style>`;
 }
@@ -1374,7 +1997,7 @@ function generateScripts() {
         // Copy to clipboard for block items
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                // Could add toast notification here
+                showToast('Copied to clipboard!');
             });
         }
         
@@ -1385,11 +2008,177 @@ function generateScripts() {
             };
         });
         
+        // ============================================
+        // EXPORT FUNCTIONS
+        // ============================================
+        
+        // Download PDF
+        function downloadPDF() {
+            showToast('Opening print dialog for PDF export...');
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        }
+        
+        // Copy Executive Summary
+        function copyExecutiveSummary() {
+            const execSection = document.querySelector('.executive-summary');
+            if (!execSection) {
+                showToast('Executive summary not found', 'error');
+                return;
+            }
+            
+            // Extract text content
+            const title = document.querySelector('.report-title-date')?.textContent || '';
+            const subtitle = document.querySelector('.report-title-name')?.textContent || '';
+            const execCards = execSection.querySelectorAll('.exec-card');
+            
+            let summaryText = '=== TACRAVEN SOLUTIONS ===\\n';
+            summaryText += title + ' - ' + subtitle + '\\n\\n';
+            summaryText += 'EXECUTIVE SUMMARY\\n';
+            summaryText += '─'.repeat(40) + '\\n\\n';
+            
+            execCards.forEach(card => {
+                const cardTitle = card.querySelector('.exec-card-title')?.textContent || '';
+                summaryText += cardTitle.toUpperCase() + ':\\n';
+                
+                const riskLevel = card.querySelector('.exec-risk-level')?.textContent;
+                if (riskLevel) {
+                    summaryText += 'Risk Level: ' + riskLevel + '\\n';
+                }
+                
+                const rationale = card.querySelector('.exec-rationale')?.textContent;
+                if (rationale) {
+                    summaryText += rationale + '\\n';
+                }
+                
+                const details = card.querySelectorAll('.exec-detail');
+                details.forEach(detail => {
+                    summaryText += detail.textContent + '\\n';
+                });
+                
+                summaryText += '\\n';
+            });
+            
+            navigator.clipboard.writeText(summaryText).then(() => {
+                showToast('Executive summary copied to clipboard!');
+            }).catch(() => {
+                showToast('Failed to copy', 'error');
+            });
+        }
+        
+        // Copy CVE List
+        function copyCVEList() {
+            const patchItems = document.querySelectorAll('.patch-item');
+            if (patchItems.length === 0) {
+                showToast('No CVEs found in this report', 'error');
+                return;
+            }
+            
+            let cveList = '=== TACRAVEN SOLUTIONS - CVE LIST ===\\n';
+            cveList += 'Generated: ' + new Date().toISOString().split('T')[0] + '\\n';
+            cveList += '─'.repeat(40) + '\\n\\n';
+            
+            patchItems.forEach(item => {
+                const cve = item.querySelector('.patch-cve')?.textContent || '';
+                const vendor = item.querySelector('.patch-vendor')?.textContent || '';
+                const due = item.querySelector('.patch-due')?.textContent || '';
+                const isRansomware = item.querySelector('.ransomware-tag') !== null;
+                
+                cveList += cve;
+                if (isRansomware) cveList += ' [RANSOMWARE]';
+                cveList += '\\n';
+                cveList += '  Vendor: ' + vendor.trim() + '\\n';
+                if (due) cveList += '  ' + due + '\\n';
+                cveList += '\\n';
+            });
+            
+            navigator.clipboard.writeText(cveList).then(() => {
+                showToast('CVE list copied to clipboard! (' + patchItems.length + ' CVEs)');
+            }).catch(() => {
+                showToast('Failed to copy', 'error');
+            });
+        }
+        
+        // Toast notification
+        function showToast(message, type = 'success') {
+            // Remove existing toast
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast toast-' + type;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            // Hide and remove toast
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+        
+        // ============================================
+        // CVE FILTER FUNCTIONALITY
+        // ============================================
+        
+        function initCVEFilters() {
+            const filterBar = document.querySelector('.filter-bar');
+            if (!filterBar) return;
+            
+            const filterBtns = filterBar.querySelectorAll('.filter-btn');
+            const patchItems = document.querySelectorAll('.patch-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.dataset.filter;
+                    
+                    patchItems.forEach(item => {
+                        if (filter === 'all') {
+                            item.style.display = 'block';
+                        } else if (filter === 'ransomware') {
+                            const isRansomware = item.dataset.ransomware === 'true';
+                            item.style.display = isRansomware ? 'block' : 'none';
+                        } else {
+                            const vendor = (item.dataset.vendor || '').toLowerCase();
+                            item.style.display = vendor.includes(filter.toLowerCase()) ? 'block' : 'none';
+                        }
+                    });
+                });
+            });
+        }
+        
+        // ============================================
+        // COLLAPSIBLE SECTIONS
+        // ============================================
+        
+        function initCollapsibles() {
+            document.querySelectorAll('.collapsible-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const collapsible = header.parentElement;
+                    collapsible.classList.toggle('open');
+                });
+            });
+        }
+        
         // Initialize on load
         document.addEventListener('DOMContentLoaded', () => {
             animateCounters();
             animateThreatRing();
             animateConfidenceBars();
+            initCVEFilters();
+            initCollapsibles();
         });
     </script>`;
 }
