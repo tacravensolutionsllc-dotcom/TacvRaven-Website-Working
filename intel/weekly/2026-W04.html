@@ -2205,23 +2205,35 @@
             }
         }
         
-        /* ========== PROFESSIONAL PRINT STYLES ========== */
+        /* ========== PROFESSIONAL PRINT STYLES - EXECUTIVE BRIEF (3 PAGES) ========== */
         @media print {
             /* Hide interactive/web-only elements */
             .progress-bar, .fab-container, .section-nav, .nav, .mobile-menu,
             .mobile-menu-btn, .section-nav-bar, .collapsible-icon, .anchor-link,
             .filter-bar, .export-bar, .report-nav-links, .table-card-mobile,
-            .toast { 
+            .toast, .collapsible, .disclaimer-banner { 
                 display: none !important; 
+            }
+            
+            /* HIDE NON-ESSENTIAL SECTIONS FOR EXECUTIVE BRIEF */
+            #trends,
+            #assessment,
+            #mitre,
+            #emerging,
+            #appendix,
+            .report-footer,
+            .trend-analysis,
+            .appendix {
+                display: none !important;
             }
             
             /* Show desktop tables in print */
             .table-desktop { display: table !important; }
+            .table-card-mobile { display: none !important; }
             
-            /* Ensure all content visible */
+            /* Ensure visible content is shown */
             .animate-on-scroll { opacity: 1 !important; transform: none !important; }
-            .collapsible-content { max-height: none !important; }
-            .patch-item.filtered-out { display: block !important; }
+            .collapsible-content { max-height: none !important; overflow: visible !important; }
             
             /* Color printing */
             * { 
@@ -2232,57 +2244,27 @@
             html, body {
                 background: white !important;
                 color: #1a1a1a !important;
-                font-size: 10pt;
-                line-height: 1.4;
+                font-size: 9pt;
+                line-height: 1.35;
             }
             
-            /* Page setup */
+            /* Page setup - tighter margins */
             @page {
                 size: letter;
-                margin: 0.6in 0.6in 0.9in 0.6in;
+                margin: 0.5in;
             }
             
-            /* TacRaven Branded Header */
-            body::before {
-                content: "TACRAVEN SOLUTIONS  ◆  Weekly Cybersecurity Threat Report  ◆  January 2026, Week 04";
-                display: block;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                padding: 10px 24px;
-                background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
-                color: #ffffff;
-                font-family: 'Rajdhani', sans-serif;
-                font-size: 9pt;
-                font-weight: 600;
-                letter-spacing: 2px;
-                text-align: center;
-                border-bottom: 3px solid #d4a012;
-            }
-            
-            /* TacRaven Branded Footer */
+            /* Remove pseudo-element headers/footers */
+            body::before,
             body::after {
-                content: "© 2026 TacRaven Solutions LLC  |  tacraven.com  |  UNCLASSIFIED";
-                display: block;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                padding: 10px 24px;
-                background: #0d0d0d;
-                color: #888888;
-                font-family: 'Inter', sans-serif;
-                font-size: 8pt;
-                text-align: center;
-                border-top: 2px solid #d4a012;
+                display: none !important;
             }
             
-            /* Report header styling */
+            /* Compact report header */
             .report-header {
                 background: white !important;
-                border-bottom: 2px solid #d4a012 !important;
-                padding: 50px 0 30px 0 !important;
+                border-bottom: 3px solid #d4a012 !important;
+                padding: 12px 0 16px 0 !important;
                 margin-bottom: 0 !important;
             }
             
@@ -2293,283 +2275,342 @@
             
             .report-title {
                 color: #0d0d0d !important;
-                font-size: 22pt !important;
-                margin-bottom: 8px !important;
+                font-size: 18pt !important;
+                margin-bottom: 4px !important;
             }
             
             .report-title-date {
                 color: #0d0d0d !important;
-                display: block !important;
+                display: inline !important;
             }
             
             .report-title-name {
                 color: #d4a012 !important;
-                display: block !important;
+                display: inline !important;
                 font-size: 18pt !important;
+            }
+            
+            .report-title-name::before {
+                content: " — ";
             }
             
             .report-badge {
                 background: #d4a012 !important;
                 color: #0d0d0d !important;
                 border: none !important;
-                font-size: 9pt !important;
-                padding: 4px 12px !important;
+                font-size: 8pt !important;
+                padding: 2px 10px !important;
             }
             
             .report-subtitle {
                 color: #4a4a4a !important;
-                font-size: 11pt !important;
+                font-size: 10pt !important;
+                margin-bottom: 4px !important;
             }
             
             .report-meta {
                 color: #666666 !important;
-                font-size: 9pt !important;
+                font-size: 8pt !important;
             }
             
-            /* Section styling */
+            /* Compact section styling */
             .section {
-                padding: 24px 0 !important;
-                page-break-inside: avoid;
+                padding: 12px 0 !important;
+                border-bottom: none !important;
             }
             
             .section::before {
+                content: none !important;
                 display: none !important;
             }
             
             .section-label {
-                color: #d4a012 !important;
+                color: #8B6914 !important;
                 font-size: 8pt !important;
-                margin-bottom: 4px !important;
+                font-weight: 700 !important;
+                margin-bottom: 2px !important;
+                background: #fef3c7 !important;
+                padding: 2px 8px !important;
+                display: inline-block !important;
+                border-left: 2px solid #d4a012 !important;
+            }
+            
+            .section-label::before {
+                display: none !important;
             }
             
             .section-title {
                 color: #0d0d0d !important;
-                font-size: 14pt !important;
-                margin-bottom: 16px !important;
-                padding-bottom: 8px !important;
-                border-bottom: 1px solid #e0e0e0 !important;
+                font-size: 13pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 10px !important;
+                padding-bottom: 4px !important;
+                border-bottom: 1px solid #d4a012 !important;
             }
             
-            /* Page breaks before major sections */
-            #assessment { page-break-before: always; }
-            #mitre { page-break-before: always; }
-            #actions { page-break-before: always; }
-            #appendix { page-break-before: always; }
+            /* Compact BLUF items */
+            .bluf-list {
+                gap: 6px !important;
+            }
             
-            /* Card styling */
-            .bluf-item, .driver-card, .exec-card, .trend-card, 
-            .mitre-card, .action-card, .patch-item, .emerging-card,
-            .appendix-card, .assessment-card, .collapsible {
+            .bluf-item {
                 background: #fafafa !important;
                 border: 1px solid #e0e0e0 !important;
                 border-left: 3px solid #d4a012 !important;
-                page-break-inside: avoid;
-                margin-bottom: 10px !important;
-                box-shadow: none !important;
+                padding: 8px 12px !important;
+                margin-bottom: 4px !important;
             }
             
-            /* Text colors for print */
-            .bluf-text, .driver-desc, .exec-detail, .exec-rationale,
-            .confidence-rationale, .patch-vendor, .collapsible-inner p,
-            .sat-purpose, p {
+            .bluf-icon {
+                display: none !important;
+            }
+            
+            .bluf-text {
                 color: #2a2a2a !important;
+                font-size: 9pt !important;
+                line-height: 1.3 !important;
             }
             
-            .driver-title, .exec-card-title, .assessment-card-title,
-            .mitre-card-title, .action-card-title, .appendix-card-title,
-            .collapsible-title, h3, h4 {
+            /* Compact Executive Summary */
+            .executive-summary {
+                page-break-after: auto;
+            }
+            
+            .exec-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+            
+            .exec-card {
+                background: #fafafa !important;
+                border: 1px solid #e0e0e0 !important;
+                border-left: 3px solid #d4a012 !important;
+                padding: 10px 12px !important;
+                margin-bottom: 0 !important;
+                page-break-inside: avoid;
+            }
+            
+            .exec-card-title {
                 color: #0d0d0d !important;
+                font-size: 10pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 6px !important;
             }
             
-            /* Severity badges */
+            .exec-detail {
+                color: #2a2a2a !important;
+                font-size: 8pt !important;
+                margin-bottom: 3px !important;
+                line-height: 1.3 !important;
+            }
+            
+            .exec-rationale {
+                color: #4a4a4a !important;
+                font-size: 8pt !important;
+                font-style: italic !important;
+            }
+            
+            /* Compact threat meter */
+            .threat-meter-container {
+                margin-bottom: 12px !important;
+            }
+            
+            .threat-meter {
+                background: #f8f8f8 !important;
+                border: 1px solid #e0e0e0 !important;
+                padding: 10px !important;
+            }
+            
+            .threat-level-text {
+                color: #0d0d0d !important;
+                font-size: 11pt !important;
+            }
+            
+            .threat-stat-value {
+                color: #0d0d0d !important;
+                font-size: 14pt !important;
+            }
+            
+            .threat-stat-label {
+                color: #666666 !important;
+                font-size: 7pt !important;
+            }
+            
+            /* Risk level badge */
+            .risk-badge-critical {
+                background: #fecaca !important;
+                color: #991b1b !important;
+                border: 1px solid #dc2626 !important;
+            }
+            
+            .risk-badge-elevated {
+                background: #fed7aa !important;
+                color: #9a3412 !important;
+                border: 1px solid #ea580c !important;
+            }
+            
+            /* Exec decisions - compact */
+            .exec-decisions {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            .exec-decisions li {
+                color: #2a2a2a !important;
+                font-size: 8pt !important;
+                padding: 4px 0 4px 16px !important;
+                border-bottom: 1px solid #f0f0f0 !important;
+            }
+            
+            .exec-decisions li::before {
+                content: '?' !important;
+                color: #d4a012 !important;
+                font-weight: 700 !important;
+                font-size: 10pt !important;
+            }
+            
+            .exec-decisions li:last-child {
+                border-bottom: none !important;
+            }
+            
+            /* Compact driver cards */
+            #threat-drivers .section-title {
+                margin-bottom: 8px !important;
+            }
+            
+            .drivers-grid {
+                gap: 6px !important;
+            }
+            
+            .driver-card {
+                background: #fafafa !important;
+                border: 1px solid #e0e0e0 !important;
+                border-left: 3px solid #d4a012 !important;
+                padding: 8px 12px !important;
+                margin-bottom: 0 !important;
+                page-break-inside: avoid;
+            }
+            
+            .driver-rank {
+                width: 24px !important;
+                height: 24px !important;
+                font-size: 10pt !important;
+                background: #fef3c7 !important;
+                border: 1px solid #d4a012 !important;
+                color: #8B6914 !important;
+            }
+            
+            .driver-title {
+                color: #0d0d0d !important;
+                font-size: 10pt !important;
+                margin-bottom: 2px !important;
+            }
+            
+            .driver-desc {
+                color: #4a4a4a !important;
+                font-size: 8pt !important;
+                margin-bottom: 4px !important;
+                line-height: 1.3 !important;
+            }
+            
+            .driver-severity {
+                font-size: 7pt !important;
+                padding: 1px 6px !important;
+            }
+            
+            /* Severity badges - compact */
             .severity-critical, .ransomware-tag {
                 background: #fecaca !important;
                 color: #991b1b !important;
                 border: 1px solid #dc2626 !important;
+                font-size: 7pt !important;
+                padding: 1px 5px !important;
             }
             
             .severity-high {
                 background: #fed7aa !important;
                 color: #9a3412 !important;
                 border: 1px solid #ea580c !important;
-            }
-            
-            .severity-medium {
-                background: #fef08a !important;
-                color: #854d0e !important;
-                border: 1px solid #ca8a04 !important;
-            }
-            
-            .kac-strong, .conf-high, .ach-confidence.conf-high {
-                background: #bbf7d0 !important;
-                color: #166534 !important;
-                border: 1px solid #22c55e !important;
-            }
-            
-            .kac-moderate, .conf-medium, .ach-confidence.conf-medium {
-                background: #fef3c7 !important;
-                color: #92400e !important;
-                border: 1px solid #d4a012 !important;
-            }
-            
-            .conf-low, .ach-confidence.conf-low {
-                background: #fecaca !important;
-                color: #991b1b !important;
-                border: 1px solid #dc2626 !important;
-            }
-            
-            /* Tables */
-            .kac-table, .ach-table, .source-reliability-table {
-                border-collapse: collapse !important;
-                width: 100% !important;
-                font-size: 8pt !important;
-            }
-            
-            .kac-table th, .ach-table th, .source-reliability-table th {
-                background: #f0f0f0 !important;
-                color: #0d0d0d !important;
-                border: 1px solid #d0d0d0 !important;
-                border-bottom: 2px solid #d4a012 !important;
-                padding: 8px !important;
-                font-weight: 600 !important;
-            }
-            
-            .kac-table td, .ach-table td, .source-reliability-table td {
-                border: 1px solid #e0e0e0 !important;
-                color: #2a2a2a !important;
-                padding: 8px !important;
-                vertical-align: top !important;
-            }
-            
-            /* Confidence bars */
-            .confidence-bar {
-                background: #e5e5e5 !important;
-                height: 5px !important;
-                border-radius: 3px !important;
-            }
-            
-            .confidence-fill.high { background: #22c55e !important; }
-            .confidence-fill.moderate { background: #d4a012 !important; }
-            .confidence-fill.low { background: #dc2626 !important; }
-            
-            /* Collapsible sections - fully expanded */
-            .collapsible-header {
-                background: #f5f5f5 !important;
-                border-bottom: 1px solid #e0e0e0 !important;
-            }
-            
-            .collapsible-title {
-                color: #0d0d0d !important;
-            }
-            
-            /* Threat meter */
-            .threat-meter {
-                background: #f8f8f8 !important;
-                border: 1px solid #e0e0e0 !important;
-            }
-            
-            .threat-level-text {
-                color: #0d0d0d !important;
-            }
-            
-            .threat-stat-value {
-                color: #0d0d0d !important;
-            }
-            
-            .threat-stat-label {
-                color: #666666 !important;
-            }
-            
-            /* MITRE items */
-            .mitre-id {
-                color: #d4a012 !important;
-                background: #fef3c7 !important;
-            }
-            
-            .mitre-name, .mitre-count {
-                color: #2a2a2a !important;
-            }
-            
-            /* Trend cards */
-            .trend-sparkline {
-                border: 1px solid #e0e0e0 !important;
-                background: #fafafa !important;
-            }
-            
-            .sparkline-bar {
-                background: #d4a012 !important;
-            }
-            
-            .sparkline-bar:last-child {
-                background: #0d0d0d !important;
-            }
-            
-            .trend-current, .trend-average {
-                color: #2a2a2a !important;
-            }
-            
-            .trend-up { color: #dc2626 !important; }
-            .trend-down { color: #22c55e !important; }
-            
-            /* Block list - compact */
-            .block-grid {
-                display: grid !important;
-                grid-template-columns: repeat(4, 1fr) !important;
-                gap: 4px !important;
-            }
-            
-            .block-item {
-                background: #f5f5f5 !important;
-                border: 1px solid #e0e0e0 !important;
-                padding: 3px 6px !important;
                 font-size: 7pt !important;
-                color: #2a2a2a !important;
+                padding: 1px 5px !important;
             }
             
-            /* Footer */
-            .report-footer {
-                background: white !important;
-                border-top: 2px solid #d4a012 !important;
-                padding: 20px 0 50px 0 !important;
+            /* Actions section - show only ransomware CVEs */
+            #actions {
+                display: block !important;
                 page-break-before: always;
             }
             
-            .footer-logo {
+            #actions .section-title {
+                margin-bottom: 8px !important;
+            }
+            
+            /* Hide non-ransomware CVEs */
+            .patch-item[data-ransomware="false"] {
+                display: none !important;
+            }
+            
+            .patch-item {
+                background: #fafafa !important;
+                border: 1px solid #e0e0e0 !important;
+                border-left: 3px solid #dc2626 !important;
+                padding: 10px 12px !important;
+                margin-bottom: 8px !important;
+                page-break-inside: avoid;
+            }
+            
+            .patch-header {
+                margin-bottom: 6px !important;
+            }
+            
+            .patch-cve {
                 color: #0d0d0d !important;
+                font-size: 11pt !important;
+                font-weight: 700 !important;
             }
             
-            .footer-logo span {
-                color: #d4a012 !important;
+            .patch-vendor {
+                color: #4a4a4a !important;
+                font-size: 9pt !important;
             }
             
-            .footer-text, .footer-links a {
+            .patch-due {
                 color: #666666 !important;
+                font-size: 8pt !important;
+            }
+            
+            .patch-description {
+                color: #2a2a2a !important;
+                font-size: 8pt !important;
+                line-height: 1.3 !important;
+            }
+            
+            .patch-tags {
+                margin-top: 6px !important;
+            }
+            
+            /* Print footer info */
+            #actions::after {
+                content: "Full report available at tacraven.com/intel/weekly/ • © 2026 TacRaven Solutions LLC • UNCLASSIFIED";
+                display: block;
+                margin-top: 20px;
+                padding-top: 12px;
+                border-top: 2px solid #d4a012;
+                font-size: 8pt;
+                color: #666666;
+                text-align: center;
+            }
+            
+            /* Container - less padding */
+            .container {
+                padding: 0 12px !important;
             }
             
             /* Links */
             a {
                 color: #0066cc !important;
                 text-decoration: none !important;
-            }
-            
-            /* Hide decorative elements */
-            .bluf-icon, .driver-rank {
-                color: #d4a012 !important;
-            }
-            
-            /* Patch items */
-            .patch-cve {
-                color: #0d0d0d !important;
-                font-weight: 600 !important;
-            }
-            
-            .patch-due {
-                color: #666666 !important;
-            }
-            
-            .coverage-label {
-                background: #f0f0f0 !important;
-                color: #2a2a2a !important;
             }
         }
         
