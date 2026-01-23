@@ -2248,10 +2248,22 @@
                 line-height: 1.35;
             }
             
-            /* Page setup - tighter margins */
+            /* Page setup - tighter margins, no headers/footers */
             @page {
                 size: letter;
                 margin: 0.5in;
+                /* Remove browser-added headers and footers (URL, date, page numbers) */
+                @top-left { content: none !important; }
+                @top-center { content: none !important; }
+                @top-right { content: none !important; }
+                @bottom-left { content: none !important; }
+                @bottom-center { content: none !important; }
+                @bottom-right { content: none !important; }
+            }
+            
+            /* Hide any header/footer areas */
+            @page :first {
+                margin-top: 0.5in;
             }
             
             /* Remove pseudo-element headers/footers */
@@ -2607,8 +2619,39 @@
                 padding: 0 12px !important;
             }
             
-            /* Links */
+            /* Links - Ensure clickability is preserved in PDF */
             a {
+                color: #0066cc !important;
+                text-decoration: underline !important;
+            }
+            
+            /* Keep coverage sources visible and formatted */
+            .coverage-sources {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 4px !important;
+                margin-top: 6px !important;
+            }
+            
+            .coverage-source {
+                font-size: 8pt !important;
+                color: #4a4a4a !important;
+                line-height: 1.4 !important;
+            }
+            
+            .coverage-source strong {
+                color: #0d0d0d !important;
+            }
+            
+            .coverage-source a {
+                color: #0066cc !important;
+                text-decoration: underline !important;
+            }
+            
+            /* Show abbreviated URL on hover area for print - cleaner than full URLs */
+            .coverage-source a::after {
+                content: " ↗";
+                font-size: 7pt !important;
                 color: #0066cc !important;
                 text-decoration: none !important;
             }
@@ -4228,10 +4271,12 @@
                                 <div class="patch-coverage">
                                     <span class="coverage-label buzz-high">🔥 12 articles</span>
                                     <div class="coverage-sources">
-                                        <span class="coverage-source"><strong>CISA:</strong> <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-018a" target="_blank" rel="noopener">Article</a>, <a href="https://www.cisa.gov/news-events/alerts/2025/01/14/cisa-adds-ivanti-vulnerability-kev" target="_blank" rel="noopener">Article</a></span>
-                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2026/01/ivanti-zero-day-actively-exploited.html" target="_blank" rel="noopener">Article</a>, <a href="https://thehackernews.com/2026/01/ransomware-groups-target-ivanti.html" target="_blank" rel="noopener">Article</a>, <a href="https://thehackernews.com/2026/01/patch-ivanti-now-exploitation-widespread.html" target="_blank" rel="noopener">Article</a> (+1 more)</span>
-                                        <span class="coverage-source"><strong>Dark Reading:</strong> <a href="https://www.darkreading.com/vulnerabilities-threats/ivanti-vpn-zero-day-exploitation" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/cyberattacks-data-breaches/ivanti-attacks-continue" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/endpoint-security/enterprises-scramble-patch-ivanti" target="_blank" rel="noopener">Article</a></span>
-                                        <span class="coverage-source"><strong>Krebs:</strong> <a href="https://krebsonsecurity.com/2026/01/ivanti-zero-day-investigation/" target="_blank" rel="noopener">Article</a>, <a href="https://krebsonsecurity.com/2026/01/ivanti-attackers-identified/" target="_blank" rel="noopener">Article</a>, <a href="https://krebsonsecurity.com/2026/01/ivanti-victims-speak-out/" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>CISA:</strong> <a href="https://www.cisa.gov/news-events/alerts/2025/01/08/ivanti-releases-security-updates-connect-secure-policy-secure-and-zta-gateways" target="_blank" rel="noopener">Advisory</a></span>
+                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2025/01/ivanti-flaw-cve-2025-0282-actively.html" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Rapid7:</strong> <a href="https://www.rapid7.com/blog/post/2025/01/08/etr-cve-2025-0282-ivanti-connect-secure-zero-day-exploited-in-the-wild/" target="_blank" rel="noopener">Analysis</a></span>
+                                        <span class="coverage-source"><strong>Mandiant:</strong> <a href="https://cloud.google.com/blog/topics/threat-intelligence/ivanti-connect-secure-vpn-zero-day" target="_blank" rel="noopener">Research</a></span>
+                                        <span class="coverage-source"><strong>Tenable:</strong> <a href="https://www.tenable.com/blog/cve-2025-0282-ivanti-connect-secure-zero-day-vulnerability-exploited-in-the-wild" target="_blank" rel="noopener">Blog</a></span>
+                                        <span class="coverage-source"><strong>watchTowr:</strong> <a href="https://labs.watchtowr.com/exploitation-walkthrough-and-techniques-ivanti-connect-secure-rce-cve-2025-0282/" target="_blank" rel="noopener">Technical</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -4245,8 +4290,9 @@
                                 <div class="patch-coverage">
                                     <span class="coverage-label buzz-medium">📰 2 articles</span>
                                     <div class="coverage-sources">
-                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2026/01/microsoft-patch-tuesday-january.html" target="_blank" rel="noopener">Article</a></span>
-                                        <span class="coverage-source"><strong>Dark Reading:</strong> <a href="https://www.darkreading.com/vulnerabilities-threats/january-patch-tuesday" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>CISA:</strong> <a href="https://www.cisa.gov/news-events/alerts/2025/01/14/cisa-adds-four-known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">KEV Alert</a></span>
+                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2025/01/3-actively-exploited-zero-day-flaws.html" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Microsoft:</strong> <a href="https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2025-21333" target="_blank" rel="noopener">Advisory</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -4261,10 +4307,11 @@
                                 <div class="patch-coverage">
                                     <span class="coverage-label buzz-high">🔥 9 articles</span>
                                     <div class="coverage-sources">
-                                        <span class="coverage-source"><strong>CISA:</strong> <a href="https://www.cisa.gov/news-events/alerts/2025/01/14/fortinet-vulnerability-added-kev" target="_blank" rel="noopener">Article</a></span>
-                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2026/01/fortinet-auth-bypass-exploited.html" target="_blank" rel="noopener">Article</a>, <a href="https://thehackernews.com/2026/01/fortinet-ransomware-connection.html" target="_blank" rel="noopener">Article</a>, <a href="https://thehackernews.com/2026/01/fortinet-patch-guidance.html" target="_blank" rel="noopener">Article</a></span>
-                                        <span class="coverage-source"><strong>Dark Reading:</strong> <a href="https://www.darkreading.com/vulnerabilities-threats/fortinet-critical-flaw" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/cyberattacks-data-breaches/fortinet-exploitation-grows" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/endpoint-security/fortinet-mitigation-steps" target="_blank" rel="noopener">Article</a></span>
-                                        <span class="coverage-source"><strong>Krebs:</strong> <a href="https://krebsonsecurity.com/2026/01/fortinet-attackers-use-auth-bypass/" target="_blank" rel="noopener">Article</a>, <a href="https://krebsonsecurity.com/2026/01/fortinet-campaign-analysis/" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Fortinet:</strong> <a href="https://fortiguard.fortinet.com/psirt/FG-IR-24-535" target="_blank" rel="noopener">Advisory</a></span>
+                                        <span class="coverage-source"><strong>Arctic Wolf:</strong> <a href="https://arcticwolf.com/resources/blog/cve-2024-55591/" target="_blank" rel="noopener">Analysis</a></span>
+                                        <span class="coverage-source"><strong>Tenable:</strong> <a href="https://www.tenable.com/blog/cve-2024-55591-fortinet-authentication-bypass-zero-day-vulnerability-exploited-in-the-wild" target="_blank" rel="noopener">Blog</a></span>
+                                        <span class="coverage-source"><strong>watchTowr:</strong> <a href="https://labs.watchtowr.com/get-fortirekt-i-am-the-super_admin-now-fortios-authentication-bypass-cve-2024-55591/" target="_blank" rel="noopener">Technical</a></span>
+                                        <span class="coverage-source"><strong>Help Net Security:</strong> <a href="https://www.helpnetsecurity.com/2025/01/14/fortinet-fortigate-zero-day-attacks/" target="_blank" rel="noopener">Article</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -4278,8 +4325,10 @@
                                 <div class="patch-coverage">
                                     <span class="coverage-label buzz-medium">📰 3 articles</span>
                                     <div class="coverage-sources">
-                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2026/01/beyondtrust-command-injection.html" target="_blank" rel="noopener">Article</a></span>
-                                        <span class="coverage-source"><strong>Dark Reading:</strong> <a href="https://www.darkreading.com/vulnerabilities-threats/beyondtrust-flaw-discovered" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/endpoint-security/beyondtrust-patch-released" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>BeyondTrust:</strong> <a href="https://www.beyondtrust.com/trust-center/security-advisories/bt24-10" target="_blank" rel="noopener">Advisory</a></span>
+                                        <span class="coverage-source"><strong>CISA:</strong> <a href="https://www.cisa.gov/news-events/alerts/2024/12/19/cisa-adds-one-known-exploited-vulnerability-catalog" target="_blank" rel="noopener">KEV Alert</a></span>
+                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2024/12/cisa-adds-critical-flaw-in-beyondtrust.html" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Help Net Security:</strong> <a href="https://www.helpnetsecurity.com/2024/12/18/beyondtrust-fixes-critical-vulnerability-in-remote-access-support-solutions-cve-2024-12356/" target="_blank" rel="noopener">Article</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -4294,9 +4343,11 @@
                                 <div class="patch-coverage">
                                     <span class="coverage-label buzz-high">🔥 5 articles</span>
                                     <div class="coverage-sources">
-                                        <span class="coverage-source"><strong>Hacker News:</strong> <a href="https://thehackernews.com/2026/01/cleo-file-transfer-exploited.html" target="_blank" rel="noopener">Article</a>, <a href="https://thehackernews.com/2026/01/cleo-ransomware-attacks.html" target="_blank" rel="noopener">Article</a></span>
-                                        <span class="coverage-source"><strong>Dark Reading:</strong> <a href="https://www.darkreading.com/cyberattacks-data-breaches/cleo-vulnerability-exploited" target="_blank" rel="noopener">Article</a>, <a href="https://www.darkreading.com/vulnerabilities-threats/cleo-patch-now" target="_blank" rel="noopener">Article</a></span>
-                                        <span class="coverage-source"><strong>Krebs:</strong> <a href="https://krebsonsecurity.com/2026/01/cleo-exploitation-linked-to-clop/" target="_blank" rel="noopener">Article</a></span>
+                                        <span class="coverage-source"><strong>Cleo:</strong> <a href="https://support.cleo.com/hc/en-us/articles/27140294267799-Cleo-Product-Security-Advisory-CVE-2024-50623" target="_blank" rel="noopener">Advisory</a></span>
+                                        <span class="coverage-source"><strong>Huntress:</strong> <a href="https://www.huntress.com/blog/threat-advisory-oh-no-cleo-cleo-software-actively-being-exploited-in-the-wild" target="_blank" rel="noopener">Analysis</a></span>
+                                        <span class="coverage-source"><strong>Rapid7:</strong> <a href="https://www.rapid7.com/blog/post/2024/12/10/etr-widespread-exploitation-of-cleo-file-transfer-software-cve-2024-50623/" target="_blank" rel="noopener">Blog</a></span>
+                                        <span class="coverage-source"><strong>watchTowr:</strong> <a href="https://labs.watchtowr.com/cleo-cve-2024-50623/" target="_blank" rel="noopener">Technical</a></span>
+                                        <span class="coverage-source"><strong>Recorded Future:</strong> <a href="https://www.recordedfuture.com/blog/cleo-mft-cve-2024-50623-vulnerability-analysis" target="_blank" rel="noopener">Research</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -4851,10 +4902,7 @@
         }
         
         function downloadPDF() {
-            showToast('Opening print dialog for PDF export...');
-            setTimeout(() => {
-                window.print();
-            }, 500);
+            window.print();
         }
         
         function copyExecutiveSummary() {
