@@ -345,70 +345,56 @@
         .tactical-frame {
             position: relative;
             display: inline-block;
-            padding: 40px 60px;
+            padding: 24px 40px;
+            margin: 0 auto 10px;
         }
         .tactical-frame::before,
-        .tactical-frame::after,
-        .tactical-frame .corner-bl,
-        .tactical-frame .corner-br {
+        .tactical-frame::after {
             content: '';
             position: absolute;
-            width: 40px;
-            height: 40px;
+            width: 24px;
+            height: 24px;
             border-color: var(--green);
             border-style: solid;
-            border-width: 0;
-            opacity: 0.7;
+            opacity: 0.8;
         }
         .tactical-frame::before {
             top: 0;
             left: 0;
-            border-top-width: 2px;
-            border-left-width: 2px;
+            border-width: 2px 0 0 2px;
         }
         .tactical-frame::after {
             top: 0;
             right: 0;
-            border-top-width: 2px;
-            border-right-width: 2px;
+            border-width: 2px 2px 0 0;
+        }
+        .tactical-frame .corner-bl,
+        .tactical-frame .corner-br {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-color: var(--green);
+            border-style: solid;
+            opacity: 0.8;
         }
         .tactical-frame .corner-bl {
             bottom: 0;
             left: 0;
-            border-bottom-width: 2px;
-            border-left-width: 2px;
+            border-width: 0 0 2px 2px;
         }
         .tactical-frame .corner-br {
             bottom: 0;
             right: 0;
-            border-bottom-width: 2px;
-            border-right-width: 2px;
+            border-width: 0 2px 2px 0;
         }
-        /* Corner ticks */
-        .tactical-frame .tick-top,
-        .tactical-frame .tick-bottom {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 2px;
-            background: var(--green);
-            opacity: 0.5;
+        
+        .tactical-frame h1 {
+            margin-bottom: 8px;
         }
-        .tactical-frame .tick-top { top: 0; }
-        .tactical-frame .tick-bottom { bottom: 0; }
-        .tactical-frame .tick-left,
-        .tactical-frame .tick-right {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 2px;
-            height: 20px;
-            background: var(--green);
-            opacity: 0.5;
+        .tactical-frame .subtitle {
+            margin-bottom: 0;
+            max-width: none;
         }
-        .tactical-frame .tick-left { left: 0; }
-        .tactical-frame .tick-right { right: 0; }
         
         .page-badge {
             display: inline-flex;
@@ -1112,10 +1098,6 @@
                 <div class="tactical-frame">
                     <span class="corner-bl"></span>
                     <span class="corner-br"></span>
-                    <span class="tick-top"></span>
-                    <span class="tick-bottom"></span>
-                    <span class="tick-left"></span>
-                    <span class="tick-right"></span>
                     <h1>Weekly <span>Threat Reports</span></h1>
                     <p class="subtitle">Structured weekly threat assessments using public data sources, CISA KEV analysis, and MITRE ATT&CK mapping</p>
                 </div>
