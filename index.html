@@ -1110,14 +1110,22 @@
             width: 600px;
             height: 600px;
             pointer-events: none;
-            opacity: 0.3;
+            opacity: 0.5;
         }
 
+        .hero-radar {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        /* Radar rings - static concentric circles */
         .hero-visual-ring {
             position: absolute;
-            border: 1px solid rgba(212, 160, 18, 0.2);
+            border: 1px solid rgba(212, 160, 18, 0.25);
             border-radius: 50%;
-            animation: rotateGlow 30s linear infinite;
         }
 
         .hero-visual-ring:nth-child(1) {
@@ -1132,8 +1140,6 @@
             height: 80%;
             top: 10%;
             left: 10%;
-            animation-direction: reverse;
-            animation-duration: 25s;
         }
 
         .hero-visual-ring:nth-child(3) {
@@ -1141,7 +1147,137 @@
             height: 60%;
             top: 20%;
             left: 20%;
-            animation-duration: 20s;
+        }
+
+        .hero-visual-ring:nth-child(4) {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+        }
+
+        .hero-visual-ring:nth-child(5) {
+            width: 20%;
+            height: 20%;
+            top: 40%;
+            left: 40%;
+        }
+
+        /* Radar crosshairs */
+        .radar-crosshair {
+            position: absolute;
+            background: rgba(212, 160, 18, 0.15);
+        }
+
+        .radar-crosshair-h {
+            width: 100%;
+            height: 1px;
+            top: 50%;
+            left: 0;
+        }
+
+        .radar-crosshair-v {
+            width: 1px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+        }
+
+        /* Radar sweep arm */
+        .radar-sweep {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            animation: radarArmSweep 4s linear infinite;
+            background: conic-gradient(
+                from 0deg at 50% 50%,
+                transparent 0deg,
+                rgba(212, 160, 18, 0.4) 2deg,
+                rgba(212, 160, 18, 0.2) 15deg,
+                rgba(212, 160, 18, 0.05) 30deg,
+                transparent 45deg,
+                transparent 360deg
+            );
+            border-radius: 50%;
+        }
+
+        @keyframes radarArmSweep {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Center dot */
+        .radar-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold), 0 0 20px rgba(212, 160, 18, 0.5);
+        }
+
+        /* Radar signature blips */
+        .radar-blip {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #dc2626;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #dc2626, 0 0 16px rgba(220, 38, 38, 0.6);
+            opacity: 0;
+            animation: blipAppear 4s ease-out forwards;
+        }
+
+        @keyframes blipAppear {
+            0% { 
+                opacity: 0;
+                transform: scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+            20% {
+                transform: scale(1);
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Blip pulse ring effect */
+        .radar-blip::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            border: 1px solid #dc2626;
+            border-radius: 50%;
+            animation: blipPulse 1s ease-out infinite;
+        }
+
+        @keyframes blipPulse {
+            0% {
+                width: 6px;
+                height: 6px;
+                opacity: 0.8;
+            }
+            100% {
+                width: 24px;
+                height: 24px;
+                opacity: 0;
+            }
         }
 
         @media (max-width: 900px) {
@@ -2578,9 +2714,23 @@
         <div class="hero-scan"></div>
         
         <div class="hero-visual">
-            <div class="hero-visual-ring"></div>
-            <div class="hero-visual-ring"></div>
-            <div class="hero-visual-ring"></div>
+            <div class="hero-radar">
+                <!-- Concentric rings -->
+                <div class="hero-visual-ring"></div>
+                <div class="hero-visual-ring"></div>
+                <div class="hero-visual-ring"></div>
+                <div class="hero-visual-ring"></div>
+                <div class="hero-visual-ring"></div>
+                <!-- Crosshairs -->
+                <div class="radar-crosshair radar-crosshair-h"></div>
+                <div class="radar-crosshair radar-crosshair-v"></div>
+                <!-- Sweep arm -->
+                <div class="radar-sweep"></div>
+                <!-- Center point -->
+                <div class="radar-center"></div>
+                <!-- Blips container -->
+                <div class="radar-blips" id="radar-blips"></div>
+            </div>
         </div>
 
         <div class="container">
@@ -3317,6 +3467,51 @@
             }
         }
         createParticles();
+
+        // Radar Blips - Random signature appearances
+        function createRadarBlip() {
+            const container = document.getElementById('radar-blips');
+            if (!container) return;
+            
+            const blip = document.createElement('div');
+            blip.className = 'radar-blip';
+            
+            // Random position within the radar circle (using polar coordinates)
+            const angle = Math.random() * 2 * Math.PI;
+            const radius = 50 + Math.random() * 200; // Between 50 and 250px from center
+            
+            const centerX = 300; // Center of 600px radar
+            const centerY = 300;
+            
+            const x = centerX + radius * Math.cos(angle);
+            const y = centerY + radius * Math.sin(angle);
+            
+            blip.style.left = x + 'px';
+            blip.style.top = y + 'px';
+            
+            container.appendChild(blip);
+            
+            // Remove blip after animation completes
+            setTimeout(() => {
+                blip.remove();
+            }, 4000);
+        }
+        
+        // Create blips at random intervals
+        function scheduleNextBlip() {
+            const delay = 800 + Math.random() * 1500; // Between 0.8 and 2.3 seconds
+            setTimeout(() => {
+                createRadarBlip();
+                scheduleNextBlip();
+            }, delay);
+        }
+        
+        // Start radar blips
+        scheduleNextBlip();
+        // Create a few initial blips
+        setTimeout(createRadarBlip, 500);
+        setTimeout(createRadarBlip, 1200);
+        setTimeout(createRadarBlip, 2000);
 
 
 
