@@ -719,6 +719,11 @@
             vertical-align: middle;
         }
         
+        /* Print-only section headers - hidden on web */
+        .print-section-header {
+            display: none;
+        }
+        
         /* Plain Language Explanation Box */
         .sat-explanation {
             margin-top: 24px;
@@ -1561,6 +1566,301 @@
             margin-top: 12px;
         }
         
+        /* ========== SOURCES & METHODOLOGY SECTION ========== */
+        .methodology-intro {
+            font-size: 15px;
+            color: var(--gray-100);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            padding: 20px;
+            background: rgba(212, 160, 18, 0.05);
+            border-left: 4px solid var(--gold);
+        }
+        
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        
+        .methodology-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 24px;
+        }
+        
+        .methodology-card.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .methodology-card-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .methodology-icon {
+            font-size: 20px;
+        }
+        
+        .methodology-note {
+            font-size: 13px;
+            color: var(--gray-300);
+            margin-bottom: 16px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid var(--gray-500);
+        }
+        
+        .source-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .source-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .source-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .source-name {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        
+        .source-reliability {
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .source-reliability.rel-a {
+            background: rgba(34, 197, 94, 0.2);
+            color: #86efac;
+            border: 1px solid var(--green);
+        }
+        
+        .source-reliability.rel-b {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+            border: 1px solid var(--blue);
+        }
+        
+        .source-desc {
+            font-size: 13px;
+            color: var(--gray-300);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .source-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+        
+        .source-meta a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        .source-meta a:hover {
+            text-decoration: underline;
+        }
+        
+        .source-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .source-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid var(--gold);
+        }
+        
+        .source-list-item .source-name {
+            font-size: 13px;
+        }
+        
+        .source-type {
+            font-size: 11px;
+            color: var(--gray-500);
+        }
+        
+        .methodology-process {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .process-step {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--gold);
+            color: var(--black);
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .step-content h4 {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        
+        .step-content p {
+            font-size: 13px;
+            color: var(--gray-300);
+            line-height: 1.6;
+        }
+        
+        .limitations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .limitation-item {
+            padding: 16px;
+            background: rgba(220, 38, 38, 0.05);
+            border-left: 3px solid var(--red);
+        }
+        
+        .limitation-item h4 {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: #fca5a5;
+            margin-bottom: 8px;
+        }
+        
+        .limitation-item p {
+            font-size: 12px;
+            color: var(--gray-300);
+            line-height: 1.5;
+        }
+        
+        .standards-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .standard-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            background: rgba(212, 160, 18, 0.05);
+            border-left: 3px solid var(--gold);
+        }
+        
+        .standard-name {
+            font-family: var(--font-display);
+            font-size: 12px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .standard-desc {
+            font-size: 12px;
+            color: var(--gray-300);
+        }
+        
+        .methodology-contact {
+            font-size: 14px;
+            color: var(--gray-100);
+            margin-bottom: 16px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--gray-300);
+        }
+        
+        .contact-info a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .methodology-footer {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 2px solid var(--gold);
+            text-align: center;
+        }
+        
+        .classification-marking {
+            font-family: var(--font-display);
+            font-size: 12px;
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        
+        .report-generation {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+        
+        @media (max-width: 768px) {
+            .methodology-grid {
+                grid-template-columns: 1fr;
+            }
+            .limitations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* Footer */
         .report-footer {
             background: var(--black);
@@ -2205,26 +2505,347 @@
             }
         }
         
-        /* ========== PROFESSIONAL PRINT STYLES - EXECUTIVE BRIEF (3 PAGES) ========== */
+        /* ========== PROFESSIONAL PRINT STYLES - WRITTEN INTELLIGENCE ASSESSMENT ========== */
         @media print {
             /* Hide interactive/web-only elements */
             .progress-bar, .fab-container, .section-nav, .nav, .mobile-menu,
             .mobile-menu-btn, .section-nav-bar, .collapsible-icon, .anchor-link,
             .filter-bar, .export-bar, .report-nav-links, .table-card-mobile,
-            .toast, .collapsible, .disclaimer-banner { 
+            .toast, .disclaimer-banner { 
                 display: none !important; 
             }
             
-            /* HIDE NON-ESSENTIAL SECTIONS FOR EXECUTIVE BRIEF */
+            /* === SHOW COLLAPSIBLE ANALYSIS CONTENT === */
+            .collapsible {
+                display: block !important;
+                margin: 16px 0 !important;
+            }
+            .collapsible-header {
+                display: none !important;
+            }
+            .collapsible-content {
+                display: block !important;
+                max-height: none !important;
+                overflow: visible !important;
+                padding: 0 !important;
+            }
+            
+            /* Print-only section headers */
+            .print-section-header {
+                display: block !important;
+                font-family: var(--font-display), 'Orbitron', sans-serif !important;
+                font-size: 11pt !important;
+                font-weight: 700 !important;
+                color: #8B6914 !important;
+                letter-spacing: 2px !important;
+                text-transform: uppercase !important;
+                margin-bottom: 12px !important;
+                padding-bottom: 6px !important;
+                border-bottom: 2px solid #d4a012 !important;
+            }
+            
+            .collapsible-inner {
+                padding: 14px 16px !important;
+                background: #f8f9fa !important;
+                border-left: 4px solid #d4a012 !important;
+                margin-bottom: 12px !important;
+                page-break-inside: avoid !important;
+            }
+            .collapsible-inner p {
+                margin-bottom: 10px !important;
+                font-size: 9.5pt !important;
+                line-height: 1.55 !important;
+                color: #1a1a1a !important;
+                text-align: justify !important;
+            }
+            .collapsible-inner p:last-child {
+                margin-bottom: 0 !important;
+            }
+            .collapsible-inner strong {
+                color: #1a1a1a !important;
+                font-weight: 700 !important;
+            }
+            .collapsible-inner em {
+                color: #6B5411 !important;
+                font-style: italic !important;
+                font-weight: 600 !important;
+            }
+            
+            /* === SAT EXPLANATION BOXES - Critical for analysis narrative === */
+            .sat-explanation {
+                display: block !important;
+                background: #f0f7ff !important;
+                border: 1px solid #3b82f6 !important;
+                border-left: 4px solid #3b82f6 !important;
+                padding: 14px 16px !important;
+                margin: 16px 0 !important;
+                page-break-inside: avoid !important;
+            }
+            .sat-explanation-title {
+                color: #1e40af !important;
+                font-size: 10pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 10px !important;
+                border-bottom: 1px solid #bfdbfe !important;
+                padding-bottom: 6px !important;
+            }
+            .sat-explanation-content {
+                font-size: 9.5pt !important;
+                line-height: 1.55 !important;
+                color: #1a1a1a !important;
+            }
+            .sat-explanation-content p {
+                margin-bottom: 10px !important;
+                text-align: justify !important;
+            }
+            .sat-explanation-content p:last-child {
+                margin-bottom: 0 !important;
+            }
+            .sat-explanation-content em {
+                color: #6B5411 !important;
+                font-weight: 600 !important;
+            }
+            
+            /* === SECTION VISIBILITY FOR WRITTEN ASSESSMENT === */
+            /* SHOW these sections with analysis */
             #trends,
             #assessment,
+            .trend-analysis {
+                display: block !important;
+            }
+            
+            /* SHOW methodology section - transparency is important */
+            #methodology {
+                display: block !important;
+                page-break-before: always !important;
+            }
+            
+            /* HIDE appendix-type sections - keep focus on analysis */
             #mitre,
             #emerging,
             #appendix,
             .report-footer,
-            .trend-analysis,
             .appendix {
                 display: none !important;
+            }
+            
+            /* === METHODOLOGY SECTION PRINT STYLES === */
+            .methodology-intro {
+                background: #f8f9fa !important;
+                border-left: 4px solid #d4a012 !important;
+                padding: 14px 16px !important;
+                margin-bottom: 20px !important;
+                font-size: 10pt !important;
+                color: #1a1a1a !important;
+                line-height: 1.5 !important;
+            }
+            
+            .methodology-grid {
+                display: block !important;
+            }
+            
+            .methodology-card {
+                background: #ffffff !important;
+                border: 1px solid #e0e0e0 !important;
+                padding: 16px !important;
+                margin-bottom: 16px !important;
+                page-break-inside: avoid !important;
+            }
+            
+            .methodology-card-title {
+                color: #8B6914 !important;
+                font-size: 11pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 12px !important;
+                padding-bottom: 8px !important;
+                border-bottom: 2px solid #d4a012 !important;
+            }
+            
+            .methodology-note {
+                background: #f8f8f8 !important;
+                border-left: 3px solid #666 !important;
+                padding: 10px !important;
+                font-size: 9pt !important;
+                color: #4a4a4a !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .source-item {
+                margin-bottom: 14px !important;
+                padding-bottom: 14px !important;
+                border-bottom: 1px solid #e0e0e0 !important;
+            }
+            
+            .source-header {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .source-name {
+                color: #1a1a1a !important;
+                font-size: 10pt !important;
+                font-weight: 700 !important;
+            }
+            
+            .source-reliability {
+                font-size: 7pt !important;
+                padding: 2px 6px !important;
+            }
+            
+            .source-reliability.rel-a {
+                background: #dcfce7 !important;
+                color: #166534 !important;
+                border: 1px solid #22c55e !important;
+            }
+            
+            .source-reliability.rel-b {
+                background: #dbeafe !important;
+                color: #1e40af !important;
+                border: 1px solid #3b82f6 !important;
+            }
+            
+            .source-desc {
+                font-size: 9pt !important;
+                color: #4a4a4a !important;
+                line-height: 1.4 !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .source-meta {
+                font-size: 8pt !important;
+                color: #666666 !important;
+            }
+            
+            .source-meta a {
+                color: #0066cc !important;
+            }
+            
+            .source-list-item {
+                background: #f8f8f8 !important;
+                border-left: 3px solid #d4a012 !important;
+                padding: 8px 10px !important;
+                margin-bottom: 4px !important;
+            }
+            
+            .source-list-item .source-name {
+                font-size: 9pt !important;
+            }
+            
+            .source-type {
+                font-size: 8pt !important;
+                color: #666666 !important;
+            }
+            
+            .process-step {
+                display: flex !important;
+                gap: 12px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .step-number {
+                width: 24px !important;
+                height: 24px !important;
+                background: #d4a012 !important;
+                color: #000 !important;
+                font-size: 11pt !important;
+                font-weight: 700 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                border-radius: 50% !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .step-content h4 {
+                color: #1a1a1a !important;
+                font-size: 10pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 4px !important;
+            }
+            
+            .step-content p {
+                color: #4a4a4a !important;
+                font-size: 9pt !important;
+                line-height: 1.4 !important;
+            }
+            
+            .limitations-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
+            }
+            
+            .limitation-item {
+                background: #fef2f2 !important;
+                border-left: 3px solid #dc2626 !important;
+                padding: 10px !important;
+                page-break-inside: avoid !important;
+            }
+            
+            .limitation-item h4 {
+                color: #991b1b !important;
+                font-size: 9pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .limitation-item p {
+                color: #1a1a1a !important;
+                font-size: 8pt !important;
+                line-height: 1.4 !important;
+            }
+            
+            .standard-item {
+                background: #fef3c7 !important;
+                border-left: 3px solid #d4a012 !important;
+                padding: 6px 10px !important;
+                margin-bottom: 4px !important;
+            }
+            
+            .standard-name {
+                color: #8B6914 !important;
+                font-size: 9pt !important;
+            }
+            
+            .standard-desc {
+                color: #4a4a4a !important;
+                font-size: 8pt !important;
+            }
+            
+            .methodology-contact {
+                color: #1a1a1a !important;
+                font-size: 9pt !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .contact-info {
+                font-size: 9pt !important;
+                color: #4a4a4a !important;
+            }
+            
+            .contact-info a {
+                color: #0066cc !important;
+            }
+            
+            .methodology-footer {
+                margin-top: 24px !important;
+                padding-top: 16px !important;
+                border-top: 2px solid #d4a012 !important;
+                text-align: center !important;
+            }
+            
+            .classification-marking {
+                color: #166534 !important;
+                font-size: 9pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .report-generation {
+                color: #666666 !important;
+                font-size: 8pt !important;
             }
             
             /* Show desktop tables in print */
@@ -2487,12 +3108,17 @@
             }
             
             /* Compact driver cards */
+            #threat-drivers {
+                page-break-inside: avoid !important;
+            }
+            
             #threat-drivers .section-title {
                 margin-bottom: 8px !important;
             }
             
             .drivers-grid {
                 gap: 6px !important;
+                page-break-inside: avoid !important;
             }
             
             .driver-card {
@@ -2501,7 +3127,7 @@
                 border-left: 3px solid #d4a012 !important;
                 padding: 8px 12px !important;
                 margin-bottom: 0 !important;
-                page-break-inside: avoid;
+                page-break-inside: avoid !important;
             }
             
             .driver-rank {
@@ -2654,6 +3280,469 @@
                 font-size: 7pt !important;
                 color: #0066cc !important;
                 text-decoration: none !important;
+            }
+            
+            /* === ASSESSMENT SECTION - FULL WRITTEN ANALYSIS === */
+            #assessment {
+                page-break-before: always !important;
+            }
+            
+            .assessment-grid {
+                display: block !important;
+            }
+            
+            .assessment-card {
+                background: #ffffff !important;
+                border: 1px solid #e0e0e0 !important;
+                padding: 16px !important;
+                margin-bottom: 16px !important;
+                page-break-inside: avoid !important;
+            }
+            
+            .assessment-card-title {
+                color: #8B6914 !important;
+                font-size: 11pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 10px !important;
+                padding-bottom: 8px !important;
+                border-bottom: 2px solid #d4a012 !important;
+            }
+            
+            .sat-icon {
+                display: inline !important;
+                margin-right: 6px !important;
+            }
+            
+            .sat-purpose {
+                font-size: 9pt !important;
+                color: #4a4a4a !important;
+                font-style: italic !important;
+                margin-bottom: 12px !important;
+                padding: 8px 12px !important;
+                background: #f8f8f8 !important;
+                border-left: 3px solid #d4a012 !important;
+            }
+            
+            .sat-badge-new {
+                display: none !important;
+            }
+            
+            /* KAC/ACH Tables */
+            .kac-table,
+            .ach-table,
+            .diagnosticity-table,
+            .source-reliability-table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                margin-bottom: 12px !important;
+                font-size: 8pt !important;
+            }
+            
+            .kac-table th,
+            .kac-table td,
+            .ach-table th,
+            .ach-table td {
+                padding: 8px !important;
+                border: 1px solid #e0e0e0 !important;
+                color: #1a1a1a !important;
+            }
+            
+            /* Fix hypothesis text visibility */
+            .ach-hypothesis {
+                color: #1a1a1a !important;
+                font-weight: 600 !important;
+                display: block !important;
+            }
+            
+            /* Fix evidence text */
+            .ach-evidence {
+                color: #4a4a4a !important;
+                font-size: 8pt !important;
+            }
+            
+            .ach-evidence-item {
+                display: flex !important;
+                gap: 4px !important;
+                margin-bottom: 3px !important;
+                color: #1a1a1a !important;
+            }
+            
+            .ach-for {
+                color: #166534 !important;
+                font-weight: 700 !important;
+            }
+            
+            .ach-against {
+                color: #991b1b !important;
+                font-weight: 700 !important;
+            }
+            
+            .kac-table th,
+            .ach-table th {
+                background: #f8f8f8 !important;
+                font-weight: 700 !important;
+            }
+            
+            .kac-status,
+            .ach-confidence,
+            .reliability-badge,
+            .credibility-badge,
+            .diag-badge {
+                font-size: 7pt !important;
+                padding: 2px 6px !important;
+                border-radius: 3px !important;
+            }
+            
+            .kac-strong,
+            .conf-high {
+                background: #dcfce7 !important;
+                color: #166534 !important;
+                border: 1px solid #22c55e !important;
+            }
+            
+            .kac-moderate,
+            .conf-medium {
+                background: #fef3c7 !important;
+                color: #8B6914 !important;
+                border: 1px solid #d4a012 !important;
+            }
+            
+            .kac-weak,
+            .conf-low {
+                background: #fecaca !important;
+                color: #991b1b !important;
+                border: 1px solid #dc2626 !important;
+            }
+            
+            /* Confidence bars - simplified for print */
+            .confidence-bar {
+                display: none !important;
+            }
+            
+            /* Uncertainty grid */
+            .uncertainty-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
+            }
+            
+            .uncertainty-item {
+                background: #f8f8f8 !important;
+                border-left: 3px solid #d4a012 !important;
+                padding: 10px !important;
+                page-break-inside: avoid !important;
+            }
+            
+            .uncertainty-header h4 {
+                color: #1a1a1a !important;
+                font-size: 9pt !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .uncertainty-desc {
+                color: #4a4a4a !important;
+                font-size: 8pt !important;
+                line-height: 1.4 !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .uncertainty-impact {
+                background: #fef2f2 !important;
+                padding: 6px 8px !important;
+                font-size: 8pt !important;
+                color: #1a1a1a !important;
+            }
+            
+            .uncertainty-impact strong {
+                color: #991b1b !important;
+            }
+            
+            /* What-If Analysis */
+            .whatif-grid {
+                display: block !important;
+            }
+            
+            .whatif-item {
+                background: #fffbeb !important;
+                border: 1px solid #d4a012 !important;
+                padding: 10px !important;
+                margin-bottom: 10px !important;
+                page-break-inside: avoid !important;
+            }
+            
+            .whatif-question {
+                color: #8B6914 !important;
+                font-size: 9pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .whatif-answer {
+                color: #1a1a1a !important;
+                font-size: 8pt !important;
+                line-height: 1.4 !important;
+            }
+            
+            /* Indicators of Change */
+            .indicators-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
+            }
+            
+            .indicator-column {
+                background: #f8f8f8 !important;
+                padding: 10px !important;
+            }
+            
+            .indicator-heading {
+                font-size: 9pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 8px !important;
+                padding-bottom: 6px !important;
+            }
+            
+            .indicator-worse {
+                color: #991b1b !important;
+                border-color: #dc2626 !important;
+            }
+            
+            .indicator-better {
+                color: #166534 !important;
+                border-color: #22c55e !important;
+            }
+            
+            .indicator-list {
+                font-size: 8pt !important;
+                line-height: 1.5 !important;
+            }
+            
+            .indicator-list li {
+                margin-bottom: 4px !important;
+                color: #1a1a1a !important;
+            }
+            
+            /* === CONFIDENCE BOX - Keep together === */
+            .confidence-box {
+                background: #1a1a1a !important;
+                border: 2px solid #d4a012 !important;
+                padding: 16px !important;
+                margin-top: 20px !important;
+                page-break-inside: avoid !important;
+            }
+            
+            .confidence-header {
+                display: flex !important;
+                align-items: center !important;
+                gap: 12px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .confidence-label {
+                color: #666666 !important;
+                font-size: 9pt !important;
+                text-transform: uppercase !important;
+                letter-spacing: 1px !important;
+            }
+            
+            .confidence-level {
+                padding: 4px 12px !important;
+                border-radius: 4px !important;
+                font-size: 9pt !important;
+                font-weight: 700 !important;
+            }
+            
+            .confidence-level.conf-high {
+                background: #dcfce7 !important;
+                color: #166534 !important;
+                border: 1px solid #22c55e !important;
+            }
+            
+            .confidence-rationale {
+                color: #1a1a1a !important;
+                font-size: 9pt !important;
+                line-height: 1.5 !important;
+                margin-bottom: 10px !important;
+                background: #ffffff !important;
+                padding: 10px !important;
+            }
+            
+            .confidence-rationale strong {
+                color: #1a1a1a !important;
+            }
+            
+            .confidence-caveat {
+                color: #4a4a4a !important;
+                font-size: 8pt !important;
+                line-height: 1.4 !important;
+                background: #fef2f2 !important;
+                padding: 10px !important;
+                border-left: 3px solid #dc2626 !important;
+            }
+            
+            .confidence-caveat strong {
+                color: #991b1b !important;
+            }
+            
+            /* Methodology link */
+            .sat-methodology-link {
+                background: #f0f7ff !important;
+                border: 1px solid #3b82f6 !important;
+                padding: 12px !important;
+                margin-top: 16px !important;
+                text-align: center !important;
+                page-break-inside: avoid !important;
+            }
+            
+            .sat-methodology-link p {
+                color: #1a1a1a !important;
+                font-size: 9pt !important;
+                margin: 0 !important;
+            }
+            
+            .sat-methodology-link a {
+                color: #0066cc !important;
+            }
+            
+            /* Trend analysis section */
+            #trends {
+                page-break-inside: avoid !important;
+            }
+            
+            .trend-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 12px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            .trend-card {
+                background: #f8f8f8 !important;
+                border: 1px solid #e0e0e0 !important;
+                padding: 12px !important;
+            }
+            
+            .trend-metric {
+                color: #1a1a1a !important;
+                font-size: 9pt !important;
+                font-weight: 700 !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .trend-sparkline {
+                display: flex !important;
+                gap: 3px !important;
+                height: 30px !important;
+                align-items: flex-end !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .sparkline-bar {
+                flex: 1 !important;
+                background: #d4a012 !important;
+                min-width: 8px !important;
+            }
+            
+            .trend-values {
+                font-size: 8pt !important;
+            }
+            
+            .trend-current {
+                color: #1a1a1a !important;
+                font-weight: 700 !important;
+                display: block !important;
+            }
+            
+            .trend-change {
+                display: block !important;
+            }
+            
+            .trend-up {
+                color: #991b1b !important;
+            }
+            
+            .trend-down {
+                color: #166534 !important;
+            }
+            
+            .trend-average {
+                color: #666666 !important;
+                display: block !important;
+            }
+            
+            /* Block list - compact for print */
+            .block-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 6px !important;
+            }
+            
+            .block-item {
+                background: #f8f8f8 !important;
+                border: 1px solid #e0e0e0 !important;
+                padding: 6px 8px !important;
+                font-size: 8pt !important;
+            }
+            
+            .block-ip {
+                color: #1a1a1a !important;
+                font-family: monospace !important;
+            }
+            
+            .block-source {
+                color: #666666 !important;
+                font-size: 7pt !important;
+            }
+            
+            /* Threat hunting suggestions */
+            .hunt-grid {
+                display: block !important;
+            }
+            
+            .hunt-item {
+                background: #f8f8f8 !important;
+                border: 1px solid #e0e0e0 !important;
+                padding: 8px 10px !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .hunt-technique {
+                color: #8B6914 !important;
+                font-size: 8pt !important;
+                font-weight: 700 !important;
+            }
+            
+            .hunt-desc {
+                color: #1a1a1a !important;
+                font-size: 8pt !important;
+            }
+            
+            /* Source reliability table */
+            .source-reliability-table th,
+            .source-reliability-table td {
+                padding: 8px !important;
+                border: 1px solid #e0e0e0 !important;
+                color: #1a1a1a !important;
+                font-size: 8pt !important;
+            }
+            
+            .source-reliability-table th {
+                background: #f8f8f8 !important;
+            }
+            
+            .rel-a, .cred-1 {
+                background: #dcfce7 !important;
+                color: #166534 !important;
+            }
+            
+            .rel-b, .cred-2 {
+                background: #dbeafe !important;
+                color: #1e40af !important;
+            }
+            
+            .rel-c, .cred-3 {
+                background: #fef3c7 !important;
+                color: #8B6914 !important;
             }
         }
         
@@ -3266,6 +4355,7 @@
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
+                    <div class="print-section-header">ANALYST ASSESSMENT</div>
                     <div class="collapsible-content">
                         <div class="collapsible-inner">
                             <p>This week's threat landscape poses <strong>direct operational risk</strong>. The Cleo vulnerability (CVE-2024-50623) is being actively exploited by the Cl0p ransomware group—the same group behind the MOVEit attacks that impacted hundreds of organizations in 2023.</p>
@@ -3398,6 +4488,7 @@
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
+                    <div class="print-section-header">TREND ANALYSIS</div>
                     <div class="collapsible-content">
                         <div class="collapsible-inner">
                             <p><strong>KEV additions are spiking.</strong> This week's 5 additions is the highest in 8 weeks and 61% above the average. The upward trend over the past month suggests either increased adversary activity or CISA is aggressively adding backlog items. Either way, patching workload is increasing.</p>
@@ -4544,6 +5635,234 @@
                         <p class="appendix-note">• <strong>News Signals:</strong> Metadata extracted from RSS feeds (CISA Advisories, The Hacker News, Dark Reading, Krebs on Security) — links to original articles provided for attribution</p>
                         <p class="appendix-note" style="margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 12px;">This report is based entirely on publicly available information. TacRaven Solutions does not produce official government intelligence products.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ==================== SOURCES & METHODOLOGY ==================== -->
+        <section class="section anchor-target" id="methodology">
+            <div class="container">
+                <div class="section-label">Transparency</div>
+                <h2 class="section-title">Sources & Methodology</h2>
+                
+                <div class="methodology-intro">
+                    <p>This report is produced using only publicly available information from authoritative sources. We believe transparency about our sources and methods is essential to building trust. Below, we document exactly where our data comes from and how we process it.</p>
+                </div>
+                
+                <div class="methodology-grid">
+                    <!-- Primary Sources -->
+                    <div class="methodology-card">
+                        <h3 class="methodology-card-title">
+                            <span class="methodology-icon">📡</span>
+                            Primary Data Sources
+                        </h3>
+                        <div class="source-item">
+                            <div class="source-header">
+                                <span class="source-name">CISA Known Exploited Vulnerabilities (KEV) Catalog</span>
+                                <span class="source-reliability rel-a">Authoritative</span>
+                            </div>
+                            <p class="source-desc">The U.S. Cybersecurity and Infrastructure Security Agency maintains a catalog of vulnerabilities with confirmed active exploitation. Inclusion requires documented evidence of exploitation in the wild.</p>
+                            <div class="source-meta">
+                                <span><strong>URL:</strong> <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">cisa.gov/known-exploited-vulnerabilities-catalog</a></span>
+                                <span><strong>Update Frequency:</strong> As vulnerabilities are confirmed</span>
+                                <span><strong>License:</strong> Public Domain (U.S. Government work product)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="source-item">
+                            <div class="source-header">
+                                <span class="source-name">Feodo Tracker (abuse.ch)</span>
+                                <span class="source-reliability rel-b">Established</span>
+                            </div>
+                            <p class="source-desc">A project by the Swiss research organization abuse.ch that tracks botnet command & control (C2) infrastructure. Feodo Tracker identifies servers used by banking trojans and other malware families including Emotet, QakBot, and IcedID.</p>
+                            <div class="source-meta">
+                                <span><strong>URL:</strong> <a href="https://feodotracker.abuse.ch/" target="_blank" rel="noopener">feodotracker.abuse.ch</a></span>
+                                <span><strong>Update Frequency:</strong> Continuous</span>
+                                <span><strong>License:</strong> CC0 1.0 (Public Domain Dedication)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="source-item">
+                            <div class="source-header">
+                                <span class="source-name">MITRE ATT&CK Framework</span>
+                                <span class="source-reliability rel-a">Authoritative</span>
+                            </div>
+                            <p class="source-desc">A globally-recognized knowledge base of adversary tactics and techniques based on real-world observations. Used to map vulnerabilities and threats to standardized attack patterns.</p>
+                            <div class="source-meta">
+                                <span><strong>URL:</strong> <a href="https://attack.mitre.org/" target="_blank" rel="noopener">attack.mitre.org</a></span>
+                                <span><strong>License:</strong> Apache 2.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Secondary Sources -->
+                    <div class="methodology-card">
+                        <h3 class="methodology-card-title">
+                            <span class="methodology-icon">📰</span>
+                            Secondary Sources (News & Analysis)
+                        </h3>
+                        <p class="methodology-note">We monitor security news outlets to assess media coverage and extract context about threat campaigns. News coverage is used as a signal for threat awareness, not as primary evidence of exploitation.</p>
+                        
+                        <div class="source-list">
+                            <div class="source-list-item">
+                                <span class="source-name">CISA Advisories & Alerts</span>
+                                <span class="source-type">Official Government</span>
+                            </div>
+                            <div class="source-list-item">
+                                <span class="source-name">Vendor Security Advisories</span>
+                                <span class="source-type">Primary Source</span>
+                            </div>
+                            <div class="source-list-item">
+                                <span class="source-name">Krebs on Security</span>
+                                <span class="source-type">Investigative Journalism</span>
+                            </div>
+                            <div class="source-list-item">
+                                <span class="source-name">The Hacker News</span>
+                                <span class="source-type">Security News</span>
+                            </div>
+                            <div class="source-list-item">
+                                <span class="source-name">Dark Reading</span>
+                                <span class="source-type">Trade Publication</span>
+                            </div>
+                            <div class="source-list-item">
+                                <span class="source-name">BleepingComputer</span>
+                                <span class="source-type">Security News</span>
+                            </div>
+                            <div class="source-list-item">
+                                <span class="source-name">Security Vendor Blogs</span>
+                                <span class="source-type">Technical Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Analytical Methodology -->
+                    <div class="methodology-card full-width">
+                        <h3 class="methodology-card-title">
+                            <span class="methodology-icon">🔬</span>
+                            Analytical Methodology
+                        </h3>
+                        
+                        <div class="methodology-process">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Data Collection</h4>
+                                    <p>Automated systems pull data from primary sources (CISA KEV, Feodo Tracker) at regular intervals. RSS feeds from security news sources are monitored for coverage signals.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Enrichment & Correlation</h4>
+                                    <p>Raw data is enriched with MITRE ATT&CK mappings, ransomware campaign linkages (from CISA advisories and vendor reports), and geographic attribution of infrastructure.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Structured Analysis</h4>
+                                    <p>We apply Intelligence Community-standard Structured Analytical Techniques (SATs) including Key Assumptions Check, Analysis of Competing Hypotheses, and Indicators of Change to reduce cognitive bias.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="process-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Confidence Assessment</h4>
+                                    <p>All judgments include confidence levels (High/Medium/Low) based on source reliability, information credibility, and corroboration across multiple sources, following ICD 203 standards.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="process-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h4>Plain Language Translation</h4>
+                                    <p>Technical findings are translated into business-relevant language to support executive decision-making. We explain not just "what" but "why it matters."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Limitations & Caveats -->
+                    <div class="methodology-card full-width">
+                        <h3 class="methodology-card-title">
+                            <span class="methodology-icon">⚠️</span>
+                            Limitations & Caveats
+                        </h3>
+                        
+                        <div class="limitations-grid">
+                            <div class="limitation-item">
+                                <h4>Not Government Intelligence</h4>
+                                <p>This report is based entirely on publicly available information. TacRaven Solutions does not produce official government intelligence products and has no access to classified information.</p>
+                            </div>
+                            
+                            <div class="limitation-item">
+                                <h4>Lag in Reporting</h4>
+                                <p>CISA KEV additions lag actual exploitation by days or weeks. News coverage may lag even further. Treat this report as a prioritization guide, not a real-time threat feed.</p>
+                            </div>
+                            
+                            <div class="limitation-item">
+                                <h4>C2 Infrastructure Volatility</h4>
+                                <p>Botnet C2 servers have short lifespans. IOCs in this report may be stale by the time you read it. Use for historical hunting and as a starting point for your own research.</p>
+                            </div>
+                            
+                            <div class="limitation-item">
+                                <h4>No Specific Targeting Information</h4>
+                                <p>We cannot tell you if your organization is being specifically targeted. The data reflects broad exploitation trends, not individualized threat assessments.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Standards & Compliance -->
+                    <div class="methodology-card">
+                        <h3 class="methodology-card-title">
+                            <span class="methodology-icon">📋</span>
+                            Standards & Frameworks
+                        </h3>
+                        <div class="standards-list">
+                            <div class="standard-item">
+                                <span class="standard-name">ICD 203</span>
+                                <span class="standard-desc">Analytic Standards for confidence assessments</span>
+                            </div>
+                            <div class="standard-item">
+                                <span class="standard-name">ICD 206</span>
+                                <span class="standard-desc">Sourcing Requirements for source documentation</span>
+                            </div>
+                            <div class="standard-item">
+                                <span class="standard-name">MITRE ATT&CK</span>
+                                <span class="standard-desc">Adversary tactic and technique mapping</span>
+                            </div>
+                            <div class="standard-item">
+                                <span class="standard-name">STIX/TAXII</span>
+                                <span class="standard-desc">Threat intelligence data formats</span>
+                            </div>
+                            <div class="standard-item">
+                                <span class="standard-name">TLP:CLEAR</span>
+                                <span class="standard-desc">Traffic Light Protocol classification</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact & Feedback -->
+                    <div class="methodology-card">
+                        <h3 class="methodology-card-title">
+                            <span class="methodology-icon">💬</span>
+                            Questions & Feedback
+                        </h3>
+                        <p class="methodology-contact">We welcome questions about our methodology and feedback on how to improve these reports.</p>
+                        <div class="contact-info">
+                            <p><strong>Report Issues:</strong> If you believe any information in this report is inaccurate, please contact us.</p>
+                            <p><strong>Methodology Questions:</strong> For detailed questions about our analytical process, see our <a href="/intel/methodology.html">full methodology documentation</a>.</p>
+                            <p><strong>General Inquiries:</strong> <a href="/#contact">Contact TacRaven Solutions</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="methodology-footer">
+                    <p class="classification-marking">CLASSIFICATION: TLP:CLEAR — This report may be shared freely without restriction.</p>
+                    <p class="report-generation">Report Generated: <span id="generation-timestamp">2026-01-20T04:30:00Z</span> | Data as of: 2026-01-19</p>
                 </div>
             </div>
         </section>
