@@ -367,10 +367,10 @@ function renderReport(reportData) {
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://tacravensolutions.com/intel/weekly/${metadata.week.year}-W${String(metadata.week.week).padStart(2, '0')}.html">
+    <meta property="og:url" content="https://tacraven.com/intel/weekly/${metadata.week.year}-W${String(metadata.week.week).padStart(2, '0')}.html">
     <meta property="og:title" content="Weekly Cybersecurity Threat Report - ${metadata.monthName} ${metadata.week.year}, Week ${String(metadata.week.week).padStart(2, '0')}">
     <meta property="og:description" content="${stats.kevCount} new CISA KEV vulnerabilities, ${stats.ransomwareCount} linked to ransomware campaigns. Includes MITRE ATT&CK mapping and structured analytical assessment.">
-    <meta property="og:image" content="https://tacravensolutions.com/images/threat-report-og.png">
+    <meta property="og:image" content="https://tacraven.com/images/threat-report-og.png">
     <meta property="og:site_name" content="TacRaven Solutions">
     <meta property="article:published_time" content="${metadata.generated}">
     <meta property="article:section" content="Threat Intelligence">
@@ -379,7 +379,7 @@ function renderReport(reportData) {
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Weekly Cybersecurity Threat Report - ${metadata.monthName} ${metadata.week.year}, Week ${String(metadata.week.week).padStart(2, '0')}">
     <meta name="twitter:description" content="${stats.kevCount} new KEV vulnerabilities, ${stats.ransomwareCount} linked to ransomware. MITRE ATT&CK mapping included.">
-    <meta name="twitter:image" content="https://tacravensolutions.com/images/threat-report-og.png">
+    <meta name="twitter:image" content="https://tacraven.com/images/threat-report-og.png">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
@@ -470,7 +470,7 @@ ${blufItems}
                 <div class="threat-meter">
                     <div class="threat-level-display">
                         <div class="threat-level-ring ${metadata.threatLevel.class}" data-level="${metadata.threatLevel.score}">
-                            <svg width="80" height="80" viewBox="0 0 80 80">
+                            <svg viewBox="0 0 80 80">
                                 <circle class="ring-bg" cx="40" cy="40" r="35"/>
                                 <circle class="ring-fill" cx="40" cy="40" r="35"/>
                             </svg>
@@ -1248,12 +1248,14 @@ function generateStyles() {
         /* Threat Meter */
         .threat-meter { display: flex; align-items: center; gap: 40px; background: var(--black-card); border: 1px solid rgba(212, 160, 18, 0.2); border-radius: 12px; padding: 32px; }
         .threat-level-display { flex-shrink: 0; }
-        .threat-level-ring { position: relative; width: 80px; height: 80px; }
+        .threat-level-ring { position: relative; width: 100px; height: 100px; }
         .threat-level-ring svg { transform: rotate(-90deg); }
         .ring-bg { fill: none; stroke: var(--gray-700); stroke-width: 6; }
         .ring-fill { fill: none; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 220; stroke-dashoffset: 220; transition: stroke-dashoffset 1s ease; }
-        .threat-level-ring.critical .ring-fill { stroke: var(--red); }
-        .threat-level-ring.elevated .ring-fill { stroke: #f59e0b; }
+        .threat-level-ring.critical .ring-fill { stroke: #ef4444; }
+        .threat-level-ring.high .ring-fill { stroke: #f97316; }
+        .threat-level-ring.elevated .ring-fill { stroke: var(--gold); }
+        .threat-level-ring.moderate .ring-fill { stroke: #22c55e; }
         .threat-level-ring.guarded .ring-fill { stroke: #eab308; }
         .threat-level-ring.low .ring-fill { stroke: var(--green); }
         .threat-level-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--white); }
