@@ -404,7 +404,7 @@ ${generateStyles()}
                     Weekly Cybersecurity Threat Report
                 </div>
                 <h1 class="report-title">
-                    <span class="report-title-date">${metadata.monthName} ${metadata.week.year}, Week ${String(metadata.week.week).padStart(2, '0')}</span>
+                    <span class="report-title-date">${dateStr}</span>
                     <span class="report-title-name">Cybersecurity Threat Report</span>
                 </h1>
                 <p class="report-meta">Generated: ${metadata.generated}</p>
