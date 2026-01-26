@@ -3893,75 +3893,49 @@ function generateStyles() {
                 margin-bottom: 16px;
             }
             
-            /* Page breaks - prevent sections from being cut in half */
+            /* Page breaks - be selective to avoid blank spaces */
             .sat-section, .mitre-section, .action-section { page-break-before: always; }
             .appendix-section { page-break-before: always; }
             .sources-methodology-section { page-break-before: always; }
             
-            /* Prevent these elements from being split across pages */
-            /* Using both page-break-inside and break-inside for browser compatibility */
-            .methodology-section { page-break-inside: avoid; break-inside: avoid; }
-            .limitations-standards-grid { page-break-inside: avoid; break-inside: avoid; }
-            .feedback-section { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* Executive Summary - keep cards together */
+            /* Only prevent breaks on small, atomic elements - NOT containers */
+            /* Executive Summary cards - small enough to keep together */
             .exec-card { page-break-inside: avoid; break-inside: avoid; }
-            .exec-grid { page-break-inside: avoid; break-inside: avoid; }
-            .analyst-assessment { page-break-inside: avoid; break-inside: avoid; margin-top: 20px; }
-            .business-impact-box { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* Individual items that should stay together */
             .impact-item { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* Trend section */
             .trend-card { page-break-inside: avoid; break-inside: avoid; }
-            .trend-narrative-box { page-break-inside: avoid; break-inside: avoid; margin-top: 20px; }
-            .trend-narrative-section { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* Driver cards */
             .driver-card { page-break-inside: avoid; break-inside: avoid; }
-            .drivers-grid { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* SAT section - keep analysis blocks together */
-            .assessment-card { page-break-inside: avoid; break-inside: avoid; margin-bottom: 20px; }
-            .plain-language-box { page-break-inside: avoid; break-inside: avoid; }
-            .kac-table { page-break-inside: avoid; break-inside: avoid; }
-            .ach-table { page-break-inside: avoid; break-inside: avoid; }
-            .diagnosticity-table { page-break-inside: avoid; break-inside: avoid; }
-            .source-reliability-table { page-break-inside: avoid; break-inside: avoid; }
+            .patch-item { page-break-inside: avoid; break-inside: avoid; }
+            .block-item { page-break-inside: avoid; break-inside: avoid; }
+            .hunt-item { page-break-inside: avoid; break-inside: avoid; }
+            .emerging-card { page-break-inside: avoid; break-inside: avoid; }
+            .mitre-card { page-break-inside: avoid; break-inside: avoid; }
+            .appendix-card { page-break-inside: avoid; break-inside: avoid; }
             .uncertainty-card { page-break-inside: avoid; break-inside: avoid; }
             .what-if-card { page-break-inside: avoid; break-inside: avoid; }
-            .indicators-column { page-break-inside: avoid; break-inside: avoid; }
-            .overall-confidence { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* Action section */
-            .action-card { page-break-inside: avoid; break-inside: avoid; }
-            .patch-item { page-break-inside: avoid; break-inside: avoid; }
-            .block-grid { page-break-inside: avoid; break-inside: avoid; }
-            .hunt-list { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* MITRE section */
-            .mitre-card { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* Emerging threats */
-            .emerging-card { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* Appendix */
-            .appendix-card { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* Sources & Methodology */
-            .sources-card { page-break-inside: avoid; break-inside: avoid; }
-            .primary-source-item { page-break-inside: avoid; break-inside: avoid; }
             .methodology-step { page-break-inside: avoid; break-inside: avoid; }
             .limitation-item { page-break-inside: avoid; break-inside: avoid; }
-            .standards-card { page-break-inside: avoid; break-inside: avoid; }
+            .secondary-source-item { page-break-inside: avoid; break-inside: avoid; }
+            .primary-source-item { page-break-inside: avoid; break-inside: avoid; }
+            .feedback-item { page-break-inside: avoid; break-inside: avoid; }
             
-            /* Add page break after major sections to start fresh */
-            .exec-section { page-break-after: auto; }
-            .bluf-section { page-break-after: auto; }
+            /* Tables - keep rows together but allow table to split */
+            .kac-table tr, .ach-table tr, .diagnosticity-table tr, 
+            .source-reliability-table tr, .standards-table tr { 
+                page-break-inside: avoid; 
+                break-inside: avoid; 
+            }
+            
+            /* Keep titles with at least some content */
+            h2, h3, h4 {
+                page-break-after: avoid;
+            }
             
             /* Orphan/widow control */
-            p, li, h3, h4 {
-                orphans: 3;
-                widows: 3;
+            p, li {
+                orphans: 2;
+                widows: 2;
             }
             
             /* ============================================
@@ -3978,9 +3952,6 @@ function generateStyles() {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
                 border-left: 4px solid #9a7209 !important;
-                page-break-before: auto;
-                page-break-inside: avoid;
-                break-inside: avoid;
             }
             .analyst-assessment-title {
                 color: #111 !important;
@@ -3999,9 +3970,6 @@ function generateStyles() {
             .business-impact-box {
                 background: #f5f5f5 !important;
                 border: 1px solid #ddd !important;
-                page-break-before: auto;
-                page-break-inside: avoid;
-                break-inside: avoid;
             }
             .business-impact-title {
                 color: #111 !important;
@@ -4054,20 +4022,12 @@ function generateStyles() {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
                 border-left: 4px solid #9a7209 !important;
-                page-break-before: auto;
-                page-break-inside: avoid;
-                break-inside: avoid;
             }
             .trend-narrative-title {
                 color: #111 !important;
-                page-break-after: avoid;
             }
             .trend-narrative-metric {
                 color: #9a7209 !important;
-            }
-            .trend-narrative-section {
-                page-break-inside: avoid;
-                break-inside: avoid;
             }
             .trend-narrative-section p {
                 color: #333 !important;
@@ -4078,8 +4038,6 @@ function generateStyles() {
             .trend-narrative-section.trend-summary {
                 background: #f5f5f5 !important;
                 border: 1px solid #9a7209 !important;
-                page-break-inside: avoid;
-                break-inside: avoid;
             }
             
             /* ============================================
@@ -4117,14 +4075,11 @@ function generateStyles() {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
                 border-left: 4px solid #9a7209 !important;
-                page-break-inside: avoid;
-                break-inside: avoid;
             }
             .plain-language-header {
                 background: #eee !important;
                 color: #9a7209 !important;
                 border-bottom: 1px solid #ddd !important;
-                page-break-after: avoid;
             }
             .plain-language-content p {
                 color: #333 !important;
@@ -4137,12 +4092,9 @@ function generateStyles() {
             .uncertainty-card {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
-                page-break-inside: avoid;
-                break-inside: avoid;
             }
             .uncertainty-title {
                 color: #111 !important;
-                page-break-after: avoid;
             }
             .uncertainty-desc {
                 color: #333 !important;
@@ -4158,12 +4110,9 @@ function generateStyles() {
             .what-if-card {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
-                page-break-inside: avoid;
-                break-inside: avoid;
             }
             .what-if-title {
                 color: #9a7209 !important;
-                page-break-after: avoid;
             }
             .what-if-indicators strong {
                 color: #111 !important;
@@ -4184,8 +4133,6 @@ function generateStyles() {
             .indicators-column {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
-                page-break-inside: avoid;
-                break-inside: avoid;
             }
             .indicators-column.worsening {
                 border-top: 3px solid #dc2626 !important;
@@ -4195,11 +4142,9 @@ function generateStyles() {
             }
             .worsening .indicators-header {
                 color: #dc2626 !important;
-                page-break-after: avoid;
             }
             .improving .indicators-header {
                 color: #16a34a !important;
-                page-break-after: avoid;
             }
             .indicators-list li {
                 color: #333 !important;
