@@ -3078,10 +3078,17 @@ function generateStyles() {
                 color: #111 !important;
             }
             
-            /* Text colors */
+            /* ALL text colors - comprehensive override */
+            p, li, td, th, span, div, h1, h2, h3, h4, h5, h6 {
+                color: #111 !important;
+            }
+            
+            /* Specific text colors */
             .bluf-text, .exec-rationale, .exec-detail, .driver-desc, 
             .source-desc, .emerging-desc, .sat-purpose, .hunt-suggestion,
-            .patch-vendor, .trend-average, .mitre-name { color: #333 !important; }
+            .patch-vendor, .patch-description, .trend-average, .mitre-name { 
+                color: #333 !important; 
+            }
             
             /* Gold accents to dark gold for print */
             .threat-stat-value, .driver-rank, .patch-cve, .mitre-id, .mitre-count,
@@ -3123,35 +3130,90 @@ function generateStyles() {
             /* Page breaks */
             .sat-section, .mitre-section, .action-section { page-break-before: always; }
             
-            /* Table styling */
-            .kac-table, .ach-table, .diagnosticity-table, .source-reliability-table { font-size: 10pt; }
-            .kac-table th, .ach-table th, .diagnosticity-table th, .source-reliability-table th { background: #eee !important; color: #111 !important; }
-            .kac-table td, .ach-table td, .diagnosticity-table td, .source-reliability-table td { color: #333 !important; }
+            /* ============================================
+               EXECUTIVE SUMMARY PRINT STYLES
+               ============================================ */
             
-            /* Source links print styles */
-            .source-link {
+            .exec-card-title { color: #111 !important; font-weight: 600; }
+            .exec-risk-level { color: #111 !important; }
+            .exec-risk-change { color: #666 !important; }
+            .exec-decisions li { color: #333 !important; }
+            
+            /* Analyst Assessment */
+            .analyst-assessment {
                 background: #f9f9f9 !important;
-                border-color: #ddd !important;
+                border: 1px solid #ddd !important;
+                border-left: 4px solid #9a7209 !important;
             }
-            .source-label {
+            .analyst-assessment-title {
+                color: #111 !important;
+            }
+            .analyst-icon, .business-icon {
+                filter: grayscale(100%);
+            }
+            .analyst-narrative p {
                 color: #333 !important;
             }
-            .source-badge {
-                background: #eee !important;
-                color: #666 !important;
-            }
-            .source-link::after {
-                content: " (" attr(href) ")";
-                font-size: 8pt;
-                color: #666;
-                word-break: break-all;
+            .analyst-narrative strong {
+                color: #111 !important;
             }
             
-            /* Trend narrative print styles */
+            /* Business Impact */
+            .business-impact-box {
+                background: #f5f5f5 !important;
+                border: 1px solid #ddd !important;
+            }
+            .business-impact-title {
+                color: #111 !important;
+            }
+            .impact-item {
+                background: #fff !important;
+                border: 1px solid #eee !important;
+            }
+            .impact-text {
+                color: #333 !important;
+            }
+            .impact-text strong {
+                color: #111 !important;
+            }
+            
+            /* ============================================
+               TREND SECTION PRINT STYLES
+               ============================================ */
+            
+            .trend-card {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .trend-metric {
+                color: #111 !important;
+                font-weight: 600;
+            }
+            .trend-current {
+                color: #111 !important;
+                font-weight: 600;
+            }
+            .trend-change {
+                color: #666 !important;
+            }
+            .trend-change.trend-up {
+                color: #dc2626 !important;
+            }
+            .trend-change.trend-down {
+                color: #16a34a !important;
+            }
+            .trend-average {
+                color: #666 !important;
+            }
+            .sparkline-bar {
+                background: #9a7209 !important;
+            }
+            
+            /* Trend Narrative */
             .trend-narrative-box {
                 background: #f9f9f9 !important;
-                border-color: #ddd !important;
-                border-left-color: #9a7209 !important;
+                border: 1px solid #ddd !important;
+                border-left: 4px solid #9a7209 !important;
             }
             .trend-narrative-title {
                 color: #111 !important;
@@ -3162,52 +3224,113 @@ function generateStyles() {
             .trend-narrative-section p {
                 color: #333 !important;
             }
+            .trend-narrative-section p strong {
+                color: #111 !important;
+            }
             .trend-narrative-section.trend-summary {
                 background: #f5f5f5 !important;
-                border-color: #9a7209 !important;
+                border: 1px solid #9a7209 !important;
             }
             
-            /* Analyst Assessment print styles */
-            .analyst-assessment {
-                background: #f9f9f9 !important;
-                border-color: #ddd !important;
-                border-left-color: #9a7209 !important;
+            /* ============================================
+               SAT SECTION PRINT STYLES
+               ============================================ */
+            
+            /* Tables */
+            .kac-table, .ach-table, .diagnosticity-table, .source-reliability-table { 
+                font-size: 10pt; 
             }
-            .analyst-narrative p {
-                color: #333 !important;
+            .kac-table th, .ach-table th, .diagnosticity-table th, .source-reliability-table th { 
+                background: #eee !important; 
+                color: #111 !important; 
             }
-            .business-impact-box {
-                background: #f5f5f5 !important;
-                border-color: #ddd !important;
+            .kac-table td, .ach-table td, .diagnosticity-table td, .source-reliability-table td { 
+                color: #333 !important; 
             }
-            .impact-item {
-                background: #fff !important;
-                border-color: #eee !important;
+            
+            /* Status badges */
+            .kac-status, .ach-confidence, .diagnosticity-type, 
+            .reliability-badge, .credibility-badge {
+                color: #111 !important;
+                background: #eee !important;
+                border: 1px solid #ccc !important;
             }
-            .impact-text {
-                color: #333 !important;
-            }
+            
+            /* ACH evidence */
+            .ach-hypothesis { color: #111 !important; }
+            .ach-for { color: #16a34a !important; }
+            .ach-against { color: #dc2626 !important; }
+            .ach-evidence-item { color: #333 !important; }
             
             /* Plain language boxes */
             .plain-language-box {
                 background: #f9f9f9 !important;
-                border-color: #ddd !important;
-                border-left-color: #9a7209 !important;
+                border: 1px solid #ddd !important;
+                border-left: 4px solid #9a7209 !important;
             }
             .plain-language-header {
                 background: #eee !important;
                 color: #9a7209 !important;
+                border-bottom: 1px solid #ddd !important;
             }
             .plain-language-content p {
                 color: #333 !important;
             }
+            .plain-language-content p strong {
+                color: #111 !important;
+            }
             
-            /* Uncertainty and What-If cards */
-            .uncertainty-card,
-            .what-if-card,
+            /* Uncertainty cards */
+            .uncertainty-card {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .uncertainty-title {
+                color: #111 !important;
+            }
+            .uncertainty-desc {
+                color: #333 !important;
+            }
+            .uncertainty-impact {
+                color: #333 !important;
+            }
+            .uncertainty-impact strong {
+                color: #9a7209 !important;
+            }
+            
+            /* What-If cards */
+            .what-if-card {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .what-if-title {
+                color: #9a7209 !important;
+            }
+            .what-if-indicators strong {
+                color: #111 !important;
+            }
+            .what-if-indicators li {
+                color: #333 !important;
+            }
+            .what-if-action {
+                background: #f5f5f5 !important;
+                border: 1px solid #ddd !important;
+                color: #333 !important;
+            }
+            .what-if-action strong {
+                color: #9a7209 !important;
+            }
+            
+            /* Indicators of Change */
             .indicators-column {
                 background: #f9f9f9 !important;
-                border-color: #ddd !important;
+                border: 1px solid #ddd !important;
+            }
+            .indicators-column.worsening {
+                border-top: 3px solid #dc2626 !important;
+            }
+            .indicators-column.improving {
+                border-top: 3px solid #16a34a !important;
             }
             .worsening .indicators-header {
                 color: #dc2626 !important;
@@ -3215,14 +3338,132 @@ function generateStyles() {
             .improving .indicators-header {
                 color: #16a34a !important;
             }
+            .indicators-list li {
+                color: #333 !important;
+            }
             
             /* Overall confidence */
             .overall-confidence {
                 background: #f5f5f5 !important;
-                border-color: #9a7209 !important;
+                border: 1px solid #9a7209 !important;
+            }
+            .overall-confidence-label {
+                color: #111 !important;
+            }
+            .overall-confidence-level {
+                color: #111 !important;
+                background: #eee !important;
+                border: 1px solid #ccc !important;
             }
             .overall-confidence-rationale p {
                 color: #333 !important;
+            }
+            .overall-confidence-rationale p strong {
+                color: #111 !important;
+            }
+            .confidence-caveat {
+                color: #666 !important;
+            }
+            .methodology-link {
+                color: #666 !important;
+            }
+            .methodology-link a {
+                color: #9a7209 !important;
+            }
+            
+            /* ============================================
+               ACTION SECTION PRINT STYLES
+               ============================================ */
+            
+            .action-card-title {
+                color: #111 !important;
+            }
+            .patch-item {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .patch-header {
+                color: #111 !important;
+            }
+            .patch-cve {
+                color: #9a7209 !important;
+            }
+            .patch-due {
+                color: #666 !important;
+            }
+            .ransomware-tag {
+                color: #dc2626 !important;
+                background: #fef2f2 !important;
+                border: 1px solid #dc2626 !important;
+            }
+            .patch-vendor {
+                color: #111 !important;
+            }
+            .patch-description {
+                color: #666 !important;
+            }
+            .coverage-label {
+                color: #111 !important;
+                background: #eee !important;
+            }
+            
+            /* Source links */
+            .source-link {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .source-label {
+                color: #333 !important;
+            }
+            .source-badge {
+                background: #eee !important;
+                color: #666 !important;
+            }
+            
+            /* Block list */
+            .block-item {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .block-ip {
+                color: #9a7209 !important;
+            }
+            .block-source {
+                color: #666 !important;
+            }
+            
+            /* Hunt suggestions */
+            .hunt-item {
+                color: #333 !important;
+            }
+            .hunt-technique {
+                color: #9a7209 !important;
+            }
+            .hunt-suggestion {
+                color: #333 !important;
+            }
+            
+            /* ============================================
+               DRIVER CARDS PRINT STYLES
+               ============================================ */
+            
+            .driver-card {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .driver-rank {
+                color: #9a7209 !important;
+            }
+            .driver-title {
+                color: #111 !important;
+            }
+            .driver-desc {
+                color: #333 !important;
+            }
+            .driver-severity {
+                background: #eee !important;
+                color: #111 !important;
+                border: 1px solid #ccc !important;
             }
             
             /* Assessment cards page breaks */
