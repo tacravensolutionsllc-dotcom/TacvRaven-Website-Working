@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "week": {
+      "year": 2026,
+      "week": 5
+    },
+    "weekStart": "2026-01-26T00:00:00.000Z",
+    "monthName": "January",
+    "monthShort": "JAN",
+    "generated": "2026-01-26T12:22:09.790Z",
+    "threatLevel": {
+      "level": "ELEVATED",
+      "class": "elevated",
+      "score": 90
+    }
+  },
+  "stats": {
+    "kevCount": 6,
+    "ransomwareCount": 0,
+    "c2Count": 0,
+    "malwareFamilies": 0
+  },
+  "trends": {
+    "kev": {
+      "current": 6,
+      "lastWeek": 3,
+      "change": 100,
+      "average": 3.3,
+      "history": [
+        2,
+        3,
+        4,
+        2,
+        3,
+        3,
+        3,
+        6
+      ]
+    },
+    "ransomware": {
+      "current": 0,
+      "lastWeek": 2,
+      "change": -100,
+      "average": 1.3,
+      "history": [
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        0
+      ]
+    },
+    "c2": {
+      "current": 0,
+      "lastWeek": 13,
+      "change": -100,
+      "average": 13.5,
+      "history": [
+        16,
+        18,
+        14,
+        20,
+        12,
+        15,
+        13,
+        0
+      ]
+    }
+  },
+  "data": {
+    "recentKEVs": [
+      {
+        "cveID": "CVE-2024-37079",
+        "vendorProject": "Broadcom",
+        "product": "VMware vCenter Server",
+        "vulnerabilityName": "Broadcom VMware vCenter Server Out-of-bounds Write Vulnerability",
+        "dateAdded": "2026-01-23",
+        "shortDescription": "Broadcom VMware vCenter Server contains an out-of-bounds write vulnerability in the implementation of the DCERPC protocol. This could allow a malicious actor with network access to vCenter Server to send specially crafted network packets, potentially leading to remote code execution.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-02-13",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/24453 ; https://nvd.nist.gov/vuln/detail/CVE-2024-37079",
+        "cwes": [
+          "CWE-787"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-68645",
+        "vendorProject": "Synacor",
+        "product": " Zimbra Collaboration Suite (ZCS)",
+        "vulnerabilityName": "Synacor Zimbra Collaboration Suite (ZCS) PHP Remote File Inclusion Vulnerability",
+        "dateAdded": "2026-01-22",
+        "shortDescription": "Synacor Zimbra Collaboration Suite (ZCS) contains a PHP remote file inclusion vulnerability that could allow for remote attackers to craft requests to the /h/rest endpoint to influence internal request dispatching, allowing inclusion of arbitrary files from the WebRoot directory.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-02-12",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://wiki.zimbra.com/wiki/Security_Center ; https://nvd.nist.gov/vuln/detail/CVE-2025-68645",
+        "cwes": [
+          "CWE-98"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-34026",
+        "vendorProject": "Versa",
+        "product": "Concerto",
+        "vulnerabilityName": "Versa Concerto Improper Authentication Vulnerability",
+        "dateAdded": "2026-01-22",
+        "shortDescription": "Versa Concerto SD-WAN orchestration platform contains an improper authentication vulnerability in the Traefik reverse proxy configuration, allowing at attacker to access administrative endpoints. The internal Actuator endpoint can be leveraged for access to heap dumps and trace logs.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-02-12",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://security-portal.versa-networks.com/emailbulletins/6830f94328defa375486ff2e ; https://nvd.nist.gov/vuln/detail/CVE-2025-34026",
+        "cwes": [
+          "CWE-288"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-31125",
+        "vendorProject": "Vite",
+        "product": "Vitejs",
+        "vulnerabilityName": "Vite Vitejs Improper Access Control Vulnerability",
+        "dateAdded": "2026-01-22",
+        "shortDescription": "Vite Vitejs contains an improper access control vulnerability that exposes content of non-allowed files using ?inline&import or ?raw?import. Only apps explicitly exposing the Vite dev server to the network (using --host or server.host config option) are affected.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-02-12",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "This vulnerability could affect an open-source component, third-party library, protocol, or proprietary implementation that could be used by different products. For more information, please see: https://github.com/vitejs/vite/commit/59673137c45ac2bcfad1170d954347c1a17ab949 ; https://nvd.nist.gov/vuln/detail/CVE-2025-31125",
+        "cwes": [
+          "CWE-200",
+          "CWE-284"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-54313",
+        "vendorProject": "Prettier",
+        "product": "eslint-config-prettier",
+        "vulnerabilityName": "Prettier eslint-config-prettier Embedded Malicious Code Vulnerability",
+        "dateAdded": "2026-01-22",
+        "shortDescription": "Prettier eslint-config-prettier contains an embedded malicious code vulnerability. Installing an affected package executes an install.js file that launches the node-gyp.dll malware on Windows.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-02-12",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "This vulnerability could affect an open-source component, third-party library, protocol, or proprietary implementation that could be used by different products. For more information, please see: https://www.npmjs.com/package/eslint-config-prettier?activeTab=versions ; https://github.com/prettier/eslint-config-prettier/issues/339#issuecomment-3090304490 ; https://nvd.nist.gov/vuln/detail/CVE-2025-54313",
+        "cwes": [
+          "CWE-506"
+        ]
+      },
+      {
+        "cveID": "CVE-2026-20045",
+        "vendorProject": "Cisco",
+        "product": "Unified Communications Manager",
+        "vulnerabilityName": "Cisco Unified Communications Products Code Injection Vulnerability",
+        "dateAdded": "2026-01-21",
+        "shortDescription": "Cisco Unified Communications Manager (Unified CM), Cisco Unified Communications Manager Session Management Edition (Unified CM SME), Cisco Unified Communications Manager IM & Presence Service (Unified CM IM&P), Cisco Unity Connection, and Cisco Webex Calling Dedicated Instance contain a code injection vulnerability that could allow the attacker to obtain user-level access to the underlying operating system and then elevate privileges to root.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-02-11",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-voice-rce-mORhqY4b ; https://nvd.nist.gov/vuln/detail/CVE-2026-20045",
+        "cwes": [
+          "CWE-94"
+        ]
+      }
+    ],
+    "ransomwareKEVs": [],
+    "onlineC2s": [],
+    "c2ByFamily": {},
+    "c2ByCountry": {},
+    "newsCoverage": {
+      "CVE-2024-37079": [
+        {
+          "title": "CISA Adds Actively Exploited VMware vCenter Flaw CVE-2024-37079 to KEV Catalog",
+          "link": "https://thehackernews.com/2026/01/cisa-adds-actively-exploited-vmware.html",
+          "pubDate": "Sat, 24 Jan 2026 13:39:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2025-68645": [],
+      "CVE-2025-34026": [],
+      "CVE-2025-31125": [
+        {
+          "title": "Google Gemini Prompt Injection Flaw Exposed Private Calendar Data via Malicious Invites",
+          "link": "https://thehackernews.com/2026/01/google-gemini-prompt-injection-flaw.html",
+          "pubDate": "Mon, 19 Jan 2026 22:51:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Google Gemini Flaw Turns Calendar Invites Into Attack Vector",
+          "link": "https://www.darkreading.com/cloud-security/google-gemini-flaw-calendar-invites-attack-vector",
+          "pubDate": "Tue, 20 Jan 2026 15:52:35 GMT",
+          "source": "Dark Reading"
+        }
+      ],
+      "CVE-2025-54313": [],
+      "CVE-2026-20045": [
+        {
+          "title": "Cisco Fixes Actively Exploited Zero-Day CVE-2026-20045 in Unified CM and Webex",
+          "link": "https://thehackernews.com/2026/01/cisco-fixes-actively-exploited-zero-day.html",
+          "pubDate": "Thu, 22 Jan 2026 09:36:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Cisco Patches Zero-Day RCE Exploited by China-Linked APT in Secure Email Gateways",
+          "link": "https://thehackernews.com/2026/01/cisco-patches-zero-day-rce-exploited-by.html",
+          "pubDate": "Fri, 16 Jan 2026 11:08:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Exploited Zero-Day Flaw in Cisco UC Could Affect Millions",
+          "link": "https://www.darkreading.com/endpoint-security/exploited-zero-day-flaw-cisco-uc-affect-millions",
+          "pubDate": "Fri, 23 Jan 2026 20:56:42 GMT",
+          "source": "Dark Reading"
+        }
+      ]
+    },
+    "tacticCounts": {
+      "TA0001": 6
+    },
+    "techniqueCounts": {
+      "T1190": 6
+    }
+  },
+  "sources": {
+    "cisaKev": {
+      "retrieved": "2026-01-26T12:22:09.206Z",
+      "count": 1494
+    },
+    "feodo": {
+      "retrieved": "2026-01-26T12:22:09.481Z",
+      "count": 0
+    },
+    "news": {
+      "retrieved": "2026-01-26T12:22:09.787Z",
+      "count": 140
+    }
+  }
+}

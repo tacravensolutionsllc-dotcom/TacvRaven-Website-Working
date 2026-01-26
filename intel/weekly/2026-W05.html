@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PEYM947EG8');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Cybersecurity Threat Report - January 2026, Week 05 | TacRaven Solutions</title>
+    <meta name="description" content="TacRaven weekly cybersecurity threat report for January 2026, Week 05. CISA KEV analysis, MITRE ATT&CK mapping, and structured analytical assessment.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tacraven.com/intel/weekly/2026-W05.html">
+    <meta property="og:title" content="Weekly Cybersecurity Threat Report - January 2026, Week 05">
+    <meta property="og:description" content="6 new CISA KEV vulnerabilities, 0 linked to ransomware campaigns. Includes MITRE ATT&CK mapping and structured analytical assessment.">
+    <meta property="og:image" content="https://tacraven.com/images/threat-report-og.png">
+    <meta property="og:site_name" content="TacRaven Solutions">
+    <meta property="article:published_time" content="2026-01-26T12:22:09.790Z">
+    <meta property="article:section" content="Threat Intelligence">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Weekly Cybersecurity Threat Report - January 2026, Week 05">
+    <meta name="twitter:description" content="6 new KEV vulnerabilities, 0 linked to ransomware. MITRE ATT&CK mapping included.">
+    <meta name="twitter:image" content="https://tacraven.com/images/threat-report-og.png">
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --black-lighter: #111111;
+            --black-card: #161616;
+            --gold: #d4a012;
+            --gold-light: #f5c842;
+            --gold-dark: #9a7209;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-300: #a0a0a0;
+            --gray-500: #6b6b6b;
+            --gray-700: #333333;
+            --gray-800: #1a1a1a;
+            --red: #dc2626;
+            --red-dark: #7f1d1d;
+            --green: #22c55e;
+            --blue: #3b82f6;
+            --font-display: 'Orbitron', sans-serif;
+            --font-heading: 'Rajdhani', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background-color: var(--black); color: var(--white); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navigation */
+        .nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); padding: 12px 0; border-bottom: 1px solid rgba(212, 160, 18, 0.2); z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-logo-text { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--white); letter-spacing: 2px; }
+        .nav-logo-text span { color: var(--gold); }
+        .nav-menu { display: flex; align-items: center; gap: 8px; list-style: none; }
+        .nav-link { font-family: var(--font-heading); font-size: 15px; font-weight: 500; color: var(--gray-300); text-decoration: none; padding: 10px 16px; transition: all 0.3s ease; position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--gold); transition: width 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: var(--white); }
+        .nav-link:hover::after, .nav-link.active::after { width: 30px; }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle { display: flex; align-items: center; gap: 6px; font-family: var(--font-heading); font-size: 15px; font-weight: 500; color: var(--gray-300); background: none; border: none; padding: 10px 16px; cursor: pointer; transition: all 0.3s ease; }
+        .nav-dropdown-toggle:hover { color: var(--white); }
+        .nav-dropdown-toggle svg { width: 12px; height: 12px; transition: transform 0.3s ease; }
+        .nav-dropdown:hover .nav-dropdown-toggle svg { transform: rotate(180deg); }
+        .nav-dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 240px; background: var(--black-card); border: 1px solid rgba(212, 160, 18, 0.2); border-radius: 8px; padding: 12px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 100; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav-dropdown-item { display: block; padding: 12px 16px; color: var(--gray-300); text-decoration: none; border-radius: 6px; transition: all 0.2s ease; }
+        .nav-dropdown-item:hover { background: rgba(212, 160, 18, 0.1); color: var(--gold); }
+        .nav-dropdown-item span { display: block; font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 28px; font-family: var(--font-heading); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .btn-primary { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: var(--black); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212, 160, 18, 0.3); }
+        .nav-cta { padding: 10px 24px; font-size: 14px; }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; }
+        .mobile-menu-btn span { width: 24px; height: 2px; background: var(--white); transition: all 0.3s ease; }
+        .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--black); padding: 20px; border-bottom: 1px solid rgba(212, 160, 18, 0.2); z-index: 999; flex-direction: column; gap: 10px; }
+        .mobile-menu.active { display: flex; }
+        .mobile-nav-link { font-family: var(--font-heading); font-size: 16px; color: var(--gray-300); text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .mobile-nav-link:hover { color: var(--gold); }
+        
+        /* Report Header */
+        .report-header { background: linear-gradient(180deg, var(--black-light) 0%, var(--black) 100%); border-bottom: 1px solid rgba(212, 160, 18, 0.2); padding: 40px 0; padding-top: 100px; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--gray-300); text-decoration: none; font-size: 14px; margin-bottom: 24px; transition: color 0.3s ease; }
+        .back-link:hover { color: var(--gold); }
+        .back-link svg { width: 16px; height: 16px; }
+        .report-title { text-align: center; }
+        .report-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 160, 18, 0.1); border: 1px solid rgba(212, 160, 18, 0.3); border-radius: 20px; padding: 6px 16px; font-size: 12px; color: var(--gold); margin-bottom: 16px; }
+        .report-badge-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .report-title h1 { font-family: var(--font-display); font-size: 48px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+        .report-title h1 span { color: var(--gold); }
+        .report-date { color: var(--gray-300); font-size: 16px; }
+        
+        /* Sections */
+        .section { padding: 60px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .section-label { font-family: var(--font-heading); font-size: 12px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+        .section-title { font-family: var(--font-heading); font-size: 32px; font-weight: 600; color: var(--white); margin-bottom: 32px; }
+        .section-desc { color: var(--gray-300); margin-bottom: 24px; }
+        
+        /* BLUF */
+        .bluf-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+        .bluf-item { display: flex; align-items: flex-start; gap: 16px; background: var(--black-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 20px; }
+        .bluf-icon { width: 24px; height: 24px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+        .bluf-text { color: var(--gray-100); font-size: 15px; line-height: 1.6; }
+        
+        /* Threat Meter */
+        .threat-meter { display: flex; align-items: center; gap: 40px; background: var(--black-card); border: 1px solid rgba(212, 160, 18, 0.2); border-radius: 12px; padding: 32px; }
+        .threat-level-display { flex-shrink: 0; }
+        .threat-level-ring { position: relative; width: 100px; height: 100px; }
+        .threat-level-ring svg { transform: rotate(-90deg); }
+        .ring-bg { fill: none; stroke: var(--gray-700); stroke-width: 6; }
+        .ring-fill { fill: none; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 220; stroke-dashoffset: 220; transition: stroke-dashoffset 1s ease; }
+        .threat-level-ring.critical .ring-fill { stroke: #ef4444; }
+        .threat-level-ring.high .ring-fill { stroke: #f97316; }
+        .threat-level-ring.elevated .ring-fill { stroke: var(--gold); }
+        .threat-level-ring.moderate .ring-fill { stroke: #22c55e; }
+        .threat-level-ring.guarded .ring-fill { stroke: #eab308; }
+        .threat-level-ring.low .ring-fill { stroke: var(--green); }
+        .threat-level-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--white); }
+        .threat-stats { display: flex; gap: 40px; flex: 1; justify-content: space-around; }
+        .threat-stat { text-align: center; }
+        .threat-stat-value { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--gold); }
+        .threat-stat-label { font-size: 12px; color: var(--gray-300); text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Executive Summary */
+        .exec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+        .exec-card { background: var(--black-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 24px; }
+        .exec-card-title { font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 16px; }
+        .exec-risk-display { margin-bottom: 16px; }
+        .exec-risk-level { display: inline-block; font-family: var(--font-display); font-size: 14px; font-weight: 700; padding: 6px 12px; border-radius: 4px; margin-right: 8px; }
+        .risk-critical { background: rgba(220, 38, 38, 0.2); color: #ef4444; }
+        .risk-elevated { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .risk-guarded { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .risk-low { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .exec-risk-change { font-size: 12px; color: var(--gray-300); }
+        .change-up { color: #ef4444; }
+        .change-down { color: #22c55e; }
+        .exec-rationale { color: var(--gray-300); font-size: 14px; line-height: 1.6; }
+        .exec-detail { color: var(--gray-300); font-size: 14px; margin-bottom: 8px; }
+        .exec-detail strong { color: var(--white); }
+        .exec-decisions { list-style: none; }
+        .exec-decisions li { color: var(--gray-300); font-size: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .exec-decisions li:last-child { border-bottom: none; }
+        
+        /* Trends */
+        .trend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .trend-card { background: var(--black-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 24px; }
+        .trend-metric { font-family: var(--font-heading); font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 16px; }
+        .trend-sparkline { display: flex; align-items: flex-end; gap: 4px; height: 60px; margin-bottom: 16px; }
+        .sparkline-bar { flex: 1; background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dark) 100%); border-radius: 2px 2px 0 0; min-height: 4px; transition: height 0.5s ease; }
+        .sparkline-bar:last-child { background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%); }
+        .trend-values { display: flex; flex-direction: column; gap: 4px; }
+        .trend-current { font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--white); }
+        .trend-change { font-size: 12px; }
+        .trend-up { color: #ef4444; }
+        .trend-down { color: #22c55e; }
+        .trend-average { font-size: 12px; color: var(--gray-500); }
+        
+        /* Drivers */
+        .drivers-grid { display: flex; flex-direction: column; gap: 16px; }
+        .driver-card { display: flex; align-items: flex-start; gap: 20px; background: var(--black-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 24px; }
+        .driver-rank { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--gold); min-width: 40px; }
+        .driver-content { flex: 1; }
+        .driver-title { font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+        .driver-desc { color: var(--gray-300); font-size: 14px; margin-bottom: 12px; }
+        .driver-severity { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; }
+        .severity-critical { background: rgba(220, 38, 38, 0.2); color: #ef4444; }
+        .severity-high { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .severity-medium { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .severity-info { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        
+        /* SAT Section */
+        .sat-section { background: var(--black-light); }
+        .assessment-grid { display: flex; flex-direction: column; gap: 32px; }
+        .assessment-card { background: var(--black-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 32px; }
+        .assessment-card-title { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+        .sat-icon { font-size: 24px; }
+        .sat-purpose { color: var(--gray-500); font-size: 14px; font-style: italic; margin-bottom: 24px; }
+        
+        /* KAC Table */
+        .kac-table, .ach-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .kac-table th, .ach-table th { text-align: left; padding: 12px; background: var(--black); color: var(--gray-300); font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .kac-table td, .ach-table td { padding: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: var(--gray-100); vertical-align: top; }
+        .kac-status { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; }
+        .status-valid { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .status-uncertain { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .status-invalid { background: rgba(220, 38, 38, 0.2); color: #ef4444; }
+        
+        /* ACH */
+        .ach-hypothesis { color: var(--white); font-weight: 500; }
+        .ach-evidence-item { margin-bottom: 4px; }
+        .ach-for { color: #22c55e; font-weight: bold; margin-right: 4px; }
+        .ach-against { color: #ef4444; font-weight: bold; margin-right: 4px; }
+        .ach-confidence { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; margin-bottom: 8px; }
+        .conf-high { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .conf-moderate { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .conf-low { background: rgba(220, 38, 38, 0.2); color: #ef4444; }
+        .confidence-bar { height: 4px; background: var(--gray-700); border-radius: 2px; overflow: hidden; }
+        .confidence-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
+        .confidence-fill.high { background: #22c55e; }
+        .confidence-fill.moderate { background: #eab308; }
+        .confidence-fill.low { background: #ef4444; }
+        
+        /* MITRE */
+        .mitre-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .mitre-card { background: var(--black-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 24px; }
+        .mitre-card-title { font-family: var(--font-heading); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 16px; }
+        .mitre-list { list-style: none; }
+        .mitre-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .mitre-item:last-child { border-bottom: none; }
+        .mitre-id { font-family: monospace; font-size: 12px; color: var(--gold); margin-right: 8px; }
+        .mitre-name { color: var(--gray-100); font-size: 14px; }
+        .mitre-count { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--gold); }
+        
+        /* Actions */
+        .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .action-card { background: var(--black-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; overflow: hidden; }
+        .action-card-header { display: flex; align-items: center; gap: 12px; padding: 20px; background: var(--black); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .action-card-icon { width: 24px; height: 24px; color: var(--gold); }
+        .action-card-title { font-family: var(--font-heading); font-size: 16px; font-weight: 600; color: var(--white); }
+        .action-card-body { padding: 20px; }
+        
+        /* Patch Items */
+        .patch-item { padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .patch-item:last-child { border-bottom: none; }
+        .patch-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+        .patch-cve { font-family: monospace; font-size: 14px; font-weight: 600; color: var(--gold); }
+        .ransomware-tag { font-size: 11px; background: rgba(220, 38, 38, 0.2); color: #ef4444; padding: 2px 6px; border-radius: 4px; }
+        .patch-due { font-size: 12px; color: var(--gray-500); margin-left: auto; }
+        .patch-vendor { font-size: 13px; color: var(--gray-300); margin-bottom: 8px; }
+        .patch-coverage { margin-top: 8px; }
+        .coverage-label { font-size: 12px; padding: 4px 8px; border-radius: 4px; }
+        .buzz-high { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .buzz-medium { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .buzz-low { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+        
+        /* Block List */
+        .block-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+        .block-item { display: flex; justify-content: space-between; align-items: center; background: var(--black); padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+        .block-item:hover { background: var(--gray-800); }
+        .block-ip { font-family: monospace; font-size: 12px; color: var(--gray-100); }
+        .block-source { font-size: 10px; color: var(--gray-500); text-transform: uppercase; }
+        
+        /* Hunt List */
+        .hunt-list { list-style: none; }
+        .hunt-item { padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .hunt-item:last-child { border-bottom: none; }
+        .hunt-technique { display: block; font-family: monospace; font-size: 12px; color: var(--gold); margin-bottom: 4px; }
+        .hunt-suggestion { font-size: 13px; color: var(--gray-300); }
+        
+        /* Emerging */
+        .emerging-section { background: var(--black-light); }
+        .emerging-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .emerging-card { background: var(--black-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 20px; }
+        .emerging-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .emerging-status { font-size: 11px; font-weight: 600; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .emerging-desc { color: var(--gray-300); font-size: 14px; }
+        
+        /* Sources */
+        .sources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; }
+        .source-card { background: var(--black-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 20px; }
+        .source-title { font-family: var(--font-heading); font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+        .source-desc { color: var(--gray-300); font-size: 13px; margin-bottom: 12px; }
+        .source-link { color: var(--gold); font-size: 13px; text-decoration: none; }
+        .source-link:hover { text-decoration: underline; }
+        .methodology-link { color: var(--gray-500); font-size: 14px; text-align: center; }
+        .methodology-link a { color: var(--gold); }
+        
+        /* Footer */
+        .footer { padding: 40px 0; text-align: center; border-top: 1px solid rgba(212, 160, 18, 0.2); }
+        .footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+        .footer-logo span { color: var(--gold); }
+        .footer-text { color: var(--gray-500); font-size: 14px; margin-bottom: 8px; }
+        .footer-disclaimer { color: var(--gray-700); font-size: 12px; }
+        
+        /* Progress Bar */
+        .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light)); z-index: 1001; transition: width 0.1s ease-out; box-shadow: 0 0 10px var(--gold); }
+        
+        /* ============================================
+           NEW ENHANCED STYLES 
+           ============================================ */
+        
+        /* Disclaimer Banner */
+        .disclaimer-banner { 
+            background: linear-gradient(90deg, rgba(212, 160, 18, 0.1) 0%, rgba(212, 160, 18, 0.05) 50%, rgba(212, 160, 18, 0.1) 100%);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+            padding: 12px 0;
+        }
+        .disclaimer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .disclaimer-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .disclaimer-text {
+            color: var(--gray-300);
+            font-size: 13px;
+        }
+        .disclaimer-text strong {
+            color: var(--gold);
+        }
+        .disclaimer-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .disclaimer-highlight svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        /* Export Bar */
+        .export-bar {
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(22, 22, 22, 0.8) 100%);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+        .export-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .export-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .export-title-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 160, 18, 0.1);
+            border-radius: 8px;
+        }
+        .export-title-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gold);
+        }
+        .export-title-text {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .export-title-text span {
+            color: var(--gold);
+        }
+        .export-free-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+        .export-free-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+        .export-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .export-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--gray-300);
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .export-btn:hover {
+            background: var(--black-lighter);
+            border-color: rgba(212, 160, 18, 0.3);
+            color: var(--white);
+        }
+        .export-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        .export-btn.primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-color: transparent;
+            color: var(--black);
+        }
+        .export-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 160, 18, 0.3);
+        }
+        
+        /* Report Navigation Links */
+        .report-nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .report-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--gray-300);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .report-nav-link:hover:not(.disabled) {
+            background: var(--black-lighter);
+            border-color: rgba(212, 160, 18, 0.3);
+            color: var(--gold);
+        }
+        .report-nav-link.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .report-nav-link svg {
+            width: 16px;
+            height: 16px;
+        }
+        .report-nav-link-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .report-nav-link-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-500);
+        }
+        .report-nav-link-title {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .report-nav-center {
+            padding: 0 24px;
+        }
+        .report-nav-current {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            color: var(--gray-500);
+        }
+        
+        /* Report Title (Stacked Layout) */
+        .report-title-section {
+            text-align: center;
+        }
+        .report-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .report-title-date {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1.2;
+        }
+        .report-title-name {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.3;
+        }
+        .report-meta {
+            color: var(--gray-500);
+            font-size: 13px;
+        }
+        
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 8px 16px;
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: var(--gray-300);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            border-color: rgba(212, 160, 18, 0.3);
+            color: var(--white);
+        }
+        .filter-btn.active {
+            background: rgba(212, 160, 18, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        
+        /* Mobile Table Cards */
+        .table-card-mobile {
+            display: none;
+        }
+        .table-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .table-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .table-card-title {
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .table-card-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+        .table-card-row:last-child {
+            border-bottom: none;
+        }
+        .table-card-label {
+            color: var(--gray-500);
+        }
+        .table-card-value {
+            color: var(--gray-100);
+        }
+        
+        /* Anchor Links / Deep Linking */
+        .anchor-target {
+            scroll-margin-top: 100px;
+        }
+        .anchor-link {
+            color: var(--gold);
+            text-decoration: none;
+            opacity: 0;
+            margin-left: 8px;
+            font-size: 0.8em;
+            transition: opacity 0.2s ease;
+        }
+        .section-title:hover .anchor-link,
+        .anchor-link:focus {
+            opacity: 1;
+        }
+        .linkable-item:target {
+            animation: highlight-pulse 2s ease;
+        }
+        @keyframes highlight-pulse {
+            0%, 100% { background-color: transparent; }
+            25% { background-color: rgba(212, 160, 18, 0.2); }
+            75% { background-color: rgba(212, 160, 18, 0.1); }
+        }
+        
+        /* Collapsible Sections */
+        .collapsible {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--black-card);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .collapsible-header:hover {
+            background: var(--black-lighter);
+        }
+        .collapsible-header svg {
+            width: 20px;
+            height: 20px;
+            color: var(--gray-500);
+            transition: transform 0.3s ease;
+        }
+        .collapsible.open .collapsible-header svg {
+            transform: rotate(180deg);
+        }
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .collapsible.open .collapsible-content {
+            max-height: 2000px;
+        }
+        .collapsible-inner {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: 8px;
+            padding: 16px 24px;
+            color: var(--white);
+            font-size: 14px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            z-index: 1002;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast-success {
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+        .toast-success::before {
+            content: '✓';
+            margin-right: 8px;
+            color: #22c55e;
+        }
+        
+        /* Professional Print Stylesheet */
+        @media print {
+            /* Hide navigation and interactive elements */
+            .nav, .mobile-menu, .progress-bar, .export-bar, .report-nav-links, 
+            .back-link, .filter-bar, .toast { display: none !important; }
+            
+            /* Reset background and colors for printing */
+            body { 
+                background: white !important; 
+                color: #111 !important; 
+                font-size: 11pt;
+            }
+            .container { max-width: 100%; padding: 0; }
+            
+            /* Section styling */
+            .section { 
+                padding: 24px 0; 
+                border-bottom: 1px solid #ddd !important;
+                page-break-inside: avoid;
+            }
+            .section-label { color: #9a7209 !important; }
+            .section-title { color: #111 !important; font-size: 18pt; }
+            
+            /* Card styling */
+            .exec-card, .trend-card, .driver-card, .source-card, .emerging-card,
+            .assessment-card, .mitre-card, .action-card, .bluf-item, .block-item {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+                color: #111 !important;
+            }
+            
+            /* Text colors */
+            .bluf-text, .exec-rationale, .exec-detail, .driver-desc, 
+            .source-desc, .emerging-desc, .sat-purpose, .hunt-suggestion,
+            .patch-vendor, .trend-average, .mitre-name { color: #333 !important; }
+            
+            /* Gold accents to dark gold for print */
+            .threat-stat-value, .driver-rank, .patch-cve, .mitre-id, .mitre-count,
+            .block-ip, .hunt-technique { color: #9a7209 !important; }
+            
+            /* Header styling */
+            .report-header { 
+                background: #f5f5f5 !important; 
+                border-bottom: 2px solid #9a7209 !important;
+                padding: 24px 0;
+            }
+            .report-title-date { color: #9a7209 !important; font-size: 24pt; }
+            .report-title-name { color: #111 !important; font-size: 18pt; }
+            .report-badge { 
+                background: #f5f5f5 !important; 
+                border-color: #9a7209 !important;
+                color: #9a7209 !important;
+            }
+            
+            /* Footer */
+            .footer { 
+                background: #f5f5f5 !important;
+                border-top: 2px solid #9a7209 !important;
+            }
+            .footer-logo { color: #111 !important; }
+            .footer-logo span { color: #9a7209 !important; }
+            
+            /* TacRaven branding in print header */
+            .report-header::before {
+                content: 'TACRAVEN SOLUTIONS - Weekly Threat Intelligence Report';
+                display: block;
+                font-family: var(--font-display);
+                font-size: 10pt;
+                color: #666;
+                text-align: center;
+                margin-bottom: 16px;
+            }
+            
+            /* Page breaks */
+            .sat-section, .mitre-section, .action-section { page-break-before: always; }
+            
+            /* Table styling */
+            .kac-table, .ach-table { font-size: 10pt; }
+            .kac-table th, .ach-table th { background: #eee !important; color: #111 !important; }
+            .kac-table td, .ach-table td { color: #333 !important; }
+            
+            /* Disclaimer banner */
+            .disclaimer-banner { display: none !important; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .exec-grid, .trend-grid, .action-grid, .sources-grid { grid-template-columns: 1fr; }
+            .mitre-grid { grid-template-columns: 1fr; }
+            .threat-meter { flex-direction: column; text-align: center; }
+            .threat-stats { flex-wrap: wrap; justify-content: center; }
+            .report-nav-links { gap: 12px; }
+            .report-nav-center { display: none; }
+            .export-buttons { justify-content: center; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu, .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .report-title-date { font-size: 28px; }
+            .report-title-name { font-size: 20px; }
+            .block-grid { grid-template-columns: 1fr; }
+            .emerging-grid { grid-template-columns: 1fr; }
+            .disclaimer-content { flex-direction: column; text-align: center; }
+            .export-bar { padding: 16px; }
+            .export-header { flex-direction: column; text-align: center; }
+            .export-buttons { flex-direction: column; }
+            .export-btn { justify-content: center; }
+            .report-nav-link { padding: 10px 16px; }
+            .report-nav-link-info { display: none; }
+            /* Show mobile cards, hide desktop tables on mobile */
+            .table-card-mobile { display: block; }
+            .kac-table, .ach-table { display: none; }
+        }
+    </style>
+</head>
+<body>
+        <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">
+                <div class="nav-logo-text">TAC<span>RAVEN</span></div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-dropdown">
+                    <button class="nav-dropdown-toggle">
+                        Products
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/tools.html#blackfeather" class="nav-dropdown-item">
+                            BlackFeather
+                            <span>Threat Intel Platform</span>
+                        </a>
+                        <a href="/tools.html#corvus" class="nav-dropdown-item">
+                            Corvus Engine
+                            <span>Log Conversion Utility</span>
+                        </a>
+                        <a href="/talonprep.html" class="nav-dropdown-item">
+                            TalonPrep
+                            <span>Security+ Test Prep</span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="/tools.html" class="nav-link">Tools</a></li>
+                <li><a href="/threat-map.html" class="nav-link">Threat Map</a></li>
+                <li><a href="/intel/weekly/" class="nav-link active">Weekly Reports</a></li>
+                <li><a href="/about.html" class="nav-link">About</a></li>
+                <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="/cyber-news.html" class="nav-link">News</a></li>
+            </ul>
+            <a href="/#contact" class="btn btn-primary nav-cta">Contact</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="/" class="mobile-nav-link">Home</a>
+        <a href="/tools.html#blackfeather" class="mobile-nav-link">BlackFeather</a>
+        <a href="/tools.html#corvus" class="mobile-nav-link">Corvus Engine</a>
+        <a href="/talonprep.html" class="mobile-nav-link">TalonPrep</a>
+        <a href="/tools.html" class="mobile-nav-link">Tools</a>
+        <a href="/threat-map.html" class="mobile-nav-link">Threat Map</a>
+        <a href="/intel/weekly/" class="mobile-nav-link">Weekly Reports</a>
+        <a href="/about.html" class="mobile-nav-link">About</a>
+        <a href="/pricing.html" class="mobile-nav-link">Pricing</a>
+        <a href="/cyber-news.html" class="mobile-nav-link">News</a>
+        <a href="/#contact" class="mobile-nav-link">Contact</a>
+    </div>
+    
+    <!-- Report Header -->
+    <header class="report-header">
+        <div class="container">
+            <a href="/intel/weekly/" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Archive
+            </a>
+            <div class="report-title-section">
+                <div class="report-badge">
+                    <span class="report-badge-dot"></span>
+                    Weekly Cybersecurity Threat Report
+                </div>
+                <h1 class="report-title">
+                    <span class="report-title-date">January 2026, Week 05</span>
+                    <span class="report-title-name">Cybersecurity Threat Report</span>
+                </h1>
+                <p class="report-meta">Generated: 2026-01-26T12:22:09.790Z</p>
+                
+                <!-- Previous / Next Report Navigation -->
+                <div class="report-nav-links">
+                    <a href="/intel/weekly/2026-W04.html" class="report-nav-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        <div class="report-nav-link-info">
+                            <span class="report-nav-link-label">Previous</span>
+                            <span class="report-nav-link-title">Week 04</span>
+                        </div>
+                    </a>
+                    <div class="report-nav-center">
+                        <span class="report-nav-current">January 26, 2026</span>
+                    </div>
+                    <a href="/intel/weekly/2026-W06.html" class="report-nav-link disabled">
+                        <div class="report-nav-link-info">
+                            <span class="report-nav-link-label">Next</span>
+                            <span class="report-nav-link-title">Week 06</span>
+                        </div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Disclaimer Banner -->
+    <div class="disclaimer-banner">
+        <div class="disclaimer-content">
+            <svg class="disclaimer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span class="disclaimer-text">
+                This report is <strong>automatically generated every Monday at 4:30 AM EST</strong> using live data from CISA KEV, Feodo Tracker, and security news sources.
+            </span>
+            <span class="disclaimer-highlight">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                100% Free
+            </span>
+        </div>
+    </div>
+    
+    <main>
+        <!-- BLUF Section -->
+        <section class="section anchor-target" id="bluf">
+            <div class="container">
+                <div class="section-label">Bottom Line Up Front</div>
+                <h2 class="section-title">Key Takeaways</h2>
+                <ul class="bluf-list">
+                    <li class="bluf-item">
+                        <svg class="bluf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="bluf-text">CISA added 6 new vulnerabilities to the KEV catalog, requiring immediate patching attention</span>
+                    </li>
+                </ul>
+                
+                <!-- Threat Level Meter -->
+                <div class="threat-meter">
+                    <div class="threat-level-display">
+                        <div class="threat-level-ring elevated" data-level="90">
+                            <svg viewBox="0 0 80 80">
+                                <circle class="ring-bg" cx="40" cy="40" r="35"/>
+                                <circle class="ring-fill" cx="40" cy="40" r="35"/>
+                            </svg>
+                            <span class="threat-level-text">ELEVATED</span>
+                        </div>
+                    </div>
+                    <div class="threat-stats">
+                        <div class="threat-stat">
+                            <div class="threat-stat-value" data-count="6">0</div>
+                            <div class="threat-stat-label">New KEVs</div>
+                        </div>
+                        <div class="threat-stat">
+                            <div class="threat-stat-value" data-count="0">0</div>
+                            <div class="threat-stat-label">Ransomware</div>
+                        </div>
+                        <div class="threat-stat">
+                            <div class="threat-stat-value" data-count="0">0</div>
+                            <div class="threat-stat-label">C2 Servers</div>
+                        </div>
+                        <div class="threat-stat">
+                            <div class="threat-stat-value" data-count="0">0</div>
+                            <div class="threat-stat-label">Malware Families</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Executive Summary -->
+        <section class="section executive-summary anchor-target" id="executive-summary">
+            <div class="container">
+                <div class="section-label">For Leadership</div>
+                <h2 class="section-title">Executive Summary</h2>
+                <div class="exec-grid">
+                    <div class="exec-card">
+                        <h3 class="exec-card-title">This Week's Risk Level</h3>
+                        <div class="exec-risk-display">
+                            <span class="exec-risk-level risk-elevated">ELEVATED</span>
+                            <span class="exec-risk-change change-neutral">↑ from GUARDED last week</span>
+                        </div>
+                        <p class="exec-rationale">Immediate patching required for Broadcom and Synacor products. </p>
+                    </div>
+                    
+                    <div class="exec-card">
+                        <h3 class="exec-card-title">Resource Requirement</h3>
+                        <p class="exec-detail"><strong>Patching:</strong> ~12-24 hours total across affected systems</p>
+                        <p class="exec-detail"><strong>Monitoring:</strong> Block list update + threat hunting sweep (2-4 hours)</p>
+                        <p class="exec-detail"><strong>Assessment:</strong> Vulnerability audit recommended across business units</p>
+                        <p class="exec-detail"><strong>Communication:</strong> Consider notifying business owners of potential disruption</p>
+                    </div>
+                    
+                    <div class="exec-card">
+                        <h3 class="exec-card-title">Key Decision Points</h3>
+                        <ul class="exec-decisions">
+                            <li>Approve emergency patching window for critical vulnerabilities?</li>
+                            <li>Escalate high-risk vulnerabilities to business continuity planning?</li>
+                            <li>Increase SOC monitoring posture for ransomware indicators?</li>
+                            <li>Pre-position incident response resources for potential ransomware event?</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Export Options -->
+                <div class="export-bar" id="export-bar">
+                    <div class="export-header">
+                        <div class="export-title">
+                            <div class="export-title-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                            </div>
+                            <span class="export-title-text">Export <span>This Report</span></span>
+                        </div>
+                        <span class="export-free-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Always Free
+                        </span>
+                    </div>
+                    <div class="export-buttons">
+                        <button class="export-btn primary" onclick="downloadPDF()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="12" y1="18" x2="12" y2="12"/>
+                                <polyline points="9 15 12 18 15 15"/>
+                            </svg>
+                            Download PDF
+                        </button>
+                        <button class="export-btn" onclick="copyExecutiveSummary()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                            Copy Summary
+                        </button>
+                        <button class="export-btn" onclick="copyCVEList()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                            </svg>
+                            Copy CVE List
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Week-over-Week Trends -->
+        <section class="section trend-analysis anchor-target" id="trends">
+            <div class="container">
+                <div class="section-label">Historical Context</div>
+                <h2 class="section-title">Week-over-Week Trends</h2>
+                <div class="trend-grid">
+                    <div class="trend-card">
+                        <h3 class="trend-metric">KEV Additions (8-Week View)</h3>
+                        <div class="trend-sparkline">
+                            <div class="sparkline-bar" style="height: 33%;" title="W-2: 2"></div>
+                            <div class="sparkline-bar" style="height: 50%;" title="W-1: 3"></div>
+                            <div class="sparkline-bar" style="height: 67%;" title="W00: 4"></div>
+                            <div class="sparkline-bar" style="height: 33%;" title="W01: 2"></div>
+                            <div class="sparkline-bar" style="height: 50%;" title="W02: 3"></div>
+                            <div class="sparkline-bar" style="height: 50%;" title="W03: 3"></div>
+                            <div class="sparkline-bar" style="height: 50%;" title="W04: 3"></div>
+                            <div class="sparkline-bar" style="height: 100%;" title="W05: 6"></div>
+                        </div>
+                        <div class="trend-values">
+                            <span class="trend-current">6 this week</span>
+                            <span class="trend-change trend-up">↑ 100% vs last week</span>
+                            <span class="trend-average">8-week average: 3.3</span>
+                        </div>
+                    </div>
+                    
+                    <div class="trend-card">
+                        <h3 class="trend-metric">Ransomware-Linked KEVs</h3>
+                        <div class="trend-sparkline">
+                            <div class="sparkline-bar" style="height: 50%;" title="W-2: 1"></div>
+                            <div class="sparkline-bar" style="height: 50%;" title="W-1: 1"></div>
+                            <div class="sparkline-bar" style="height: 100%;" title="W00: 2"></div>
+                            <div class="sparkline-bar" style="height: 50%;" title="W01: 1"></div>
+                            <div class="sparkline-bar" style="height: 100%;" title="W02: 2"></div>
+                            <div class="sparkline-bar" style="height: 50%;" title="W03: 1"></div>
+                            <div class="sparkline-bar" style="height: 100%;" title="W04: 2"></div>
+                            <div class="sparkline-bar" style="height: 0%;" title="W05: 0"></div>
+                        </div>
+                        <div class="trend-values">
+                            <span class="trend-current">0 this week</span>
+                            <span class="trend-change trend-down">↓ 100% vs last week</span>
+                            <span class="trend-average">8-week average: 1.3</span>
+                        </div>
+                    </div>
+                    
+                    <div class="trend-card">
+                        <h3 class="trend-metric">Active C2 Servers</h3>
+                        <div class="trend-sparkline">
+                            <div class="sparkline-bar" style="height: 80%;" title="W-2: 16"></div>
+                            <div class="sparkline-bar" style="height: 90%;" title="W-1: 18"></div>
+                            <div class="sparkline-bar" style="height: 70%;" title="W00: 14"></div>
+                            <div class="sparkline-bar" style="height: 100%;" title="W01: 20"></div>
+                            <div class="sparkline-bar" style="height: 60%;" title="W02: 12"></div>
+                            <div class="sparkline-bar" style="height: 75%;" title="W03: 15"></div>
+                            <div class="sparkline-bar" style="height: 65%;" title="W04: 13"></div>
+                            <div class="sparkline-bar" style="height: 0%;" title="W05: 0"></div>
+                        </div>
+                        <div class="trend-values">
+                            <span class="trend-current">0 this week</span>
+                            <span class="trend-change trend-down">↓ 100% vs last week</span>
+                            <span class="trend-average">8-week average: 13.5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Top Drivers -->
+        <section class="section">
+            <div class="container">
+                <div class="section-label">Threat Landscape</div>
+                <h2 class="section-title">Top 5 Threat Drivers</h2>
+                <div class="drivers-grid">
+                    <div class="driver-card">
+                        <div class="driver-rank">1</div>
+                        <div class="driver-content">
+                            <h3 class="driver-title">New Exploited Vulnerabilities</h3>
+                            <p class="driver-desc">6 vulnerabilities added to CISA KEV, including CVE-2024-37079 (Broadcom)</p>
+                            <span class="driver-severity severity-high">High</span>
+                        </div>
+                    </div>
+                    <div class="driver-card">
+                        <div class="driver-rank">2</div>
+                        <div class="driver-content">
+                            <h3 class="driver-title">Security News Coverage</h3>
+                            <p class="driver-desc">6 articles covering this week's vulnerabilities</p>
+                            <span class="driver-severity severity-info">Info</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Structured Analytical Techniques -->
+        <!-- Structured Analytical Techniques -->
+        <section class="section sat-section anchor-target" id="sat-analysis">
+            <div class="container">
+                <div class="section-label">Intelligence Analysis</div>
+                <h2 class="section-title">Structured Analytical Techniques</h2>
+                
+                <div class="assessment-grid">
+                    <!-- Key Assumptions Check -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">🔍</span>
+                            Key Assumptions Check (KAC)
+                        </h3>
+                        <p class="sat-purpose">Identifies and validates the assumptions underlying our analysis.</p>
+                        
+                        <table class="kac-table">
+                            <thead>
+                                <tr>
+                                    <th>Assumption</th>
+                                    <th>Status</th>
+                                    <th>Rationale</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CISA KEV additions represent real-world exploitation</td>
+                                    <td><span class="kac-status status-valid">VALID</span></td>
+                                    <td>CISA requires evidence of active exploitation before listing</td>
+                                </tr>
+                                <tr>
+                                    <td>Ransomware-linked CVEs pose elevated risk</td>
+                                    <td><span class="kac-status status-valid">VALID</span></td>
+                                    <td>0 CVEs have documented ransomware campaign connections</td>
+                                </tr>
+                                <tr>
+                                    <td>C2 infrastructure reflects active threat operations</td>
+                                    <td><span class="kac-status status-uncertain">UNCERTAIN</span></td>
+                                    <td>Some C2s may be abandoned or law enforcement controlled</td>
+                                </tr>
+                                <tr>
+                                    <td>Geographic hosting indicates actor origin</td>
+                                    <td><span class="kac-status status-uncertain">UNCERTAIN</span></td>
+                                    <td>Criminals use hosting in multiple jurisdictions</td>
+                                </tr>
+                                <tr>
+                                    <td>News coverage correlates with exploitation likelihood</td>
+                                    <td><span class="kac-status status-valid">VALID</span></td>
+                                    <td>Media attention often follows confirmed incidents</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Analysis of Competing Hypotheses -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">⚖️</span>
+                            Analysis of Competing Hypotheses (Mini-ACH)
+                        </h3>
+                        <p class="sat-purpose">Tests multiple explanations against the evidence.</p>
+                        
+                        <table class="ach-table">
+                            <thead>
+                                <tr>
+                                    <th>Hypothesis</th>
+                                    <th>Evidence For</th>
+                                    <th>Evidence Against</th>
+                                    <th>Confidence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="ach-hypothesis">H1: Active exploitation targeting internet-facing systems increased this week</span></td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> 6 new KEVs added (confirmed exploitation)</div>
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> High media coverage indicates broad targeting</div>
+                                    </td>
+                                    <td class="ach-evidence">
+                                        <span class="ach-evidence">—</span>
+                                    </td>
+                                    <td>
+                                        <span class="ach-confidence conf-high">High</span>
+                                        <div class="confidence-bar"><div class="confidence-fill high" data-width="90%" style="width: 0%;"></div></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="ach-hypothesis">H2: Botnet/C2 activity is a primary driver of observed malicious infrastructure</span></td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> Top families: </div>
+                                    </td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Only 0 C2 servers detected</div>
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Multiple families may indicate fragmentation</div>
+                                    </td>
+                                    <td>
+                                        <span class="ach-confidence conf-low">Low</span>
+                                        <div class="confidence-bar"><div class="confidence-fill low" data-width="30%" style="width: 0%;"></div></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="ach-hypothesis">H3: Ransomware-enabling vulnerabilities are the dominant operational risk</span></td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> 0 KEVs linked to ransomware campaigns (0%)</div>
+                                    </td>
+                                    <td class="ach-evidence">
+                                        <span class="ach-evidence">—</span>
+                                    </td>
+                                    <td>
+                                        <span class="ach-confidence conf-moderate">Medium</span>
+                                        <div class="confidence-bar"><div class="confidence-fill moderate" data-width="50%" style="width: 0%;"></div></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- MITRE ATT&CK -->
+        <!-- MITRE ATT&CK Section -->
+        <section class="section anchor-target" id="mitre-attack">
+            <div class="container">
+                <div class="section-label">Framework Mapping</div>
+                <h2 class="section-title">MITRE ATT&CK Summary</h2>
+                <div class="mitre-grid">
+                    <div class="mitre-card">
+                        <h3 class="mitre-card-title">Top Tactics</h3>
+                        <ul class="mitre-list">
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">TA0001</span> <span class="mitre-name">Initial Access</span></span>
+                                <span class="mitre-count">6</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mitre-card">
+                        <h3 class="mitre-card-title">Top Techniques</h3>
+                        <ul class="mitre-list">
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1190</span> <span class="mitre-name">Exploit Public-Facing Application</span></span>
+                                <span class="mitre-count">6</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Actionable Intelligence -->
+        <!-- Actionable Intelligence -->
+        <section class="section anchor-target" id="actionable-intelligence">
+            <div class="container">
+                <div class="section-label">Take Action</div>
+                <h2 class="section-title">Actionable Intelligence</h2>
+                <div class="action-grid">
+                    <div class="action-card">
+                        <div class="action-card-header">
+                            <svg class="action-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                            <h3 class="action-card-title">Patch Priorities</h3>
+                        </div>
+                        <div class="action-card-body">
+                            <div class="filter-bar">
+                                <button class="filter-btn active" data-filter="all">All</button>
+                                <button class="filter-btn" data-filter="ransomware">🔴 Ransomware</button>
+                                <button class="filter-btn" data-filter="Broadcom">Broadcom</button>
+                                <button class="filter-btn" data-filter="Synacor">Synacor</button>
+                                <button class="filter-btn" data-filter="Versa">Versa</button>
+                                <button class="filter-btn" data-filter="Vite">Vite</button>
+                            </div>
+                            <div class="patch-item" data-vendor="Broadcom" data-ransomware="false">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2024-37079</span>
+                                    
+                                    <span class="patch-due">Due: 2026-02-13</span>
+                                </div>
+                                <div class="patch-vendor">Broadcom — VMware vCenter Server</div>
+                                <div class="patch-coverage">
+                                    <span class="coverage-label buzz-low">📰 1 articles</span>
+                                </div>
+                            </div>
+                            <div class="patch-item" data-vendor="Synacor" data-ransomware="false">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2025-68645</span>
+                                    
+                                    <span class="patch-due">Due: 2026-02-12</span>
+                                </div>
+                                <div class="patch-vendor">Synacor —  Zimbra Collaboration Suite (ZCS)</div>
+                                <div class="patch-coverage">
+                                    <span class="coverage-label buzz-low">📰 0 articles</span>
+                                </div>
+                            </div>
+                            <div class="patch-item" data-vendor="Versa" data-ransomware="false">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2025-34026</span>
+                                    
+                                    <span class="patch-due">Due: 2026-02-12</span>
+                                </div>
+                                <div class="patch-vendor">Versa — Concerto</div>
+                                <div class="patch-coverage">
+                                    <span class="coverage-label buzz-low">📰 0 articles</span>
+                                </div>
+                            </div>
+                            <div class="patch-item" data-vendor="Vite" data-ransomware="false">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2025-31125</span>
+                                    
+                                    <span class="patch-due">Due: 2026-02-12</span>
+                                </div>
+                                <div class="patch-vendor">Vite — Vitejs</div>
+                                <div class="patch-coverage">
+                                    <span class="coverage-label buzz-medium">📰 2 articles</span>
+                                </div>
+                            </div>
+                            <div class="patch-item" data-vendor="Prettier" data-ransomware="false">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2025-54313</span>
+                                    
+                                    <span class="patch-due">Due: 2026-02-12</span>
+                                </div>
+                                <div class="patch-vendor">Prettier — eslint-config-prettier</div>
+                                <div class="patch-coverage">
+                                    <span class="coverage-label buzz-low">📰 0 articles</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-card-header">
+                            <svg class="action-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                            </svg>
+                            <h3 class="action-card-title">Block List (Top Indicators)</h3>
+                        </div>
+                        <div class="action-card-body">
+                            <div class="block-grid">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-card">
+                        <div class="action-card-header">
+                            <svg class="action-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                            </svg>
+                            <h3 class="action-card-title">Threat Hunting Suggestions</h3>
+                        </div>
+                        <div class="action-card-body">
+                            <ul class="hunt-list">
+
+                                <li class="hunt-item">
+                                    <span class="hunt-technique">T1190 - Exploit Public-Facing Application</span>
+                                    <span class="hunt-suggestion">Review logs for exploitation attempts against newly added KEV vulnerabilities</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Emerging Threats -->
+        <!-- Emerging Threats -->
+        <section class="section emerging-section">
+            <div class="container">
+                <div class="section-label">Early Warning</div>
+                <h2 class="section-title">Emerging Threats Watchlist</h2>
+                <p class="section-desc">These vulnerabilities are getting security news attention but have not yet been added to CISA KEV. Consider proactive assessment.</p>
+                
+                <div class="emerging-grid">
+                    <div class="emerging-card">
+                        <div class="emerging-header">
+                            <span class="emerging-status">Monitoring</span>
+                        </div>
+                        <p class="emerging-desc">Check security news feeds for vulnerabilities receiving significant coverage that haven't been added to KEV yet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Data Sources -->
+        <section class="section sources-section">
+            <div class="container">
+                <div class="section-label">Transparency</div>
+                <h2 class="section-title">Data Sources & Methodology</h2>
+                <div class="sources-grid">
+                    <div class="source-card">
+                        <h3 class="source-title">CISA KEV Catalog</h3>
+                        <p class="source-desc">Authoritative source for confirmed exploited vulnerabilities</p>
+                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" class="source-link">View Source →</a>
+                    </div>
+                    <div class="source-card">
+                        <h3 class="source-title">Feodo Tracker</h3>
+                        <p class="source-desc">C2 infrastructure tracking from abuse.ch</p>
+                        <a href="https://feodotracker.abuse.ch/" target="_blank" class="source-link">View Source →</a>
+                    </div>
+                    <div class="source-card">
+                        <h3 class="source-title">Security News</h3>
+                        <p class="source-desc">CISA, The Hacker News, Dark Reading, Krebs on Security</p>
+                    </div>
+                </div>
+                <p class="methodology-link">For detailed methodology, see <a href="/intel/methodology.html">our methodology page</a>.</p>
+            </div>
+        </section>
+    </main>
+    
+        <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">TAC<span>RAVEN</span> SOLUTIONS</div>
+            <p class="footer-text">Structured Threat Analysis Platform</p>
+            <p class="footer-disclaimer">This report is generated from public data sources for informational purposes.</p>
+        </div>
+    </footer>
+    
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <script>
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+        
+        // Animated counters
+        function animateCounters() {
+            document.querySelectorAll('[data-count]').forEach(el => {
+                const target = parseInt(el.dataset.count);
+                const duration = 1000;
+                const start = 0;
+                const startTime = performance.now();
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const current = Math.floor(progress * target);
+                    el.textContent = current;
+                    if (progress < 1) requestAnimationFrame(update);
+                }
+                requestAnimationFrame(update);
+            });
+        }
+        
+        // Animate threat ring
+        function animateThreatRing() {
+            const ring = document.querySelector('.threat-level-ring');
+            if (ring) {
+                const fill = ring.querySelector('.ring-fill');
+                if (fill) {
+                    setTimeout(() => {
+                        fill.style.strokeDashoffset = '44'; // ~80% fill
+                    }, 500);
+                }
+            }
+        }
+        
+        // Animate confidence bars
+        function animateConfidenceBars() {
+            document.querySelectorAll('.confidence-fill[data-width]').forEach(bar => {
+                setTimeout(() => {
+                    bar.style.width = bar.dataset.width;
+                }, 500);
+            });
+        }
+        
+        // Copy to clipboard for block items
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Copied to clipboard!');
+            });
+        }
+        
+        document.querySelectorAll('.block-item').forEach(item => {
+            item.onclick = () => {
+                const ip = item.querySelector('.block-ip').textContent;
+                copyToClipboard(ip);
+            };
+        });
+        
+        // ============================================
+        // EXPORT FUNCTIONS
+        // ============================================
+        
+        // Download PDF
+        function downloadPDF() {
+            showToast('Opening print dialog for PDF export...');
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        }
+        
+        // Copy Executive Summary
+        function copyExecutiveSummary() {
+            const execSection = document.querySelector('.executive-summary');
+            if (!execSection) {
+                showToast('Executive summary not found', 'error');
+                return;
+            }
+            
+            // Extract text content
+            const title = document.querySelector('.report-title-date')?.textContent || '';
+            const subtitle = document.querySelector('.report-title-name')?.textContent || '';
+            const execCards = execSection.querySelectorAll('.exec-card');
+            
+            let summaryText = '=== TACRAVEN SOLUTIONS ===\n';
+            summaryText += title + ' - ' + subtitle + '\n\n';
+            summaryText += 'EXECUTIVE SUMMARY\n';
+            summaryText += '─'.repeat(40) + '\n\n';
+            
+            execCards.forEach(card => {
+                const cardTitle = card.querySelector('.exec-card-title')?.textContent || '';
+                summaryText += cardTitle.toUpperCase() + ':\n';
+                
+                const riskLevel = card.querySelector('.exec-risk-level')?.textContent;
+                if (riskLevel) {
+                    summaryText += 'Risk Level: ' + riskLevel + '\n';
+                }
+                
+                const rationale = card.querySelector('.exec-rationale')?.textContent;
+                if (rationale) {
+                    summaryText += rationale + '\n';
+                }
+                
+                const details = card.querySelectorAll('.exec-detail');
+                details.forEach(detail => {
+                    summaryText += detail.textContent + '\n';
+                });
+                
+                summaryText += '\n';
+            });
+            
+            navigator.clipboard.writeText(summaryText).then(() => {
+                showToast('Executive summary copied to clipboard!');
+            }).catch(() => {
+                showToast('Failed to copy', 'error');
+            });
+        }
+        
+        // Copy CVE List
+        function copyCVEList() {
+            const patchItems = document.querySelectorAll('.patch-item');
+            if (patchItems.length === 0) {
+                showToast('No CVEs found in this report', 'error');
+                return;
+            }
+            
+            let cveList = '=== TACRAVEN SOLUTIONS - CVE LIST ===\n';
+            cveList += 'Generated: ' + new Date().toISOString().split('T')[0] + '\n';
+            cveList += '─'.repeat(40) + '\n\n';
+            
+            patchItems.forEach(item => {
+                const cve = item.querySelector('.patch-cve')?.textContent || '';
+                const vendor = item.querySelector('.patch-vendor')?.textContent || '';
+                const due = item.querySelector('.patch-due')?.textContent || '';
+                const isRansomware = item.querySelector('.ransomware-tag') !== null;
+                
+                cveList += cve;
+                if (isRansomware) cveList += ' [RANSOMWARE]';
+                cveList += '\n';
+                cveList += '  Vendor: ' + vendor.trim() + '\n';
+                if (due) cveList += '  ' + due + '\n';
+                cveList += '\n';
+            });
+            
+            navigator.clipboard.writeText(cveList).then(() => {
+                showToast('CVE list copied to clipboard! (' + patchItems.length + ' CVEs)');
+            }).catch(() => {
+                showToast('Failed to copy', 'error');
+            });
+        }
+        
+        // Toast notification
+        function showToast(message, type = 'success') {
+            // Remove existing toast
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast toast-' + type;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            // Hide and remove toast
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+        
+        // ============================================
+        // CVE FILTER FUNCTIONALITY
+        // ============================================
+        
+        function initCVEFilters() {
+            const filterBar = document.querySelector('.filter-bar');
+            if (!filterBar) return;
+            
+            const filterBtns = filterBar.querySelectorAll('.filter-btn');
+            const patchItems = document.querySelectorAll('.patch-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.dataset.filter;
+                    
+                    patchItems.forEach(item => {
+                        if (filter === 'all') {
+                            item.style.display = 'block';
+                        } else if (filter === 'ransomware') {
+                            const isRansomware = item.dataset.ransomware === 'true';
+                            item.style.display = isRansomware ? 'block' : 'none';
+                        } else {
+                            const vendor = (item.dataset.vendor || '').toLowerCase();
+                            item.style.display = vendor.includes(filter.toLowerCase()) ? 'block' : 'none';
+                        }
+                    });
+                });
+            });
+        }
+        
+        // ============================================
+        // COLLAPSIBLE SECTIONS
+        // ============================================
+        
+        function initCollapsibles() {
+            document.querySelectorAll('.collapsible-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const collapsible = header.parentElement;
+                    collapsible.classList.toggle('open');
+                });
+            });
+        }
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+            animateThreatRing();
+            animateConfidenceBars();
+            initCVEFilters();
+            initCollapsibles();
+        });
+    </script>
+    <script src="/analytics-events.js"></script>
+</body>
+</html>
