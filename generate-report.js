@@ -830,57 +830,86 @@ function generateDriverCards(stats, data) {
                     </div>`).join('\n');
 }
 
+// =============================================================================
+// ENHANCED SAT SECTION - All 7 Components with Plain Language Explanations
+// =============================================================================
+
 function generateSATSection(stats, data, trends) {
-    // Key Assumptions Check
-    const kacItems = [
-        { assumption: 'CISA KEV additions represent real-world exploitation', status: 'VALID', confidence: 'high', rationale: 'CISA requires evidence of active exploitation before listing' },
-        { assumption: 'Ransomware-linked CVEs pose elevated risk', status: 'VALID', confidence: 'high', rationale: `${stats.ransomwareCount} CVEs have documented ransomware campaign connections` },
-        { assumption: 'C2 infrastructure reflects active threat operations', status: 'UNCERTAIN', confidence: 'medium', rationale: 'Some C2s may be abandoned or law enforcement controlled' },
-        { assumption: 'Geographic hosting indicates actor origin', status: 'UNCERTAIN', confidence: 'low', rationale: 'Criminals use hosting in multiple jurisdictions' },
-        { assumption: 'News coverage correlates with exploitation likelihood', status: 'VALID', confidence: 'medium', rationale: 'Media attention often follows confirmed incidents' }
-    ];
     
-    // ACH hypotheses
-    const achItems = [
-        { id: 'H1', hypothesis: 'Active exploitation targeting internet-facing systems increased this week', confidence: stats.kevCount >= 3 ? 'High' : 'Medium', confClass: stats.kevCount >= 3 ? 'high' : 'moderate', confWidth: stats.kevCount >= 3 ? '90' : '60', evidenceFor: [`${stats.kevCount} new KEVs added (confirmed exploitation)`, 'High media coverage indicates broad targeting'], evidenceAgainst: [] },
-        { id: 'H2', hypothesis: 'Botnet/C2 activity is a primary driver of observed malicious infrastructure', confidence: stats.c2Count >= 15 ? 'High' : 'Low', confClass: stats.c2Count >= 15 ? 'high' : 'low', confWidth: stats.c2Count >= 15 ? '80' : '30', evidenceFor: [`Top families: ${Object.keys(data.c2ByFamily).slice(0, 3).join(', ')}`], evidenceAgainst: [`Only ${stats.c2Count} C2 servers detected`, 'Multiple families may indicate fragmentation'] },
-        { id: 'H3', hypothesis: 'Ransomware-enabling vulnerabilities are the dominant operational risk', confidence: stats.ransomwareCount >= 2 ? 'High' : 'Medium', confClass: stats.ransomwareCount >= 2 ? 'high' : 'moderate', confWidth: stats.ransomwareCount >= 2 ? '90' : '50', evidenceFor: [`${stats.ransomwareCount} KEVs linked to ransomware campaigns (${Math.round(stats.ransomwareCount / Math.max(stats.kevCount, 1) * 100)}%)`], evidenceAgainst: [] }
-    ];
+    // =========================================================================
+    // 1. KEY ASSUMPTIONS CHECK (KAC)
+    // =========================================================================
     
-    const kacHtml = kacItems.map(k => `                                <tr>
-                                    <td>${escapeHtml(k.assumption)}</td>
-                                    <td><span class="kac-status status-${k.status.toLowerCase()}">${k.status}</span></td>
-                                    <td>${escapeHtml(k.rationale)}</td>
-                                </tr>`).join('\n');
+    const kacItems = generateKACItems(stats, data);
+    const kacPlainLanguage = generateKACPlainLanguage(stats, data);
     
-    const achHtml = achItems.map(h => `                                <tr>
-                                    <td><span class="ach-hypothesis">${h.id}: ${escapeHtml(h.hypothesis)}</span></td>
-                                    <td class="ach-evidence">
-${h.evidenceFor.map(e => `                                        <div class="ach-evidence-item"><span class="ach-for">+</span> ${escapeHtml(e)}</div>`).join('\n')}
-                                    </td>
-                                    <td class="ach-evidence">
-${h.evidenceAgainst.length > 0 ? h.evidenceAgainst.map(e => `                                        <div class="ach-evidence-item"><span class="ach-against">−</span> ${escapeHtml(e)}</div>`).join('\n') : '                                        <span class="ach-evidence">—</span>'}
-                                    </td>
-                                    <td>
-                                        <span class="ach-confidence conf-${h.confClass}">${h.confidence}</span>
-                                        <div class="confidence-bar"><div class="confidence-fill ${h.confClass}" data-width="${h.confWidth}%" style="width: 0%;"></div></div>
-                                    </td>
-                                </tr>`).join('\n');
+    // =========================================================================
+    // 2. ANALYSIS OF COMPETING HYPOTHESES (ACH)
+    // =========================================================================
+    
+    const achItems = generateACHItems(stats, data, trends);
+    const achPlainLanguage = generateACHPlainLanguage(stats, data, trends);
+    
+    // =========================================================================
+    // 3. EVIDENCE DIAGNOSTICITY ASSESSMENT
+    // =========================================================================
+    
+    const diagnosticityItems = generateDiagnosticityItems(stats, data);
+    const diagnosticityPlainLanguage = generateDiagnosticityPlainLanguage(stats, data);
+    
+    // =========================================================================
+    // 4. KEY UNCERTAINTIES
+    // =========================================================================
+    
+    const uncertaintiesHtml = generateKeyUncertainties(stats, data);
+    const uncertaintiesPlainLanguage = generateUncertaintiesPlainLanguage(stats, data);
+    
+    // =========================================================================
+    // 5. WHAT-IF ANALYSIS
+    // =========================================================================
+    
+    const whatIfHtml = generateWhatIfAnalysis(stats, data);
+    const whatIfPlainLanguage = generateWhatIfPlainLanguage(stats, data);
+    
+    // =========================================================================
+    // 6. INDICATORS OF CHANGE
+    // =========================================================================
+    
+    const indicatorsHtml = generateIndicatorsOfChange(stats, data);
+    const indicatorsPlainLanguage = generateIndicatorsPlainLanguage();
+    
+    // =========================================================================
+    // 7. SOURCE RELIABILITY ASSESSMENT
+    // =========================================================================
+    
+    const sourceReliabilityHtml = generateSourceReliability();
+    const sourceReliabilityPlainLanguage = generateSourceReliabilityPlainLanguage();
+    
+    // =========================================================================
+    // OVERALL CONFIDENCE ASSESSMENT
+    // =========================================================================
+    
+    const overallConfidence = generateOverallConfidence(stats, data, trends);
+    
+    // =========================================================================
+    // ASSEMBLE FULL HTML
+    // =========================================================================
     
     return `        <!-- Structured Analytical Techniques -->
         <section class="section sat-section anchor-target" id="sat-analysis">
             <div class="container">
-                <div class="section-label">Intelligence Analysis</div>
-                <h2 class="section-title">Structured Analytical Techniques</h2>
+                <div class="section-label">Structured Analysis</div>
+                <h2 class="section-title">Analytical Assessment</h2>
                 
                 <div class="assessment-grid">
-                    <!-- Key Assumptions Check -->
+                    
+                    <!-- 1. Key Assumptions Check -->
                     <div class="assessment-card">
                         <h3 class="assessment-card-title">
-                            <span class="sat-icon">🔍</span>
+                            <span class="sat-icon">📋</span>
                             Key Assumptions Check (KAC)
                         </h3>
-                        <p class="sat-purpose">Identifies and validates the assumptions underlying our analysis.</p>
+                        <p class="sat-purpose">Identifies the foundational beliefs underlying our analysis and evaluates how well evidence supports each one.</p>
                         
                         <table class="kac-table">
                             <thead>
@@ -891,18 +920,25 @@ ${h.evidenceAgainst.length > 0 ? h.evidenceAgainst.map(e => `                   
                                 </tr>
                             </thead>
                             <tbody>
-${kacHtml}
+${kacItems}
                             </tbody>
                         </table>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+${kacPlainLanguage}
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- Analysis of Competing Hypotheses -->
+                    <!-- 2. Analysis of Competing Hypotheses -->
                     <div class="assessment-card">
                         <h3 class="assessment-card-title">
                             <span class="sat-icon">⚖️</span>
                             Analysis of Competing Hypotheses (Mini-ACH)
                         </h3>
-                        <p class="sat-purpose">Tests multiple explanations against the evidence.</p>
+                        <p class="sat-purpose">Tests multiple explanations against the evidence to prevent locking onto a single narrative prematurely.</p>
                         
                         <table class="ach-table">
                             <thead>
@@ -914,13 +950,745 @@ ${kacHtml}
                                 </tr>
                             </thead>
                             <tbody>
-${achHtml}
+${achItems}
                             </tbody>
                         </table>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+${achPlainLanguage}
+                            </div>
+                        </div>
                     </div>
+                    
+                    <!-- 3. Evidence Diagnosticity Assessment -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">🔬</span>
+                            Evidence Diagnosticity Assessment
+                        </h3>
+                        <p class="sat-purpose">Distinguishes between evidence that truly proves something (diagnostic) versus evidence that's consistent with multiple conclusions (non-diagnostic).</p>
+                        
+                        <table class="diagnosticity-table">
+                            <thead>
+                                <tr>
+                                    <th>Evidence</th>
+                                    <th>Type</th>
+                                    <th>Why It Matters</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+${diagnosticityItems}
+                            </tbody>
+                        </table>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+${diagnosticityPlainLanguage}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 4. Key Uncertainties -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">❓</span>
+                            Key Uncertainties
+                        </h3>
+                        <p class="sat-purpose">Explicitly identifies what we don't know and how those gaps could affect our conclusions.</p>
+                        
+                        <div class="uncertainties-grid">
+${uncertaintiesHtml}
+                        </div>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+${uncertaintiesPlainLanguage}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 5. What-If Analysis -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">🔮</span>
+                            What-If Analysis
+                        </h3>
+                        <p class="sat-purpose">Considers how our conclusions would change if key assumptions prove wrong.</p>
+                        
+                        <div class="what-if-scenarios">
+${whatIfHtml}
+                        </div>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+${whatIfPlainLanguage}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 6. Indicators of Change -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">📊</span>
+                            Indicators of Change
+                        </h3>
+                        <p class="sat-purpose">Identifies signals that would indicate our assessment needs revision—either because the situation improved or worsened.</p>
+                        
+                        <div class="indicators-grid">
+${indicatorsHtml}
+                        </div>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+${indicatorsPlainLanguage}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 7. Source Reliability Assessment -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">📡</span>
+                            Source Reliability Assessment
+                        </h3>
+                        <p class="sat-purpose">Evaluates the reliability of sources and credibility of information using ICD 203 standards (Admiralty Scale).</p>
+                        
+                        <table class="source-reliability-table">
+                            <thead>
+                                <tr>
+                                    <th>Source</th>
+                                    <th>Reliability</th>
+                                    <th>Information Credibility</th>
+                                    <th>Assessment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+${sourceReliabilityHtml}
+                            </tbody>
+                        </table>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+${sourceReliabilityPlainLanguage}
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
+                
+                <!-- Overall Confidence Assessment -->
+${overallConfidence}
+                
             </div>
         </section>`;
+}
+
+// =============================================================================
+// KAC (Key Assumptions Check) Generators
+// =============================================================================
+
+function generateKACItems(stats, data) {
+    const topCountry = Object.entries(data.c2ByCountry || {}).sort((a, b) => b[1] - a[1])[0];
+    const topCountryName = topCountry ? topCountry[0] : 'Unknown';
+    const topCountryPct = topCountry && stats.c2Count > 0 ? Math.round((topCountry[1] / stats.c2Count) * 100) : 0;
+    
+    const newsCoverageCount = Object.values(data.newsCoverage || {}).flat().length;
+    const newsCoveragePct = stats.kevCount > 0 ? Math.round((Object.keys(data.newsCoverage || {}).filter(k => (data.newsCoverage[k] || []).length > 0).length / stats.kevCount) * 100) : 0;
+    
+    const items = [
+        {
+            assumption: 'CISA KEV additions represent confirmed active exploitation',
+            status: 'Strong',
+            statusClass: 'valid',
+            rationale: `Based on ${stats.kevCount} new KEV entries this week; CISA requires exploitation evidence before listing`
+        },
+        {
+            assumption: 'Feodo Tracker C2 indicators represent active botnet infrastructure',
+            status: stats.c2Count >= 10 ? 'Strong' : 'Moderate',
+            statusClass: stats.c2Count >= 10 ? 'valid' : 'uncertain',
+            rationale: `${stats.c2Count} online C2 servers detected; some may be sinkholed or inactive`
+        },
+        {
+            assumption: 'Geographic indicator distribution reflects infrastructure hosting, not necessarily actor origin',
+            status: 'Moderate',
+            statusClass: 'uncertain',
+            rationale: `Threat actors frequently use bulletproof hosting in permissive jurisdictions regardless of their actual location`
+        },
+        {
+            assumption: 'Ransomware-linked vulnerabilities represent elevated operational risk',
+            status: stats.ransomwareCount > 0 ? 'Strong' : 'Uncertain',
+            statusClass: stats.ransomwareCount > 0 ? 'valid' : 'uncertain',
+            rationale: `${stats.ransomwareCount} vulnerabilities linked to known ransomware campaigns with documented intrusions`
+        },
+        {
+            assumption: 'Security media coverage correlates with active exploitation',
+            status: newsCoveragePct >= 80 ? 'Strong' : (newsCoveragePct >= 50 ? 'Moderate' : 'Weak'),
+            statusClass: newsCoveragePct >= 80 ? 'valid' : (newsCoveragePct >= 50 ? 'uncertain' : 'invalid'),
+            rationale: `${newsCoveragePct}% of KEV additions (${Object.keys(data.newsCoverage || {}).filter(k => (data.newsCoverage[k] || []).length > 0).length} of ${stats.kevCount}) received news coverage this week`
+        }
+    ];
+    
+    return items.map(item => `                                <tr>
+                                    <td>${escapeHtml(item.assumption)}</td>
+                                    <td><span class="kac-status status-${item.statusClass}">${item.status}</span></td>
+                                    <td>${escapeHtml(item.rationale)}</td>
+                                </tr>`).join('\n');
+}
+
+function generateKACPlainLanguage(stats, data) {
+    const topCountry = Object.entries(data.c2ByCountry || {}).sort((a, b) => b[1] - a[1])[0];
+    const topCountryName = topCountry ? topCountry[0] : 'various countries';
+    const topCountryPct = topCountry && stats.c2Count > 0 ? Math.round((topCountry[1] / stats.c2Count) * 100) : 0;
+    
+    let paragraph1 = `<p>We built this week's analysis on five foundational beliefs. `;
+    
+    if (stats.kevCount > 0 && stats.ransomwareCount > 0) {
+        paragraph1 += `Three of them are rock-solid: when CISA adds something to the KEV catalog, they've verified real attacks are happening; the ${stats.ransomwareCount} ransomware-linked vulnerabilities are genuinely dangerous because we have documented cases; and the security press is covering what matters.</p>`;
+    } else if (stats.kevCount > 0) {
+        paragraph1 += `The strongest assumption is that CISA KEV additions reflect real exploitation—they don't add vulnerabilities without evidence. This week's ${stats.kevCount} additions represent confirmed threats, not theoretical risks.</p>`;
+    } else {
+        paragraph1 += `With no new KEV additions this week, our analysis relies more heavily on C2 infrastructure data and news signals, which carry more uncertainty.</p>`;
+    }
+    
+    let paragraph2 = `<p><strong>Two assumptions require more caution:</strong> Just because we see ${stats.c2Count} C2 servers online doesn't guarantee they're actively being used—some might be abandoned or seized by law enforcement. `;
+    
+    if (topCountryPct > 0) {
+        paragraph2 += `And while ${topCountryPct}% of malicious infrastructure is hosted in ${topCountryName}, that doesn't mean ${topCountryName}-based actors are behind all of it—criminals worldwide rent servers in countries with lax enforcement.</p>`;
+    } else {
+        paragraph2 += `Geographic hosting data can be misleading since threat actors deliberately use infrastructure in multiple jurisdictions.</p>`;
+    }
+    
+    let bottomLine = `<p><strong>Bottom line:</strong> `;
+    if (stats.ransomwareCount > 0) {
+        bottomLine += `Prioritize the ransomware-linked CVEs with confidence. Be more skeptical about geographic attribution.</p>`;
+    } else {
+        bottomLine += `Act on CISA KEV findings with confidence. Treat C2 and geographic data as useful context, not definitive intelligence.</p>`;
+    }
+    
+    return paragraph1 + '\n' + paragraph2 + '\n' + bottomLine;
+}
+
+
+// =============================================================================
+// ACH (Analysis of Competing Hypotheses) Generators
+// =============================================================================
+
+function generateACHItems(stats, data, trends) {
+    const topFamilies = Object.keys(data.c2ByFamily || {}).slice(0, 3).join(', ') || 'various families';
+    const topCountry = Object.entries(data.c2ByCountry || {}).sort((a, b) => b[1] - a[1])[0];
+    const topCountryName = topCountry ? topCountry[0] : 'Unknown';
+    const topCountryPct = topCountry && stats.c2Count > 0 ? Math.round((topCountry[1] / stats.c2Count) * 100) : 0;
+    const ransomwarePct = stats.kevCount > 0 ? Math.round((stats.ransomwareCount / stats.kevCount) * 100) : 0;
+    
+    // Get top CVE for H3
+    const topRansomwareCVE = data.ransomwareKEVs && data.ransomwareKEVs[0] ? data.ransomwareKEVs[0].cveID : null;
+    
+    const items = [
+        {
+            id: 'H1',
+            hypothesis: 'Active exploitation targeting internet-facing systems increased this week',
+            evidenceFor: [
+                `${stats.kevCount} new KEVs added (confirmed exploitation)`,
+                'High media coverage indicates broad targeting'
+            ],
+            evidenceAgainst: [],
+            confidence: stats.kevCount >= 3 ? 'High' : (stats.kevCount >= 1 ? 'Medium' : 'Low'),
+            confClass: stats.kevCount >= 3 ? 'high' : (stats.kevCount >= 1 ? 'moderate' : 'low'),
+            confWidth: stats.kevCount >= 3 ? '90' : (stats.kevCount >= 1 ? '60' : '30')
+        },
+        {
+            id: 'H2',
+            hypothesis: 'Botnet/C2 activity is a primary driver of observed malicious infrastructure',
+            evidenceFor: [
+                `Top families: ${topFamilies}`
+            ],
+            evidenceAgainst: [
+                `Only ${stats.c2Count} C2 servers detected${trends.c2.change < 0 ? ' (lower than average)' : ''}`,
+                'Multiple families may indicate fragmentation, not scale'
+            ],
+            confidence: stats.c2Count >= 15 ? 'Medium' : 'Low',
+            confClass: stats.c2Count >= 15 ? 'moderate' : 'low',
+            confWidth: stats.c2Count >= 15 ? '50' : '30'
+        },
+        {
+            id: 'H3',
+            hypothesis: 'Ransomware-enabling vulnerabilities are the dominant operational risk this week',
+            evidenceFor: stats.ransomwareCount > 0 ? [
+                `${stats.ransomwareCount} KEVs linked to ransomware campaigns (${ransomwarePct}%)`,
+                topRansomwareCVE ? `${topRansomwareCVE} actively exploited by ransomware groups` : 'Active exploitation by ransomware groups confirmed'
+            ] : ['No ransomware-linked KEVs this week'],
+            evidenceAgainst: stats.ransomwareCount === 0 ? ['No direct ransomware linkage in KEV data'] : [],
+            confidence: stats.ransomwareCount >= 2 ? 'High' : (stats.ransomwareCount >= 1 ? 'Medium' : 'Low'),
+            confClass: stats.ransomwareCount >= 2 ? 'high' : (stats.ransomwareCount >= 1 ? 'moderate' : 'low'),
+            confWidth: stats.ransomwareCount >= 2 ? '90' : (stats.ransomwareCount >= 1 ? '60' : '20')
+        },
+        {
+            id: 'H4',
+            hypothesis: 'Threat activity is geographically concentrated in a few regions',
+            evidenceFor: topCountryPct >= 30 ? [
+                `${topCountryName} accounts for ${topCountryPct}% of C2 indicators`
+            ] : ['Geographic distribution is dispersed'],
+            evidenceAgainst: [
+                `Small sample size (${stats.c2Count} indicators)`,
+                'Hosting ≠ attribution'
+            ],
+            confidence: topCountryPct >= 50 ? 'Medium' : 'Low',
+            confClass: topCountryPct >= 50 ? 'moderate' : 'low',
+            confWidth: topCountryPct >= 50 ? '50' : '30'
+        }
+    ];
+    
+    return items.map(h => `                                <tr>
+                                    <td><span class="ach-hypothesis">${h.id}: ${escapeHtml(h.hypothesis)}</span></td>
+                                    <td class="ach-evidence">
+${h.evidenceFor.map(e => `                                        <div class="ach-evidence-item"><span class="ach-for">+</span> ${escapeHtml(e)}</div>`).join('\n')}
+                                    </td>
+                                    <td class="ach-evidence">
+${h.evidenceAgainst.length > 0 ? h.evidenceAgainst.map(e => `                                        <div class="ach-evidence-item"><span class="ach-against">−</span> ${escapeHtml(e)}</div>`).join('\n') : '                                        <span class="ach-none">—</span>'}
+                                    </td>
+                                    <td>
+                                        <span class="ach-confidence conf-${h.confClass}">${h.confidence}</span>
+                                        <div class="confidence-bar"><div class="confidence-fill ${h.confClass}" data-width="${h.confWidth}%" style="width: 0%;"></div></div>
+                                    </td>
+                                </tr>`).join('\n');
+}
+
+function generateACHPlainLanguage(stats, data, trends) {
+    const topFamilies = Object.keys(data.c2ByFamily || {}).slice(0, 3).join(', ') || 'various families';
+    const topCountry = Object.entries(data.c2ByCountry || {}).sort((a, b) => b[1] - a[1])[0];
+    const topCountryName = topCountry ? topCountry[0] : 'Unknown';
+    const topCountryPct = topCountry && stats.c2Count > 0 ? Math.round((topCountry[1] / stats.c2Count) * 100) : 0;
+    
+    let html = `<p>We tested four possible explanations for what we're seeing this week:</p>`;
+    
+    // Strongly supported hypotheses
+    let strongSupported = [];
+    if (stats.kevCount >= 1) {
+        strongSupported.push('exploitation of public-facing systems is up—CISA confirmed it');
+    }
+    if (stats.ransomwareCount >= 1) {
+        strongSupported.push(`ransomware is ${stats.ransomwareCount >= 2 ? 'the biggest' : 'a significant'} operational threat, with ${stats.ransomwareCount} of ${stats.kevCount} new vulnerabilities tied to ransomware groups`);
+    }
+    
+    if (strongSupported.length > 0) {
+        html += `<p><strong>✅ ${strongSupported.length > 1 ? 'Two hypotheses are' : 'One hypothesis is'} strongly supported:</strong> Yes, ${strongSupported.join('. And yes, ')}.</p>`;
+    }
+    
+    // Unsupported hypothesis
+    if (stats.c2Count < 15) {
+        html += `<p><strong>❌ One hypothesis doesn't hold up:</strong> We can't say botnets are driving the threat landscape this week. The C2 count is actually ${trends.c2.change < 0 ? 'below average' : 'modest'}, and seeing multiple malware families (${topFamilies}) could just mean the criminal ecosystem is fragmented, not that it's thriving.</p>`;
+    } else {
+        html += `<p><strong>⚠️ One hypothesis is partially supported:</strong> Botnet activity is present (${stats.c2Count} C2 servers), but it's not clear this is the primary driver of this week's threat landscape.</p>`;
+    }
+    
+    // Uncertain hypothesis
+    if (topCountryPct >= 30) {
+        html += `<p><strong>⚠️ One hypothesis is uncertain:</strong> The geographic concentration looks real (${topCountryPct}% of C2s in ${topCountryName}), but with only ${stats.c2Count} data points and knowing that hosting location doesn't equal actor location, we can't draw strong conclusions.</p>`;
+    } else {
+        html += `<p><strong>⚠️ One hypothesis is uncertain:</strong> Geographic concentration is too dispersed to draw conclusions. The small sample size (${stats.c2Count} indicators) limits our ability to identify patterns.</p>`;
+    }
+    
+    // Bottom line
+    html += `<p><strong>Bottom line:</strong> Focus your week on ${stats.ransomwareCount > 0 ? 'ransomware defense and ' : ''}patching internet-facing systems. Don't over-rotate on geographic blocking based on limited data.</p>`;
+    
+    return html;
+}
+
+
+// =============================================================================
+// Evidence Diagnosticity Assessment Generators
+// =============================================================================
+
+function generateDiagnosticityItems(stats, data) {
+    const topFamilies = Object.keys(data.c2ByFamily || {}).slice(0, 3).join(', ') || 'various families';
+    const topCountry = Object.entries(data.c2ByCountry || {}).sort((a, b) => b[1] - a[1])[0];
+    const topCountryName = topCountry ? topCountry[0] : 'Unknown';
+    const topCountryPct = topCountry && stats.c2Count > 0 ? Math.round((topCountry[1] / stats.c2Count) * 100) : 0;
+    
+    const items = [
+        {
+            evidence: `CISA added ${stats.kevCount} new KEVs`,
+            type: 'DIAGNOSTIC',
+            typeClass: 'diagnostic',
+            why: `CISA requires confirmed exploitation evidence before listing—this proves active attacks, not just theoretical risk`
+        },
+        {
+            evidence: `${stats.ransomwareCount} KEVs linked to ransomware`,
+            type: stats.ransomwareCount > 0 ? 'DIAGNOSTIC' : 'NOT APPLICABLE',
+            typeClass: stats.ransomwareCount > 0 ? 'diagnostic' : 'na',
+            why: stats.ransomwareCount > 0 ? 
+                `Direct connection to known ransomware campaigns with documented victims` : 
+                `No ransomware linkage this week—this evidence type not present`
+        },
+        {
+            evidence: `High security news coverage`,
+            type: 'PARTIALLY DIAGNOSTIC',
+            typeClass: 'partial',
+            why: `Media attention often follows exploitation, but can also be driven by vendor disclosure timing or researcher hype`
+        },
+        {
+            evidence: `${topCountryPct}% of C2s hosted in ${topCountryName}`,
+            type: 'NON-DIAGNOSTIC',
+            typeClass: 'non-diagnostic',
+            why: `Consistent with ${topCountryName} actors OR global criminals using ${topCountryName} hosting—doesn't discriminate between hypotheses`
+        },
+        {
+            evidence: `${topFamilies} detected`,
+            type: 'PARTIALLY DIAGNOSTIC',
+            typeClass: 'partial',
+            why: `Confirms these families are active, but doesn't tell us about scale, targets, or whether this is normal baseline activity`
+        }
+    ];
+    
+    return items.map(item => `                                <tr>
+                                    <td>${escapeHtml(item.evidence)}</td>
+                                    <td><span class="diagnosticity-type type-${item.typeClass}">${item.type}</span></td>
+                                    <td>${escapeHtml(item.why)}</td>
+                                </tr>`).join('\n');
+}
+
+function generateDiagnosticityPlainLanguage(stats, data) {
+    const topCountry = Object.entries(data.c2ByCountry || {}).sort((a, b) => b[1] - a[1])[0];
+    const topCountryName = topCountry ? topCountry[0] : 'various countries';
+    
+    let html = `<p>Not all evidence is created equal. Some evidence <strong>proves</strong> something specific; other evidence is consistent with multiple stories.</p>`;
+    
+    html += `<p><strong>Evidence we can really trust:</strong> The KEV additions${stats.ransomwareCount > 0 ? ' and ransomware links' : ''} are "smoking gun" evidence—CISA doesn't add things speculatively${stats.ransomwareCount > 0 ? ', and the ransomware connections come from real incident reports' : ''}. When we say "patch these now," we're standing on solid ground.</p>`;
+    
+    html += `<p><strong>Evidence that requires more caution:</strong> The geographic data and malware family detections are more ambiguous. Seeing C2 servers in ${topCountryName} could mean many things. Detecting specific malware families tells us they exist, not whether they're targeting you specifically.</p>`;
+    
+    html += `<p><strong>Bottom line:</strong> Act decisively on the diagnostic evidence (KEVs${stats.ransomwareCount > 0 ? ', ransomware links' : ''}). Use non-diagnostic evidence (geo data, C2 counts) for situational awareness, not as the basis for major security decisions.</p>`;
+    
+    return html;
+}
+
+
+// =============================================================================
+// Key Uncertainties Generators
+// =============================================================================
+
+function generateKeyUncertainties(stats, data) {
+    const uncertainties = [
+        {
+            icon: '🎯',
+            title: 'Targeting Specificity',
+            description: `We don't know which industries or organizations are being specifically targeted. CISA KEV data reflects broad exploitation, not sector-specific risk.`,
+            impact: `Your organization might face higher (or lower) risk than our general assessment suggests.`
+        },
+        {
+            icon: '⏱️',
+            title: 'Timeline of Exploitation',
+            description: `KEV additions lag actual exploitation by days or weeks. Some vulnerabilities may have been exploited long before this week.`,
+            impact: `You may already be compromised. Consider hunting for historical IOCs, not just future blocking.`
+        },
+        {
+            icon: '🔄',
+            title: 'C2 Infrastructure Lifecycle',
+            description: `We don't know how long detected C2 servers will remain active. Some may be taken down tomorrow; others could persist for months.`,
+            impact: `Block lists may become stale quickly. Consider automated IOC refresh, not just weekly updates.`
+        },
+        {
+            icon: '🧩',
+            title: 'Ransomware Campaign Intent',
+            description: `We know ransomware groups are ${stats.ransomwareCount > 0 ? 'using these vulnerabilities' : 'active'}, but not whether they're in active campaigns right now or stockpiling access.`,
+            impact: `A patching delay might be safe, or it might coincide with the start of a mass exploitation campaign.`
+        }
+    ];
+    
+    return uncertainties.map(u => `                            <div class="uncertainty-card">
+                                <div class="uncertainty-icon">${u.icon}</div>
+                                <h4 class="uncertainty-title">${escapeHtml(u.title)}</h4>
+                                <p class="uncertainty-desc">${escapeHtml(u.description)}</p>
+                                <p class="uncertainty-impact"><strong>Impact if wrong:</strong> ${escapeHtml(u.impact)}</p>
+                            </div>`).join('\n');
+}
+
+function generateUncertaintiesPlainLanguage(stats, data) {
+    let html = `<p>Intelligence work is as much about knowing what you don't know as what you do know. Here are the biggest gaps:</p>`;
+    
+    html += `<p><strong>We can't tell you if YOU are being targeted.</strong> The data shows broad exploitation trends, not who's in the crosshairs. If you're in a high-value sector (healthcare, finance, critical infrastructure), assume you're a target even when we can't prove it.</p>`;
+    
+    html += `<p><strong>We might be late.</strong> By the time a vulnerability hits KEV, exploitation has already been happening. Don't just block future attacks—hunt for signs you were already hit.</p>`;
+    
+    html += `<p><strong>The threat landscape moves fast.</strong> The C2 servers we listed could be dead tomorrow, and new ones could spin up tonight. Static block lists are a starting point, not a complete solution.</p>`;
+    
+    html += `<p><strong>Bottom line:</strong> Use this report as a prioritization guide, not a guarantee. The gaps in our knowledge are where your security team's judgment becomes critical.</p>`;
+    
+    return html;
+}
+
+
+// =============================================================================
+// What-If Analysis Generators
+// =============================================================================
+
+function generateWhatIfAnalysis(stats, data) {
+    // Identify specific CVEs and products for scenarios
+    const topKEV = data.recentKEVs && data.recentKEVs[0] ? data.recentKEVs[0] : null;
+    const topRansomwareKEV = data.ransomwareKEVs && data.ransomwareKEVs[0] ? data.ransomwareKEVs[0] : null;
+    const topFamily = Object.keys(data.c2ByFamily || {})[0] || 'botnet malware';
+    
+    const scenarios = [];
+    
+    // Scenario 1: Mass exploitation of top KEV
+    if (topRansomwareKEV) {
+        scenarios.push({
+            scenario: `What if ${topRansomwareKEV.cveID} (${topRansomwareKEV.vendorProject}) becomes a mass exploitation event?`,
+            indicators: [
+                'Multiple security vendors reporting exploitation',
+                'CISA emergency directive issued',
+                'Rapid increase in victim disclosures'
+            ],
+            action: `If you use ${topRansomwareKEV.vendorProject} products, treat this as critical priority regardless of your normal patching cadence. Consider temporary isolation of affected systems.`
+        });
+    } else if (topKEV) {
+        scenarios.push({
+            scenario: `What if ${topKEV.cveID} (${topKEV.vendorProject}) exploitation expands significantly?`,
+            indicators: [
+                'Increased scanning activity for this vulnerability',
+                'New threat actors adopting the exploit',
+                'Your industry sector specifically targeted'
+            ],
+            action: `Accelerate patching timeline for ${topKEV.vendorProject} products. Implement compensating controls if patches aren't immediately available.`
+        });
+    }
+    
+    // Scenario 2: C2 indicates imminent ransomware
+    scenarios.push({
+        scenario: `What if ${topFamily} C2 infrastructure indicates imminent ransomware deployment?`,
+        indicators: [
+            `Increased ${topFamily} infections in your environment`,
+            'Lateral movement following initial compromise',
+            'Cobalt Strike beacons or similar post-exploitation tools'
+        ],
+        action: `Hunt for ${topFamily} IOCs in your environment now. If found, assume ransomware is imminent and activate incident response.`
+    });
+    
+    // Scenario 3: Low C2 count is evasion
+    scenarios.push({
+        scenario: `What if the ${stats.c2Count < 15 ? 'low' : 'current'} C2 count reflects improved detection evasion, not reduced activity?`,
+        indicators: [
+            'New C2 techniques in threat reports',
+            'Increased use of legitimate services for C2 (cloud storage, social media)',
+            'Living-off-the-land techniques becoming more common'
+        ],
+        action: `Don't interpret ${stats.c2Count < 15 ? 'low C2 counts' : 'stable C2 numbers'} as safety. Ensure behavioral detection complements IOC-based blocking.`
+    });
+    
+    return scenarios.map(s => `                            <div class="what-if-card">
+                                <h4 class="what-if-title">${escapeHtml(s.scenario)}</h4>
+                                <div class="what-if-indicators">
+                                    <strong>Indicators to watch:</strong>
+                                    <ul>
+${s.indicators.map(i => `                                        <li>${escapeHtml(i)}</li>`).join('\n')}
+                                    </ul>
+                                </div>
+                                <div class="what-if-action">
+                                    <strong>Recommended preemptive action:</strong> ${escapeHtml(s.action)}
+                                </div>
+                            </div>`).join('\n');
+}
+
+function generateWhatIfPlainLanguage(stats, data) {
+    const topRansomwareKEV = data.ransomwareKEVs && data.ransomwareKEVs[0] ? data.ransomwareKEVs[0] : null;
+    const topFamily = Object.keys(data.c2ByFamily || {})[0] || 'botnet malware';
+    
+    let html = `<p>What-If Analysis forces us to think about scenarios that could make our current assessment wrong—and what you can do about it now.</p>`;
+    
+    if (topRansomwareKEV) {
+        html += `<p><strong>The ${topRansomwareKEV.vendorProject} situation is worth watching closely.</strong> It has the hallmarks of a potential mass exploitation event${topRansomwareKEV.vendorProject.toLowerCase().includes('cleo') || topRansomwareKEV.vendorProject.toLowerCase().includes('moveit') ? ' (file transfer software, ransomware involvement, high media attention). The MOVEit attack showed how fast these can escalate' : ''}. If you're running ${topRansomwareKEV.vendorProject} products, don't wait for confirmation.</p>`;
+    }
+    
+    html += `<p><strong>${topFamily} being active is a leading indicator.</strong> It's frequently used as the first stage before ransomware. If you detect ${topFamily} in your environment, treat it as a ransomware precursor, not a standalone threat.</p>`;
+    
+    html += `<p><strong>Quiet doesn't always mean safe.</strong> Sophisticated actors might be evading detection rather than reducing operations. A ${stats.c2Count < 15 ? 'low' : 'stable'} C2 count this week could mean we're winning, or it could mean they've changed tactics.</p>`;
+    
+    html += `<p><strong>Bottom line:</strong> Hope for the best, but build your defenses assuming these "what-ifs" might become reality.</p>`;
+    
+    return html;
+}
+
+
+// =============================================================================
+// Indicators of Change Generators
+// =============================================================================
+
+function generateIndicatorsOfChange(stats, data) {
+    const topKEV = data.recentKEVs && data.recentKEVs[0] ? data.recentKEVs[0] : null;
+    const topRansomwareKEV = data.ransomwareKEVs && data.ransomwareKEVs[0] ? data.ransomwareKEVs[0] : null;
+    
+    const worseningIndicators = [
+        'CISA issues emergency directive for any of this week\'s KEVs',
+        topRansomwareKEV ? `${topRansomwareKEV.cveID} exploitation expands beyond initial victims` : 'Exploitation expands beyond initial victims',
+        'New ransomware group adopts one of the listed vulnerabilities',
+        'Significant increase in Feodo Tracker C2 count (>25 in a week)',
+        'Public disclosure of large-scale breach tied to these vulnerabilities'
+    ];
+    
+    const improvingIndicators = [
+        'Major vendors release patches and report high adoption rates',
+        'C2 infrastructure taken down by law enforcement',
+        'No new ransomware victim disclosures tied to these CVEs',
+        'Security vendors report declining exploitation attempts',
+        'KEV vulnerabilities aged out (>30 days with no new activity)'
+    ];
+    
+    return `                            <div class="indicators-column worsening">
+                                <h4 class="indicators-header">🔺 Situation Worsening</h4>
+                                <ul class="indicators-list">
+${worseningIndicators.map(i => `                                    <li>${escapeHtml(i)}</li>`).join('\n')}
+                                </ul>
+                            </div>
+                            <div class="indicators-column improving">
+                                <h4 class="indicators-header">🔻 Situation Improving</h4>
+                                <ul class="indicators-list">
+${improvingIndicators.map(i => `                                    <li>${escapeHtml(i)}</li>`).join('\n')}
+                                </ul>
+                            </div>`;
+}
+
+function generateIndicatorsPlainLanguage() {
+    let html = `<p>Our assessment is a snapshot. Here's what to watch for to know if the situation is changing:</p>`;
+    
+    html += `<p><strong>Red flags that mean "escalate now":</strong> A CISA emergency directive is the clearest signal that a vulnerability has crossed from "serious" to "critical." Expansion of exploitation or new ransomware adoption would also indicate rapid escalation.</p>`;
+    
+    html += `<p><strong>Green flags that mean "pressure is easing":</strong> High patch adoption rates, law enforcement takedowns, and the passage of time without new incidents all reduce risk. But don't relax completely—threat actors often revisit old vulnerabilities when attention fades.</p>`;
+    
+    html += `<p><strong>Bottom line:</strong> This report is valid as of the generation date. Monitor these indicators to know when to re-assess. Consider setting up alerts for emergency directives and major breach disclosures.</p>`;
+    
+    return html;
+}
+
+
+// =============================================================================
+// Source Reliability Assessment Generators
+// =============================================================================
+
+function generateSourceReliability() {
+    const sources = [
+        {
+            source: 'CISA KEV Catalog',
+            reliability: 'A - RELIABLE',
+            reliabilityClass: 'reliable-a',
+            credibility: '1 - CONFIRMED',
+            credibilityClass: 'credibility-1',
+            assessment: 'U.S. Government source with strict verification requirements; highest confidence for exploitation status'
+        },
+        {
+            source: 'Feodo Tracker (abuse.ch)',
+            reliability: 'B - USUALLY RELIABLE',
+            reliabilityClass: 'reliable-b',
+            credibility: '2 - PROBABLY TRUE',
+            credibilityClass: 'credibility-2',
+            assessment: 'Established Swiss research organization; data is current at collection but C2 infrastructure changes rapidly'
+        },
+        {
+            source: 'The Hacker News',
+            reliability: 'C - FAIRLY RELIABLE',
+            reliabilityClass: 'reliable-c',
+            credibility: '3 - POSSIBLY TRUE',
+            credibilityClass: 'credibility-3',
+            assessment: 'Reputable security news outlet; may amplify vendor marketing; verify claims independently'
+        },
+        {
+            source: 'Dark Reading',
+            reliability: 'C - FAIRLY RELIABLE',
+            reliabilityClass: 'reliable-c',
+            credibility: '3 - POSSIBLY TRUE',
+            credibilityClass: 'credibility-3',
+            assessment: 'Established trade publication; editorial standards vary; useful for emerging threat signals'
+        },
+        {
+            source: 'Krebs on Security',
+            reliability: 'B - USUALLY RELIABLE',
+            reliabilityClass: 'reliable-b',
+            credibility: '2 - PROBABLY TRUE',
+            credibilityClass: 'credibility-2',
+            assessment: 'Independent investigative journalist with strong track record; primary source reporting'
+        }
+    ];
+    
+    return sources.map(s => `                                <tr>
+                                    <td>${escapeHtml(s.source)}</td>
+                                    <td><span class="reliability-badge ${s.reliabilityClass}">${s.reliability}</span></td>
+                                    <td><span class="credibility-badge ${s.credibilityClass}">${s.credibility}</span></td>
+                                    <td>${escapeHtml(s.assessment)}</td>
+                                </tr>`).join('\n');
+}
+
+function generateSourceReliabilityPlainLanguage() {
+    let html = `<p>Not all sources are equally trustworthy. Here's how we weighted our inputs this week:</p>`;
+    
+    html += `<p><strong>Gold standard (A-1):</strong> CISA KEV data is the most reliable input. They don't add vulnerabilities without verified exploitation evidence. When we cite KEV as the source for an assessment, you can act with high confidence.</p>`;
+    
+    html += `<p><strong>Trusted but verify (B-2):</strong> Feodo Tracker and Krebs on Security have strong track records. Feodo's C2 data is accurate at collection time but may be stale within days. Krebs does original investigative reporting, not just aggregation.</p>`;
+    
+    html += `<p><strong>Useful signals, not proof (C-3):</strong> Security news outlets like The Hacker News and Dark Reading provide valuable early warning, but they're incentivized toward sensationalism and may echo vendor PR. We use them for trend signals, not as primary evidence.</p>`;
+    
+    html += `<p><strong>Bottom line:</strong> Act immediately on CISA KEV findings (A-1). Use news-sourced items as early warning that requires verification. Never make major resource decisions based solely on trade publication reports.</p>`;
+    
+    return html;
+}
+
+
+// =============================================================================
+// Overall Confidence Assessment Generator
+// =============================================================================
+
+function generateOverallConfidence(stats, data, trends) {
+    // Calculate overall confidence based on data quality
+    let confidenceLevel = 'High';
+    let confidenceClass = 'high';
+    
+    // Factors that reduce confidence
+    const hasLowKEV = stats.kevCount < 2;
+    const hasLowC2 = stats.c2Count < 5;
+    const hasNoRansomware = stats.ransomwareCount === 0;
+    
+    const negativeFactors = [hasLowKEV, hasLowC2, hasNoRansomware].filter(Boolean).length;
+    
+    if (negativeFactors >= 2) {
+        confidenceLevel = 'Medium';
+        confidenceClass = 'moderate';
+    } else if (negativeFactors === 1) {
+        confidenceLevel = 'High';
+        confidenceClass = 'high';
+    }
+    
+    // Generate rationale
+    let rationale = '';
+    if (stats.kevCount > 0) {
+        rationale += `Multiple hypotheses supported by strong corroborating evidence from authoritative sources (CISA KEV${stats.c2Count > 0 ? ', Feodo Tracker' : ''}). `;
+    }
+    rationale += 'Key analytical assumptions are supported by current data. ';
+    
+    if (stats.ransomwareCount > 0) {
+        rationale += `Primary assessments (exploitation activity, ransomware risk) are based on diagnostic evidence with few gaps.`;
+    } else {
+        rationale += `Primary assessments are based on diagnostic evidence, though ransomware linkage data is limited this week.`;
+    }
+    
+    const caveat = `Geographic attribution conclusions carry lower confidence due to non-diagnostic evidence and small sample sizes. Targeting specificity remains unknown.`;
+    
+    return `                <!-- Overall Confidence -->
+                <div class="overall-confidence">
+                    <div class="overall-confidence-header">
+                        <span class="overall-confidence-label">OVERALL CONFIDENCE:</span>
+                        <span class="overall-confidence-level conf-${confidenceClass}">${confidenceLevel}</span>
+                    </div>
+                    <div class="overall-confidence-rationale">
+                        <p><strong>Rationale:</strong> ${escapeHtml(rationale)}</p>
+                        <p class="confidence-caveat"><strong>Caveat:</strong> ${escapeHtml(caveat)}</p>
+                    </div>
+                    <p class="methodology-link">These assessments use structured analytical techniques aligned with ICD 203 standards. <a href="/intel/methodology.html">Learn more about our methodology →</a></p>
+                </div>`;
 }
 
 function generateMITRESection(data) {
@@ -1897,12 +2665,433 @@ function generateStyles() {
             .sat-section, .mitre-section, .action-section { page-break-before: always; }
             
             /* Table styling */
-            .kac-table, .ach-table { font-size: 10pt; }
-            .kac-table th, .ach-table th { background: #eee !important; color: #111 !important; }
-            .kac-table td, .ach-table td { color: #333 !important; }
+            .kac-table, .ach-table, .diagnosticity-table, .source-reliability-table { font-size: 10pt; }
+            .kac-table th, .ach-table th, .diagnosticity-table th, .source-reliability-table th { background: #eee !important; color: #111 !important; }
+            .kac-table td, .ach-table td, .diagnosticity-table td, .source-reliability-table td { color: #333 !important; }
+            
+            /* Plain language boxes */
+            .plain-language-box {
+                background: #f9f9f9 !important;
+                border-color: #ddd !important;
+                border-left-color: #9a7209 !important;
+            }
+            .plain-language-header {
+                background: #eee !important;
+                color: #9a7209 !important;
+            }
+            .plain-language-content p {
+                color: #333 !important;
+            }
+            
+            /* Uncertainty and What-If cards */
+            .uncertainty-card,
+            .what-if-card,
+            .indicators-column {
+                background: #f9f9f9 !important;
+                border-color: #ddd !important;
+            }
+            .worsening .indicators-header {
+                color: #dc2626 !important;
+            }
+            .improving .indicators-header {
+                color: #16a34a !important;
+            }
+            
+            /* Overall confidence */
+            .overall-confidence {
+                background: #f5f5f5 !important;
+                border-color: #9a7209 !important;
+            }
+            .overall-confidence-rationale p {
+                color: #333 !important;
+            }
+            
+            /* Assessment cards page breaks */
+            .assessment-card {
+                page-break-inside: avoid;
+            }
             
             /* Disclaimer banner */
             .disclaimer-banner { display: none !important; }
+        }
+        
+        /* =============================================================================
+           ENHANCED SAT SECTION STYLES
+           ============================================================================= */
+        
+        /* Plain Language Box (used after each SAT component) */
+        .plain-language-box {
+            margin-top: 24px;
+            background: linear-gradient(135deg, rgba(212, 160, 18, 0.05) 0%, rgba(212, 160, 18, 0.02) 100%);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .plain-language-header {
+            background: rgba(212, 160, 18, 0.1);
+            padding: 12px 20px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.15);
+        }
+        .plain-language-content {
+            padding: 20px;
+        }
+        .plain-language-content p {
+            color: var(--gray-100);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .plain-language-content p:last-child {
+            margin-bottom: 0;
+        }
+        .plain-language-content strong {
+            color: var(--white);
+        }
+        
+        /* Diagnosticity Table */
+        .diagnosticity-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .diagnosticity-table th {
+            text-align: left;
+            padding: 12px;
+            background: var(--black);
+            color: var(--gray-300);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .diagnosticity-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray-100);
+            vertical-align: top;
+        }
+        .diagnosticity-type {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .type-diagnostic {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .type-partial {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        .type-non-diagnostic {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        .type-na {
+            background: rgba(107, 114, 128, 0.2);
+            color: #9ca3af;
+        }
+        
+        /* Key Uncertainties */
+        .uncertainties-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .uncertainty-card {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .uncertainty-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        .uncertainty-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .uncertainty-desc {
+            color: var(--gray-300);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .uncertainty-impact {
+            color: var(--gray-300);
+            font-size: 13px;
+            line-height: 1.6;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .uncertainty-impact strong {
+            color: var(--gold);
+        }
+        
+        /* What-If Analysis */
+        .what-if-scenarios {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .what-if-card {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 24px;
+        }
+        .what-if-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        .what-if-indicators {
+            margin-bottom: 16px;
+        }
+        .what-if-indicators strong {
+            color: var(--gray-300);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .what-if-indicators ul {
+            list-style: none;
+            margin-top: 8px;
+            padding-left: 0;
+        }
+        .what-if-indicators li {
+            color: var(--gray-100);
+            font-size: 13px;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+        .what-if-indicators li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gray-500);
+        }
+        .what-if-action {
+            background: rgba(212, 160, 18, 0.05);
+            border: 1px solid rgba(212, 160, 18, 0.15);
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--gray-100);
+            line-height: 1.6;
+        }
+        .what-if-action strong {
+            color: var(--gold);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Indicators of Change */
+        .indicators-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .indicators-column {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .indicators-column.worsening {
+            border-top: 3px solid #ef4444;
+        }
+        .indicators-column.improving {
+            border-top: 3px solid #22c55e;
+        }
+        .indicators-header {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .worsening .indicators-header {
+            color: #ef4444;
+        }
+        .improving .indicators-header {
+            color: #22c55e;
+        }
+        .indicators-list {
+            list-style: none;
+            padding: 0;
+        }
+        .indicators-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray-100);
+            font-size: 13px;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 24px;
+        }
+        .indicators-list li:last-child {
+            border-bottom: none;
+        }
+        .worsening .indicators-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+        }
+        .improving .indicators-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+        }
+        
+        /* Source Reliability Table */
+        .source-reliability-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .source-reliability-table th {
+            text-align: left;
+            padding: 12px;
+            background: var(--black);
+            color: var(--gray-300);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .source-reliability-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray-100);
+            vertical-align: middle;
+        }
+        .reliability-badge,
+        .credibility-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .reliable-a {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .reliable-b {
+            background: rgba(212, 160, 18, 0.2);
+            color: var(--gold);
+        }
+        .reliable-c {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        .credibility-1 {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .credibility-2 {
+            background: rgba(212, 160, 18, 0.2);
+            color: var(--gold);
+        }
+        .credibility-3 {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        
+        /* Overall Confidence Assessment */
+        .overall-confidence {
+            margin-top: 32px;
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(22, 22, 22, 0.8) 100%);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .overall-confidence-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .overall-confidence-label {
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .overall-confidence-level {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 4px;
+        }
+        .overall-confidence-level.conf-high {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .overall-confidence-level.conf-moderate {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        .overall-confidence-level.conf-low {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        .overall-confidence-rationale p {
+            color: var(--gray-100);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .overall-confidence-rationale p strong {
+            color: var(--white);
+        }
+        .confidence-caveat {
+            font-style: italic;
+            color: var(--gray-300) !important;
+        }
+        .confidence-caveat strong {
+            color: var(--gray-300) !important;
+            font-style: normal;
+        }
+        .overall-confidence .methodology-link {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-500);
+            font-size: 13px;
+        }
+        .overall-confidence .methodology-link a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .overall-confidence .methodology-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ACH Additional Styles */
+        .ach-none {
+            color: var(--gray-500);
+            font-style: italic;
         }
         
         /* Responsive */
@@ -1914,6 +3103,8 @@ function generateStyles() {
             .report-nav-links { gap: 12px; }
             .report-nav-center { display: none; }
             .export-buttons { justify-content: center; }
+            .uncertainties-grid { grid-template-columns: 1fr; }
+            .indicators-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .nav-menu, .nav-cta { display: none; }
@@ -1931,7 +3122,11 @@ function generateStyles() {
             .report-nav-link-info { display: none; }
             /* Show mobile cards, hide desktop tables on mobile */
             .table-card-mobile { display: block; }
-            .kac-table, .ach-table { display: none; }
+            .kac-table, .ach-table, .diagnosticity-table, .source-reliability-table { display: none; }
+            .plain-language-content { padding: 16px; }
+            .plain-language-content p { font-size: 13px; }
+            .what-if-card { padding: 16px; }
+            .uncertainty-card { padding: 16px; }
         }
     </style>`;
 }
