@@ -22,7 +22,7 @@
     <meta property="og:description" content="6 new CISA KEV vulnerabilities, 0 linked to ransomware campaigns. Includes MITRE ATT&CK mapping and structured analytical assessment.">
     <meta property="og:image" content="https://tacraven.com/images/threat-report-og.png">
     <meta property="og:site_name" content="TacRaven Solutions">
-    <meta property="article:published_time" content="2026-01-26T16:52:15.249Z">
+    <meta property="article:published_time" content="2026-01-26T17:09:54.362Z">
     <meta property="article:section" content="Threat Intelligence">
     
     <!-- Twitter Card -->
@@ -1243,11 +1243,16 @@
             .appendix-section { page-break-before: always; }
             .sources-methodology-section { page-break-before: always; }
             
-            /* Only prevent breaks on small, atomic elements - NOT containers */
-            /* Executive Summary cards - small enough to keep together */
-            .exec-card { page-break-inside: avoid; break-inside: avoid; }
+            /* KEY NARRATIVE BOXES - these must stay together as coherent units */
+            .analyst-assessment { page-break-inside: avoid; break-inside: avoid; }
+            .business-impact-box { page-break-inside: avoid; break-inside: avoid; }
+            .trend-narrative-box { page-break-inside: avoid; break-inside: avoid; }
+            .plain-language-box { page-break-inside: avoid; break-inside: avoid; }
+            .overall-confidence { page-break-inside: avoid; break-inside: avoid; }
+            .trend-summary { page-break-inside: avoid; break-inside: avoid; }
             
-            /* Individual items that should stay together */
+            /* Individual cards and items - small enough to keep together */
+            .exec-card { page-break-inside: avoid; break-inside: avoid; }
             .impact-item { page-break-inside: avoid; break-inside: avoid; }
             .trend-card { page-break-inside: avoid; break-inside: avoid; }
             .driver-card { page-break-inside: avoid; break-inside: avoid; }
@@ -1264,6 +1269,7 @@
             .secondary-source-item { page-break-inside: avoid; break-inside: avoid; }
             .primary-source-item { page-break-inside: avoid; break-inside: avoid; }
             .feedback-item { page-break-inside: avoid; break-inside: avoid; }
+            .indicators-column { page-break-inside: avoid; break-inside: avoid; }
             
             /* Tables - keep rows together but allow table to split */
             .kac-table tr, .ach-table tr, .diagnosticity-table tr, 
@@ -2618,7 +2624,7 @@
                     <span class="report-title-date">January 26, 2026</span>
                     <span class="report-title-name">Cybersecurity Threat Report</span>
                 </h1>
-                <p class="report-meta">Generated: 2026-01-26T16:52:15.249Z</p>
+                <p class="report-meta">Generated: 2026-01-26T17:09:54.362Z</p>
                 
                 <!-- Previous / Next Report Navigation -->
                 <div class="report-nav-links">
