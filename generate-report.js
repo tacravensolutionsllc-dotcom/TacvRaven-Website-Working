@@ -347,6 +347,8 @@ function renderReport(reportData) {
     const mitreSection = generateMITRESection(data);
     const actionSection = generateActionSection(data);
     const emergingThreats = generateEmergingThreats(data);
+    const appendixSection = generateAppendix(stats, data, metadata);
+    const sourcesMethodology = generateSourcesMethodology(stats, data);
     
     const html = `<!DOCTYPE html>
 <html lang="en">
@@ -587,30 +589,11 @@ ${actionSection}
         <!-- Emerging Threats -->
 ${emergingThreats}
         
-        <!-- Data Sources -->
-        <section class="section sources-section">
-            <div class="container">
-                <div class="section-label">Transparency</div>
-                <h2 class="section-title">Data Sources & Methodology</h2>
-                <div class="sources-grid">
-                    <div class="source-card">
-                        <h3 class="source-title">CISA KEV Catalog</h3>
-                        <p class="source-desc">Authoritative source for confirmed exploited vulnerabilities</p>
-                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" class="source-link">View Source →</a>
-                    </div>
-                    <div class="source-card">
-                        <h3 class="source-title">Feodo Tracker</h3>
-                        <p class="source-desc">C2 infrastructure tracking from abuse.ch</p>
-                        <a href="https://feodotracker.abuse.ch/" target="_blank" class="source-link">View Source →</a>
-                    </div>
-                    <div class="source-card">
-                        <h3 class="source-title">Security News</h3>
-                        <p class="source-desc">CISA, The Hacker News, Dark Reading, Krebs on Security</p>
-                    </div>
-                </div>
-                <p class="methodology-link">For detailed methodology, see <a href="/intel/methodology.html">our methodology page</a>.</p>
-            </div>
-        </section>
+        <!-- Appendix -->
+${appendixSection}
+        
+        <!-- Sources & Methodology -->
+${sourcesMethodology}
     </main>
     
     ${generateFooter()}
@@ -2288,21 +2271,345 @@ function truncateTitle(title, maxLength) {
 }
 
 function generateEmergingThreats(data) {
-    // For emerging threats, we look at CVEs mentioned in news that aren't in KEV yet
-    // This is a simplified version - in production you'd do more sophisticated matching
+    // Extract CVEs from news that aren't in KEV
+    const kevCVEs = new Set((data.recentKEVs || []).map(k => k.cveID));
+    const emergingCVEs = [];
+    
+    // Scan news articles for CVE mentions
+    const cvePattern = /CVE-\d{4}-\d{4,}/gi;
+    (data.newsArticles || []).forEach(article => {
+        const title = article.title || '';
+        const matches = title.match(cvePattern) || [];
+        matches.forEach(cve => {
+            const cveUpper = cve.toUpperCase();
+            if (!kevCVEs.has(cveUpper) && !emergingCVEs.find(e => e.cve === cveUpper)) {
+                emergingCVEs.push({
+                    cve: cveUpper,
+                    source: article.source || 'Security News',
+                    title: title
+                });
+            }
+        });
+    });
+    
+    // Generate cards for emerging threats (limit to 4)
+    const emergingCards = emergingCVEs.slice(0, 4).map(threat => {
+        // Extract vendor/product from title if possible
+        const vendorMatch = threat.title.match(/([A-Z][a-zA-Z]+)\s+(?:vulnerability|flaw|bug|exploit)/i);
+        const vendor = vendorMatch ? vendorMatch[1] : 'Unknown Vendor';
+        
+        return `                    <div class="emerging-card">
+                        <div class="emerging-header">
+                            <span class="emerging-cve">${threat.cve}</span>
+                            <span class="emerging-status status-monitoring">Monitoring</span>
+                        </div>
+                        <p class="emerging-source"><strong>Sources:</strong> ${escapeHtml(threat.source)}</p>
+                        <div class="emerging-tags">
+                            <span class="emerging-tag tag-vendor">${escapeHtml(vendor)}</span>
+                            <span class="emerging-tag tag-coverage">News Coverage</span>
+                        </div>
+                        <p class="emerging-action">Consider proactive assessment</p>
+                    </div>`;
+    }).join('\n');
+    
+    // If no emerging threats found, show placeholder
+    const cardsContent = emergingCards || `                    <div class="emerging-card">
+                        <div class="emerging-header">
+                            <span class="emerging-status status-clear">No Emerging Threats</span>
+                        </div>
+                        <p class="emerging-desc">No CVEs identified in security news that aren't already in CISA KEV this week. Continue monitoring security news feeds for early warning indicators.</p>
+                    </div>`;
+    
     return `        <!-- Emerging Threats -->
-        <section class="section emerging-section">
+        <section class="section emerging-section anchor-target" id="emerging-threats">
             <div class="container">
                 <div class="section-label">Early Warning</div>
                 <h2 class="section-title">Emerging Threats Watchlist</h2>
                 <p class="section-desc">These vulnerabilities are getting security news attention but have not yet been added to CISA KEV. Consider proactive assessment.</p>
                 
                 <div class="emerging-grid">
-                    <div class="emerging-card">
-                        <div class="emerging-header">
-                            <span class="emerging-status">Monitoring</span>
+${cardsContent}
+                </div>
+            </div>
+        </section>`;
+}
+
+// =============================================================================
+// Appendix Section Generator
+// =============================================================================
+
+function generateAppendix(stats, data, metadata) {
+    const reportDate = new Date().toISOString();
+    const dataDate = new Date(Date.now() - 86400000).toISOString().split('T')[0]; // Yesterday
+    
+    // Count news sources
+    const newsSources = new Set((data.newsArticles || []).map(a => a.source)).size;
+    
+    return `        <!-- Appendix -->
+        <section class="section appendix-section anchor-target" id="appendix">
+            <div class="container">
+                <div class="section-label">Reference</div>
+                <h2 class="section-title">Appendix</h2>
+                
+                <div class="appendix-grid">
+                    <!-- Report Statistics -->
+                    <div class="appendix-card">
+                        <h3 class="appendix-card-title">Report Statistics</h3>
+                        <table class="appendix-table">
+                            <tr>
+                                <td class="appendix-label">CISA KEV</td>
+                                <td class="appendix-value">${stats.kevCount} New</td>
+                            </tr>
+                            <tr>
+                                <td class="appendix-label">Ransomware</td>
+                                <td class="appendix-value">${stats.ransomwareCount} Linked</td>
+                            </tr>
+                            <tr>
+                                <td class="appendix-label">C2 Servers</td>
+                                <td class="appendix-value">${stats.c2Count} Active</td>
+                            </tr>
+                            <tr>
+                                <td class="appendix-label">Malware Families</td>
+                                <td class="appendix-value">${Object.keys(data.c2ByFamily || {}).length} Tracked</td>
+                            </tr>
+                            <tr>
+                                <td class="appendix-label">CVSS</td>
+                                <td class="appendix-value">${(data.recentKEVs || []).filter(k => k.cvssScore >= 9).length} Critical</td>
+                            </tr>
+                            <tr>
+                                <td class="appendix-label">News</td>
+                                <td class="appendix-value">${(data.newsArticles || []).length} Articles</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <!-- Analytical Limitations -->
+                    <div class="appendix-card">
+                        <h3 class="appendix-card-title">Analytical Limitations</h3>
+                        <ul class="appendix-list">
+                            <li><strong>Lag in reporting:</strong> CISA KEV additions may lag actual exploitation by days or weeks. This report reflects known exploitation, not real-time activity.</li>
+                            <li><strong>C2 infrastructure volatility:</strong> Botnet C2 servers have short lifespans. IOCs may be stale within hours of collection.</li>
+                            <li><strong>No targeting specificity:</strong> We cannot determine if your specific organization is being targeted. Data reflects broad exploitation trends.</li>
+                            <li><strong>Geographic attribution limits:</strong> Hosting location does not reliably indicate threat actor origin.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Data Sources & Licensing -->
+                    <div class="appendix-card">
+                        <h3 class="appendix-card-title">Data Sources & Licensing</h3>
+                        <ul class="appendix-list">
+                            <li><strong>CISA KEV Catalog:</strong> U.S. Government work product (Public Domain). Updated as vulnerabilities are confirmed exploited.</li>
+                            <li><strong>Feodo Tracker (abuse.ch):</strong> CC0 1.0 Public Domain Dedication. Swiss research organization tracking botnet C2 infrastructure.</li>
+                            <li><strong>MITRE ATT&CK:</strong> Apache 2.0 License. Adversary tactic and technique mapping framework.</li>
+                            <li><strong>Security News:</strong> Aggregated under fair use for commentary. Sources include CISA advisories, The Hacker News, Dark Reading, Krebs on Security, BleepingComputer.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>`;
+}
+
+// =============================================================================
+// Sources & Methodology Section Generator
+// =============================================================================
+
+function generateSourcesMethodology(stats, data) {
+    // Count news by source for secondary sources
+    const sourceCount = {};
+    (data.newsArticles || []).forEach(article => {
+        const src = article.source || 'Other';
+        sourceCount[src] = (sourceCount[src] || 0) + 1;
+    });
+    
+    // Generate secondary source badges
+    const secondarySources = [
+        { name: 'CISA Advisories & Alerts', type: 'official', label: 'Official Government' },
+        { name: 'Vendor Security Advisories', type: 'vendor', label: 'Primary Source' },
+        { name: 'Krebs on Security', type: 'research', label: 'Investigative Journalism' },
+        { name: 'The Hacker News', type: 'news', label: 'Security News' },
+        { name: 'Dark Reading', type: 'news', label: 'Trade Publication' },
+        { name: 'BleepingComputer', type: 'news', label: 'Security News' },
+        { name: 'Security Vendor Blogs', type: 'research', label: 'Technical Analysis' }
+    ];
+    
+    const secondarySourcesHtml = secondarySources.map(src => {
+        const badgeClass = `source-type-${src.type}`;
+        return `                                <div class="secondary-source-item">
+                                    <span class="secondary-source-name">${src.name}</span>
+                                    <span class="secondary-source-badge ${badgeClass}">${src.label}</span>
+                                </div>`;
+    }).join('\n');
+    
+    return `        <!-- Sources & Methodology -->
+        <section class="section sources-methodology-section anchor-target" id="sources-methodology">
+            <div class="container">
+                <div class="section-label">Transparency</div>
+                <h2 class="section-title">Sources & Methodology</h2>
+                <p class="section-intro">This report is produced using only publicly available information from authoritative sources. We believe transparency about our sources and methods is essential to building trust. Below, we document exactly where our data comes from and how we process it.</p>
+                
+                <div class="sources-methodology-grid">
+                    <!-- Primary Data Sources -->
+                    <div class="sources-card primary-sources">
+                        <h3 class="sources-card-title">📡 Primary Data Sources</h3>
+                        
+                        <div class="primary-source-item">
+                            <div class="primary-source-header">
+                                <span class="primary-source-name">CISA Known Exploited Vulnerabilities (KEV) Catalog</span>
+                                <span class="primary-source-badge badge-authoritative">AUTHORITATIVE</span>
+                            </div>
+                            <p class="primary-source-desc">The U.S. Cybersecurity and Infrastructure Security Agency maintains a catalog of vulnerabilities with confirmed active exploitation. Inclusion requires documented evidence of exploitation in the wild.</p>
+                            <div class="primary-source-meta">
+                                <span>URL: <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank">cisa.gov/known-exploited-vulnerabilities-catalog</a></span>
+                                <span>Update Frequency: As vulnerabilities are confirmed</span>
+                                <span>License: Public Domain (U.S. Government work product)</span>
+                            </div>
                         </div>
-                        <p class="emerging-desc">Check security news feeds for vulnerabilities receiving significant coverage that haven't been added to KEV yet.</p>
+                        
+                        <div class="primary-source-item">
+                            <div class="primary-source-header">
+                                <span class="primary-source-name">Feodo Tracker (abuse.ch)</span>
+                                <span class="primary-source-badge badge-established">ESTABLISHED</span>
+                            </div>
+                            <p class="primary-source-desc">A project by the Swiss research organization abuse.ch that tracks botnet command & control (C2) infrastructure. Feodo Tracker identifies servers used by banking trojans and other malware families including Emotet, QakBot, and IcedID.</p>
+                            <div class="primary-source-meta">
+                                <span>URL: <a href="https://feodotracker.abuse.ch" target="_blank">feodotracker.abuse.ch</a></span>
+                                <span>Update Frequency: Continuous</span>
+                                <span>License: CC0 1.0 (Public Domain Dedication)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="primary-source-item">
+                            <div class="primary-source-header">
+                                <span class="primary-source-name">MITRE ATT&CK Framework</span>
+                                <span class="primary-source-badge badge-authoritative">AUTHORITATIVE</span>
+                            </div>
+                            <p class="primary-source-desc">A globally-recognized knowledge base of adversary tactics and techniques based on real-world observations. Used to map vulnerabilities and threats to standardized attack patterns.</p>
+                            <div class="primary-source-meta">
+                                <span>URL: <a href="https://attack.mitre.org" target="_blank">attack.mitre.org</a></span>
+                                <span>License: Apache 2.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Secondary Sources -->
+                    <div class="sources-card secondary-sources">
+                        <h3 class="sources-card-title">📰 Secondary Sources (News & Analysis)</h3>
+                        <p class="sources-card-intro">We monitor security news outlets to assess media coverage and extract context about threat campaigns. News coverage is used as a signal for threat awareness, not as primary evidence of exploitation.</p>
+                        <div class="secondary-sources-list">
+${secondarySourcesHtml}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Analytical Methodology -->
+                <div class="methodology-section">
+                    <h3 class="methodology-title">🔬 Analytical Methodology</h3>
+                    <div class="methodology-steps">
+                        <div class="methodology-step">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <h4>Data Collection</h4>
+                                <p>Automated systems pull data from primary sources (CISA KEV, Feodo Tracker) at regular intervals. RSS feeds from security news sources are monitored for coverage signals.</p>
+                            </div>
+                        </div>
+                        <div class="methodology-step">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <h4>Enrichment & Correlation</h4>
+                                <p>Raw data is enriched with MITRE ATT&CK mappings, ransomware campaign linkages (from CISA advisories and vendor reports), and geographic attribution of infrastructure.</p>
+                            </div>
+                        </div>
+                        <div class="methodology-step">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <h4>Structured Analysis</h4>
+                                <p>We apply Intelligence Community-standard Structured Analytical Techniques (SATs) including Key Assumptions Check, Analysis of Competing Hypotheses, and Indicators of Change to reduce cognitive bias.</p>
+                            </div>
+                        </div>
+                        <div class="methodology-step">
+                            <span class="step-number">4</span>
+                            <div class="step-content">
+                                <h4>Confidence Assessment</h4>
+                                <p>All judgments include confidence levels (High/Medium/Low) based on source reliability, information credibility, and corroboration across multiple sources, following ICD 203 standards.</p>
+                            </div>
+                        </div>
+                        <div class="methodology-step">
+                            <span class="step-number">5</span>
+                            <div class="step-content">
+                                <h4>Plain Language Translation</h4>
+                                <p>Technical findings are translated into business-relevant language to support executive decision-making. We explain not just "what" but "why it matters."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Limitations & Standards Grid -->
+                <div class="limitations-standards-grid">
+                    <!-- Limitations & Caveats -->
+                    <div class="limitations-card">
+                        <h3 class="limitations-title">⚠️ Limitations & Caveats</h3>
+                        <div class="limitations-grid">
+                            <div class="limitation-item">
+                                <h4>Not Government Intelligence</h4>
+                                <p>This report is based entirely on publicly available information. TacRaven Solutions does not produce official government intelligence products and has no access to classified information.</p>
+                            </div>
+                            <div class="limitation-item">
+                                <h4>Lag in Reporting</h4>
+                                <p>CISA KEV additions lag actual exploitation by days or weeks. News coverage may lag even further. Treat this report as a prioritization guide, not a real-time threat feed.</p>
+                            </div>
+                            <div class="limitation-item">
+                                <h4>C2 Infrastructure Volatility</h4>
+                                <p>Botnet C2 servers have short lifespans. IOCs in this report may be stale by the time you read it. Use for historical hunting and as a starting point for your own research.</p>
+                            </div>
+                            <div class="limitation-item">
+                                <h4>No Specific Targeting Information</h4>
+                                <p>We cannot tell you if your organization is being specifically targeted. The data reflects broad exploitation trends, not individualized threat assessments.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Standards & Frameworks -->
+                    <div class="standards-card">
+                        <h3 class="standards-title">📋 Standards & Frameworks</h3>
+                        <table class="standards-table">
+                            <tr>
+                                <td class="standard-id">ICD 203</td>
+                                <td class="standard-desc">Analytic Standards for confidence assessments</td>
+                            </tr>
+                            <tr>
+                                <td class="standard-id">ICD 206</td>
+                                <td class="standard-desc">Sourcing Requirements for source documentation</td>
+                            </tr>
+                            <tr>
+                                <td class="standard-id">MITRE ATT&CK</td>
+                                <td class="standard-desc">Adversary tactic and technique mapping</td>
+                            </tr>
+                            <tr>
+                                <td class="standard-id">STIX/TAXII</td>
+                                <td class="standard-desc">Threat intelligence data formats</td>
+                            </tr>
+                            <tr>
+                                <td class="standard-id">TLP:CLEAR</td>
+                                <td class="standard-desc">Traffic Light Protocol classification</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Questions & Feedback -->
+                <div class="feedback-section">
+                    <h3 class="feedback-title">💬 Questions & Feedback</h3>
+                    <p class="feedback-intro">We welcome questions about our methodology and feedback on how to improve these reports.</p>
+                    <div class="feedback-grid">
+                        <div class="feedback-item">
+                            <strong>Report Issues:</strong> If you believe any information in this report is inaccurate, please contact us.
+                        </div>
+                        <div class="feedback-item">
+                            <strong>Methodology Questions:</strong> For detailed questions about our analytical process, see our full methodology documentation.
+                        </div>
+                        <div class="feedback-item">
+                            <strong>General Inquiries:</strong> <a href="https://www.tacraven.com/contact">Contact TacRaven Solutions</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3047,6 +3354,461 @@ function generateStyles() {
             color: #22c55e;
         }
         
+        /* =============================================================================
+           EMERGING THREATS SECTION STYLES
+           ============================================================================= */
+        
+        .emerging-section .section-desc {
+            color: var(--gray-300);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .emerging-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .emerging-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .emerging-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .emerging-cve {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gold);
+        }
+        .emerging-status {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        .status-monitoring {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        .status-clear {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .emerging-source {
+            color: var(--gray-300);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        .emerging-source strong {
+            color: var(--gray-100);
+        }
+        .emerging-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .emerging-tag {
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--gray-300);
+        }
+        .tag-vendor {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        .tag-coverage {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+        }
+        .emerging-action {
+            color: var(--gray-400);
+            font-size: 12px;
+            font-style: italic;
+        }
+        .emerging-desc {
+            color: var(--gray-300);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* =============================================================================
+           APPENDIX SECTION STYLES
+           ============================================================================= */
+        
+        .appendix-section {
+            background: linear-gradient(180deg, var(--black) 0%, rgba(10, 10, 10, 1) 100%);
+        }
+        .appendix-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .appendix-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .appendix-card-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .appendix-table {
+            width: 100%;
+        }
+        .appendix-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .appendix-table tr:last-child {
+            border-bottom: none;
+        }
+        .appendix-label {
+            color: var(--gray-400);
+            font-size: 13px;
+            padding: 10px 0;
+        }
+        .appendix-value {
+            color: var(--gold);
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 500;
+            text-align: right;
+            padding: 10px 0;
+        }
+        .appendix-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .appendix-list li {
+            color: var(--gray-300);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            padding-left: 16px;
+            position: relative;
+        }
+        .appendix-list li::before {
+            content: '•';
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+        }
+        .appendix-list li:last-child {
+            margin-bottom: 0;
+        }
+        .appendix-list strong {
+            color: var(--gray-100);
+        }
+        
+        /* =============================================================================
+           SOURCES & METHODOLOGY SECTION STYLES
+           ============================================================================= */
+        
+        .sources-methodology-section {
+            background: var(--black);
+        }
+        .section-intro {
+            color: var(--gray-300);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 900px;
+        }
+        .sources-methodology-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .sources-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .sources-card-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .sources-card-intro {
+            color: var(--gray-400);
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+        
+        /* Primary Sources */
+        .primary-source-item {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .primary-source-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .primary-source-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .primary-source-name {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 14px;
+        }
+        .primary-source-badge {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+        .badge-authoritative {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .badge-established {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        .primary-source-desc {
+            color: var(--gray-300);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .primary-source-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .primary-source-meta span {
+            color: var(--gray-500);
+            font-size: 12px;
+        }
+        .primary-source-meta a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .primary-source-meta a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Secondary Sources */
+        .secondary-sources-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .secondary-source-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 6px;
+        }
+        .secondary-source-name {
+            color: var(--gray-100);
+            font-size: 13px;
+        }
+        .secondary-source-badge {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        .source-type-official {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .source-type-vendor {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        .source-type-research {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+        }
+        .source-type-news {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        
+        /* Methodology Section */
+        .methodology-section {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+        .methodology-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+        .methodology-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .methodology-step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--gold);
+            color: var(--black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            color: var(--white);
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .step-content p {
+            color: var(--gray-300);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        /* Limitations & Standards Grid */
+        .limitations-standards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .limitations-card, .standards-card {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .limitations-title, .standards-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .limitations-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .limitation-item h4 {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .limitation-item p {
+            color: var(--gray-400);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .standards-table {
+            width: 100%;
+        }
+        .standards-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .standards-table tr:last-child {
+            border-bottom: none;
+        }
+        .standard-id {
+            color: var(--gold);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 12px 0;
+            width: 100px;
+        }
+        .standard-desc {
+            color: var(--gray-300);
+            font-size: 13px;
+            padding: 12px 0;
+        }
+        
+        /* Feedback Section */
+        .feedback-section {
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .feedback-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        .feedback-intro {
+            color: var(--gray-400);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .feedback-item {
+            color: var(--gray-300);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .feedback-item strong {
+            color: var(--gray-100);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .feedback-item a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .feedback-item a:hover {
+            text-decoration: underline;
+        }
+        
         /* Professional Print Stylesheet */
         @media print {
             /* Hide navigation and interactive elements */
@@ -3469,6 +4231,160 @@ function generateStyles() {
             /* Assessment cards page breaks */
             .assessment-card {
                 page-break-inside: avoid;
+            }
+            
+            /* ============================================
+               EMERGING THREATS PRINT STYLES
+               ============================================ */
+            
+            .emerging-section .section-desc {
+                color: #666 !important;
+            }
+            .emerging-card {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .emerging-cve {
+                color: #9a7209 !important;
+            }
+            .emerging-status {
+                background: #eee !important;
+                color: #666 !important;
+            }
+            .emerging-source {
+                color: #333 !important;
+            }
+            .emerging-tag {
+                background: #eee !important;
+                color: #666 !important;
+            }
+            .emerging-action, .emerging-desc {
+                color: #333 !important;
+            }
+            
+            /* ============================================
+               APPENDIX PRINT STYLES
+               ============================================ */
+            
+            .appendix-card {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .appendix-card-title {
+                color: #111 !important;
+                border-bottom-color: #ddd !important;
+            }
+            .appendix-label {
+                color: #666 !important;
+            }
+            .appendix-value {
+                color: #9a7209 !important;
+            }
+            .appendix-list li {
+                color: #333 !important;
+            }
+            .appendix-list strong {
+                color: #111 !important;
+            }
+            
+            /* ============================================
+               SOURCES & METHODOLOGY PRINT STYLES
+               ============================================ */
+            
+            .section-intro {
+                color: #333 !important;
+            }
+            .sources-card {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .sources-card-title {
+                color: #111 !important;
+            }
+            .sources-card-intro {
+                color: #666 !important;
+            }
+            .primary-source-name {
+                color: #111 !important;
+            }
+            .primary-source-badge {
+                background: #eee !important;
+                color: #666 !important;
+                border: 1px solid #ccc !important;
+            }
+            .primary-source-desc {
+                color: #333 !important;
+            }
+            .primary-source-meta span {
+                color: #666 !important;
+            }
+            .primary-source-meta a {
+                color: #9a7209 !important;
+            }
+            .secondary-source-item {
+                background: #f5f5f5 !important;
+            }
+            .secondary-source-name {
+                color: #111 !important;
+            }
+            .secondary-source-badge {
+                background: #eee !important;
+                color: #666 !important;
+            }
+            .methodology-section {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .methodology-title {
+                color: #111 !important;
+            }
+            .step-number {
+                background: #9a7209 !important;
+                color: #fff !important;
+            }
+            .step-content h4 {
+                color: #111 !important;
+            }
+            .step-content p {
+                color: #333 !important;
+            }
+            .limitations-card, .standards-card {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .limitations-title, .standards-title {
+                color: #111 !important;
+            }
+            .limitation-item h4 {
+                color: #9a7209 !important;
+            }
+            .limitation-item p {
+                color: #333 !important;
+            }
+            .standard-id {
+                color: #9a7209 !important;
+            }
+            .standard-desc {
+                color: #333 !important;
+            }
+            .feedback-section {
+                background: #f9f9f9 !important;
+                border: 1px solid #ddd !important;
+            }
+            .feedback-title {
+                color: #111 !important;
+            }
+            .feedback-intro {
+                color: #666 !important;
+            }
+            .feedback-item {
+                color: #333 !important;
+            }
+            .feedback-item strong {
+                color: #111 !important;
+            }
+            .feedback-item a {
+                color: #9a7209 !important;
             }
             
             /* Disclaimer banner */
@@ -4150,6 +5066,16 @@ function generateStyles() {
             .source-label { font-size: 12px; }
             .source-badge { font-size: 9px; padding: 2px 6px; }
             .patch-sources { margin-top: 12px; padding-top: 12px; }
+            /* Appendix mobile */
+            .appendix-grid { grid-template-columns: 1fr; }
+            /* Sources & Methodology mobile */
+            .sources-methodology-grid { grid-template-columns: 1fr; }
+            .limitations-standards-grid { grid-template-columns: 1fr; }
+            .limitations-grid { grid-template-columns: 1fr; }
+            .feedback-grid { grid-template-columns: 1fr; }
+            .methodology-step { flex-direction: column; gap: 12px; }
+            .step-number { margin: 0 auto; }
+            .step-content { text-align: center; }
         }
     </style>`;
 }
