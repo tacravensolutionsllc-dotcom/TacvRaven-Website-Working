@@ -418,10 +418,6 @@
             background: radial-gradient(circle, rgba(212, 160, 18, 0.08) 0%, transparent 70%);
             pointer-events: none;
         }
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
         
         /* Radar Sweep Animation */
         .radar-container {
@@ -654,42 +650,6 @@
         .archive-section {
             padding: 80px 0;
             position: relative;
-        }
-        
-        /* Breadcrumb Navigation */
-        .breadcrumb {
-            margin-bottom: 32px;
-        }
-        .breadcrumb ol {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            list-style: none;
-            font-family: var(--font-heading);
-            font-size: 13px;
-        }
-        .breadcrumb li {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .breadcrumb li::after {
-            content: '/';
-            color: var(--gray-500);
-        }
-        .breadcrumb li:last-child::after {
-            display: none;
-        }
-        .breadcrumb a {
-            color: var(--gray-300);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        .breadcrumb a:hover {
-            color: var(--gold);
-        }
-        .breadcrumb li:last-child span {
-            color: var(--gold);
         }
         
         /* Article Wrapper for Schema */
@@ -1325,24 +1285,6 @@
     
     <main class="archive-section" role="main">
         <div class="container">
-            <!-- Breadcrumb Navigation for SEO -->
-            <nav class="breadcrumb" aria-label="Breadcrumb">
-                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                        <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
-                        <meta itemprop="position" content="1">
-                    </li>
-                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                        <a itemprop="item" href="/intel/"><span itemprop="name">Intelligence</span></a>
-                        <meta itemprop="position" content="2">
-                    </li>
-                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                        <span itemprop="name">Weekly Reports</span>
-                        <meta itemprop="position" content="3">
-                    </li>
-                </ol>
-            </nav>
-            
             <!-- Year Header -->
             <section aria-labelledby="year-2026">
                 <div class="year-header">
@@ -1366,7 +1308,7 @@
                             
                             <span class="latest-badge" aria-label="Latest report">LATEST</span>
                             <div class="archive-week">
-                                <div class="archive-week-id">JAN W05</div>
+                                <div class="archive-week-id">JANUARY</div>
                                 <time class="archive-week-date" datetime="2026-01-26" itemprop="datePublished">January 26, 2026</time>
                             </div>
                             <div class="archive-content">
@@ -1434,7 +1376,7 @@
                             <span class="corner-glow corner-glow-br" aria-hidden="true"></span>
                             
                             <div class="archive-week">
-                                <div class="archive-week-id">JAN W04</div>
+                                <div class="archive-week-id">JANUARY</div>
                                 <time class="archive-week-date" datetime="2026-01-19" itemprop="datePublished">January 19, 2026</time>
                             </div>
                             <div class="archive-content">
