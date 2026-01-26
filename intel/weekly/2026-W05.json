@@ -7,7 +7,7 @@
     "weekStart": "2026-01-26T00:00:00.000Z",
     "monthName": "January",
     "monthShort": "JAN",
-    "generated": "2026-01-26T15:56:57.624Z",
+    "generated": "2026-01-26T16:06:27.307Z",
     "threatLevel": {
       "level": "ELEVATED",
       "class": "elevated",
@@ -224,15 +224,15 @@
   },
   "sources": {
     "cisaKev": {
-      "retrieved": "2026-01-26T15:56:56.961Z",
+      "retrieved": "2026-01-26T16:06:26.675Z",
       "count": 1494
     },
     "feodo": {
-      "retrieved": "2026-01-26T15:56:57.104Z",
+      "retrieved": "2026-01-26T16:06:26.849Z",
       "count": 0
     },
     "news": {
-      "retrieved": "2026-01-26T15:56:57.621Z",
+      "retrieved": "2026-01-26T16:06:27.304Z",
       "count": 140
     }
   }
