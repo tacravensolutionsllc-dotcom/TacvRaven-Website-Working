@@ -685,6 +685,10 @@ function generateExecutiveSummary(metadata, stats, data) {
     // Generate resource requirements
     const patchHours = stats.kevCount * 2 + '-' + (stats.kevCount * 4);
     
+    // Generate analyst assessment narrative
+    const analystAssessment = generateAnalystAssessment(stats, data, metadata);
+    const businessImpact = generateBusinessImpact(stats, data);
+    
     return `                <div class="exec-grid">
                     <div class="exec-card">
                         <h3 class="exec-card-title">This Week's Risk Level</h3>
@@ -712,7 +716,206 @@ function generateExecutiveSummary(metadata, stats, data) {
                             <li>Pre-position incident response resources for potential ransomware event?</li>
                         </ul>
                     </div>
+                </div>
+                
+                <!-- Analyst Assessment -->
+                <div class="analyst-assessment">
+                    <h3 class="analyst-assessment-title">
+                        <span class="analyst-icon">📝</span>
+                        Analyst Assessment
+                    </h3>
+                    <div class="analyst-narrative">
+${analystAssessment}
+                    </div>
+                </div>
+                
+                <!-- Why This Matters to the Business -->
+                <div class="business-impact-box">
+                    <h3 class="business-impact-title">
+                        <span class="business-icon">💼</span>
+                        Why This Matters to the Business
+                    </h3>
+                    <div class="business-impact-content">
+${businessImpact}
+                    </div>
                 </div>`;
+}
+
+// =============================================================================
+// Analyst Assessment Narrative Generator
+// =============================================================================
+
+function generateAnalystAssessment(stats, data, metadata) {
+    let narrative = '';
+    
+    // Opening context based on threat level
+    if (metadata.threatLevel.level === 'CRITICAL' || metadata.threatLevel.level === 'HIGH') {
+        narrative += `<p>This week's threat landscape presents <strong>significant operational risk</strong> that warrants immediate attention from security leadership. `;
+    } else if (metadata.threatLevel.level === 'ELEVATED') {
+        narrative += `<p>This week's threat landscape shows <strong>elevated activity</strong> that requires prioritized response from security teams. `;
+    } else {
+        narrative += `<p>This week's threat landscape remains <strong>relatively stable</strong>, though vigilance is still required. `;
+    }
+    
+    // KEV-specific narrative
+    if (stats.kevCount > 0) {
+        const topKEV = data.recentKEVs[0];
+        const topVendors = [...new Set(data.recentKEVs.slice(0, 3).map(k => k.vendorProject))];
+        
+        narrative += `CISA added ${stats.kevCount} new vulnerabilities to the Known Exploited Vulnerabilities catalog, confirming active exploitation in the wild. `;
+        
+        if (topVendors.length > 0) {
+            narrative += `Affected vendors include <strong>${topVendors.join(', ')}</strong>`;
+            
+            // Check for high-profile product types
+            const vendorLower = topVendors.join(' ').toLowerCase();
+            if (vendorLower.includes('ivanti') || vendorLower.includes('fortinet') || vendorLower.includes('palo alto') || vendorLower.includes('cisco')) {
+                narrative += `—all common in enterprise perimeter infrastructure`;
+            } else if (vendorLower.includes('microsoft') || vendorLower.includes('windows')) {
+                narrative += `—widely deployed across enterprise environments`;
+            } else if (vendorLower.includes('cleo') || vendorLower.includes('moveit') || vendorLower.includes('goanywhere')) {
+                narrative += `—file transfer software frequently targeted by ransomware groups`;
+            }
+            narrative += `.</p>`;
+        } else {
+            narrative += `</p>`;
+        }
+    } else {
+        narrative += `No new KEV additions this week suggests either a genuine lull in disclosed exploitation or a lag in CISA cataloging.</p>`;
+    }
+    
+    // Ransomware-specific narrative
+    if (stats.ransomwareCount > 0) {
+        const ransomwarePct = Math.round((stats.ransomwareCount / stats.kevCount) * 100);
+        const ransomwareKEVs = data.ransomwareKEVs || [];
+        
+        narrative += `<p><strong>Ransomware risk is particularly elevated this week.</strong> ${stats.ransomwareCount} of ${stats.kevCount} KEVs (${ransomwarePct}%) have documented connections to ransomware campaigns. `;
+        
+        if (ransomwareKEVs.length > 0) {
+            const topRansomwareVendors = [...new Set(ransomwareKEVs.slice(0, 2).map(k => k.vendorProject))];
+            narrative += `The ${topRansomwareVendors.join(' and ')} vulnerabilities are of particular concern`;
+            
+            // Check for MOVEit/Cl0p parallels
+            const vendorLower = topRansomwareVendors.join(' ').toLowerCase();
+            if (vendorLower.includes('cleo') || vendorLower.includes('moveit') || vendorLower.includes('goanywhere') || vendorLower.includes('accellion')) {
+                narrative += `—this mirrors the pattern seen in the MOVEit attacks (CVE-2023-34362) where Cl0p ransomware group exploited file transfer software to compromise hundreds of organizations. Organizations using these products should treat this as a potential mass-exploitation precursor`;
+            } else if (vendorLower.includes('ivanti') || vendorLower.includes('fortinet') || vendorLower.includes('citrix')) {
+                narrative += `—edge infrastructure vulnerabilities like these have been favored initial access vectors for ransomware operators throughout 2024-2025`;
+            }
+            narrative += `.</p>`;
+        } else {
+            narrative += `</p>`;
+        }
+    }
+    
+    // C2 infrastructure narrative
+    if (stats.c2Count > 0) {
+        const topFamily = Object.keys(data.c2ByFamily || {})[0] || 'unknown';
+        const topCountry = Object.entries(data.c2ByCountry || {}).sort((a, b) => b[1] - a[1])[0];
+        const familyCount = Object.keys(data.c2ByFamily || {}).length;
+        
+        narrative += `<p>Botnet infrastructure remains active with <strong>${stats.c2Count} C2 servers</strong> tracked across ${familyCount} malware families. `;
+        
+        // Family-specific context
+        const familyLower = topFamily.toLowerCase();
+        if (familyLower.includes('qakbot') || familyLower.includes('qbot')) {
+            narrative += `QakBot leads this week's detections—despite FBI takedown efforts in 2023, the botnet has shown resilience and remains a common ransomware delivery mechanism. `;
+        } else if (familyLower.includes('emotet')) {
+            narrative += `Emotet's presence is notable given its history as a ransomware precursor; organizations detecting Emotet should assume they are one lateral movement away from encryption. `;
+        } else if (familyLower.includes('icedid') || familyLower.includes('bokbot')) {
+            narrative += `IcedID (BokBot) continues to operate as a banking trojan and ransomware loader; its presence often precedes Conti, Egregor, or successor ransomware deployments. `;
+        } else if (familyLower.includes('trickbot')) {
+            narrative += `TrickBot infrastructure, despite disruption attempts, continues to support ransomware operations including Conti and Diavol variants. `;
+        } else if (familyLower.includes('pikabot')) {
+            narrative += `Pikabot has emerged as a QakBot successor following the FBI takedown, filling a similar role in the ransomware delivery ecosystem. `;
+        }
+        
+        if (topCountry) {
+            narrative += `Geographic concentration shows ${topCountry[0]} hosting ${Math.round((topCountry[1] / stats.c2Count) * 100)}% of observed infrastructure, though hosting location does not reliably indicate actor origin.</p>`;
+        } else {
+            narrative += `</p>`;
+        }
+    }
+    
+    // Closing recommendation
+    narrative += `<p><strong>Recommended Priority:</strong> `;
+    if (stats.ransomwareCount > 0) {
+        narrative += `Address ransomware-linked vulnerabilities within 24-48 hours. Conduct proactive threat hunting for indicators of compromise related to the malware families identified. Ensure offline backups are current and tested.`;
+    } else if (stats.kevCount > 0) {
+        narrative += `Patch confirmed exploited vulnerabilities within the CISA-mandated timeline. Update threat detection signatures and block lists with current IOCs.`;
+    } else {
+        narrative += `Maintain standard patching cadence. Use this lower-activity period to address technical debt and improve security posture.`;
+    }
+    narrative += `</p>`;
+    
+    return narrative;
+}
+
+// =============================================================================
+// Business Impact Narrative Generator
+// =============================================================================
+
+function generateBusinessImpact(stats, data) {
+    let impact = '';
+    
+    // Get key products affected
+    const affectedVendors = data.recentKEVs ? [...new Set(data.recentKEVs.map(k => k.vendorProject))] : [];
+    const ransomwareVendors = data.ransomwareKEVs ? [...new Set(data.ransomwareKEVs.map(k => k.vendorProject))] : [];
+    
+    // Business continuity concerns
+    impact += `<div class="impact-item">`;
+    impact += `<div class="impact-icon">⚠️</div>`;
+    impact += `<div class="impact-text">`;
+    if (stats.ransomwareCount > 0) {
+        impact += `<strong>Ransomware disruption risk is HIGH.</strong> ${stats.ransomwareCount} vulnerabilities this week are actively used by ransomware operators. A successful attack could result in operational shutdown, data exfiltration, and regulatory notification requirements.`;
+    } else if (stats.kevCount > 0) {
+        impact += `<strong>Exploitation risk is confirmed.</strong> ${stats.kevCount} vulnerabilities are being actively exploited. While not directly linked to ransomware, any successful compromise could be leveraged for further attack progression.`;
+    } else {
+        impact += `<strong>Threat level is manageable.</strong> No new confirmed exploits this week, but existing vulnerabilities and malware infrastructure remain active threats requiring ongoing vigilance.`;
+    }
+    impact += `</div></div>`;
+    
+    // Product-specific business impact
+    if (affectedVendors.length > 0) {
+        impact += `<div class="impact-item">`;
+        impact += `<div class="impact-icon">🖥️</div>`;
+        impact += `<div class="impact-text">`;
+        impact += `<strong>Product exposure check required.</strong> Vulnerabilities affect ${affectedVendors.join(', ')} products. IT and business unit leaders should verify whether these products are deployed in their environments and confirm patching status.`;
+        impact += `</div></div>`;
+    }
+    
+    // Compliance and regulatory
+    if (stats.kevCount > 0) {
+        impact += `<div class="impact-item">`;
+        impact += `<div class="impact-icon">📋</div>`;
+        impact += `<div class="impact-text">`;
+        impact += `<strong>Compliance implications.</strong> CISA's KEV catalog mandates federal agencies to remediate within specified timeframes. Organizations in regulated industries (healthcare, finance, critical infrastructure) may face similar expectations from sector-specific regulators.`;
+        impact += `</div></div>`;
+    }
+    
+    // Supply chain and third-party risk
+    if (affectedVendors.some(v => v.toLowerCase().includes('cleo') || v.toLowerCase().includes('moveit') || v.toLowerCase().includes('solarwinds') || v.toLowerCase().includes('kaseya'))) {
+        impact += `<div class="impact-item">`;
+        impact += `<div class="impact-icon">🔗</div>`;
+        impact += `<div class="impact-text">`;
+        impact += `<strong>Supply chain risk elevated.</strong> This week's vulnerabilities include software commonly used for data exchange with partners and vendors. A compromise could affect not just your organization but also connected third parties—and vice versa.`;
+        impact += `</div></div>`;
+    }
+    
+    // Resource allocation
+    impact += `<div class="impact-item">`;
+    impact += `<div class="impact-icon">👥</div>`;
+    impact += `<div class="impact-text">`;
+    if (stats.ransomwareCount >= 2 || stats.kevCount >= 5) {
+        impact += `<strong>Emergency patching window recommended.</strong> The volume and severity of this week's vulnerabilities justify scheduling an emergency maintenance window. Coordinate with business stakeholders to minimize operational impact.`;
+    } else if (stats.kevCount > 0) {
+        impact += `<strong>Prioritized patching recommended.</strong> Standard change management processes should accommodate these vulnerabilities, but prioritization above routine updates is warranted.`;
+    } else {
+        impact += `<strong>Standard operations.</strong> No emergency changes required. Use this period to address backlog and improve baseline security posture.`;
+    }
+    impact += `</div></div>`;
+    
+    return impact;
 }
 
 function generateTrendCharts(trends, currentWeek) {
@@ -730,6 +933,9 @@ function generateTrendCharts(trends, currentWeek) {
     const kevChange = trends.kev.change >= 0 ? 'trend-up' : 'trend-down';
     const ransomwareChange = trends.ransomware.change >= 0 ? 'trend-up' : 'trend-down';
     const c2Change = trends.c2.change >= 0 ? 'trend-up' : 'trend-down';
+    
+    // Generate the trend narrative
+    const trendNarrative = generateTrendNarrative(trends);
     
     return `                <div class="trend-grid">
                     <div class="trend-card">
@@ -767,7 +973,136 @@ ${generateSparkline(trends.c2.history, 'c2')}
                             <span class="trend-average">8-week average: ${trends.c2.average}</span>
                         </div>
                     </div>
+                </div>
+                
+                <!-- Trend Analysis Narrative -->
+                <div class="trend-narrative-box">
+                    <h3 class="trend-narrative-title">
+                        <span class="trend-narrative-icon">📈</span>
+                        What These Trends Mean (Plain Language)
+                    </h3>
+                    <div class="trend-narrative-content">
+${trendNarrative}
+                    </div>
                 </div>`;
+}
+
+// =============================================================================
+// Trend Narrative Generator
+// =============================================================================
+
+function generateTrendNarrative(trends) {
+    let narrative = '';
+    
+    // KEV trend analysis
+    narrative += `<div class="trend-narrative-section">`;
+    narrative += `<h4 class="trend-narrative-metric">KEV Additions</h4>`;
+    
+    if (trends.kev.current === 0) {
+        narrative += `<p>No new KEV additions this week. This is ${trends.kev.average > 2 ? 'below the 8-week average of ' + trends.kev.average + ' and may indicate' : 'consistent with recent low activity, suggesting'} either a genuine reduction in disclosed exploitation or a lag in CISA's cataloging process. `;
+        narrative += `<strong>Don't interpret this as "all clear"</strong>—exploitation of previously cataloged vulnerabilities continues, and new threats may not yet be publicly documented.</p>`;
+    } else if (trends.kev.current > trends.kev.average * 1.5) {
+        // Significantly above average
+        narrative += `<p><strong>KEV additions are spiking.</strong> This week's ${trends.kev.current} additions are ${Math.round((trends.kev.current / trends.kev.average - 1) * 100)}% above the 8-week average of ${trends.kev.average}. `;
+        narrative += `This elevated activity indicates an unusually active exploitation landscape—threat actors are successfully weaponizing vulnerabilities at an increased pace. `;
+        narrative += `Security teams should expect higher-than-normal patching workload and consider prioritizing based on ransomware linkage and environmental exposure.</p>`;
+    } else if (trends.kev.current > trends.kev.average) {
+        // Above average
+        narrative += `<p>KEV additions are <strong>above average</strong> this week. With ${trends.kev.current} new entries versus an 8-week average of ${trends.kev.average}, exploitation activity is elevated but not at crisis levels. `;
+        narrative += `This represents a ${trends.kev.change >= 0 ? trends.kev.change + '% increase' : Math.abs(trends.kev.change) + '% decrease'} from last week. `;
+        narrative += `Maintain heightened vigilance and ensure patching cycles are current.</p>`;
+    } else if (trends.kev.current < trends.kev.average * 0.5 && trends.kev.current > 0) {
+        // Significantly below average
+        narrative += `<p>KEV additions are <strong>well below average</strong> this week. Only ${trends.kev.current} new entries compared to an 8-week average of ${trends.kev.average}. `;
+        narrative += `While this reduced volume may ease immediate patching pressure, it doesn't indicate reduced overall risk—attackers may be focusing on exploiting previously disclosed vulnerabilities rather than new ones.</p>`;
+    } else {
+        // Near average
+        narrative += `<p>KEV additions are <strong>tracking near the 8-week average</strong> (${trends.kev.current} this week vs. ${trends.kev.average} average). `;
+        narrative += `This represents typical exploitation activity levels. Maintain standard patching cadence with priority given to ransomware-linked and high-CVSS vulnerabilities.</p>`;
+    }
+    narrative += `</div>`;
+    
+    // Ransomware trend analysis
+    narrative += `<div class="trend-narrative-section">`;
+    narrative += `<h4 class="trend-narrative-metric">Ransomware-Linked Vulnerabilities</h4>`;
+    
+    if (trends.ransomware.current === 0) {
+        narrative += `<p>No ransomware-linked KEVs this week. `;
+        if (trends.ransomware.average > 1) {
+            narrative += `This is below the 8-week average of ${trends.ransomware.average}, which may indicate ransomware operators are currently leveraging existing access rather than exploiting new vulnerabilities. `;
+        }
+        narrative += `<strong>This does not mean ransomware risk is reduced</strong>—groups like Cl0p, LockBit, and BlackCat continuously exploit previously disclosed vulnerabilities. Continue monitoring for indicators of compromise.</p>`;
+    } else if (trends.ransomware.current >= 3) {
+        // High ransomware activity
+        narrative += `<p><strong>Ransomware threat is critically elevated.</strong> ${trends.ransomware.current} of this week's KEVs have documented ransomware connections—this is ${trends.ransomware.current > trends.ransomware.average ? 'above' : 'near'} the 8-week average of ${trends.ransomware.average}. `;
+        narrative += `Multiple vulnerabilities being actively weaponized by ransomware operators significantly increases the probability of successful attacks across the industry. `;
+        narrative += `Organizations should treat these patches as emergency priority and consider proactive threat hunting for early-stage indicators.</p>`;
+    } else if (trends.ransomware.current >= 1) {
+        // Moderate ransomware activity
+        const ransomwarePct = trends.kev.current > 0 ? Math.round((trends.ransomware.current / trends.kev.current) * 100) : 0;
+        narrative += `<p>Ransomware linkage is <strong>present but moderate</strong>. ${trends.ransomware.current} of ${trends.kev.current} KEVs (${ransomwarePct}%) have confirmed ransomware connections. `;
+        if (trends.ransomware.change > 0) {
+            narrative += `This represents an increase from last week, suggesting ransomware operators are actively adding new exploits to their arsenal. `;
+        } else if (trends.ransomware.change < 0) {
+            narrative += `Activity is down from last week, but any ransomware-linked vulnerability warrants urgent attention. `;
+        }
+        narrative += `Prioritize these specific CVEs above other patching work.</p>`;
+    }
+    narrative += `</div>`;
+    
+    // C2 trend analysis
+    narrative += `<div class="trend-narrative-section">`;
+    narrative += `<h4 class="trend-narrative-metric">C2 Infrastructure</h4>`;
+    
+    if (trends.c2.current === 0) {
+        narrative += `<p>No active C2 servers detected this week. This is unusual and may indicate data collection issues rather than an actual reduction in botnet activity. `;
+        narrative += `Treat this with skepticism—botnets like QakBot, Emotet, and IcedID rarely go completely dormant.</p>`;
+    } else if (trends.c2.current > trends.c2.average * 1.5) {
+        // Significantly above average
+        narrative += `<p><strong>Botnet infrastructure is expanding rapidly.</strong> ${trends.c2.current} active C2 servers detected, ${Math.round((trends.c2.current / trends.c2.average - 1) * 100)}% above the 8-week average of ${trends.c2.average}. `;
+        narrative += `This surge in command-and-control infrastructure typically precedes increased malware distribution campaigns. `;
+        narrative += `Organizations should ensure email security controls are current, user awareness is heightened, and EDR solutions are tuned for loader malware detection.</p>`;
+    } else if (trends.c2.current < trends.c2.average * 0.5) {
+        // Significantly below average
+        narrative += `<p>C2 infrastructure is <strong>below typical levels</strong>. ${trends.c2.current} active servers versus an 8-week average of ${trends.c2.average}. `;
+        narrative += `This could indicate successful law enforcement takedowns, infrastructure rotation by threat actors, or detection evasion through legitimate service abuse. `;
+        narrative += `<strong>Reduced visibility doesn't mean reduced risk</strong>—sophisticated actors increasingly use cloud services, encrypted channels, and living-off-the-land techniques that evade traditional C2 tracking.</p>`;
+    } else {
+        // Near average
+        narrative += `<p>C2 infrastructure is <strong>stable</strong> at ${trends.c2.current} active servers (8-week average: ${trends.c2.average}). `;
+        if (trends.c2.change > 20) {
+            narrative += `The ${trends.c2.change}% week-over-week increase bears monitoring but isn't yet alarming. `;
+        } else if (trends.c2.change < -20) {
+            narrative += `The ${Math.abs(trends.c2.change)}% decrease from last week may indicate infrastructure churn or takedown activity. `;
+        }
+        narrative += `Botnet operators continue maintaining their infrastructure at consistent levels, supporting ongoing malware distribution and potential ransomware delivery.</p>`;
+    }
+    narrative += `</div>`;
+    
+    // Overall trend assessment
+    narrative += `<div class="trend-narrative-section trend-summary">`;
+    narrative += `<h4 class="trend-narrative-metric">Overall Trend Assessment</h4>`;
+    
+    // Calculate overall trend direction
+    const overallUp = (trends.kev.change > 0 ? 1 : 0) + (trends.ransomware.change > 0 ? 1 : 0) + (trends.c2.change > 0 ? 1 : 0);
+    const overallDown = (trends.kev.change < 0 ? 1 : 0) + (trends.ransomware.change < 0 ? 1 : 0) + (trends.c2.change < 0 ? 1 : 0);
+    
+    if (overallUp >= 2 && trends.ransomware.current > 0) {
+        narrative += `<p><strong>The threat trajectory is concerning.</strong> Multiple indicators are trending upward with active ransomware linkage. This combination suggests an increasingly hostile operating environment. `;
+        narrative += `Security teams should consider moving to a heightened operational tempo until trends stabilize.</p>`;
+    } else if (overallUp >= 2) {
+        narrative += `<p><strong>Threat activity is increasing</strong> across multiple indicators. While not yet at crisis levels, the upward trend warrants close monitoring. `;
+        narrative += `Ensure security controls are current and incident response procedures are ready for activation.</p>`;
+    } else if (overallDown >= 2) {
+        narrative += `<p><strong>Threat activity is decreasing</strong> across multiple indicators. This presents an opportunity to catch up on patching debt, conduct security assessments, and improve defensive posture. `;
+        narrative += `However, threat actors are persistent—use this relative calm to prepare for the next surge rather than relaxing vigilance.</p>`;
+    } else {
+        narrative += `<p><strong>The threat landscape is mixed</strong> this week, with no clear directional trend across all indicators. `;
+        narrative += `Maintain standard security operations with attention to any specific CVEs or malware families highlighted in this report.</p>`;
+    }
+    narrative += `</div>`;
+    
+    return narrative;
 }
 
 function generateDriverCards(stats, data) {
@@ -1739,12 +2074,15 @@ function generateActionSection(data) {
 ${uniqueVendors.map(v => `                                <button class="filter-btn" data-filter="${escapeHtml(v)}">${escapeHtml(v)}</button>`).join('\n')}
                             </div>`;
     
-    // Patch priorities with data attributes
+    // Patch priorities with source links
     const patchHtml = data.recentKEVs.slice(0, 5).map(kev => {
         const isRansomware = data.ransomwareKEVs.some(r => r.cveID === kev.cveID);
         const coverage = data.newsCoverage[kev.cveID] || [];
         const buzzLevel = coverage.length >= 5 ? 'high' : (coverage.length >= 2 ? 'medium' : 'low');
         const buzzIcon = coverage.length >= 5 ? '🔥' : '📰';
+        
+        // Generate source links
+        const sourceLinks = generateSourceLinks(kev, coverage);
         
         return `                            <div class="patch-item" data-vendor="${escapeHtml(kev.vendorProject)}" data-ransomware="${isRansomware}">
                                 <div class="patch-header">
@@ -1753,8 +2091,14 @@ ${uniqueVendors.map(v => `                                <button class="filter-
                                     <span class="patch-due">Due: ${kev.dueDate || 'TBD'}</span>
                                 </div>
                                 <div class="patch-vendor">${escapeHtml(kev.vendorProject)} — ${escapeHtml(kev.product)}</div>
-                                <div class="patch-coverage">
-                                    <span class="coverage-label buzz-${buzzLevel}">${buzzIcon} ${coverage.length} articles</span>
+                                <div class="patch-description">${escapeHtml(kev.shortDescription || kev.vulnerabilityName || '')}</div>
+                                <div class="patch-sources">
+                                    <div class="sources-header">
+                                        <span class="coverage-label buzz-${buzzLevel}">${buzzIcon} ${coverage.length + 1} sources</span>
+                                    </div>
+                                    <div class="sources-list">
+${sourceLinks}
+                                    </div>
                                 </div>
                             </div>`;
     }).join('\n');
@@ -1826,6 +2170,121 @@ ${huntHtml}
                 </div>
             </div>
         </section>`;
+}
+
+// =============================================================================
+// Source Links Generator
+// =============================================================================
+
+function generateSourceLinks(kev, newsArticles) {
+    const links = [];
+    
+    // Always add CISA KEV as primary source
+    links.push({
+        type: 'official',
+        icon: '🏛️',
+        label: 'CISA KEV Entry',
+        url: `https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=${kev.cveID}`,
+        source: 'CISA'
+    });
+    
+    // Add NVD link
+    links.push({
+        type: 'official',
+        icon: '📋',
+        label: 'NVD Details',
+        url: `https://nvd.nist.gov/vuln/detail/${kev.cveID}`,
+        source: 'NVD'
+    });
+    
+    // Categorize and add news articles
+    const categorizedArticles = categorizeNewsArticles(newsArticles);
+    
+    // Add vendor advisories first (highest priority after official sources)
+    categorizedArticles.vendor.forEach(article => {
+        links.push({
+            type: 'vendor',
+            icon: '🏢',
+            label: truncateTitle(article.title, 50),
+            url: article.link,
+            source: article.source
+        });
+    });
+    
+    // Add security research/analysis
+    categorizedArticles.research.forEach(article => {
+        links.push({
+            type: 'research',
+            icon: '🔬',
+            label: truncateTitle(article.title, 50),
+            url: article.link,
+            source: article.source
+        });
+    });
+    
+    // Add news coverage (limit to top 3)
+    categorizedArticles.news.slice(0, 3).forEach(article => {
+        links.push({
+            type: 'news',
+            icon: '📰',
+            label: truncateTitle(article.title, 50),
+            url: article.link,
+            source: article.source
+        });
+    });
+    
+    // Generate HTML for each link
+    return links.map(link => {
+        const typeClass = `source-${link.type}`;
+        return `                                        <a href="${escapeHtml(link.url)}" class="source-link ${typeClass}" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">${link.icon}</span>
+                                            <span class="source-label">${escapeHtml(link.label)}</span>
+                                            <span class="source-badge">${escapeHtml(link.source)}</span>
+                                        </a>`;
+    }).join('\n');
+}
+
+// =============================================================================
+// News Article Categorization
+// =============================================================================
+
+function categorizeNewsArticles(articles) {
+    const categorized = {
+        vendor: [],
+        research: [],
+        news: []
+    };
+    
+    // Keywords for categorization
+    const vendorKeywords = ['advisory', 'security bulletin', 'security update', 'patch', 'release notes', 'microsoft.com', 'cisco.com', 'fortinet.com', 'ivanti.com', 'paloaltonetworks.com'];
+    const researchKeywords = ['analysis', 'technical', 'deep dive', 'exploit', 'poc', 'proof of concept', 'research', 'hunting', 'detection', 'rapid7', 'mandiant', 'huntress', 'crowdstrike', 'watchtowr', 'assetnote', 'horizon3', 'greynoise', 'censys', 'shodan'];
+    
+    articles.forEach(article => {
+        const titleLower = (article.title || '').toLowerCase();
+        const linkLower = (article.link || '').toLowerCase();
+        const sourceLower = (article.source || '').toLowerCase();
+        const combined = titleLower + ' ' + linkLower + ' ' + sourceLower;
+        
+        if (vendorKeywords.some(kw => combined.includes(kw))) {
+            categorized.vendor.push(article);
+        } else if (researchKeywords.some(kw => combined.includes(kw))) {
+            categorized.research.push(article);
+        } else {
+            categorized.news.push(article);
+        }
+    });
+    
+    return categorized;
+}
+
+// =============================================================================
+// Helper: Truncate Title
+// =============================================================================
+
+function truncateTitle(title, maxLength) {
+    if (!title) return 'Article';
+    if (title.length <= maxLength) return title;
+    return title.substring(0, maxLength - 3) + '...';
 }
 
 function generateEmergingThreats(data) {
@@ -2669,6 +3128,66 @@ function generateStyles() {
             .kac-table th, .ach-table th, .diagnosticity-table th, .source-reliability-table th { background: #eee !important; color: #111 !important; }
             .kac-table td, .ach-table td, .diagnosticity-table td, .source-reliability-table td { color: #333 !important; }
             
+            /* Source links print styles */
+            .source-link {
+                background: #f9f9f9 !important;
+                border-color: #ddd !important;
+            }
+            .source-label {
+                color: #333 !important;
+            }
+            .source-badge {
+                background: #eee !important;
+                color: #666 !important;
+            }
+            .source-link::after {
+                content: " (" attr(href) ")";
+                font-size: 8pt;
+                color: #666;
+                word-break: break-all;
+            }
+            
+            /* Trend narrative print styles */
+            .trend-narrative-box {
+                background: #f9f9f9 !important;
+                border-color: #ddd !important;
+                border-left-color: #9a7209 !important;
+            }
+            .trend-narrative-title {
+                color: #111 !important;
+            }
+            .trend-narrative-metric {
+                color: #9a7209 !important;
+            }
+            .trend-narrative-section p {
+                color: #333 !important;
+            }
+            .trend-narrative-section.trend-summary {
+                background: #f5f5f5 !important;
+                border-color: #9a7209 !important;
+            }
+            
+            /* Analyst Assessment print styles */
+            .analyst-assessment {
+                background: #f9f9f9 !important;
+                border-color: #ddd !important;
+                border-left-color: #9a7209 !important;
+            }
+            .analyst-narrative p {
+                color: #333 !important;
+            }
+            .business-impact-box {
+                background: #f5f5f5 !important;
+                border-color: #ddd !important;
+            }
+            .impact-item {
+                background: #fff !important;
+                border-color: #eee !important;
+            }
+            .impact-text {
+                color: #333 !important;
+            }
+            
             /* Plain language boxes */
             .plain-language-box {
                 background: #f9f9f9 !important;
@@ -2713,6 +3232,264 @@ function generateStyles() {
             
             /* Disclaimer banner */
             .disclaimer-banner { display: none !important; }
+        }
+        
+        /* =============================================================================
+           SOURCE LINKS STYLES
+           ============================================================================= */
+        
+        /* Patch item enhancements */
+        .patch-description {
+            color: var(--gray-400);
+            font-size: 12px;
+            line-height: 1.5;
+            margin-top: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Sources section within patch item */
+        .patch-sources {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .sources-header {
+            margin-bottom: 12px;
+        }
+        .sources-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        /* Individual source link */
+        .source-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .source-link:hover {
+            border-color: var(--gold);
+            background: rgba(212, 160, 18, 0.05);
+            transform: translateX(4px);
+        }
+        .source-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .source-label {
+            flex: 1;
+            color: var(--gray-100);
+            font-size: 13px;
+            line-height: 1.4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .source-link:hover .source-label {
+            color: var(--white);
+        }
+        .source-badge {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        
+        /* Source type colors */
+        .source-official .source-badge {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .source-vendor .source-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        .source-research .source-badge {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+        }
+        .source-news .source-badge {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        
+        /* Source link border accent by type */
+        .source-official {
+            border-left: 3px solid #22c55e;
+        }
+        .source-vendor {
+            border-left: 3px solid #3b82f6;
+        }
+        .source-research {
+            border-left: 3px solid #a855f7;
+        }
+        .source-news {
+            border-left: 3px solid #eab308;
+        }
+        
+        /* =============================================================================
+           TREND NARRATIVE STYLES
+           ============================================================================= */
+        
+        /* Trend Narrative Box */
+        .trend-narrative-box {
+            margin-top: 32px;
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(22, 22, 22, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .trend-narrative-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+        .trend-narrative-icon {
+            font-size: 24px;
+        }
+        .trend-narrative-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .trend-narrative-section {
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .trend-narrative-section:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .trend-narrative-section.trend-summary {
+            background: rgba(212, 160, 18, 0.05);
+            border: 1px solid rgba(212, 160, 18, 0.15);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 8px;
+        }
+        .trend-narrative-metric {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .trend-narrative-section p {
+            color: var(--gray-100);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .trend-narrative-section p strong {
+            color: var(--white);
+        }
+        
+        /* =============================================================================
+           ANALYST ASSESSMENT & BUSINESS IMPACT STYLES
+           ============================================================================= */
+        
+        /* Analyst Assessment */
+        .analyst-assessment {
+            margin-top: 32px;
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(22, 22, 22, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .analyst-assessment-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .analyst-icon {
+            font-size: 24px;
+        }
+        .analyst-narrative p {
+            color: var(--gray-100);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .analyst-narrative p:last-child {
+            margin-bottom: 0;
+        }
+        .analyst-narrative strong {
+            color: var(--white);
+        }
+        
+        /* Business Impact Box */
+        .business-impact-box {
+            margin-top: 24px;
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .business-impact-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .business-icon {
+            font-size: 24px;
+        }
+        .business-impact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .impact-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px;
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        .impact-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .impact-text {
+            color: var(--gray-100);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .impact-text strong {
+            color: var(--white);
+            display: block;
+            margin-bottom: 4px;
         }
         
         /* =============================================================================
@@ -3127,6 +3904,11 @@ function generateStyles() {
             .plain-language-content p { font-size: 13px; }
             .what-if-card { padding: 16px; }
             .uncertainty-card { padding: 16px; }
+            /* Source links mobile */
+            .source-link { padding: 8px 12px; }
+            .source-label { font-size: 12px; }
+            .source-badge { font-size: 9px; padding: 2px 6px; }
+            .patch-sources { margin-top: 12px; padding-top: 12px; }
         }
     </style>`;
 }
