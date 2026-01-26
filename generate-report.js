@@ -2607,9 +2607,6 @@ ${secondarySourcesHtml}
                         <div class="feedback-item">
                             <strong>Methodology Questions:</strong> For detailed questions about our analytical process, see our full methodology documentation.
                         </div>
-                        <div class="feedback-item">
-                            <strong>General Inquiries:</strong> <a href="https://www.tacraven.com/contact">Contact TacRaven Solutions</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -3788,7 +3785,7 @@ function generateStyles() {
         }
         .feedback-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 16px;
         }
         .feedback-item {
@@ -3827,10 +3824,17 @@ function generateStyles() {
             .section { 
                 padding: 24px 0; 
                 border-bottom: 1px solid #ddd !important;
-                page-break-inside: avoid;
+                /* Allow page breaks inside sections - individual cards will avoid breaks */
             }
             .section-label { color: #9a7209 !important; }
-            .section-title { color: #111 !important; font-size: 18pt; }
+            .section-title { 
+                color: #111 !important; 
+                font-size: 18pt;
+                page-break-after: avoid; /* Keep title with content */
+            }
+            .section-desc, .section-intro {
+                page-break-after: avoid; /* Keep description with content */
+            }
             
             /* Card styling */
             .exec-card, .trend-card, .driver-card, .source-card, .emerging-card,
@@ -3889,13 +3893,76 @@ function generateStyles() {
                 margin-bottom: 16px;
             }
             
-            /* Page breaks */
+            /* Page breaks - prevent sections from being cut in half */
             .sat-section, .mitre-section, .action-section { page-break-before: always; }
             .appendix-section { page-break-before: always; }
             .sources-methodology-section { page-break-before: always; }
-            .methodology-section { page-break-inside: avoid; }
-            .limitations-standards-grid { page-break-inside: avoid; }
-            .feedback-section { page-break-inside: avoid; }
+            
+            /* Prevent these elements from being split across pages */
+            /* Using both page-break-inside and break-inside for browser compatibility */
+            .methodology-section { page-break-inside: avoid; break-inside: avoid; }
+            .limitations-standards-grid { page-break-inside: avoid; break-inside: avoid; }
+            .feedback-section { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* Executive Summary - keep cards together */
+            .exec-card { page-break-inside: avoid; break-inside: avoid; }
+            .exec-grid { page-break-inside: avoid; break-inside: avoid; }
+            .analyst-assessment { page-break-inside: avoid; break-inside: avoid; margin-top: 20px; }
+            .business-impact-box { page-break-inside: avoid; break-inside: avoid; }
+            .impact-item { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* Trend section */
+            .trend-card { page-break-inside: avoid; break-inside: avoid; }
+            .trend-narrative-box { page-break-inside: avoid; break-inside: avoid; margin-top: 20px; }
+            .trend-narrative-section { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* Driver cards */
+            .driver-card { page-break-inside: avoid; break-inside: avoid; }
+            .drivers-grid { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* SAT section - keep analysis blocks together */
+            .assessment-card { page-break-inside: avoid; break-inside: avoid; margin-bottom: 20px; }
+            .plain-language-box { page-break-inside: avoid; break-inside: avoid; }
+            .kac-table { page-break-inside: avoid; break-inside: avoid; }
+            .ach-table { page-break-inside: avoid; break-inside: avoid; }
+            .diagnosticity-table { page-break-inside: avoid; break-inside: avoid; }
+            .source-reliability-table { page-break-inside: avoid; break-inside: avoid; }
+            .uncertainty-card { page-break-inside: avoid; break-inside: avoid; }
+            .what-if-card { page-break-inside: avoid; break-inside: avoid; }
+            .indicators-column { page-break-inside: avoid; break-inside: avoid; }
+            .overall-confidence { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* Action section */
+            .action-card { page-break-inside: avoid; break-inside: avoid; }
+            .patch-item { page-break-inside: avoid; break-inside: avoid; }
+            .block-grid { page-break-inside: avoid; break-inside: avoid; }
+            .hunt-list { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* MITRE section */
+            .mitre-card { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* Emerging threats */
+            .emerging-card { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* Appendix */
+            .appendix-card { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* Sources & Methodology */
+            .sources-card { page-break-inside: avoid; break-inside: avoid; }
+            .primary-source-item { page-break-inside: avoid; break-inside: avoid; }
+            .methodology-step { page-break-inside: avoid; break-inside: avoid; }
+            .limitation-item { page-break-inside: avoid; break-inside: avoid; }
+            .standards-card { page-break-inside: avoid; break-inside: avoid; }
+            
+            /* Add page break after major sections to start fresh */
+            .exec-section { page-break-after: auto; }
+            .bluf-section { page-break-after: auto; }
+            
+            /* Orphan/widow control */
+            p, li, h3, h4 {
+                orphans: 3;
+                widows: 3;
+            }
             
             /* ============================================
                EXECUTIVE SUMMARY PRINT STYLES
@@ -3911,6 +3978,9 @@ function generateStyles() {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
                 border-left: 4px solid #9a7209 !important;
+                page-break-before: auto;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
             .analyst-assessment-title {
                 color: #111 !important;
@@ -3929,6 +3999,9 @@ function generateStyles() {
             .business-impact-box {
                 background: #f5f5f5 !important;
                 border: 1px solid #ddd !important;
+                page-break-before: auto;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
             .business-impact-title {
                 color: #111 !important;
@@ -3981,12 +4054,20 @@ function generateStyles() {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
                 border-left: 4px solid #9a7209 !important;
+                page-break-before: auto;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
             .trend-narrative-title {
                 color: #111 !important;
+                page-break-after: avoid;
             }
             .trend-narrative-metric {
                 color: #9a7209 !important;
+            }
+            .trend-narrative-section {
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
             .trend-narrative-section p {
                 color: #333 !important;
@@ -3997,6 +4078,8 @@ function generateStyles() {
             .trend-narrative-section.trend-summary {
                 background: #f5f5f5 !important;
                 border: 1px solid #9a7209 !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
             
             /* ============================================
@@ -4034,11 +4117,14 @@ function generateStyles() {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
                 border-left: 4px solid #9a7209 !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
             .plain-language-header {
                 background: #eee !important;
                 color: #9a7209 !important;
                 border-bottom: 1px solid #ddd !important;
+                page-break-after: avoid;
             }
             .plain-language-content p {
                 color: #333 !important;
@@ -4051,9 +4137,12 @@ function generateStyles() {
             .uncertainty-card {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
             .uncertainty-title {
                 color: #111 !important;
+                page-break-after: avoid;
             }
             .uncertainty-desc {
                 color: #333 !important;
@@ -4069,9 +4158,12 @@ function generateStyles() {
             .what-if-card {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
             .what-if-title {
                 color: #9a7209 !important;
+                page-break-after: avoid;
             }
             .what-if-indicators strong {
                 color: #111 !important;
@@ -4092,6 +4184,8 @@ function generateStyles() {
             .indicators-column {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
             .indicators-column.worsening {
                 border-top: 3px solid #dc2626 !important;
@@ -4101,9 +4195,11 @@ function generateStyles() {
             }
             .worsening .indicators-header {
                 color: #dc2626 !important;
+                page-break-after: avoid;
             }
             .improving .indicators-header {
                 color: #16a34a !important;
+                page-break-after: avoid;
             }
             .indicators-list li {
                 color: #333 !important;
@@ -4450,7 +4546,7 @@ function generateStyles() {
             }
             .feedback-grid {
                 display: grid !important;
-                grid-template-columns: 1fr 1fr 1fr !important;
+                grid-template-columns: 1fr 1fr !important;
                 gap: 12px !important;
             }
             .feedback-item {
