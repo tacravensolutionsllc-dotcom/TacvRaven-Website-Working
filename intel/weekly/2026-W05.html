@@ -22,7 +22,7 @@
     <meta property="og:description" content="6 new CISA KEV vulnerabilities, 0 linked to ransomware campaigns. Includes MITRE ATT&CK mapping and structured analytical assessment.">
     <meta property="og:image" content="https://tacraven.com/images/threat-report-og.png">
     <meta property="og:site_name" content="TacRaven Solutions">
-    <meta property="article:published_time" content="2026-01-26T12:22:09.790Z">
+    <meta property="article:published_time" content="2026-01-26T15:56:57.624Z">
     <meta property="article:section" content="Threat Intelligence">
     
     <!-- Twitter Card -->
@@ -773,12 +773,751 @@
             .sat-section, .mitre-section, .action-section { page-break-before: always; }
             
             /* Table styling */
-            .kac-table, .ach-table { font-size: 10pt; }
-            .kac-table th, .ach-table th { background: #eee !important; color: #111 !important; }
-            .kac-table td, .ach-table td { color: #333 !important; }
+            .kac-table, .ach-table, .diagnosticity-table, .source-reliability-table { font-size: 10pt; }
+            .kac-table th, .ach-table th, .diagnosticity-table th, .source-reliability-table th { background: #eee !important; color: #111 !important; }
+            .kac-table td, .ach-table td, .diagnosticity-table td, .source-reliability-table td { color: #333 !important; }
+            
+            /* Source links print styles */
+            .source-link {
+                background: #f9f9f9 !important;
+                border-color: #ddd !important;
+            }
+            .source-label {
+                color: #333 !important;
+            }
+            .source-badge {
+                background: #eee !important;
+                color: #666 !important;
+            }
+            .source-link::after {
+                content: " (" attr(href) ")";
+                font-size: 8pt;
+                color: #666;
+                word-break: break-all;
+            }
+            
+            /* Trend narrative print styles */
+            .trend-narrative-box {
+                background: #f9f9f9 !important;
+                border-color: #ddd !important;
+                border-left-color: #9a7209 !important;
+            }
+            .trend-narrative-title {
+                color: #111 !important;
+            }
+            .trend-narrative-metric {
+                color: #9a7209 !important;
+            }
+            .trend-narrative-section p {
+                color: #333 !important;
+            }
+            .trend-narrative-section.trend-summary {
+                background: #f5f5f5 !important;
+                border-color: #9a7209 !important;
+            }
+            
+            /* Analyst Assessment print styles */
+            .analyst-assessment {
+                background: #f9f9f9 !important;
+                border-color: #ddd !important;
+                border-left-color: #9a7209 !important;
+            }
+            .analyst-narrative p {
+                color: #333 !important;
+            }
+            .business-impact-box {
+                background: #f5f5f5 !important;
+                border-color: #ddd !important;
+            }
+            .impact-item {
+                background: #fff !important;
+                border-color: #eee !important;
+            }
+            .impact-text {
+                color: #333 !important;
+            }
+            
+            /* Plain language boxes */
+            .plain-language-box {
+                background: #f9f9f9 !important;
+                border-color: #ddd !important;
+                border-left-color: #9a7209 !important;
+            }
+            .plain-language-header {
+                background: #eee !important;
+                color: #9a7209 !important;
+            }
+            .plain-language-content p {
+                color: #333 !important;
+            }
+            
+            /* Uncertainty and What-If cards */
+            .uncertainty-card,
+            .what-if-card,
+            .indicators-column {
+                background: #f9f9f9 !important;
+                border-color: #ddd !important;
+            }
+            .worsening .indicators-header {
+                color: #dc2626 !important;
+            }
+            .improving .indicators-header {
+                color: #16a34a !important;
+            }
+            
+            /* Overall confidence */
+            .overall-confidence {
+                background: #f5f5f5 !important;
+                border-color: #9a7209 !important;
+            }
+            .overall-confidence-rationale p {
+                color: #333 !important;
+            }
+            
+            /* Assessment cards page breaks */
+            .assessment-card {
+                page-break-inside: avoid;
+            }
             
             /* Disclaimer banner */
             .disclaimer-banner { display: none !important; }
+        }
+        
+        /* =============================================================================
+           SOURCE LINKS STYLES
+           ============================================================================= */
+        
+        /* Patch item enhancements */
+        .patch-description {
+            color: var(--gray-400);
+            font-size: 12px;
+            line-height: 1.5;
+            margin-top: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Sources section within patch item */
+        .patch-sources {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .sources-header {
+            margin-bottom: 12px;
+        }
+        .sources-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        /* Individual source link */
+        .source-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .source-link:hover {
+            border-color: var(--gold);
+            background: rgba(212, 160, 18, 0.05);
+            transform: translateX(4px);
+        }
+        .source-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .source-label {
+            flex: 1;
+            color: var(--gray-100);
+            font-size: 13px;
+            line-height: 1.4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .source-link:hover .source-label {
+            color: var(--white);
+        }
+        .source-badge {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        
+        /* Source type colors */
+        .source-official .source-badge {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .source-vendor .source-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        .source-research .source-badge {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+        }
+        .source-news .source-badge {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        
+        /* Source link border accent by type */
+        .source-official {
+            border-left: 3px solid #22c55e;
+        }
+        .source-vendor {
+            border-left: 3px solid #3b82f6;
+        }
+        .source-research {
+            border-left: 3px solid #a855f7;
+        }
+        .source-news {
+            border-left: 3px solid #eab308;
+        }
+        
+        /* =============================================================================
+           TREND NARRATIVE STYLES
+           ============================================================================= */
+        
+        /* Trend Narrative Box */
+        .trend-narrative-box {
+            margin-top: 32px;
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(22, 22, 22, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .trend-narrative-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+        .trend-narrative-icon {
+            font-size: 24px;
+        }
+        .trend-narrative-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .trend-narrative-section {
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .trend-narrative-section:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .trend-narrative-section.trend-summary {
+            background: rgba(212, 160, 18, 0.05);
+            border: 1px solid rgba(212, 160, 18, 0.15);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 8px;
+        }
+        .trend-narrative-metric {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        .trend-narrative-section p {
+            color: var(--gray-100);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .trend-narrative-section p strong {
+            color: var(--white);
+        }
+        
+        /* =============================================================================
+           ANALYST ASSESSMENT & BUSINESS IMPACT STYLES
+           ============================================================================= */
+        
+        /* Analyst Assessment */
+        .analyst-assessment {
+            margin-top: 32px;
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(22, 22, 22, 0.8) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .analyst-assessment-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .analyst-icon {
+            font-size: 24px;
+        }
+        .analyst-narrative p {
+            color: var(--gray-100);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .analyst-narrative p:last-child {
+            margin-bottom: 0;
+        }
+        .analyst-narrative strong {
+            color: var(--white);
+        }
+        
+        /* Business Impact Box */
+        .business-impact-box {
+            margin-top: 24px;
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .business-impact-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .business-icon {
+            font-size: 24px;
+        }
+        .business-impact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .impact-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px;
+            background: var(--black-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        .impact-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .impact-text {
+            color: var(--gray-100);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .impact-text strong {
+            color: var(--white);
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        /* =============================================================================
+           ENHANCED SAT SECTION STYLES
+           ============================================================================= */
+        
+        /* Plain Language Box (used after each SAT component) */
+        .plain-language-box {
+            margin-top: 24px;
+            background: linear-gradient(135deg, rgba(212, 160, 18, 0.05) 0%, rgba(212, 160, 18, 0.02) 100%);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .plain-language-header {
+            background: rgba(212, 160, 18, 0.1);
+            padding: 12px 20px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.15);
+        }
+        .plain-language-content {
+            padding: 20px;
+        }
+        .plain-language-content p {
+            color: var(--gray-100);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .plain-language-content p:last-child {
+            margin-bottom: 0;
+        }
+        .plain-language-content strong {
+            color: var(--white);
+        }
+        
+        /* Diagnosticity Table */
+        .diagnosticity-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .diagnosticity-table th {
+            text-align: left;
+            padding: 12px;
+            background: var(--black);
+            color: var(--gray-300);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .diagnosticity-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray-100);
+            vertical-align: top;
+        }
+        .diagnosticity-type {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .type-diagnostic {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .type-partial {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        .type-non-diagnostic {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        .type-na {
+            background: rgba(107, 114, 128, 0.2);
+            color: #9ca3af;
+        }
+        
+        /* Key Uncertainties */
+        .uncertainties-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .uncertainty-card {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .uncertainty-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        .uncertainty-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .uncertainty-desc {
+            color: var(--gray-300);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .uncertainty-impact {
+            color: var(--gray-300);
+            font-size: 13px;
+            line-height: 1.6;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .uncertainty-impact strong {
+            color: var(--gold);
+        }
+        
+        /* What-If Analysis */
+        .what-if-scenarios {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .what-if-card {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 24px;
+        }
+        .what-if-title {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        .what-if-indicators {
+            margin-bottom: 16px;
+        }
+        .what-if-indicators strong {
+            color: var(--gray-300);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .what-if-indicators ul {
+            list-style: none;
+            margin-top: 8px;
+            padding-left: 0;
+        }
+        .what-if-indicators li {
+            color: var(--gray-100);
+            font-size: 13px;
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+        .what-if-indicators li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gray-500);
+        }
+        .what-if-action {
+            background: rgba(212, 160, 18, 0.05);
+            border: 1px solid rgba(212, 160, 18, 0.15);
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--gray-100);
+            line-height: 1.6;
+        }
+        .what-if-action strong {
+            color: var(--gold);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Indicators of Change */
+        .indicators-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .indicators-column {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .indicators-column.worsening {
+            border-top: 3px solid #ef4444;
+        }
+        .indicators-column.improving {
+            border-top: 3px solid #22c55e;
+        }
+        .indicators-header {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .worsening .indicators-header {
+            color: #ef4444;
+        }
+        .improving .indicators-header {
+            color: #22c55e;
+        }
+        .indicators-list {
+            list-style: none;
+            padding: 0;
+        }
+        .indicators-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray-100);
+            font-size: 13px;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 24px;
+        }
+        .indicators-list li:last-child {
+            border-bottom: none;
+        }
+        .worsening .indicators-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+        }
+        .improving .indicators-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+        }
+        
+        /* Source Reliability Table */
+        .source-reliability-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .source-reliability-table th {
+            text-align: left;
+            padding: 12px;
+            background: var(--black);
+            color: var(--gray-300);
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .source-reliability-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--gray-100);
+            vertical-align: middle;
+        }
+        .reliability-badge,
+        .credibility-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .reliable-a {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .reliable-b {
+            background: rgba(212, 160, 18, 0.2);
+            color: var(--gold);
+        }
+        .reliable-c {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        .credibility-1 {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .credibility-2 {
+            background: rgba(212, 160, 18, 0.2);
+            color: var(--gold);
+        }
+        .credibility-3 {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        
+        /* Overall Confidence Assessment */
+        .overall-confidence {
+            margin-top: 32px;
+            background: linear-gradient(135deg, var(--black-card) 0%, rgba(22, 22, 22, 0.8) 100%);
+            border: 1px solid rgba(212, 160, 18, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .overall-confidence-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .overall-confidence-label {
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .overall-confidence-level {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 4px;
+        }
+        .overall-confidence-level.conf-high {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .overall-confidence-level.conf-moderate {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+        .overall-confidence-level.conf-low {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        .overall-confidence-rationale p {
+            color: var(--gray-100);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .overall-confidence-rationale p strong {
+            color: var(--white);
+        }
+        .confidence-caveat {
+            font-style: italic;
+            color: var(--gray-300) !important;
+        }
+        .confidence-caveat strong {
+            color: var(--gray-300) !important;
+            font-style: normal;
+        }
+        .overall-confidence .methodology-link {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-500);
+            font-size: 13px;
+        }
+        .overall-confidence .methodology-link a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .overall-confidence .methodology-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* ACH Additional Styles */
+        .ach-none {
+            color: var(--gray-500);
+            font-style: italic;
         }
         
         /* Responsive */
@@ -790,6 +1529,8 @@
             .report-nav-links { gap: 12px; }
             .report-nav-center { display: none; }
             .export-buttons { justify-content: center; }
+            .uncertainties-grid { grid-template-columns: 1fr; }
+            .indicators-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .nav-menu, .nav-cta { display: none; }
@@ -807,7 +1548,16 @@
             .report-nav-link-info { display: none; }
             /* Show mobile cards, hide desktop tables on mobile */
             .table-card-mobile { display: block; }
-            .kac-table, .ach-table { display: none; }
+            .kac-table, .ach-table, .diagnosticity-table, .source-reliability-table { display: none; }
+            .plain-language-content { padding: 16px; }
+            .plain-language-content p { font-size: 13px; }
+            .what-if-card { padding: 16px; }
+            .uncertainty-card { padding: 16px; }
+            /* Source links mobile */
+            .source-link { padding: 8px 12px; }
+            .source-label { font-size: 12px; }
+            .source-badge { font-size: 9px; padding: 2px 6px; }
+            .patch-sources { margin-top: 12px; padding-top: 12px; }
         }
     </style>
 </head>
@@ -885,10 +1635,10 @@
                     Weekly Cybersecurity Threat Report
                 </div>
                 <h1 class="report-title">
-                    <span class="report-title-date">January 2026, Week 05</span>
+                    <span class="report-title-date">January 26, 2026</span>
                     <span class="report-title-name">Cybersecurity Threat Report</span>
                 </h1>
-                <p class="report-meta">Generated: 2026-01-26T12:22:09.790Z</p>
+                <p class="report-meta">Generated: 2026-01-26T15:56:57.624Z</p>
                 
                 <!-- Previous / Next Report Navigation -->
                 <div class="report-nav-links">
@@ -1019,6 +1769,28 @@
                     </div>
                 </div>
                 
+                <!-- Analyst Assessment -->
+                <div class="analyst-assessment">
+                    <h3 class="analyst-assessment-title">
+                        <span class="analyst-icon">📝</span>
+                        Analyst Assessment
+                    </h3>
+                    <div class="analyst-narrative">
+<p>This week's threat landscape shows <strong>elevated activity</strong> that requires prioritized response from security teams. CISA added 6 new vulnerabilities to the Known Exploited Vulnerabilities catalog, confirming active exploitation in the wild. Affected vendors include <strong>Broadcom, Synacor, Versa</strong>.</p><p><strong>Recommended Priority:</strong> Patch confirmed exploited vulnerabilities within the CISA-mandated timeline. Update threat detection signatures and block lists with current IOCs.</p>
+                    </div>
+                </div>
+                
+                <!-- Why This Matters to the Business -->
+                <div class="business-impact-box">
+                    <h3 class="business-impact-title">
+                        <span class="business-icon">💼</span>
+                        Why This Matters to the Business
+                    </h3>
+                    <div class="business-impact-content">
+<div class="impact-item"><div class="impact-icon">⚠️</div><div class="impact-text"><strong>Exploitation risk is confirmed.</strong> 6 vulnerabilities are being actively exploited. While not directly linked to ransomware, any successful compromise could be leveraged for further attack progression.</div></div><div class="impact-item"><div class="impact-icon">🖥️</div><div class="impact-text"><strong>Product exposure check required.</strong> Vulnerabilities affect Broadcom, Synacor, Versa, Vite, Prettier, Cisco products. IT and business unit leaders should verify whether these products are deployed in their environments and confirm patching status.</div></div><div class="impact-item"><div class="impact-icon">📋</div><div class="impact-text"><strong>Compliance implications.</strong> CISA's KEV catalog mandates federal agencies to remediate within specified timeframes. Organizations in regulated industries (healthcare, finance, critical infrastructure) may face similar expectations from sector-specific regulators.</div></div><div class="impact-item"><div class="impact-icon">👥</div><div class="impact-text"><strong>Emergency patching window recommended.</strong> The volume and severity of this week's vulnerabilities justify scheduling an emergency maintenance window. Coordinate with business stakeholders to minimize operational impact.</div></div>
+                    </div>
+                </div>
+                
                 <!-- Export Options -->
                 <div class="export-bar" id="export-bar">
                     <div class="export-header">
@@ -1131,6 +1903,17 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Trend Analysis Narrative -->
+                <div class="trend-narrative-box">
+                    <h3 class="trend-narrative-title">
+                        <span class="trend-narrative-icon">📈</span>
+                        What These Trends Mean (Plain Language)
+                    </h3>
+                    <div class="trend-narrative-content">
+<div class="trend-narrative-section"><h4 class="trend-narrative-metric">KEV Additions</h4><p><strong>KEV additions are spiking.</strong> This week's 6 additions are 82% above the 8-week average of 3.3. This elevated activity indicates an unusually active exploitation landscape—threat actors are successfully weaponizing vulnerabilities at an increased pace. Security teams should expect higher-than-normal patching workload and consider prioritizing based on ransomware linkage and environmental exposure.</p></div><div class="trend-narrative-section"><h4 class="trend-narrative-metric">Ransomware-Linked Vulnerabilities</h4><p>No ransomware-linked KEVs this week. This is below the 8-week average of 1.3, which may indicate ransomware operators are currently leveraging existing access rather than exploiting new vulnerabilities. <strong>This does not mean ransomware risk is reduced</strong>—groups like Cl0p, LockBit, and BlackCat continuously exploit previously disclosed vulnerabilities. Continue monitoring for indicators of compromise.</p></div><div class="trend-narrative-section"><h4 class="trend-narrative-metric">C2 Infrastructure</h4><p>No active C2 servers detected this week. This is unusual and may indicate data collection issues rather than an actual reduction in botnet activity. Treat this with skepticism—botnets like QakBot, Emotet, and IcedID rarely go completely dormant.</p></div><div class="trend-narrative-section trend-summary"><h4 class="trend-narrative-metric">Overall Trend Assessment</h4><p><strong>Threat activity is decreasing</strong> across multiple indicators. This presents an opportunity to catch up on patching debt, conduct security assessments, and improve defensive posture. However, threat actors are persistent—use this relative calm to prepare for the next surge rather than relaxing vigilance.</p></div>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -1164,17 +1947,18 @@
         <!-- Structured Analytical Techniques -->
         <section class="section sat-section anchor-target" id="sat-analysis">
             <div class="container">
-                <div class="section-label">Intelligence Analysis</div>
-                <h2 class="section-title">Structured Analytical Techniques</h2>
+                <div class="section-label">Structured Analysis</div>
+                <h2 class="section-title">Analytical Assessment</h2>
                 
                 <div class="assessment-grid">
-                    <!-- Key Assumptions Check -->
+                    
+                    <!-- 1. Key Assumptions Check -->
                     <div class="assessment-card">
                         <h3 class="assessment-card-title">
-                            <span class="sat-icon">🔍</span>
+                            <span class="sat-icon">📋</span>
                             Key Assumptions Check (KAC)
                         </h3>
-                        <p class="sat-purpose">Identifies and validates the assumptions underlying our analysis.</p>
+                        <p class="sat-purpose">Identifies the foundational beliefs underlying our analysis and evaluates how well evidence supports each one.</p>
                         
                         <table class="kac-table">
                             <thead>
@@ -1186,41 +1970,50 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>CISA KEV additions represent real-world exploitation</td>
-                                    <td><span class="kac-status status-valid">VALID</span></td>
-                                    <td>CISA requires evidence of active exploitation before listing</td>
+                                    <td>CISA KEV additions represent confirmed active exploitation</td>
+                                    <td><span class="kac-status status-valid">Strong</span></td>
+                                    <td>Based on 6 new KEV entries this week; CISA requires exploitation evidence before listing</td>
                                 </tr>
                                 <tr>
-                                    <td>Ransomware-linked CVEs pose elevated risk</td>
-                                    <td><span class="kac-status status-valid">VALID</span></td>
-                                    <td>0 CVEs have documented ransomware campaign connections</td>
+                                    <td>Feodo Tracker C2 indicators represent active botnet infrastructure</td>
+                                    <td><span class="kac-status status-uncertain">Moderate</span></td>
+                                    <td>0 online C2 servers detected; some may be sinkholed or inactive</td>
                                 </tr>
                                 <tr>
-                                    <td>C2 infrastructure reflects active threat operations</td>
-                                    <td><span class="kac-status status-uncertain">UNCERTAIN</span></td>
-                                    <td>Some C2s may be abandoned or law enforcement controlled</td>
+                                    <td>Geographic indicator distribution reflects infrastructure hosting, not necessarily actor origin</td>
+                                    <td><span class="kac-status status-uncertain">Moderate</span></td>
+                                    <td>Threat actors frequently use bulletproof hosting in permissive jurisdictions regardless of their actual location</td>
                                 </tr>
                                 <tr>
-                                    <td>Geographic hosting indicates actor origin</td>
-                                    <td><span class="kac-status status-uncertain">UNCERTAIN</span></td>
-                                    <td>Criminals use hosting in multiple jurisdictions</td>
+                                    <td>Ransomware-linked vulnerabilities represent elevated operational risk</td>
+                                    <td><span class="kac-status status-uncertain">Uncertain</span></td>
+                                    <td>0 vulnerabilities linked to known ransomware campaigns with documented intrusions</td>
                                 </tr>
                                 <tr>
-                                    <td>News coverage correlates with exploitation likelihood</td>
-                                    <td><span class="kac-status status-valid">VALID</span></td>
-                                    <td>Media attention often follows confirmed incidents</td>
+                                    <td>Security media coverage correlates with active exploitation</td>
+                                    <td><span class="kac-status status-uncertain">Moderate</span></td>
+                                    <td>50% of KEV additions (3 of 6) received news coverage this week</td>
                                 </tr>
                             </tbody>
                         </table>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+<p>We built this week's analysis on five foundational beliefs. The strongest assumption is that CISA KEV additions reflect real exploitation—they don't add vulnerabilities without evidence. This week's 6 additions represent confirmed threats, not theoretical risks.</p>
+<p><strong>Two assumptions require more caution:</strong> Just because we see 0 C2 servers online doesn't guarantee they're actively being used—some might be abandoned or seized by law enforcement. Geographic hosting data can be misleading since threat actors deliberately use infrastructure in multiple jurisdictions.</p>
+<p><strong>Bottom line:</strong> Act on CISA KEV findings with confidence. Treat C2 and geographic data as useful context, not definitive intelligence.</p>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- Analysis of Competing Hypotheses -->
+                    <!-- 2. Analysis of Competing Hypotheses -->
                     <div class="assessment-card">
                         <h3 class="assessment-card-title">
                             <span class="sat-icon">⚖️</span>
                             Analysis of Competing Hypotheses (Mini-ACH)
                         </h3>
-                        <p class="sat-purpose">Tests multiple explanations against the evidence.</p>
+                        <p class="sat-purpose">Tests multiple explanations against the evidence to prevent locking onto a single narrative prematurely.</p>
                         
                         <table class="ach-table">
                             <thead>
@@ -1239,7 +2032,7 @@
                                         <div class="ach-evidence-item"><span class="ach-for">+</span> High media coverage indicates broad targeting</div>
                                     </td>
                                     <td class="ach-evidence">
-                                        <span class="ach-evidence">—</span>
+                                        <span class="ach-none">—</span>
                                     </td>
                                     <td>
                                         <span class="ach-confidence conf-high">High</span>
@@ -1249,11 +2042,11 @@
                                 <tr>
                                     <td><span class="ach-hypothesis">H2: Botnet/C2 activity is a primary driver of observed malicious infrastructure</span></td>
                                     <td class="ach-evidence">
-                                        <div class="ach-evidence-item"><span class="ach-for">+</span> Top families: </div>
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> Top families: various families</div>
                                     </td>
                                     <td class="ach-evidence">
-                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Only 0 C2 servers detected</div>
-                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Multiple families may indicate fragmentation</div>
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Only 0 C2 servers detected (lower than average)</div>
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Multiple families may indicate fragmentation, not scale</div>
                                     </td>
                                     <td>
                                         <span class="ach-confidence conf-low">Low</span>
@@ -1261,22 +2054,314 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><span class="ach-hypothesis">H3: Ransomware-enabling vulnerabilities are the dominant operational risk</span></td>
+                                    <td><span class="ach-hypothesis">H3: Ransomware-enabling vulnerabilities are the dominant operational risk this week</span></td>
                                     <td class="ach-evidence">
-                                        <div class="ach-evidence-item"><span class="ach-for">+</span> 0 KEVs linked to ransomware campaigns (0%)</div>
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> No ransomware-linked KEVs this week</div>
                                     </td>
                                     <td class="ach-evidence">
-                                        <span class="ach-evidence">—</span>
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> No direct ransomware linkage in KEV data</div>
                                     </td>
                                     <td>
-                                        <span class="ach-confidence conf-moderate">Medium</span>
-                                        <div class="confidence-bar"><div class="confidence-fill moderate" data-width="50%" style="width: 0%;"></div></div>
+                                        <span class="ach-confidence conf-low">Low</span>
+                                        <div class="confidence-bar"><div class="confidence-fill low" data-width="20%" style="width: 0%;"></div></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="ach-hypothesis">H4: Threat activity is geographically concentrated in a few regions</span></td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> Geographic distribution is dispersed</div>
+                                    </td>
+                                    <td class="ach-evidence">
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Small sample size (0 indicators)</div>
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Hosting ≠ attribution</div>
+                                    </td>
+                                    <td>
+                                        <span class="ach-confidence conf-low">Low</span>
+                                        <div class="confidence-bar"><div class="confidence-fill low" data-width="30%" style="width: 0%;"></div></div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+<p>We tested four possible explanations for what we're seeing this week:</p><p><strong>✅ One hypothesis is strongly supported:</strong> Yes, exploitation of public-facing systems is up—CISA confirmed it.</p><p><strong>❌ One hypothesis doesn't hold up:</strong> We can't say botnets are driving the threat landscape this week. The C2 count is actually below average, and seeing multiple malware families (various families) could just mean the criminal ecosystem is fragmented, not that it's thriving.</p><p><strong>⚠️ One hypothesis is uncertain:</strong> Geographic concentration is too dispersed to draw conclusions. The small sample size (0 indicators) limits our ability to identify patterns.</p><p><strong>Bottom line:</strong> Focus your week on patching internet-facing systems. Don't over-rotate on geographic blocking based on limited data.</p>
+                            </div>
+                        </div>
                     </div>
+                    
+                    <!-- 3. Evidence Diagnosticity Assessment -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">🔬</span>
+                            Evidence Diagnosticity Assessment
+                        </h3>
+                        <p class="sat-purpose">Distinguishes between evidence that truly proves something (diagnostic) versus evidence that's consistent with multiple conclusions (non-diagnostic).</p>
+                        
+                        <table class="diagnosticity-table">
+                            <thead>
+                                <tr>
+                                    <th>Evidence</th>
+                                    <th>Type</th>
+                                    <th>Why It Matters</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CISA added 6 new KEVs</td>
+                                    <td><span class="diagnosticity-type type-diagnostic">DIAGNOSTIC</span></td>
+                                    <td>CISA requires confirmed exploitation evidence before listing—this proves active attacks, not just theoretical risk</td>
+                                </tr>
+                                <tr>
+                                    <td>0 KEVs linked to ransomware</td>
+                                    <td><span class="diagnosticity-type type-na">NOT APPLICABLE</span></td>
+                                    <td>No ransomware linkage this week—this evidence type not present</td>
+                                </tr>
+                                <tr>
+                                    <td>High security news coverage</td>
+                                    <td><span class="diagnosticity-type type-partial">PARTIALLY DIAGNOSTIC</span></td>
+                                    <td>Media attention often follows exploitation, but can also be driven by vendor disclosure timing or researcher hype</td>
+                                </tr>
+                                <tr>
+                                    <td>0% of C2s hosted in Unknown</td>
+                                    <td><span class="diagnosticity-type type-non-diagnostic">NON-DIAGNOSTIC</span></td>
+                                    <td>Consistent with Unknown actors OR global criminals using Unknown hosting—doesn't discriminate between hypotheses</td>
+                                </tr>
+                                <tr>
+                                    <td>various families detected</td>
+                                    <td><span class="diagnosticity-type type-partial">PARTIALLY DIAGNOSTIC</span></td>
+                                    <td>Confirms these families are active, but doesn't tell us about scale, targets, or whether this is normal baseline activity</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+<p>Not all evidence is created equal. Some evidence <strong>proves</strong> something specific; other evidence is consistent with multiple stories.</p><p><strong>Evidence we can really trust:</strong> The KEV additions are "smoking gun" evidence—CISA doesn't add things speculatively. When we say "patch these now," we're standing on solid ground.</p><p><strong>Evidence that requires more caution:</strong> The geographic data and malware family detections are more ambiguous. Seeing C2 servers in various countries could mean many things. Detecting specific malware families tells us they exist, not whether they're targeting you specifically.</p><p><strong>Bottom line:</strong> Act decisively on the diagnostic evidence (KEVs). Use non-diagnostic evidence (geo data, C2 counts) for situational awareness, not as the basis for major security decisions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 4. Key Uncertainties -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">❓</span>
+                            Key Uncertainties
+                        </h3>
+                        <p class="sat-purpose">Explicitly identifies what we don't know and how those gaps could affect our conclusions.</p>
+                        
+                        <div class="uncertainties-grid">
+                            <div class="uncertainty-card">
+                                <div class="uncertainty-icon">🎯</div>
+                                <h4 class="uncertainty-title">Targeting Specificity</h4>
+                                <p class="uncertainty-desc">We don't know which industries or organizations are being specifically targeted. CISA KEV data reflects broad exploitation, not sector-specific risk.</p>
+                                <p class="uncertainty-impact"><strong>Impact if wrong:</strong> Your organization might face higher (or lower) risk than our general assessment suggests.</p>
+                            </div>
+                            <div class="uncertainty-card">
+                                <div class="uncertainty-icon">⏱️</div>
+                                <h4 class="uncertainty-title">Timeline of Exploitation</h4>
+                                <p class="uncertainty-desc">KEV additions lag actual exploitation by days or weeks. Some vulnerabilities may have been exploited long before this week.</p>
+                                <p class="uncertainty-impact"><strong>Impact if wrong:</strong> You may already be compromised. Consider hunting for historical IOCs, not just future blocking.</p>
+                            </div>
+                            <div class="uncertainty-card">
+                                <div class="uncertainty-icon">🔄</div>
+                                <h4 class="uncertainty-title">C2 Infrastructure Lifecycle</h4>
+                                <p class="uncertainty-desc">We don't know how long detected C2 servers will remain active. Some may be taken down tomorrow; others could persist for months.</p>
+                                <p class="uncertainty-impact"><strong>Impact if wrong:</strong> Block lists may become stale quickly. Consider automated IOC refresh, not just weekly updates.</p>
+                            </div>
+                            <div class="uncertainty-card">
+                                <div class="uncertainty-icon">🧩</div>
+                                <h4 class="uncertainty-title">Ransomware Campaign Intent</h4>
+                                <p class="uncertainty-desc">We know ransomware groups are active, but not whether they're in active campaigns right now or stockpiling access.</p>
+                                <p class="uncertainty-impact"><strong>Impact if wrong:</strong> A patching delay might be safe, or it might coincide with the start of a mass exploitation campaign.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+<p>Intelligence work is as much about knowing what you don't know as what you do know. Here are the biggest gaps:</p><p><strong>We can't tell you if YOU are being targeted.</strong> The data shows broad exploitation trends, not who's in the crosshairs. If you're in a high-value sector (healthcare, finance, critical infrastructure), assume you're a target even when we can't prove it.</p><p><strong>We might be late.</strong> By the time a vulnerability hits KEV, exploitation has already been happening. Don't just block future attacks—hunt for signs you were already hit.</p><p><strong>The threat landscape moves fast.</strong> The C2 servers we listed could be dead tomorrow, and new ones could spin up tonight. Static block lists are a starting point, not a complete solution.</p><p><strong>Bottom line:</strong> Use this report as a prioritization guide, not a guarantee. The gaps in our knowledge are where your security team's judgment becomes critical.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 5. What-If Analysis -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">🔮</span>
+                            What-If Analysis
+                        </h3>
+                        <p class="sat-purpose">Considers how our conclusions would change if key assumptions prove wrong.</p>
+                        
+                        <div class="what-if-scenarios">
+                            <div class="what-if-card">
+                                <h4 class="what-if-title">What if CVE-2024-37079 (Broadcom) exploitation expands significantly?</h4>
+                                <div class="what-if-indicators">
+                                    <strong>Indicators to watch:</strong>
+                                    <ul>
+                                        <li>Increased scanning activity for this vulnerability</li>
+                                        <li>New threat actors adopting the exploit</li>
+                                        <li>Your industry sector specifically targeted</li>
+                                    </ul>
+                                </div>
+                                <div class="what-if-action">
+                                    <strong>Recommended preemptive action:</strong> Accelerate patching timeline for Broadcom products. Implement compensating controls if patches aren't immediately available.
+                                </div>
+                            </div>
+                            <div class="what-if-card">
+                                <h4 class="what-if-title">What if botnet malware C2 infrastructure indicates imminent ransomware deployment?</h4>
+                                <div class="what-if-indicators">
+                                    <strong>Indicators to watch:</strong>
+                                    <ul>
+                                        <li>Increased botnet malware infections in your environment</li>
+                                        <li>Lateral movement following initial compromise</li>
+                                        <li>Cobalt Strike beacons or similar post-exploitation tools</li>
+                                    </ul>
+                                </div>
+                                <div class="what-if-action">
+                                    <strong>Recommended preemptive action:</strong> Hunt for botnet malware IOCs in your environment now. If found, assume ransomware is imminent and activate incident response.
+                                </div>
+                            </div>
+                            <div class="what-if-card">
+                                <h4 class="what-if-title">What if the low C2 count reflects improved detection evasion, not reduced activity?</h4>
+                                <div class="what-if-indicators">
+                                    <strong>Indicators to watch:</strong>
+                                    <ul>
+                                        <li>New C2 techniques in threat reports</li>
+                                        <li>Increased use of legitimate services for C2 (cloud storage, social media)</li>
+                                        <li>Living-off-the-land techniques becoming more common</li>
+                                    </ul>
+                                </div>
+                                <div class="what-if-action">
+                                    <strong>Recommended preemptive action:</strong> Don't interpret low C2 counts as safety. Ensure behavioral detection complements IOC-based blocking.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+<p>What-If Analysis forces us to think about scenarios that could make our current assessment wrong—and what you can do about it now.</p><p><strong>botnet malware being active is a leading indicator.</strong> It's frequently used as the first stage before ransomware. If you detect botnet malware in your environment, treat it as a ransomware precursor, not a standalone threat.</p><p><strong>Quiet doesn't always mean safe.</strong> Sophisticated actors might be evading detection rather than reducing operations. A low C2 count this week could mean we're winning, or it could mean they've changed tactics.</p><p><strong>Bottom line:</strong> Hope for the best, but build your defenses assuming these "what-ifs" might become reality.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 6. Indicators of Change -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">📊</span>
+                            Indicators of Change
+                        </h3>
+                        <p class="sat-purpose">Identifies signals that would indicate our assessment needs revision—either because the situation improved or worsened.</p>
+                        
+                        <div class="indicators-grid">
+                            <div class="indicators-column worsening">
+                                <h4 class="indicators-header">🔺 Situation Worsening</h4>
+                                <ul class="indicators-list">
+                                    <li>CISA issues emergency directive for any of this week's KEVs</li>
+                                    <li>Exploitation expands beyond initial victims</li>
+                                    <li>New ransomware group adopts one of the listed vulnerabilities</li>
+                                    <li>Significant increase in Feodo Tracker C2 count (&gt;25 in a week)</li>
+                                    <li>Public disclosure of large-scale breach tied to these vulnerabilities</li>
+                                </ul>
+                            </div>
+                            <div class="indicators-column improving">
+                                <h4 class="indicators-header">🔻 Situation Improving</h4>
+                                <ul class="indicators-list">
+                                    <li>Major vendors release patches and report high adoption rates</li>
+                                    <li>C2 infrastructure taken down by law enforcement</li>
+                                    <li>No new ransomware victim disclosures tied to these CVEs</li>
+                                    <li>Security vendors report declining exploitation attempts</li>
+                                    <li>KEV vulnerabilities aged out (&gt;30 days with no new activity)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+<p>Our assessment is a snapshot. Here's what to watch for to know if the situation is changing:</p><p><strong>Red flags that mean "escalate now":</strong> A CISA emergency directive is the clearest signal that a vulnerability has crossed from "serious" to "critical." Expansion of exploitation or new ransomware adoption would also indicate rapid escalation.</p><p><strong>Green flags that mean "pressure is easing":</strong> High patch adoption rates, law enforcement takedowns, and the passage of time without new incidents all reduce risk. But don't relax completely—threat actors often revisit old vulnerabilities when attention fades.</p><p><strong>Bottom line:</strong> This report is valid as of the generation date. Monitor these indicators to know when to re-assess. Consider setting up alerts for emergency directives and major breach disclosures.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 7. Source Reliability Assessment -->
+                    <div class="assessment-card">
+                        <h3 class="assessment-card-title">
+                            <span class="sat-icon">📡</span>
+                            Source Reliability Assessment
+                        </h3>
+                        <p class="sat-purpose">Evaluates the reliability of sources and credibility of information using ICD 203 standards (Admiralty Scale).</p>
+                        
+                        <table class="source-reliability-table">
+                            <thead>
+                                <tr>
+                                    <th>Source</th>
+                                    <th>Reliability</th>
+                                    <th>Information Credibility</th>
+                                    <th>Assessment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CISA KEV Catalog</td>
+                                    <td><span class="reliability-badge reliable-a">A - RELIABLE</span></td>
+                                    <td><span class="credibility-badge credibility-1">1 - CONFIRMED</span></td>
+                                    <td>U.S. Government source with strict verification requirements; highest confidence for exploitation status</td>
+                                </tr>
+                                <tr>
+                                    <td>Feodo Tracker (abuse.ch)</td>
+                                    <td><span class="reliability-badge reliable-b">B - USUALLY RELIABLE</span></td>
+                                    <td><span class="credibility-badge credibility-2">2 - PROBABLY TRUE</span></td>
+                                    <td>Established Swiss research organization; data is current at collection but C2 infrastructure changes rapidly</td>
+                                </tr>
+                                <tr>
+                                    <td>The Hacker News</td>
+                                    <td><span class="reliability-badge reliable-c">C - FAIRLY RELIABLE</span></td>
+                                    <td><span class="credibility-badge credibility-3">3 - POSSIBLY TRUE</span></td>
+                                    <td>Reputable security news outlet; may amplify vendor marketing; verify claims independently</td>
+                                </tr>
+                                <tr>
+                                    <td>Dark Reading</td>
+                                    <td><span class="reliability-badge reliable-c">C - FAIRLY RELIABLE</span></td>
+                                    <td><span class="credibility-badge credibility-3">3 - POSSIBLY TRUE</span></td>
+                                    <td>Established trade publication; editorial standards vary; useful for emerging threat signals</td>
+                                </tr>
+                                <tr>
+                                    <td>Krebs on Security</td>
+                                    <td><span class="reliability-badge reliable-b">B - USUALLY RELIABLE</span></td>
+                                    <td><span class="credibility-badge credibility-2">2 - PROBABLY TRUE</span></td>
+                                    <td>Independent investigative journalist with strong track record; primary source reporting</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="plain-language-box">
+                            <div class="plain-language-header">💬 What This Means (Plain Language)</div>
+                            <div class="plain-language-content">
+<p>Not all sources are equally trustworthy. Here's how we weighted our inputs this week:</p><p><strong>Gold standard (A-1):</strong> CISA KEV data is the most reliable input. They don't add vulnerabilities without verified exploitation evidence. When we cite KEV as the source for an assessment, you can act with high confidence.</p><p><strong>Trusted but verify (B-2):</strong> Feodo Tracker and Krebs on Security have strong track records. Feodo's C2 data is accurate at collection time but may be stale within days. Krebs does original investigative reporting, not just aggregation.</p><p><strong>Useful signals, not proof (C-3):</strong> Security news outlets like The Hacker News and Dark Reading provide valuable early warning, but they're incentivized toward sensationalism and may echo vendor PR. We use them for trend signals, not as primary evidence.</p><p><strong>Bottom line:</strong> Act immediately on CISA KEV findings (A-1). Use news-sourced items as early warning that requires verification. Never make major resource decisions based solely on trade publication reports.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
+                
+                <!-- Overall Confidence Assessment -->
+                <!-- Overall Confidence -->
+                <div class="overall-confidence">
+                    <div class="overall-confidence-header">
+                        <span class="overall-confidence-label">OVERALL CONFIDENCE:</span>
+                        <span class="overall-confidence-level conf-moderate">Medium</span>
+                    </div>
+                    <div class="overall-confidence-rationale">
+                        <p><strong>Rationale:</strong> Multiple hypotheses supported by strong corroborating evidence from authoritative sources (CISA KEV). Key analytical assumptions are supported by current data. Primary assessments are based on diagnostic evidence, though ransomware linkage data is limited this week.</p>
+                        <p class="confidence-caveat"><strong>Caveat:</strong> Geographic attribution conclusions carry lower confidence due to non-diagnostic evidence and small sample sizes. Targeting specificity remains unknown.</p>
+                    </div>
+                    <p class="methodology-link">These assessments use structured analytical techniques aligned with ICD 203 standards. <a href="/intel/methodology.html">Learn more about our methodology →</a></p>
+                </div>
+                
             </div>
         </section>
         
@@ -1340,8 +2425,28 @@
                                     <span class="patch-due">Due: 2026-02-13</span>
                                 </div>
                                 <div class="patch-vendor">Broadcom — VMware vCenter Server</div>
-                                <div class="patch-coverage">
-                                    <span class="coverage-label buzz-low">📰 1 articles</span>
+                                <div class="patch-description">Broadcom VMware vCenter Server contains an out-of-bounds write vulnerability in the implementation of the DCERPC protocol. This could allow a malicious actor with network access to vCenter Server to send specially crafted network packets, potentially leading to remote code execution.</div>
+                                <div class="patch-sources">
+                                    <div class="sources-header">
+                                        <span class="coverage-label buzz-low">📰 2 sources</span>
+                                    </div>
+                                    <div class="sources-list">
+                                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2024-37079" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">🏛️</span>
+                                            <span class="source-label">CISA KEV Entry</span>
+                                            <span class="source-badge">CISA</span>
+                                        </a>
+                                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-37079" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">📋</span>
+                                            <span class="source-label">NVD Details</span>
+                                            <span class="source-badge">NVD</span>
+                                        </a>
+                                        <a href="https://thehackernews.com/2026/01/cisa-adds-actively-exploited-vmware.html" class="source-link source-research" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">🔬</span>
+                                            <span class="source-label">CISA Adds Actively Exploited VMware vCenter Fla...</span>
+                                            <span class="source-badge">Hacker News</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="patch-item" data-vendor="Synacor" data-ransomware="false">
@@ -1351,8 +2456,23 @@
                                     <span class="patch-due">Due: 2026-02-12</span>
                                 </div>
                                 <div class="patch-vendor">Synacor —  Zimbra Collaboration Suite (ZCS)</div>
-                                <div class="patch-coverage">
-                                    <span class="coverage-label buzz-low">📰 0 articles</span>
+                                <div class="patch-description">Synacor Zimbra Collaboration Suite (ZCS) contains a PHP remote file inclusion vulnerability that could allow for remote attackers to craft requests to the /h/rest endpoint to influence internal request dispatching, allowing inclusion of arbitrary files from the WebRoot directory.</div>
+                                <div class="patch-sources">
+                                    <div class="sources-header">
+                                        <span class="coverage-label buzz-low">📰 1 sources</span>
+                                    </div>
+                                    <div class="sources-list">
+                                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2025-68645" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">🏛️</span>
+                                            <span class="source-label">CISA KEV Entry</span>
+                                            <span class="source-badge">CISA</span>
+                                        </a>
+                                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-68645" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">📋</span>
+                                            <span class="source-label">NVD Details</span>
+                                            <span class="source-badge">NVD</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="patch-item" data-vendor="Versa" data-ransomware="false">
@@ -1362,8 +2482,23 @@
                                     <span class="patch-due">Due: 2026-02-12</span>
                                 </div>
                                 <div class="patch-vendor">Versa — Concerto</div>
-                                <div class="patch-coverage">
-                                    <span class="coverage-label buzz-low">📰 0 articles</span>
+                                <div class="patch-description">Versa Concerto SD-WAN orchestration platform contains an improper authentication vulnerability in the Traefik reverse proxy configuration, allowing at attacker to access administrative endpoints. The internal Actuator endpoint can be leveraged for access to heap dumps and trace logs.</div>
+                                <div class="patch-sources">
+                                    <div class="sources-header">
+                                        <span class="coverage-label buzz-low">📰 1 sources</span>
+                                    </div>
+                                    <div class="sources-list">
+                                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2025-34026" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">🏛️</span>
+                                            <span class="source-label">CISA KEV Entry</span>
+                                            <span class="source-badge">CISA</span>
+                                        </a>
+                                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-34026" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">📋</span>
+                                            <span class="source-label">NVD Details</span>
+                                            <span class="source-badge">NVD</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="patch-item" data-vendor="Vite" data-ransomware="false">
@@ -1373,8 +2508,33 @@
                                     <span class="patch-due">Due: 2026-02-12</span>
                                 </div>
                                 <div class="patch-vendor">Vite — Vitejs</div>
-                                <div class="patch-coverage">
-                                    <span class="coverage-label buzz-medium">📰 2 articles</span>
+                                <div class="patch-description">Vite Vitejs contains an improper access control vulnerability that exposes content of non-allowed files using ?inline&amp;import or ?raw?import. Only apps explicitly exposing the Vite dev server to the network (using --host or server.host config option) are affected.</div>
+                                <div class="patch-sources">
+                                    <div class="sources-header">
+                                        <span class="coverage-label buzz-medium">📰 3 sources</span>
+                                    </div>
+                                    <div class="sources-list">
+                                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2025-31125" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">🏛️</span>
+                                            <span class="source-label">CISA KEV Entry</span>
+                                            <span class="source-badge">CISA</span>
+                                        </a>
+                                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-31125" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">📋</span>
+                                            <span class="source-label">NVD Details</span>
+                                            <span class="source-badge">NVD</span>
+                                        </a>
+                                        <a href="https://thehackernews.com/2026/01/google-gemini-prompt-injection-flaw.html" class="source-link source-news" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">📰</span>
+                                            <span class="source-label">Google Gemini Prompt Injection Flaw Exposed Pri...</span>
+                                            <span class="source-badge">Hacker News</span>
+                                        </a>
+                                        <a href="https://www.darkreading.com/cloud-security/google-gemini-flaw-calendar-invites-attack-vector" class="source-link source-news" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">📰</span>
+                                            <span class="source-label">Google Gemini Flaw Turns Calendar Invites Into ...</span>
+                                            <span class="source-badge">Dark Reading</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="patch-item" data-vendor="Prettier" data-ransomware="false">
@@ -1384,8 +2544,23 @@
                                     <span class="patch-due">Due: 2026-02-12</span>
                                 </div>
                                 <div class="patch-vendor">Prettier — eslint-config-prettier</div>
-                                <div class="patch-coverage">
-                                    <span class="coverage-label buzz-low">📰 0 articles</span>
+                                <div class="patch-description">Prettier eslint-config-prettier contains an embedded malicious code vulnerability. Installing an affected package executes an install.js file that launches the node-gyp.dll malware on Windows.</div>
+                                <div class="patch-sources">
+                                    <div class="sources-header">
+                                        <span class="coverage-label buzz-low">📰 1 sources</span>
+                                    </div>
+                                    <div class="sources-list">
+                                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2025-54313" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">🏛️</span>
+                                            <span class="source-label">CISA KEV Entry</span>
+                                            <span class="source-badge">CISA</span>
+                                        </a>
+                                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-54313" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">📋</span>
+                                            <span class="source-label">NVD Details</span>
+                                            <span class="source-badge">NVD</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
