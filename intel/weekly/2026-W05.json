@@ -7,7 +7,7 @@
     "weekStart": "2026-01-26T00:00:00.000Z",
     "monthName": "January",
     "monthShort": "JAN",
-    "generated": "2026-01-26T16:06:27.307Z",
+    "generated": "2026-01-26T16:20:25.230Z",
     "threatLevel": {
       "level": "ELEVATED",
       "class": "elevated",
@@ -202,12 +202,6 @@
           "source": "Hacker News"
         },
         {
-          "title": "Cisco Patches Zero-Day RCE Exploited by China-Linked APT in Secure Email Gateways",
-          "link": "https://thehackernews.com/2026/01/cisco-patches-zero-day-rce-exploited-by.html",
-          "pubDate": "Fri, 16 Jan 2026 11:08:00 +0530",
-          "source": "Hacker News"
-        },
-        {
           "title": "Exploited Zero-Day Flaw in Cisco UC Could Affect Millions",
           "link": "https://www.darkreading.com/endpoint-security/exploited-zero-day-flaw-cisco-uc-affect-millions",
           "pubDate": "Fri, 23 Jan 2026 20:56:42 GMT",
@@ -224,15 +218,15 @@
   },
   "sources": {
     "cisaKev": {
-      "retrieved": "2026-01-26T16:06:26.675Z",
+      "retrieved": "2026-01-26T16:20:24.521Z",
       "count": 1494
     },
     "feodo": {
-      "retrieved": "2026-01-26T16:06:26.849Z",
+      "retrieved": "2026-01-26T16:20:24.776Z",
       "count": 0
     },
     "news": {
-      "retrieved": "2026-01-26T16:06:27.304Z",
+      "retrieved": "2026-01-26T16:20:25.228Z",
       "count": 140
     }
   }
