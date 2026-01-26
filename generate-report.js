@@ -3898,11 +3898,16 @@ function generateStyles() {
             .appendix-section { page-break-before: always; }
             .sources-methodology-section { page-break-before: always; }
             
-            /* Only prevent breaks on small, atomic elements - NOT containers */
-            /* Executive Summary cards - small enough to keep together */
-            .exec-card { page-break-inside: avoid; break-inside: avoid; }
+            /* KEY NARRATIVE BOXES - these must stay together as coherent units */
+            .analyst-assessment { page-break-inside: avoid; break-inside: avoid; }
+            .business-impact-box { page-break-inside: avoid; break-inside: avoid; }
+            .trend-narrative-box { page-break-inside: avoid; break-inside: avoid; }
+            .plain-language-box { page-break-inside: avoid; break-inside: avoid; }
+            .overall-confidence { page-break-inside: avoid; break-inside: avoid; }
+            .trend-summary { page-break-inside: avoid; break-inside: avoid; }
             
-            /* Individual items that should stay together */
+            /* Individual cards and items - small enough to keep together */
+            .exec-card { page-break-inside: avoid; break-inside: avoid; }
             .impact-item { page-break-inside: avoid; break-inside: avoid; }
             .trend-card { page-break-inside: avoid; break-inside: avoid; }
             .driver-card { page-break-inside: avoid; break-inside: avoid; }
@@ -3919,6 +3924,7 @@ function generateStyles() {
             .secondary-source-item { page-break-inside: avoid; break-inside: avoid; }
             .primary-source-item { page-break-inside: avoid; break-inside: avoid; }
             .feedback-item { page-break-inside: avoid; break-inside: avoid; }
+            .indicators-column { page-break-inside: avoid; break-inside: avoid; }
             
             /* Tables - keep rows together but allow table to split */
             .kac-table tr, .ach-table tr, .diagnosticity-table tr, 
