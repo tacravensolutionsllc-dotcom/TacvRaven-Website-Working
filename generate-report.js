@@ -3891,6 +3891,11 @@ function generateStyles() {
             
             /* Page breaks */
             .sat-section, .mitre-section, .action-section { page-break-before: always; }
+            .appendix-section { page-break-before: always; }
+            .sources-methodology-section { page-break-before: always; }
+            .methodology-section { page-break-inside: avoid; }
+            .limitations-standards-grid { page-break-inside: avoid; }
+            .feedback-section { page-break-inside: avoid; }
             
             /* ============================================
                EXECUTIVE SUMMARY PRINT STYLES
@@ -4291,8 +4296,16 @@ function generateStyles() {
                SOURCES & METHODOLOGY PRINT STYLES
                ============================================ */
             
+            .sources-methodology-section {
+                background: white !important;
+            }
             .section-intro {
                 color: #333 !important;
+            }
+            .sources-methodology-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 20px !important;
             }
             .sources-card {
                 background: #f9f9f9 !important;
@@ -4304,6 +4317,9 @@ function generateStyles() {
             .sources-card-intro {
                 color: #666 !important;
             }
+            .primary-source-item {
+                border-bottom-color: #eee !important;
+            }
             .primary-source-name {
                 color: #111 !important;
             }
@@ -4311,6 +4327,16 @@ function generateStyles() {
                 background: #eee !important;
                 color: #666 !important;
                 border: 1px solid #ccc !important;
+            }
+            .badge-authoritative {
+                background: #d4edda !important;
+                color: #155724 !important;
+                border-color: #c3e6cb !important;
+            }
+            .badge-established {
+                background: #cce5ff !important;
+                color: #004085 !important;
+                border-color: #b8daff !important;
             }
             .primary-source-desc {
                 color: #333 !important;
@@ -4331,6 +4357,22 @@ function generateStyles() {
                 background: #eee !important;
                 color: #666 !important;
             }
+            .source-type-official {
+                background: #d4edda !important;
+                color: #155724 !important;
+            }
+            .source-type-vendor {
+                background: #cce5ff !important;
+                color: #004085 !important;
+            }
+            .source-type-research {
+                background: #e2d5f1 !important;
+                color: #6f42c1 !important;
+            }
+            .source-type-news {
+                background: #fff3cd !important;
+                color: #856404 !important;
+            }
             .methodology-section {
                 background: #f9f9f9 !important;
                 border: 1px solid #ddd !important;
@@ -4338,15 +4380,39 @@ function generateStyles() {
             .methodology-title {
                 color: #111 !important;
             }
+            .methodology-steps {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+            .methodology-step {
+                display: flex !important;
+                gap: 16px !important;
+                align-items: flex-start !important;
+            }
             .step-number {
                 background: #9a7209 !important;
                 color: #fff !important;
+                width: 32px !important;
+                height: 32px !important;
+                border-radius: 50% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-weight: 700 !important;
+                flex-shrink: 0 !important;
             }
             .step-content h4 {
                 color: #111 !important;
+                margin-bottom: 4px !important;
             }
             .step-content p {
                 color: #333 !important;
+            }
+            .limitations-standards-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 20px !important;
             }
             .limitations-card, .standards-card {
                 background: #f9f9f9 !important;
@@ -4354,6 +4420,11 @@ function generateStyles() {
             }
             .limitations-title, .standards-title {
                 color: #111 !important;
+            }
+            .limitations-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
             }
             .limitation-item h4 {
                 color: #9a7209 !important;
@@ -4376,6 +4447,11 @@ function generateStyles() {
             }
             .feedback-intro {
                 color: #666 !important;
+            }
+            .feedback-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr !important;
+                gap: 12px !important;
             }
             .feedback-item {
                 color: #333 !important;
