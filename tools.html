@@ -1841,6 +1841,397 @@
                 padding-bottom: 80px;
             }
         }
+
+/* ========================================
+           RAVENEYE RADAR EFFECT
+           ======================================== */
+        .raveneye-icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            overflow: visible;
+        }
+
+        .raveneye-icon-wrapper svg {
+            position: relative;
+            z-index: 2;
+            width: 18px;
+            height: 18px;
+            fill: var(--red);
+            filter: drop-shadow(0 0 4px var(--red));
+            animation: eyePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes eyePulse {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 4px var(--red)); }
+            50% { opacity: 0.8; filter: drop-shadow(0 0 8px var(--red)) drop-shadow(0 0 12px rgba(220, 38, 38, 0.5)); }
+        }
+
+        .raveneye-radar {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .raveneye-radar-sweep {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(220, 38, 38, 0.5) 15deg, transparent 30deg);
+            animation: radarSweep 2s linear infinite;
+        }
+
+        .raveneye-radar-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            border: 1px solid rgba(220, 38, 38, 0.8);
+            border-radius: 50%;
+            animation: radarPulse 2s ease-out infinite;
+        }
+
+        @keyframes radarPulse {
+            0% { 
+                width: 6px; 
+                height: 6px; 
+                opacity: 0.8; 
+            }
+            100% { 
+                width: 50px; 
+                height: 50px; 
+                opacity: 0; 
+            }
+        }
+
+        .raveneye-radar-pulse:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .raveneye-radar-pulse:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+
+        
+/* ========================================
+           RAVENEYE FIXED TICKER
+           ======================================== */
+        .raveneye {
+            background: #1a0a0a;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            overflow: hidden;
+            transition: top 0.3s ease;
+        }
+
+        .raveneye.scrolled {
+            top: 62px;
+        }
+
+        .raveneye::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.03) 40%, rgba(220, 38, 38, 0.08) 50%, rgba(220, 38, 38, 0.03) 60%, transparent 100%);
+            animation: scanLine 4s linear infinite;
+            pointer-events: none;
+        }
+
+        .raveneye::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        .raveneye-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--red) 20%, var(--red) 80%, transparent 100%);
+            box-shadow: 0 0 10px var(--red), 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+
+        .raveneye-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.5) 30%, var(--red) 50%, rgba(220, 38, 38, 0.5) 70%, transparent 100%);
+        }
+
+        .raveneye-container {
+            display: flex;
+            align-items: center;
+            height: 46px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .raveneye-label {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 20px;
+            height: 100%;
+            background: linear-gradient(135deg, #0d0000 0%, #1a0505 100%);
+            border-right: 1px solid var(--red);
+            font-family: var(--font-display);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--red);
+            text-transform: uppercase;
+            z-index: 2;
+            position: relative;
+            overflow: visible;
+        }
+
+        .raveneye-label::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 60%;
+            background: var(--red);
+            box-shadow: 0 0 8px var(--red), 0 0 15px rgba(220, 38, 38, 0.5);
+            animation: labelPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes labelPulse {
+            0%, 100% { opacity: 1; height: 60%; }
+            50% { opacity: 0.7; height: 40%; }
+        }
+
+        .raveneye-track {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+        }
+
+        .raveneye-track::before,
+        .raveneye-track::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .raveneye-track::before {
+            left: 0;
+            background: linear-gradient(90deg, #1a0a0a 0%, transparent 100%);
+        }
+
+        .raveneye-track::after {
+            right: 0;
+            background: linear-gradient(270deg, #1a0a0a 0%, transparent 100%);
+        }
+
+        .raveneye-scroll {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            animation: raveneyeScroll 60s linear infinite;
+            width: max-content;
+        }
+
+        .raveneye-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes raveneyeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .raveneye-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 40px;
+            height: 100%;
+            white-space: nowrap;
+            border-right: 1px solid rgba(220, 38, 38, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .raveneye-item::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--red);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--red);
+            opacity: 0.6;
+        }
+
+        .raveneye-item:hover {
+            background: rgba(220, 38, 38, 0.1);
+        }
+
+        .raveneye-item:hover::before {
+            opacity: 1;
+            box-shadow: 0 0 10px var(--red), 0 0 15px rgba(220, 38, 38, 0.5);
+        }
+
+        .raveneye-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .raveneye-badge {
+            flex-shrink: 0;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-family: var(--font-display);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .raveneye-badge--kev {
+            background: rgba(220, 38, 38, 0.2);
+            color: #ff6b6b;
+            border: 1px solid var(--red);
+            box-shadow: 0 0 8px rgba(220, 38, 38, 0.3);
+        }
+
+        .raveneye-item:hover .raveneye-badge--kev {
+            background: rgba(220, 38, 38, 0.3);
+            box-shadow: 0 0 12px rgba(220, 38, 38, 0.5);
+        }
+
+        .raveneye-badge--critical {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+            box-shadow: 0 0 8px rgba(212, 160, 18, 0.4);
+        }
+
+        .raveneye-item:hover .raveneye-badge--critical {
+            box-shadow: 0 0 12px rgba(212, 160, 18, 0.6);
+        }
+
+        .raveneye-badge--alert {
+            background: transparent;
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 160, 18, 0.5);
+        }
+
+        .raveneye-item:hover .raveneye-badge--alert {
+            border-color: var(--gold);
+            box-shadow: 0 0 8px rgba(212, 160, 18, 0.3);
+        }
+
+        .raveneye-text {
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            transition: color 0.3s ease;
+        }
+
+        .raveneye-item:hover .raveneye-text {
+            color: var(--white);
+        }
+
+        .raveneye-source {
+            font-family: var(--font-heading);
+            font-size: 10px;
+            color: rgba(220, 38, 38, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-left: 12px;
+            border-left: 1px solid rgba(220, 38, 38, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .raveneye-item:hover .raveneye-source {
+            color: rgba(220, 38, 38, 0.9);
+            border-left-color: rgba(220, 38, 38, 0.4);
+        }
+
+        .raveneye-cta {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 20px;
+            height: 100%;
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 1px solid rgba(220, 38, 38, 0.3);
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--red);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .raveneye-cta:hover {
+            background: rgba(220, 38, 38, 0.2);
+            color: #ff6b6b;
+        }
+
+        .raveneye-cta svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .raveneye-cta:hover svg {
+            transform: translateX(3px);
+        }
+
+        
     </style>
 </head>
 <body>
@@ -1852,28 +2243,7 @@
             </a>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-dropdown">
-                    <button class="nav-dropdown-toggle">
-                        Products
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
-                    <div class="nav-dropdown-menu">
-                        <a href="#blackfeather" class="nav-dropdown-item">
-                            BlackFeather
-                            <span>Threat Intel Platform</span>
-                        </a>
-                        <a href="#corvus" class="nav-dropdown-item">
-                            Corvus Engine
-                            <span>Log Conversion Utility</span>
-                        </a>
-                        <a href="talonprep.html" class="nav-dropdown-item">
-                            TalonPrep
-                            <span>Security+ Test Prep</span>
-                        </a>
-                    </div>
-                </li>
+                <li><a href="learning-hub.html" class="nav-link">Learning Hub</a></li>
                 <li><a href="tools.html" class="nav-link active">Tools</a></li>
                 <li><a href="threat-map.html" class="nav-link">Threat Map</a></li>
                 <li><a href="/intel/weekly/" class="nav-link">Weekly Reports</a></li>
@@ -1893,9 +2263,7 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
         <a href="index.html" class="mobile-nav-link">Home</a>
-        <a href="#blackfeather" class="mobile-nav-link">BlackFeather</a>
-        <a href="#corvus" class="mobile-nav-link">Corvus Engine</a>
-        <a href="talonprep.html" class="mobile-nav-link">TalonPrep</a>
+        <a href="learning-hub.html" class="mobile-nav-link">Learning Hub</a>
         <a href="tools.html" class="mobile-nav-link" style="color: var(--gold);">Tools</a>
         <a href="threat-map.html" class="mobile-nav-link">Threat Map</a>
         <a href="/intel/weekly/" class="mobile-nav-link">Weekly Reports</a>
@@ -1905,8 +2273,37 @@
         <a href="#contact" class="mobile-nav-link">Contact</a>
     </div>
 
-    <!-- Fixed Mobile Contact Button -->
-    <a href="#contact" class="mobile-contact-fixed" id="mobile-contact-btn">Contact Us</a>
+    <!-- RavenEye Threat Ticker -->
+    <div class="raveneye" id="raveneye">
+        <div class="raveneye-glow"></div>
+        <div class="raveneye-bottom"></div>
+        <div class="raveneye-container">
+            <div class="raveneye-label">
+                <div class="raveneye-icon-wrapper">
+                    <div class="raveneye-radar">
+                        <div class="raveneye-radar-sweep"></div>
+                        <div class="raveneye-radar-pulse"></div>
+                        <div class="raveneye-radar-pulse"></div>
+                        <div class="raveneye-radar-pulse"></div>
+                    </div>
+                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </div>
+                RavenEye
+            </div>
+            <div class="raveneye-track">
+                <div class="raveneye-scroll" id="raveneye-scroll">
+                    <!-- Items populated by JS -->
+                </div>
+            </div>
+            <a href="cyber-news.html" class="raveneye-cta">
+                Full Feed
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </a>
+        </div>
+    </div>
 
     <!-- Hero -->
     <section class="hero" id="hero">
@@ -2547,29 +2944,18 @@
 
     <script>
         const nav = document.getElementById('nav');
+        const raveneye = document.getElementById('raveneye');
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileContactBtn = document.getElementById('mobile-contact-btn');
 
         // Nav scroll effect
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
+                if (raveneye) raveneye.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
-            }
-
-            // Hide mobile contact button when near contact section
-            const contactSection = document.getElementById('contact');
-            if (contactSection) {
-                const contactRect = contactSection.getBoundingClientRect();
-                if (contactRect.top < window.innerHeight) {
-                    mobileContactBtn.style.opacity = '0';
-                    mobileContactBtn.style.pointerEvents = 'none';
-                } else {
-                    mobileContactBtn.style.opacity = '1';
-                    mobileContactBtn.style.pointerEvents = 'auto';
-                }
+                if (raveneye) raveneye.classList.remove('scrolled');
             }
         });
 
@@ -2721,6 +3107,31 @@
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+        // RavenEye - Static demo data with links
+        const raveneyeData = [
+            { badge: 'KEV', badgeType: 'kev', text: 'CVE-2024-3400: PAN-OS Command Injection — Due: Jan 20', source: 'CISA KEV', url: 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog' },
+            { badge: 'ZERO-DAY', badgeType: 'critical', text: 'Microsoft Patches Critical Zero-Day in Windows Kernel', source: 'Hacker News', url: 'https://thehackernews.com/' },
+            { badge: 'CRITICAL', badgeType: 'critical', text: 'Ivanti VPN Zero-Day Actively Exploited in the Wild', source: 'Dark Reading', url: 'https://www.darkreading.com/' },
+            { badge: 'KEV', badgeType: 'kev', text: 'CVE-2024-21887: Ivanti Connect Secure — Due: Jan 22', source: 'CISA KEV', url: 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog' },
+            { badge: 'ALERT', badgeType: 'alert', text: 'Ransomware Group Targets Healthcare Sector', source: 'Krebs', url: 'https://krebsonsecurity.com/' },
+            { badge: 'CRITICAL', badgeType: 'critical', text: 'CISA Emergency Directive: Disconnect Affected Devices', source: 'CISA', url: 'https://www.cisa.gov/news-events/directives' },
+        ];
+
+        function renderRaveneyeTicker() {
+            const container = document.getElementById('raveneye-scroll');
+            if (!container) return;
+            const itemsHTML = raveneyeData.map(item => `
+                <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="raveneye-item">
+                    <span class="raveneye-badge raveneye-badge--${item.badgeType}">${item.badge}</span>
+                    <span class="raveneye-text">${item.text}</span>
+                    <span class="raveneye-source">${item.source}</span>
+                </a>
+            `).join('');
+            container.innerHTML = itemsHTML + itemsHTML; // Duplicate for seamless scroll
+        }
+        renderRaveneyeTicker();
+
     </script>
   <script src="/analytics-events.js"></script>
 </body>
