@@ -224,7 +224,7 @@ def get_template():
                 <a href="https://tacraven.com/weekly-reports/">Weekly Reports</a>
                 <a href="https://tacraven.com/about/">About</a>
                 <a href="https://tacraven.com/pricing/">Pricing</a>
-                <a href="/blog/" class="active">Careers</a>
+                <a href="../../../Blog.html" class="active">Careers</a>
                 <a href="https://tacraven.com/contact/" class="nav-cta">Contact</a>
             </nav>
         </div>
@@ -233,7 +233,7 @@ def get_template():
     <section class="hero-banner">
         <div class="hero-inner">
             <div class="hero-content">
-                <a href="/blog/" class="back-link">
+                <a href="../../../Blog.html" class="back-link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                     Back to Careers Blog
                 </a>
@@ -269,7 +269,7 @@ ${tags_html}
             </div>
             
             <nav class="article-nav">
-                <a href="/blog/">
+                <a href="../../../Blog.html">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                     Back to Blog
                 </a>
