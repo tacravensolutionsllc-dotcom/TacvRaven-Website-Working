@@ -2,8 +2,8 @@ name: Auto Blog Post
 
 on:
   schedule:
-    - cron: '0 9 */2 * *'
-  workflow_dispatch:
+    - cron: '0 9 */2 * *'   # Every other day at 9am UTC
+  workflow_dispatch:          # Manual trigger from Actions tab
 
 permissions:
   contents: write
@@ -23,6 +23,10 @@ jobs:
       - name: Generate blog post
         working-directory: scripts
         run: python3 auto_scheduler.py --force
+
+      - name: Update blog manifest
+        working-directory: scripts
+        run: python3 update_manifest.py
 
       - name: Commit and push
         run: |
