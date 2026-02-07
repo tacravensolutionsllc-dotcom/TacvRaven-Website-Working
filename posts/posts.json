@@ -1,0 +1,44 @@
+{
+  "generated": "2026-02-07T22:51:07.542532",
+  "count": 2,
+  "posts": [
+    {
+      "title": "Security Job Market: February 2026 Update",
+      "excerpt": "Latest hiring trends, salary data, and what's changed.",
+      "date": "2026-02-07",
+      "category": "Salaries",
+      "category_slug": "salaries",
+      "category_css": "sal",
+      "tags": [
+        "Salaries",
+        "Cybersecurity",
+        "Career",
+        "Soc",
+        "SOC"
+      ],
+      "filepath": "posts/2026/02/security-job-market-february-2026-update.html",
+      "slug": "security-job-market-february-2026-update",
+      "read_time": 12,
+      "featured": true
+    },
+    {
+      "title": "Breach Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking breach expertise. How to get it.",
+      "date": "2026-02-07",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Breach",
+        "breach"
+      ],
+      "filepath": "posts/2026/02/breach-skills-are-in-demandheres-why.html",
+      "slug": "breach-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": false
+    }
+  ]
+}
