@@ -1,6 +1,6 @@
 {
-  "generated": "2026-02-07T22:51:07.542532",
-  "count": 2,
+  "generated": "2026-02-07T22:56:27.056695",
+  "count": 3,
   "posts": [
     {
       "title": "Security Job Market: February 2026 Update",
@@ -20,6 +20,24 @@
       "slug": "security-job-market-february-2026-update",
       "read_time": 12,
       "featured": true
+    },
+    {
+      "title": "Is CompTIA Security+ Worth It?",
+      "excerpt": "The most popular entry cert\u2014honest assessment.",
+      "date": "2026-02-07",
+      "category": "Certifications",
+      "category_slug": "certifications",
+      "category_css": "cert",
+      "tags": [
+        "Certifications",
+        "Cybersecurity",
+        "Career",
+        "cert_review"
+      ],
+      "filepath": "posts/2026/02/is-comptia-security-worth-it.html",
+      "slug": "is-comptia-security-worth-it",
+      "read_time": 12,
+      "featured": false
     },
     {
       "title": "Breach Skills Are in Demand\u2014Here's Why",

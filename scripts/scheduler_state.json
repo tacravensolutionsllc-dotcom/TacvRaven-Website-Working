@@ -3,17 +3,20 @@
   "published_posts": [
     "bf48b61af443",
     "9a4b6d1d05a7",
-    "e64df3c14abc"
+    "e64df3c14abc",
+    "ae826cf6499c"
   ],
-  "category_rotation": 1,
+  "category_rotation": 2,
   "topic_index": {
-    "getting-started_breaking_in": 1
+    "getting-started_breaking_in": 1,
+    "certifications_cert_review": 1
   },
-  "style_rotation": 3,
-  "structure_rotation": 3,
-  "post_count": 3,
+  "style_rotation": 4,
+  "structure_rotation": 4,
+  "post_count": 4,
   "group_index": {
-    "getting-started_group": 1
+    "getting-started_group": 1,
+    "certifications_group": 1
   },
   "recent_topics": [
     "SOC",
