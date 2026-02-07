@@ -1,6 +1,608 @@
 {
-  "timestamp": "2026-01-30T18:53:31.518378",
-  "news": [],
-  "trending": [],
-  "fetch_date": "January 2026"
+  "timestamp": "2026-02-07T19:14:54.582186",
+  "news": [
+    {
+      "title": "German Agencies Warn of Signal Phishing Targeting Politicians, Military, Journalists",
+      "link": "https://thehackernews.com/2026/02/german-agencies-warn-of-signal-phishing.html",
+      "description": "Germany's Federal Office for the Protection of the Constitution (aka Bundesamt f\u00fcr Verfassungsschutz or BfV) and Federal Office for Information Security (BSI) have issued a joint advisory warning of a malicious cyber campaign undertaken by a likely state-sponsored threat actor that involves carrying out phishing attacks over the Signal messaging app.\n\"The focus is on high-ranking targets in",
+      "date": "Sat, 07 Feb 2026 16:45:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "China-Linked DKnife AitM Framework Targets Routers for Traffic Hijacking, Malware Delivery",
+      "link": "https://thehackernews.com/2026/02/china-linked-dknife-aitm-framework.html",
+      "description": "Cybersecurity researchers have taken the wraps off a gateway-monitoring and adversary-in-the-middle (AitM) framework dubbed DKnife that's operated by China-nexus threat actors since at least 2019.\nThe framework comprises seven Linux-based implants that are designed to perform deep packet inspection, manipulate traffic, and deliver malware via routers and edge devices. Its primary targets seem to",
+      "date": "Fri, 06 Feb 2026 20:26:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "CISA Orders Removal of Unsupported Edge Devices to Reduce Federal Network Risk",
+      "link": "https://thehackernews.com/2026/02/cisa-orders-removal-of-unsupported-edge.html",
+      "description": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has ordered Federal Civilian Executive Branch (FCEB) agencies to strengthen asset lifecycle management for edge network devices and remove those that no longer receive security updates from original equipment manufacturers (OEMs) over the next 12 to 18 months.\nThe agency said the move is to drive down technical debt and minimize",
+      "date": "Fri, 06 Feb 2026 19:13:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "Asian State-Backed Group TGR-STA-1030 Breaches 70 Government, Infrastructure Entities",
+      "link": "https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html",
+      "description": "A previously undocumented cyber espionage group operating from Asia broke into the networks of at least 70 government and critical infrastructure organizations across 37 countries over the past year, according to new findings from Palo Alto Networks Unit 42.\nIn addition, the hacking crew has been observed conducting active reconnaissance against government infrastructure associated with 155",
+      "date": "Fri, 06 Feb 2026 17:37:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "How Samsung Knox Helps Stop Your Network Security Breach",
+      "link": "https://thehackernews.com/2026/02/how-samsung-knox-helps-stop-your-network-security-breach.html",
+      "description": "As you know, enterprise network security has undergone significant evolution over the past decade. Firewalls have become more intelligent, threat detection methods have advanced, and access controls are now more detailed. However (and it&rsquo;s a big &ldquo;however&rdquo;), the increasing use of mobile devices in business operations necessitates network security measures that are specifically",
+      "date": "Fri, 06 Feb 2026 16:00:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "Compromised dYdX npm and PyPI Packages Deliver Wallet Stealers and RAT Malware",
+      "link": "https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html",
+      "description": "Cybersecurity researchers have discovered a new supply chain attack in which legitimate packages on npm and the Python Package Index (PyPI) repository have been compromised to push malicious versions to facilitate wallet credential theft and remote code execution.\nThe compromised versions of the two packages are listed below -\n\n@dydxprotocol/v4-client-js (npm) - 3.4.1, 1.22.1, 1.15.2, 1.0.31&",
+      "date": "Fri, 06 Feb 2026 14:10:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries",
+      "link": "https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html",
+      "description": "Artificial intelligence (AI) company Anthropic revealed that its latest large language model (LLM), Claude Opus 4.6, has found more than 500 previously unknown high-severity security flaws in open-source libraries, including Ghostscript, OpenSC, and CGIF.\nClaude Opus 4.6, which was launched Thursday, comes with improved coding skills, including code review and debugging capabilities, along with",
+      "date": "Fri, 06 Feb 2026 11:19:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "AISURU/Kimwolf Botnet Launches Record-Setting 31.4 Tbps DDoS Attack",
+      "link": "https://thehackernews.com/2026/02/aisurukimwolf-botnet-launches-record.html",
+      "description": "The distributed denial-of-service (DDoS) botnet known as AISURU/Kimwolf has been attributed to a record-setting attack that peaked at 31.4 Terabits per second (Tbps) and lasted only 35 seconds.\nCloudflare, which automatically detected and mitigated the activity, said it's part of a growing number of hyper-volumetric HTTP DDoS attacks mounted by the botnet in the fourth quarter of 2025. The",
+      "date": "Thu, 05 Feb 2026 22:55:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "ThreatsDay Bulletin: Codespaces RCE, AsyncRAT C2, BYOVD Abuse, AI Cloud Intrusions & 15+ Stories",
+      "link": "https://thehackernews.com/2026/02/threatsday-bulletin-codespaces-rce.html",
+      "description": "This week didn\u2019t produce one big headline. It produced many small signals \u2014 the kind that quietly shape what attacks will look like next.\nResearchers tracked intrusions that start in ordinary places: developer workflows, remote tools, cloud access, identity paths, and even routine user actions. Nothing looked dramatic on the surface. That\u2019s the point. Entry is becoming less visible while impact",
+      "date": "Thu, 05 Feb 2026 18:27:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "The Buyer\u2019s Guide to AI Usage Control",
+      "link": "https://thehackernews.com/2026/02/the-buyers-guide-to-ai-usage-control.html",
+      "description": "Today\u2019s \u201cAI everywhere\u201d reality is woven into everyday workflows across the enterprise, embedded in SaaS platforms, browsers, copilots, extensions, and a rapidly expanding universe of shadow tools that appear faster than security teams can track. Yet most organizations still rely on legacy controls that operate far away from where AI interactions actually occur. The result is a widening",
+      "date": "Thu, 05 Feb 2026 17:00:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "'Encrypt It Already' Campaign Pushes Big Tech to Prioritize E2E Encryption",
+      "link": "https://www.darkreading.com/cloud-security/encrypt-it-already-pushes-big-tech-e2e-encryption",
+      "description": "The Electronic Frontier Foundation is urging major technology companies to follow through on their promises to implement end-to-end encryption (E2E) by default across their services, as privacy concerns mount amid increased AI use.",
+      "date": "Fri, 06 Feb 2026 16:34:41 GMT",
+      "category": "cybersecurity_news",
+      "source": "https://www.darkreading.com/rss.xml"
+    },
+    {
+      "title": "Shai-hulud: The Hidden Cost of Supply Chain Attacks",
+      "link": "https://www.darkreading.com/application-security/shai-hulud-hidden-cost-supply-chain-attacks",
+      "description": "Recent supply chain attacks involving self-propagating worms have spread far, but the damage and long-term impact is hard to quantify.",
+      "date": "Fri, 06 Feb 2026 16:25:14 GMT",
+      "category": "cybersecurity_news",
+      "source": "https://www.darkreading.com/rss.xml"
+    },
+    {
+      "title": "OpenClaw's Gregarious Insecurities Make Safe Usage Difficult",
+      "link": "https://www.darkreading.com/application-security/openclaw-insecurities-safe-usage-difficult",
+      "description": "Malicious &quot;skills&quot; and persnickety configuration settings are just some of the issues that security researchers have found when installing \u2014 and removing \u2014 the OpenClaw AI assistant.",
+      "date": "Fri, 06 Feb 2026 15:42:15 GMT",
+      "category": "cybersecurity_news",
+      "source": "https://www.darkreading.com/rss.xml"
+    },
+    {
+      "title": "EnCase Driver Weaponized as EDR Killers Persist",
+      "link": "https://www.darkreading.com/threat-intelligence/encase-driver-weaponized-edr-killers-persist",
+      "description": "The forensic tool's driver was signed with a digital certificate that expired years ago, but major security gaps allowed Windows to load it.",
+      "date": "Thu, 05 Feb 2026 22:35:20 GMT",
+      "category": "cybersecurity_news",
+      "source": "https://www.darkreading.com/rss.xml"
+    },
+    {
+      "title": "Agentic AI Site 'Moltbook' Is Riddled With Security Risks",
+      "link": "https://www.darkreading.com/cyber-risk/agentic-ai-moltbook-security-risks",
+      "description": "Someone used AI to build an entire Web platform, which then did something predictable and preventable: It exposed all its data through a publicly accessible API.",
+      "date": "Thu, 05 Feb 2026 22:03:29 GMT",
+      "category": "cybersecurity_news",
+      "source": "https://www.darkreading.com/rss.xml"
+    },
+    {
+      "title": "Data Tool to Triage Exploited Vulnerabilities Can Make KEV More Useful",
+      "link": "https://www.darkreading.com/threat-intelligence/data-tool-triage-exploited-vulnerabilities-make-kev-catalog-more-useful",
+      "description": "A disconnect exists between an organization's cybersecurity needs and lists like CISA's KEV Catalog. KEV Collider combines data from multiple open source vulnerability frameworks to help security teams quickly assess which are important, based on their priorities.",
+      "date": "Thu, 05 Feb 2026 20:53:34 GMT",
+      "category": "cybersecurity_news",
+      "source": "https://www.darkreading.com/rss.xml"
+    },
+    {
+      "title": "Cyber Success Trifecta: Education, Certifications &amp; Experience",
+      "link": "https://www.darkreading.com/cybersecurity-operations/the-trifecta-of-cyber-success-education-certifications-and-experience",
+      "description": "Col. Georgeo Xavier Pulikkathara, CISO at iMerit, discusses the importance of fundamentals, continuous learning, and human ingenuity in the face of AI-driven cybersecurity evolution.",
+      "date": "Thu, 05 Feb 2026 14:00:00 GMT",
+      "category": "cybersecurity_news",
+      "source": "https://www.darkreading.com/rss.xml"
+    },
+    {
+      "title": "Protests Don't Impede Iranian Spying on Expats, Syrians, Israelis",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/iran-spies-expats-syrians-israelis",
+      "description": "Iranian threat actors have been stealing credentials from people of interest across the Middle East, using spear-phishing and social engineering.",
+      "date": "Thu, 05 Feb 2026 07:00:00 GMT",
+      "category": "cybersecurity_news",
+      "source": "https://www.darkreading.com/rss.xml"
+    },
+    {
+      "title": "Ransomware Gang Goes Full 'Godfather' With Cartel",
+      "link": "https://www.darkreading.com/cyber-risk/ransomware-gang-full-godfather-cartel",
+      "description": "DragonForce is taking cues from organized crime, emphasizing cooperation and coordination among ransomware gangs.",
+      "date": "Wed, 04 Feb 2026 22:14:19 GMT",
+      "category": "cybersecurity_news",
+      "source": "https://www.darkreading.com/rss.xml"
+    },
+    {
+      "title": "CISA Makes Unpublicized Ransomware Updates to KEV Catalog",
+      "link": "https://www.darkreading.com/threat-intelligence/cisa-hidden-ransomware-updates-kev-catalog",
+      "description": "A third of the &quot;flipped&quot; CVEs affected network edge devices, leading one researcher to conclude, &quot;Ransomware operators are building playbooks around your perimeter.&quot;",
+      "date": "Wed, 04 Feb 2026 21:48:57 GMT",
+      "category": "cybersecurity_news",
+      "source": "https://www.darkreading.com/rss.xml"
+    },
+    {
+      "title": "Please Don\u2019t Feed the Scattered Lapsus ShinyHunters",
+      "link": "https://krebsonsecurity.com/2026/02/please-dont-feed-the-scattered-lapsus-shiny-hunters/",
+      "description": "A prolific data ransom gang that calls itself Scattered Lapsus ShinyHunters (SLSH) has a distinctive playbook when it seeks to extort payment from victim firms: Harassing, threatening and even swatting executives and their families, all while notifying journalists and regulators\u2026 <span class=\"read-more\"><a href=\"https://krebsonsecurity.com/2026/02/please-dont-feed-the-scattered-lapsus-shiny-hunters/\">Read More &#187;</a></span>",
+      "date": "Mon, 02 Feb 2026 16:15:16 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "Who Operates the Badbox 2.0 Botnet?",
+      "link": "https://krebsonsecurity.com/2026/01/who-operates-the-badbox-2-0-botnet/",
+      "description": "The cybercriminals in control of Kimwolf -- a disruptive botnet that has infected more than 2 million devices -- recently shared a screenshot indicating they'd compromised the control panel for Badbox 2.0, a vast China-based botnet powered by malicious software that comes pre-installed on many Android TV streaming boxes. Both the FBI and Google say they are hunting for the people behind Badbox 2.0, and thanks to bragging by the Kimwolf botmasters we may now have a much clearer idea about that.",
+      "date": "Mon, 26 Jan 2026 16:11:38 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "Kimwolf Botnet Lurking in Corporate, Govt. Networks",
+      "link": "https://krebsonsecurity.com/2026/01/kimwolf-botnet-lurking-in-corporate-govt-networks/",
+      "description": "A new Internet-of-Things botnet called Kimwolf has spread to more than 2 million devices, forcing infected systems to participate in massive distributed denial-of-service (DDoS) attacks and to relay other malicious and abusive Internet traffic. Kimwolf's ability to scan the local networks of compromised systems for other IoT devices to infect makes it a sobering threat to organizations, and new research reveals Kimwolf is surprisingly prevalent in government and corporate networks.",
+      "date": "Tue, 20 Jan 2026 18:19:13 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "Patch Tuesday, January 2026 Edition",
+      "link": "https://krebsonsecurity.com/2026/01/patch-tuesday-january-2026-edition/",
+      "description": "Microsoft today issued patches to plug at least 113 security holes in its various Windows operating systems and supported software. Eight of the vulnerabilities earned Microsoft's most-dire \"critical\" rating, and the company warns that attackers are already exploiting one of the bugs fixed today.",
+      "date": "Wed, 14 Jan 2026 00:47:38 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "Who Benefited from the Aisuru and Kimwolf Botnets?",
+      "link": "https://krebsonsecurity.com/2026/01/who-benefited-from-the-aisuru-and-kimwolf-botnets/",
+      "description": "Our first story of 2026 revealed how a destructive new botnet called Kimwolf rapidly grew to infect more than two million devices by mass-compromising a vast number of unofficial Android TV streaming boxes. Today, we'll dig through digital clues left behind by the hackers, network operators, and cybercrime services that appear to have benefitted from Kimwolf's spread.",
+      "date": "Thu, 08 Jan 2026 23:23:43 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "The Kimwolf Botnet is Stalking Your Local Network",
+      "link": "https://krebsonsecurity.com/2026/01/the-kimwolf-botnet-is-stalking-your-local-network/",
+      "description": "The story you are reading is a series of scoops nestled inside a far more urgent Internet-wide security advisory. The vulnerability at issue has been exploited for months already, and it's time for a broader awareness of the threat. The short version is that everything you thought you knew about the security of the internal network behind your Internet router probably is now dangerously out of date.",
+      "date": "Fri, 02 Jan 2026 14:20:10 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "Happy 16th Birthday, KrebsOnSecurity.com!",
+      "link": "https://krebsonsecurity.com/2025/12/happy-16th-birthday-krebsonsecurity-com/",
+      "description": "KrebsOnSecurity.com celebrates its 16th anniversary today! A huge \"thank you\" to all of our readers -- newcomers, long-timers and drive-by critics alike. Your engagement this past year here has been tremendous and truly a salve on a handful of dark days. Happily, comeuppance was a strong theme running through our coverage in 2025, with a primary focus on entities that enabled complex and globally-dispersed cybercrime services.",
+      "date": "Mon, 29 Dec 2025 20:23:26 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "Dismantling Defenses: Trump 2.0 Cyber Year in Review",
+      "link": "https://krebsonsecurity.com/2025/12/dismantling-defenses-trump-2-0-cyber-year-in-review/",
+      "description": "The Trump administration has pursued a staggering range of policy pivots this past year that threaten to weaken the nation\u2019s ability and willingness to address a broad spectrum of technology challenges, from cybersecurity and privacy to countering disinformation, fraud and corruption. These shifts, along with the president\u2019s efforts to restrict free speech and freedom of the press, have come at such a rapid clip that many readers probably aren\u2019t even aware of them all.",
+      "date": "Fri, 19 Dec 2025 15:14:55 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "Most Parked Domains Now Serving Malicious Content",
+      "link": "https://krebsonsecurity.com/2025/12/most-parked-domains-now-serving-malicious-content/",
+      "description": "Direct navigation -- the act of visiting a website by manually typing a domain name in a web browser -- has never been riskier: A new study finds the vast majority of \"parked\" domains -- mostly expired or dormant domain names, or common misspellings of popular websites -- are now configured to redirect visitors to sites that foist scams and malware.",
+      "date": "Tue, 16 Dec 2025 14:14:48 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "Microsoft Patch Tuesday, December 2025 Edition",
+      "link": "https://krebsonsecurity.com/2025/12/microsoft-patch-tuesday-december-2025-edition/",
+      "description": "Microsoft today pushed updates to fix at least 56 security flaws in its Windows operating systems and supported software. This final Patch Tuesday of 2025 tackles one zero-day bug that is already being exploited, as well as two publicly disclosed vulnerabilities.",
+      "date": "Tue, 09 Dec 2025 23:18:29 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "Friday Squid Blogging: Squid Fishing Tips",
+      "link": "https://www.schneier.com/blog/archives/2026/02/friday-squid-blogging-squid-fishing-tips.html",
+      "description": "<p>This is a <a href=\"https://www.youtube.com/watch?v=pNq_W2CkACU\">video</a> of advice for squid fishing in Puget Sound.</p>\n<p>As usual, you can also use this squid post to talk about the security stories in the news that I haven&#8217;t covered.</p>\n<p><a href=\"https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html\">Blog moderation policy.</a></p>\n",
+      "date": "2026-01-22T20:12:46Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "I Am in the Epstein Files",
+      "link": "https://www.schneier.com/blog/archives/2026/02/i-am-in-the-epstein-files.html",
+      "description": "<p><a href=\"https://www.jmail.world/thread/EFTA02451032?view=inbox\">Once</a>. Someone named &#8220;Vincenzo lozzo&#8221; wrote to Epstein in email, in 2016: &#8220;I wouldn&#8217;t pay too much attention to this, Schneier has a long tradition of dramatizing and misunderstanding things.&#8221; The topic of the email is DDoS attacks, and it is unclear what I am dramatizing and misunderstanding.</p>\n<p>Rabbi Schneier is also mentioned, also incidentally, also <a href=\"https://www.jmail.world/thread/EFTA02442876?view=inbox\">once</a>. As far as either of us know, we are not related.</p>\n<p>EDITED TO ADD (2/7): There is <a href=\"https://www.justice.gov/epstein/files/DataSet%209/EFTA00817090.pdf\">more context</a> on the Justice.gov website version.</p>\n",
+      "date": "2026-02-07T14:44:35Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "iPhone Lockdown Mode Protects Washington Post Reporter",
+      "link": "https://www.schneier.com/blog/archives/2026/02/iphone-lockdown-mode-protects-washington-post-reporter.html",
+      "description": "<p>404Media is <a href=\"https://www.404media.co/fbi-couldnt-get-into-wapo-reporters-iphone-because-it-had-lockdown-mode-enabled/\">reporting</a> that the FBI could not access a reporter&#8217;s iPhone because it had Lockdown Mode enabled:</p>\n<blockquote><p>The court record shows what devices and data the FBI was able to ultimately access, and which devices it could not, after raiding the home of the reporter, Hannah Natanson, in January as part of an investigation into leaks of classified information. It also provides rare insight into the apparent effectiveness of Lockdown Mode, or at least how effective it might be before the FBI may try other techniques to access the device.</p>\n<p>&#8220;Because the iPhone was in Lockdown mode, CART could not extract that device,&#8221; the court record reads, referring to the FBI&#8217;s Computer Analysis Response Team, a unit focused on performing forensic analyses of seized devices. The document is written by the government, and is opposing the return of Natanson&#8217;s devices...</p></blockquote>",
+      "date": "2026-02-05T17:03:50Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "Backdoor in Notepad++",
+      "link": "https://www.schneier.com/blog/archives/2026/02/backdoor-in-notepad.html",
+      "description": "<p>Hackers associated with the Chinese government used a <a href=\"https://arstechnica.com/security/2026/02/notepad-updater-was-compromised-for-6-months-in-supply-chain-attack/\">Trojaned version</a> of Notepad++ to deliver malware to selected users.</p>\n<blockquote><p>Notepad++ said that officials with the unnamed provider hosting the update infrastructure consulted with incident responders and found that it remained compromised until September 2. Even then, the attackers maintained credentials to the internal services until December 2, a capability that allowed them to continue redirecting selected update traffic to malicious servers. The threat actor &#8220;specifically targeted Notepad++ domain with the goal of exploiting insufficient update verification controls that existed in older versions of Notepad++.&#8221; Event logs indicate that the hackers tried to re-exploit one of the weaknesses after it was fixed but that the attempt failed...</p></blockquote>",
+      "date": "2026-02-05T04:02:12Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "US Declassifies Information on JUMPSEAT Spy Satellites",
+      "link": "https://www.schneier.com/blog/archives/2026/02/us-declassifies-information-on-jumpseat-spy-satellites.html",
+      "description": "<p>The US National Reconnaissance Office has declassified <a href=\"https://arstechnica.com/space/2026/01/us-spy-satellite-agency-declassifies-high-flying-cold-war-listening-post/\">information</a> about a fleet of spy satellites operating between 1971 and 2006.</p>\n<p>I&#8217;m actually impressed to see a declassification only two decades after decommission.</p>\n",
+      "date": "2026-02-03T17:04:40Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "Microsoft is Giving the FBI BitLocker Keys",
+      "link": "https://www.schneier.com/blog/archives/2026/02/microsoft-is-giving-the-fbi-bitlocker-keys.html",
+      "description": "<p>Microsoft <a href=\"https://www.forbes.com/sites/thomasbrewster/2026/01/22/microsoft-gave-fbi-keys-to-unlock-bitlocker-encrypted-data/\">gives</a> the FBI the ability to decrypt BitLocker in response to court orders: about twenty times per year.</p>\n<blockquote><p>It&#8217;s possible for users to store those keys on a device they own, but Microsoft also recommends BitLocker users store their keys on its servers for convenience. While that means someone can access their data if they forget their password, or if repeated failed attempts to login lock the device, it also makes them vulnerable to law enforcement subpoenas and warrants.</p></blockquote>\n",
+      "date": "2026-02-02T17:08:53Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "AI Coding Assistants Secretly Copying All Code to China",
+      "link": "https://www.schneier.com/blog/archives/2026/02/ai-coding-assistants-secretly-copying-all-code-to-china.html",
+      "description": "<p>There&#8217;s a <a href=\"https://www.koi.ai/blog/maliciouscorgi-the-cute-looking-ai-extensions-leaking-code-from-1-5-million-developers\">new report</a> about two AI coding assistants, used by 1.5 million developers, that are surreptitiously sending a copy of everything they ingest to China.</p>\n<p>Maybe avoid using them.</p>\n",
+      "date": "2026-01-30T15:38:11Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "Friday Squid Blogging: New Squid Species Discovered",
+      "link": "https://www.schneier.com/blog/archives/2026/01/friday-squid-blogging-new-squid-species-discovered.html",
+      "description": "<p>A <a href=\"https://www.livescience.com/animals/mollusks/very-novel-and-very-puzzling-unknown-species-of-squid-spotted-burying-itself-upside-down-pretending-to-be-a-plant\">new species of squid</a>. pretends to be a plant:</p>\n<blockquote><p>Scientists have filmed a never-before-seen species of deep-sea squid burying itself upside down in the seafloor&#8212;a behavior never documented in cephalopods. They captured the bizarre scene while studying the depths of the Clarion-Clipperton Zone (CCZ), an abyssal plain in the Pacific Ocean targeted for deep-sea mining.</p>\n<p>The team described the encounter in a study published Nov. 25 in the journal <a href=\"https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecy.70257\"><i>Ecology</i></a>, writing that the animal appears to be an undescribed species of whiplash squid. At a depth of roughly 13,450 feet (4,100 meters), the squid had buried almost its entire body in sediment and was hanging upside down, with its siphon and two long ...</p></blockquote>",
+      "date": "2026-01-22T20:09:13Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "AIs Are Getting Better at Finding and Exploiting Security Vulnerabilities",
+      "link": "https://www.schneier.com/blog/archives/2026/01/ais-are-getting-better-at-finding-and-exploiting-security-vulnerabilities.html",
+      "description": "<p>From an Anthropic <a href=\"https://red.anthropic.com/2026/cyber-toolkits-update/\">blog post</a>:</p>\n<blockquote><p>In a recent evaluation of AI models\u2019 cyber capabilities, current Claude models can now succeed at multistage attacks on networks with dozens of hosts using only standard, open-source tools, instead of the custom tools needed by previous generations. This illustrates how barriers to the use of AI in relatively autonomous cyber workflows are rapidly coming down, and highlights the importance of security fundamentals like promptly patching known vulnerabilities.</p>\n<p>[\u2026]</p>\n<p>A notable development during the testing of Claude Sonnet 4.5 is that the model can now succeed on a minority of the networks without the custom cyber toolkit needed by previous generations. In particular, Sonnet 4.5 can now exfiltrate all of the (simulated) personal information in a high-fidelity simulation of the Equifax data breach&#8212;one of the costliest cyber attacks in history\u00ad\u00adusing only a Bash shell on a widely-available Kali Linux host (standard, open-source tools for penetration testing; not a custom toolkit). Sonnet 4.5 accomplishes this by instantly recognizing a publicized CVE and writing code to exploit it without needing to look it up or iterate on it. Recalling that the original Equifax breach happened by exploiting a publicized CVE that had not yet been patched, the prospect of highly competent and fast AI agents leveraging this approach underscores the pressing need for security best practices like prompt updates and patches...</p></blockquote>",
+      "date": "2026-01-30T15:35:15Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "The Constitutionality of Geofence Warrants",
+      "link": "https://www.schneier.com/blog/archives/2026/01/the-constitutionality-of-geofence-warrants.html",
+      "description": "<p>The US Supreme Court is <a href=\"https://therecord.media/supreme-court-geofence-constitutionality\">considering</a> the constitutionality of geofence warrants.</p>\n<blockquote><p>The case centers on the trial of Okello Chatrie, a Virginia man who pleaded guilty to a 2019 robbery outside of Richmond and was sentenced to almost 12 years in prison for stealing $195,000 at gunpoint.</p>\n<p>Police probing the crime found security camera footage showing a man on a cell phone near the credit union that was robbed and asked Google to produce anonymized location data near the robbery site so they could determine who committed the crime. They did so, providing police with subscriber data for three people, one of whom was Chatrie. Police then searched Chatrie&#8217;s home and allegedly surfaced a gun, almost $100,000 in cash and incriminating notes...</p></blockquote>",
+      "date": "2026-01-26T17:22:14Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "Safeguarding and Securing Cyberspace",
+      "link": "https://www.cisa.gov/news-events/news/safeguarding-and-securing-cyberspace",
+      "description": "",
+      "date": "Wed, 20 Jul 11 12:00:00 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://www.cisa.gov/news.xml"
+    },
+    {
+      "title": "DHS Holds Classified Briefing for Private Sector Election Companies",
+      "link": "https://www.cisa.gov/news-events/news/dhs-holds-classified-briefing-private-sector-election-companies",
+      "description": "Senior officials from the U.S. Department of Homeland Security (DHS) met today with members of the Sector Coordinating Council (SCC) for the Election Infrastructure Subsector and conducted a classified briefing on the current cyber threat landscape for the election community.&nbsp;",
+      "date": "Tue, 02 Oct 18 12:00:00 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://www.cisa.gov/news.xml"
+    },
+    {
+      "title": "DHS and Private Sector Partners Establish Information and Communications Technology Supply Chain Risk Management Task Force",
+      "link": "https://www.cisa.gov/news-events/news/dhs-and-private-sector-partners-establish-information-and-communications",
+      "description": "The U.S. Department of Homeland Security (DHS) announced today the formation and chartering of the nation\u2019s first Information and Communications Technology (ICT) Supply Chain Risk Management Task Force, a public-private partnership to examine and develop consensus recommendations to identify and manage risk to the global ICT supply chain.&nbsp;",
+      "date": "Tue, 30 Oct 18 12:00:00 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://www.cisa.gov/news.xml"
+    },
+    {
+      "title": "DHS Announces ICT Supply Chain Risk Management Task Force Members",
+      "link": "https://www.cisa.gov/news-events/news/dhs-announces-ict-supply-chain-risk-management-task-force-members",
+      "description": "The Department of Homeland Security (DHS) hosted the inaugural meeting of the nation\u2019s first Information and Communications Technology (ICT) Supply Chain Risk Management Task Force. The task force is a public-private partnership formed to examine and develop consensus recommendations to identify and manage risk to the global ICT supply chain.",
+      "date": "Thu, 15 Nov 18 12:00:00 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://www.cisa.gov/news.xml"
+    },
+    {
+      "title": "Statement from CISA Director Krebs on Election Security",
+      "link": "https://www.cisa.gov/news-events/news/statement-cisa-director-krebs-election-security",
+      "description": "Cybersecurity and Infrastructure Security Agency (CISA) Director Christopher C. Krebs released the following statement today on the agency\u2019s election security work.",
+      "date": "Thu, 14 Feb 19 12:00:00 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://www.cisa.gov/news.xml"
+    },
+    {
+      "title": "CISA\u2019s ICT Supply Chain Risk Management Task Force Launches Work Streams",
+      "link": "https://www.cisa.gov/news-events/news/cisas-ict-supply-chain-risk-management-task-force-launches-work-streams",
+      "description": "WASHINGTON \u2013 The Cybersecurity and Infrastructure Security Agency (CISA) and government and industry members of the Information and Communications Technology (ICT) Supply Chain Risk Management Task Force gathered in Washington this week and last week as part of the Task Force\u2019s o",
+      "date": "Tue, 26 Feb 19 12:00:00 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://www.cisa.gov/news.xml"
+    },
+    {
+      "title": "CISA Partners with Secure Community Network to Hold Incident Response Exercise",
+      "link": "https://www.cisa.gov/news-events/news/cisa-partners-secure-community-network-hold-incident-response-exercise",
+      "description": "WASHINGTON \u2013 Yesterday, the Cybersecurity and Infrastructure Security Agency (CISA) hosted a tabletop exercise in collaboration with the Secure Community Network (SCN). The exercise brought together Jewish community leaders from across the nation, along with federal and state law enforcement and interagency partners to examine how they would act in a notional event focused on threats of violence including scenarios based on current events.",
+      "date": "Wed, 10 Apr 19 12:00:00 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://www.cisa.gov/news.xml"
+    },
+    {
+      "title": "CISA Releases National Critical Functions Set",
+      "link": "https://www.cisa.gov/news-events/news/cisa-releases-national-critical-functions-set",
+      "description": "The Department of Homeland Security\u2019s Cybersecurity and Infrastructure Security Agency (CISA) today released the inaugural set of National Critical Functions. &nbsp;These are functions used or supported by government and the private sector that are of such vital importance to the United States that their disruption, corruption, or dysfunction would have a debilitating effect on security, national economic security, national public health or safety, or any combination thereof.",
+      "date": "Tue, 30 Apr 19 12:00:00 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://www.cisa.gov/news.xml"
+    },
+    {
+      "title": "CISA\u2019s ICT Supply Chain Risk Management Task Force Makes Key Acquisition Recommendation",
+      "link": "https://www.cisa.gov/news-events/news/cisas-ict-supply-chain-risk-management-task-force-makes-key-acquisition",
+      "description": "The Cybersecurity and Infrastructure Security Agency (CISA) and government and industry members of the Information and Communications Technology (ICT) Supply Chain Risk Management Task Force gathered in Washington, D.C. today to update members on progress towards the development of an initial recommendation to help industry and government stakeholders more effectively identify and manage risks to global ICT supply chains.&nbsp;",
+      "date": "Thu, 20 Jun 19 12:00:00 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://www.cisa.gov/news.xml"
+    },
+    {
+      "title": "CISA Statement on Iranian Cybersecurity Threats",
+      "link": "https://www.cisa.gov/news-events/news/cisa-statement-iranian-cybersecurity-threats",
+      "description": "In response to reports of an increase in cybersecurity threats, the Department of Homeland Security\u2019s (DHS) Cybersecurity and Infrastructure Security Agency (CISA) Director Christopher C. Krebs issued the following statement:\u201cCISA is aware of a recent rise in malicious cyber activity directed at United States industries and government agencies by Iranian regime actors and proxies. We will continue to work with our intelligence community and cybersecurity partners to monitor Iranian cyber activity, share information, and take steps to keep America and our allies safe.",
+      "date": "Sat, 22 Jun 19 12:00:00 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://www.cisa.gov/news.xml"
+    },
+    {
+      "title": "I\u2019m Ross McKerchar, CISO at Sophos: AMA on tackling the issue of detecting fraudulent remote IT hires and building workable controls.",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qwmswn/im_ross_mckerchar_ciso_at_sophos_ama_on_tackling/",
+      "description": "",
+      "date": "2026-02-05T14:31:49+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "Mentorship Monday - Post All Career, Education and Job questions here!",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qtf7kz/mentorship_monday_post_all_career_education_and/",
+      "description": "",
+      "date": "2026-02-02T00:00:21+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "Shift burnout is real",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qyhkkz/shift_burnout_is_real/",
+      "description": "",
+      "date": "2026-02-07T16:04:01+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "For those who\u2019ve landed jobs in cybersecurity, what made you stand out to get hired?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qy8rg1/for_those_whove_landed_jobs_in_cybersecurity_what/",
+      "description": "",
+      "date": "2026-02-07T08:42:33+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "I\u2019m looking for recommendations on a cheap but solid endpoint security solution for individual users and very small businesses (1\u201310 employees).",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qydx10/im_looking_for_recommendations_on_a_cheap_but/",
+      "description": "",
+      "date": "2026-02-07T13:33:22+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "Claude Opus Finds more than 500 High Severity Vulnerabilities in OpenSource Codebases",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qykqeh/claude_opus_finds_more_than_500_high_severity/",
+      "description": "",
+      "date": "2026-02-07T18:04:23+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "What was the \"smoking gun\" that led you to discover a major breach that everyone else had missed?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qy5rss/what_was_the_smoking_gun_that_led_you_to_discover/",
+      "description": "",
+      "date": "2026-02-07T05:50:27+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "OpenClaw Detection?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qyh6ct/openclaw_detection/",
+      "description": "",
+      "date": "2026-02-07T15:48:47+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "In today's episode of \"AI will make tech people unemployed by the end of 2025\": The most downloaded Clawdbot/OpenClaw skill is AmosStealer macOS malware",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qxny34/in_todays_episode_of_ai_will_make_tech_people/",
+      "description": "",
+      "date": "2026-02-06T17:27:32+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "Interview question to bring devs on board",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qyimj1/interview_question_to_bring_devs_on_board/",
+      "description": "",
+      "date": "2026-02-07T16:44:52+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "Help us build the SCA FAQ",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/ay7ugv/help_us_build_the_sca_faq/",
+      "description": "",
+      "date": "2019-03-07T03:12:56+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "Certs, Degrees, and Experience: A (hopefully) useful guide to common questions",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/b9r05z/certs_degrees_and_experience_a_hopefully_useful/",
+      "description": "",
+      "date": "2019-04-05T13:08:41+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "Pen testing internship Microsoft",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qyknu6/pen_testing_internship_microsoft/",
+      "description": "",
+      "date": "2026-02-07T18:01:48+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "Need Career Advice: PwC vs Deloitte... Money vs Role vs Work-Life Balance?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qyeusn/need_career_advice_pwc_vs_deloitte_money_vs_role/",
+      "description": "",
+      "date": "2026-02-07T14:14:43+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "Early-Career SOC Analyst Seeking Advice on Pentesting Certifications",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qyilao/earlycareer_soc_analyst_seeking_advice_on/",
+      "description": "",
+      "date": "2026-02-07T16:43:33+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "I\u2019m looking for recommendations on a cheap but solid endpoint security solution for individual users and very small businesses (1\u201310 employees).",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qye18g/im_looking_for_recommendations_on_a_cheap_but/",
+      "description": "",
+      "date": "2026-02-07T13:38:36+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "Need some advice to build cybersecurity carrier",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qycwz0/need_some_advice_to_build_cybersecurity_carrier/",
+      "description": "",
+      "date": "2026-02-07T12:46:34+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "Struggling to break in after 5+ years of IT",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qy4dk7/struggling_to_break_in_after_5_years_of_it/",
+      "description": "",
+      "date": "2026-02-07T04:38:55+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "CV Review \u2013 Cybersecurity / SOC / Security Analyst (3+ years Tech exp) \u2013 looking for honest feedback",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qxrrf5/cv_review_cybersecurity_soc_security_analyst_3/",
+      "description": "",
+      "date": "2026-02-06T19:44:37+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "Getting more and more confused",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qxvsdx/getting_more_and_more_confused/",
+      "description": "",
+      "date": "2026-02-06T22:18:51+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    }
+  ],
+  "trending": [
+    [
+      "AI",
+      30
+    ],
+    [
+      "OT",
+      24
+    ],
+    [
+      "government",
+      8
+    ],
+    [
+      "supply chain",
+      6
+    ],
+    [
+      "SOC",
+      5
+    ],
+    [
+      "breach",
+      4
+    ],
+    [
+      "phishing",
+      2
+    ],
+    [
+      "cloud",
+      2
+    ],
+    [
+      "vulnerability",
+      2
+    ],
+    [
+      "certification",
+      2
+    ]
+  ],
+  "fetch_date": "February 2026"
 }
