@@ -112,10 +112,10 @@ def fetch_rss_feed(url, timeout=10):
                     pub_date = item.find('{http://www.w3.org/2005/Atom}updated')
                 
                 items.append({
-                    'title': title.text if title is not None else '',
-                    'link': link_url,
-                    'description': desc.text if desc is not None else '',
-                    'date': pub_date.text if pub_date is not None else ''
+                    'title': (title.text if title is not None else '') or '',
+                    'link': link_url or '',
+                    'description': (desc.text if desc is not None else '') or '',
+                    'date': (pub_date.text if pub_date is not None else '') or ''
                 })
             
             return items[:10]  # Return top 10 items
@@ -152,7 +152,7 @@ def extract_trending_topics(news_items):
     ]
     
     for item in news_items:
-        title = (item.get('title', '') + ' ' + item.get('description', '')).lower()
+        title = ((item.get('title') or '') + ' ' + (item.get('description') or '')).lower()
         for keyword in trending_keywords:
             if keyword.lower() in title:
                 keyword_counts[keyword] = keyword_counts.get(keyword, 0) + 1
@@ -511,7 +511,7 @@ def select_dynamic_topic(state, live_data):
             "keyword": trend_keyword,
             "count": trend_count,
             "related_news": [n for n in news if trend_keyword.lower() in 
-                           (n.get('title', '') + n.get('description', '')).lower()][:3]
+                           ((n.get('title') or '') + (n.get('description') or '')).lower()][:3]
         }
     }
 
