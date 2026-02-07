@@ -90,12 +90,76 @@ Want me to build that for you? If so, can you upload your current Blog.html so I
         .footer-copy{font-size:0.85rem;color:var(--text-muted)}
         .footer-links{display:flex;gap:2rem}
         .footer-links a{font-size:0.85rem;color:var(--text-secondary)}
-        @media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:768px){.nav{display:none}.hero-title{font-size:2.5rem}.filters-inner{flex-direction:column;align-items:flex-start}.stat-val{font-size:2rem}.footer-inner{flex-direction:column;text-align:center}}
+        /* Hamburger menu button */
+        .hamburger{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;z-index:1001;flex-direction:column;gap:5px}
+        .hamburger span{display:block;width:24px;height:2px;background:var(--text-primary);border-radius:2px;transition:all 0.3s}
+        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+        .hamburger.active span:nth-child(2){opacity:0}
+        .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+        /* Tablet */
+        @media(max-width:1024px){
+            .stats-grid{grid-template-columns:repeat(2,1fr)}
+            .hero-title{font-size:3rem}
+            .main{padding:1.5rem}
+        }
+
+        /* Mobile */
+        @media(max-width:768px){
+            .hamburger{display:flex}
+            .nav{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:var(--bg-dark);flex-direction:column;align-items:stretch;padding:1rem 0;gap:0;overflow-y:auto;border-top:1px solid var(--border-dark);z-index:999}
+            .nav.open{display:flex}
+            .nav a{padding:1rem 2rem;font-size:1rem;border-bottom:1px solid var(--border-dark)}
+            .nav a:active{background:var(--bg-elevated)}
+            .nav .nav-cta{margin:1rem 2rem;text-align:center;border-radius:4px;border-bottom:none}
+            .hero{padding:2.5rem 1.25rem}
+            .hero-inner{flex-direction:column;gap:1.5rem}
+            .hero-badge{width:130px;height:130px}
+            .hero-content{text-align:center}
+            .hero-title{font-size:2.2rem}
+            .hero-subtitle{font-size:1rem;margin:0 auto 1.25rem}
+            .hero-live{font-size:0.8rem;padding:0.5rem 1.25rem}
+            .ticker{height:36px}
+            .ticker-text{font-size:0.78rem}
+            .ticker-badge{font-size:0.6rem}
+            .filters{padding:1rem 1.25rem}
+            .filters-inner{flex-direction:column;align-items:stretch;gap:0.75rem}
+            .filter-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem}
+            .filter-btn{padding:0.6rem 0.5rem;font-size:0.75rem;text-align:center;min-height:44px;display:flex;align-items:center;justify-content:center}
+            .filter-meta{justify-content:space-between}
+            .refresh-btn{min-height:44px}
+            .main{padding:1.25rem}
+            .source-legend{gap:0.75rem 1.25rem;margin-bottom:1rem}
+            .source-item{font-size:0.75rem}
+            .card-body{padding:1.25rem}
+            .card-title{font-size:1.1rem}
+            .card-excerpt{font-size:0.9rem}
+            .card-foot{flex-direction:column;align-items:flex-start;gap:0.75rem}
+            .more{min-height:44px;display:flex;align-items:center}
+            .tags{flex-wrap:wrap}
+            .stats{padding:1.25rem;margin-top:1.5rem}
+            .stats-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem}
+            .stat-val{font-size:1.8rem}
+            .stat-lbl{font-size:0.78rem}
+            .footer{padding:1.5rem 1.25rem;margin-top:2rem}
+            .footer-inner{flex-direction:column;text-align:center;gap:1rem}
+            .footer-links{justify-content:center;gap:1.5rem}
+            .footer-links a{min-height:44px;display:inline-flex;align-items:center}
+        }
+
+        /* Small phones */
+        @media(max-width:400px){
+            .hero-title{font-size:1.8rem}
+            .hero-badge{width:110px;height:110px}
+            .filter-buttons{grid-template-columns:repeat(2,1fr)}
+            .stats-grid{grid-template-columns:1fr}
+            .header-inner{padding:0 1rem}
+            .card-meta{flex-wrap:wrap;gap:0.5rem}
+        }
     </style>
 </head>
 <body>
-    <header class="header"><div class="header-inner"><a href="https://tacraven.com/" class="logo">TAC<span>RAVEN</span></a><nav class="nav"><a href="https://tacraven.com/">Home</a><a href="https://tacraven.com/learning-hub/">Learning Hub</a><a href="https://tacraven.com/tools/">Tools</a><a href="https://tacraven.com/threat-map/">Threat Map</a><a href="https://tacraven.com/weekly-reports/">Weekly Reports</a><a href="https://tacraven.com/about/">About</a><a href="https://tacraven.com/pricing/">Pricing</a><a href="/blog/" class="active">Careers</a><a href="https://tacraven.com/contact/" class="nav-cta">Contact</a></nav></div></header>
+    <header class="header"><div class="header-inner"><a href="https://tacraven.com/" class="logo">TAC<span>RAVEN</span></a><button class="hamburger" id="menuToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button><nav class="nav" id="mainNav"><a href="https://tacraven.com/">Home</a><a href="https://tacraven.com/learning-hub/">Learning Hub</a><a href="https://tacraven.com/tools/">Tools</a><a href="https://tacraven.com/threat-map/">Threat Map</a><a href="https://tacraven.com/weekly-reports/">Weekly Reports</a><a href="https://tacraven.com/about/">About</a><a href="https://tacraven.com/pricing/">Pricing</a><a href="/blog/" class="active">Careers</a><a href="https://tacraven.com/contact/" class="nav-cta">Contact</a></nav></div></header>
     
     <div class="ticker"><div class="ticker-inner">
         <div class="ticker-item"><span class="ticker-badge featured">Featured</span><span class="ticker-text"><strong>3.5M unfilled cybersecurity jobs</strong> — Industry faces critical talent shortage</span></div>
@@ -125,6 +189,28 @@ Want me to build that for you? If so, can you upload your current Blog.html so I
     </main>
     
     <footer class="footer"><div class="footer-inner"><p class="footer-copy">© 2025 TacRaven Solutions LLC. All rights reserved.</p><nav class="footer-links"><a href="https://tacraven.com/">Main Site</a><a href="https://tacraven.com/privacy/">Privacy</a><a href="https://tacraven.com/contact/">Contact</a></nav></div></footer>
+
+    <script>
+    // Mobile hamburger menu
+    document.addEventListener("DOMContentLoaded", function(){
+        var toggle = document.getElementById("menuToggle");
+        var nav = document.getElementById("mainNav");
+        if(toggle && nav){
+            toggle.addEventListener("click", function(){
+                toggle.classList.toggle("active");
+                nav.classList.toggle("open");
+                document.body.style.overflow = nav.classList.contains("open") ? "hidden" : "";
+            });
+            nav.querySelectorAll("a").forEach(function(link){
+                link.addEventListener("click", function(){
+                    toggle.classList.remove("active");
+                    nav.classList.remove("open");
+                    document.body.style.overflow = "";
+                });
+            });
+        }
+    });
+    </script>
 
     <script>
     (function() {
