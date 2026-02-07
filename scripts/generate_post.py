@@ -125,8 +125,8 @@ def get_template():
         
         /* Stats Strip */
         .stats-strip{background:var(--bg-card);border-top:1px solid var(--border-dark);border-bottom:1px solid var(--border-dark);padding:1.5rem 2rem}
-        .stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
-        .stat{text-align:center;position:relative}
+        .stats-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:2rem}
+        .stat{text-align:center;position:relative;flex:0 1 200px}
         .stat:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:60%;background:var(--border-dark)}
         .stat-value{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--gold);line-height:1}
         .stat-label{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.25rem}
@@ -209,7 +209,7 @@ def get_template():
         
         /* Responsive */
         @media(max-width:900px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-badge-img{width:180px;height:180px;margin:0 auto}.hero-content{order:2}}
-        @media(max-width:768px){.nav{display:none}.hero-title{font-size:2.25rem}.stats-inner{grid-template-columns:repeat(2,1fr);gap:1.5rem}.stat:not(:last-child)::after{display:none}.card-grid{grid-template-columns:1fr}.author-box{flex-direction:column;text-align:center}.footer-inner{flex-direction:column;text-align:center}}
+        @media(max-width:768px){.nav{display:none}.hero-title{font-size:2.25rem}.stat:not(:last-child)::after{display:none}.card-grid{grid-template-columns:1fr}.author-box{flex-direction:column;text-align:center}.footer-inner{flex-direction:column;text-align:center}}
     </style>
 </head>
 <body>
@@ -462,8 +462,7 @@ class BlogPostGenerator:
             stats = [
                 ("3.5M", "Unfilled Jobs"),
                 ("33%", "Job Growth"),
-                ("$124K", "Median Salary"),
-                ("~0%", "Unemployment")
+                ("$124K", "Median Salary")
             ]
         stats_html = generate_stats_html(stats)
         
