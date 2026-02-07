@@ -1,6 +1,6 @@
 {
-  "generated": "2026-02-07T22:56:27.056695",
-  "count": 3,
+  "generated": "2026-02-07T23:24:30.447225",
+  "count": 4,
   "posts": [
     {
       "title": "Security Job Market: February 2026 Update",
@@ -37,6 +37,24 @@
       "filepath": "posts/2026/02/is-comptia-security-worth-it.html",
       "slug": "is-comptia-security-worth-it",
       "read_time": 12,
+      "featured": false
+    },
+    {
+      "title": "Entry-Level Cybersecurity Salaries",
+      "excerpt": "What to expect in your first role.",
+      "date": "2026-02-07",
+      "category": "Salaries",
+      "category_slug": "salaries",
+      "category_css": "sal",
+      "tags": [
+        "Salaries",
+        "Cybersecurity",
+        "Career",
+        "salary_data"
+      ],
+      "filepath": "posts/2026/02/entry-level-cybersecurity-salaries.html",
+      "slug": "entry-level-cybersecurity-salaries",
+      "read_time": 11,
       "featured": false
     },
     {
