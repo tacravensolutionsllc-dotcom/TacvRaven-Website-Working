@@ -2184,6 +2184,211 @@
         }
 
         /* ========================================
+           BLOG CALLOUT SECTION
+           ======================================== */
+        .blog-callout {
+            background: linear-gradient(135deg, var(--black) 0%, rgba(212, 160, 18, 0.04) 50%, var(--black) 100%);
+            border-top: 1px solid rgba(212, 160, 18, 0.1);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.1);
+            padding: 80px 0;
+        }
+
+        .blog-callout-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .blog-callout-text .section-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .blog-callout-text .section-label::before {
+            display: none;
+        }
+
+        .blog-callout-text p {
+            color: var(--gray-300);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn-blog {
+            position: relative;
+            background: linear-gradient(135deg, rgba(212, 160, 18, 0.9) 0%, rgba(180, 130, 10, 1) 50%, rgba(212, 160, 18, 0.9) 100%);
+            background-size: 200% 200%;
+            animation: blogGradient 3s ease infinite;
+            color: var(--black);
+            border: 1px solid rgba(212, 160, 18, 0.5);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+            overflow: hidden;
+            text-shadow: none;
+            font-weight: 700;
+        }
+
+        .btn-blog::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .btn-blog:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow:
+                0 10px 40px rgba(212, 160, 18, 0.4),
+                0 0 30px rgba(212, 160, 18, 0.2);
+            border-color: var(--gold-light);
+            color: var(--black);
+        }
+
+        .btn-blog svg {
+            animation: arrowPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blogGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .blog-preview {
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .blog-preview-header {
+            background: rgba(212, 160, 18, 0.1);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+        }
+
+        .blog-preview-items {
+            padding: 20px;
+        }
+
+        .blog-preview-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            animation: fadeInLine 0.5s ease-out;
+        }
+
+        .blog-preview-item:last-child {
+            border-bottom: none;
+        }
+
+        .blog-preview-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .blog-preview-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .blog-preview-icon.cert {
+            background: rgba(243, 156, 18, 0.15);
+            color: #F39C12;
+        }
+
+        .blog-preview-icon.career {
+            background: rgba(52, 152, 219, 0.15);
+            color: #3498DB;
+        }
+
+        .blog-preview-icon.salary {
+            background: rgba(46, 204, 113, 0.15);
+            color: #2ECC71;
+        }
+
+        .blog-preview-icon.skills {
+            background: rgba(155, 89, 182, 0.15);
+            color: #9B59B6;
+        }
+
+        .blog-preview-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .blog-preview-meta {
+            font-size: 12px;
+            color: var(--gray-500);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .blog-preview-tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .blog-preview-tag.cert {
+            background: rgba(243, 156, 18, 0.1);
+            color: #F39C12;
+        }
+
+        .blog-preview-tag.career {
+            background: rgba(52, 152, 219, 0.1);
+            color: #3498DB;
+        }
+
+        .blog-preview-tag.salary {
+            background: rgba(46, 204, 113, 0.1);
+            color: #2ECC71;
+        }
+
+        .blog-preview-tag.skills {
+            background: rgba(155, 89, 182, 0.1);
+            color: #9B59B6;
+        }
+
+        @media (max-width: 900px) {
+            .blog-callout-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .blog-callout-visual {
+                order: -1;
+            }
+        }
+
+        /* ========================================
            FAQ SECTION
            ======================================== */
         .faq {
@@ -3057,6 +3262,76 @@
                         <div class="diff-code-line">
                             <span class="line-num">9</span>
                             <span class="comment"># That's it. You're done.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Callout -->
+    <section class="section blog-callout">
+        <div class="grid-bg"></div>
+        <div class="container">
+            <div class="blog-callout-content">
+                <div class="blog-callout-text">
+                    <div class="section-label">
+                        <span class="pulse-dot"></span>
+                        Careers &amp; Certifications
+                    </div>
+                    <h2 class="section-title">Cybersecurity Careers Blog</h2>
+                    <p>Breaking into cybersecurity or leveling up your career? Our blog covers certifications, salary insights, career paths, and job market trends — written by analysts who've been in the trenches.</p>
+                    <a href="/blog/" class="btn btn-blog">
+                        Read the Blog
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="blog-callout-visual">
+                    <div class="blog-preview">
+                        <div class="blog-preview-header">
+                            <span class="pulse-dot"></span>
+                            <span>LATEST ARTICLES</span>
+                        </div>
+                        <div class="blog-preview-items">
+                            <div class="blog-preview-item">
+                                <div class="blog-preview-icon cert">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                </div>
+                                <div>
+                                    <div class="blog-preview-title">Security+ SY0-701: Complete Certification Guide</div>
+                                    <div class="blog-preview-meta"><span class="blog-preview-tag cert">Certifications</span> 8 min read</div>
+                                </div>
+                            </div>
+                            <div class="blog-preview-item">
+                                <div class="blog-preview-icon salary">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                                </div>
+                                <div>
+                                    <div class="blog-preview-title">Cybersecurity Salary Guide: What to Expect in 2025</div>
+                                    <div class="blog-preview-meta"><span class="blog-preview-tag salary">Salaries</span> 6 min read</div>
+                                </div>
+                            </div>
+                            <div class="blog-preview-item">
+                                <div class="blog-preview-icon career">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                </div>
+                                <div>
+                                    <div class="blog-preview-title">SOC Analyst to CISO: Mapping Your Career Path</div>
+                                    <div class="blog-preview-meta"><span class="blog-preview-tag career">Career Paths</span> 10 min read</div>
+                                </div>
+                            </div>
+                            <div class="blog-preview-item">
+                                <div class="blog-preview-icon skills">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                </div>
+                                <div>
+                                    <div class="blog-preview-title">Top 10 Skills Every Cyber Analyst Needs in 2025</div>
+                                    <div class="blog-preview-meta"><span class="blog-preview-tag skills">Skills</span> 7 min read</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
