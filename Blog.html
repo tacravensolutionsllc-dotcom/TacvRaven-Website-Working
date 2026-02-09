@@ -13,10 +13,7 @@
         html{font-size:16px}body{font-family:var(--font-body);background:var(--bg-darkest);color:var(--text-primary);line-height:1.6;min-height:100vh}
         a{color:var(--gold);text-decoration:none}a:hover{color:var(--gold-light)}
         .header{background:var(--bg-dark);border-bottom:1px solid var(--border-dark);height:70px;position:sticky;top:0;z-index:1000}
-        .header-inner{max-width:1400px;margin:0 auto;paddBlog.html uses JavaScript to dynamically load posts
-Have Blog.html scan a posts/index.json manifest file at page load, and have the workflow update that JSON file each time a post is created.
-Either way, something needs to bridge the gap between "post file exists in posts/" and "Blog.html links to it."
-Want me to build that for you? If so, can you upload your current Blog.html so I can match its style and structure?ing:0 2rem;height:100%;display:flex;justify-content:space-between;align-items:center}
+        .header-inner{max-width:1400px;margin:0 auto;padding:0 2rem;height:100%;display:flex;justify-content:space-between;align-items:center}
         .logo{font-family:var(--font-display);font-size:1.5rem;font-weight:600;letter-spacing:0.05em;color:var(--text-primary)}
         .logo span{color:var(--gold)}
         .nav{display:flex;align-items:center;gap:2rem}
@@ -159,7 +156,7 @@ Want me to build that for you? If so, can you upload your current Blog.html so I
     </style>
 </head>
 <body>
-    <header class="header"><div class="header-inner"><a href="https://tacraven.com/" class="logo">TAC<span>RAVEN</span></a><button class="hamburger" id="menuToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button><nav class="nav" id="mainNav"><a href="https://tacraven.com/">Home</a><a href="https://tacraven.com/learning-hub/">Learning Hub</a><a href="https://tacraven.com/tools/">Tools</a><a href="https://tacraven.com/threat-map/">Threat Map</a><a href="https://tacraven.com/weekly-reports/">Weekly Reports</a><a href="https://tacraven.com/about/">About</a><a href="https://tacraven.com/pricing/">Pricing</a><a href="/blog/" class="active">Careers</a><a href="https://tacraven.com/contact/" class="nav-cta">Contact</a></nav></div></header>
+    <header class="header"><div class="header-inner"><a href="https://tacraven.com/" class="logo">TAC<span>RAVEN</span></a><button class="hamburger" id="menuToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button><nav class="nav" id="mainNav"><a href="https://tacraven.com/">Home</a><a href="https://tacraven.com/learning-hub.html">Learning Hub</a><a href="https://tacraven.com/tools.html">Tools</a><a href="https://tacraven.com/threat-map.html">Threat Map</a><a href="/intel/weekly/">Weekly Reports</a><a href="https://tacraven.com/about.html">About</a><a href="https://tacraven.com/pricing.html">Pricing</a><a href="https://tacraven.com/cyber-news.html">News</a><a href="https://tacraven.com/#contact" class="nav-cta">Contact</a></nav></div></header>
     
     <div class="ticker"><div class="ticker-inner">
         <div class="ticker-item"><span class="ticker-badge featured">Featured</span><span class="ticker-text"><strong>3.5M unfilled cybersecurity jobs</strong> — Industry faces critical talent shortage</span></div>
