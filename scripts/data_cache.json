@@ -1,6 +1,30 @@
 {
-  "timestamp": "2026-02-07T19:14:54.582186",
+  "timestamp": "2026-02-09T10:02:10.080542",
   "news": [
+    {
+      "title": "TeamPCP Worm Exploits Cloud Infrastructure to Build Criminal Infrastructure",
+      "link": "https://thehackernews.com/2026/02/teampcp-worm-exploits-cloud.html",
+      "description": "Cybersecurity researchers have called attention to a \"massive campaign\" that has systematically targeted cloud native environments to set up malicious infrastructure for follow-on exploitation.\nThe activity, observed around December 25, 2025, and described as \"worm-driven,\" leveraged exposed Docker APIs, Kubernetes clusters, Ray dashboards, and Redis servers, along with the recently disclosed",
+      "date": "Mon, 09 Feb 2026 14:07:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "BeyondTrust Fixes Critical Pre-Auth RCE Vulnerability in Remote Support and PRA",
+      "link": "https://thehackernews.com/2026/02/beyondtrust-fixes-critical-pre-auth-rce.html",
+      "description": "BeyondTrust has released updates to address a critical security flaw impacting Remote Support (RS) and Privileged Remote Access (PRA) products that, if successfully exploited, could result in remote code execution.\n\"BeyondTrust Remote Support (RS) and certain older versions of Privileged Remote Access (PRA) contain a critical pre-authentication remote code execution vulnerability,\" the company",
+      "date": "Mon, 09 Feb 2026 13:33:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "OpenClaw Integrates VirusTotal Scanning to Detect Malicious ClawHub Skills",
+      "link": "https://thehackernews.com/2026/02/openclaw-integrates-virustotal-scanning.html",
+      "description": "OpenClaw (formerly Moltbot and Clawdbot) has announced that it's partnering with Google-owned VirusTotal to scan skills that are being uploaded to ClawHub, its skill marketplace, as part of broader efforts to bolster the security of the agentic ecosystem.\n\"All skills published to ClawHub are now scanned using VirusTotal's threat intelligence, including their new Code Insight capability,\"",
+      "date": "Sun, 08 Feb 2026 13:02:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
     {
       "title": "German Agencies Warn of Signal Phishing Targeting Politicians, Military, Journalists",
       "link": "https://thehackernews.com/2026/02/german-agencies-warn-of-signal-phishing.html",
@@ -54,30 +78,6 @@
       "link": "https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html",
       "description": "Artificial intelligence (AI) company Anthropic revealed that its latest large language model (LLM), Claude Opus 4.6, has found more than 500 previously unknown high-severity security flaws in open-source libraries, including Ghostscript, OpenSC, and CGIF.\nClaude Opus 4.6, which was launched Thursday, comes with improved coding skills, including code review and debugging capabilities, along with",
       "date": "Fri, 06 Feb 2026 11:19:00 +0530",
-      "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
-    },
-    {
-      "title": "AISURU/Kimwolf Botnet Launches Record-Setting 31.4 Tbps DDoS Attack",
-      "link": "https://thehackernews.com/2026/02/aisurukimwolf-botnet-launches-record.html",
-      "description": "The distributed denial-of-service (DDoS) botnet known as AISURU/Kimwolf has been attributed to a record-setting attack that peaked at 31.4 Terabits per second (Tbps) and lasted only 35 seconds.\nCloudflare, which automatically detected and mitigated the activity, said it's part of a growing number of hyper-volumetric HTTP DDoS attacks mounted by the botnet in the fourth quarter of 2025. The",
-      "date": "Thu, 05 Feb 2026 22:55:00 +0530",
-      "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
-    },
-    {
-      "title": "ThreatsDay Bulletin: Codespaces RCE, AsyncRAT C2, BYOVD Abuse, AI Cloud Intrusions & 15+ Stories",
-      "link": "https://thehackernews.com/2026/02/threatsday-bulletin-codespaces-rce.html",
-      "description": "This week didn\u2019t produce one big headline. It produced many small signals \u2014 the kind that quietly shape what attacks will look like next.\nResearchers tracked intrusions that start in ordinary places: developer workflows, remote tools, cloud access, identity paths, and even routine user actions. Nothing looked dramatic on the surface. That\u2019s the point. Entry is becoming less visible while impact",
-      "date": "Thu, 05 Feb 2026 18:27:00 +0530",
-      "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
-    },
-    {
-      "title": "The Buyer\u2019s Guide to AI Usage Control",
-      "link": "https://thehackernews.com/2026/02/the-buyers-guide-to-ai-usage-control.html",
-      "description": "Today\u2019s \u201cAI everywhere\u201d reality is woven into everyday workflows across the enterprise, embedded in SaaS platforms, browsers, copilots, extensions, and a rapidly expanding universe of shadow tools that appear faster than security teams can track. Yet most organizations still rely on legacy controls that operate far away from where AI interactions actually occur. The result is a widening",
-      "date": "Thu, 05 Feb 2026 17:00:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
@@ -402,82 +402,82 @@
       "source": "https://www.cisa.gov/news.xml"
     },
     {
-      "title": "I\u2019m Ross McKerchar, CISO at Sophos: AMA on tackling the issue of detecting fraudulent remote IT hires and building workable controls.",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qwmswn/im_ross_mckerchar_ciso_at_sophos_ama_on_tackling/",
-      "description": "",
-      "date": "2026-02-05T14:31:49+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/cybersecurity/.rss"
-    },
-    {
       "title": "Mentorship Monday - Post All Career, Education and Job questions here!",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qtf7kz/mentorship_monday_post_all_career_education_and/",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzp0vu/mentorship_monday_post_all_career_education_and/",
       "description": "",
-      "date": "2026-02-02T00:00:21+00:00",
+      "date": "2026-02-09T00:00:32+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Shift burnout is real",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qyhkkz/shift_burnout_is_real/",
+      "title": "We rebooted Open Security Architecture after 15 years dormant -- 39 security patterns with free self-assessments",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzzz4x/we_rebooted_open_security_architecture_after_15/",
       "description": "",
-      "date": "2026-02-07T16:04:01+00:00",
+      "date": "2026-02-09T09:40:26+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "For those who\u2019ve landed jobs in cybersecurity, what made you stand out to get hired?",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qy8rg1/for_those_whove_landed_jobs_in_cybersecurity_what/",
+      "title": "Babuk Locker 2.0 Reality Check",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzx89w/babuk_locker_20_reality_check/",
       "description": "",
-      "date": "2026-02-07T08:42:33+00:00",
+      "date": "2026-02-09T06:48:49+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "I\u2019m looking for recommendations on a cheap but solid endpoint security solution for individual users and very small businesses (1\u201310 employees).",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qydx10/im_looking_for_recommendations_on_a_cheap_but/",
+      "title": "One way to bypass VirusTotal scanning in ClawHub/OpenClaw",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzme2v/one_way_to_bypass_virustotal_scanning_in/",
       "description": "",
-      "date": "2026-02-07T13:33:22+00:00",
+      "date": "2026-02-08T22:05:59+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Claude Opus Finds more than 500 High Severity Vulnerabilities in OpenSource Codebases",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qykqeh/claude_opus_finds_more_than_500_high_severity/",
+      "title": "Can I pass the OSDA exam if I\u2019ve completed all the challenge labs?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzymhm/can_i_pass_the_osda_exam_if_ive_completed_all_the/",
       "description": "",
-      "date": "2026-02-07T18:04:23+00:00",
+      "date": "2026-02-09T08:13:41+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "What was the \"smoking gun\" that led you to discover a major breach that everyone else had missed?",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qy5rss/what_was_the_smoking_gun_that_led_you_to_discover/",
+      "title": "Blockchain in a Box (Dockerized Crypto Nodes for the Classroom)",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzrxv2/blockchain_in_a_box_dockerized_crypto_nodes_for/",
       "description": "",
-      "date": "2026-02-07T05:50:27+00:00",
+      "date": "2026-02-09T02:22:45+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "OpenClaw Detection?",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qyh6ct/openclaw_detection/",
+      "title": "Where does \u201cDevSecOps\u201d fit in to the industry?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzh34z/where_does_devsecops_fit_in_to_the_industry/",
       "description": "",
-      "date": "2026-02-07T15:48:47+00:00",
+      "date": "2026-02-08T18:45:52+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "In today's episode of \"AI will make tech people unemployed by the end of 2025\": The most downloaded Clawdbot/OpenClaw skill is AmosStealer macOS malware",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qxny34/in_todays_episode_of_ai_will_make_tech_people/",
+      "title": "Why is the standard of US Red Teams so poor",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qz1mzj/why_is_the_standard_of_us_red_teams_so_poor/",
       "description": "",
-      "date": "2026-02-06T17:27:32+00:00",
+      "date": "2026-02-08T06:30:20+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Interview question to bring devs on board",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qyimj1/interview_question_to_bring_devs_on_board/",
+      "title": "Good resources for learning NIST CSF 2.0",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzint4/good_resources_for_learning_nist_csf_20/",
       "description": "",
-      "date": "2026-02-07T16:44:52+00:00",
+      "date": "2026-02-08T19:43:37+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "Table of 2FA strength",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1qyxd9t/table_of_2fa_strength/",
+      "description": "",
+      "date": "2026-02-08T02:51:55+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
@@ -498,66 +498,66 @@
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Pen testing internship Microsoft",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qyknu6/pen_testing_internship_microsoft/",
+      "title": "Switch from SOC to Non-security role",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzro6n/switch_from_soc_to_nonsecurity_role/",
       "description": "",
-      "date": "2026-02-07T18:01:48+00:00",
+      "date": "2026-02-09T02:09:21+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Need Career Advice: PwC vs Deloitte... Money vs Role vs Work-Life Balance?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qyeusn/need_career_advice_pwc_vs_deloitte_money_vs_role/",
+      "title": "Career shiftee (from tech to cybersec) career",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzxuwy/career_shiftee_from_tech_to_cybersec_career/",
       "description": "",
-      "date": "2026-02-07T14:14:43+00:00",
+      "date": "2026-02-09T07:26:02+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Early-Career SOC Analyst Seeking Advice on Pentesting Certifications",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qyilao/earlycareer_soc_analyst_seeking_advice_on/",
+      "title": "Career change advice",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzmhr6/career_change_advice/",
       "description": "",
-      "date": "2026-02-07T16:43:33+00:00",
+      "date": "2026-02-08T22:10:08+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "I\u2019m looking for recommendations on a cheap but solid endpoint security solution for individual users and very small businesses (1\u201310 employees).",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qye18g/im_looking_for_recommendations_on_a_cheap_but/",
+      "title": "Can I not focus too much on pentesting tools and knowledge if I want a blue team career path?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzqobp/can_i_not_focus_too_much_on_pentesting_tools_and/",
       "description": "",
-      "date": "2026-02-07T13:38:36+00:00",
+      "date": "2026-02-09T01:18:53+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Need some advice to build cybersecurity carrier",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qycwz0/need_some_advice_to_build_cybersecurity_carrier/",
+      "title": "Advice",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzo46i/advice/",
       "description": "",
-      "date": "2026-02-07T12:46:34+00:00",
+      "date": "2026-02-08T23:18:41+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Struggling to break in after 5+ years of IT",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qy4dk7/struggling_to_break_in_after_5_years_of_it/",
+      "title": "Getting started, where to get provable \u201cextra\u201d experience",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzm99e/getting_started_where_to_get_provable_extra/",
       "description": "",
-      "date": "2026-02-07T04:38:55+00:00",
+      "date": "2026-02-08T22:00:38+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "CV Review \u2013 Cybersecurity / SOC / Security Analyst (3+ years Tech exp) \u2013 looking for honest feedback",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qxrrf5/cv_review_cybersecurity_soc_security_analyst_3/",
+      "title": "Does your cyber teams have a Data Lake/ data team?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qziasq/does_your_cyber_teams_have_a_data_lake_data_team/",
       "description": "",
-      "date": "2026-02-06T19:44:37+00:00",
+      "date": "2026-02-08T19:30:05+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Getting more and more confused",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qxvsdx/getting_more_and_more_confused/",
+      "title": "EC-council short course are worth it ?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qz63kn/eccouncil_short_course_are_worth_it/",
       "description": "",
-      "date": "2026-02-06T22:18:51+00:00",
+      "date": "2026-02-08T10:58:29+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     }
@@ -565,7 +565,7 @@
   "trending": [
     [
       "AI",
-      30
+      29
     ],
     [
       "OT",
@@ -581,26 +581,26 @@
     ],
     [
       "SOC",
-      5
+      4
+    ],
+    [
+      "vulnerability",
+      3
     ],
     [
       "breach",
-      4
+      3
     ],
     [
       "phishing",
       2
     ],
     [
-      "cloud",
+      "ransomware",
       2
     ],
     [
-      "vulnerability",
-      2
-    ],
-    [
-      "certification",
+      "NIST",
       2
     ]
   ],

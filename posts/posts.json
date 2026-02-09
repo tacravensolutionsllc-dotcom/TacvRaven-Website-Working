@@ -1,7 +1,25 @@
 {
-  "generated": "2026-02-07T23:24:30.447225",
-  "count": 4,
+  "generated": "2026-02-09T10:02:10.153158",
+  "count": 5,
   "posts": [
+    {
+      "title": "SOC Analyst: Complete Career Guide",
+      "excerpt": "The most common entry point.",
+      "date": "2026-02-09",
+      "category": "Career Paths",
+      "category_slug": "career-paths",
+      "category_css": "cp",
+      "tags": [
+        "Career Paths",
+        "Cybersecurity",
+        "Career",
+        "role_guide"
+      ],
+      "filepath": "posts/2026/02/soc-analyst-complete-career-guide.html",
+      "slug": "soc-analyst-complete-career-guide",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "Security Job Market: February 2026 Update",
       "excerpt": "Latest hiring trends, salary data, and what's changed.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/02/security-job-market-february-2026-update.html",
       "slug": "security-job-market-february-2026-update",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Is CompTIA Security+ Worth It?",

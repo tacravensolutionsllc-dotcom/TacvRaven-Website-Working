@@ -1,25 +1,28 @@
 {
-  "last_post_date": "2026-02-07",
+  "last_post_date": "2026-02-09",
   "published_posts": [
     "bf48b61af443",
     "9a4b6d1d05a7",
     "e64df3c14abc",
     "ae826cf6499c",
-    "e574be0640d4"
+    "e574be0640d4",
+    "8e944fd3d4d5"
   ],
-  "category_rotation": 3,
+  "category_rotation": 4,
   "topic_index": {
     "getting-started_breaking_in": 1,
     "certifications_cert_review": 1,
-    "salaries_salary_data": 1
+    "salaries_salary_data": 1,
+    "career-paths_role_guide": 1
   },
-  "style_rotation": 5,
-  "structure_rotation": 5,
-  "post_count": 5,
+  "style_rotation": 6,
+  "structure_rotation": 6,
+  "post_count": 6,
   "group_index": {
     "getting-started_group": 1,
     "certifications_group": 1,
-    "salaries_group": 1
+    "salaries_group": 1,
+    "career-paths_group": 1
   },
   "recent_topics": [
     "SOC",
