@@ -1,12 +1,13 @@
 {
-  "last_post_date": "2026-02-09",
+  "last_post_date": "2026-02-11",
   "published_posts": [
     "bf48b61af443",
     "9a4b6d1d05a7",
     "e64df3c14abc",
     "ae826cf6499c",
     "e574be0640d4",
-    "8e944fd3d4d5"
+    "8e944fd3d4d5",
+    "6bb64ca215f8"
   ],
   "category_rotation": 4,
   "topic_index": {
@@ -15,9 +16,9 @@
     "salaries_salary_data": 1,
     "career-paths_role_guide": 1
   },
-  "style_rotation": 6,
-  "structure_rotation": 6,
-  "post_count": 6,
+  "style_rotation": 7,
+  "structure_rotation": 7,
+  "post_count": 7,
   "group_index": {
     "getting-started_group": 1,
     "certifications_group": 1,
@@ -26,6 +27,7 @@
   },
   "recent_topics": [
     "SOC",
-    "breach"
+    "breach",
+    "ransomware"
   ]
 }

@@ -1,181 +1,165 @@
 {
-  "timestamp": "2026-02-09T10:02:10.080542",
+  "timestamp": "2026-02-11T09:53:17.230018",
   "news": [
     {
-      "title": "TeamPCP Worm Exploits Cloud Infrastructure to Build Criminal Infrastructure",
-      "link": "https://thehackernews.com/2026/02/teampcp-worm-exploits-cloud.html",
-      "description": "Cybersecurity researchers have called attention to a \"massive campaign\" that has systematically targeted cloud native environments to set up malicious infrastructure for follow-on exploitation.\nThe activity, observed around December 25, 2025, and described as \"worm-driven,\" leveraged exposed Docker APIs, Kubernetes clusters, Ray dashboards, and Redis servers, along with the recently disclosed",
-      "date": "Mon, 09 Feb 2026 14:07:00 +0530",
+      "title": "North Korea-Linked UNC1069 Uses AI Lures to Attack Cryptocurrency Organizations",
+      "link": "https://thehackernews.com/2026/02/north-korea-linked-unc1069-uses-ai.html",
+      "description": "The North Korea-linked threat actor known as UNC1069 has been observed targeting the cryptocurrency sector to steal sensitive data from Windows and macOS systems with the ultimate goal of facilitating financial theft.\n\"The intrusion relied on a social engineering scheme involving a compromised Telegram account, a fake Zoom meeting, a ClickFix infection vector, and reported usage of AI-generated",
+      "date": "Wed, 11 Feb 2026 12:20:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "BeyondTrust Fixes Critical Pre-Auth RCE Vulnerability in Remote Support and PRA",
-      "link": "https://thehackernews.com/2026/02/beyondtrust-fixes-critical-pre-auth-rce.html",
-      "description": "BeyondTrust has released updates to address a critical security flaw impacting Remote Support (RS) and Privileged Remote Access (PRA) products that, if successfully exploited, could result in remote code execution.\n\"BeyondTrust Remote Support (RS) and certain older versions of Privileged Remote Access (PRA) contain a critical pre-authentication remote code execution vulnerability,\" the company",
-      "date": "Mon, 09 Feb 2026 13:33:00 +0530",
+      "title": "DPRK Operatives Impersonate Professionals on LinkedIn to Infiltrate Companies",
+      "link": "https://thehackernews.com/2026/02/dprk-operatives-impersonate.html",
+      "description": "The information technology (IT) workers associated with the Democratic People's Republic of Korea (DPRK) are now applying to remote positions using real LinkedIn accounts of individuals they're impersonating, marking a new escalation of the fraudulent scheme.\n\"These profiles often have verified workplace emails and identity badges, which DPRK operatives hope will make their fraudulent",
+      "date": "Tue, 10 Feb 2026 23:14:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "OpenClaw Integrates VirusTotal Scanning to Detect Malicious ClawHub Skills",
-      "link": "https://thehackernews.com/2026/02/openclaw-integrates-virustotal-scanning.html",
-      "description": "OpenClaw (formerly Moltbot and Clawdbot) has announced that it's partnering with Google-owned VirusTotal to scan skills that are being uploaded to ClawHub, its skill marketplace, as part of broader efforts to bolster the security of the agentic ecosystem.\n\"All skills published to ClawHub are now scanned using VirusTotal's threat intelligence, including their new Code Insight capability,\"",
-      "date": "Sun, 08 Feb 2026 13:02:00 +0530",
+      "title": "Reynolds Ransomware Embeds BYOVD Driver to Disable EDR Security Tools",
+      "link": "https://thehackernews.com/2026/02/reynolds-ransomware-embeds-byovd-driver.html",
+      "description": "Cybersecurity researchers have disclosed details of an emergent ransomware family dubbed Reynolds that comes embedded with a built-in bring your own vulnerable driver (BYOVD) component for defense evasion purposes within the ransomware payload itself.\nBYOVD refers to an adversarial technique that abuses legitimate but flawed driver software to escalate privileges and disable Endpoint Detection",
+      "date": "Tue, 10 Feb 2026 20:06:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "German Agencies Warn of Signal Phishing Targeting Politicians, Military, Journalists",
-      "link": "https://thehackernews.com/2026/02/german-agencies-warn-of-signal-phishing.html",
-      "description": "Germany's Federal Office for the Protection of the Constitution (aka Bundesamt f\u00fcr Verfassungsschutz or BfV) and Federal Office for Information Security (BSI) have issued a joint advisory warning of a malicious cyber campaign undertaken by a likely state-sponsored threat actor that involves carrying out phishing attacks over the Signal messaging app.\n\"The focus is on high-ranking targets in",
-      "date": "Sat, 07 Feb 2026 16:45:00 +0530",
+      "title": "From Ransomware to Residency: Inside the Rise of the Digital Parasite",
+      "link": "https://thehackernews.com/2026/02/from-ransomware-to-residency-inside.html",
+      "description": "Are ransomware and encryption still the defining signals of modern cyberattacks, or has the industry been too fixated on noise while missing a more dangerous shift happening quietly all around them?\nAccording to Picus Labs\u2019 new Red Report 2026, which analyzed over 1.1 million malicious files and mapped 15.5 million adversarial actions observed across 2025, attackers are no longer optimizing for",
+      "date": "Tue, 10 Feb 2026 19:29:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "China-Linked DKnife AitM Framework Targets Routers for Traffic Hijacking, Malware Delivery",
-      "link": "https://thehackernews.com/2026/02/china-linked-dknife-aitm-framework.html",
-      "description": "Cybersecurity researchers have taken the wraps off a gateway-monitoring and adversary-in-the-middle (AitM) framework dubbed DKnife that's operated by China-nexus threat actors since at least 2019.\nThe framework comprises seven Linux-based implants that are designed to perform deep packet inspection, manipulate traffic, and deliver malware via routers and edge devices. Its primary targets seem to",
-      "date": "Fri, 06 Feb 2026 20:26:00 +0530",
+      "title": "Fortinet Patches Critical SQLi Flaw Enabling Unauthenticated Code Execution",
+      "link": "https://thehackernews.com/2026/02/fortinet-patches-critical-sqli-flaw.html",
+      "description": "Fortinet has released security updates to address a critical flaw impacting FortiClientEMS that could lead to the execution of arbitrary code on susceptible systems.\nThe vulnerability, tracked as CVE-2026-21643, has a CVSS rating of 9.1 out of a maximum of 10.0.\n\n\"An improper neutralization of special elements used in an SQL Command ('SQL Injection') vulnerability [CWE-89] in FortiClientEMS may",
+      "date": "Tue, 10 Feb 2026 19:00:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "CISA Orders Removal of Unsupported Edge Devices to Reduce Federal Network Risk",
-      "link": "https://thehackernews.com/2026/02/cisa-orders-removal-of-unsupported-edge.html",
-      "description": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has ordered Federal Civilian Executive Branch (FCEB) agencies to strengthen asset lifecycle management for edge network devices and remove those that no longer receive security updates from original equipment manufacturers (OEMs) over the next 12 to 18 months.\nThe agency said the move is to drive down technical debt and minimize",
-      "date": "Fri, 06 Feb 2026 19:13:00 +0530",
+      "title": "ZAST.AI Raises $6M Pre-A to Scale \"Zero False Positive\" AI-Powered Code Security",
+      "link": "https://thehackernews.com/2026/02/zastai-raises-6m-pre-to-scale-zero.html",
+      "description": "January 5, 2026, Seattle, USA \u2014 ZAST.AI announced the completion of a $6 million Pre-A funding round. This investment came from the well-known investment firm Hillhouse Capital, bringing ZAST.AI's total funding close to $10 million. This marks a recognition from leading capital markets of a new solution: ending the era of high false positive rates in security tools and making every alert",
+      "date": "Tue, 10 Feb 2026 17:10:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Asian State-Backed Group TGR-STA-1030 Breaches 70 Government, Infrastructure Entities",
-      "link": "https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html",
-      "description": "A previously undocumented cyber espionage group operating from Asia broke into the networks of at least 70 government and critical infrastructure organizations across 37 countries over the past year, according to new findings from Palo Alto Networks Unit 42.\nIn addition, the hacking crew has been observed conducting active reconnaissance against government infrastructure associated with 155",
-      "date": "Fri, 06 Feb 2026 17:37:00 +0530",
+      "title": "Warlock Ransomware Breaches SmarterTools Through Unpatched SmarterMail Server",
+      "link": "https://thehackernews.com/2026/02/warlock-ransomware-breaches.html",
+      "description": "SmarterTools confirmed last week that the Warlock (aka Storm-2603) ransomware gang breached its network by exploiting an unpatched SmarterMail instance.\nThe incident took place on January 29, 2026, when a mail server that was not updated to the latest version was compromised, the company's Chief Commercial Officer, Derek Curtis, said.\n\"Prior to the breach, we had approximately 30 servers/VMs",
+      "date": "Tue, 10 Feb 2026 15:54:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "How Samsung Knox Helps Stop Your Network Security Breach",
-      "link": "https://thehackernews.com/2026/02/how-samsung-knox-helps-stop-your-network-security-breach.html",
-      "description": "As you know, enterprise network security has undergone significant evolution over the past decade. Firewalls have become more intelligent, threat detection methods have advanced, and access controls are now more detailed. However (and it&rsquo;s a big &ldquo;however&rdquo;), the increasing use of mobile devices in business operations necessitates network security measures that are specifically",
-      "date": "Fri, 06 Feb 2026 16:00:00 +0530",
+      "title": "Dutch Authorities Confirm Ivanti Zero-Day Exploit Exposed Employee Contact Data",
+      "link": "https://thehackernews.com/2026/02/dutch-authorities-confirm-ivanti-zero.html",
+      "description": "The Netherlands' Dutch Data Protection Authority (AP) and the Council for the Judiciary confirmed both agencies (Rvdr) have disclosed that their systems were impacted by cyber attacks that exploited the recently disclosed security flaws in Ivanti Endpoint Manager Mobile (EPMM), according to a notice sent to the country's parliament on Friday.\n\"On January 29, the National Cyber Security Center (",
+      "date": "Tue, 10 Feb 2026 13:52:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Compromised dYdX npm and PyPI Packages Deliver Wallet Stealers and RAT Malware",
-      "link": "https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html",
-      "description": "Cybersecurity researchers have discovered a new supply chain attack in which legitimate packages on npm and the Python Package Index (PyPI) repository have been compromised to push malicious versions to facilitate wallet credential theft and remote code execution.\nThe compromised versions of the two packages are listed below -\n\n@dydxprotocol/v4-client-js (npm) - 3.4.1, 1.22.1, 1.15.2, 1.0.31&",
-      "date": "Fri, 06 Feb 2026 14:10:00 +0530",
+      "title": "China-Linked UNC3886 Targets Singapore Telecom Sector in Cyber Espionage Campaign",
+      "link": "https://thehackernews.com/2026/02/china-linked-unc3886-targets-singapore.html",
+      "description": "The Cyber Security Agency (CSA) of Singapore on Monday revealed that the China-nexus cyber espionage group known as UNC3886 targeted its telecommunications sector.\n\"UNC3886 had launched a deliberate, targeted, and well-planned campaign against Singapore's telecommunications sector,\" CSA said. \"All four of Singapore's major telecommunications operators ('telcos') \u2013 M1, SIMBA Telecom, Singtel, and",
+      "date": "Mon, 09 Feb 2026 22:31:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries",
-      "link": "https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html",
-      "description": "Artificial intelligence (AI) company Anthropic revealed that its latest large language model (LLM), Claude Opus 4.6, has found more than 500 previously unknown high-severity security flaws in open-source libraries, including Ghostscript, OpenSC, and CGIF.\nClaude Opus 4.6, which was launched Thursday, comes with improved coding skills, including code review and debugging capabilities, along with",
-      "date": "Fri, 06 Feb 2026 11:19:00 +0530",
+      "title": "SolarWinds Web Help Desk Exploited for RCE in Multi-Stage Attacks on Exposed Servers",
+      "link": "https://thehackernews.com/2026/02/solarwinds-web-help-desk-exploited-for.html",
+      "description": "Microsoft has revealed that it observed a multi\u2011stage intrusion that involved the threat actors exploiting internet\u2011exposed SolarWinds Web Help Desk (WHD) instances to obtain initial access and move laterally across the organization's network to other high-value assets.\nThat said, the Microsoft Defender Security Research Team said it's not clear whether the activity weaponized recently",
+      "date": "Mon, 09 Feb 2026 20:12:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "'Encrypt It Already' Campaign Pushes Big Tech to Prioritize E2E Encryption",
-      "link": "https://www.darkreading.com/cloud-security/encrypt-it-already-pushes-big-tech-e2e-encryption",
-      "description": "The Electronic Frontier Foundation is urging major technology companies to follow through on their promises to implement end-to-end encryption (E2E) by default across their services, as privacy concerns mount amid increased AI use.",
-      "date": "Fri, 06 Feb 2026 16:34:41 GMT",
+      "title": "Asia Fumbles With Throttling Back Telnet Traffic in Region",
+      "link": "https://www.darkreading.com/threat-intelligence/asia-fumbles-telnet-threat-traffic",
+      "description": "Only Taiwan made the top 10 list of governments, effectively blocking the threat-ridden protocol, but overall the region lagged in curbing Telnet traffic.",
+      "date": "Wed, 11 Feb 2026 02:00:00 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Shai-hulud: The Hidden Cost of Supply Chain Attacks",
-      "link": "https://www.darkreading.com/application-security/shai-hulud-hidden-cost-supply-chain-attacks",
-      "description": "Recent supply chain attacks involving self-propagating worms have spread far, but the damage and long-term impact is hard to quantify.",
-      "date": "Fri, 06 Feb 2026 16:25:14 GMT",
+      "title": "SolarWinds WHD Attacks Highlight Risks of Exposed Apps",
+      "link": "https://www.darkreading.com/vulnerabilities-threats/solarwinds-whd-attacks-exposed-apps",
+      "description": "Organizations that have exposed their instances of Web Help Desk to the public Internet have inadvertently made them prime targets for attackers.",
+      "date": "Tue, 10 Feb 2026 22:00:53 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "OpenClaw's Gregarious Insecurities Make Safe Usage Difficult",
-      "link": "https://www.darkreading.com/application-security/openclaw-insecurities-safe-usage-difficult",
-      "description": "Malicious &quot;skills&quot; and persnickety configuration settings are just some of the issues that security researchers have found when installing \u2014 and removing \u2014 the OpenClaw AI assistant.",
-      "date": "Fri, 06 Feb 2026 15:42:15 GMT",
+      "title": "In Bypassing MFA, ZeroDayRAT Is 'Textbook Stalkerware'",
+      "link": "https://www.darkreading.com/threat-intelligence/zerodayrat-brings-commercial-spyware-to-mass-market",
+      "description": "With access to SIM, location data, and a preview of recent SMSes, attackers have everything they need for account takeover or targeted social engineering.",
+      "date": "Tue, 10 Feb 2026 21:37:15 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "EnCase Driver Weaponized as EDR Killers Persist",
-      "link": "https://www.darkreading.com/threat-intelligence/encase-driver-weaponized-edr-killers-persist",
-      "description": "The forensic tool's driver was signed with a digital certificate that expired years ago, but major security gaps allowed Windows to load it.",
-      "date": "Thu, 05 Feb 2026 22:35:20 GMT",
+      "title": "Microsoft Patches 6 Actively Exploited Zero-Days",
+      "link": "https://www.darkreading.com/vulnerabilities-threats/microsoft-fixes-6-actively-exploited-zero-days",
+      "description": "Three of those zero-days are security feature bypass flaws, which give attackers a way to slip past built-in protections in multiple Microsoft products.",
+      "date": "Tue, 10 Feb 2026 21:00:36 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Agentic AI Site 'Moltbook' Is Riddled With Security Risks",
-      "link": "https://www.darkreading.com/cyber-risk/agentic-ai-moltbook-security-risks",
-      "description": "Someone used AI to build an entire Web platform, which then did something predictable and preventable: It exposed all its data through a publicly accessible API.",
-      "date": "Thu, 05 Feb 2026 22:03:29 GMT",
+      "title": "OT Attacks Get Scary With 'Living-off-the-Plant' Techniques",
+      "link": "https://www.darkreading.com/ics-ot-security/ot-attacks-living-off-the-plant",
+      "description": "Ironically, security by obscurity has helped prevent dangerous OT attacks in recent years. It won't be that way forever.",
+      "date": "Tue, 10 Feb 2026 16:14:29 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Data Tool to Triage Exploited Vulnerabilities Can Make KEV More Useful",
-      "link": "https://www.darkreading.com/threat-intelligence/data-tool-triage-exploited-vulnerabilities-make-kev-catalog-more-useful",
-      "description": "A disconnect exists between an organization's cybersecurity needs and lists like CISA's KEV Catalog. KEV Collider combines data from multiple open source vulnerability frameworks to help security teams quickly assess which are important, based on their priorities.",
-      "date": "Thu, 05 Feb 2026 20:53:34 GMT",
+      "title": "TransUnion's Real Networks Deal Focuses on Robocall Blocking",
+      "link": "https://www.darkreading.com/cyber-risk/transunion-s-real-networks-deal-focuses-on-robocall-blocking",
+      "description": "The acquisition allows the credit reporting agency to add SMS spam and scam prevention to its robocall blocking capabilities.",
+      "date": "Mon, 09 Feb 2026 23:05:21 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Cyber Success Trifecta: Education, Certifications &amp; Experience",
-      "link": "https://www.darkreading.com/cybersecurity-operations/the-trifecta-of-cyber-success-education-certifications-and-experience",
-      "description": "Col. Georgeo Xavier Pulikkathara, CISO at iMerit, discusses the importance of fundamentals, continuous learning, and human ingenuity in the face of AI-driven cybersecurity evolution.",
-      "date": "Thu, 05 Feb 2026 14:00:00 GMT",
+      "title": "Warlock Gang Breaches SmarterTools Via SmarterMail Bugs",
+      "link": "https://www.darkreading.com/application-security/warlock-gang-breaches-smartertools-smartermail-bugs",
+      "description": "The ransomware group breached SmarterTools through a vulnerability in the company's own SmarterMail product.",
+      "date": "Mon, 09 Feb 2026 21:59:02 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Protests Don't Impede Iranian Spying on Expats, Syrians, Israelis",
-      "link": "https://www.darkreading.com/cyberattacks-data-breaches/iran-spies-expats-syrians-israelis",
-      "description": "Iranian threat actors have been stealing credentials from people of interest across the Middle East, using spear-phishing and social engineering.",
-      "date": "Thu, 05 Feb 2026 07:00:00 GMT",
+      "title": "TeamPCP Turns Cloud Infrastructure Into Crime Bots",
+      "link": "https://www.darkreading.com/cloud-security/teampcp-cloud-infrastructure-crime-bots",
+      "description": "The threat actor has been compromising cloud environments at scale with automated worm-like attacks on exposed services and interfaces.",
+      "date": "Mon, 09 Feb 2026 21:14:34 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Ransomware Gang Goes Full 'Godfather' With Cartel",
-      "link": "https://www.darkreading.com/cyber-risk/ransomware-gang-full-godfather-cartel",
-      "description": "DragonForce is taking cues from organized crime, emphasizing cooperation and coordination among ransomware gangs.",
-      "date": "Wed, 04 Feb 2026 22:14:19 GMT",
+      "title": "'Reynolds' Bundles BYOVD With Ransomware Payload",
+      "link": "https://www.darkreading.com/threat-intelligence/black-basta-bundles-byovd-ransomware-payload",
+      "description": "Researchers discovered a newly disclosed vulnerable driver embedded in Reynolds' ransomware, illustrating the increasing popularity of the defense-evasion technique.",
+      "date": "Mon, 09 Feb 2026 20:14:22 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "CISA Makes Unpublicized Ransomware Updates to KEV Catalog",
-      "link": "https://www.darkreading.com/threat-intelligence/cisa-hidden-ransomware-updates-kev-catalog",
-      "description": "A third of the &quot;flipped&quot; CVEs affected network edge devices, leading one researcher to conclude, &quot;Ransomware operators are building playbooks around your perimeter.&quot;",
-      "date": "Wed, 04 Feb 2026 21:48:57 GMT",
+      "title": "[Virtual Event] Shields Up: Key Technologies Reshaping Cybersecurity Defenses",
+      "link": "https://www.darkreading.com/events/shields-up-key-technologies-reshaping-cybersecurity-defenses",
+      "description": "",
+      "date": "",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
-    },
-    {
-      "title": "Please Don\u2019t Feed the Scattered Lapsus ShinyHunters",
-      "link": "https://krebsonsecurity.com/2026/02/please-dont-feed-the-scattered-lapsus-shiny-hunters/",
-      "description": "A prolific data ransom gang that calls itself Scattered Lapsus ShinyHunters (SLSH) has a distinctive playbook when it seeks to extort payment from victim firms: Harassing, threatening and even swatting executives and their families, all while notifying journalists and regulators\u2026 <span class=\"read-more\"><a href=\"https://krebsonsecurity.com/2026/02/please-dont-feed-the-scattered-lapsus-shiny-hunters/\">Read More &#187;</a></span>",
-      "date": "Mon, 02 Feb 2026 16:15:16 +0000",
-      "category": "cybersecurity_news",
-      "source": "https://krebsonsecurity.com/feed/"
-    },
-    {
-      "title": "Who Operates the Badbox 2.0 Botnet?",
-      "link": "https://krebsonsecurity.com/2026/01/who-operates-the-badbox-2-0-botnet/",
-      "description": "The cybercriminals in control of Kimwolf -- a disruptive botnet that has infected more than 2 million devices -- recently shared a screenshot indicating they'd compromised the control panel for Badbox 2.0, a vast China-based botnet powered by malicious software that comes pre-installed on many Android TV streaming boxes. Both the FBI and Google say they are hunting for the people behind Badbox 2.0, and thanks to bragging by the Kimwolf botmasters we may now have a much clearer idea about that.",
-      "date": "Mon, 26 Jan 2026 16:11:38 +0000",
-      "category": "cybersecurity_news",
-      "source": "https://krebsonsecurity.com/feed/"
     },
     {
       "title": "Kimwolf Botnet Lurking in Corporate, Govt. Networks",
@@ -242,6 +226,38 @@
       "source": "https://krebsonsecurity.com/feed/"
     },
     {
+      "title": "Drones to Diplomas: How Russia\u2019s Largest Private University is Linked to a $25M Essay Mill",
+      "link": "https://krebsonsecurity.com/2025/12/drones-to-diplomas-how-russias-largest-private-university-is-linked-to-a-25m-essay-mill/",
+      "description": "A sprawling academic cheating network turbocharged by Google Ads that has generated nearly $25 million in revenue has curious connections to a Kremlin-connected oligarch whose Russian university builds drones for Russia's war against Ukraine.",
+      "date": "Sat, 06 Dec 2025 14:45:03 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "SMS Phishers Pivot to Points, Taxes, Fake Retailers",
+      "link": "https://krebsonsecurity.com/2025/12/sms-phishers-pivot-to-points-taxes-fake-retailers/",
+      "description": "China-based phishing groups blamed for non-stop scam SMS messages about a supposed wayward package or unpaid toll fee are promoting a new offering, just in time for the holiday shopping season: Phishing kits for mass-creating fake but convincing e-commerce websites that convert customer payment card data into mobile wallets from Apple and Google. Experts say these same phishing groups also are now using SMS lures that promise unclaimed tax refunds and mobile rewards points.",
+      "date": "Thu, 04 Dec 2025 23:02:34 +0000",
+      "category": "cybersecurity_news",
+      "source": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "title": "AI-Generated Text and the Detection Arms Race",
+      "link": "https://www.schneier.com/blog/archives/2026/02/the-ai-generated-text-arms-race.html",
+      "description": "<p>In 2023, the science fiction literary magazine <cite>Clarkesworld</cite> <a href=\"https://www.npr.org/2023/02/24/1159286436/ai-chatbot-chatgpt-magazine-&#60;cite&#62;Clarkesworld&#60;/cite&#62;-artificial-intelligence\">stopped accepting</a> new submissions because so many were generated by artificial intelligence. Near as the editors could tell, many submitters pasted the magazine\u2019s detailed story guidelines into an AI and sent in the results. And they weren\u2019t alone. Other fiction magazines have also <a href=\"https://www.theverge.com/2023/2/25/23613752/ai-generated-short-stories-literary-magazines-&#60;cite&#62;Clarkesworld&#60;/cite&#62;-science-fiction\">reported a high number</a> of AI-generated submissions.</p>\n<p>This is only one example of a ubiquitous trend. A legacy system relied on the difficulty of writing and cognition to limit volume. Generative AI overwhelms the system because the humans on the receiving end can\u2019t keep up...</p>",
+      "date": "2026-02-11T05:51:18Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "LLMs are Getting a Lot Better and Faster at Finding and Exploiting Zero-Days",
+      "link": "https://www.schneier.com/blog/archives/2026/02/llms-are-getting-a-lot-better-and-faster-at-finding-and-exploiting-zero-days.html",
+      "description": "<p>This is <a href=\"https://red.anthropic.com/2026/zero-days/\">amazing</a>:</p>\n<blockquote><p>Opus 4.6 is notably better at finding high-severity vulnerabilities than previous models and a sign of how quickly things are moving. Security teams have been automating vulnerability discovery for years, investing heavily in fuzzing infrastructure and custom harnesses to find bugs at scale. But what stood out in early testing is how quickly Opus 4.6 found vulnerabilities out of the box without task-specific tooling, custom scaffolding, or specialized prompting. Even more interesting is how it found them. Fuzzers work by throwing massive amounts of random inputs at code to see what breaks. Opus 4.6 reads and reasons about code the way a human researcher would\u00ad&#8212;looking at past fixes to find similar bugs that weren&#8217;t addressed, spotting patterns that tend to cause problems, or understanding a piece of logic well enough to know exactly what input would break it. When we pointed Opus 4.6 at some of the most well-tested codebases (projects that have had fuzzers running against them for years, ...</p></blockquote>",
+      "date": "2026-02-06T20:49:33Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
       "title": "Friday Squid Blogging: Squid Fishing Tips",
       "link": "https://www.schneier.com/blog/archives/2026/02/friday-squid-blogging-squid-fishing-tips.html",
       "description": "<p>This is a <a href=\"https://www.youtube.com/watch?v=pNq_W2CkACU\">video</a> of advice for squid fishing in Puget Sound.</p>\n<p>As usual, you can also use this squid post to talk about the security stories in the news that I haven&#8217;t covered.</p>\n<p><a href=\"https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html\">Blog moderation policy.</a></p>\n",
@@ -302,22 +318,6 @@
       "link": "https://www.schneier.com/blog/archives/2026/01/friday-squid-blogging-new-squid-species-discovered.html",
       "description": "<p>A <a href=\"https://www.livescience.com/animals/mollusks/very-novel-and-very-puzzling-unknown-species-of-squid-spotted-burying-itself-upside-down-pretending-to-be-a-plant\">new species of squid</a>. pretends to be a plant:</p>\n<blockquote><p>Scientists have filmed a never-before-seen species of deep-sea squid burying itself upside down in the seafloor&#8212;a behavior never documented in cephalopods. They captured the bizarre scene while studying the depths of the Clarion-Clipperton Zone (CCZ), an abyssal plain in the Pacific Ocean targeted for deep-sea mining.</p>\n<p>The team described the encounter in a study published Nov. 25 in the journal <a href=\"https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecy.70257\"><i>Ecology</i></a>, writing that the animal appears to be an undescribed species of whiplash squid. At a depth of roughly 13,450 feet (4,100 meters), the squid had buried almost its entire body in sediment and was hanging upside down, with its siphon and two long ...</p></blockquote>",
       "date": "2026-01-22T20:09:13Z",
-      "category": "cybersecurity_news",
-      "source": "https://www.schneier.com/feed/atom/"
-    },
-    {
-      "title": "AIs Are Getting Better at Finding and Exploiting Security Vulnerabilities",
-      "link": "https://www.schneier.com/blog/archives/2026/01/ais-are-getting-better-at-finding-and-exploiting-security-vulnerabilities.html",
-      "description": "<p>From an Anthropic <a href=\"https://red.anthropic.com/2026/cyber-toolkits-update/\">blog post</a>:</p>\n<blockquote><p>In a recent evaluation of AI models\u2019 cyber capabilities, current Claude models can now succeed at multistage attacks on networks with dozens of hosts using only standard, open-source tools, instead of the custom tools needed by previous generations. This illustrates how barriers to the use of AI in relatively autonomous cyber workflows are rapidly coming down, and highlights the importance of security fundamentals like promptly patching known vulnerabilities.</p>\n<p>[\u2026]</p>\n<p>A notable development during the testing of Claude Sonnet 4.5 is that the model can now succeed on a minority of the networks without the custom cyber toolkit needed by previous generations. In particular, Sonnet 4.5 can now exfiltrate all of the (simulated) personal information in a high-fidelity simulation of the Equifax data breach&#8212;one of the costliest cyber attacks in history\u00ad\u00adusing only a Bash shell on a widely-available Kali Linux host (standard, open-source tools for penetration testing; not a custom toolkit). Sonnet 4.5 accomplishes this by instantly recognizing a publicized CVE and writing code to exploit it without needing to look it up or iterate on it. Recalling that the original Equifax breach happened by exploiting a publicized CVE that had not yet been patched, the prospect of highly competent and fast AI agents leveraging this approach underscores the pressing need for security best practices like prompt updates and patches...</p></blockquote>",
-      "date": "2026-01-30T15:35:15Z",
-      "category": "cybersecurity_news",
-      "source": "https://www.schneier.com/feed/atom/"
-    },
-    {
-      "title": "The Constitutionality of Geofence Warrants",
-      "link": "https://www.schneier.com/blog/archives/2026/01/the-constitutionality-of-geofence-warrants.html",
-      "description": "<p>The US Supreme Court is <a href=\"https://therecord.media/supreme-court-geofence-constitutionality\">considering</a> the constitutionality of geofence warrants.</p>\n<blockquote><p>The case centers on the trial of Okello Chatrie, a Virginia man who pleaded guilty to a 2019 robbery outside of Richmond and was sentenced to almost 12 years in prison for stealing $195,000 at gunpoint.</p>\n<p>Police probing the crime found security camera footage showing a man on a cell phone near the credit union that was robbed and asked Google to produce anonymized location data near the robbery site so they could determine who committed the crime. They did so, providing police with subscriber data for three people, one of whom was Chatrie. Police then searched Chatrie&#8217;s home and allegedly surfaced a gun, almost $100,000 in cash and incriminating notes...</p></blockquote>",
-      "date": "2026-01-26T17:22:14Z",
       "category": "cybersecurity_news",
       "source": "https://www.schneier.com/feed/atom/"
     },
@@ -410,74 +410,74 @@
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "We rebooted Open Security Architecture after 15 years dormant -- 39 security patterns with free self-assessments",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzzz4x/we_rebooted_open_security_architecture_after_15/",
+      "title": "How concerned should we be about Discord's new age verification.",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r1oi54/how_concerned_should_we_be_about_discords_new_age/",
       "description": "",
-      "date": "2026-02-09T09:40:26+00:00",
+      "date": "2026-02-11T05:12:58+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Babuk Locker 2.0 Reality Check",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzx89w/babuk_locker_20_reality_check/",
+      "title": "Where is AI actually making a real difference in cybersecurity operations today?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r1oqpu/where_is_ai_actually_making_a_real_difference_in/",
       "description": "",
-      "date": "2026-02-09T06:48:49+00:00",
+      "date": "2026-02-11T05:25:20+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "One way to bypass VirusTotal scanning in ClawHub/OpenClaw",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzme2v/one_way_to_bypass_virustotal_scanning_in/",
+      "title": "OMEMO/Open PGP",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r1qxd0/omemoopen_pgp/",
       "description": "",
-      "date": "2026-02-08T22:05:59+00:00",
+      "date": "2026-02-11T07:28:13+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Can I pass the OSDA exam if I\u2019ve completed all the challenge labs?",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzymhm/can_i_pass_the_osda_exam_if_ive_completed_all_the/",
+      "title": "Security analysts, what's your biggest time sink outside actual security work?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r1cctp/security_analysts_whats_your_biggest_time_sink/",
       "description": "",
-      "date": "2026-02-09T08:13:41+00:00",
+      "date": "2026-02-10T20:35:27+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Blockchain in a Box (Dockerized Crypto Nodes for the Classroom)",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzrxv2/blockchain_in_a_box_dockerized_crypto_nodes_for/",
+      "title": "Andrew Morris finds iOS AdGuard is written by Russians and injects 20K lines into your browser",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r0q6oq/andrew_morris_finds_ios_adguard_is_written_by/",
       "description": "",
-      "date": "2026-02-09T02:22:45+00:00",
+      "date": "2026-02-10T03:45:04+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Where does \u201cDevSecOps\u201d fit in to the industry?",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzh34z/where_does_devsecops_fit_in_to_the_industry/",
+      "title": "135,000+ OpenClaw instances exposed to the internet, 63% vulnerable, and the fix they just announced isn't going to cut it",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r16yb4/135000_openclaw_instances_exposed_to_the_internet/",
       "description": "",
-      "date": "2026-02-08T18:45:52+00:00",
+      "date": "2026-02-10T17:23:08+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Why is the standard of US Red Teams so poor",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qz1mzj/why_is_the_standard_of_us_red_teams_so_poor/",
+      "title": "40,000+ AI Agents Exposed to the Internet with Full System Access",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r0xzcg/40000_ai_agents_exposed_to_the_internet_with_full/",
       "description": "",
-      "date": "2026-02-08T06:30:20+00:00",
+      "date": "2026-02-10T11:12:29+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Good resources for learning NIST CSF 2.0",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qzint4/good_resources_for_learning_nist_csf_20/",
+      "title": "seqra/seqra: Security-focused static analyzer for Java and Kotlin web applications",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r1r7wi/seqraseqra_securityfocused_static_analyzer_for/",
       "description": "",
-      "date": "2026-02-08T19:43:37+00:00",
+      "date": "2026-02-11T07:46:21+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Table of 2FA strength",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1qyxd9t/table_of_2fa_strength/",
+      "title": "What's the actual risk of typosquatting attacks in 2026?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r1iuew/whats_the_actual_risk_of_typosquatting_attacks_in/",
       "description": "",
-      "date": "2026-02-08T02:51:55+00:00",
+      "date": "2026-02-11T00:50:17+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
@@ -498,66 +498,66 @@
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Switch from SOC to Non-security role",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzro6n/switch_from_soc_to_nonsecurity_role/",
+      "title": "Apprenticeship in the space",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r1m5dc/apprenticeship_in_the_space/",
       "description": "",
-      "date": "2026-02-09T02:09:21+00:00",
+      "date": "2026-02-11T03:18:09+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Career shiftee (from tech to cybersec) career",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzxuwy/career_shiftee_from_tech_to_cybersec_career/",
+      "title": "Stuck at tier 1",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r1b8t6/stuck_at_tier_1/",
       "description": "",
-      "date": "2026-02-09T07:26:02+00:00",
+      "date": "2026-02-10T19:55:51+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Career change advice",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzmhr6/career_change_advice/",
+      "title": "Senior IT/Cloud/Fintech leader w/ MS Cybersecurity + CISSP/CISM/CISA - screened out for \u201cno cyber experience.\u201d What bridge roles are actually working?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r1jykk/senior_itcloudfintech_leader_w_ms_cybersecurity/",
       "description": "",
-      "date": "2026-02-08T22:10:08+00:00",
+      "date": "2026-02-11T01:39:53+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Can I not focus too much on pentesting tools and knowledge if I want a blue team career path?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzqobp/can_i_not_focus_too_much_on_pentesting_tools_and/",
+      "title": "Is CCSP even valuable?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r1abt2/is_ccsp_even_valuable/",
       "description": "",
-      "date": "2026-02-09T01:18:53+00:00",
+      "date": "2026-02-10T19:22:48+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Advice",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzo46i/advice/",
+      "title": "Is IDC IT Technician a good role for experience to help me break into cybersecurity?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r128x3/is_idc_it_technician_a_good_role_for_experience/",
       "description": "",
-      "date": "2026-02-08T23:18:41+00:00",
+      "date": "2026-02-10T14:30:13+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Getting started, where to get provable \u201cextra\u201d experience",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qzm99e/getting_started_where_to_get_provable_extra/",
+      "title": "Please tell me how i can improve my resume.",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r0vlfy/please_tell_me_how_i_can_improve_my_resume/",
       "description": "",
-      "date": "2026-02-08T22:00:38+00:00",
+      "date": "2026-02-10T08:45:24+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Does your cyber teams have a Data Lake/ data team?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qziasq/does_your_cyber_teams_have_a_data_lake_data_team/",
+      "title": "Starting SOC (new guy)",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r17h9x/starting_soc_new_guy/",
       "description": "",
-      "date": "2026-02-08T19:30:05+00:00",
+      "date": "2026-02-10T17:42:02+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "EC-council short course are worth it ?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1qz63kn/eccouncil_short_course_are_worth_it/",
+      "title": "Created Awesome AppSec Interview - prep guide",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r0hibq/created_awesome_appsec_interview_prep_guide/",
       "description": "",
-      "date": "2026-02-08T10:58:29+00:00",
+      "date": "2026-02-09T21:40:36+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     }
@@ -565,42 +565,42 @@
   "trending": [
     [
       "AI",
-      29
+      28
     ],
     [
       "OT",
-      24
+      23
     ],
     [
       "government",
       8
     ],
     [
-      "supply chain",
-      6
-    ],
-    [
       "SOC",
-      4
-    ],
-    [
-      "vulnerability",
-      3
-    ],
-    [
-      "breach",
-      3
-    ],
-    [
-      "phishing",
-      2
+      5
     ],
     [
       "ransomware",
+      5
+    ],
+    [
+      "vulnerability",
+      4
+    ],
+    [
+      "zero-day",
+      4
+    ],
+    [
+      "supply chain",
+      4
+    ],
+    [
+      "engineer",
       2
     ],
     [
-      "NIST",
+      "breach",
       2
     ]
   ],
