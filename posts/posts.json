@@ -1,7 +1,25 @@
 {
-  "generated": "2026-02-11T09:53:17.284170",
-  "count": 6,
+  "generated": "2026-02-13T09:42:43.612960",
+  "count": 7,
   "posts": [
+    {
+      "title": "Security Resume That Gets Interviews",
+      "excerpt": "Beat the ATS filters.",
+      "date": "2026-02-13",
+      "category": "Job Search",
+      "category_slug": "job-search",
+      "category_css": "js",
+      "tags": [
+        "Job Search",
+        "Cybersecurity",
+        "Career",
+        "applications"
+      ],
+      "filepath": "posts/2026/02/security-resume-that-gets-interviews.html",
+      "slug": "security-resume-that-gets-interviews",
+      "read_time": 11,
+      "featured": true
+    },
     {
       "title": "Ransomware Skills Are in Demand\u2014Here's Why",
       "excerpt": "Employers are actively seeking ransomware expertise. How to get it.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/02/ransomware-skills-are-in-demandheres-why.html",
       "slug": "ransomware-skills-are-in-demandheres-why",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "SOC Analyst: Complete Career Guide",
