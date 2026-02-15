@@ -1,6 +1,54 @@
 {
-  "timestamp": "2026-02-13T09:42:43.555372",
+  "timestamp": "2026-02-15T09:31:07.801610",
   "news": [
+    {
+      "title": "Google Ties Suspected Russian Actor to CANFAIL Malware Attacks on Ukrainian Orgs",
+      "link": "https://thehackernews.com/2026/02/google-ties-suspected-russian-actor-to.html",
+      "description": "A previously undocumented threat actor has been attributed to attacks targeting Ukrainian organizations with malware known as CANFAIL.\nGoogle Threat Intelligence Group (GTIG) described the hacking group as possibly affiliated with Russian intelligence services. The threat actor is assessed to have targeted defense, military, government, and energy organizations within the Ukrainian regional and",
+      "date": "Fri, 13 Feb 2026 22:57:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "Google Links China, Iran, Russia, North Korea to Coordinated Defense Sector Cyber Operations",
+      "link": "https://thehackernews.com/2026/02/google-links-china-iran-russia-north.html",
+      "description": "Several state-sponsored actors, hacktivist entities, and criminal groups from China, Iran, North Korea, and Russia have trained their sights on the defense industrial base (DIB) sector, according to findings from Google Threat Intelligence Group (GTIG).\nThe tech giant's threat intelligence division said the adversarial targeting of the sector is centered around four key themes: striking defense",
+      "date": "Fri, 13 Feb 2026 21:53:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "UAT-9921 Deploys VoidLink Malware to Target Technology and Financial Sectors",
+      "link": "https://thehackernews.com/2026/02/uat-9921-deploys-voidlink-malware-to.html",
+      "description": "A previously unknown threat actor tracked as UAT-9921 has been observed leveraging a new modular framework called VoidLink in its campaigns targeting the technology and financial services sectors, according to findings from Cisco Talos.\n\"This threat actor seems to have been active since 2019, although they have not necessarily used VoidLink over the duration of their activity,\" researchers Nick",
+      "date": "Fri, 13 Feb 2026 20:53:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "Malicious Chrome Extensions Caught Stealing Business Data, Emails, and Browsing History",
+      "link": "https://thehackernews.com/2026/02/malicious-chrome-extensions-caught.html",
+      "description": "Cybersecurity researchers have discovered a malicious Google Chrome extension that's designed to steal data associated with Meta Business Suite and Facebook Business Manager.\nThe extension, named CL Suite by @CLMasters (ID: jkphinfhmfkckkcnifhjiplhfoiefffl), is marketed as a way to scrape Meta Business Suite data, remove verification pop-ups, and generate two-factor authentication (2FA) codes.",
+      "date": "Fri, 13 Feb 2026 16:55:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "npm\u2019s Update to Harden Their Supply Chain, and Points to Consider",
+      "link": "https://thehackernews.com/2026/02/npms-update-to-harden-their-supply.html",
+      "description": "In December 2025, in response to the Sha1-Hulud incident, npm completed a major authentication overhaul intended to reduce supply-chain attacks. While the overhaul is a solid step forward, the changes don\u2019t make npm projects immune from supply-chain attacks. npm is still susceptible to malware attacks \u2013 here\u2019s what you need to know for a safer Node community.\nLet\u2019s start with the original",
+      "date": "Fri, 13 Feb 2026 16:15:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "Researchers Observe In-the-Wild Exploitation of BeyondTrust CVSS 9.9 Vulnerability",
+      "link": "https://thehackernews.com/2026/02/researchers-observe-in-wild.html",
+      "description": "Threat actors have started to exploit a recently disclosed critical security flaw impacting BeyondTrust Remote Support (RS) and Privileged Remote Access (PRA) products, according to watchTowr.\n\"Overnight we observed first in-the-wild exploitation of BeyondTrust across our global sensors,\" Ryan Dewhurst, head of threat intelligence at watchTowr, said in a post on X. \"Attackers are abusing",
+      "date": "Fri, 13 Feb 2026 14:04:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
     {
       "title": "Google Reports State-Backed Hackers Using Gemini AI for Recon and Attack Support",
       "link": "https://thehackernews.com/2026/02/google-reports-state-backed-hackers.html",
@@ -34,52 +82,36 @@
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "83% of Ivanti EPMM Exploits Linked to Single IP on Bulletproof Hosting Infrastructure",
-      "link": "https://thehackernews.com/2026/02/83-of-ivanti-epmm-exploits-linked-to.html",
-      "description": "A significant chunk of the exploitation attempts targeting a newly disclosed security flaw in Ivanti Endpoint Manager Mobile (EPMM) can be traced back to a single IP address on bulletproof hosting infrastructure offered by PROSPERO.\nThreat intelligence firm GreyNoise said it recorded 417 exploitation sessions from 8 unique source IP addresses between February 1 and 9, 2026. An estimated 346",
-      "date": "Thu, 12 Feb 2026 13:02:00 +0530",
+      "title": "Zscaler-SquareX Deal Boosts Zero Trust, Secure Browsing Capabilities",
+      "link": "https://www.darkreading.com/remote-workforce/zscaler-squarex-deal-boosts-zero-trust-secure-browsing-capabilities",
+      "description": "Zscaler's acquisition of SquareX comes as competitors like CrowdStrike and Palo Alto Networks are also investing in secure browser technologies.",
+      "date": "Fri, 13 Feb 2026 21:58:19 GMT",
       "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
+      "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Apple Fixes Exploited Zero-Day Affecting iOS, macOS, and Other Devices",
-      "link": "https://thehackernews.com/2026/02/apple-fixes-exploited-zero-day.html",
-      "description": "Apple on Wednesday released iOS, iPadOS, macOS Tahoe, tvOS, watchOS, and visionOS updates to address a zero-day flaw that it said has been exploited in sophisticated cyber attacks.\nThe vulnerability, tracked as CVE-2026-20700 (CVSS score: 7.8), has been described as a memory corruption issue in dyld, Apple's Dynamic Link Editor. Successful exploitation of the vulnerability could allow an",
-      "date": "Thu, 12 Feb 2026 11:09:00 +0530",
+      "title": "Microsoft Under Pressure to Bolster Defenses for BYOVD Attacks",
+      "link": "https://www.darkreading.com/application-security/microsoft-under-pressure-defenses-byovd-attacks",
+      "description": "Threat actors are exploiting security gaps to weaponize Windows drivers and terminate security processes in targeted networks, and there may be no easy fixes in sight.",
+      "date": "Fri, 13 Feb 2026 17:08:59 GMT",
       "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
+      "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "First Malicious Outlook Add-In Found Stealing 4,000+ Microsoft Credentials",
-      "link": "https://thehackernews.com/2026/02/first-malicious-outlook-add-in-found.html",
-      "description": "Cybersecurity researchers have discovered what they said is the first known malicious Microsoft Outlook add-in detected in the wild.\nIn this unusual supply chain attack detailed by Koi Security, an unknown attacker claimed the domain associated with a now-abandoned legitimate add-in to serve a fake Microsoft login page, stealing over 4,000 credentials in the process. The activity has been",
-      "date": "Wed, 11 Feb 2026 23:15:00 +0530",
+      "title": "Nation-State Hackers Put Defense Industrial Base Under Siege",
+      "link": "https://www.darkreading.com/cyber-risk/nation-state-hackers-defense-industrial-base-under-siege",
+      "description": "Espionage groups from China, Russia and other nations burned at least two dozen zero-days in edge devices in attempts to infiltrate defense contractors' networks.",
+      "date": "Fri, 13 Feb 2026 17:07:24 GMT",
       "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
+      "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "APT36 and SideCopy Launch Cross-Platform RAT Campaigns Against Indian Entities",
-      "link": "https://thehackernews.com/2026/02/apt36-and-sidecopy-launch-cross.html",
-      "description": "Indian defense sector and government-aligned organizations have been targeted by multiple campaigns that are designed to compromise Windows and Linux environments with remote access trojans capable of stealing sensitive data and ensuring continued access to infected machines.\nThe campaigns are characterized by the use of malware families like Geta RAT, Ares RAT, and DeskRAT, which are often",
-      "date": "Wed, 11 Feb 2026 20:22:00 +0530",
+      "title": "AI Agents 'Swarm,' Security Complexity Follows Suit",
+      "link": "https://www.darkreading.com/cloud-security/ai-agents-swarm-security-complexity",
+      "description": "As AI deployments scale and start to include packs of agents autonomously working in concert, organizations face a naturally amplified attack surface.",
+      "date": "Fri, 13 Feb 2026 16:49:39 GMT",
       "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
-    },
-    {
-      "title": "Over 60 Software Vendors Issue Security Fixes Across OS, Cloud, and Network Platforms",
-      "link": "https://thehackernews.com/2026/02/over-60-software-vendors-issue-security.html",
-      "description": "It's Patch Tuesday, which means a number of software vendors have released patches for various security vulnerabilities impacting their products and services.\nMicrosoft issued fixes for 59 flaws, including six actively exploited zero-days in various Windows components that could be abused to bypass security features, escalate privileges, and trigger a denial-of-service (DoS) condition.\nElsewhere",
-      "date": "Wed, 11 Feb 2026 18:58:00 +0530",
-      "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
-    },
-    {
-      "title": "Exposed Training Open the Door for Crypto-Mining in Fortune 500 Cloud Environments",
-      "link": "https://thehackernews.com/2026/02/exposed-training-open-door-for-crypto.html",
-      "description": "Intentionally vulnerable training applications are widely used for security education, internal testing, and product demonstrations. Tools such as OWASP Juice Shop, DVWA, Hackazon, and bWAPP are designed to be insecure by default, making them useful for learning how common attack techniques work in controlled environments.\nThe issue is not the applications themselves, but how they are often",
-      "date": "Wed, 11 Feb 2026 17:00:00 +0530",
-      "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
+      "source": "https://www.darkreading.com/rss.xml"
     },
     {
       "title": "Ivanti EPMM Zero-Day Bugs Spark Exploit Frenzy \u2014 Again",
@@ -122,42 +154,10 @@
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Senegalese Data Breaches Expose Lack of 'Security Maturity'",
+      "title": "Senegalese Data Breaches Expose Lack of Security Maturity",
       "link": "https://www.darkreading.com/cyberattacks-data-breaches/hackers-breach-senegal-national-biometric-database",
       "description": "Green Blood Group steals personal records and biometric data of the West African nation's nearly 20 million residents.",
       "date": "Thu, 12 Feb 2026 09:00:00 GMT",
-      "category": "cybersecurity_news",
-      "source": "https://www.darkreading.com/rss.xml"
-    },
-    {
-      "title": "North Korea's UNC1069 Hammers Crypto Firms With AI",
-      "link": "https://www.darkreading.com/threat-intelligence/north-koreas-unc1069-hammers-crypto-firms",
-      "description": "In moving away from traditional banks to focus on Web3 companies, the threat actor is leveraging LLMs, deepfakes, legitimate platforms, and ClickFix.",
-      "date": "Wed, 11 Feb 2026 21:56:11 GMT",
-      "category": "cybersecurity_news",
-      "source": "https://www.darkreading.com/rss.xml"
-    },
-    {
-      "title": "How to Stay on Top of Future Threats With a Cutting-Edge SOC",
-      "link": "https://www.darkreading.com/cybersecurity-operations/stay-top-future-threats-cutting-edge-soc",
-      "description": "CISOs should focus on harnessing and securing AI and building new skills among their people. Vision and change management can transform security.",
-      "date": "Wed, 11 Feb 2026 20:36:42 GMT",
-      "category": "cybersecurity_news",
-      "source": "https://www.darkreading.com/rss.xml"
-    },
-    {
-      "title": "Automaker Secures the Supply Chain With Developer-Friendly Platform",
-      "link": "https://www.darkreading.com/application-security/automaker-secures-supply-chain-developer-friendly-platform",
-      "description": "How a platform engineering team embeds supply chain security into infrastructure without slowing developers.",
-      "date": "Wed, 11 Feb 2026 19:35:53 GMT",
-      "category": "cybersecurity_news",
-      "source": "https://www.darkreading.com/rss.xml"
-    },
-    {
-      "title": "AI Rising: Do We Know Enough About the Data Populating It?",
-      "link": "https://www.darkreading.com/data-privacy/do-we-know-enough-about-data-populating-ai",
-      "description": "Organizations remain reluctant to address the fact that AI can dangerously expose business operations as well as personal data.",
-      "date": "Wed, 11 Feb 2026 14:31:47 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
@@ -242,6 +242,22 @@
       "source": "https://krebsonsecurity.com/feed/"
     },
     {
+      "title": "Upcoming Speaking Engagements",
+      "link": "https://www.schneier.com/blog/archives/2026/02/upcoming-speaking-engagements-53.html",
+      "description": "<p>This is a current list of where and when I am scheduled to speak:</p>\n<ul>\n<li>I&#8217;m speaking at <a href=\"https://mindfulai.ca/events/mairi-featured-speaker-bruce-schneier-integrity-in-a-world-of-ai.php\">Ontario Tech University</a> in Oshawa, Ontario, Canada, at 2 PM ET on Thursday, February 26, 2026.</li>\n<li>I\u2019m speaking at the <a href=\"https://www.kwaai.ai/summit2026\">Personal AI Summit</a> in Los Angeles, California, USA, on Thursday, March 5, 2026.</li>\n<li>I\u2019m speaking at <a href=\"https://techlivecyber.wsj.com/?gaa_at=eafs&#38;gaa_n=AWEtsqf9GP4etUdWaqDIATpiE9ycqWMIVoGIzjikYLlJ64hb6H_v1QH9OYhMTxeU51U%3D&#38;gaa_ts=691df89d&#38;gaa_sig=BG9fpWuP-liL7Gi3SJgXHmS02M4ob6lp6nOh94qnwVXCWYNzJxdzOiW365xA8vKeiulrErE8mbXDvKTcqktBtQ%3D%3D\">Tech Live: Cybersecurity</a> in New York City, USA, on Wednesday, March 11, 2026.</li>\n<li>I\u2019m giving the <a href=\"https://www.chu.cam.ac.uk/event/computer-science-lecture-2026/\">Ross Anderson Lecture</a> at the University of Cambridge\u2019s Churchill College at 5:30 PM GMT on Thursday, March 19, 2026.</li>\n<li>I\u2019m speaking at <a href=\"https://www.rsaconference.com/usa\">RSAC 2026</a> in San Francisco, California, USA, on Wednesday, March 25, 2026...</li></ul>",
+      "date": "2026-02-14T09:46:59Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "Friday Squid Blogging: Do Squid Dream?",
+      "link": "https://www.schneier.com/blog/archives/2026/02/friday-squid-blogging-do-squid-dream.html",
+      "description": "<p>An <a href=\"https://sharksandco.com/do-squid-dream-what-scientists-think-about-cephalopod-sleep-1-4236/\">exploration</a> of the interesting question.</p>\n",
+      "date": "2026-01-22T20:19:43Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
       "title": "3D Printer Surveillance",
       "link": "https://www.schneier.com/blog/archives/2026/02/3d-printer-surveillance.html",
       "description": "<p>New York is <a href=\"https://blog.adafruit.com/2026/02/03/new-york-wants-to-ctrlaltdelete-your-3d-printer/\">contemplating</a> a bill that adds surveillance to 3D printers:</p>\n<blockquote><p>New York\u2019s 2026\u00ad2027 executive budget bill (S.9005 / A.10005) includes language that should alarm every maker, educator, and small manufacturer in the state. Buried in Part C is a provision requiring all 3D printers sold or delivered in New York to include &#8220;blocking technology.&#8221; This is defined as software or firmware that <i>scans every print file</I> through a &#8220;firearms blueprint detection algorithm&#8221; and refuses to print anything it flags as a potential firearm or firearm component...</i></p></blockquote>",
@@ -252,8 +268,8 @@
     {
       "title": "Rewiring Democracy Ebook is on Sale",
       "link": "https://www.schneier.com/blog/archives/2026/02/rewiring-democracy-ebook-is-on-sale.html",
-      "description": "<p>I just noticed that the ebook version of <a href=\"https://www.schneier.com/books/rewiring-democracy/\"><cite>Rewriring Democracy</cite></a> is on sale for $5 on <a href=\"https://www.amazon.com/gp/product/B0DTNZ2H86\">Amazon</a><a href=\"https://www.schneier.com/books/rewiring-democracy/\">, </a><a href=\"https://books.apple.com/us/book/rewiring-democracy/id6740839808\">Apple Books</a><a href=\"https://www.schneier.com/books/rewiring-democracy/\">, </a><a href=\"https://www.barnesandnoble.com/w/rewiring-democracy-bruce-schneier/1146990469?ean=9780262384407\">Barnes &#38; Noble</a><a href=\"https://www.schneier.com/books/rewiring-democracy/\">, </a><a href=\"https://www.booksamillion.com/p/Rewiring-Democracy/Bruce-Schneier/Q247907742\">Books A Million</a><a href=\"https://www.schneier.com/books/rewiring-democracy/\">, </a><a href=\"https://play.google.com/store/books/details?id=QcNAEQAAQBAJ\">Google Play</a><a href=\"https://www.schneier.com/books/rewiring-democracy/\">, </a><a href=\"https://www.kobo.com/us/en/ebook/rewiring-democracy\">Kobo</a>, and presumably everywhere else in the US. I have no idea how long this will last.</p>\n<p>Also, Amazon has a <a href=\"https://www.amazon.com/Rewiring-Democracy-Transform-Government-Citizenship/dp/0262049945\">coupon</a> that brings the hardcover price down to $20. You&#8217;ll see the discount at checkout.</p>\n",
-      "date": "2026-02-12T08:16:32Z",
+      "description": "<p>I just noticed that the ebook version of <a href=\"https://www.schneier.com/books/rewiring-democracy/\"><cite>Rewiring Democracy</cite></a> is on sale for $5 on <a href=\"https://www.amazon.com/gp/product/B0DTNZ2H86\">Amazon</a>, <a href=\"https://books.apple.com/us/book/rewiring-democracy/id6740839808\">Apple Books</a>, <a href=\"https://www.barnesandnoble.com/w/rewiring-democracy-bruce-schneier/1146990469?ean=9780262384407\">Barnes &#38; Noble</a>, <a href=\"https://www.booksamillion.com/p/Rewiring-Democracy/Bruce-Schneier/Q247907742\">Books A Million</a>, <a href=\"https://play.google.com/store/books/details?id=QcNAEQAAQBAJ\">Google Play</a>, <a href=\"https://www.kobo.com/us/en/ebook/rewiring-democracy\">Kobo</a>, and presumably everywhere else in the US. I have no idea how long this will last.</p>\n<p>Also, Amazon has a <a href=\"https://www.amazon.com/Rewiring-Democracy-Transform-Government-Citizenship/dp/0262049945\">coupon</a> that brings the hardcover price down to $20. You&#8217;ll see the discount at checkout.</p>\n",
+      "date": "2026-02-14T16:57:21Z",
       "category": "cybersecurity_news",
       "source": "https://www.schneier.com/feed/atom/"
     },
@@ -268,8 +284,8 @@
     {
       "title": "AI-Generated Text and the Detection Arms Race",
       "link": "https://www.schneier.com/blog/archives/2026/02/the-ai-generated-text-arms-race.html",
-      "description": "<p>In 2023, the science fiction literary magazine <cite>Clarkesworld</cite> <a href=\"https://www.npr.org/2023/02/24/1159286436/ai-chatbot-chatgpt-magazine-&#60;cite&#62;Clarkesworld&#60;/cite&#62;-artificial-intelligence\">stopped accepting</a> new submissions because so many were generated by artificial intelligence. Near as the editors could tell, many submitters pasted the magazine\u2019s detailed story guidelines into an AI and sent in the results. And they weren\u2019t alone. Other fiction magazines have also <a href=\"https://www.theverge.com/2023/2/25/23613752/ai-generated-short-stories-literary-magazines-&#60;cite&#62;Clarkesworld&#60;/cite&#62;-science-fiction\">reported a high number</a> of AI-generated submissions.</p>\n<p>This is only one example of a ubiquitous trend. A legacy system relied on the difficulty of writing and cognition to limit volume. Generative AI overwhelms the system because the humans on the receiving end can\u2019t keep up...</p>",
-      "date": "2026-02-11T05:51:18Z",
+      "description": "<p>In 2023, the science fiction literary magazine <cite>Clarkesworld</cite> <a href=\"https://www.npr.org/2023/02/24/1159286436/ai-chatbot-chatgpt-magazine-clarkesworld-artificial-intelligence\">stopped accepting</a> new submissions because so many were generated by artificial intelligence. Near as the editors could tell, many submitters pasted the magazine\u2019s detailed story guidelines into an AI and sent in the results. And they weren\u2019t alone. Other fiction magazines have also <a href=\"https://www.theverge.com/2023/2/25/23613752/ai-generated-short-stories-literary-magazines-clarkesworld-science-fiction\">reported a high number</a> of AI-generated submissions.</p>\n<p>This is only one example of a ubiquitous trend. A legacy system relied on the difficulty of writing and cognition to limit volume. Generative AI overwhelms the system because the humans on the receiving end can\u2019t keep up...</p>",
+      "date": "2026-02-14T12:16:09Z",
       "category": "cybersecurity_news",
       "source": "https://www.schneier.com/feed/atom/"
     },
@@ -301,25 +317,17 @@
       "title": "iPhone Lockdown Mode Protects Washington Post Reporter",
       "link": "https://www.schneier.com/blog/archives/2026/02/iphone-lockdown-mode-protects-washington-post-reporter.html",
       "description": "<p>404Media is <a href=\"https://www.404media.co/fbi-couldnt-get-into-wapo-reporters-iphone-because-it-had-lockdown-mode-enabled/\">reporting</a> that the FBI could not access a reporter&#8217;s iPhone because it had Lockdown Mode enabled:</p>\n<blockquote><p>The court record shows what devices and data the FBI was able to ultimately access, and which devices it could not, after raiding the home of the reporter, Hannah Natanson, in January as part of an investigation into leaks of classified information. It also provides rare insight into the apparent effectiveness of Lockdown Mode, or at least how effective it might be before the FBI may try other techniques to access the device.</p>\n<p>&#8220;Because the iPhone was in Lockdown mode, CART could not extract that device,&#8221; the court record reads, referring to the FBI&#8217;s Computer Analysis Response Team, a unit focused on performing forensic analyses of seized devices. The document is written by the government, and is opposing the return of Natanson&#8217;s devices...</p></blockquote>",
-      "date": "2026-02-05T17:03:50Z",
+      "date": "2026-02-14T16:48:22Z",
       "category": "cybersecurity_news",
       "source": "https://www.schneier.com/feed/atom/"
     },
     {
-      "title": "Backdoor in Notepad++",
-      "link": "https://www.schneier.com/blog/archives/2026/02/backdoor-in-notepad.html",
-      "description": "<p>Hackers associated with the Chinese government used a <a href=\"https://arstechnica.com/security/2026/02/notepad-updater-was-compromised-for-6-months-in-supply-chain-attack/\">Trojaned version</a> of Notepad++ to deliver malware to selected users.</p>\n<blockquote><p>Notepad++ said that officials with the unnamed provider hosting the update infrastructure consulted with incident responders and found that it remained compromised until September 2. Even then, the attackers maintained credentials to the internal services until December 2, a capability that allowed them to continue redirecting selected update traffic to malicious servers. The threat actor &#8220;specifically targeted Notepad++ domain with the goal of exploiting insufficient update verification controls that existed in older versions of Notepad++.&#8221; Event logs indicate that the hackers tried to re-exploit one of the weaknesses after it was fixed but that the attempt failed...</p></blockquote>",
-      "date": "2026-02-05T04:02:12Z",
+      "title": "CISA Announces New Town Halls to Engage with Stakeholders on Cyber Incident Reporting for Critical Infrastructure",
+      "link": "https://www.cisa.gov/news-events/news/cisa-announces-new-town-halls-engage-stakeholders-cyber-incident-reporting-critical-infrastructure",
+      "description": "",
+      "date": "Fri, 13 Feb 26 12:00:00 +0000",
       "category": "cybersecurity_news",
-      "source": "https://www.schneier.com/feed/atom/"
-    },
-    {
-      "title": "US Declassifies Information on JUMPSEAT Spy Satellites",
-      "link": "https://www.schneier.com/blog/archives/2026/02/us-declassifies-information-on-jumpseat-spy-satellites.html",
-      "description": "<p>The US National Reconnaissance Office has declassified <a href=\"https://arstechnica.com/space/2026/01/us-spy-satellite-agency-declassifies-high-flying-cold-war-listening-post/\">information</a> about a fleet of spy satellites operating between 1971 and 2006.</p>\n<p>I&#8217;m actually impressed to see a declassification only two decades after decommission.</p>\n",
-      "date": "2026-02-03T17:04:40Z",
-      "category": "cybersecurity_news",
-      "source": "https://www.schneier.com/feed/atom/"
+      "source": "https://www.cisa.gov/news.xml"
     },
     {
       "title": "CISA\u2019s 2025 Year in Review: Driving Security and Resilience Across Critical Infrastructure",
@@ -394,14 +402,6 @@
       "source": "https://www.cisa.gov/news.xml"
     },
     {
-      "title": "CISA Unveils Enhanced Cross-Sector Cybersecurity Performance Goals",
-      "link": "https://www.cisa.gov/news-events/news/cisa-unveils-enhanced-cross-sector-cybersecurity-performance-goals",
-      "description": "",
-      "date": "Thu, 11 Dec 25 12:00:00 +0000",
-      "category": "cybersecurity_news",
-      "source": "https://www.cisa.gov/news.xml"
-    },
-    {
       "title": "Mentorship Monday - Post All Career, Education and Job questions here!",
       "link": "https://www.reddit.com/r/cybersecurity/comments/1qzp0vu/mentorship_monday_post_all_career_education_and/",
       "description": "",
@@ -418,66 +418,66 @@
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "AI in cybersecurity is mostly turd polishing - Fight me",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r37gl5/ai_in_cybersecurity_is_mostly_turd_polishing/",
+      "title": "DOJ Epstein file EFTA01133110.pdf flagged suspicious on VirusTotal behavior tab \u2013 anyone else see this?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r4w67b/doj_epstein_file_efta01133110pdf_flagged/",
       "description": "",
-      "date": "2026-02-12T22:23:33+00:00",
+      "date": "2026-02-14T21:16:37+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Discord\u2019s Age Verification Defeated By a 3D Avatar You Control With a Game Controller",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r2qt18/discords_age_verification_defeated_by_a_3d_avatar/",
+      "title": "How do you all actively stay updated with Cybersecurity news?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r4jcov/how_do_you_all_actively_stay_updated_with/",
       "description": "",
-      "date": "2026-02-12T11:17:28+00:00",
+      "date": "2026-02-14T12:24:26+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Apple patches decade-old iOS zero-day exploited in the wild",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r3410l/apple_patches_decadeold_ios_zeroday_exploited_in/",
+      "title": "Darktrace for email vs newer API-native platforms",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r4slco/darktrace_for_email_vs_newer_apinative_platforms/",
       "description": "",
-      "date": "2026-02-12T20:10:46+00:00",
+      "date": "2026-02-14T18:50:54+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Cyber Model Arena",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r32qga/cyber_model_arena/",
+      "title": "New .LNK Spoofing Flaw in Windows and Microsoft refuses to acknowledge it",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r4hdpd/new_lnk_spoofing_flaw_in_windows_and_microsoft/",
       "description": "",
-      "date": "2026-02-12T19:21:59+00:00",
+      "date": "2026-02-14T10:30:12+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Researchers Warn: WiFi Could Become an Invisible Mass Surveillance System",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r2myr3/researchers_warn_wifi_could_become_an_invisible/",
+      "title": "CNAPP solution (Wiz v. Cortex Cloud)",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r4rjpf/cnapp_solution_wiz_v_cortex_cloud/",
       "description": "",
-      "date": "2026-02-12T07:17:34+00:00",
+      "date": "2026-02-14T18:09:42+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "QR Code Phishing (Quishing) \u2013 recent cases and defense considerations",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r3hv1r/qr_code_phishing_quishing_recent_cases_and/",
+      "title": "Critical Microsoft bug from 2024 under exploitation",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r4n0tl/critical_microsoft_bug_from_2024_under/",
       "description": "",
-      "date": "2026-02-13T06:28:11+00:00",
+      "date": "2026-02-14T15:11:07+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Client asking for very detailed security audit",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r2xx2a/client_asking_for_very_detailed_security_audit/",
+      "title": "The Israeli Spyware Firm That Accidentally Just Exposed Itself",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r3xcm9/the_israeli_spyware_firm_that_accidentally_just/",
       "description": "",
-      "date": "2026-02-12T16:25:47+00:00",
+      "date": "2026-02-13T18:41:11+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "State-Backed Hackers Weaponize Google Gemini Across Cyberattack Lifecycles",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r33pse/statebacked_hackers_weaponize_google_gemini/",
+      "title": "Zero-Day EXPLOIT (CVE-2026-441): Is Your Crypto Wallet at Risk?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r59hji/zeroday_exploit_cve2026441_is_your_crypto_wallet/",
       "description": "",
-      "date": "2026-02-12T19:59:12+00:00",
+      "date": "2026-02-15T08:29:25+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
@@ -498,66 +498,66 @@
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "GRC, Cloud security or Security engineering?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r3ifry/grc_cloud_security_or_security_engineering/",
+      "title": "Seeking advice on landing job in CA",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r555wg/seeking_advice_on_landing_job_in_ca/",
       "description": "",
-      "date": "2026-02-13T07:01:17+00:00",
+      "date": "2026-02-15T04:18:01+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Is Anyone Else Noticing Salaries Trending Downward? Anyone Else Worried About the Job Market/Cybersecurity Economy?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r27klf/is_anyone_else_noticing_salaries_trending/",
+      "title": "Looking to go into something less technical career question",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r52nfq/looking_to_go_into_something_less_technical/",
       "description": "",
-      "date": "2026-02-11T19:49:30+00:00",
+      "date": "2026-02-15T02:10:16+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Criminology and Security Management background \u2014 is cybersecurity a realistic career path in Germany/EU?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r30ss8/criminology_and_security_management_background_is/",
+      "title": "What would a good resume for cybersecurity internship positions look like? (relevant experience and skills and certs)",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r4ykmo/what_would_a_good_resume_for_cybersecurity/",
       "description": "",
-      "date": "2026-02-12T18:11:53+00:00",
+      "date": "2026-02-14T22:58:33+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Graduation Project",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r2q73a/graduation_project/",
+      "title": "GRC Compliance Entry Level Advice",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r4vc8p/grc_compliance_entry_level_advice/",
       "description": "",
-      "date": "2026-02-12T10:41:18+00:00",
+      "date": "2026-02-14T20:41:52+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "What\u2019s the best job in cybersecurity that has a very good pay?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r323ih/whats_the_best_job_in_cybersecurity_that_has_a/",
+      "title": "What sort of questions would be asked in a Junior SailPoint Engineer role?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r4t6su/what_sort_of_questions_would_be_asked_in_a_junior/",
       "description": "",
-      "date": "2026-02-12T18:58:49+00:00",
+      "date": "2026-02-14T19:14:57+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Hi, a quick question can I get into cybersecurity as an 10th grade/class dropout with certificates backing if I, if yes what all (I am 26 btw)",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r2zpc2/hi_a_quick_question_can_i_get_into_cybersecurity/",
+      "title": "Which domain should I switch to?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r4k9j3/which_domain_should_i_switch_to/",
       "description": "",
-      "date": "2026-02-12T17:31:54+00:00",
+      "date": "2026-02-14T13:10:58+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Mid-career IT audit / technology risk professional exploring next growth direction",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r2g98f/midcareer_it_audit_technology_risk_professional/",
+      "title": "Security Engineer Plan Advice",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r4cazt/security_engineer_plan_advice/",
       "description": "",
-      "date": "2026-02-12T01:36:51+00:00",
+      "date": "2026-02-14T05:30:07+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Sole Security Intern in a quiet, MSSP-managed environment: How to gain real SOC experience?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r1x69z/sole_security_intern_in_a_quiet_msspmanaged/",
+      "title": "Whats the current state of online DCF tools for retail investors?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r4kqhl/whats_the_current_state_of_online_dcf_tools_for/",
       "description": "",
-      "date": "2026-02-11T13:19:31+00:00",
+      "date": "2026-02-14T13:33:22+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     }
@@ -565,34 +565,30 @@
   "trending": [
     [
       "AI",
-      31
+      29
     ],
     [
       "OT",
-      25
+      24
     ],
     [
       "zero-day",
-      6
-    ],
-    [
-      "government",
       5
     ],
     [
-      "SOC",
+      "government",
       4
     ],
     [
-      "artificial intelligence",
-      3
+      "critical infrastructure",
+      4
     ],
     [
       "vulnerability",
       3
     ],
     [
-      "cloud",
+      "artificial intelligence",
       3
     ],
     [
@@ -600,8 +596,12 @@
       3
     ],
     [
-      "critical infrastructure",
-      3
+      "IoT",
+      2
+    ],
+    [
+      "SOC",
+      1
     ]
   ],
   "fetch_date": "February 2026"

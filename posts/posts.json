@@ -1,7 +1,25 @@
 {
-  "generated": "2026-02-13T09:42:43.612960",
-  "count": 7,
+  "generated": "2026-02-15T09:31:07.863492",
+  "count": 8,
   "posts": [
+    {
+      "title": "Top Technical Skills Employers Want",
+      "excerpt": "From real job posting data.",
+      "date": "2026-02-15",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "technical"
+      ],
+      "filepath": "posts/2026/02/top-technical-skills-employers-want.html",
+      "slug": "top-technical-skills-employers-want",
+      "read_time": 11,
+      "featured": true
+    },
     {
       "title": "Security Resume That Gets Interviews",
       "excerpt": "Beat the ATS filters.",
@@ -18,7 +36,7 @@
       "filepath": "posts/2026/02/security-resume-that-gets-interviews.html",
       "slug": "security-resume-that-gets-interviews",
       "read_time": 11,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Ransomware Skills Are in Demand\u2014Here's Why",
