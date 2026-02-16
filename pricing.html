@@ -515,6 +515,10 @@
             stroke-width: 1.5;
         }
 
+        .qualifier-content {
+            flex: 1;
+        }
+
         .qualifier-title {
             font-family: var(--font-heading);
             font-size: 16px;
@@ -924,65 +928,250 @@
                 display: flex;
             }
 
+            .container {
+                padding: 0 16px;
+            }
+
             .hero {
-                padding: 120px 0 60px;
+                padding: 100px 0 50px;
                 min-height: auto;
             }
 
             .hero-title {
-                font-size: 28px;
+                font-size: 26px;
+                letter-spacing: 1px;
             }
 
             .hero-description {
-                font-size: 16px;
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .hero-badge {
+                font-size: 10px;
+                padding: 6px 12px;
             }
 
             .section {
-                padding: 60px 0;
+                padding: 50px 0;
             }
 
-            .pathways-section {
-                padding: 60px 0;
+            .section-title {
+                font-size: 26px;
             }
 
-            .pathway-card {
-                padding: 36px 28px;
+            .section-label {
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+
+            /* Intro section mobile */
+            .intro-section {
+                padding: 50px 0;
+            }
+
+            .intro-content p {
+                font-size: 15px;
+                line-height: 1.8;
+            }
+
+            .founder-credential p {
+                font-size: 13px;
+            }
+
+            /* Qualifier section mobile */
+            .qualifier-section {
+                padding: 50px 0;
             }
 
             .qualifier-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
 
-            .qualifier-section {
-                padding: 60px 0;
+            .qualifier-item {
+                padding: 20px 16px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+                gap: 16px;
             }
 
+            .qualifier-icon {
+                margin: 0;
+                flex-shrink: 0;
+                width: 40px;
+                height: 40px;
+            }
+
+            .qualifier-icon svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .qualifier-content {
+                flex: 1;
+            }
+
+            .qualifier-title {
+                font-size: 15px;
+                margin-bottom: 4px;
+            }
+
+            .qualifier-text {
+                font-size: 12px;
+            }
+
+            /* Pathways section mobile */
+            .pathways-section {
+                padding: 50px 0;
+            }
+
+            .pathways-header {
+                margin-bottom: 40px;
+            }
+
+            .pathway-card {
+                padding: 28px 20px;
+            }
+
+            .pathway-number {
+                font-size: 12px;
+                margin-bottom: 12px;
+            }
+
+            .pathway-title {
+                font-size: 20px;
+                margin-bottom: 16px;
+            }
+
+            .pathway-description {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .pathway-list {
+                margin-bottom: 16px;
+            }
+
+            .pathway-list li {
+                font-size: 13px;
+                margin-bottom: 10px;
+                padding-left: 20px;
+            }
+
+            .pathway-outcome {
+                padding: 12px 16px;
+                margin-bottom: 20px;
+            }
+
+            .pathway-outcome p {
+                font-size: 12px;
+            }
+
+            .btn-outline {
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 13px;
+            }
+
+            /* FAQ section mobile */
             .faq-section {
-                padding: 60px 0;
+                padding: 50px 0;
+            }
+
+            .faq-header {
+                margin-bottom: 40px;
+            }
+
+            .faq-question {
+                padding: 20px 0;
             }
 
             .faq-question h3 {
-                font-size: 16px;
+                font-size: 15px;
+                line-height: 1.4;
+                padding-right: 10px;
             }
 
+            .faq-icon {
+                width: 20px;
+                height: 20px;
+                margin-left: 12px;
+            }
+
+            .faq-icon::before {
+                width: 12px;
+            }
+
+            .faq-icon::after {
+                height: 12px;
+            }
+
+            .faq-item.active .faq-answer {
+                max-height: 400px;
+            }
+
+            .faq-answer p {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            /* Contact section mobile */
+            .contact-section {
+                padding: 50px 0;
+            }
+
+            .contact-content p {
+                font-size: 15px;
+            }
+
+            .contact-content > div[style] {
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+
+            .contact-content .btn {
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 14px 24px;
+                font-size: 14px;
+            }
+
+            /* Sticky CTA mobile */
             .sticky-cta {
                 flex-direction: column;
-                gap: 12px;
-                padding: 16px 24px 20px;
+                gap: 10px;
+                padding: 14px 16px 18px;
             }
 
             .sticky-cta-text {
-                font-size: 14px;
+                font-size: 13px;
                 text-align: center;
             }
 
+            .sticky-cta .btn {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 13px;
+            }
+
+            /* Footer mobile */
             .footer-grid {
                 grid-template-columns: 1fr;
-                gap: 32px;
+                gap: 28px;
             }
 
             .footer-brand {
                 grid-column: span 1;
+            }
+
+            .footer-brand p {
+                max-width: 100%;
             }
 
             .footer-bottom {
@@ -991,9 +1180,55 @@
                 text-align: center;
             }
 
+            .footer-legal {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
             .footer {
-                padding-bottom: 20px;
-                margin-bottom: 100px;
+                padding: 40px 0 0;
+                margin-bottom: 90px;
+            }
+
+            /* Disclaimer mobile */
+            .disclaimer {
+                padding: 30px 0;
+            }
+
+            .disclaimer p {
+                font-size: 12px;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 380px) {
+            .hero-title {
+                font-size: 22px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .pathway-title {
+                font-size: 18px;
+            }
+
+            .faq-question h3 {
+                font-size: 14px;
+            }
+
+            .qualifier-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .qualifier-icon {
+                margin: 0 auto 12px;
+            }
+
+            .qualifier-content {
+                text-align: center;
             }
         }
     </style>
@@ -1094,8 +1329,10 @@
                             <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/>
                         </svg>
                     </div>
-                    <h3 class="qualifier-title">Research Universities</h3>
-                    <p class="qualifier-text">R1 and R2 institutions developing cybersecurity and intelligence programs</p>
+                    <div class="qualifier-content">
+                        <h3 class="qualifier-title">Research Universities</h3>
+                        <p class="qualifier-text">R1 and R2 institutions developing cybersecurity and intelligence programs</p>
+                    </div>
                 </div>
                 <div class="qualifier-item">
                     <div class="qualifier-icon">
@@ -1105,8 +1342,10 @@
                             <path d="M2 12l10 5 10-5"/>
                         </svg>
                     </div>
-                    <h3 class="qualifier-title">Community Colleges</h3>
-                    <p class="qualifier-text">Institutions with dedicated cyber or IT security certificate programs</p>
+                    <div class="qualifier-content">
+                        <h3 class="qualifier-title">Community Colleges</h3>
+                        <p class="qualifier-text">Institutions with dedicated cyber or IT security certificate programs</p>
+                    </div>
                 </div>
                 <div class="qualifier-item">
                     <div class="qualifier-icon">
@@ -1115,8 +1354,10 @@
                             <path d="M9 12l2 2 4-4"/>
                         </svg>
                     </div>
-                    <h3 class="qualifier-title">Government Training Centers</h3>
-                    <p class="qualifier-text">Federal, state, and DoD-adjacent workforce development programs</p>
+                    <div class="qualifier-content">
+                        <h3 class="qualifier-title">Government Training Centers</h3>
+                        <p class="qualifier-text">Federal, state, and DoD-adjacent workforce development programs</p>
+                    </div>
                 </div>
                 <div class="qualifier-item">
                     <div class="qualifier-icon">
@@ -1125,8 +1366,10 @@
                             <path d="M12 6v6l4 2"/>
                         </svg>
                     </div>
-                    <h3 class="qualifier-title">Professional Organizations</h3>
-                    <p class="qualifier-text">Industry associations and credentialing bodies in security and intelligence</p>
+                    <div class="qualifier-content">
+                        <h3 class="qualifier-title">Professional Organizations</h3>
+                        <p class="qualifier-text">Industry associations and credentialing bodies in security and intelligence</p>
+                    </div>
                 </div>
             </div>
         </div>
