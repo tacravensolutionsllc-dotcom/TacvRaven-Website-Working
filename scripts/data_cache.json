@@ -1,163 +1,163 @@
 {
-  "timestamp": "2026-02-17T09:47:24.540894",
+  "timestamp": "2026-02-19T09:43:39.467248",
   "news": [
     {
-      "title": "Apple Tests End-to-End Encrypted RCS Messaging in iOS 26.4 Developer Beta",
-      "link": "https://thehackernews.com/2026/02/apple-tests-end-to-end-encrypted-rcs.html",
-      "description": "Apple on Monday released a new developer beta of iOS and iPadOS with support for end-to-end encryption (E2EE) in Rich Communications Services (RCS) messages.\nThe feature is currently available for testing in iOS and iPadOS 26.4 Beta, and is expected to be shipped to customers in a future update for iOS, iPadOS, macOS, and watchOS.\n\"End-to-end encryption is in beta and is not available for all",
-      "date": "Tue, 17 Feb 2026 12:14:00 +0530",
+      "title": "CRESCENTHARVEST Campaign Targets Iran Protest Supporters With RAT Malware",
+      "link": "https://thehackernews.com/2026/02/crescentharvest-campaign-targets-iran.html",
+      "description": "Cybersecurity researchers have disclosed details of a new campaign dubbed CRESCENTHARVEST, likely targeting supporters of Iran's ongoing protests to conduct information theft and long-term espionage.\nThe Acronis Threat Research Unit (TRU) said it observed the activity after January 9, with the attacks designed to deliver a malicious payload that serves as a remote access trojan (RAT) and",
+      "date": "Thu, 19 Feb 2026 13:43:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Infostealer Steals OpenClaw AI Agent Configuration Files and Gateway Tokens",
-      "link": "https://thehackernews.com/2026/02/infostealer-steals-openclaw-ai-agent.html",
-      "description": "Cybersecurity researchers disclosed they have detected a case of an information stealer infection successfully exfiltrating a victim's OpenClaw (formerly Clawdbot and Moltbot) configuration environment.\n\"This finding marks a significant milestone in the evolution of infostealer behavior: the transition from stealing browser credentials to harvesting the 'souls' and identities of personal AI [",
-      "date": "Tue, 17 Feb 2026 00:13:00 +0530",
+      "title": "Citizen Lab Finds Cellebrite Tool Used on Kenyan Activist\u2019s Phone in Police Custody",
+      "link": "https://thehackernews.com/2026/02/citizen-lab-finds-cellebrite-tool-used.html",
+      "description": "New research from the Citizen Lab has found signs that Kenyan authorities used a commercial forensic extraction tool manufactured by Israeli company Cellebrite to break into a prominent dissident's phone, making it the latest case of abuse of the technology targeting civil society.\nThe interdisciplinary research unit at the University of Toronto's Munk School of Global Affairs &amp; Public",
+      "date": "Wed, 18 Feb 2026 23:00:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Study Uncovers 25 Password Recovery Attacks in Major Cloud Password Managers",
-      "link": "https://thehackernews.com/2026/02/study-uncovers-25-password-recovery.html",
-      "description": "A new study has found that multiple cloud-based password managers, including Bitwarden, Dashlane, and LastPass, are susceptible to password recovery attacks under certain conditions.\n\"The attacks range in severity from integrity violations to the complete compromise of all vaults in an organization,\" researchers Matteo Scarlata, Giovanni Torrisi, Matilda Backendal, and Kenneth G. Paterson said.",
-      "date": "Mon, 16 Feb 2026 23:36:00 +0530",
+      "title": "Grandstream GXP1600 VoIP Phones Exposed to Unauthenticated Remote Code Execution",
+      "link": "https://thehackernews.com/2026/02/grandstream-gxp1600-voip-phones-exposed.html",
+      "description": "Cybersecurity researchers have disclosed a critical security flaw in the Grandstream GXP1600 series of VoIP phones that could allow an attacker to seize control of susceptible devices.\nThe vulnerability, tracked as CVE-2026-2329, carries a CVSS score of 9.3 out of a maximum of 10.0. It has been described as a case of unauthenticated stack-based buffer overflow that could result in remote code",
+      "date": "Wed, 18 Feb 2026 22:05:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Weekly Recap: Outlook Add-Ins Hijack, 0-Day Patches, Wormable Botnet & AI Malware",
-      "link": "https://thehackernews.com/2026/02/weekly-recap-outlook-add-ins-hijack-0.html",
-      "description": "This week\u2019s recap shows how small gaps are turning into big entry points. Not always through new exploits, often through tools, add-ons, cloud setups, or workflows that people already trust and rarely question.\nAnother signal: attackers are mixing old and new methods. Legacy botnet tactics, modern cloud abuse, AI assistance, and supply-chain exposure are being used side by side, whichever path",
-      "date": "Mon, 16 Feb 2026 18:25:00 +0530",
+      "title": "Critical Flaws Found in Four VS Code Extensions with Over 125 Million Installs",
+      "link": "https://thehackernews.com/2026/02/critical-flaws-found-in-four-vs-code.html",
+      "description": "Cybersecurity researchers have disclosed multiple security vulnerabilities in four popular Microsoft Visual Studio Code (VS Code) extensions that, if successfully exploited, could allow threat actors to steal local files and execute code remotely.\nThe extensions, which have been collectively installed more than 125 million times, are Live Server, Code Runner, Markdown Preview Enhanced, and",
+      "date": "Wed, 18 Feb 2026 18:46:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Safe and Inclusive E\u2011Society: How Lithuania Is Bracing for AI\u2011Driven Cyber Fraud",
-      "link": "https://thehackernews.com/2026/02/safe-and-inclusive-esociety-how.html",
-      "description": "Presentation of the KTU Consortium Mission \u2018A Safe and Inclusive Digital Society\u2019 at the Innovation Agency event \u2018Innovation Breakfast: How Mission-Oriented Science and Innovation Programmes Will Address Societal Challenges\u2019.\n\nTechnologies are evolving fast, reshaping economies, governance, and daily life. Yet, as innovation accelerates, so do digital risks. Technological change is no longer",
-      "date": "Mon, 16 Feb 2026 17:25:00 +0530",
+      "title": "Cybersecurity Tech Predictions for 2026: Operating in a World of Permanent Instability",
+      "link": "https://thehackernews.com/2026/02/cybersecurity-tech-predictions-for-2026.html",
+      "description": "In 2025, navigating the digital seas still felt like a matter of direction. Organizations charted routes, watched the horizon, and adjusted course to reach safe harbors of resilience, trust, and compliance.\nIn 2026, the seas are no longer calm between storms. Cybersecurity now unfolds in a state of&nbsp;continuous atmospheric instability: AI-driven threats that adapt in real time, expanding",
+      "date": "Wed, 18 Feb 2026 17:28:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "New ZeroDayRAT Mobile Spyware Enables Real-Time Surveillance and Data Theft",
-      "link": "https://thehackernews.com/2026/02/new-zerodayrat-mobile-spyware-enables.html",
-      "description": "Cybersecurity researchers have disclosed details of a new mobile spyware platform dubbed ZeroDayRAT that's being advertised on Telegram as a way to grab sensitive data and facilitate real-time surveillance on Android and iOS devices.\n\"The developer runs dedicated channels for sales, customer support, and regular updates, giving buyers a single point of access to a fully operational spyware",
-      "date": "Mon, 16 Feb 2026 15:54:00 +0530",
+      "title": "Dell RecoverPoint for VMs Zero-Day CVE-2026-22769 Exploited Since Mid-2024",
+      "link": "https://thehackernews.com/2026/02/dell-recoverpoint-for-vms-zero-day-cve.html",
+      "description": "A maximum severity security vulnerability in Dell RecoverPoint for Virtual Machines has been exploited as a zero-day by a suspected China-nexus threat cluster dubbed UNC6201 since mid-2024, according to a new report from Google Mandiant and Google Threat Intelligence Group (GTIG).\nThe activity involves the exploitation of CVE-2026-22769 (CVSS score: 10.0), a case of hard-coded credentials",
+      "date": "Wed, 18 Feb 2026 16:02:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "New Chrome Zero-Day (CVE-2026-2441) Under Active Attack \u2014 Patch Released",
-      "link": "https://thehackernews.com/2026/02/new-chrome-zero-day-cve-2026-2441-under.html",
-      "description": "Google on Friday released security updates for its Chrome browser to address a security flaw that it said has been exploited in the wild.\nThe high-severity vulnerability, tracked as CVE-2026-2441 (CVSS score: 8.8), has been described as a use-after-free bug in CSS. Security researcher Shaheen Fazim has been credited with discovering and reporting the shortcoming on February 11, 2026.\n\"Use after",
-      "date": "Mon, 16 Feb 2026 12:08:00 +0530",
+      "title": "3 Ways to Start Your Intelligent Workflow Program ",
+      "link": "https://thehackernews.com/2026/02/3-ways-to-start-your-intelligent.html",
+      "description": "Security, IT, and engineering teams today are under relentless pressure to accelerate outcomes, cut operational drag, and unlock the full potential of AI and automation. But simply investing in tools isn\u2019t enough. 88% of AI proofs-of-concept never make it to production, even though 70% of workers cite freeing time for high-value work as the primary AI automation motivation. Real impact comes",
+      "date": "Wed, 18 Feb 2026 16:00:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Microsoft Discloses DNS-Based ClickFix Attack Using Nslookup for Malware Staging",
-      "link": "https://thehackernews.com/2026/02/microsoft-discloses-dns-based-clickfix.html",
-      "description": "Microsoft has disclosed details of a new version of the ClickFix social engineering tactic in which the attackers trick unsuspecting users into running commands that carry out a Domain Name System (DNS) lookup to retrieve the next-stage payload.\nSpecifically, the attack relies on using the \"nslookup\" (short for nameserver lookup) command to execute a custom DNS lookup triggered via the Windows",
-      "date": "Sun, 15 Feb 2026 19:40:00 +0530",
+      "title": "Notepad++ Fixes Hijacked Update Mechanism Used to Deliver Targeted Malware",
+      "link": "https://thehackernews.com/2026/02/notepad-fixes-hijacked-update-mechanism.html",
+      "description": "Notepad++ has released a security fix to plug gaps that were exploited by an advanced threat actor from China to hijack the software update mechanism to selectively deliver malware to targets of interest.\nThe version 8.9.2 update incorporates what maintainer Don Ho calls a \"double lock\" design that aims to make the update process \"robust and effectively unexploitable.\" This includes verification",
+      "date": "Wed, 18 Feb 2026 13:10:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Google Ties Suspected Russian Actor to CANFAIL Malware Attacks on Ukrainian Orgs",
-      "link": "https://thehackernews.com/2026/02/google-ties-suspected-russian-actor-to.html",
-      "description": "A previously undocumented threat actor has been attributed to attacks targeting Ukrainian organizations with malware known as CANFAIL.\nGoogle Threat Intelligence Group (GTIG) described the hacking group as possibly affiliated with Russian intelligence services. The threat actor is assessed to have targeted defense, military, government, and energy organizations within the Ukrainian regional and",
-      "date": "Fri, 13 Feb 2026 22:57:00 +0530",
+      "title": "CISA Flags Four Security Flaws Under Active Exploitation in Latest KEV Update",
+      "link": "https://thehackernews.com/2026/02/cisa-flags-four-security-flaws-under.html",
+      "description": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added four security flaws to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation in the wild.\nThe list of vulnerabilities is as follows -\n\nCVE-2026-2441 (CVSS score: 8.8) - A use-after-free vulnerability in Google Chrome that could allow a remote attacker to potentially exploit heap",
+      "date": "Wed, 18 Feb 2026 12:22:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Google Links China, Iran, Russia, North Korea to Coordinated Defense Sector Cyber Operations",
-      "link": "https://thehackernews.com/2026/02/google-links-china-iran-russia-north.html",
-      "description": "Several state-sponsored actors, hacktivist entities, and criminal groups from China, Iran, North Korea, and Russia have trained their sights on the defense industrial base (DIB) sector, according to findings from Google Threat Intelligence Group (GTIG).\nThe tech giant's threat intelligence division said the adversarial targeting of the sector is centered around four key themes: striking defense",
-      "date": "Fri, 13 Feb 2026 21:53:00 +0530",
+      "title": "Webinar: How Modern SOC Teams Use AI and Context to Investigate Cloud Breaches Faster",
+      "link": "https://thehackernews.com/2026/02/cloud-forensics-webinar-learn-how-ai.html",
+      "description": "Cloud attacks move fast \u2014 faster than most incident response teams.\nIn data centers, investigations had time. Teams could collect disk images, review logs, and build timelines over days. In the cloud, infrastructure is short-lived. A compromised instance can disappear in minutes. Identities rotate. Logs expire. Evidence can vanish before analysis even begins.\nCloud forensics is fundamentally",
+      "date": "Wed, 18 Feb 2026 00:38:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "Operation DoppelBrand: Weaponizing Fortune 500 Brands",
-      "link": "https://www.darkreading.com/cyberattacks-data-breaches/operation-doppelbrand-weaponizing-fortune-500-brands",
-      "description": "The GS7 cyberthreat group targets US financial institutions with near-perfect imitations of corporate portals to steal credentials and gain remote access.",
-      "date": "Mon, 16 Feb 2026 18:05:55 GMT",
+      "title": "More Than 40% of South Africans Were Scammed in 2025",
+      "link": "https://www.darkreading.com/cybersecurity-analytics/south-africans-scammed-2025",
+      "description": "Survey underscores the reality that scammers follow &quot;scalable opportunities and low friction,&quot; rather than rich targets that tend to be better protected.",
+      "date": "Thu, 19 Feb 2026 07:00:00 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "260K+ Chrome Users Duped by Fake AI Browser Extensions",
-      "link": "https://www.darkreading.com/cyber-risk/chrome-fake-ai-browser-extensions",
-      "description": "30 copycat apps tricked users, and Google itself, into thinking they're legitimate AI tools.",
-      "date": "Mon, 16 Feb 2026 14:00:00 GMT",
+      "title": "Scam Abuses Gemini Chatbots to Convince People to Buy Fake Crypto",
+      "link": "https://www.darkreading.com/endpoint-security/scam-abuses-gemini-chatbots-convince-people-buy-fake-crypto",
+      "description": "A convincing presale site for phony &quot;Google Coin&quot; features an AI assistant that engages victims with a slick sales pitch, funneling payment to attackers.",
+      "date": "Wed, 18 Feb 2026 21:47:01 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Zscaler-SquareX Deal Boosts Zero Trust, Secure Browsing Capabilities",
-      "link": "https://www.darkreading.com/remote-workforce/zscaler-squarex-deal-boosts-zero-trust-secure-browsing-capabilities",
-      "description": "Zscaler's acquisition of SquareX comes as competitors like CrowdStrike and Palo Alto Networks also invest in secure browser technologies.",
-      "date": "Fri, 13 Feb 2026 21:58:19 GMT",
+      "title": "Critical Grandstream VoIP Bug Highlights SMB Security Blind Spot",
+      "link": "https://www.darkreading.com/threat-intelligence/grandstream-bug-voip-security-blind-spot",
+      "description": "CVE-2026-2329 allows unauthenticated root-level access to SMB phone infrastructure, so attackers can intercept calls, commit toll fraud, and impersonate users.",
+      "date": "Wed, 18 Feb 2026 21:15:08 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Microsoft Under Pressure to Bolster Defenses for BYOVD Attacks",
-      "link": "https://www.darkreading.com/application-security/microsoft-under-pressure-defenses-byovd-attacks",
-      "description": "Threat actors are exploiting security gaps to weaponize Windows drivers and terminate security processes in targeted networks, and there may be no easy fixes in sight.",
-      "date": "Fri, 13 Feb 2026 17:08:59 GMT",
+      "title": "Dell's Hard-Coded Flaw: A Nation-State Goldmine",
+      "link": "https://www.darkreading.com/application-security/dells-hard-coded-flaw-a-nation-state-goldmine",
+      "description": "A China-related attacker has exploited the vendor flaw since mid-2024, allowing it to move laterally, maintain persistent access, and deploy malware.",
+      "date": "Wed, 18 Feb 2026 20:49:36 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Nation-State Hackers Put Defense Industrial Base Under Siege",
-      "link": "https://www.darkreading.com/cyber-risk/nation-state-hackers-defense-industrial-base-under-siege",
-      "description": "Espionage groups from China, Russia and other nations burned at least two dozen zero-days in edge devices in attempts to infiltrate defense contractors' networks.",
-      "date": "Fri, 13 Feb 2026 17:07:24 GMT",
+      "title": "A CISO's Playbook for Defending Data Assets Against AI Scraping",
+      "link": "https://www.darkreading.com/cyber-risk/ciso-playbook-defending-data-assets-against-ai-scraping",
+      "description": "Discover a strategic approach to govern scraping risks, balance security with business growth, and safeguard intellectual capital from automated data harvesting.",
+      "date": "Wed, 18 Feb 2026 19:13:33 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "AI Agents 'Swarm,' Security Complexity Follows Suit",
-      "link": "https://www.darkreading.com/cloud-security/ai-agents-swarm-security-complexity",
-      "description": "As AI deployments scale and start to include packs of agents autonomously working in concert, organizations face a naturally amplified attack surface.",
-      "date": "Fri, 13 Feb 2026 16:49:39 GMT",
+      "title": "Singapore &amp; Its 4 Major Telcos Fend Off Chinese Hackers",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/singapore-major-telcos-fend-chinese-hackers",
+      "description": "After detecting a zero-day attack, the country's effective response was attributed to the tight relationship between its government and private industry.",
+      "date": "Wed, 18 Feb 2026 01:00:00 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Ivanti EPMM Zero-Day Bugs Spark Exploit Frenzy \u2014 Again",
-      "link": "https://www.darkreading.com/endpoint-security/ivanti-epmm-zero-day-bugs-exploit",
-      "description": "It's time to phase out the &quot;patch and pray&quot; approach, eliminate needless public interfaces, and enforce authentication controls, one expert says.",
-      "date": "Thu, 12 Feb 2026 22:05:32 GMT",
+      "title": "Supply Chain Attack Embeds Malware in Android Devices",
+      "link": "https://www.darkreading.com/mobile-security/supply-chain-attack-embeds-malware-android-devices",
+      "description": "Keenadu downloads payloads that hijack browser searches, commit ad fraud, and execute other actions without user knowledge.",
+      "date": "Tue, 17 Feb 2026 22:06:36 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Booz Allen Announces General Availability of Vellox Reverser to Automate Malware Defense",
-      "link": "https://www.darkreading.com/endpoint-security/booz-allen-announces-general-availability-vellox-reverser",
-      "description": "The AI-powered product delivers expert-grade malware analysis and reverse engineering in minutes.",
-      "date": "Thu, 12 Feb 2026 21:23:06 GMT",
+      "title": "Poland Energy Survives Attack on Wind, Solar Infrastructure",
+      "link": "https://www.darkreading.com/threat-intelligence/poland-energy-attack-wind-solar-infrastructure",
+      "description": "Russia-aligned groups are probable culprits behind the wiper attacks against renewable energy farms, a manufacturer, and a heating and power plant.",
+      "date": "Tue, 17 Feb 2026 21:31:50 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "SpecterOps Launches BloodHound Scentry to Accelerate the Practice of Identity Attack Path Management",
-      "link": "https://www.darkreading.com/identity-access-management-security/specterops-launches-bloodhound-scentry",
-      "description": "Drawing on years of adversary tradecraft, SpecterOps experts work alongside customers to analyze and eliminate attack paths, protect critical assets, and stay ahead of emerging threats.",
-      "date": "Thu, 12 Feb 2026 21:11:52 GMT",
+      "title": "RMM Abuse Explodes as Hackers Ditch Malware",
+      "link": "https://www.darkreading.com/application-security/rmm-abuse-explodes-hackers-ditch-malware",
+      "description": "Remote monitoring and management (RMM) software offers hackers multiple benefits, including stealth, persistence, and operational efficiency.",
+      "date": "Tue, 17 Feb 2026 21:01:26 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Gone With the Shame: One in Two Americans Are Reluctant to Talk About Romance Scam Incidents",
-      "link": "https://www.darkreading.com/cyber-risk/one-in-two-americans-romance-scam-incidents",
-      "description": "Men should take extra care on Valentine\u2019s Day because they are nearly twice as likely as women to fall victim to romance scams.",
-      "date": "Thu, 12 Feb 2026 21:04:25 GMT",
+      "title": "ClickFix Attacks Abuses DNS Lookup Command to Deliver ModeloRAT",
+      "link": "https://www.darkreading.com/endpoint-security/clickfix-attacks-dns-lookup-command-modelorat",
+      "description": "ClickFix campaigns have adapted to the latest defenses with a new technique to trick users into infecting their own machines with malware.",
+      "date": "Tue, 17 Feb 2026 21:01:02 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
@@ -242,6 +242,22 @@
       "source": "https://krebsonsecurity.com/feed/"
     },
     {
+      "title": "AI Found Twelve New Vulnerabilities in OpenSSL",
+      "link": "https://www.schneier.com/blog/archives/2026/02/ai-found-twelve-new-vulnerabilities-in-openssl.html",
+      "description": "<p>The title of the post is&#8221;<a href=\"https://aisle.com/blog/what-ai-security-research-looks-like-when-it-works\">What AI Security Research Looks Like When It Works</a>,&#8221; and I agree:</p>\n<blockquote><p>In the latest <a href=\"https://openssl-library.org/news/vulnerabilities/\">OpenSSL security release&#62;</a> on January 27, 2026, twelve new zero-day vulnerabilities (meaning unknown to the maintainers at time of disclosure) were announced. Our AI system is responsible for the original discovery of all twelve, each found and responsibly disclosed to the OpenSSL team during the fall and winter of 2025. Of those, 10 were assigned CVE-2025 identifiers and 2 received CVE-2026 identifiers. Adding the 10 to the three we already found in the ...</p></blockquote>",
+      "date": "2026-02-17T17:19:21Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "Side-Channel Attacks Against LLMs",
+      "link": "https://www.schneier.com/blog/archives/2026/02/side-channel-attacks-against-llms.html",
+      "description": "<p>Here are three papers describing different side-channel attacks against LLMs.</p>\n<p>&#8220;<a href=\"https://arxiv.org/html/2410.17175v1\">Remote Timing Attacks on Efficient Language Model Inference</a>&#8220;:</p>\n<blockquote><p><b>Abstract:</b> Scaling up language models has significantly increased their capabilities. But larger models are slower models, and so there is now an extensive body of work (e.g., speculative sampling or parallel decoding) that improves the (average case) efficiency of language model generation. But these techniques introduce data-dependent timing characteristics. We show it is possible to exploit these timing differences to mount a timing attack. By monitoring the (encrypted) network traffic between a victim user and a remote language model, we can learn information about the content of messages by noting when responses are faster or slower. With complete black-box access, on open source systems we show how it is possible to learn the topic of a user&#8217;s conversation (e.g., medical advice vs. coding assistance) with 90%+ precision, and on production systems like OpenAI&#8217;s ChatGPT and Anthropic&#8217;s Claude we can distinguish between specific messages or infer the user&#8217;s language. We further show that an active adversary can leverage a boosting attack to recover PII placed in messages (e.g., phone numbers or credit card numbers) for open source systems. We conclude with potential defenses and directions for future work...</p></blockquote>",
+      "date": "2026-02-14T06:28:19Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
       "title": "The Promptware Kill Chain",
       "link": "https://www.schneier.com/blog/archives/2026/02/the-promptware-kill-chain.html",
       "description": "<p><a href=\"https://www.schneier.com/wp-content/uploads/2026/02/promptware-kill-chain.jpg\"><img src=\"https://www.schneier.com/wp-content/uploads/2026/02/promptware-kill-chain-660w.jpg\" alt=\"The promptware kill chain: initial access, privilege escalation, reconnaissance, persistence, command &#38; control, lateral movement, action on objective\" /></a></p>\n<p>Attacks against modern generative artificial intelligence (AI) large language models (LLMs) pose a real threat. Yet discussions around these attacks and their potential defenses are dangerously myopic. The dominant narrative focuses on &#8220;<a href=\"https://simonwillison.net/2022/Sep/12/prompt-injection/\">prompt injection</a>,&#8221; a set of techniques to embed instructions into inputs to LLM intended to perform malicious activity. This term suggests a simple, singular vulnerability. This framing obscures a more complex and dangerous reality. Attacks on LLM-based systems have evolved into a distinct class of malware execution mechanisms, which we term &#8220;promptware.&#8221; In a ...</p>",
@@ -302,22 +318,6 @@
       "link": "https://www.schneier.com/blog/archives/2026/02/llms-are-getting-a-lot-better-and-faster-at-finding-and-exploiting-zero-days.html",
       "description": "<p>This is <a href=\"https://red.anthropic.com/2026/zero-days/\">amazing</a>:</p>\n<blockquote><p>Opus 4.6 is notably better at finding high-severity vulnerabilities than previous models and a sign of how quickly things are moving. Security teams have been automating vulnerability discovery for years, investing heavily in fuzzing infrastructure and custom harnesses to find bugs at scale. But what stood out in early testing is how quickly Opus 4.6 found vulnerabilities out of the box without task-specific tooling, custom scaffolding, or specialized prompting. Even more interesting is how it found them. Fuzzers work by throwing massive amounts of random inputs at code to see what breaks. Opus 4.6 reads and reasons about code the way a human researcher would\u00ad&#8212;looking at past fixes to find similar bugs that weren&#8217;t addressed, spotting patterns that tend to cause problems, or understanding a piece of logic well enough to know exactly what input would break it. When we pointed Opus 4.6 at some of the most well-tested codebases (projects that have had fuzzers running against them for years, ...</p></blockquote>",
       "date": "2026-02-06T20:49:33Z",
-      "category": "cybersecurity_news",
-      "source": "https://www.schneier.com/feed/atom/"
-    },
-    {
-      "title": "Friday Squid Blogging: Squid Fishing Tips",
-      "link": "https://www.schneier.com/blog/archives/2026/02/friday-squid-blogging-squid-fishing-tips.html",
-      "description": "<p>This is a <a href=\"https://www.youtube.com/watch?v=pNq_W2CkACU\">video</a> of advice for squid fishing in Puget Sound.</p>\n<p>As usual, you can also use this squid post to talk about the security stories in the news that I haven&#8217;t covered.</p>\n<p><a href=\"https://www.schneier.com/blog/archives/2024/06/new-blog-moderation-policy.html\">Blog moderation policy.</a></p>\n",
-      "date": "2026-01-22T20:12:46Z",
-      "category": "cybersecurity_news",
-      "source": "https://www.schneier.com/feed/atom/"
-    },
-    {
-      "title": "I Am in the Epstein Files",
-      "link": "https://www.schneier.com/blog/archives/2026/02/i-am-in-the-epstein-files.html",
-      "description": "<p><a href=\"https://www.jmail.world/thread/EFTA02451032?view=inbox\">Once</a>. Someone named &#8220;Vincenzo lozzo&#8221; wrote to Epstein in email, in 2016: &#8220;I wouldn&#8217;t pay too much attention to this, Schneier has a long tradition of dramatizing and misunderstanding things.&#8221; The topic of the email is DDoS attacks, and it is unclear what I am dramatizing and misunderstanding.</p>\n<p>Rabbi Schneier is also mentioned, also incidentally, also <a href=\"https://www.jmail.world/thread/EFTA02442876?view=inbox\">once</a>. As far as either of us know, we are not related.</p>\n<p>EDITED TO ADD (2/7): There is <a href=\"https://www.justice.gov/epstein/files/DataSet%209/EFTA00817090.pdf\">more context</a> on the Justice.gov website version.</p>\n",
-      "date": "2026-02-07T14:44:35Z",
       "category": "cybersecurity_news",
       "source": "https://www.schneier.com/feed/atom/"
     },
@@ -402,10 +402,10 @@
       "source": "https://www.cisa.gov/news.xml"
     },
     {
-      "title": "We Analyzed 1.1 Mllion Malware Samples and Found the Rise of the \"Digital Parasite\" \u2013 AMA",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r67s8x/we_analyzed_11_mllion_malware_samples_and_found/",
+      "title": "Check Point Experts on CTEM in the Real World & What Actually Gets You Hacked",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r6746q/check_point_experts_on_ctem_in_the_real_world/",
       "description": "",
-      "date": "2026-02-16T12:00:51+00:00",
+      "date": "2026-02-16T11:24:42+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
@@ -418,66 +418,66 @@
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Infosec exec sold eight zero-day exploit kits to Russia: DoJ",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r6he76/infosec_exec_sold_eight_zeroday_exploit_kits_to/",
+      "title": "Dutch defense chief: F-35s can be jailbroken like iPhones",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r8b9p6/dutch_defense_chief_f35s_can_be_jailbroken_like/",
       "description": "",
-      "date": "2026-02-16T18:21:08+00:00",
+      "date": "2026-02-18T18:36:50+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Losing my God damn mind with microsegmentation",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r6vjox/losing_my_god_damn_mind_with_microsegmentation/",
+      "title": "French Ministry confirms data access to 1.2 Million bank accounts",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r8gpzw/french_ministry_confirms_data_access_to_12/",
       "description": "",
-      "date": "2026-02-17T03:49:20+00:00",
+      "date": "2026-02-18T21:59:07+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Canada Goose investigating as hackers leak 600K customer records",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r6z1e5/canada_goose_investigating_as_hackers_leak_600k/",
+      "title": "Notepad++ boosts update security with \u2018double-lock\u2019 mechanism",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r82rur/notepad_boosts_update_security_with_doublelock/",
       "description": "",
-      "date": "2026-02-17T06:52:57+00:00",
+      "date": "2026-02-18T13:19:02+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Breach / Stealer-Log / Identity Exposure Services Comparison (with Scoring)",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r70q14/breach_stealerlog_identity_exposure_services/",
+      "title": "the watchers: how openai, the US government, and persona built an identity surveillance machine that files reports on you to the feds",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r8btwt/the_watchers_how_openai_the_us_government_and/",
       "description": "",
-      "date": "2026-02-17T08:36:51+00:00",
+      "date": "2026-02-18T18:56:56+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Pegasus",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r6hfon/pegasus/",
+      "title": "We kept missing AI API security edge cases, so we built a repeatable 12-test scan workflow",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r8pi3y/we_kept_missing_ai_api_security_edge_cases_so_we/",
       "description": "",
-      "date": "2026-02-16T18:22:35+00:00",
+      "date": "2026-02-19T04:22:47+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Aside from Giac, are there any digital forensics specific certs worth pursuing?",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r6yfwy/aside_from_giac_are_there_any_digital_forensics/",
+      "title": "How advanced is malware that can break out of a VM?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r89c59/how_advanced_is_malware_that_can_break_out_of_a_vm/",
       "description": "",
-      "date": "2026-02-17T06:18:20+00:00",
+      "date": "2026-02-18T17:28:06+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Google patches first Chrome zero-day exploited in attacks this year",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r68iya/google_patches_first_chrome_zeroday_exploited_in/",
+      "title": "Mandiant vs Palo Alto",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r8m6sk/mandiant_vs_palo_alto/",
       "description": "",
-      "date": "2026-02-16T12:37:57+00:00",
+      "date": "2026-02-19T01:47:27+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "How do you handle updating BIOS for multiple users? Do you do it automatically, maybe some sort of automatic process with testing phases?",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r6tr8a/how_do_you_handle_updating_bios_for_multiple/",
+      "title": "I work at a startup and have no idea what to do",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r7yvwt/i_work_at_a_startup_and_have_no_idea_what_to_do/",
       "description": "",
-      "date": "2026-02-17T02:27:12+00:00",
+      "date": "2026-02-18T09:53:53+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
@@ -498,85 +498,89 @@
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Europe based but want to do contract jobs in the US - help me find the path.",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r70fgs/europe_based_but_want_to_do_contract_jobs_in_the/",
+      "title": "Please anyone done interview with Microsoft on cybersecurity-tech support engineer, any tips please",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r8rsvx/please_anyone_done_interview_with_microsoft_on/",
       "description": "",
-      "date": "2026-02-17T08:17:38+00:00",
+      "date": "2026-02-19T06:25:56+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "What is your salary",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r701kq/what_is_your_salary/",
+      "title": "Resume Review",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r8d5o2/resume_review/",
       "description": "",
-      "date": "2026-02-17T07:54:01+00:00",
+      "date": "2026-02-18T19:45:34+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "What are realistic jobs that get me experience related to cybersecurity?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r6uyw1/what_are_realistic_jobs_that_get_me_experience/",
+      "title": "Starting my journey into Pentesting \u2013 seeking feedback on my current roadmap",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r88s2b/starting_my_journey_into_pentesting_seeking/",
       "description": "",
-      "date": "2026-02-17T03:21:49+00:00",
+      "date": "2026-02-18T17:08:21+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "2 years Full-Stack + 6 months SOC | 6 months applying in the US \u2013 0 interviews. What am I missing?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r6ueu2/2_years_fullstack_6_months_soc_6_months_applying/",
+      "title": "Stay in FTE or take 1099/W2 Long Term Contract?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r86c03/stay_in_fte_or_take_1099w2_long_term_contract/",
       "description": "",
-      "date": "2026-02-17T02:56:20+00:00",
+      "date": "2026-02-18T15:41:15+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "What are my chances of getting a cybersec job out of college?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r6i1ah/what_are_my_chances_of_getting_a_cybersec_job_out/",
+      "title": "Master\u2019s vs Experience for Cybersecurity \u2014 which one matters the most?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r7snvs/masters_vs_experience_for_cybersecurity_which_one/",
       "description": "",
-      "date": "2026-02-16T18:43:36+00:00",
+      "date": "2026-02-18T03:58:04+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Just finished an interview in less than 10 minutes from its start",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r5d2t4/just_finished_an_interview_in_less_than_10/",
+      "title": "I am Really confused choosing Between AI or Cybersecurity as a career, I am still new to everything and I am currently in 2 year of Engineering in a 3rd Tier College . Really want a good and stable Career Start",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r8e9xf/i_am_really_confused_choosing_between_ai_or/",
       "description": "",
-      "date": "2026-02-15T12:08:33+00:00",
+      "date": "2026-02-18T20:27:12+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Graduated 5 years ago, still haven\u2019t found footing in my field.",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r5wlok/graduated_5_years_ago_still_havent_found_footing/",
+      "title": "Azure Homelab - Feedback",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r7uylm/azure_homelab_feedback/",
       "description": "",
-      "date": "2026-02-16T01:49:14+00:00",
+      "date": "2026-02-18T05:55:35+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Second interview for Security Operations & Intelligence Centre (SOIC) Operator \u2013 what should I expect?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r640u8/second_interview_for_security_operations/",
+      "title": "Career advise for basically unemployed college grad?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r78fh1/career_advise_for_basically_unemployed_college/",
       "description": "",
-      "date": "2026-02-16T08:17:34+00:00",
+      "date": "2026-02-17T15:06:16+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     }
   ],
   "trending": [
     [
-      "AI",
-      25
-    ],
-    [
       "OT",
-      24
+      30
     ],
     [
-      "zero-day",
-      7
+      "AI",
+      27
     ],
     [
       "vulnerability",
+      6
+    ],
+    [
+      "zero-day",
+      5
+    ],
+    [
+      "government",
       4
     ],
     [
@@ -584,15 +588,11 @@
       4
     ],
     [
+      "engineer",
+      3
+    ],
+    [
       "ICS",
-      3
-    ],
-    [
-      "SOC",
-      3
-    ],
-    [
-      "government",
       3
     ],
     [
@@ -600,7 +600,7 @@
       3
     ],
     [
-      "cloud",
+      "SOC",
       2
     ]
   ],

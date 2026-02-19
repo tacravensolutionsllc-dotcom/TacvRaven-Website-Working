@@ -1,7 +1,25 @@
 {
-  "generated": "2026-02-17T09:47:24.600579",
-  "count": 9,
+  "generated": "2026-02-19T09:43:39.529325",
+  "count": 10,
   "posts": [
+    {
+      "title": "What to Learn First in Cybersecurity",
+      "excerpt": "The exact order to tackle fundamentals.",
+      "date": "2026-02-19",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "first_steps"
+      ],
+      "filepath": "posts/2026/02/what-to-learn-first-in-cybersecurity.html",
+      "slug": "what-to-learn-first-in-cybersecurity",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "Cybersecurity Job Market Update",
       "excerpt": "Current hiring trends.",
@@ -18,7 +36,7 @@
       "filepath": "posts/2026/02/cybersecurity-job-market-update.html",
       "slug": "cybersecurity-job-market-update",
       "read_time": 10,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Top Technical Skills Employers Want",
