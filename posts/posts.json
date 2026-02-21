@@ -1,7 +1,25 @@
 {
-  "generated": "2026-02-19T09:43:39.529325",
-  "count": 10,
+  "generated": "2026-02-21T09:28:52.560236",
+  "count": 11,
   "posts": [
+    {
+      "title": "Which Cert Should You Get First?",
+      "excerpt": "Decision tree for beginners.",
+      "date": "2026-02-21",
+      "category": "Certifications",
+      "category_slug": "certifications",
+      "category_css": "cert",
+      "tags": [
+        "Certifications",
+        "Cybersecurity",
+        "Career",
+        "cert_strategy"
+      ],
+      "filepath": "posts/2026/02/which-cert-should-you-get-first.html",
+      "slug": "which-cert-should-you-get-first",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "What to Learn First in Cybersecurity",
       "excerpt": "The exact order to tackle fundamentals.",
@@ -18,7 +36,7 @@
       "filepath": "posts/2026/02/what-to-learn-first-in-cybersecurity.html",
       "slug": "what-to-learn-first-in-cybersecurity",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Cybersecurity Job Market Update",
