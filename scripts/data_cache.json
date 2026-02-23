@@ -1,6 +1,22 @@
 {
-  "timestamp": "2026-02-21T09:28:52.497147",
+  "timestamp": "2026-02-23T09:54:31.243425",
   "news": [
+    {
+      "title": "MuddyWater Targets MENA Organizations with GhostFetch, CHAR, and HTTP_VIP",
+      "link": "https://thehackernews.com/2026/02/muddywater-targets-mena-organizations.html",
+      "description": "The Iranian hacking group known as MuddyWater (aka Earth Vetala, Mango Sandstorm, and MUDDYCOAST) has targeted several organizations and individuals mainly located across the Middle East and North Africa (MENA) region as part of a new campaign codenamed Operation Olalampo.\nThe activity, first observed on January 26, 2026, has resulted in the deployment of new malware families that share",
+      "date": "Mon, 23 Feb 2026 12:55:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "AI-Assisted Threat Actor Compromises 600+ FortiGate Devices in 55 Countries",
+      "link": "https://thehackernews.com/2026/02/ai-assisted-threat-actor-compromises.html",
+      "description": "A Russian-speaking, financially motivated threat actor has been observed taking advantage of commercial generative artificial intelligence (AI) services to compromise over 600 FortiGate devices located in 55 countries.\nThat's according to new findings from Amazon Threat Intelligence, which said it observed the activity between January 11 and February 18, 2026.\n\"No exploitation of FortiGate",
+      "date": "Sat, 21 Feb 2026 20:19:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
     {
       "title": "Anthropic Launches Claude Code Security for AI-Powered Vulnerability Scanning",
       "link": "https://thehackernews.com/2026/02/anthropic-launches-claude-code-security.html",
@@ -62,22 +78,6 @@
       "link": "https://thehackernews.com/2026/02/ukrainian-national-sentenced-to-5-years.html",
       "description": "A 29-year-old Ukrainian national has been sentenced to five years in prison in the U.S. for his role in facilitating North Korea's fraudulent information technology (IT) worker scheme.\nIn November 2025, Oleksandr \"Alexander\" Didenko pleaded guilty to wire fraud conspiracy and aggravated identity theft for stealing the identities of U.S. citizens and selling them to IT workers to help them land",
       "date": "Fri, 20 Feb 2026 15:22:00 +0530",
-      "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
-    },
-    {
-      "title": "FBI Reports 1,900 ATM Jackpotting Incidents Since 2020, $20M Lost in 2025",
-      "link": "https://thehackernews.com/2026/02/fbi-reports-1900-atm-jackpotting.html",
-      "description": "The U.S. Federal Bureau of Investigation (FBI) has warned of an increase in ATM jackpotting incidents across the country, leading to losses of more than $20 million in 2025.\nThe agency said 1,900 ATM jackpotting incidents have been reported since 2020, out of which 700 took place last year. In December 2025, the U.S. Department of Justice (DoJ) said about $40.73 million has been collectively",
-      "date": "Fri, 20 Feb 2026 13:35:00 +0530",
-      "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
-    },
-    {
-      "title": "Former Google Engineers Indicted Over Trade Secret Transfers to Iran",
-      "link": "https://thehackernews.com/2026/02/three-former-google-engineers-indicted.html",
-      "description": "Two former Google engineers and one of their husbands have been indicted in the U.S. for allegedly committing trade secret theft from the search giant and other tech firms and transferring the information to unauthorized locations, including Iran.\nSamaneh Ghandali, 41, and her husband Mohammadjavad Khosravi (aka Mohammad Khosravi), 40, along with her sister Soroor Ghandali, 32, have been accused",
-      "date": "Fri, 20 Feb 2026 10:57:00 +0530",
       "category": "cybersecurity_news",
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
@@ -402,6 +402,14 @@
       "source": "https://www.cisa.gov/news.xml"
     },
     {
+      "title": "Mentorship Monday - Post All Career, Education and Job questions here!",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rc1z9k/mentorship_monday_post_all_career_education_and/",
+      "description": "",
+      "date": "2026-02-23T00:00:36+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
       "title": "Check Point Experts on CTEM in the Real World & What Actually Gets You Hacked",
       "link": "https://www.reddit.com/r/cybersecurity/comments/1r6746q/check_point_experts_on_ctem_in_the_real_world/",
       "description": "",
@@ -410,74 +418,66 @@
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Mentorship Monday - Post All Career, Education and Job questions here!",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r5u8na/mentorship_monday_post_all_career_education_and/",
+      "title": "PayPal breach went undetected for six months, exposing Social Security numbers! PayPal!",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rc2jrk/paypal_breach_went_undetected_for_six_months/",
       "description": "",
-      "date": "2026-02-16T00:00:33+00:00",
+      "date": "2026-02-23T00:24:52+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "why the fk HR exist",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r9yk1n/why_the_fk_hr_exist/",
+      "title": "Amazon Kiro deleted a production environment and caused a 13-hour AWS outage. I documented 10 cases of AI agents destroying systems \u2014 same patterns every time.",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rbnwlf/amazon_kiro_deleted_a_production_environment_and/",
       "description": "",
-      "date": "2026-02-20T15:36:05+00:00",
+      "date": "2026-02-22T14:57:46+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "I found a Vulnerability. They found a Lawyer.",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1r9wcay/i_found_a_vulnerability_they_found_a_lawyer/",
+      "title": "Security Architect after 7 rounds of interviews",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rc5p1x/security_architect_after_7_rounds_of_interviews/",
       "description": "",
-      "date": "2026-02-20T14:09:47+00:00",
+      "date": "2026-02-23T02:47:52+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Tryhackme is only a game",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1ra2rk5/tryhackme_is_only_a_game/",
+      "title": "New AI Data Leaks\u2014More Than 1 Billion IDs And Photos Exposed",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rc55tt/new_ai_data_leaksmore_than_1_billion_ids_and/",
       "description": "",
-      "date": "2026-02-20T18:08:34+00:00",
+      "date": "2026-02-23T02:23:08+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Age verification vendor Persona left frontend exposed, researchers say",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1rajqm7/age_verification_vendor_persona_left_frontend/",
+      "title": "Your Security Budget Is Getting Cut Because Executives Don't Understand What You're Protecting",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rbr1fw/your_security_budget_is_getting_cut_because/",
       "description": "",
-      "date": "2026-02-21T06:19:14+00:00",
+      "date": "2026-02-22T17:00:27+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Checkmarx vs SonarQube is not really a fair comparison and that took me too long to figure out",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1ragf0x/checkmarx_vs_sonarqube_is_not_really_a_fair/",
+      "title": "I've been a CISO more than once. Ask me anything about how the job differs between organizations.",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rbwcbx/ive_been_a_ciso_more_than_once_ask_me_anything/",
       "description": "",
-      "date": "2026-02-21T03:26:38+00:00",
+      "date": "2026-02-22T20:18:46+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Cybersecurity news can be overwhelming so I built myself a free tool to declutter the noise.",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1ra4emp/cybersecurity_news_can_be_overwhelming_so_i_built/",
+      "title": "Have we already moved from the \u201cscript kiddie\u201d era to the \u201cAI agent kiddie\u201d era?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rbk2cq/have_we_already_moved_from_the_script_kiddie_era/",
       "description": "",
-      "date": "2026-02-20T19:08:15+00:00",
+      "date": "2026-02-22T11:58:51+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "if it exist, is there a remote job(s) in IT that can help you sneak into cybersecurity easier?",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1ramtho/if_it_exist_is_there_a_remote_jobs_in_it_that_can/",
+      "title": "Google's Cybersecurity 2026 Forecast Report warns of a \"Shadow Agent\" crisis. These AI agents, deployed by employees without corporate oversight, can create invisible pipelines for sensitive information, leading to data leaks, compliance violations, and IP theft.",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rcaqe5/googles_cybersecurity_2026_forecast_report_warns/",
       "description": "",
-      "date": "2026-02-21T09:22:59+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/cybersecurity/.rss"
-    },
-    {
-      "title": "Burn Out",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1ra6jrp/burn_out/",
-      "description": "",
-      "date": "2026-02-20T20:29:12+00:00",
+      "date": "2026-02-23T07:10:45+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
@@ -498,66 +498,66 @@
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "I don't know what else to do",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1ra1w5f/i_dont_know_what_else_to_do/",
+      "title": "I Was the Reason My Toxic Manager's Career Was Destroyed",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rc1j4z/i_was_the_reason_my_toxic_managers_career_was/",
       "description": "",
-      "date": "2026-02-20T17:36:50+00:00",
+      "date": "2026-02-22T23:41:43+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "I passed OSCP about 10 days ago (80/100) and just wanted to say thanks to this community",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1ra5fr0/i_passed_oscp_about_10_days_ago_80100_and_just/",
+      "title": "Not sure on where to move with my career in SOC",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rc6quy/not_sure_on_where_to_move_with_my_career_in_soc/",
       "description": "",
-      "date": "2026-02-20T19:46:35+00:00",
+      "date": "2026-02-23T03:37:50+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "I just completed Junior Security Analyst Intro room on TryHackMe! Play through a day in the life of a Security Analyst and experience their everyday duties.",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1ra9zx8/i_just_completed_junior_security_analyst_intro/",
+      "title": "GRC Engineer (Need some Advice)",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rca1kf/grc_engineer_need_some_advice/",
       "description": "",
-      "date": "2026-02-20T22:42:36+00:00",
+      "date": "2026-02-23T06:30:13+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "What to Expect \u2013 Stripe Security Engineer (New Grad) Team Screen?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1ra8vpb/what_to_expect_stripe_security_engineer_new_grad/",
+      "title": "Entry systems & data tech to IT/cyber- how to pivot?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rc9lwn/entry_systems_data_tech_to_itcyber_how_to_pivot/",
       "description": "",
-      "date": "2026-02-20T21:58:29+00:00",
+      "date": "2026-02-23T06:05:55+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "AI and Allied Universal",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1ra4wg5/ai_and_allied_universal/",
+      "title": "Stripe | Security Engineer, Grad Role",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rc8gv6/stripe_security_engineer_grad_role/",
       "description": "",
-      "date": "2026-02-20T19:26:33+00:00",
+      "date": "2026-02-23T05:05:02+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "How much should you know about Operating Systems for an entry level cybersecurity role?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1ra4642/how_much_should_you_know_about_operating_systems/",
+      "title": "SC\u2011300 vs Okta vs Security+ vs CISSP: Which Is Actually Worth It for IAM?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rbxs43/sc300_vs_okta_vs_security_vs_cissp_which_is/",
       "description": "",
-      "date": "2026-02-20T18:59:58+00:00",
+      "date": "2026-02-22T21:11:15+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Are these Certs even worth it\u2026?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r9sxvd/are_these_certs_even_worth_it/",
+      "title": "Advice for job in military for cyber security",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rbs6jt/advice_for_job_in_military_for_cyber_security/",
       "description": "",
-      "date": "2026-02-20T11:30:42+00:00",
+      "date": "2026-02-22T17:43:10+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
-      "title": "Not your typical advice request, but would appreciate your input!",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1r9rtal/not_your_typical_advice_request_but_would/",
+      "title": "Built a CLI tool that aggregates outputs from multiple security scanners into one report. Would you actually use this?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rbmxpb/built_a_cli_tool_that_aggregates_outputs_from/",
       "description": "",
-      "date": "2026-02-20T10:26:11+00:00",
+      "date": "2026-02-22T14:16:13+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     }
@@ -569,11 +569,11 @@
     ],
     [
       "AI",
-      24
+      27
     ],
     [
       "vulnerability",
-      6
+      5
     ],
     [
       "critical infrastructure",
@@ -581,18 +581,18 @@
     ],
     [
       "artificial intelligence",
-      3
+      4
     ],
     [
       "IoT",
       3
     ],
     [
-      "supply chain",
+      "CISO",
       2
     ],
     [
-      "engineer",
+      "supply chain",
       2
     ],
     [
