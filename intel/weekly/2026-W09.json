@@ -1,0 +1,318 @@
+{
+  "metadata": {
+    "week": {
+      "year": 2026,
+      "week": 9
+    },
+    "weekStart": "2026-02-23T00:00:00.000Z",
+    "monthName": "February",
+    "monthShort": "FEB",
+    "generated": "2026-02-23T05:46:43.337Z",
+    "threatLevel": {
+      "level": "CRITICAL",
+      "class": "critical",
+      "score": 120
+    }
+  },
+  "stats": {
+    "kevCount": 8,
+    "ransomwareCount": 0,
+    "c2Count": 0,
+    "malwareFamilies": 0
+  },
+  "trends": {
+    "kev": {
+      "current": 8,
+      "lastWeek": 3,
+      "change": 167,
+      "average": 3.5,
+      "history": [
+        2,
+        3,
+        4,
+        2,
+        3,
+        3,
+        3,
+        8
+      ]
+    },
+    "ransomware": {
+      "current": 0,
+      "lastWeek": 2,
+      "change": -100,
+      "average": 1.3,
+      "history": [
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        0
+      ]
+    },
+    "c2": {
+      "current": 0,
+      "lastWeek": 13,
+      "change": -100,
+      "average": 13.5,
+      "history": [
+        16,
+        18,
+        14,
+        20,
+        12,
+        15,
+        13,
+        0
+      ]
+    }
+  },
+  "data": {
+    "recentKEVs": [
+      {
+        "cveID": "CVE-2025-49113",
+        "vendorProject": "Roundcube",
+        "product": "Webmail",
+        "vulnerabilityName": "RoundCube Webmail Deserialization of Untrusted Data Vulnerability",
+        "dateAdded": "2026-02-20",
+        "shortDescription": "RoundCube Webmail contains a deserialization of untrusted data vulnerability that allows remote code execution by authenticated users because the _from parameter in a URL is not validated in program/actions/settings/upload.php.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-13",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://roundcube.net/news/2025/06/01/security-updates-1.6.11-and-1.5.10 ; https://github.com/roundcube/roundcubemail/releases/tag/1.5.10 ; https://github.com/roundcube/roundcubemail/releases/tag/1.6.11 ; https://nvd.nist.gov/vuln/detail/CVE-2025-49113",
+        "cwes": [
+          "CWE-502"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-68461",
+        "vendorProject": "Roundcube",
+        "product": "Webmail",
+        "vulnerabilityName": "RoundCube Webmail Cross-site Scripting Vulnerability",
+        "dateAdded": "2026-02-20",
+        "shortDescription": "RoundCube Webmail contains a cross-site scripting vulnerability via the animate tag in an SVG document.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-13",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://roundcube.net/news/2025/12/13/security-updates-1.6.12-and-1.5.12 ; https://github.com/roundcube/roundcubemail/commit/bfa032631c36b900e7444dfa278340b33cbf7cdb ; https://nvd.nist.gov/vuln/detail/CVE-2025-68461",
+        "cwes": [
+          "CWE-79"
+        ]
+      },
+      {
+        "cveID": "CVE-2021-22175",
+        "vendorProject": "GitLab",
+        "product": "GitLab",
+        "vulnerabilityName": "GitLab Server-Side Request Forgery (SSRF) Vulnerability",
+        "dateAdded": "2026-02-18",
+        "shortDescription": "GitLab contains a server-side request forgery (SSRF) vulnerability when requests to the internal network for webhooks are enabled.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-11",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://gitlab.com/gitlab-org/cves/-/blob/master/2021/CVE-2021-22175.json ; https://nvd.nist.gov/vuln/detail/CVE-2021-22175",
+        "cwes": [
+          "CWE-918"
+        ]
+      },
+      {
+        "cveID": "CVE-2026-22769",
+        "vendorProject": "Dell",
+        "product": "RecoverPoint for Virtual Machines (RP4VMs)",
+        "vulnerabilityName": "Dell RecoverPoint for Virtual Machines (RP4VMs) Use of Hard-coded Credentials Vulnerability",
+        "dateAdded": "2026-02-18",
+        "shortDescription": "Dell RecoverPoint for Virtual Machines (RP4VMs) contains an use of hard-coded credentials vulnerability that could allow an unauthenticated remote attacker to gain unauthorized access to the underlying operating system and root-level persistence.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-02-21",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://www.dell.com/support/kbdoc/en-us/000426773/dsa-2026-079 ; https://www.dell.com/support/kbdoc/en-us/000426742/recoverpoint-for-vms-apply-the-remediation-script-for-dsa ; https://cloud.google.com/blog/topics/threat-intelligence/unc6201-exploiting-dell-recoverpoint-zero-day ; https://nvd.nist.gov/vuln/detail/CVE-2026-22769",
+        "cwes": [
+          "CWE-798"
+        ]
+      },
+      {
+        "cveID": "CVE-2020-7796",
+        "vendorProject": "Synacor",
+        "product": "Zimbra Collaboration Suite",
+        "vulnerabilityName": "Synacor Zimbra Collaboration Suite (ZCS) Server-Side Request Forgery Vulnerability",
+        "dateAdded": "2026-02-17",
+        "shortDescription": "Synacor Zimbra Collaboration Suite (ZCS) contains a server-side request forgery vulnerability if WebEx zimlet installed and zimlet JSP is enabled.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-10",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://wiki.zimbra.com/wiki/Zimbra_Releases/8.8.15/P7 ; https://nvd.nist.gov/vuln/detail/CVE-2020-7796",
+        "cwes": [
+          "CWE-918"
+        ]
+      },
+      {
+        "cveID": "CVE-2024-7694",
+        "vendorProject": "TeamT5",
+        "product": "ThreatSonar Anti-Ransomware",
+        "vulnerabilityName": "TeamT5 ThreatSonar Anti-Ransomware Unrestricted Upload of File with Dangerous Type Vulnerability",
+        "dateAdded": "2026-02-17",
+        "shortDescription": "TeamT5 ThreatSonar Anti-Ransomware contains an unrestricted upload of file with dangerous type vulnerability. ThreatSonar Anti-Ransomware does not properly validate the content of uploaded files. Remote attackers with administrator privileges on the product platform can upload malicious files, which can be used to execute arbitrary system commands on the server.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-10",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://teamt5.org/en/posts/vulnerability-notice-threat-sonar-anti-ransomware-20240715/ ; https://www.twcert.org.tw/en/cp-139-8000-e5a5c-2.html ; https://nvd.nist.gov/vuln/detail/CVE-2024-7694",
+        "cwes": [
+          "CWE-434"
+        ]
+      },
+      {
+        "cveID": "CVE-2008-0015",
+        "vendorProject": "Microsoft",
+        "product": "Windows",
+        "vulnerabilityName": " Microsoft Windows Video ActiveX Control Remote Code Execution Vulnerability",
+        "dateAdded": "2026-02-17",
+        "shortDescription": "Microsoft Windows Video ActiveX Control contains a remote code execution vulnerability. An attacker could exploit the vulnerability by constructing a specially crafted Web page. When a user views the Web page, the vulnerability could allow remote code execution. An attacker who successfully exploited this vulnerability could gain the same user rights as the logged-on user.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-10",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://web.archive.org/web/20110305211119/https://www.microsoft.com/technet/security/bulletin/ms09-032.mspx ; https://nvd.nist.gov/vuln/detail/CVE-2008-0015",
+        "cwes": []
+      },
+      {
+        "cveID": "CVE-2026-2441",
+        "vendorProject": "Google",
+        "product": "Chromium",
+        "vulnerabilityName": "Google Chromium CSS Use-After-Free Vulnerability",
+        "dateAdded": "2026-02-17",
+        "shortDescription": "Google Chromium CSS contains a use-after-free vulnerability that could allow a remote attacker to potentially exploit heap corruption via a crafted HTML page. This vulnerability could affect multiple web browsers that utilize Chromium, including, but not limited to, Google Chrome, Microsoft Edge, and Opera.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-10",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://chromereleases.googleblog.com/2026/02/stable-channel-update-for-desktop_13.html ; https://nvd.nist.gov/vuln/detail/CVE-2026-2441",
+        "cwes": [
+          "CWE-416"
+        ]
+      }
+    ],
+    "ransomwareKEVs": [],
+    "onlineC2s": [],
+    "c2ByFamily": {},
+    "c2ByCountry": {},
+    "newsCoverage": {
+      "CVE-2025-49113": [
+        {
+          "title": "CISA Adds Two Actively Exploited Roundcube Flaws to KEV Catalog",
+          "link": "https://thehackernews.com/2026/02/cisa-adds-two-actively-exploited.html",
+          "pubDate": "Sat, 21 Feb 2026 12:51:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2025-68461": [
+        {
+          "title": "CISA Adds Two Actively Exploited Roundcube Flaws to KEV Catalog",
+          "link": "https://thehackernews.com/2026/02/cisa-adds-two-actively-exploited.html",
+          "pubDate": "Sat, 21 Feb 2026 12:51:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2021-22175": [],
+      "CVE-2026-22769": [
+        {
+          "title": "Dell RecoverPoint for VMs Zero-Day CVE-2026-22769 Exploited Since Mid-2024",
+          "link": "https://thehackernews.com/2026/02/dell-recoverpoint-for-vms-zero-day-cve.html",
+          "pubDate": "Wed, 18 Feb 2026 16:02:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Dell's Hard-Coded Flaw: A Nation-State Goldmine",
+          "link": "https://www.darkreading.com/application-security/dells-hard-coded-flaw-a-nation-state-goldmine",
+          "pubDate": "Wed, 18 Feb 2026 20:49:36 GMT",
+          "source": "Dark Reading"
+        }
+      ],
+      "CVE-2020-7796": [],
+      "CVE-2024-7694": [],
+      "CVE-2008-0015": [
+        {
+          "title": "Microsoft Patches CVE-2026-26119 Privilege Escalation in Windows Admin Center",
+          "link": "https://thehackernews.com/2026/02/microsoft-patches-cve-2026-26119.html",
+          "pubDate": "Thu, 19 Feb 2026 23:10:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft Finds “Summarize with AI” Prompts Manipulating Chatbot Recommendations",
+          "link": "https://thehackernews.com/2026/02/microsoft-finds-summarize-with-ai.html",
+          "pubDate": "Tue, 17 Feb 2026 15:01:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft Discloses DNS-Based ClickFix Attack Using Nslookup for Malware Staging",
+          "link": "https://thehackernews.com/2026/02/microsoft-discloses-dns-based-clickfix.html",
+          "pubDate": "Sun, 15 Feb 2026 19:40:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft Under Pressure to Bolster Defenses for BYOVD Attacks",
+          "link": "https://www.darkreading.com/application-security/microsoft-under-pressure-defenses-byovd-attacks",
+          "pubDate": "Fri, 13 Feb 2026 17:08:59 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Microsoft Patches 6 Actively Exploited Zero-Days",
+          "link": "https://www.darkreading.com/vulnerabilities-threats/microsoft-fixes-6-actively-exploited-zero-days",
+          "pubDate": "Tue, 10 Feb 2026 21:00:36 GMT",
+          "source": "Dark Reading"
+        }
+      ],
+      "CVE-2026-2441": [
+        {
+          "title": "Former Google Engineers Indicted Over Trade Secret Transfers to Iran",
+          "link": "https://thehackernews.com/2026/02/three-former-google-engineers-indicted.html",
+          "pubDate": "Fri, 20 Feb 2026 10:57:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "New Chrome Zero-Day (CVE-2026-2441) Under Active Attack — Patch Released",
+          "link": "https://thehackernews.com/2026/02/new-chrome-zero-day-cve-2026-2441-under.html",
+          "pubDate": "Mon, 16 Feb 2026 12:08:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Google Ties Suspected Russian Actor to CANFAIL Malware Attacks on Ukrainian Orgs",
+          "link": "https://thehackernews.com/2026/02/google-ties-suspected-russian-actor-to.html",
+          "pubDate": "Fri, 13 Feb 2026 22:57:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Google Links China, Iran, Russia, North Korea to Coordinated Defense Sector Cyber Operations",
+          "link": "https://thehackernews.com/2026/02/google-links-china-iran-russia-north.html",
+          "pubDate": "Fri, 13 Feb 2026 21:53:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Google Reports State-Backed Hackers Using Gemini AI for Recon and Attack Support",
+          "link": "https://thehackernews.com/2026/02/google-reports-state-backed-hackers.html",
+          "pubDate": "Thu, 12 Feb 2026 23:27:00 +0530",
+          "source": "Hacker News"
+        }
+      ]
+    },
+    "tacticCounts": {
+      "TA0001": 8
+    },
+    "techniqueCounts": {
+      "T1190": 8
+    }
+  },
+  "sources": {
+    "cisaKev": {
+      "retrieved": "2026-02-23T05:46:34.109Z",
+      "count": 1526
+    },
+    "feodo": {
+      "retrieved": "2026-02-23T05:46:34.180Z",
+      "count": 0
+    },
+    "news": {
+      "retrieved": "2026-02-23T05:46:43.332Z",
+      "count": 130
+    }
+  }
+}
