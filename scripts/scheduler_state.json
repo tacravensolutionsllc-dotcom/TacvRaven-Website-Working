@@ -1,5 +1,5 @@
 {
-  "last_post_date": "2026-02-23",
+  "last_post_date": "2026-02-25",
   "published_posts": [
     "bf48b61af443",
     "9a4b6d1d05a7",
@@ -13,9 +13,10 @@
     "5221a58a5982",
     "ff29158935d5",
     "9a17abc0801b",
-    "ef67fb6a0bac"
+    "ef67fb6a0bac",
+    "9f533723ba1c"
   ],
-  "category_rotation": 3,
+  "category_rotation": 4,
   "topic_index": {
     "getting-started_breaking_in": 1,
     "certifications_cert_review": 1,
@@ -25,16 +26,17 @@
     "skills_technical": 1,
     "industry-trends_market_trends": 1,
     "getting-started_first_steps": 1,
-    "certifications_cert_strategy": 1
+    "certifications_cert_strategy": 1,
+    "career-paths_career_decisions": 1
   },
-  "style_rotation": 13,
-  "structure_rotation": 13,
-  "post_count": 13,
+  "style_rotation": 14,
+  "structure_rotation": 14,
+  "post_count": 14,
   "group_index": {
     "getting-started_group": 2,
     "certifications_group": 2,
     "salaries_group": 1,
-    "career-paths_group": 1,
+    "career-paths_group": 2,
     "job-search_group": 1,
     "skills_group": 1,
     "industry-trends_group": 1
