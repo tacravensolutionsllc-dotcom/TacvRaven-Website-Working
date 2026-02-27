@@ -1,7 +1,25 @@
 {
-  "generated": "2026-02-25T09:53:49.312672",
-  "count": 13,
+  "generated": "2026-02-27T09:39:34.468669",
+  "count": 14,
   "posts": [
+    {
+      "title": "Security Technical Interview Questions",
+      "excerpt": "Common questions answered.",
+      "date": "2026-02-27",
+      "category": "Job Search",
+      "category_slug": "job-search",
+      "category_css": "js",
+      "tags": [
+        "Job Search",
+        "Cybersecurity",
+        "Career",
+        "interviews"
+      ],
+      "filepath": "posts/2026/02/security-technical-interview-questions.html",
+      "slug": "security-technical-interview-questions",
+      "read_time": 11,
+      "featured": true
+    },
     {
       "title": "Red Team vs Blue Team: Which Path?",
       "excerpt": "Offense vs defense.",
@@ -18,7 +36,7 @@
       "filepath": "posts/2026/02/red-team-vs-blue-team-which-path.html",
       "slug": "red-team-vs-blue-team-which-path",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Cybersecurity Salaries by Role",
