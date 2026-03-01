@@ -1,7 +1,25 @@
 {
-  "generated": "2026-02-27T09:39:34.468669",
-  "count": 14,
+  "generated": "2026-03-01T09:28:50.645493",
+  "count": 15,
   "posts": [
+    {
+      "title": "Communication Skills in Security",
+      "excerpt": "Writing and presenting.",
+      "date": "2026-03-01",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "soft_skills"
+      ],
+      "filepath": "posts/2026/03/communication-skills-in-security.html",
+      "slug": "communication-skills-in-security",
+      "read_time": 11,
+      "featured": true
+    },
     {
       "title": "Security Technical Interview Questions",
       "excerpt": "Common questions answered.",
@@ -18,7 +36,7 @@
       "filepath": "posts/2026/02/security-technical-interview-questions.html",
       "slug": "security-technical-interview-questions",
       "read_time": 11,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Red Team vs Blue Team: Which Path?",
