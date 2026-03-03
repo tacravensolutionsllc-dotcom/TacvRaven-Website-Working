@@ -1,7 +1,25 @@
 {
-  "generated": "2026-03-01T09:28:50.645493",
-  "count": 15,
+  "generated": "2026-03-03T09:40:35.014472",
+  "count": 16,
   "posts": [
+    {
+      "title": "Emerging Cybersecurity Roles",
+      "excerpt": "New positions to watch.",
+      "date": "2026-03-03",
+      "category": "Industry Trends",
+      "category_slug": "industry-trends",
+      "category_css": "tr",
+      "tags": [
+        "Industry Trends",
+        "Cybersecurity",
+        "Career",
+        "future"
+      ],
+      "filepath": "posts/2026/03/emerging-cybersecurity-roles.html",
+      "slug": "emerging-cybersecurity-roles",
+      "read_time": 11,
+      "featured": true
+    },
     {
       "title": "Communication Skills in Security",
       "excerpt": "Writing and presenting.",
@@ -18,7 +36,7 @@
       "filepath": "posts/2026/03/communication-skills-in-security.html",
       "slug": "communication-skills-in-security",
       "read_time": 11,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Security Technical Interview Questions",

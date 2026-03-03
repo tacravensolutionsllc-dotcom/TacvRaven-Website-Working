@@ -1,5 +1,5 @@
 {
-  "last_post_date": "2026-03-01",
+  "last_post_date": "2026-03-03",
   "published_posts": [
     "bf48b61af443",
     "9a4b6d1d05a7",
@@ -16,9 +16,10 @@
     "ef67fb6a0bac",
     "9f533723ba1c",
     "eb63229f59b3",
-    "95e445779140"
+    "95e445779140",
+    "78850eb8974f"
   ],
-  "category_rotation": 6,
+  "category_rotation": 7,
   "topic_index": {
     "getting-started_breaking_in": 1,
     "certifications_cert_review": 1,
@@ -31,11 +32,12 @@
     "certifications_cert_strategy": 1,
     "career-paths_career_decisions": 1,
     "job-search_interviews": 1,
-    "skills_soft_skills": 1
+    "skills_soft_skills": 1,
+    "industry-trends_future": 1
   },
-  "style_rotation": 16,
-  "structure_rotation": 16,
-  "post_count": 16,
+  "style_rotation": 17,
+  "structure_rotation": 17,
+  "post_count": 17,
   "group_index": {
     "getting-started_group": 2,
     "certifications_group": 2,
@@ -43,7 +45,7 @@
     "career-paths_group": 2,
     "job-search_group": 2,
     "skills_group": 2,
-    "industry-trends_group": 1
+    "industry-trends_group": 2
   },
   "recent_topics": [
     "SOC",
