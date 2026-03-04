@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nation State Attacks on Financial Institutions | Black Wing Dispatch</title>
+    <meta name="description" content="Nation State Attacks on Financial Institutions: Analysis of attack techniques, real-world impact, and actionable defensive recommendations from Black Wing ">
+    <meta name="keywords" content="apt-activity, cybersecurity, threat-analysis, security, nation, cybersecurity, threat analysis, TacRaven">
+    <meta name="author" content="TacRaven">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tacraven.com/intel/blackwing/2026/03/nation-state-attacks-on-financial-institutions.html">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Nation State Attacks on Financial Institutions">
+    <meta property="og:description" content="Nation State Attacks on Financial Institutions: Analysis of attack techniques, real-world impact, and actionable defensive recommendations from Black Wing ">
+    <meta property="og:url" content="https://tacraven.com/intel/blackwing/2026/03/nation-state-attacks-on-financial-institutions.html">
+    <meta property="og:site_name" content="TacRaven Solutions">
+    <meta property="og:image" content="https://tacraven.com/assets/images/blackwingdispatch-logo.png">
+    <meta property="article:published_time" content="2026-03-04T08:00:00-05:00">
+    <meta property="article:section" content="APT Activity">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nation State Attacks on Financial Institutions">
+    <meta name="twitter:description" content="Nation State Attacks on Financial Institutions: Analysis of attack techniques, real-world impact, and actionable defensive recommendations from Black Wing ">
+    <meta name="twitter:site" content="@TacRavenSec">
+    
+    <link rel="stylesheet" href="../../../../assets/css/blackwing-dispatch.css">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PEYM947EG8');
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../../../../index.html" class="logo">
+                    <span class="logo-text">TAC</span><span class="logo-accent">RAVEN</span>
+                </a>
+                <nav class="main-nav">
+                    <a href="../../../../index.html">Home</a>
+                    <a href="../../../../about.html">About</a>
+                    <div class="nav-dropdown">
+                        <button class="nav-dropdown-btn active">Blog <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                        <div class="nav-dropdown-content">
+                            <a href="../../../../cyber-careers.html">Cyber Careers</a>
+                            <a href="../../index.html" class="active">Black Wing Dispatch</a>
+                        </div>
+                    </div>
+                    <a href="../../../../learning-hub.html">Learning Hub</a>
+                    <a href="../../../../threat-map.html">Threat Map</a>
+                    <a href="../../../../intel/weekly/">Weekly Reports</a>
+                    <a href="../../../../cyber-news.html">News</a>
+                    <a href="../../../../tools.html">Tools</a>
+                    <a href="../../../../pricing.html">Programs</a>
+                    <a href="../../../../contact.html" class="btn-contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- RavenEye Threat Ticker -->
+    <div class="raveneye">
+        <div class="raveneye-glow"></div>
+        <div class="raveneye-bottom"></div>
+        <div class="raveneye-container">
+            <div class="raveneye-label">
+                <div class="raveneye-icon-wrapper">
+                    <div class="raveneye-radar">
+                        <div class="raveneye-radar-sweep"></div>
+                        <div class="raveneye-radar-pulse"></div>
+                        <div class="raveneye-radar-pulse"></div>
+                        <div class="raveneye-radar-pulse"></div>
+                    </div>
+                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </div>
+                RavenEye
+            </div>
+            <div class="raveneye-track">
+                <div class="raveneye-scroll">
+                    <div class="raveneye-item">
+                        <span class="raveneye-badge raveneye-badge--critical">Zero-Day</span>
+                        <span class="raveneye-text">Microsoft Patches Critical Zero-Day in Windows Kernel</span>
+                    </div>
+                    <div class="raveneye-item">
+                        <span class="raveneye-badge raveneye-badge--critical">Critical</span>
+                        <span class="raveneye-text">Ivanti VPN Zero-Day Actively Exploited in the Wild</span>
+                    </div>
+                    <div class="raveneye-item">
+                        <span class="raveneye-badge raveneye-badge--kev">KEV</span>
+                        <span class="raveneye-text">CVE-2024-21887: Ivanti Connect Secure</span>
+                    </div>
+                    <div class="raveneye-item">
+                        <span class="raveneye-badge raveneye-badge--alert">Alert</span>
+                        <span class="raveneye-text">APT Groups Targeting Critical Infrastructure</span>
+                    </div>
+                    <div class="raveneye-item">
+                        <span class="raveneye-badge raveneye-badge--critical">Zero-Day</span>
+                        <span class="raveneye-text">Microsoft Patches Critical Zero-Day in Windows Kernel</span>
+                    </div>
+                    <div class="raveneye-item">
+                        <span class="raveneye-badge raveneye-badge--critical">Critical</span>
+                        <span class="raveneye-text">Ivanti VPN Zero-Day Actively Exploited in the Wild</span>
+                    </div>
+                    <div class="raveneye-item">
+                        <span class="raveneye-badge raveneye-badge--kev">KEV</span>
+                        <span class="raveneye-text">CVE-2024-21887: Ivanti Connect Secure</span>
+                    </div>
+                    <div class="raveneye-item">
+                        <span class="raveneye-badge raveneye-badge--alert">Alert</span>
+                        <span class="raveneye-text">APT Groups Targeting Critical Infrastructure</span>
+                    </div>
+                </div>
+            </div>
+            <a href="../../../../cyber-news.html" class="raveneye-cta">
+                Full Feed
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <article class="threat-brief">
+            <header class="brief-header">
+                <div class="container">
+                    <div class="brief-header-content">
+                        <div class="brief-header-text">
+                            <nav class="breadcrumb">
+                                <a href="../../index.html">Black Wing Dispatch</a>
+                                <span class="separator">/</span>
+                                <span class="current">APT Activity</span>
+                            </nav>
+                            <h1>Nation State Attacks on Financial Institutions</h1>
+                            <div class="brief-metadata">
+                                <time datetime="2026-03-04">March 04, 2026</time>
+                                <span class="separator">|</span>
+                                <span class="author">TacRaven</span>
+                                <span class="separator">|</span>
+                                <span class="read-time">12 min read</span>
+                            </div>
+                            <div class="brief-share">
+                                <span class="share-label">Share:</span>
+                                <a href="https://twitter.com/intent/tweet?text=Nation State Attacks on Financial Institutions&url=https://tacraven.com/intel/blackwing/2026/03/nation-state-attacks-on-financial-institutions.html" target="_blank" rel="noopener" class="share-btn" title="Share on X">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                </a>
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tacraven.com/intel/blackwing/2026/03/nation-state-attacks-on-financial-institutions.html" target="_blank" rel="noopener" class="share-btn" title="Share on LinkedIn">
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                </a>
+                                <button class="share-btn copy-link" title="Copy link" onclick="navigator.clipboard.writeText('https://tacraven.com/intel/blackwing/2026/03/nation-state-attacks-on-financial-institutions.html');this.classList.add('copied');setTimeout(()=>this.classList.remove('copied'),2000)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="brief-header-logo">
+                            <img src="../../../../assets/images/blackwingdispatch-logo.png" alt="Black Wing Dispatch" class="brief-logo">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="brief-content">
+                <div class="container">
+                    <div class="content-wrapper">
+                        <aside class="table-of-contents">
+                            <h2>Contents</h2>
+                            <nav>
+                                <a href="#introduction">Introduction</a>
+                                <a href="#background">Background</a>
+                                <a href="#technical-breakdown">Technical Breakdown</a>
+                                <a href="#what-i-found">Key Indicators</a>
+                                <a href="#attack-patterns">Attack Patterns</a>
+                                <a href="#real-world-impact">Real World Impact</a>
+                                <a href="#recommendations">Recommendations</a>
+                                <a href="#final-thoughts">Final Thoughts</a>
+                                <a href="#resources">Resources</a>
+                            </nav>
+                        </aside>
+                        <div class="content-body">
+                            <section id="introduction">
+<h2>Introduction</h2>
+If you work in cybersecurity, you have probably heard the term APT thrown around a lot. Advanced Persistent Threat. It sounds intimidating, and honestly, it should be. These are not your everyday hackers looking for a quick score. These are organized groups, often backed by nation-states, with specific goals and the patience to achieve them over months or even years.
+
+I have been tracking APT activity for a while now, and what strikes me most is how methodical these groups are. They do not rush. They research their targets, find the right entry points, and move carefully through networks without triggering alarms. By the time most organizations realize something is wrong, the attackers have already achieved their objectives.
+
+This post digs into what we are seeing with APT activity right now. I will explain how these operations work, what makes them different from ordinary cybercrime, and what you can realistically do to protect your organization. The threat is serious, but understanding it is the first step toward defending against it.
+</section>
+
+<section id="background">
+<h2>Background</h2>
+The APT landscape today reflects geopolitical tensions that have been building for years. Major cyber powers have developed significant offensive capabilities, and they use them regularly to advance national interests.
+
+China, Russia, North Korea, and Iran are most frequently named in public attributions, but they are not the only players. Many countries have developed or acquired cyber capabilities, and the proliferation of commercial hacking tools has lowered the barrier to entry.
+
+What makes APTs particularly challenging is their persistence. Unlike criminals who might move on if initial attacks fail, state-sponsored groups are patient. They will try multiple approaches over extended periods. If they get kicked out of a network, they often try to get back in.
+
+The goals of these groups vary. Intelligence collection is the most common objective, but we have also seen sabotage, intellectual property theft, financial gain, and what appears to be pre-positioning for potential future operations against critical infrastructure.
+
+Recent years have seen increased boldness in APT operations. Attacks that would once have been kept quiet are now acknowledged. Operations that might have caused international incidents are conducted with apparent confidence that consequences will be limited. This emboldening trend is concerning for defenders.
+</section>
+
+<section id="technical-breakdown">
+<h2>Technical Breakdown</h2>
+Let me walk through how a typical APT operation unfolds based on what we know from public reporting. The details vary between groups and targets, but the general pattern is consistent.
+
+Initial access usually comes through one of a few vectors. Spearphishing remains popular because it works. A carefully crafted email with a malicious attachment or link, targeted at someone with access to what the attackers want. Exploitation of internet-facing systems is another common path, particularly VPNs, email servers, and web applications with known vulnerabilities.
+
+Once inside, the priority is establishing persistence. The attackers want to make sure they can maintain access even if the initial entry point is discovered and closed. They deploy backdoors, often multiple ones, in locations throughout the network. These might be scheduled tasks, modified services, web shells, or implants hidden in legitimate software.
+
+Reconnaissance follows. The attackers learn the network layout, identify high-value targets like domain controllers and file servers, and locate the data they are after. This phase can take weeks or months. The attackers are careful to avoid triggering alerts, often conducting activities during business hours when admin activity is normal.
+
+Lateral movement lets attackers spread through the network. They harvest credentials, exploit trust relationships between systems, and gradually gain access to additional resources. Living-off-the-land techniques, using built-in system tools rather than custom malware, help them blend in with legitimate activity.
+
+Data exfiltration is typically the final objective for espionage operations. The stolen data is compressed, encrypted, and sent to attacker-controlled infrastructure. This might happen slowly to avoid detection, or quickly if the attackers believe they are about to be discovered.
+</section>
+
+<section id="what-i-found">
+<h2>Key Indicators</h2>
+<p>Based on public reporting and advisories, there are several indicators that organizations should monitor for. These are not exhaustive, and threat actors continuously adapt their techniques, but they provide a starting point for detection efforts. The key is building detection capabilities that can identify these patterns in your specific environment.</p>
+
+<p>Network-based indicators include unusual outbound connections, particularly to newly registered domains or known malicious infrastructure. DNS queries from systems that do not normally make external requests deserve attention. Communication patterns that differ from baseline behavior, such as connections at unusual times or to unusual destinations, warrant investigation. Look for beaconing patterns where systems connect to external hosts at regular intervals, which often indicates command and control traffic.</p>
+
+<p>On endpoints, look for evidence of the techniques described earlier. Unexpected processes, particularly those with administrative privileges, should trigger investigation. Modifications to scheduled tasks or services can indicate persistence mechanisms. Access to credential stores like LSASS or attempts to dump memory are red flags. Files appearing in unexpected locations or with unusual characteristics warrant examination. Pay attention to process injection, where legitimate processes spawn unusual child processes or load unexpected libraries.</p>
+
+<p>Authentication and access patterns often reveal compromise. Service accounts used interactively, administrator accounts authenticating from new systems, or any accounts authenticating at unusual times should be investigated. Failed authentication attempts followed by success might indicate credential guessing or stuffing. Access to sensitive data repositories by accounts that do not normally need such access is concerning.</p>
+
+<p>Behavioral patterns often provide the best detection opportunities even when specific technical indicators are absent. Bulk data access or unusual data movement patterns might indicate exfiltration staging. Large file compression or encryption activity outside of normal backup processes deserves scrutiny. Administrative tool usage from non-administrative workstations can indicate lateral movement.</p>
+
+<p>Email and phishing indicators remain relevant for attacks that begin with social engineering. Watch for internal emails with unusual attachments, especially from compromised accounts sending to many recipients. Links to credential harvesting pages, particularly those mimicking internal systems, indicate active phishing. Users reporting suspicious emails provides valuable early warning if you have trained people to recognize and report them.</p>
+
+<p>Changes to security controls themselves can indicate an attacker preparing for the final phase of their operation. Disabled antivirus, modified Windows Defender settings, or deleted security event logs all suggest someone is trying to operate undetected. Legitimate administrators rarely make these changes without documentation and approval.</p>
+
+<p>Remember that indicators have a shelf life. What worked for detection last month may not work next month as attackers adapt. Detection capabilities need continuous refinement based on current threat intelligence. The goal is not to catch every possible indicator but to have enough coverage that attacker activity becomes visible somewhere in the kill chain.</p>
+</section>
+
+<section id="attack-patterns">
+<h2>Attack Patterns</h2>
+<p>Understanding how attacks typically unfold helps with both prevention and detection. While every attack is different in its details, patterns emerge that defenders can use to anticipate and counter adversary behavior.</p>
+
+<p>Initial access is the first challenge attackers must solve. They need to get a foothold in the target environment. The most common methods include phishing with malicious attachments or links, exploitation of internet-facing systems, and use of valid credentials obtained through prior compromise or purchase. Organizations with good perimeter defenses force attackers to use more sophisticated approaches, but determined adversaries usually find a way in eventually.</p>
+
+<p>After initial access, attackers focus on establishing persistence and understanding the environment. This phase is often where detection opportunities exist. The attacker needs to take actions to maintain access and gather information, and these actions leave traces. Patient attackers may spend weeks in this phase, carefully avoiding detection while mapping the network and identifying valuable targets.</p>
+
+<p>Credential harvesting is usually a priority once initial access is established. Attackers want to move beyond their initial compromised account to gain broader access. They target credential stores, memory dumps, cached credentials, and sometimes social engineering of help desk staff. With administrator credentials, most networks become much easier to traverse.</p>
+
+<p>Lateral movement lets attackers spread through the network toward their objectives. Credential harvesting provides access to additional systems. Trust relationships between systems are exploited. Attackers often use legitimate administrative tools for movement to blend with normal activity. This phase continues until the attacker has access to what they want.</p>
+
+<p>Defense evasion runs throughout the attack lifecycle. Attackers modify their behavior based on what defenses they encounter. They may disable security tools, clear logs, use encryption to hide their traffic, or time their activities to coincide with normal business operations. Sophisticated attackers test their tools against common security products before deploying them.</p>
+
+<p>The final phase depends on attacker objectives. For espionage, it means data exfiltration. For ransomware, it means encryption deployment. For sabotage, it means disruption of operations. Understanding what attackers want helps predict what they will do once they have sufficient access.</p>
+
+<p>The time from initial access to final objective varies enormously. Automated attacks might complete in minutes. Sophisticated ransomware operators typically spend days or weeks preparing before deployment. Nation-state espionage operations can maintain access for months or years. Knowing what type of adversary you face helps estimate how much time you have to detect and respond.</p>
+</section>
+
+<section id="real-world-impact">
+<h2>Real World Impact</h2>
+The impact of these attacks extends beyond the immediate technical damage. Organizations that experience significant incidents face cascading consequences that can last months or years.
+
+Operational disruption is often the most visible impact. Systems go offline, employees cannot work, and normal business processes stop. For some organizations, a few days of downtime is manageable. For others, particularly in healthcare, manufacturing, or logistics, even hours of disruption have serious consequences.
+
+Financial costs add up quickly. There are direct costs like incident response services, legal fees, regulatory notifications, and sometimes ransom payments. But indirect costs often exceed the direct ones. Lost revenue during downtime, overtime for staff handling recovery, customers who leave, and increased costs for security improvements afterward.
+
+Regulatory and legal consequences depend on what data was involved and what obligations apply. Healthcare organizations face HIPAA considerations. Financial services have their own requirements. Data protection laws like GDPR impose notification obligations and potential fines. Legal exposure from affected parties adds another dimension.
+
+Reputational damage is hard to quantify but real. Customers, partners, and the public form opinions based on how organizations handle incidents. Transparent, competent response can actually enhance reputation, while bungled incidents erode trust. The long-term business impact of reputation changes is significant.
+
+For individuals within affected organizations, incidents are stressful and career-affecting. IT teams work exhausting hours. Executives face difficult decisions with incomplete information. And sometimes, fairly or not, people lose their jobs. The human cost of cyber incidents deserves acknowledgment.
+</section>
+
+<section id="recommendations">
+<h2>My Recommendations</h2>
+Based on what we have covered, let me share some practical recommendations. I have organized these by timeframe to help with prioritization, recognizing that not everything can happen at once.
+
+In the next few days, take a hard look at your exposure to the attack vectors we discussed. Do you have systems that might be vulnerable? Are you monitoring the right things? Are there obvious gaps you have been meaning to address? Now is the time.
+
+Review your incident response readiness. If something happened tomorrow, would your team know what to do? Are contact lists current? Are playbooks documented and accessible? A quick tabletop exercise can reveal gaps you did not know existed.
+
+Check your backups. Not just whether they exist, but whether you can actually restore from them. When was the last time you tested recovery? Are backups protected from the threats we discussed? Confidence in backups only counts if it is justified.
+
+Over the next few weeks, brief your stakeholders on the threat landscape. Security decisions benefit from organizational understanding and support. Leadership that understands the risks makes better decisions about investments and priorities.
+
+Evaluate your detection capabilities. Are you monitoring for the indicators and behaviors discussed in this post? Detection is only as good as your visibility. Gaps in logging or monitoring create blind spots that attackers exploit.
+
+Longer term, invest in security improvements that address the fundamental weaknesses attackers exploit. This might mean better network segmentation, stronger identity controls, or improved security operations capabilities. These are not quick fixes, but they make a lasting difference.
+
+Build relationships with others in your sector. Information sharing communities provide early warning about threats and insight into what others are seeing. The security community is stronger when organizations help each other.
+</section>
+
+<section id="final-thoughts">
+<h2>Final Thoughts</h2>
+We have covered a lot of ground in this post. The technical details matter, but what matters more is what you do with this information. Knowledge without action does not improve security.
+
+I hope this post has given you a clearer picture of the threat and practical ideas for improving your defenses. The specific actions that make sense depend on your organization, but the principles apply broadly.
+
+Security is fundamentally about making good decisions under uncertainty. We cannot eliminate risk, but we can manage it. We cannot prevent every attack, but we can reduce their likelihood and limit their impact.
+
+The work of security is never done, but it is worthwhile. Every improvement makes your organization a harder target. Every incident you prevent is damage that does not happen.
+
+Until next time, stay vigilant.
+</section>
+
+<section id="resources">
+<h2>Resources</h2>
+<p>For more information on the topics covered in this post, I recommend the following resources. These provide authoritative guidance and current information that complements what we have discussed. Staying informed about evolving threats and defenses is essential for effective security.</p>
+
+<p>The Cybersecurity and Infrastructure Security Agency publishes advisories, alerts, and guidance that reflect current threat activity and best practices. Their Known Exploited Vulnerabilities catalog is particularly useful for prioritization, as it focuses on vulnerabilities that are actually being exploited in the wild rather than theoretical risks. CISA also provides sector-specific guidance that can help organizations understand threats relevant to their industry.</p>
+
+<p>The MITRE ATT&CK framework provides a structured way to understand adversary techniques and map defensive capabilities. It has become a common language for discussing threats across the security community. Using ATT&CK to evaluate your detection coverage can reveal gaps and guide security investments. The framework is continuously updated based on observed adversary behavior.</p>
+
+<p>Sector-specific Information Sharing and Analysis Centers provide threat intelligence tailored to particular industries. If one exists for your sector, joining it provides access to relevant information and community support. These organizations facilitate sharing between member organizations and often have relationships with government agencies that provide early warning about emerging threats.</p>
+
+<p>Vendor security advisories and blogs often contain detailed technical analysis of specific threats. Following the security teams at major software vendors, cloud providers, and security companies provides insight into what they are seeing across their customer bases. This information can help you understand whether threats discussed in general terms actually apply to your environment.</p>
+
+<ul class="reference-list">
+<li><a href="https://www.cisa.gov/cybersecurity-advisories" target="_blank" rel="noopener noreferrer">CISA Cybersecurity Advisories</a></li>
+<li><a href="https://attack.mitre.org/" target="_blank" rel="noopener noreferrer">MITRE ATT&CK Framework</a></li>
+<li><a href="https://nvd.nist.gov/" target="_blank" rel="noopener noreferrer">National Vulnerability Database</a></li>
+<li><a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer">CISA Known Exploited Vulnerabilities</a></li>
+</ul>
+</section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">TAC</span><span class="logo-accent">RAVEN</span>
+                    <p class="footer-tagline">Cybersecurity Education and Solutions</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TacRaven Solutions LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" title="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <script>
+        var b=document.getElementById('backToTop');
+        window.addEventListener('scroll',function(){b.classList.toggle('visible',window.scrollY>300)});
+        b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+    </script>
+</body>
+</html>
