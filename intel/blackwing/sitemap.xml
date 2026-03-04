@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <url>
+        <loc>https://tacravensolutions.com/</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/products.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/products/blackfeather.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/products/corvus-engine.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/products/talonprep.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/contact.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/documentation.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/intel/</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://tacravensolutions.com/assets/images/darkwingdispatch-og.png</image:loc>
+            <image:title>Dark Wing Dispatch - TacRaven Solutions Cybersecurity Threat Blog</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/intel/posts/ransomware-evolution-q1-2026.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Dark Wing Dispatch</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-03-01</news:publication_date>
+            <news:title>Ransomware Evolution: What Q1 2026 Taught Us</news:title>
+            <news:keywords>ransomware, cybersecurity, threat analysis</news:keywords>
+        </news:news>
+        <image:image>
+            <image:loc>https://tacravensolutions.com/assets/images/posts/ransomware-q1-2026.png</image:loc>
+            <image:title>Ransomware Evolution Q1 2026</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/intel/posts/apt-campaign-analysis-february-2026.html</loc>
+        <lastmod>2026-02-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Dark Wing Dispatch</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-02-22</news:publication_date>
+            <news:title>Inside the Latest APT Campaign Targeting Defense Contractors</news:title>
+            <news:keywords>APT, advanced persistent threat, defense contractors, cybersecurity</news:keywords>
+        </news:news>
+        <image:image>
+            <image:loc>https://tacravensolutions.com/assets/images/posts/apt-february-2026.png</image:loc>
+            <image:title>APT Campaign Analysis February 2026</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/intel/posts/critical-vulnerability-breakdown-001.html</loc>
+        <lastmod>2026-02-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Dark Wing Dispatch</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-02-15</news:publication_date>
+            <news:title>Critical Vulnerabilities in Enterprise Network Gear: A Practical Breakdown</news:title>
+            <news:keywords>vulnerability, CVE, network security, enterprise</news:keywords>
+        </news:news>
+        <image:image>
+            <image:loc>https://tacravensolutions.com/assets/images/posts/vulnerability-breakdown-001.png</image:loc>
+            <image:title>Critical Vulnerability Breakdown</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/intel/posts/supply-chain-attacks-open-source.html</loc>
+        <lastmod>2026-02-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Dark Wing Dispatch</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-02-08</news:publication_date>
+            <news:title>Supply Chain Attacks and Open Source: What We Keep Getting Wrong</news:title>
+            <news:keywords>supply chain, open source, software security, dependencies</news:keywords>
+        </news:news>
+        <image:image>
+            <image:loc>https://tacravensolutions.com/assets/images/posts/supply-chain-open-source.png</image:loc>
+            <image:title>Supply Chain Attacks and Open Source</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/intel/posts/threat-actor-profile-001.html</loc>
+        <lastmod>2026-02-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Dark Wing Dispatch</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-02-01</news:publication_date>
+            <news:title>Profiling a Financially Motivated Intrusion Group</news:title>
+            <news:keywords>threat actor, intrusion group, financial motivation, cybercrime</news:keywords>
+        </news:news>
+        <image:image>
+            <image:loc>https://tacravensolutions.com/assets/images/posts/threat-actor-profile-001.png</image:loc>
+            <image:title>Threat Actor Profile</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://tacravensolutions.com/intel/posts/ics-security-energy-sector.html</loc>
+        <lastmod>2026-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Dark Wing Dispatch</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-01-25</news:publication_date>
+            <news:title>ICS Security in the Energy Sector: Where We Stand in 2026</news:title>
+            <news:keywords>ICS, industrial control systems, energy sector, SCADA, OT security</news:keywords>
+        </news:news>
+        <image:image>
+            <image:loc>https://tacravensolutions.com/assets/images/posts/ics-energy-sector.png</image:loc>
+            <image:title>ICS Security in the Energy Sector</image:title>
+        </image:image>
+    </url>
+    
+</urlset>
