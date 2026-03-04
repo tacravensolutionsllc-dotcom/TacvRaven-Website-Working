@@ -13,6 +13,12 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://tacraven.com/intel/blackwing/2026/03/wi-fi-protocol-security-flaws.html</loc>
+        <lastmod>2026-03-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/critical-vpn-vulnerabilities-exploited.html</loc>
         <lastmod>2026-03-04</lastmod>
         <changefreq>monthly</changefreq>
