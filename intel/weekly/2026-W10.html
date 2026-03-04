@@ -19,16 +19,16 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://tacraven.com/intel/weekly/2026-W10.html">
     <meta property="og:title" content="Weekly Cybersecurity Threat Report - March 2026, Week 10">
-    <meta property="og:description" content="3 new CISA KEV vulnerabilities, 0 linked to ransomware campaigns. Includes MITRE ATT&CK mapping and structured analytical assessment.">
+    <meta property="og:description" content="2 new CISA KEV vulnerabilities, 0 linked to ransomware campaigns. Includes MITRE ATT&CK mapping and structured analytical assessment.">
     <meta property="og:image" content="https://tacraven.com/images/threat-report-og.png">
     <meta property="og:site_name" content="TacRaven Solutions">
-    <meta property="article:published_time" content="2026-03-02T05:32:52.805Z">
+    <meta property="article:published_time" content="2026-03-04T17:46:23.135Z">
     <meta property="article:section" content="Threat Intelligence">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Weekly Cybersecurity Threat Report - March 2026, Week 10">
-    <meta name="twitter:description" content="3 new KEV vulnerabilities, 0 linked to ransomware. MITRE ATT&CK mapping included.">
+    <meta name="twitter:description" content="2 new KEV vulnerabilities, 0 linked to ransomware. MITRE ATT&CK mapping included.">
     <meta name="twitter:image" content="https://tacraven.com/images/threat-report-og.png">
     
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -2624,7 +2624,7 @@
                     <span class="report-title-date">March 2, 2026</span>
                     <span class="report-title-name">Cybersecurity Threat Report</span>
                 </h1>
-                <p class="report-meta">Generated: 2026-03-02T05:32:52.805Z</p>
+                <p class="report-meta">Generated: 2026-03-04T17:46:23.135Z</p>
                 
                 <!-- Previous / Next Report Navigation -->
                 <div class="report-nav-links">
@@ -2684,14 +2684,26 @@
                         <svg class="bluf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         </svg>
-                        <span class="bluf-text">CISA added 3 new vulnerabilities to the KEV catalog, requiring immediate patching attention</span>
+                        <span class="bluf-text">CISA added 2 new vulnerabilities to the KEV catalog, requiring immediate patching attention</span>
+                    </li>
+                    <li class="bluf-item">
+                        <svg class="bluf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="bluf-text">Active C2 infrastructure detected for QakBot — update blocklists and monitor for IOCs</span>
+                    </li>
+                    <li class="bluf-item">
+                        <svg class="bluf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <span class="bluf-text">Infrastructure concentrated in JP — consider geo-blocking for high-risk environments</span>
                     </li>
                 </ul>
                 
                 <!-- Threat Level Meter -->
                 <div class="threat-meter">
                     <div class="threat-level-display">
-                        <div class="threat-level-ring guarded" data-level="45">
+                        <div class="threat-level-ring guarded" data-level="32">
                             <svg viewBox="0 0 80 80">
                                 <circle class="ring-bg" cx="40" cy="40" r="35"/>
                                 <circle class="ring-fill" cx="40" cy="40" r="35"/>
@@ -2701,7 +2713,7 @@
                     </div>
                     <div class="threat-stats">
                         <div class="threat-stat">
-                            <div class="threat-stat-value" data-count="3">0</div>
+                            <div class="threat-stat-value" data-count="2">0</div>
                             <div class="threat-stat-label">New KEVs</div>
                         </div>
                         <div class="threat-stat">
@@ -2709,11 +2721,11 @@
                             <div class="threat-stat-label">Ransomware</div>
                         </div>
                         <div class="threat-stat">
-                            <div class="threat-stat-value" data-count="0">0</div>
+                            <div class="threat-stat-value" data-count="1">0</div>
                             <div class="threat-stat-label">C2 Servers</div>
                         </div>
                         <div class="threat-stat">
-                            <div class="threat-stat-value" data-count="0">0</div>
+                            <div class="threat-stat-value" data-count="1">0</div>
                             <div class="threat-stat-label">Malware Families</div>
                         </div>
                     </div>
@@ -2733,12 +2745,12 @@
                             <span class="exec-risk-level risk-guarded">GUARDED</span>
                             <span class="exec-risk-change change-neutral">↑ from GUARDED last week</span>
                         </div>
-                        <p class="exec-rationale">Immediate patching required for Cisco and Soliton Systems K.K products. </p>
+                        <p class="exec-rationale">Immediate patching required for Broadcom and Qualcomm products. QakBot C2 infrastructure active — ransomware precursor indicators present.</p>
                     </div>
                     
                     <div class="exec-card">
                         <h3 class="exec-card-title">Resource Requirement</h3>
-                        <p class="exec-detail"><strong>Patching:</strong> ~6-12 hours total across affected systems</p>
+                        <p class="exec-detail"><strong>Patching:</strong> ~4-8 hours total across affected systems</p>
                         <p class="exec-detail"><strong>Monitoring:</strong> Block list update + threat hunting sweep (2-4 hours)</p>
                         <p class="exec-detail"><strong>Assessment:</strong> Vulnerability audit recommended across business units</p>
                         <p class="exec-detail"><strong>Communication:</strong> Consider notifying business owners of potential disruption</p>
@@ -2762,7 +2774,7 @@
                         Analyst Assessment
                     </h3>
                     <div class="analyst-narrative">
-<p>This week's threat landscape remains <strong>relatively stable</strong>, though vigilance is still required. CISA added 3 new vulnerabilities to the Known Exploited Vulnerabilities catalog, confirming active exploitation in the wild. Affected vendors include <strong>Cisco, Soliton Systems K.K</strong>—all common in enterprise perimeter infrastructure.</p><p><strong>Recommended Priority:</strong> Patch confirmed exploited vulnerabilities within the CISA-mandated timeline. Update threat detection signatures and block lists with current IOCs.</p>
+<p>This week's threat landscape remains <strong>relatively stable</strong>, though vigilance is still required. CISA added 2 new vulnerabilities to the Known Exploited Vulnerabilities catalog, confirming active exploitation in the wild. Affected vendors include <strong>Broadcom, Qualcomm</strong>.</p><p>Botnet infrastructure remains active with <strong>1 C2 servers</strong> tracked across 1 malware families. QakBot leads this week's detections—despite FBI takedown efforts in 2023, the botnet has shown resilience and remains a common ransomware delivery mechanism. Geographic concentration shows JP hosting 100% of observed infrastructure, though hosting location does not reliably indicate actor origin.</p><p><strong>Recommended Priority:</strong> Patch confirmed exploited vulnerabilities within the CISA-mandated timeline. Update threat detection signatures and block lists with current IOCs.</p>
                     </div>
                 </div>
                 
@@ -2773,7 +2785,7 @@
                         Why This Matters to the Business
                     </h3>
                     <div class="business-impact-content">
-<div class="impact-item"><div class="impact-icon">⚠️</div><div class="impact-text"><strong>Exploitation risk is confirmed.</strong> 3 vulnerabilities are being actively exploited. While not directly linked to ransomware, any successful compromise could be leveraged for further attack progression.</div></div><div class="impact-item"><div class="impact-icon">🖥️</div><div class="impact-text"><strong>Product exposure check required.</strong> Vulnerabilities affect Cisco, Soliton Systems K.K products. IT and business unit leaders should verify whether these products are deployed in their environments and confirm patching status.</div></div><div class="impact-item"><div class="impact-icon">📋</div><div class="impact-text"><strong>Compliance implications.</strong> CISA's KEV catalog mandates federal agencies to remediate within specified timeframes. Organizations in regulated industries (healthcare, finance, critical infrastructure) may face similar expectations from sector-specific regulators.</div></div><div class="impact-item"><div class="impact-icon">👥</div><div class="impact-text"><strong>Prioritized patching recommended.</strong> Standard change management processes should accommodate these vulnerabilities, but prioritization above routine updates is warranted.</div></div>
+<div class="impact-item"><div class="impact-icon">⚠️</div><div class="impact-text"><strong>Exploitation risk is confirmed.</strong> 2 vulnerabilities are being actively exploited. While not directly linked to ransomware, any successful compromise could be leveraged for further attack progression.</div></div><div class="impact-item"><div class="impact-icon">🖥️</div><div class="impact-text"><strong>Product exposure check required.</strong> Vulnerabilities affect Broadcom, Qualcomm products. IT and business unit leaders should verify whether these products are deployed in their environments and confirm patching status.</div></div><div class="impact-item"><div class="impact-icon">📋</div><div class="impact-text"><strong>Compliance implications.</strong> CISA's KEV catalog mandates federal agencies to remediate within specified timeframes. Organizations in regulated industries (healthcare, finance, critical infrastructure) may face similar expectations from sector-specific regulators.</div></div><div class="impact-item"><div class="impact-icon">👥</div><div class="impact-text"><strong>Prioritized patching recommended.</strong> Standard change management processes should accommodate these vulnerabilities, but prioritization above routine updates is warranted.</div></div>
                     </div>
                 </div>
                 
@@ -2842,12 +2854,12 @@
                             <div class="sparkline-bar" style="height: 75%;" title="W07: 3"></div>
                             <div class="sparkline-bar" style="height: 75%;" title="W08: 3"></div>
                             <div class="sparkline-bar" style="height: 75%;" title="W09: 3"></div>
-                            <div class="sparkline-bar" style="height: 75%;" title="W10: 3"></div>
+                            <div class="sparkline-bar" style="height: 50%;" title="W10: 2"></div>
                         </div>
                         <div class="trend-values">
-                            <span class="trend-current">3 this week</span>
-                            <span class="trend-change trend-up">↑ 0% vs last week</span>
-                            <span class="trend-average">8-week average: 2.9</span>
+                            <span class="trend-current">2 this week</span>
+                            <span class="trend-change trend-down">↓ 33% vs last week</span>
+                            <span class="trend-average">8-week average: 2.8</span>
                         </div>
                     </div>
                     
@@ -2880,12 +2892,12 @@
                             <div class="sparkline-bar" style="height: 60%;" title="W07: 12"></div>
                             <div class="sparkline-bar" style="height: 75%;" title="W08: 15"></div>
                             <div class="sparkline-bar" style="height: 65%;" title="W09: 13"></div>
-                            <div class="sparkline-bar" style="height: 0%;" title="W10: 0"></div>
+                            <div class="sparkline-bar" style="height: 5%;" title="W10: 1"></div>
                         </div>
                         <div class="trend-values">
-                            <span class="trend-current">0 this week</span>
-                            <span class="trend-change trend-down">↓ 100% vs last week</span>
-                            <span class="trend-average">8-week average: 13.5</span>
+                            <span class="trend-current">1 this week</span>
+                            <span class="trend-change trend-down">↓ 92% vs last week</span>
+                            <span class="trend-average">8-week average: 13.6</span>
                         </div>
                     </div>
                 </div>
@@ -2897,7 +2909,7 @@
                         What These Trends Mean (Plain Language)
                     </h3>
                     <div class="trend-narrative-content">
-<div class="trend-narrative-section"><h4 class="trend-narrative-metric">KEV Additions</h4><p>KEV additions are <strong>above average</strong> this week. With 3 new entries versus an 8-week average of 2.9, exploitation activity is elevated but not at crisis levels. This represents a 0% increase from last week. Maintain heightened vigilance and ensure patching cycles are current.</p></div><div class="trend-narrative-section"><h4 class="trend-narrative-metric">Ransomware-Linked Vulnerabilities</h4><p>No ransomware-linked KEVs this week. This is below the 8-week average of 1.3, which may indicate ransomware operators are currently leveraging existing access rather than exploiting new vulnerabilities. <strong>This does not mean ransomware risk is reduced</strong>—groups like Cl0p, LockBit, and BlackCat continuously exploit previously disclosed vulnerabilities. Continue monitoring for indicators of compromise.</p></div><div class="trend-narrative-section"><h4 class="trend-narrative-metric">C2 Infrastructure</h4><p>No active C2 servers detected this week. This is unusual and may indicate data collection issues rather than an actual reduction in botnet activity. Treat this with skepticism—botnets like QakBot, Emotet, and IcedID rarely go completely dormant.</p></div><div class="trend-narrative-section trend-summary"><h4 class="trend-narrative-metric">Overall Trend Assessment</h4><p><strong>Threat activity is decreasing</strong> across multiple indicators. This presents an opportunity to catch up on patching debt, conduct security assessments, and improve defensive posture. However, threat actors are persistent—use this relative calm to prepare for the next surge rather than relaxing vigilance.</p></div>
+<div class="trend-narrative-section"><h4 class="trend-narrative-metric">KEV Additions</h4><p>KEV additions are <strong>tracking near the 8-week average</strong> (2 this week vs. 2.8 average). This represents typical exploitation activity levels. Maintain standard patching cadence with priority given to ransomware-linked and high-CVSS vulnerabilities.</p></div><div class="trend-narrative-section"><h4 class="trend-narrative-metric">Ransomware-Linked Vulnerabilities</h4><p>No ransomware-linked KEVs this week. This is below the 8-week average of 1.3, which may indicate ransomware operators are currently leveraging existing access rather than exploiting new vulnerabilities. <strong>This does not mean ransomware risk is reduced</strong>—groups like Cl0p, LockBit, and BlackCat continuously exploit previously disclosed vulnerabilities. Continue monitoring for indicators of compromise.</p></div><div class="trend-narrative-section"><h4 class="trend-narrative-metric">C2 Infrastructure</h4><p>C2 infrastructure is <strong>below typical levels</strong>. 1 active servers versus an 8-week average of 13.6. This could indicate successful law enforcement takedowns, infrastructure rotation by threat actors, or detection evasion through legitimate service abuse. <strong>Reduced visibility doesn't mean reduced risk</strong>—sophisticated actors increasingly use cloud services, encrypted channels, and living-off-the-land techniques that evade traditional C2 tracking.</p></div><div class="trend-narrative-section trend-summary"><h4 class="trend-narrative-metric">Overall Trend Assessment</h4><p><strong>Threat activity is decreasing</strong> across multiple indicators. This presents an opportunity to catch up on patching debt, conduct security assessments, and improve defensive posture. However, threat actors are persistent—use this relative calm to prepare for the next surge rather than relaxing vigilance.</p></div>
                     </div>
                 </div>
             </div>
@@ -2913,15 +2925,31 @@
                         <div class="driver-rank">1</div>
                         <div class="driver-content">
                             <h3 class="driver-title">New Exploited Vulnerabilities</h3>
-                            <p class="driver-desc">3 vulnerabilities added to CISA KEV, including CVE-2022-20775 (Cisco)</p>
+                            <p class="driver-desc">2 vulnerabilities added to CISA KEV, including CVE-2026-22719 (Broadcom)</p>
                             <span class="driver-severity severity-high">High</span>
                         </div>
                     </div>
                     <div class="driver-card">
                         <div class="driver-rank">2</div>
                         <div class="driver-content">
+                            <h3 class="driver-title">Active C2 Infrastructure</h3>
+                            <p class="driver-desc">1 command and control servers identified, primarily QakBot</p>
+                            <span class="driver-severity severity-high">High</span>
+                        </div>
+                    </div>
+                    <div class="driver-card">
+                        <div class="driver-rank">3</div>
+                        <div class="driver-content">
+                            <h3 class="driver-title">Geographic Concentration</h3>
+                            <p class="driver-desc">100% of C2 infrastructure hosted in JP</p>
+                            <span class="driver-severity severity-medium">Medium</span>
+                        </div>
+                    </div>
+                    <div class="driver-card">
+                        <div class="driver-rank">4</div>
+                        <div class="driver-content">
                             <h3 class="driver-title">Security News Coverage</h3>
-                            <p class="driver-desc">7 articles covering this week's vulnerabilities</p>
+                            <p class="driver-desc">3 articles covering this week's vulnerabilities</p>
                             <span class="driver-severity severity-info">Info</span>
                         </div>
                     </div>
@@ -2958,12 +2986,12 @@
                                 <tr>
                                     <td>CISA KEV additions represent confirmed active exploitation</td>
                                     <td><span class="kac-status status-valid">Strong</span></td>
-                                    <td>Based on 3 new KEV entries this week; CISA requires exploitation evidence before listing</td>
+                                    <td>Based on 2 new KEV entries this week; CISA requires exploitation evidence before listing</td>
                                 </tr>
                                 <tr>
                                     <td>Feodo Tracker C2 indicators represent active botnet infrastructure</td>
                                     <td><span class="kac-status status-uncertain">Moderate</span></td>
-                                    <td>0 online C2 servers detected; some may be sinkholed or inactive</td>
+                                    <td>1 online C2 servers detected; some may be sinkholed or inactive</td>
                                 </tr>
                                 <tr>
                                     <td>Geographic indicator distribution reflects infrastructure hosting, not necessarily actor origin</td>
@@ -2978,7 +3006,7 @@
                                 <tr>
                                     <td>Security media coverage correlates with active exploitation</td>
                                     <td><span class="kac-status status-valid">Strong</span></td>
-                                    <td>100% of KEV additions (3 of 3) received news coverage this week</td>
+                                    <td>100% of KEV additions (2 of 2) received news coverage this week</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -2986,8 +3014,8 @@
                         <div class="plain-language-box">
                             <div class="plain-language-header">💬 What This Means (Plain Language)</div>
                             <div class="plain-language-content">
-<p>We built this week's analysis on five foundational beliefs. The strongest assumption is that CISA KEV additions reflect real exploitation—they don't add vulnerabilities without evidence. This week's 3 additions represent confirmed threats, not theoretical risks.</p>
-<p><strong>Two assumptions require more caution:</strong> Just because we see 0 C2 servers online doesn't guarantee they're actively being used—some might be abandoned or seized by law enforcement. Geographic hosting data can be misleading since threat actors deliberately use infrastructure in multiple jurisdictions.</p>
+<p>We built this week's analysis on five foundational beliefs. The strongest assumption is that CISA KEV additions reflect real exploitation—they don't add vulnerabilities without evidence. This week's 2 additions represent confirmed threats, not theoretical risks.</p>
+<p><strong>Two assumptions require more caution:</strong> Just because we see 1 C2 servers online doesn't guarantee they're actively being used—some might be abandoned or seized by law enforcement. And while 100% of malicious infrastructure is hosted in JP, that doesn't mean JP-based actors are behind all of it—criminals worldwide rent servers in countries with lax enforcement.</p>
 <p><strong>Bottom line:</strong> Act on CISA KEV findings with confidence. Treat C2 and geographic data as useful context, not definitive intelligence.</p>
                             </div>
                         </div>
@@ -3014,24 +3042,24 @@
                                 <tr>
                                     <td><span class="ach-hypothesis">H1: Active exploitation targeting internet-facing systems increased this week</span></td>
                                     <td class="ach-evidence">
-                                        <div class="ach-evidence-item"><span class="ach-for">+</span> 3 new KEVs added (confirmed exploitation)</div>
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> 2 new KEVs added (confirmed exploitation)</div>
                                         <div class="ach-evidence-item"><span class="ach-for">+</span> High media coverage indicates broad targeting</div>
                                     </td>
                                     <td class="ach-evidence">
                                         <span class="ach-none">—</span>
                                     </td>
                                     <td>
-                                        <span class="ach-confidence conf-high">High</span>
-                                        <div class="confidence-bar"><div class="confidence-fill high" data-width="90%" style="width: 0%;"></div></div>
+                                        <span class="ach-confidence conf-moderate">Medium</span>
+                                        <div class="confidence-bar"><div class="confidence-fill moderate" data-width="60%" style="width: 0%;"></div></div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><span class="ach-hypothesis">H2: Botnet/C2 activity is a primary driver of observed malicious infrastructure</span></td>
                                     <td class="ach-evidence">
-                                        <div class="ach-evidence-item"><span class="ach-for">+</span> Top families: various families</div>
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> Top families: QakBot</div>
                                     </td>
                                     <td class="ach-evidence">
-                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Only 0 C2 servers detected (lower than average)</div>
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Only 1 C2 servers detected (lower than average)</div>
                                         <div class="ach-evidence-item"><span class="ach-against">−</span> Multiple families may indicate fragmentation, not scale</div>
                                     </td>
                                     <td>
@@ -3055,15 +3083,15 @@
                                 <tr>
                                     <td><span class="ach-hypothesis">H4: Threat activity is geographically concentrated in a few regions</span></td>
                                     <td class="ach-evidence">
-                                        <div class="ach-evidence-item"><span class="ach-for">+</span> Geographic distribution is dispersed</div>
+                                        <div class="ach-evidence-item"><span class="ach-for">+</span> JP accounts for 100% of C2 indicators</div>
                                     </td>
                                     <td class="ach-evidence">
-                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Small sample size (0 indicators)</div>
+                                        <div class="ach-evidence-item"><span class="ach-against">−</span> Small sample size (1 indicators)</div>
                                         <div class="ach-evidence-item"><span class="ach-against">−</span> Hosting ≠ attribution</div>
                                     </td>
                                     <td>
-                                        <span class="ach-confidence conf-low">Low</span>
-                                        <div class="confidence-bar"><div class="confidence-fill low" data-width="30%" style="width: 0%;"></div></div>
+                                        <span class="ach-confidence conf-moderate">Medium</span>
+                                        <div class="confidence-bar"><div class="confidence-fill moderate" data-width="50%" style="width: 0%;"></div></div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -3072,7 +3100,7 @@
                         <div class="plain-language-box">
                             <div class="plain-language-header">💬 What This Means (Plain Language)</div>
                             <div class="plain-language-content">
-<p>We tested four possible explanations for what we're seeing this week:</p><p><strong>✅ One hypothesis is strongly supported:</strong> Yes, exploitation of public-facing systems is up—CISA confirmed it.</p><p><strong>❌ One hypothesis doesn't hold up:</strong> We can't say botnets are driving the threat landscape this week. The C2 count is actually below average, and seeing multiple malware families (various families) could just mean the criminal ecosystem is fragmented, not that it's thriving.</p><p><strong>⚠️ One hypothesis is uncertain:</strong> Geographic concentration is too dispersed to draw conclusions. The small sample size (0 indicators) limits our ability to identify patterns.</p><p><strong>Bottom line:</strong> Focus your week on patching internet-facing systems. Don't over-rotate on geographic blocking based on limited data.</p>
+<p>We tested four possible explanations for what we're seeing this week:</p><p><strong>✅ One hypothesis is strongly supported:</strong> Yes, exploitation of public-facing systems is up—CISA confirmed it.</p><p><strong>❌ One hypothesis doesn't hold up:</strong> We can't say botnets are driving the threat landscape this week. The C2 count is actually below average, and seeing multiple malware families (QakBot) could just mean the criminal ecosystem is fragmented, not that it's thriving.</p><p><strong>⚠️ One hypothesis is uncertain:</strong> The geographic concentration looks real (100% of C2s in JP), but with only 1 data points and knowing that hosting location doesn't equal actor location, we can't draw strong conclusions.</p><p><strong>Bottom line:</strong> Focus your week on patching internet-facing systems. Don't over-rotate on geographic blocking based on limited data.</p>
                             </div>
                         </div>
                     </div>
@@ -3095,7 +3123,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>CISA added 3 new KEVs</td>
+                                    <td>CISA added 2 new KEVs</td>
                                     <td><span class="diagnosticity-type type-diagnostic">DIAGNOSTIC</span></td>
                                     <td>CISA requires confirmed exploitation evidence before listing—this proves active attacks, not just theoretical risk</td>
                                 </tr>
@@ -3110,12 +3138,12 @@
                                     <td>Media attention often follows exploitation, but can also be driven by vendor disclosure timing or researcher hype</td>
                                 </tr>
                                 <tr>
-                                    <td>0% of C2s hosted in Unknown</td>
+                                    <td>100% of C2s hosted in JP</td>
                                     <td><span class="diagnosticity-type type-non-diagnostic">NON-DIAGNOSTIC</span></td>
-                                    <td>Consistent with Unknown actors OR global criminals using Unknown hosting—doesn't discriminate between hypotheses</td>
+                                    <td>Consistent with JP actors OR global criminals using JP hosting—doesn't discriminate between hypotheses</td>
                                 </tr>
                                 <tr>
-                                    <td>various families detected</td>
+                                    <td>QakBot detected</td>
                                     <td><span class="diagnosticity-type type-partial">PARTIALLY DIAGNOSTIC</span></td>
                                     <td>Confirms these families are active, but doesn't tell us about scale, targets, or whether this is normal baseline activity</td>
                                 </tr>
@@ -3125,7 +3153,7 @@
                         <div class="plain-language-box">
                             <div class="plain-language-header">💬 What This Means (Plain Language)</div>
                             <div class="plain-language-content">
-<p>Not all evidence is created equal. Some evidence <strong>proves</strong> something specific; other evidence is consistent with multiple stories.</p><p><strong>Evidence we can really trust:</strong> The KEV additions are "smoking gun" evidence—CISA doesn't add things speculatively. When we say "patch these now," we're standing on solid ground.</p><p><strong>Evidence that requires more caution:</strong> The geographic data and malware family detections are more ambiguous. Seeing C2 servers in various countries could mean many things. Detecting specific malware families tells us they exist, not whether they're targeting you specifically.</p><p><strong>Bottom line:</strong> Act decisively on the diagnostic evidence (KEVs). Use non-diagnostic evidence (geo data, C2 counts) for situational awareness, not as the basis for major security decisions.</p>
+<p>Not all evidence is created equal. Some evidence <strong>proves</strong> something specific; other evidence is consistent with multiple stories.</p><p><strong>Evidence we can really trust:</strong> The KEV additions are "smoking gun" evidence—CISA doesn't add things speculatively. When we say "patch these now," we're standing on solid ground.</p><p><strong>Evidence that requires more caution:</strong> The geographic data and malware family detections are more ambiguous. Seeing C2 servers in JP could mean many things. Detecting specific malware families tells us they exist, not whether they're targeting you specifically.</p><p><strong>Bottom line:</strong> Act decisively on the diagnostic evidence (KEVs). Use non-diagnostic evidence (geo data, C2 counts) for situational awareness, not as the basis for major security decisions.</p>
                             </div>
                         </div>
                     </div>
@@ -3183,7 +3211,7 @@
                         
                         <div class="what-if-scenarios">
                             <div class="what-if-card">
-                                <h4 class="what-if-title">What if CVE-2022-20775 (Cisco) exploitation expands significantly?</h4>
+                                <h4 class="what-if-title">What if CVE-2026-22719 (Broadcom) exploitation expands significantly?</h4>
                                 <div class="what-if-indicators">
                                     <strong>Indicators to watch:</strong>
                                     <ul>
@@ -3193,21 +3221,21 @@
                                     </ul>
                                 </div>
                                 <div class="what-if-action">
-                                    <strong>Recommended preemptive action:</strong> Accelerate patching timeline for Cisco products. Implement compensating controls if patches aren't immediately available.
+                                    <strong>Recommended preemptive action:</strong> Accelerate patching timeline for Broadcom products. Implement compensating controls if patches aren't immediately available.
                                 </div>
                             </div>
                             <div class="what-if-card">
-                                <h4 class="what-if-title">What if botnet malware C2 infrastructure indicates imminent ransomware deployment?</h4>
+                                <h4 class="what-if-title">What if QakBot C2 infrastructure indicates imminent ransomware deployment?</h4>
                                 <div class="what-if-indicators">
                                     <strong>Indicators to watch:</strong>
                                     <ul>
-                                        <li>Increased botnet malware infections in your environment</li>
+                                        <li>Increased QakBot infections in your environment</li>
                                         <li>Lateral movement following initial compromise</li>
                                         <li>Cobalt Strike beacons or similar post-exploitation tools</li>
                                     </ul>
                                 </div>
                                 <div class="what-if-action">
-                                    <strong>Recommended preemptive action:</strong> Hunt for botnet malware IOCs in your environment now. If found, assume ransomware is imminent and activate incident response.
+                                    <strong>Recommended preemptive action:</strong> Hunt for QakBot IOCs in your environment now. If found, assume ransomware is imminent and activate incident response.
                                 </div>
                             </div>
                             <div class="what-if-card">
@@ -3229,7 +3257,7 @@
                         <div class="plain-language-box">
                             <div class="plain-language-header">💬 What This Means (Plain Language)</div>
                             <div class="plain-language-content">
-<p>What-If Analysis forces us to think about scenarios that could make our current assessment wrong—and what you can do about it now.</p><p><strong>botnet malware being active is a leading indicator.</strong> It's frequently used as the first stage before ransomware. If you detect botnet malware in your environment, treat it as a ransomware precursor, not a standalone threat.</p><p><strong>Quiet doesn't always mean safe.</strong> Sophisticated actors might be evading detection rather than reducing operations. A low C2 count this week could mean we're winning, or it could mean they've changed tactics.</p><p><strong>Bottom line:</strong> Hope for the best, but build your defenses assuming these "what-ifs" might become reality.</p>
+<p>What-If Analysis forces us to think about scenarios that could make our current assessment wrong—and what you can do about it now.</p><p><strong>QakBot being active is a leading indicator.</strong> It's frequently used as the first stage before ransomware. If you detect QakBot in your environment, treat it as a ransomware precursor, not a standalone threat.</p><p><strong>Quiet doesn't always mean safe.</strong> Sophisticated actors might be evading detection rather than reducing operations. A low C2 count this week could mean we're winning, or it could mean they've changed tactics.</p><p><strong>Bottom line:</strong> Hope for the best, but build your defenses assuming these "what-ifs" might become reality.</p>
                             </div>
                         </div>
                     </div>
@@ -3342,7 +3370,7 @@
                         <span class="overall-confidence-level conf-moderate">Medium</span>
                     </div>
                     <div class="overall-confidence-rationale">
-                        <p><strong>Rationale:</strong> Multiple hypotheses supported by strong corroborating evidence from authoritative sources (CISA KEV). Key analytical assumptions are supported by current data. Primary assessments are based on diagnostic evidence, though ransomware linkage data is limited this week.</p>
+                        <p><strong>Rationale:</strong> Multiple hypotheses supported by strong corroborating evidence from authoritative sources (CISA KEV, Feodo Tracker). Key analytical assumptions are supported by current data. Primary assessments are based on diagnostic evidence, though ransomware linkage data is limited this week.</p>
                         <p class="confidence-caveat"><strong>Caveat:</strong> Geographic attribution conclusions carry lower confidence due to non-diagnostic evidence and small sample sizes. Targeting specificity remains unknown.</p>
                     </div>
                     <p class="methodology-link">These assessments use structured analytical techniques aligned with ICD 203 standards. <a href="/intel/methodology.html">Learn more about our methodology →</a></p>
@@ -3365,6 +3393,22 @@
                                 <span><span class="mitre-id">TA0001</span> <span class="mitre-name">Initial Access</span></span>
                                 <span class="mitre-count">3</span>
                             </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">TA0002</span> <span class="mitre-name">Execution</span></span>
+                                <span class="mitre-count">1</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">TA0003</span> <span class="mitre-name">Persistence</span></span>
+                                <span class="mitre-count">1</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">TA0006</span> <span class="mitre-name">Credential Access</span></span>
+                                <span class="mitre-count">1</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">TA0011</span> <span class="mitre-name">Command and Control</span></span>
+                                <span class="mitre-count">1</span>
+                            </li>
                         </ul>
                     </div>
                     <div class="mitre-card">
@@ -3372,7 +3416,27 @@
                         <ul class="mitre-list">
                             <li class="mitre-item">
                                 <span><span class="mitre-id">T1190</span> <span class="mitre-name">Exploit Public-Facing Application</span></span>
-                                <span class="mitre-count">3</span>
+                                <span class="mitre-count">2</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1566.001</span> <span class="mitre-name">Phishing: Spearphishing Attachment</span></span>
+                                <span class="mitre-count">1</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1059.001</span> <span class="mitre-name">Command and Scripting Interpreter: PowerShell</span></span>
+                                <span class="mitre-count">1</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1547.001</span> <span class="mitre-name">Boot or Logon Autostart Execution: Registry Run Keys</span></span>
+                                <span class="mitre-count">1</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1555.003</span> <span class="mitre-name">Credentials from Password Stores: Web Browsers</span></span>
+                                <span class="mitre-count">1</span>
+                            </li>
+                            <li class="mitre-item">
+                                <span><span class="mitre-id">T1071.001</span> <span class="mitre-name">Application Layer Protocol: Web Protocols</span></span>
+                                <span class="mitre-count">1</span>
                             </li>
                         </ul>
                     </div>
@@ -3399,118 +3463,72 @@
                             <div class="filter-bar">
                                 <button class="filter-btn active" data-filter="all">All</button>
                                 <button class="filter-btn" data-filter="ransomware">🔴 Ransomware</button>
-                                <button class="filter-btn" data-filter="Cisco">Cisco</button>
-                                <button class="filter-btn" data-filter="Soliton Systems K.K">Soliton Systems K.K</button>
+                                <button class="filter-btn" data-filter="Broadcom">Broadcom</button>
+                                <button class="filter-btn" data-filter="Qualcomm">Qualcomm</button>
                             </div>
-                            <div class="patch-item" data-vendor="Cisco" data-ransomware="false">
+                            <div class="patch-item" data-vendor="Broadcom" data-ransomware="false">
                                 <div class="patch-header">
-                                    <span class="patch-cve">CVE-2022-20775</span>
+                                    <span class="patch-cve">CVE-2026-22719</span>
                                     
-                                    <span class="patch-due">Due: 2026-02-27</span>
+                                    <span class="patch-due">Due: 2026-03-24</span>
                                 </div>
-                                <div class="patch-vendor">Cisco — SD-WAN</div>
-                                <div class="patch-description">Cisco SD-WAN CLI contains a path traversal vulnerability that could allow an authenticated local attacker to gain elevated privileges via improper access controls on commands within the application CLI. A successful exploit could allow the attacker to execute arbitrary commands as the root user.</div>
-                                <div class="patch-sources">
-                                    <div class="sources-header">
-                                        <span class="coverage-label buzz-medium">📰 4 sources</span>
-                                    </div>
-                                    <div class="sources-list">
-                                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2022-20775" class="source-link source-official" target="_blank" rel="noopener noreferrer">
-                                            <span class="source-icon">🏛️</span>
-                                            <span class="source-label">CISA KEV Entry</span>
-                                            <span class="source-badge">CISA</span>
-                                        </a>
-                                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-20775" class="source-link source-official" target="_blank" rel="noopener noreferrer">
-                                            <span class="source-icon">📋</span>
-                                            <span class="source-label">NVD Details</span>
-                                            <span class="source-badge">NVD</span>
-                                        </a>
-                                        <a href="https://www.cisa.gov/news-events/alerts/2026/02/25/cisa-and-partners-release-guidance-ongoing-global-exploitation-cisco-sd-wan-systems" class="source-link source-research" target="_blank" rel="noopener noreferrer">
-                                            <span class="source-icon">🔬</span>
-                                            <span class="source-label">CISA and Partners Release Guidance for Ongoing ...</span>
-                                            <span class="source-badge">CISA</span>
-                                        </a>
-                                        <a href="https://thehackernews.com/2026/02/cisco-sd-wan-zero-day-cve-2026-20127.html" class="source-link source-research" target="_blank" rel="noopener noreferrer">
-                                            <span class="source-icon">🔬</span>
-                                            <span class="source-label">Cisco SD-WAN Zero-Day CVE-2026-20127 Exploited ...</span>
-                                            <span class="source-badge">Hacker News</span>
-                                        </a>
-                                        <a href="https://www.darkreading.com/vulnerabilities-threats/cisco-sd-wan-zero-day-exploitation-3-years" class="source-link source-research" target="_blank" rel="noopener noreferrer">
-                                            <span class="source-icon">🔬</span>
-                                            <span class="source-label">Cisco SD-WAN Zero-Day Under Exploitation for 3 ...</span>
-                                            <span class="source-badge">Dark Reading</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="patch-item" data-vendor="Cisco" data-ransomware="false">
-                                <div class="patch-header">
-                                    <span class="patch-cve">CVE-2026-20127</span>
-                                    
-                                    <span class="patch-due">Due: 2026-02-27</span>
-                                </div>
-                                <div class="patch-vendor">Cisco — Catalyst SD-WAN Controller and Manager</div>
-                                <div class="patch-description">Cisco Catalyst SD-WAN Controller, formerly SD-WAN vSmart, and Cisco Catalyst SD-WAN Manager, formerly SD-WAN vManage, contain an authentication bypass vulnerability could allow an unauthenticated, remote attacker to bypass authentication and obtain administrative privileges on an affected system. This vulnerability exists because the peering authentication mechanism in an affected system is not working properly. An attacker could exploit this vulnerability by sending crafted requests to an affected system. A successful exploit could allow the attacker to log in to an affected Cisco Catalyst SD-WAN Controller as an internal, high-privileged, non-root user account. Using this account, the attacker could access NETCONF, which would then allow the attacker to manipulate network configuration for the SD-WAN fabric.</div>
-                                <div class="patch-sources">
-                                    <div class="sources-header">
-                                        <span class="coverage-label buzz-medium">📰 4 sources</span>
-                                    </div>
-                                    <div class="sources-list">
-                                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-20127" class="source-link source-official" target="_blank" rel="noopener noreferrer">
-                                            <span class="source-icon">🏛️</span>
-                                            <span class="source-label">CISA KEV Entry</span>
-                                            <span class="source-badge">CISA</span>
-                                        </a>
-                                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20127" class="source-link source-official" target="_blank" rel="noopener noreferrer">
-                                            <span class="source-icon">📋</span>
-                                            <span class="source-label">NVD Details</span>
-                                            <span class="source-badge">NVD</span>
-                                        </a>
-                                        <a href="https://www.cisa.gov/news-events/alerts/2026/02/25/cisa-and-partners-release-guidance-ongoing-global-exploitation-cisco-sd-wan-systems" class="source-link source-research" target="_blank" rel="noopener noreferrer">
-                                            <span class="source-icon">🔬</span>
-                                            <span class="source-label">CISA and Partners Release Guidance for Ongoing ...</span>
-                                            <span class="source-badge">CISA</span>
-                                        </a>
-                                        <a href="https://thehackernews.com/2026/02/cisco-sd-wan-zero-day-cve-2026-20127.html" class="source-link source-research" target="_blank" rel="noopener noreferrer">
-                                            <span class="source-icon">🔬</span>
-                                            <span class="source-label">Cisco SD-WAN Zero-Day CVE-2026-20127 Exploited ...</span>
-                                            <span class="source-badge">Hacker News</span>
-                                        </a>
-                                        <a href="https://www.darkreading.com/vulnerabilities-threats/cisco-sd-wan-zero-day-exploitation-3-years" class="source-link source-research" target="_blank" rel="noopener noreferrer">
-                                            <span class="source-icon">🔬</span>
-                                            <span class="source-label">Cisco SD-WAN Zero-Day Under Exploitation for 3 ...</span>
-                                            <span class="source-badge">Dark Reading</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="patch-item" data-vendor="Soliton Systems K.K" data-ransomware="false">
-                                <div class="patch-header">
-                                    <span class="patch-cve">CVE-2026-25108</span>
-                                    
-                                    <span class="patch-due">Due: 2026-03-17</span>
-                                </div>
-                                <div class="patch-vendor">Soliton Systems K.K — FileZen</div>
-                                <div class="patch-description">Soliton Systems K.K FileZen contains an OS command injection vulnerability when an user logs-in to the affected product and sends a specially crafted HTTP request.</div>
+                                <div class="patch-vendor">Broadcom — VMware Aria Operations</div>
+                                <div class="patch-description">Broadcom VMware Aria Operations formerly known as vRealize Operations (vROps) contains a command injection vulnerability that allows an unauthenticated attacker to execute arbitrary commands, potentially leading to remote code execution during support‑assisted product migration.</div>
                                 <div class="patch-sources">
                                     <div class="sources-header">
                                         <span class="coverage-label buzz-low">📰 2 sources</span>
                                     </div>
                                     <div class="sources-list">
-                                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-25108" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-22719" class="source-link source-official" target="_blank" rel="noopener noreferrer">
                                             <span class="source-icon">🏛️</span>
                                             <span class="source-label">CISA KEV Entry</span>
                                             <span class="source-badge">CISA</span>
                                         </a>
-                                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-25108" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-22719" class="source-link source-official" target="_blank" rel="noopener noreferrer">
                                             <span class="source-icon">📋</span>
                                             <span class="source-label">NVD Details</span>
                                             <span class="source-badge">NVD</span>
                                         </a>
-                                        <a href="https://thehackernews.com/2026/02/cisa-confirms-active-exploitation-of.html" class="source-link source-research" target="_blank" rel="noopener noreferrer">
+                                        <a href="https://thehackernews.com/2026/03/cisa-adds-actively-exploited-vmware.html" class="source-link source-research" target="_blank" rel="noopener noreferrer">
                                             <span class="source-icon">🔬</span>
-                                            <span class="source-label">CISA Confirms Active Exploitation of FileZen CV...</span>
+                                            <span class="source-label">CISA Adds Actively Exploited VMware Aria Operat...</span>
                                             <span class="source-badge">Hacker News</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="patch-item" data-vendor="Qualcomm" data-ransomware="false">
+                                <div class="patch-header">
+                                    <span class="patch-cve">CVE-2026-21385</span>
+                                    
+                                    <span class="patch-due">Due: 2026-03-24</span>
+                                </div>
+                                <div class="patch-vendor">Qualcomm — Multiple Chipsets</div>
+                                <div class="patch-description">Multiple Qualcomm chipsets contain a memory corruption vulnerability while using alignments for memory allocation. </div>
+                                <div class="patch-sources">
+                                    <div class="sources-header">
+                                        <span class="coverage-label buzz-medium">📰 3 sources</span>
+                                    </div>
+                                    <div class="sources-list">
+                                        <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-21385" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">🏛️</span>
+                                            <span class="source-label">CISA KEV Entry</span>
+                                            <span class="source-badge">CISA</span>
+                                        </a>
+                                        <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-21385" class="source-link source-official" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">📋</span>
+                                            <span class="source-label">NVD Details</span>
+                                            <span class="source-badge">NVD</span>
+                                        </a>
+                                        <a href="https://thehackernews.com/2026/03/google-confirms-cve-2026-21385-in.html" class="source-link source-research" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">🔬</span>
+                                            <span class="source-label">Google Confirms CVE-2026-21385 in Qualcomm Andr...</span>
+                                            <span class="source-badge">Hacker News</span>
+                                        </a>
+                                        <a href="https://www.darkreading.com/threat-intelligence/qualcomm-zero-day-exploited-targeted-android-attacks" class="source-link source-research" target="_blank" rel="noopener noreferrer">
+                                            <span class="source-icon">🔬</span>
+                                            <span class="source-label">Qualcomm Zero-Day Exploited in Targeted Android...</span>
+                                            <span class="source-badge">Dark Reading</span>
                                         </a>
                                     </div>
                                 </div>
@@ -3527,7 +3545,10 @@
                         </div>
                         <div class="action-card-body">
                             <div class="block-grid">
-
+                                <div class="block-item">
+                                    <span class="block-ip">27.133.154.218:443</span>
+                                    <span class="block-source">feodo</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -3541,7 +3562,10 @@
                         </div>
                         <div class="action-card-body">
                             <ul class="hunt-list">
-
+                                <li class="hunt-item">
+                                    <span class="hunt-technique">T1071 - Application Layer Protocol</span>
+                                    <span class="hunt-suggestion">Hunt for QakBot C2 beaconing patterns in proxy/DNS logs</span>
+                                </li>
                                 <li class="hunt-item">
                                     <span class="hunt-technique">T1190 - Exploit Public-Facing Application</span>
                                     <span class="hunt-suggestion">Review logs for exploitation attempts against newly added KEV vulnerabilities</span>
@@ -3586,7 +3610,7 @@
                         <table class="appendix-table">
                             <tr>
                                 <td class="appendix-label">CISA KEV</td>
-                                <td class="appendix-value">3 New</td>
+                                <td class="appendix-value">2 New</td>
                             </tr>
                             <tr>
                                 <td class="appendix-label">Ransomware</td>
@@ -3594,11 +3618,11 @@
                             </tr>
                             <tr>
                                 <td class="appendix-label">C2 Servers</td>
-                                <td class="appendix-value">0 Active</td>
+                                <td class="appendix-value">1 Active</td>
                             </tr>
                             <tr>
                                 <td class="appendix-label">Malware Families</td>
-                                <td class="appendix-value">0 Tracked</td>
+                                <td class="appendix-value">1 Tracked</td>
                             </tr>
                             <tr>
                                 <td class="appendix-label">CVSS</td>
