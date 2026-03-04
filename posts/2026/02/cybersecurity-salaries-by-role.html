@@ -149,23 +149,601 @@
         /* Responsive */
         @media(max-width:900px){.hero-inner{grid-template-columns:1fr;text-align:center}.hero-badge-img{width:180px;height:180px;margin:0 auto}.hero-content{order:2}}
         @media(max-width:768px){.nav{display:none}.hero-title{font-size:2.25rem}.stat:not(:last-child)::after{display:none}.card-grid{grid-template-columns:1fr}.author-box{flex-direction:column;text-align:center}.footer-inner{flex-direction:column;text-align:center}}
-    </style>
+    
+        /* ========================================
+           RAVENEYE RADAR EFFECT
+           ======================================== */
+        .raveneye-icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            overflow: visible;
+        }
+
+        .raveneye-icon-wrapper svg {
+            position: relative;
+            z-index: 2;
+            width: 18px;
+            height: 18px;
+            fill: var(--red);
+            filter: drop-shadow(0 0 4px var(--red));
+            animation: eyePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes eyePulse {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 4px var(--red)); }
+            50% { opacity: 0.8; filter: drop-shadow(0 0 8px var(--red)) drop-shadow(0 0 12px rgba(220, 38, 38, 0.5)); }
+        }
+
+        .raveneye-radar {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .raveneye-radar-sweep {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(220, 38, 38, 0.5) 15deg, transparent 30deg);
+            animation: radarSweep 2s linear infinite;
+        }
+
+        .raveneye-radar-pulse {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px; height: 6px;
+            border: 1px solid rgba(220, 38, 38, 0.8);
+            border-radius: 50%;
+            animation: radarPulse 2s ease-out infinite;
+        }
+
+        @keyframes radarPulse {
+            0%   { width: 6px;  height: 6px;  opacity: 0.8; }
+            100% { width: 50px; height: 50px; opacity: 0; }
+        }
+
+        .raveneye-radar-pulse:nth-child(2) { animation-delay: 0.6s; }
+        .raveneye-radar-pulse:nth-child(3) { animation-delay: 1.2s; }
+
+        /* ========================================
+           NAVIGATION
+           ======================================== */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 160, 18, 0.1);
+        }
+
+        .nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 160, 18, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .nav-logo-text span { color: var(--gold); }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gray-300);
+            text-decoration: none;
+            padding: 10px 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active { color: var(--white); }
+
+        .nav-link:hover::after,
+        .nav-link.active::after { width: 30px; }
+
+        .nav-cta { padding: 10px 24px; font-size: 14px; }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none; border: none;
+            cursor: pointer; padding: 10px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--black);
+            z-index: 999;
+            padding: 100px 24px 40px;
+            opacity: 0; visibility: hidden;
+            transition: all 0.3s ease;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+
+        .mobile-nav-link {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 24px; font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-link:hover { color: var(--gold); }
+
+        @media (max-width: 900px) {
+            .nav-menu, .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .mobile-menu { display: block; }
+        }
+
+        /* ========================================
+           NAV DROPDOWN
+           ======================================== */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .nav-dropdown .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        .nav-dropdown .nav-link svg {
+            width: 10px; height: 10px;
+            transition: transform 0.2s ease;
+        }
+        .nav-dropdown:hover .nav-link svg { transform: rotate(180deg); }
+        .nav-dropdown-content {
+            position: absolute;
+            top: 100%; left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 15, 15, 0.98);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            border-radius: 8px;
+            min-width: 200px;
+            padding: 8px 0;
+            opacity: 0; visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            margin-top: 8px;
+        }
+        .nav-dropdown:hover .nav-dropdown-content { opacity: 1; visibility: visible; }
+        .nav-dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        .nav-dropdown-content a:hover {
+            background: rgba(212, 160, 18, 0.1);
+            color: #d4a012;
+        }
+        .nav-dropdown-content a.featured { color: #ef4444; font-weight: 600; }
+        .nav-dropdown-content a.featured:hover {
+            background: rgba(239, 68, 68, 0.1);
+            color: #f87171;
+        }
+
+        /* ========================================
+           RAVENEYE FIXED TICKER
+           ======================================== */
+        .raveneye {
+            background: #1a0a0a;
+            position: fixed;
+            top: 80px; left: 0; right: 0;
+            z-index: 999;
+            overflow: hidden;
+            transition: top 0.3s ease;
+        }
+
+        .raveneye.scrolled { top: 62px; }
+
+        .raveneye::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.03) 40%, rgba(220, 38, 38, 0.08) 50%, rgba(220, 38, 38, 0.03) 60%, transparent 100%);
+            animation: scanLine 4s linear infinite;
+            pointer-events: none;
+        }
+
+        .raveneye::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        .raveneye-glow {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--red) 20%, var(--red) 80%, transparent 100%);
+            box-shadow: 0 0 10px var(--red), 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+
+        .raveneye-bottom {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.5) 30%, var(--red) 50%, rgba(220, 38, 38, 0.5) 70%, transparent 100%);
+        }
+
+        .raveneye-container {
+            display: flex;
+            align-items: center;
+            height: 46px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .raveneye-label {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 20px;
+            height: 100%;
+            background: linear-gradient(135deg, #0d0000 0%, #1a0505 100%);
+            border-right: 1px solid var(--red);
+            font-family: var(--font-display);
+            font-size: 11px; font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--red);
+            text-transform: uppercase;
+            z-index: 2;
+            position: relative;
+            overflow: visible;
+        }
+
+        .raveneye-label::after {
+            content: '';
+            position: absolute;
+            right: 0; top: 50%;
+            transform: translateY(-50%);
+            width: 3px; height: 60%;
+            background: var(--red);
+            box-shadow: 0 0 8px var(--red), 0 0 15px rgba(220, 38, 38, 0.5);
+            animation: labelPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes labelPulse {
+            0%, 100% { opacity: 1; height: 60%; }
+            50% { opacity: 0.7; height: 40%; }
+        }
+
+        .raveneye-track {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+        }
+
+        .raveneye-track::before,
+        .raveneye-track::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 80px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .raveneye-track::before {
+            left: 0;
+            background: linear-gradient(90deg, #1a0a0a 0%, transparent 100%);
+        }
+
+        .raveneye-track::after {
+            right: 0;
+            background: linear-gradient(270deg, #1a0a0a 0%, transparent 100%);
+        }
+
+        .raveneye-scroll {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            animation: raveneyeScroll 60s linear infinite;
+            width: max-content;
+        }
+
+        .raveneye-scroll:hover { animation-play-state: paused; }
+
+        @keyframes raveneyeScroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .raveneye-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 40px;
+            height: 100%;
+            white-space: nowrap;
+            border-right: 1px solid rgba(220, 38, 38, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .raveneye-item::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 50%;
+            transform: translateY(-50%);
+            width: 4px; height: 4px;
+            background: var(--red);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--red);
+            opacity: 0.6;
+        }
+
+        .raveneye-item:hover { background: rgba(220, 38, 38, 0.1); }
+
+        .raveneye-item:hover::before {
+            opacity: 1;
+            box-shadow: 0 0 10px var(--red), 0 0 15px rgba(220, 38, 38, 0.5);
+        }
+
+        .raveneye-badge {
+            flex-shrink: 0;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-family: var(--font-display);
+            font-size: 9px; font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .raveneye-badge--kev {
+            background: rgba(220, 38, 38, 0.2);
+            color: #ff6b6b;
+            border: 1px solid var(--red);
+            box-shadow: 0 0 8px rgba(220, 38, 38, 0.3);
+        }
+
+        .raveneye-item:hover .raveneye-badge--kev {
+            background: rgba(220, 38, 38, 0.3);
+            box-shadow: 0 0 12px rgba(220, 38, 38, 0.5);
+        }
+
+        .raveneye-badge--critical {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+            box-shadow: 0 0 8px rgba(212, 160, 18, 0.4);
+        }
+
+        .raveneye-item:hover .raveneye-badge--critical {
+            box-shadow: 0 0 12px rgba(212, 160, 18, 0.6);
+        }
+
+        .raveneye-badge--alert {
+            background: transparent;
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 160, 18, 0.5);
+        }
+
+        .raveneye-item:hover .raveneye-badge--alert {
+            border-color: var(--gold);
+            box-shadow: 0 0 8px rgba(212, 160, 18, 0.3);
+        }
+
+        .raveneye-text {
+            font-family: var(--font-body);
+            font-size: 13px; font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            transition: color 0.3s ease;
+        }
+
+        .raveneye-item:hover .raveneye-text { color: var(--white); }
+
+        .raveneye-source {
+            font-family: var(--font-heading);
+            font-size: 10px;
+            color: rgba(220, 38, 38, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-left: 12px;
+            border-left: 1px solid rgba(220, 38, 38, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .raveneye-item:hover .raveneye-source {
+            color: rgba(220, 38, 38, 0.9);
+            border-left-color: rgba(220, 38, 38, 0.4);
+        }
+
+        .raveneye-cta {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 20px;
+            height: 100%;
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 1px solid rgba(220, 38, 38, 0.3);
+            font-family: var(--font-heading);
+            font-size: 11px; font-weight: 600;
+            color: var(--red);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .raveneye-cta:hover { background: rgba(220, 38, 38, 0.2); color: #ff6b6b; }
+
+        .raveneye-cta svg { width: 14px; height: 14px; transition: transform 0.3s ease; }
+        .raveneye-cta:hover svg { transform: translateX(3px); }
+
+        </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="/index.html" class="nav-logo">
+                <div class="nav-logo-text">TAC<span>RAVEN</span></div>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="/index.html" class="nav-link">Home</a></li>
+                <li><a href="/about.html" class="nav-link">About</a></li>
+                <li class="nav-dropdown">
+                    <a class="nav-link">Blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+                    <div class="nav-dropdown-content">
+                        <a href="/Blog.html">Cyber Careers</a>
+                        <a href="/intel/blackwing/index.html" class="featured">Black Wing Dispatch</a>
+                    </div>
+                </li>
+                <li><a href="/learning-hub.html" class="nav-link">Learning Hub</a></li>
+                <li><a href="/threat-map.html" class="nav-link">Threat Map</a></li>
+                <li><a href="/intel/weekly/" class="nav-link">Weekly Reports</a></li>
+                <li><a href="/cyber-news.html" class="nav-link">News</a></li>
+                <li><a href="/tools.html" class="nav-link">Tools</a></li>
+                <li><a href="/pricing.html" class="nav-link">Programs</a></li>
+            </ul>
+            <a href="#contact" class="btn btn-primary nav-cta">Contact</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="/index.html" class="mobile-nav-link">Home</a>
+        <a href="/about.html" class="mobile-nav-link">About</a>
+        <a href="/Blog.html" class="mobile-nav-link">Cyber Careers Blog</a>
+        <a href="/intel/blackwing/index.html" class="mobile-nav-link" style="color: #ef4444;">Black Wing Dispatch</a>
+        <a href="/learning-hub.html" class="mobile-nav-link">Learning Hub</a>
+        <a href="/threat-map.html" class="mobile-nav-link">Threat Map</a>
+        <a href="/intel/weekly/" class="mobile-nav-link">Weekly Reports</a>
+        <a href="/cyber-news.html" class="mobile-nav-link">News</a>
+        <a href="/tools.html" class="mobile-nav-link">Tools</a>
+        <a href="/pricing.html" class="mobile-nav-link">Programs</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <!-- RavenEye Threat Ticker -->
+    <div class="raveneye" id="raveneye">
+        <div class="raveneye-glow"></div>
+        <div class="raveneye-bottom"></div>
+        <div class="raveneye-container">
+            <div class="raveneye-label">
+                <div class="raveneye-icon-wrapper">
+                    <div class="raveneye-radar">
+                        <div class="raveneye-radar-sweep"></div>
+                        <div class="raveneye-radar-pulse"></div>
+                        <div class="raveneye-radar-pulse"></div>
+                        <div class="raveneye-radar-pulse"></div>
+                    </div>
+                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                </div>
+                RavenEye
+            </div>
+            <div class="raveneye-track">
+                <div class="raveneye-scroll" id="raveneye-scroll">
+                    <!-- Items populated by JS -->
+                </div>
+            </div>
+            <a href="/cyber-news.html" class="raveneye-cta">
+                Full Feed
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
     <header class="header">
         <div class="header-inner">
             <a href="https://tacraven.com/" class="logo">TAC<span>RAVEN</span></a>
-            <nav class="nav">
-                <a href="https://tacraven.com/">Home</a>
-                <a href="https://tacraven.com/learning-hub/">Learning Hub</a>
-                <a href="https://tacraven.com/tools/">Tools</a>
-                <a href="https://tacraven.com/threat-map/">Threat Map</a>
-                <a href="https://tacraven.com/weekly-reports/">Weekly Reports</a>
-                <a href="https://tacraven.com/about/">About</a>
-                <a href="https://tacraven.com/pricing/">Pricing</a>
-                <a href="../../../Blog.html" class="active">Careers</a>
-                <a href="https://tacraven.com/contact/" class="nav-cta">Contact</a>
-            </nav>
+            
         </div>
     </header>
     
@@ -514,12 +1092,7 @@
                 <span class="tag">salary_data</span>
             </div>
             
-            <nav class="article-nav">
-                <a href="../../../Blog.html">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                    Back to Blog
-                </a>
-            </nav>
+            
         </footer>
         
         <aside class="author-box">
@@ -534,12 +1107,78 @@
     <footer class="footer">
         <div class="footer-inner">
             <p class="footer-copy">© 2026 TacRaven Solutions LLC. All rights reserved.</p>
-            <nav class="footer-links">
-                <a href="https://tacraven.com/">Main Site</a>
-                <a href="https://tacraven.com/privacy/">Privacy</a>
-                <a href="https://tacraven.com/contact/">Contact</a>
-            </nav>
+            
         </div>
     </footer>
+<script>
+        // ── BlackWing Nav + RavenEye ──────────────────────────────────────────
+        (function() {
+            var nav = document.getElementById('nav');
+            var raveneye = document.getElementById('raveneye');
+            var backToTop = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', function() {
+                var scrollY = window.scrollY;
+                if (scrollY > 50) {
+                    if (nav) nav.classList.add('scrolled');
+                    if (raveneye) raveneye.classList.add('scrolled');
+                } else {
+                    if (nav) nav.classList.remove('scrolled');
+                    if (raveneye) raveneye.classList.remove('scrolled');
+                }
+                if (backToTop) {
+                    if (scrollY > 500) backToTop.classList.add('visible');
+                    else backToTop.classList.remove('visible');
+                }
+            });
+
+            if (backToTop) {
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Mobile menu toggle
+            var mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            var mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenuBtn.classList.toggle('active');
+                    mobileMenu.classList.toggle('active');
+                    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+                });
+                document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        mobileMenuBtn.classList.remove('active');
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+
+            // RavenEye ticker
+            var raveneyeData = [
+                { badge: 'KEV',      badgeType: 'kev',      text: 'CVE-2024-3400: PAN-OS Command Injection, Due: Jan 20',         source: 'CISA KEV',    url: 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog' },
+                { badge: 'ZERO-DAY', badgeType: 'critical', text: 'Microsoft Patches Critical Zero-Day in Windows Kernel',         source: 'Hacker News', url: 'https://thehackernews.com/' },
+                { badge: 'CRITICAL', badgeType: 'critical', text: 'Ivanti VPN Zero-Day Actively Exploited in the Wild',             source: 'Dark Reading', url: 'https://www.darkreading.com/' },
+                { badge: 'KEV',      badgeType: 'kev',      text: 'CVE-2024-21887: Ivanti Connect Secure, Due: Jan 22',            source: 'CISA KEV',    url: 'https://www.cisa.gov/known-exploited-vulnerabilities-catalog' },
+                { badge: 'ALERT',    badgeType: 'alert',    text: 'Ransomware Group Targets Healthcare Sector',                     source: 'Krebs',       url: 'https://krebsonsecurity.com/' },
+                { badge: 'CRITICAL', badgeType: 'critical', text: 'CISA Emergency Directive: Disconnect Affected Devices',          source: 'CISA',        url: 'https://www.cisa.gov/news-events/directives' },
+            ];
+
+            var container = document.getElementById('raveneye-scroll');
+            if (container) {
+                var html = raveneyeData.map(function(item) {
+                    return '<a href="' + item.url + '" target="_blank" rel="noopener noreferrer" class="raveneye-item">'
+                        + '<span class="raveneye-badge raveneye-badge--' + item.badgeType + '">' + item.badge + '</span>'
+                        + '<span class="raveneye-text">' + item.text + '</span>'
+                        + '<span class="raveneye-source">' + item.source + '</span>'
+                        + '</a>';
+                }).join('');
+                container.innerHTML = html + html; // duplicate for seamless loop
+            }
+        })();
+        // ─────────────────────────────────────────────────────────────────────
+</script>
 </body>
 </html>
