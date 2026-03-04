@@ -1,7 +1,26 @@
 {
-  "generated": "2026-03-03T09:40:35.014472",
-  "count": 16,
+  "generated": "2026-03-04T17:23:11.460318",
+  "count": 17,
   "posts": [
+    {
+      "title": "Soc Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking SOC expertise. How to get it.",
+      "date": "2026-03-04",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Soc",
+        "SOC"
+      ],
+      "filepath": "posts/2026/03/soc-skills-are-in-demandheres-why.html",
+      "slug": "soc-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "Emerging Cybersecurity Roles",
       "excerpt": "New positions to watch.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/03/emerging-cybersecurity-roles.html",
       "slug": "emerging-cybersecurity-roles",
       "read_time": 11,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Communication Skills in Security",
