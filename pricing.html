@@ -127,6 +127,10 @@
             --gray-500: #6b6b6b;
             --gray-700: #333333;
             --gray-800: #1a1a1a;
+            --red: #dc2626;
+            --red-dark: #7f1d1d;
+            --blue: #3b82f6;
+            --green: #22c55e;
             --font-display: 'Orbitron', sans-serif;
             --font-heading: 'Rajdhani', sans-serif;
             --font-body: 'Inter', sans-serif;
@@ -151,7 +155,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -186,6 +190,11 @@
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 24px;
+        }
+
+                @keyframes radarSweep {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* ========================================
@@ -396,6 +405,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: nowrap;
+            gap: 0;
         }
 
         .nav-logo {
@@ -403,6 +414,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-shrink: 0;
         }
 
         .nav-logo-text {
@@ -419,18 +431,21 @@
 
         .nav-menu {
             display: flex;
+            align-items: center;
             list-style: none;
-            gap: 36px;
+            gap: 4px;
         }
 
         .nav-link {
             font-family: var(--font-heading);
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             color: var(--gray-300);
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            padding: 8px 10px;
             transition: color 0.3s ease;
             position: relative;
         }
@@ -457,8 +472,11 @@
         }
 
         .nav-cta {
-            padding: 12px 24px;
+            padding: 10px 22px;
             font-size: 13px;
+            margin-left: 16px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .mobile-menu-btn {
@@ -1712,6 +1730,20 @@
         .raveneye-radar-pulse:nth-child(3) {
             animation-delay: 1.2s;
         }
+        /* Center dot */
+        .radar-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            border-radius: 50%;
+            z-index: 3;
+            box-shadow: 0 0 6px var(--red), 0 0 12px rgba(220, 38, 38, 0.6);
+        }
+
 
         /* ========================================
            BACK TO TOP BUTTON
@@ -1786,6 +1818,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: nowrap;
+            gap: 0;
         }
 
         .nav-logo {
@@ -2305,7 +2339,7 @@
                 <li><a href="/tools.html" class="nav-link">Tools</a></li>
                 <li><a href="/pricing.html" class="nav-link active">Programs</a></li>
             </ul>
-            <a href="#contact" class="btn btn-primary nav-cta">Contact</a>
+            <a href="/index.html#contact" class="btn btn-primary nav-cta">Contact</a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -2326,7 +2360,7 @@
         <a href="/cyber-news.html" class="mobile-nav-link">News</a>
         <a href="/tools.html" class="mobile-nav-link">Tools</a>
         <a href="/pricing.html" class="mobile-nav-link">Programs</a>
-        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="/index.html#contact" class="mobile-nav-link">Contact</a>
     </div>
 
     <!-- RavenEye Threat Ticker -->
@@ -2341,6 +2375,7 @@
                         <div class="raveneye-radar-pulse"></div>
                         <div class="raveneye-radar-pulse"></div>
                         <div class="raveneye-radar-pulse"></div>
+                        <div class="radar-center"></div>
                     </div>
                     <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
                 </div>
