@@ -7,7 +7,7 @@
     "weekStart": "2026-03-02T00:00:00.000Z",
     "monthName": "March",
     "monthShort": "MAR",
-    "generated": "2026-03-05T20:37:34.656Z",
+    "generated": "2026-03-05T20:53:52.329Z",
     "threatLevel": {
       "level": "CRITICAL",
       "class": "critical",
@@ -226,15 +226,15 @@
   },
   "sources": {
     "cisaKev": {
-      "retrieved": "2026-03-05T20:37:33.888Z",
+      "retrieved": "2026-03-05T20:53:51.291Z",
       "count": 1536
     },
     "feodo": {
-      "retrieved": "2026-03-05T20:37:34.250Z",
+      "retrieved": "2026-03-05T20:53:51.531Z",
       "count": 0
     },
     "news": {
-      "retrieved": "2026-03-05T20:37:34.653Z",
+      "retrieved": "2026-03-05T20:53:52.326Z",
       "count": 140
     }
   }
