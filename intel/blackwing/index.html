@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,6 +50,10 @@
             --red-dark: #7f1d1d;
             --blue: #3b82f6;
             --green: #22c55e;
+            --gray-700: #333333;
+            --gray-100: #f5f5f5;
+            --black-lighter: #111111;
+            --black-panel: #0d0d0d;
             --font-display: 'Orbitron', sans-serif;
             --font-heading: 'Rajdhani', sans-serif;
             --font-body: 'Inter', sans-serif;
@@ -364,6 +371,19 @@ a:hover {
 
 .raveneye-radar-pulse:nth-child(2) { animation-delay: 0.6s; }
 .raveneye-radar-pulse:nth-child(3) { animation-delay: 1.2s; }
+
+        .radar-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            border-radius: 50%;
+            z-index: 3;
+            box-shadow: 0 0 6px var(--red), 0 0 12px rgba(220, 38, 38, 0.6);
+        }
 
 .raveneye-track {
     flex: 1;
@@ -2260,8 +2280,10 @@ a:hover {
 
         .raveneye-radar-sweep {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             background: conic-gradient(from 0deg, transparent 0deg, rgba(220, 38, 38, 0.5) 15deg, transparent 30deg);
             animation: radarSweep 2s linear infinite;
@@ -2269,28 +2291,200 @@ a:hover {
 
         .raveneye-radar-pulse {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            width: 6px; height: 6px;
+            width: 6px;
+            height: 6px;
             border: 1px solid rgba(220, 38, 38, 0.8);
             border-radius: 50%;
             animation: radarPulse 2s ease-out infinite;
         }
 
         @keyframes radarPulse {
-            0%   { width: 6px;  height: 6px;  opacity: 0.8; }
-            100% { width: 50px; height: 50px; opacity: 0; }
+            0% { 
+                width: 6px; 
+                height: 6px; 
+                opacity: 0.8; 
+            }
+            100% { 
+                width: 50px; 
+                height: 50px; 
+                opacity: 0; 
+            }
         }
 
-        .raveneye-radar-pulse:nth-child(2) { animation-delay: 0.6s; }
-        .raveneye-radar-pulse:nth-child(3) { animation-delay: 1.2s; }
+        .raveneye-radar-pulse:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .raveneye-radar-pulse:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+
+        /* ========================================
+           BACK TO TOP BUTTON
+           ======================================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(212, 160, 18, 0.4);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(212, 160, 18, 0.6);
+        }
+
+        .back-to-top:hover svg {
+            animation: bounceUp 0.5s ease infinite;
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+            color: var(--black);
+            transition: all 0.3s ease;
+        }
+
+        
+
+        /* ========================================
+           BUTTONS
+           ======================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 36px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(212, 160, 18, 0.4);
+        }
+
+        /* Dynamic Threat Map Button */
+        .btn-threat-map {
+            position: relative;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.9) 0%, rgba(153, 27, 27, 1) 50%, rgba(212, 160, 18, 0.9) 100%);
+            background-size: 200% 200%;
+            animation: threatGradient 3s ease infinite;
+            color: var(--white);
+            border: 1px solid rgba(220, 38, 38, 0.5);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-threat-map::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .btn-threat-map::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            box-shadow: inset 0 0 20px rgba(220, 38, 38, 0.3);
+            pointer-events: none;
+        }
+
+        .btn-threat-map:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 10px 40px rgba(220, 38, 38, 0.5),
+                0 0 30px rgba(212, 160, 18, 0.3);
+            border-color: var(--gold);
+        }
+
+        .btn-threat-map svg {
+            animation: arrowPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes threatGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 160, 18, 0.1);
+        }
+
+        
 
         /* ========================================
            NAVIGATION
            ======================================== */
         .nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             padding: 20px 0;
             transition: all 0.3s ease;
@@ -2326,22 +2520,26 @@ a:hover {
             letter-spacing: 2px;
         }
 
-        .nav-logo-text span { color: var(--gold); }
+        .nav-logo-text span {
+            color: var(--gold);
+        }
 
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
             list-style: none;
         }
 
         .nav-link {
             font-family: var(--font-heading);
             font-size: 15px;
-            font-weight: 500;
-            color: var(--gray-300);
+            font-weight: 600;
+            color: var(--white);
             text-decoration: none;
-            padding: 10px 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 14px;
             transition: all 0.3s ease;
             position: relative;
         }
@@ -2349,34 +2547,50 @@ a:hover {
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 50%;
+            bottom: 0;
+            left: 50%;
             transform: translateX(-50%);
-            width: 0; height: 2px;
+            width: 0;
+            height: 2px;
             background: var(--gold);
             transition: width 0.3s ease;
         }
 
         .nav-link:hover,
-        .nav-link.active { color: var(--white); }
+        .nav-link.active {
+            color: var(--white);
+        }
 
         .nav-link:hover::after,
-        .nav-link.active::after { width: 30px; }
+        .nav-link.active::after {
+            width: 30px;
+        }
 
-        .nav-cta { padding: 10px 24px; font-size: 14px; }
+        .nav-cta {
+            padding: 10px 22px;
+            font-size: 13px;
+            margin-left: 16px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
 
         /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             flex-direction: column;
             gap: 5px;
-            background: none; border: none;
-            cursor: pointer; padding: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
             z-index: 1001;
+            z-index: 10001;
         }
 
         .mobile-menu-btn span {
             display: block;
-            width: 24px; height: 2px;
+            width: 24px;
+            height: 2px;
             background: var(--white);
             transition: all 0.3s ease;
         }
@@ -2384,22 +2598,31 @@ a:hover {
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--black);
-            z-index: 999;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000000;
+            z-index: 10000;
             padding: 100px 24px 40px;
-            opacity: 0; visibility: hidden;
+            opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
 
-        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-menu.active {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
 
         .mobile-nav-link {
             display: block;
             font-family: var(--font-heading);
-            font-size: 24px; font-weight: 600;
+            font-size: 24px;
+            font-weight: 600;
             color: var(--white);
             text-decoration: none;
             padding: 16px 0;
@@ -2407,12 +2630,17 @@ a:hover {
             transition: color 0.3s ease;
         }
 
-        .mobile-nav-link:hover { color: var(--gold); }
+        .mobile-nav-link:hover {
+            color: var(--gold);
+        }
 
         @media (max-width: 900px) {
-            .nav-menu, .nav-cta { display: none; }
-            .mobile-menu-btn { display: flex; }
-            .mobile-menu { display: block; }
+            .nav-menu, .nav-cta {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: flex;
+            }
         }
 
         /* ========================================
@@ -2473,19 +2701,25 @@ a:hover {
         .raveneye {
             background: #1a0a0a;
             position: fixed;
-            top: 80px; left: 0; right: 0;
+            top: 80px;
+            left: 0;
+            right: 0;
             z-index: 999;
             overflow: hidden;
             transition: top 0.3s ease;
         }
 
-        .raveneye.scrolled { top: 62px; }
+        .raveneye.scrolled {
+            top: 62px;
+        }
 
         .raveneye::before {
             content: '';
             position: absolute;
-            top: 0; left: -100%;
-            width: 50%; height: 100%;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
             background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.03) 40%, rgba(220, 38, 38, 0.08) 50%, rgba(220, 38, 38, 0.03) 60%, transparent 100%);
             animation: scanLine 4s linear infinite;
             pointer-events: none;
@@ -2494,7 +2728,10 @@ a:hover {
         .raveneye::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px);
             background-size: 20px 20px;
             pointer-events: none;
@@ -2502,7 +2739,9 @@ a:hover {
 
         .raveneye-glow {
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent 0%, var(--red) 20%, var(--red) 80%, transparent 100%);
             box-shadow: 0 0 10px var(--red), 0 0 20px rgba(220, 38, 38, 0.5);
@@ -2510,7 +2749,9 @@ a:hover {
 
         .raveneye-bottom {
             position: absolute;
-            bottom: 0; left: 0; right: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.5) 30%, var(--red) 50%, rgba(220, 38, 38, 0.5) 70%, transparent 100%);
         }
@@ -2533,7 +2774,8 @@ a:hover {
             background: linear-gradient(135deg, #0d0000 0%, #1a0505 100%);
             border-right: 1px solid var(--red);
             font-family: var(--font-display);
-            font-size: 11px; font-weight: 600;
+            font-size: 11px;
+            font-weight: 600;
             letter-spacing: 3px;
             color: var(--red);
             text-transform: uppercase;
@@ -2545,9 +2787,11 @@ a:hover {
         .raveneye-label::after {
             content: '';
             position: absolute;
-            right: 0; top: 50%;
+            right: 0;
+            top: 50%;
             transform: translateY(-50%);
-            width: 3px; height: 60%;
+            width: 3px;
+            height: 60%;
             background: var(--red);
             box-shadow: 0 0 8px var(--red), 0 0 15px rgba(220, 38, 38, 0.5);
             animation: labelPulse 2s ease-in-out infinite;
@@ -2569,7 +2813,8 @@ a:hover {
         .raveneye-track::after {
             content: '';
             position: absolute;
-            top: 0; bottom: 0;
+            top: 0;
+            bottom: 0;
             width: 80px;
             z-index: 1;
             pointer-events: none;
@@ -2593,10 +2838,12 @@ a:hover {
             width: max-content;
         }
 
-        .raveneye-scroll:hover { animation-play-state: paused; }
+        .raveneye-scroll:hover {
+            animation-play-state: paused;
+        }
 
         @keyframes raveneyeScroll {
-            0%   { transform: translateX(0); }
+            0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
@@ -2618,20 +2865,32 @@ a:hover {
         .raveneye-item::before {
             content: '';
             position: absolute;
-            left: 12px; top: 50%;
+            left: 12px;
+            top: 50%;
             transform: translateY(-50%);
-            width: 4px; height: 4px;
+            width: 4px;
+            height: 4px;
             background: var(--red);
             border-radius: 50%;
             box-shadow: 0 0 6px var(--red);
             opacity: 0.6;
         }
 
-        .raveneye-item:hover { background: rgba(220, 38, 38, 0.1); }
+        .raveneye-item:hover {
+            background: rgba(220, 38, 38, 0.1);
+        }
 
         .raveneye-item:hover::before {
             opacity: 1;
             box-shadow: 0 0 10px var(--red), 0 0 15px rgba(220, 38, 38, 0.5);
+        }
+
+        .raveneye-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
         }
 
         .raveneye-badge {
@@ -2639,7 +2898,8 @@ a:hover {
             padding: 4px 10px;
             border-radius: 3px;
             font-family: var(--font-display);
-            font-size: 9px; font-weight: 700;
+            font-size: 9px;
+            font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: all 0.3s ease;
@@ -2680,12 +2940,15 @@ a:hover {
 
         .raveneye-text {
             font-family: var(--font-body);
-            font-size: 13px; font-weight: 500;
+            font-size: 13px;
+            font-weight: 500;
             color: rgba(255, 255, 255, 0.9);
             transition: color 0.3s ease;
         }
 
-        .raveneye-item:hover .raveneye-text { color: var(--white); }
+        .raveneye-item:hover .raveneye-text {
+            color: var(--white);
+        }
 
         .raveneye-source {
             font-family: var(--font-heading);
@@ -2713,7 +2976,8 @@ a:hover {
             background: rgba(220, 38, 38, 0.1);
             border-left: 1px solid rgba(220, 38, 38, 0.3);
             font-family: var(--font-heading);
-            font-size: 11px; font-weight: 600;
+            font-size: 11px;
+            font-weight: 600;
             color: var(--red);
             text-decoration: none;
             text-transform: uppercase;
@@ -2721,10 +2985,20 @@ a:hover {
             transition: all 0.3s ease;
         }
 
-        .raveneye-cta:hover { background: rgba(220, 38, 38, 0.2); color: #ff6b6b; }
+        .raveneye-cta:hover {
+            background: rgba(220, 38, 38, 0.2);
+            color: #ff6b6b;
+        }
 
-        .raveneye-cta svg { width: 14px; height: 14px; transition: transform 0.3s ease; }
-        .raveneye-cta:hover svg { transform: translateX(3px); }
+        .raveneye-cta svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .raveneye-cta:hover svg {
+            transform: translateX(3px);
+        }
 
         </style>
     
@@ -2810,10 +3084,10 @@ a:hover {
                 <div class="nav-logo-text">TAC<span>RAVEN</span></div>
             </a>
             <ul class="nav-menu">
-                <li><a href="/index.html" class="nav-link active">Home</a></li>
+                <li><a href="/index.html" class="nav-link">Home</a></li>
                 <li><a href="/about.html" class="nav-link">About</a></li>
                 <li class="nav-dropdown">
-                    <a class="nav-link">Blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+                    <a class="nav-link active">Blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
                     <div class="nav-dropdown-content">
                         <a href="/Blog.html">Cyber Careers</a>
                         <a href="/intel/blackwing/index.html" class="featured">Black Wing Dispatch</a>
@@ -2826,7 +3100,7 @@ a:hover {
                 <li><a href="/tools.html" class="nav-link">Tools</a></li>
                 <li><a href="/pricing.html" class="nav-link">Programs</a></li>
             </ul>
-            <a href="#contact" class="btn btn-primary nav-cta">Contact</a>
+            <a href="/index.html#contact" class="btn btn-primary nav-cta">Contact</a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -2847,7 +3121,7 @@ a:hover {
         <a href="/cyber-news.html" class="mobile-nav-link">News</a>
         <a href="/tools.html" class="mobile-nav-link">Tools</a>
         <a href="/pricing.html" class="mobile-nav-link">Programs</a>
-        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="/index.html#contact" class="mobile-nav-link">Contact</a>
     </div>
 
     <!-- RavenEye Threat Ticker -->
@@ -2862,6 +3136,7 @@ a:hover {
                         <div class="raveneye-radar-pulse"></div>
                         <div class="raveneye-radar-pulse"></div>
                         <div class="raveneye-radar-pulse"></div>
+                        <div class="radar-center"></div>
                     </div>
                     <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
                 </div>
@@ -2903,6 +3178,7 @@ a:hover {
                         <div class="raveneye-radar-pulse"></div>
                         <div class="raveneye-radar-pulse"></div>
                         <div class="raveneye-radar-pulse"></div>
+                        <div class="radar-center"></div>
                     </div>
                     <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
                 </div>
@@ -3175,18 +3451,18 @@ a:hover {
 
         // Back to Top Button
         var backToTopBtn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        if (backToTopBtn) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
 
         // Filter functionality with smooth transitions
         document.querySelectorAll('.filter-pill').forEach(function(pill) {
