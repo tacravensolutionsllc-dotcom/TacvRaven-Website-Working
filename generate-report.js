@@ -3815,7 +3815,9 @@ function generateStyles() {
         /* Professional Print Stylesheet */
         @media print {
             /* Hide navigation and interactive elements */
-            .nav, #raveneye, .raveneye, .mobile-menu, .progress-bar, .export-bar, .report-nav-links, 
+            .nav, #raveneye, .raveneye, [id*="raveneye"], [class*="raveneye"],
+            [id*="ticker"], [class*="ticker"],
+            .mobile-menu, .progress-bar, .export-bar, .report-nav-links, 
             .back-link, .filter-bar, .toast { display: none !important; }
             
             /* Reset background and colors for printing */
@@ -5291,9 +5293,24 @@ function generateScripts() {
         function downloadPDF() {
             showToast('Opening print dialog for PDF export...');
             setTimeout(() => {
+                // Blank the title so Chrome's system header row shows nothing
+                const originalTitle = document.title;
+                document.title = '';
                 window.print();
+                // Restore after print dialog closes
+                document.title = originalTitle;
             }, 500);
         }
+
+        // Hide injected elements (RavenEye ticker etc.) before browser print
+        window.addEventListener('beforeprint', () => {
+            document.querySelectorAll('[id*="raven"], [class*="raven"], [id*="ticker"], [class*="ticker"]')
+                .forEach(el => el.style.setProperty('display', 'none', 'important'));
+        });
+        window.addEventListener('afterprint', () => {
+            document.querySelectorAll('[id*="raven"], [class*="raven"], [id*="ticker"], [class*="ticker"]')
+                .forEach(el => el.style.removeProperty('display'));
+        });
         
         // Copy Executive Summary
         function copyExecutiveSummary() {
