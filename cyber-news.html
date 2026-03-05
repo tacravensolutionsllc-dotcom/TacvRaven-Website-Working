@@ -319,7 +319,7 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
+            z-index: 10002;
             padding: 20px 0;
             transition: all 0.3s ease;
             background: rgba(0, 0, 0, 0.85);
@@ -338,6 +338,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: nowrap;
         }
 
         .nav-logo {
@@ -362,18 +363,21 @@
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 2px;
             list-style: none;
         }
 
         .nav-link {
             font-family: var(--font-heading);
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--gray-300);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
             text-decoration: none;
-            padding: 10px 16px;
-            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            padding: 8px 10px;
+            transition: color 0.3s ease;
             position: relative;
         }
 
@@ -400,8 +404,11 @@
         }
 
         .nav-cta {
-            padding: 10px 24px;
-            font-size: 14px;
+            padding: 10px 22px;
+            font-size: 13px;
+            margin-left: 16px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         /* Nav Dropdown */
@@ -482,6 +489,10 @@
         }
 
         .mobile-menu-btn {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            min-width: 44px;
+            min-height: 44px;
             display: none;
             flex-direction: column;
             gap: 5px;
@@ -489,7 +500,7 @@
             border: none;
             cursor: pointer;
             padding: 10px;
-            z-index: 1001;
+            z-index: 10004;
         }
 
         .mobile-menu-btn span {
@@ -508,7 +519,7 @@
             right: 0;
             bottom: 0;
             background: var(--black);
-            z-index: 999;
+            z-index: 10003;
             padding: 100px 24px 40px;
             opacity: 0;
             visibility: hidden;
@@ -516,6 +527,7 @@
         }
 
         .mobile-menu.active {
+            display: block;
             opacity: 1;
             visibility: visible;
         }
@@ -536,13 +548,15 @@
             color: var(--gold);
         }
 
-        @media (max-width: 900px) {
-            .nav-menu, .nav-cta {
-                display: none;
+        @media (max-width: 1100px) {
+            .nav-menu,
+            .nav-cta {
+                display: none !important;
             }
             .mobile-menu-btn {
-                display: flex;
+                display: flex !important;
             }
+        }
             .mobile-menu {
                 display: block;
             }
@@ -2042,6 +2056,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: nowrap;
         }
 
         .nav-logo {
@@ -2064,18 +2079,21 @@
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 2px;
             list-style: none;
         }
 
         .nav-link {
             font-family: var(--font-heading);
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--gray-300);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
             text-decoration: none;
-            padding: 10px 16px;
-            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            padding: 8px 10px;
+            transition: color 0.3s ease;
             position: relative;
         }
 
@@ -2142,9 +2160,15 @@
 
         .mobile-nav-link:hover { color: var(--gold); }
 
-        @media (max-width: 900px) {
-            .nav-menu, .nav-cta { display: none; }
-            .mobile-menu-btn { display: flex; }
+        @media (max-width: 1100px) {
+            .nav-menu,
+            .nav-cta {
+                display: none !important;
+            }
+            .mobile-menu-btn {
+                display: flex !important;
+            }
+        }
             .mobile-menu { display: block; }
         }
 
@@ -2485,7 +2509,7 @@
                 <li><a href="/tools.html" class="nav-link">Tools</a></li>
                 <li><a href="/pricing.html" class="nav-link">Programs</a></li>
             </ul>
-            <a href="#contact" class="btn btn-primary nav-cta">Contact</a>
+            <a href="/index.html#contact" class="btn btn-primary nav-cta">Contact</a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -2506,7 +2530,7 @@
         <a href="/cyber-news.html" class="mobile-nav-link">News</a>
         <a href="/tools.html" class="mobile-nav-link">Tools</a>
         <a href="/pricing.html" class="mobile-nav-link">Programs</a>
-        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="/index.html#contact" class="mobile-nav-link">Contact</a>
     </div>
 
     <!-- RavenEye Threat Ticker -->
@@ -2658,7 +2682,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="cyber-news.html">Cyber News</a></li>
                         <li><a href="threat-map.html">Threat Map</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="/index.html#contact">Contact</a></li>
                         <li><a href="https://www.linkedin.com/company/tacraven-solutions-llc" target="_blank">LinkedIn</a></li>
                     </ul>
                 </div>
@@ -2701,23 +2725,6 @@
                 });
             }
 
-            // Mobile menu toggle
-            var mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            var mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileMenuBtn.classList.toggle('active');
-                    mobileMenu.classList.toggle('active');
-                    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-                });
-                document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        mobileMenuBtn.classList.remove('active');
-                        mobileMenu.classList.remove('active');
-                        document.body.style.overflow = '';
-                    });
-                });
-            }
 
             // RavenEye ticker
             var raveneyeData = [
