@@ -413,7 +413,7 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
+            z-index: 10002;
             padding: 20px 0;
             transition: all 0.3s ease;
             background: rgba(0, 0, 0, 0.95);
@@ -429,6 +429,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: nowrap;
         }
 
         .nav-logo {
@@ -436,6 +437,7 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .nav-logo-text {
@@ -453,17 +455,18 @@
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 2px;
             list-style: none;
         }
 
         .nav-link {
             font-family: var(--font-heading);
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 500;
             color: var(--gray-300);
             text-decoration: none;
-            padding: 10px 16px;
+            white-space: nowrap;
+            padding: 8px 10px;
             transition: all 0.3s ease;
             position: relative;
         }
@@ -491,8 +494,11 @@
         }
 
         .nav-cta {
-            padding: 10px 24px;
-            font-size: 14px;
+            padding: 10px 20px;
+            font-size: 13px;
+            margin-left: 12px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         /* Nav Dropdown */
@@ -580,8 +586,13 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 10px;
-            z-index: 10001;
+            padding: 12px;
+            min-width: 44px;
+            min-height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            cursor: pointer;
+            z-index: 10004;
         }
 
         .mobile-menu-btn span {
@@ -612,11 +623,13 @@
             right: 0;
             bottom: 0;
             background: #000000;
-            z-index: 10000;
+            z-index: 10003;
             padding: 100px 24px 40px;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .mobile-menu.active {
@@ -635,18 +648,24 @@
             padding: 16px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: color 0.3s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
         }
 
         .mobile-nav-link:hover {
             color: var(--gold);
         }
 
-        @media (max-width: 900px) {
-            .nav-menu, .nav-cta {
-                display: none;
+        @media (max-width: 1100px) {
+            .nav-menu,
+            .nav-cta {
+                display: none !important;
             }
             .mobile-menu-btn {
-                display: flex;
+                display: flex !important;
             }
         }
 
@@ -2431,6 +2450,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: nowrap;
         }
 
         .nav-logo {
@@ -2438,6 +2458,7 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .nav-logo-text {
@@ -2453,17 +2474,18 @@
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 2px;
             list-style: none;
         }
 
         .nav-link {
             font-family: var(--font-heading);
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 500;
             color: var(--gray-300);
             text-decoration: none;
-            padding: 10px 16px;
+            white-space: nowrap;
+            padding: 8px 10px;
             transition: all 0.3s ease;
             position: relative;
         }
