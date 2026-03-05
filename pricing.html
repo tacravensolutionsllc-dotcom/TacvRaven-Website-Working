@@ -188,6 +188,112 @@
             margin-bottom: 24px;
         }
 
+        /* ========================================
+           BUTTONS
+           ======================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 36px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(212, 160, 18, 0.4);
+        }
+
+        /* Dynamic Threat Map Button */
+        .btn-threat-map {
+            position: relative;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.9) 0%, rgba(153, 27, 27, 1) 50%, rgba(212, 160, 18, 0.9) 100%);
+            background-size: 200% 200%;
+            animation: threatGradient 3s ease infinite;
+            color: var(--white);
+            border: 1px solid rgba(220, 38, 38, 0.5);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-threat-map::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .btn-threat-map::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            box-shadow: inset 0 0 20px rgba(220, 38, 38, 0.3);
+            pointer-events: none;
+        }
+
+        .btn-threat-map:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 10px 40px rgba(220, 38, 38, 0.5),
+                0 0 30px rgba(212, 160, 18, 0.3);
+            border-color: var(--gold);
+        }
+
+        .btn-threat-map svg {
+            animation: arrowPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes threatGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 160, 18, 0.1);
+        }
+
+        
         .btn {
             display: inline-flex;
             align-items: center;
@@ -1565,8 +1671,10 @@
 
         .raveneye-radar-sweep {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             background: conic-gradient(from 0deg, transparent 0deg, rgba(220, 38, 38, 0.5) 15deg, transparent 30deg);
             animation: radarSweep 2s linear infinite;
@@ -1574,28 +1682,92 @@
 
         .raveneye-radar-pulse {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            width: 6px; height: 6px;
+            width: 6px;
+            height: 6px;
             border: 1px solid rgba(220, 38, 38, 0.8);
             border-radius: 50%;
             animation: radarPulse 2s ease-out infinite;
         }
 
         @keyframes radarPulse {
-            0%   { width: 6px;  height: 6px;  opacity: 0.8; }
-            100% { width: 50px; height: 50px; opacity: 0; }
+            0% { 
+                width: 6px; 
+                height: 6px; 
+                opacity: 0.8; 
+            }
+            100% { 
+                width: 50px; 
+                height: 50px; 
+                opacity: 0; 
+            }
         }
 
-        .raveneye-radar-pulse:nth-child(2) { animation-delay: 0.6s; }
-        .raveneye-radar-pulse:nth-child(3) { animation-delay: 1.2s; }
+        .raveneye-radar-pulse:nth-child(2) {
+            animation-delay: 0.6s;
+        }
 
+        .raveneye-radar-pulse:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+
+        /* ========================================
+           BACK TO TOP BUTTON
+           ======================================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(212, 160, 18, 0.4);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(212, 160, 18, 0.6);
+        }
+
+        .back-to-top:hover svg {
+            animation: bounceUp 0.5s ease infinite;
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+            color: var(--black);
+            transition: all 0.3s ease;
+        }
+
+        
         /* ========================================
            NAVIGATION
            ======================================== */
         .nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             padding: 20px 0;
             transition: all 0.3s ease;
@@ -1631,7 +1803,9 @@
             letter-spacing: 2px;
         }
 
-        .nav-logo-text span { color: var(--gold); }
+        .nav-logo-text span {
+            color: var(--gold);
+        }
 
         .nav-menu {
             display: flex;
@@ -1654,34 +1828,46 @@
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: 0; left: 50%;
+            bottom: 0;
+            left: 50%;
             transform: translateX(-50%);
-            width: 0; height: 2px;
+            width: 0;
+            height: 2px;
             background: var(--gold);
             transition: width 0.3s ease;
         }
 
         .nav-link:hover,
-        .nav-link.active { color: var(--white); }
+        .nav-link.active {
+            color: var(--white);
+        }
 
         .nav-link:hover::after,
-        .nav-link.active::after { width: 30px; }
+        .nav-link.active::after {
+            width: 30px;
+        }
 
-        .nav-cta { padding: 10px 24px; font-size: 14px; }
+        .nav-cta {
+            padding: 10px 24px;
+            font-size: 14px;
+        }
 
         /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             flex-direction: column;
             gap: 5px;
-            background: none; border: none;
-            cursor: pointer; padding: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
             z-index: 1001;
         }
 
         .mobile-menu-btn span {
             display: block;
-            width: 24px; height: 2px;
+            width: 24px;
+            height: 2px;
             background: var(--white);
             transition: all 0.3s ease;
         }
@@ -1689,22 +1875,30 @@
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: var(--black);
             z-index: 999;
             padding: 100px 24px 40px;
-            opacity: 0; visibility: hidden;
+            opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
 
-        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         .mobile-nav-link {
             display: block;
             font-family: var(--font-heading);
-            font-size: 24px; font-weight: 600;
+            font-size: 24px;
+            font-weight: 600;
             color: var(--white);
             text-decoration: none;
             padding: 16px 0;
@@ -1712,12 +1906,20 @@
             transition: color 0.3s ease;
         }
 
-        .mobile-nav-link:hover { color: var(--gold); }
+        .mobile-nav-link:hover {
+            color: var(--gold);
+        }
 
         @media (max-width: 900px) {
-            .nav-menu, .nav-cta { display: none; }
-            .mobile-menu-btn { display: flex; }
-            .mobile-menu { display: block; }
+            .nav-menu, .nav-cta {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: flex;
+            }
+            .mobile-menu {
+                display: block;
+            }
         }
 
         /* ========================================
@@ -1778,19 +1980,25 @@
         .raveneye {
             background: #1a0a0a;
             position: fixed;
-            top: 80px; left: 0; right: 0;
+            top: 80px;
+            left: 0;
+            right: 0;
             z-index: 999;
             overflow: hidden;
             transition: top 0.3s ease;
         }
 
-        .raveneye.scrolled { top: 62px; }
+        .raveneye.scrolled {
+            top: 62px;
+        }
 
         .raveneye::before {
             content: '';
             position: absolute;
-            top: 0; left: -100%;
-            width: 50%; height: 100%;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
             background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.03) 40%, rgba(220, 38, 38, 0.08) 50%, rgba(220, 38, 38, 0.03) 60%, transparent 100%);
             animation: scanLine 4s linear infinite;
             pointer-events: none;
@@ -1799,7 +2007,10 @@
         .raveneye::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px);
             background-size: 20px 20px;
             pointer-events: none;
@@ -1807,7 +2018,9 @@
 
         .raveneye-glow {
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent 0%, var(--red) 20%, var(--red) 80%, transparent 100%);
             box-shadow: 0 0 10px var(--red), 0 0 20px rgba(220, 38, 38, 0.5);
@@ -1815,7 +2028,9 @@
 
         .raveneye-bottom {
             position: absolute;
-            bottom: 0; left: 0; right: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.5) 30%, var(--red) 50%, rgba(220, 38, 38, 0.5) 70%, transparent 100%);
         }
@@ -1838,7 +2053,8 @@
             background: linear-gradient(135deg, #0d0000 0%, #1a0505 100%);
             border-right: 1px solid var(--red);
             font-family: var(--font-display);
-            font-size: 11px; font-weight: 600;
+            font-size: 11px;
+            font-weight: 600;
             letter-spacing: 3px;
             color: var(--red);
             text-transform: uppercase;
@@ -1850,9 +2066,11 @@
         .raveneye-label::after {
             content: '';
             position: absolute;
-            right: 0; top: 50%;
+            right: 0;
+            top: 50%;
             transform: translateY(-50%);
-            width: 3px; height: 60%;
+            width: 3px;
+            height: 60%;
             background: var(--red);
             box-shadow: 0 0 8px var(--red), 0 0 15px rgba(220, 38, 38, 0.5);
             animation: labelPulse 2s ease-in-out infinite;
@@ -1874,7 +2092,8 @@
         .raveneye-track::after {
             content: '';
             position: absolute;
-            top: 0; bottom: 0;
+            top: 0;
+            bottom: 0;
             width: 80px;
             z-index: 1;
             pointer-events: none;
@@ -1898,10 +2117,12 @@
             width: max-content;
         }
 
-        .raveneye-scroll:hover { animation-play-state: paused; }
+        .raveneye-scroll:hover {
+            animation-play-state: paused;
+        }
 
         @keyframes raveneyeScroll {
-            0%   { transform: translateX(0); }
+            0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
@@ -1923,20 +2144,32 @@
         .raveneye-item::before {
             content: '';
             position: absolute;
-            left: 12px; top: 50%;
+            left: 12px;
+            top: 50%;
             transform: translateY(-50%);
-            width: 4px; height: 4px;
+            width: 4px;
+            height: 4px;
             background: var(--red);
             border-radius: 50%;
             box-shadow: 0 0 6px var(--red);
             opacity: 0.6;
         }
 
-        .raveneye-item:hover { background: rgba(220, 38, 38, 0.1); }
+        .raveneye-item:hover {
+            background: rgba(220, 38, 38, 0.1);
+        }
 
         .raveneye-item:hover::before {
             opacity: 1;
             box-shadow: 0 0 10px var(--red), 0 0 15px rgba(220, 38, 38, 0.5);
+        }
+
+        .raveneye-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
         }
 
         .raveneye-badge {
@@ -1944,7 +2177,8 @@
             padding: 4px 10px;
             border-radius: 3px;
             font-family: var(--font-display);
-            font-size: 9px; font-weight: 700;
+            font-size: 9px;
+            font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: all 0.3s ease;
@@ -1985,12 +2219,15 @@
 
         .raveneye-text {
             font-family: var(--font-body);
-            font-size: 13px; font-weight: 500;
+            font-size: 13px;
+            font-weight: 500;
             color: rgba(255, 255, 255, 0.9);
             transition: color 0.3s ease;
         }
 
-        .raveneye-item:hover .raveneye-text { color: var(--white); }
+        .raveneye-item:hover .raveneye-text {
+            color: var(--white);
+        }
 
         .raveneye-source {
             font-family: var(--font-heading);
@@ -2018,7 +2255,8 @@
             background: rgba(220, 38, 38, 0.1);
             border-left: 1px solid rgba(220, 38, 38, 0.3);
             font-family: var(--font-heading);
-            font-size: 11px; font-weight: 600;
+            font-size: 11px;
+            font-weight: 600;
             color: var(--red);
             text-decoration: none;
             text-transform: uppercase;
@@ -2026,10 +2264,20 @@
             transition: all 0.3s ease;
         }
 
-        .raveneye-cta:hover { background: rgba(220, 38, 38, 0.2); color: #ff6b6b; }
+        .raveneye-cta:hover {
+            background: rgba(220, 38, 38, 0.2);
+            color: #ff6b6b;
+        }
 
-        .raveneye-cta svg { width: 14px; height: 14px; transition: transform 0.3s ease; }
-        .raveneye-cta:hover svg { transform: translateX(3px); }
+        .raveneye-cta svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .raveneye-cta:hover svg {
+            transform: translateX(3px);
+        }
 
         </style>
 </head>
@@ -2615,23 +2863,6 @@
         })();
         // ─────────────────────────────────────────────────────────────────────
 
-        // Mobile menu
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenuBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
-
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuBtn.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
 
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(button => {
@@ -2657,14 +2888,11 @@
         const contactSection = document.querySelector('.contact-section');
 
         function updateStickyCta() {
+            if (!stickyCta || !pathwaysSection || !contactSection) return;
             const pathwaysRect = pathwaysSection.getBoundingClientRect();
             const contactRect = contactSection.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-            
-            // Show sticky CTA when pathways section is scrolled past halfway
-            // Hide when contact section is visible
             const showCta = pathwaysRect.top < windowHeight * 0.3 && contactRect.top > windowHeight * 0.8;
-            
             if (showCta) {
                 stickyCta.classList.add('visible');
             } else {
