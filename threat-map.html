@@ -648,9 +648,6 @@
             .mobile-menu-btn {
                 display: flex;
             }
-            .mobile-menu {
-                display: block;
-            }
         }
 
         /* ========================================
@@ -2489,57 +2486,6 @@
 
         .nav-cta { padding: 10px 24px; font-size: 14px; }
 
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none; border: none;
-            cursor: pointer; padding: 10px;
-            z-index: 10001;
-        }
-
-        .mobile-menu-btn span {
-            display: block;
-            width: 24px; height: 2px;
-            background: var(--white);
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: #000000;
-            z-index: 10000;
-            padding: 100px 24px 40px;
-            opacity: 0; visibility: hidden;
-            transition: all 0.3s ease;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .mobile-menu.active { display: block; opacity: 1; visibility: visible; }
-
-        .mobile-nav-link {
-            display: block;
-            font-family: var(--font-heading);
-            font-size: 24px; font-weight: 600;
-            color: var(--white);
-            text-decoration: none;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: color 0.3s ease;
-        }
-
-        .mobile-nav-link:hover { color: var(--gold); }
-
-        @media (max-width: 900px) {
-            .nav-menu, .nav-cta { display: none; }
-            .mobile-menu-btn { display: flex; }
-            .mobile-menu { display: block; }
-        }
-
         /* ========================================
            NAV DROPDOWN
            ======================================== */
@@ -2618,7 +2564,7 @@
                 <li><a href="/tools.html" class="nav-link">Tools</a></li>
                 <li><a href="/pricing.html" class="nav-link">Programs</a></li>
             </ul>
-            <a href="#contact" class="btn btn-primary nav-cta">Contact</a>
+            <a href="/index.html#contact" class="btn btn-primary nav-cta">Contact</a>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -2639,7 +2585,7 @@
         <a href="/cyber-news.html" class="mobile-nav-link">News</a>
         <a href="/tools.html" class="mobile-nav-link">Tools</a>
         <a href="/pricing.html" class="mobile-nav-link">Programs</a>
-        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="/index.html#contact" class="mobile-nav-link">Contact</a>
     </div>
 
     <!-- RavenEye Threat Ticker -->
