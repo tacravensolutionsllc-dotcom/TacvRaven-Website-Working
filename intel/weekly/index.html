@@ -1538,6 +1538,43 @@
             color: #f87171;
         }
 
+
+        /* ── PDF / Print Overrides ─────────────────────────────────────────── */
+        @page {
+            margin: 0.5in;          /* removes browser-injected header & footer rows */
+            size: letter portrait;
+        }
+
+        @media print {
+            /* Hide site navigation, RavenEye ticker, mobile menu, and footer */
+            .nav,
+            #nav,
+            #raveneye,
+            .raveneye,
+            .mobile-menu,
+            .mobile-nav-link,
+            .nav-dropdown,
+            footer,
+            .footer {
+                display: none !important;
+            }
+
+            /* Ensure body background and text render correctly */
+            body {
+                background: #000 !important;
+                color: #e0e0e0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* Prevent page breaks inside key sections */
+            .report-section,
+            .stat-card,
+            .threat-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
         </style>
 </head>
 <body>
