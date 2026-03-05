@@ -3806,10 +3806,16 @@ function generateStyles() {
             text-decoration: underline;
         }
         
+        /* Remove browser-injected header/footer rows (tab title, URL, page count) */
+        @page {
+            margin: 0.5in;
+            size: letter portrait;
+        }
+
         /* Professional Print Stylesheet */
         @media print {
             /* Hide navigation and interactive elements */
-            .nav, .mobile-menu, .progress-bar, .export-bar, .report-nav-links, 
+            .nav, #raveneye, .raveneye, .mobile-menu, .progress-bar, .export-bar, .report-nav-links, 
             .back-link, .filter-bar, .toast { display: none !important; }
             
             /* Reset background and colors for printing */
