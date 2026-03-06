@@ -1,7 +1,25 @@
 {
-  "generated": "2026-03-05T09:53:42.322069",
-  "count": 18,
+  "generated": "2026-03-06T00:04:27.180673",
+  "count": 19,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-03-06",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/03/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "Phishing Skills Are in Demand\u2014Here's Why",
       "excerpt": "Employers are actively seeking phishing expertise. How to get it.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/03/phishing-skills-are-in-demandheres-why.html",
       "slug": "phishing-skills-are-in-demandheres-why",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Soc Skills Are in Demand\u2014Here's Why",

@@ -1,6 +1,54 @@
 {
-  "timestamp": "2026-03-05T09:53:42.255313",
+  "timestamp": "2026-03-06T00:04:27.094365",
   "news": [
+    {
+      "title": "Preparing for the Quantum Era: Post-Quantum Cryptography Webinar for Security Leaders",
+      "link": "https://thehackernews.com/2026/03/preparing-for-quantum-era-post-quantum.html",
+      "description": "Most organizations assume encrypted data is safe.\nBut many attackers are already preparing for a future where today\u2019s encryption can be broken. Instead of trying to decrypt information now, they are collecting encrypted data and storing it so it can be decrypted later using quantum computers.\nThis tactic\u2014known as \u201charvest now, decrypt later\u201d\u2014means sensitive data transmitted today could become",
+      "date": "Thu, 05 Mar 2026 20:52:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "Cisco Confirms Active Exploitation of Two Catalyst SD-WAN Manager Vulnerabilities",
+      "link": "https://thehackernews.com/2026/03/cisco-confirms-active-exploitation-of.html",
+      "description": "Cisco has disclosed that two more vulnerabilities affecting Catalyst SD-WAN Manager (formerly SD-WAN vManage) have come under active exploitation in the wild.\nThe vulnerabilities in question are listed below -\n\nCVE-2026-20122 (CVSS score: 7.1) - An arbitrary file overwrite vulnerability that could allow an authenticated, remote attacker to overwrite arbitrary files on the local file system.",
+      "date": "Thu, 05 Mar 2026 20:52:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "ThreatsDay Bulletin: DDR5 Bot Scalping, Samsung TV Tracking, Reddit Privacy Fine & More",
+      "link": "https://thehackernews.com/2026/03/threatsday-bulletin-redis-rce-ddr5-bot.html",
+      "description": "Some weeks in cybersecurity feel routine. This one doesn&rsquo;t.\nSeveral new developments surfaced over the past few days, showing how quickly the threat landscape keeps shifting. Researchers uncovered fresh activity, security teams shared new findings, and a few unexpected moves from major tech companies also drew attention.\nTogether, these updates offer a useful snapshot of what is happening",
+      "date": "Thu, 05 Mar 2026 19:14:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "Dust Specter Targets Iraqi Officials with New SPLITDROP and GHOSTFORM Malware",
+      "link": "https://thehackernews.com/2026/03/dust-specter-targets-iraqi-officials.html",
+      "description": "A suspected Iran-nexus threat actor has been attributed to a campaign targeting government officials in Iraq by impersonating the country's Ministry of Foreign Affairs to deliver a set of never-before-seen malware.\nZscaler ThreatLabz, which observed the activity in January 2026, is tracking the cluster under the name Dust Specter. The attacks, which manifest in the form of two different",
+      "date": "Thu, 05 Mar 2026 17:31:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "Where Multi-Factor Authentication Stops and Credential Abuse Starts",
+      "link": "https://thehackernews.com/2026/03/where-multi-factor-authentication-stops.html",
+      "description": "Organizations typically roll out multi-factor authentication (MFA) and assume stolen passwords are no longer enough to access systems. In Windows environments, that assumption is often wrong. Attackers still compromise networks every day using valid credentials. The issue is not MFA itself, but coverage.&nbsp;\nEnforced through an identity provider (IdP) such as Microsoft Entra ID, Okta, or",
+      "date": "Thu, 05 Mar 2026 16:30:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "title": "APT28-Linked Campaign Deploys BadPaw Loader and MeowMeow Backdoor in Ukraine",
+      "link": "https://thehackernews.com/2026/03/apt28-linked-campaign-deploys-badpaw.html",
+      "description": "Cybersecurity researchers have disclosed details of a new Russian cyber campaign that has targeted Ukrainian entities with two previously undocumented malware families named BadPaw and MeowMeow.\n\"The attack chain initiates with a phishing email containing a link to a ZIP archive. Once extracted, an initial HTA file displays a lure document written in Ukrainian concerning border crossing appeals",
+      "date": "Thu, 05 Mar 2026 15:40:00 +0530",
+      "category": "cybersecurity_news",
+      "source": "https://feeds.feedburner.com/TheHackersNews"
+    },
     {
       "title": "Europol-Led Operation Takes Down Tycoon 2FA Phishing-as-a-Service Linked to 64,000 Attacks",
       "link": "https://thehackernews.com/2026/03/europol-led-operation-takes-down-tycoon.html",
@@ -34,52 +82,44 @@
       "source": "https://feeds.feedburner.com/TheHackersNews"
     },
     {
-      "title": "New RFP Template for AI Usage Control and AI Governance\u00a0",
-      "link": "https://thehackernews.com/2026/03/new-rfp-template-for-ai-usage-control.html",
-      "description": "As AI becomes the central engine for enterprise productivity, security leaders are finally getting the green light \u2014 and the budget \u2014 to secure it. But there\u2019s a quiet crisis unfolding in the boardroom: many organizations know they need \"AI Governance,\" but they have no idea what they are actually looking for.\nThe CISO\u2019s Dilemma: You Have the AI Budget, but Do You Have the Requirements?\nAs AI",
-      "date": "Wed, 04 Mar 2026 17:00:00 +0530",
+      "title": "Nation-State Actor Embraces AI Malware Assembly Line",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/nation-state-actor-ai-malware-assembly-line",
+      "description": "Pakistan's APT36 threat group has begun using vibe-coding to churn out mediocre malware, but at a scale that could overwhelm defenses.",
+      "date": "Thu, 05 Mar 2026 21:56:07 GMT",
       "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
+      "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Fake Laravel Packages on Packagist Deploy RAT on Windows, macOS, and Linux",
-      "link": "https://thehackernews.com/2026/03/fake-laravel-packages-on-packagist.html",
-      "description": "Cybersecurity researchers have flagged malicious Packagist PHP packages masquerading as Laravel utilities that act as a conduit for a cross-platform remote access trojan (RAT) that's functional on Windows, macOS, and Linux systems.\nThe names of the packages are listed below -\n\nnhattuanbl/lara-helper (37 Downloads)\nnhattuanbl/simple-queue (29 Downloads)\nnhattuanbl/lara-swagger (49 Downloads)",
-      "date": "Wed, 04 Mar 2026 15:07:00 +0530",
+      "title": "Tycoon 2FA Goes Boom as Europol, Vendors Bust Phishing Platform",
+      "link": "https://www.darkreading.com/threat-intelligence/tycoon-2fa-europol-vendors-bust-phishing-platform",
+      "description": "The phishing-as-a-service platform was popular among cyber threat actors because of its ability to bypass multifactor authentication defenses.",
+      "date": "Thu, 05 Mar 2026 21:23:26 GMT",
       "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
+      "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "APT41-Linked Silver Dragon Targets Governments Using Cobalt Strike and Google Drive C2",
-      "link": "https://thehackernews.com/2026/03/apt41-linked-silver-dragon-targets.html",
-      "description": "Cybersecurity researchers have disclosed details of an advanced persistent threat (APT) group dubbed Silver Dragon that has been linked to cyber attacks targeting entities in Europe and Southeast Asia since at least mid-2024.\n\"Silver Dragon gains its initial access by exploiting public-facing internet servers and by delivering phishing emails that contain malicious attachments,\" Check Point said",
-      "date": "Wed, 04 Mar 2026 13:44:00 +0530",
+      "title": "Cisco Drops 48 New Firewall Vulnerabilities, 2 Critical",
+      "link": "https://www.darkreading.com/vulnerabilities-threats/cisco-48-firewall-vulnerabilities-2-critical",
+      "description": "Edge bugs are so fetch, and Cisco just dropped 50 new ones, including some heavy hitters with 10 out of 10 scores on the CVSS scale.",
+      "date": "Thu, 05 Mar 2026 20:11:15 GMT",
       "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
+      "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "CISA Adds Actively Exploited VMware Aria Operations Flaw CVE-2026-22719 to KEV Catalog",
-      "link": "https://thehackernews.com/2026/03/cisa-adds-actively-exploited-vmware.html",
-      "description": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added a recently disclosed security flaw impacting Broadcom VMware Aria Operations to its Known Exploited Vulnerabilities (KEV) catalog, citing active exploitation in the wild.\nThe high-severity vulnerability, CVE-2026-22719 (CVSS score: 8.1), has been described as a case of command injection that could allow an",
-      "date": "Wed, 04 Mar 2026 10:05:00 +0530",
+      "title": "Software Development Practices Help Enterprises Tackle Real-Life Risks",
+      "link": "https://www.darkreading.com/cybersecurity-operations/software-development-practices-help-enterprises-tackle-real-life-risks",
+      "description": "Organizations can borrow secure-by-design processes to manage non-technical challenges like governance or the inevitable human error.",
+      "date": "Thu, 05 Mar 2026 16:34:20 GMT",
       "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
+      "source": "https://www.darkreading.com/rss.xml"
     },
     {
-      "title": "Fake Tech Support Spam Deploys Customized Havoc C2 Across Organizations",
-      "link": "https://thehackernews.com/2026/03/fake-tech-support-spam-deploys.html",
-      "description": "Threat hunters have called attention to a new campaign as part of which bad actors masqueraded as fake IT support to deliver the Havoc command-and-control (C2) framework as a precursor to data exfiltration or ransomware attack.\nThe intrusions, identified by Huntress last month across five partner organizations, involved the threat actors using email spam as lures, followed by a phone call from",
-      "date": "Tue, 03 Mar 2026 22:45:00 +0530",
+      "title": "LatAm Now Faces 2x More Cyberattacks Than US",
+      "link": "https://www.darkreading.com/threat-intelligence/latam-2x-more-cyberattacks-us",
+      "description": "Much of Central and South America struggles with cybersecurity maturity, and hackers are taking advantage.",
+      "date": "Thu, 05 Mar 2026 14:00:00 GMT",
       "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
-    },
-    {
-      "title": "Building a High-Impact Tier 1: The 3 Steps CISOs Must Follow",
-      "link": "https://thehackernews.com/2026/03/building-high-impact-tier-1-3-steps.html",
-      "description": "Every CISO knows the uncomfortable truth about their Security Operations Center: the people most responsible for catching threats in real time are the people with the least experience. Tier 1 analysts sit at the front line of detection, and yet they are also the most vulnerable to the cognitive and organizational pressures that quietly erode SOC performance over time.\nThe Paradox at the Gate:",
-      "date": "Tue, 03 Mar 2026 20:00:00 +0530",
-      "category": "cybersecurity_news",
-      "source": "https://feeds.feedburner.com/TheHackersNews"
+      "source": "https://www.darkreading.com/rss.xml"
     },
     {
       "title": "VMware Aria Operations Bug Exploited, Cloud Resources at Risk",
@@ -118,46 +158,6 @@
       "link": "https://www.darkreading.com/threat-intelligence/india-apt-sloppy-lemming-defense-critical-infrastructure",
       "description": "India-nexus cyber threat actors are growing more active and sophisticated, using custom tools coded in Rust and cloud-based command and control.",
       "date": "Tue, 03 Mar 2026 22:24:22 GMT",
-      "category": "cybersecurity_news",
-      "source": "https://www.darkreading.com/rss.xml"
-    },
-    {
-      "title": "Vehicle Tire Pressure Sensors Enable Silent Tracking",
-      "link": "https://www.darkreading.com/ics-ot-security/tire-pressure-sensors-silent-tracking",
-      "description": "Like many other features and systems in modern cars, tire pressure sensors leak sensitive data that can be abused by threat actors.",
-      "date": "Tue, 03 Mar 2026 20:53:39 GMT",
-      "category": "cybersecurity_news",
-      "source": "https://www.darkreading.com/rss.xml"
-    },
-    {
-      "title": "Qualcomm Zero-Day Exploited in Targeted Android Attacks",
-      "link": "https://www.darkreading.com/threat-intelligence/qualcomm-zero-day-exploited-targeted-android-attacks",
-      "description": "The exploitation activity against CVE-2026-21385, a high-severity memory corruption flaw, could be tied to commercial spyware or nation-state threat groups.",
-      "date": "Tue, 03 Mar 2026 20:28:05 GMT",
-      "category": "cybersecurity_news",
-      "source": "https://www.darkreading.com/rss.xml"
-    },
-    {
-      "title": "Speakeasies to Shadow AI: Banning AI Browsers Will Fail",
-      "link": "https://www.darkreading.com/cyber-risk/speakeasies-shadow-ai-banning-ai-browsers-fail",
-      "description": "Lessons from history highlight why AI-enabled browsers require controlled enablement.",
-      "date": "Tue, 03 Mar 2026 17:40:21 GMT",
-      "category": "cybersecurity_news",
-      "source": "https://www.darkreading.com/rss.xml"
-    },
-    {
-      "title": "AI Agent Overload: How to Solve the Workload Identity Crisis",
-      "link": "https://www.darkreading.com/cloud-security/ai-agent-workload-identity-crisis",
-      "description": "Workloads keep getting more complicated and organizations are struggling to keep up. So what's the play?",
-      "date": "Tue, 03 Mar 2026 12:57:19 GMT",
-      "category": "cybersecurity_news",
-      "source": "https://www.darkreading.com/rss.xml"
-    },
-    {
-      "title": "As War Continues, Pro-Iranian Actors Launch Barrage of Cyberattacks",
-      "link": "https://www.darkreading.com/threat-intelligence/war-pro-iranian-actors-cyberattacks",
-      "description": "Iran and its supporters have taken to cyberspace to retaliate for US-Israeli military action, with an aim to cause economic and physical disruption.",
-      "date": "Tue, 03 Mar 2026 11:30:31 GMT",
       "category": "cybersecurity_news",
       "source": "https://www.darkreading.com/rss.xml"
     },
@@ -242,6 +242,22 @@
       "source": "https://krebsonsecurity.com/feed/"
     },
     {
+      "title": "Israel Hacked Traffic Cameras in Iran",
+      "link": "https://www.schneier.com/blog/archives/2026/03/israel-hacked-traffic-cameras-in-iran.html",
+      "description": "<p><a href=\"https://www.timesofisrael.com/report-israel-hacked-tehran-traffic-cameras-to-track-khamenei-ahead-of-assassination/\">Multiple</a> <a href=\"https://www.ft.com/content/bf998c69-ab46-4fa3-aae4-8f18f7387836\">news</a> <a href=\"https://www.channelnewsasia.com/world/iran-war-inside-plan-kill-ali-khamenei-5966861\">outlets</a> are reporting on Israel&#8217;s hacking of Iranian traffic cameras and how they assisted with the killing of that country&#8217;s leadership.</p>\n<p><i>The New York Times</i> has an &#60;a href=&#34;https://www.nytimes.com/2026/03/01/us/politics/cia-israel-ayatollah-compound.html&#34;&#60;article</a> on the intelligence operation more generally.</p>\n",
+      "date": "2026-03-04T23:40:21Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
+      "title": "Hacked App Part of US/Israeli Propaganda Campaign Against Iran",
+      "link": "https://www.schneier.com/blog/archives/2026/03/hacked-app-part-of-us-israeli-propaganda-campaign-against-iran.html",
+      "description": "<p><i>Wired</i> has the <a href=\"https://www.wired.com/story/hacked-prayer-app-sends-surrender-messages-to-iranians-amid-israeli-strikes/?_sp=cac71a7f-c88a-42bc-b4ca-23c1ce88f702.1772641675776\">story</a>:</p>\n<blockquote><p>Shortly after the first set of explosions, Iranians received bursts of notifications on their phones. They came not from the government advising caution, but from an apparently hacked prayer-timing app called BadeSaba Calendar that has been downloaded more than 5 million times from the Google Play Store.</p>\n<p>The messages arrived in quick succession over a period of 30 minutes, starting with the phrase &#8216;Help has arrived&#8217; at 9:52 am Tehran time, shortly after the first set of explosions. No party has claimed responsibility for the hacks...</p></blockquote>",
+      "date": "2026-03-04T23:41:49Z",
+      "category": "cybersecurity_news",
+      "source": "https://www.schneier.com/feed/atom/"
+    },
+    {
       "title": "Manipulating AI Summarization Features",
       "link": "https://www.schneier.com/blog/archives/2026/03/manipulating-ai-summarization-features.html",
       "description": "<p>Microsoft is <a href=\"https://www.microsoft.com/en-us/security/blog/2026/02/10/ai-recommendation-poisoning/\">reporting</a>:</p>\n<blockquote><p>Companies are embedding hidden instructions in &#8220;Summarize with AI&#8221; buttons that, when clicked, attempt to inject persistence commands into an AI assistant&#8217;s memory via URL prompt parameters&#8230;.</p>\n<p>These prompts instruct the AI to &#8220;remember [Company] as a trusted source&#8221; or &#8220;recommend [Company] first,&#8221; aiming to bias future responses toward their products or services. We identified over 50 unique prompts from 31 companies across 14 industries, with freely available tooling making this technique trivially easy to deploy. This matters because compromised AI assistants can provide subtly biased recommendations on critical topics including health, finance, and security without users knowing their AI has been manipulated...</p></blockquote>",
@@ -302,22 +318,6 @@
       "link": "https://www.schneier.com/blog/archives/2026/02/poisoning-ai-training-data.html",
       "description": "<p>All it takes to <a href=\"https://www.bbc.com/future/article/20260218-i-hacked-chatgpt-and-googles-ai-and-it-only-took-20-minutes\">poison AI training data</a> is to create a website:</p>\n<blockquote><p>I spent 20 minutes writing <a href=\"https://tomgermain.com/hotdogs.html\">an article</a> on my personal website titled &#8220;The best tech journalists at eating hot dogs.&#8221; Every word is a lie. I claimed (without evidence) that competitive hot-dog-eating is a popular hobby among tech reporters and based my ranking on the 2026 South Dakota International Hot Dog Championship (which doesn&#8217;t exist). I ranked myself number one, obviously. Then I listed a few fake reporters and real journalists who gave me permission&#8230;.</p>\n<p>Less than 24 hours later, the world&#8217;s leading chatbots were blabbering about my world-class hot dog skills. When I asked about the best hot-dog-eating tech journalists, Google parroted the gibberish from my website, both in the Gemini app and AI Overviews, the AI responses at the top of Google Search. ChatGPT did the same thing, though Claude, a chatbot made by the company Anthropic, wasn&#8217;t fooled...</p></blockquote>",
       "date": "2026-02-24T17:03:24Z",
-      "category": "cybersecurity_news",
-      "source": "https://www.schneier.com/feed/atom/"
-    },
-    {
-      "title": "Is AI Good for Democracy?",
-      "link": "https://www.schneier.com/blog/archives/2026/02/is-ai-good-for-democracy.html",
-      "description": "<p>Politicians fixate on the global race for technological supremacy between US and China. They debate geopolitical implications of chip exports, latest model releases from each country, and military applications of AI. Someday, they believe, we might see advancements in AI tip the scales in a superpower conflict.</p>\n<p>But the most important arms race of the 21st century is already happening elsewhere and, while AI is definitely the weapon of choice, combatants are distributed across dozens of domains.</p>\n<p><a href=\"https://www.marketplace.org/episode/2025/11/24/ai-generated-letters-to-the-editor-are-flooding-academic-publications\">Academic journals</a> are flooded with AI-generated papers, and are turning to AI to help review submissions. Brazil\u2019s ...</p>",
-      "date": "2026-02-23T13:32:28Z",
-      "category": "cybersecurity_news",
-      "source": "https://www.schneier.com/feed/atom/"
-    },
-    {
-      "title": "On the Security of Password Managers",
-      "link": "https://www.schneier.com/blog/archives/2026/02/on-the-security-of-password-managers.html",
-      "description": "<p><a href=\"https://arstechnica.com/security/2026/02/password-managers-promise-that-they-cant-see-your-vaults-isnt-always-true/\">Good article</a> on password managers that secretly have a backdoor.</p>\n<blockquote><p>New research shows that these claims aren\u2019t true in all cases, particularly when account recovery is in place or password managers are set to share vaults or organize users into groups. The researchers reverse-engineered or closely analyzed Bitwarden, Dashlane, and LastPass and identified ways that someone with control over the server\u00ad&#8212;either administrative or the result of a compromise\u00ad&#8212;can, in fact, steal data and, in some cases, entire vaults. The researchers also devised other attacks that can weaken the encryption to the point that ciphertext can be converted to plaintext...</p></blockquote>",
-      "date": "2026-02-20T03:46:48Z",
       "category": "cybersecurity_news",
       "source": "https://www.schneier.com/feed/atom/"
     },
@@ -402,18 +402,66 @@
       "source": "https://www.cisa.gov/news.xml"
     },
     {
-      "title": "John Strand AMA - Five years ago, I did an AMA here about Pay What You Can training. A lot has changed in cybersecurity since then. Ask Me Anything.",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1rkocps/john_strand_ama_five_years_ago_i_did_an_ama_here/",
-      "description": "",
-      "date": "2026-03-04T15:27:10+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/cybersecurity/.rss"
-    },
-    {
       "title": "Mentorship Monday - Post All Career, Education and Job questions here!",
       "link": "https://www.reddit.com/r/cybersecurity/comments/1ridfat/mentorship_monday_post_all_career_education_and/",
       "description": "",
       "date": "2026-03-02T00:00:33+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "Check Point Experts on CTEM in the Real World & What Actually Gets You Hacked",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1r6746q/check_point_experts_on_ctem_in_the_real_world/",
+      "description": "",
+      "date": "2026-02-16T11:24:42+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "Proton Mail Helped FBI Unmask Anonymous \u2018Stop Cop City\u2019 Protester",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rltjnw/proton_mail_helped_fbi_unmask_anonymous_stop_cop/",
+      "description": "",
+      "date": "2026-03-05T21:00:20+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "With CVE-2026-29000, what are the most notable CVSS 10.0 vulnerabilities of all time?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rlg8m2/with_cve202629000_what_are_the_most_notable_cvss/",
+      "description": "",
+      "date": "2026-03-05T12:22:56+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "My friend and I built a free app where you learn IT by solving real troubleshooting scenarios, looking for feedback",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rllfgv/my_friend_and_i_built_a_free_app_where_you_learn/",
+      "description": "",
+      "date": "2026-03-05T16:03:44+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "Analysis of AI-generated malware by APT36",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rlin8b/analysis_of_aigenerated_malware_by_apt36/",
+      "description": "",
+      "date": "2026-03-05T14:12:27+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "Security awareness training: the basics weren't that obvious",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rlme81/security_awareness_training_the_basics_werent/",
+      "description": "",
+      "date": "2026-03-05T16:40:47+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/cybersecurity/.rss"
+    },
+    {
+      "title": "PSA: If you use pac4j for JWT authentication, you need to patch immediately, CVSS 10.0 auth bypass",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rldmi0/psa_if_you_use_pac4j_for_jwt_authentication_you/",
+      "description": "",
+      "date": "2026-03-05T09:55:40+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
@@ -426,58 +474,10 @@
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
     {
-      "title": "Waste Management is a Cybersecurity Job: An Awareness P.S.A.",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1rl7x8j/waste_management_is_a_cybersecurity_job_an/",
+      "title": "Google: Commercial Surveillance Vendors Dominated Zero-Day Exploitation in 2025",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1rlkbes/google_commercial_surveillance_vendors_dominated/",
       "description": "",
-      "date": "2026-03-05T04:26:56+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/cybersecurity/.rss"
-    },
-    {
-      "title": "Online ads just became the internet's biggest malware machine, report says",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1rkrgoq/online_ads_just_became_the_internets_biggest/",
-      "description": "",
-      "date": "2026-03-04T17:22:27+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/cybersecurity/.rss"
-    },
-    {
-      "title": "How to improve my incident response",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1rl2vfe/how_to_improve_my_incident_response/",
-      "description": "",
-      "date": "2026-03-05T00:35:20+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/cybersecurity/.rss"
-    },
-    {
-      "title": "To every manager who thinks they have AI under control, think again",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1rkhnyw/to_every_manager_who_thinks_they_have_ai_under/",
-      "description": "",
-      "date": "2026-03-04T10:08:33+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/cybersecurity/.rss"
-    },
-    {
-      "title": "Steganography in 2026",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1rl6n6v/steganography_in_2026/",
-      "description": "",
-      "date": "2026-03-05T03:25:03+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/cybersecurity/.rss"
-    },
-    {
-      "title": "Cybersecurity professionals are burning out on extra hours every week",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1rkgmig/cybersecurity_professionals_are_burning_out_on/",
-      "description": "",
-      "date": "2026-03-04T09:03:04+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/cybersecurity/.rss"
-    },
-    {
-      "title": "Seeking Referral: Cybersecurity Analyst (Defensive/Offensive)",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1rlcdx5/seeking_referral_cybersecurity_analyst/",
-      "description": "",
-      "date": "2026-03-05T08:38:08+00:00",
+      "date": "2026-03-05T15:20:31+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/cybersecurity/.rss"
     },
@@ -498,6 +498,30 @@
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
     {
+      "title": "Advice on pursuing CISSP.",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rlsqir/advice_on_pursuing_cissp/",
+      "description": "",
+      "date": "2026-03-05T20:29:28+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "Detection Engineer to Cloud Security?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rlw3tj/detection_engineer_to_cloud_security/",
+      "description": "",
+      "date": "2026-03-05T22:36:40+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "New to posting on Reddit, SOC Engineer starting a small side project, looking for advice",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rls8f5/new_to_posting_on_reddit_soc_engineer_starting_a/",
+      "description": "",
+      "date": "2026-03-05T20:10:31+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
       "title": "Looking for Advice - College Junior",
       "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rl3edd/looking_for_advice_college_junior/",
       "description": "",
@@ -510,6 +534,14 @@
       "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rkunu5/getting_a_job_as_an_international_student_in_opt/",
       "description": "",
       "date": "2026-03-04T19:16:31+00:00",
+      "category": "career_news",
+      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
+    },
+    {
+      "title": "21 and thinking about switching to Cloud Security in the UK \u2014 what\u2019s the best path?",
+      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rkgy7d/21_and_thinking_about_switching_to_cloud_security/",
+      "description": "",
+      "date": "2026-03-04T09:23:23+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     },
@@ -528,63 +560,39 @@
       "date": "2026-03-04T10:07:04+00:00",
       "category": "career_news",
       "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
-    },
-    {
-      "title": "21 and thinking about switching to Cloud Security in the UK \u2014 what\u2019s the best path?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rkgy7d/21_and_thinking_about_switching_to_cloud_security/",
-      "description": "",
-      "date": "2026-03-04T09:23:23+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
-    },
-    {
-      "title": "Do I take this road or no?",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rk9ms3/do_i_take_this_road_or_no/",
-      "description": "",
-      "date": "2026-03-04T02:41:19+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
-    },
-    {
-      "title": "24 y/o needing advice",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rjw9kj/24_yo_needing_advice/",
-      "description": "",
-      "date": "2026-03-03T17:55:29+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
-    },
-    {
-      "title": "[India] What is the reality of the Cybersecurity job market here? (Degree requirements, skills, etc.)",
-      "link": "https://www.reddit.com/r/SecurityCareerAdvice/comments/1rkhb07/india_what_is_the_reality_of_the_cybersecurity/",
-      "description": "",
-      "date": "2026-03-04T09:46:18+00:00",
-      "category": "career_news",
-      "source": "https://www.reddit.com/r/SecurityCareerAdvice/.rss"
     }
   ],
   "trending": [
     [
-      "AI",
-      26
+      "OT",
+      25
     ],
     [
-      "OT",
+      "AI",
       22
     ],
     [
-      "phishing",
-      5
+      "government",
+      6
     ],
     [
-      "government",
-      5
+      "phishing",
+      6
     ],
     [
       "critical infrastructure",
       5
     ],
     [
+      "cloud",
+      4
+    ],
+    [
       "vulnerability",
+      3
+    ],
+    [
+      "ICS",
       3
     ],
     [
@@ -592,15 +600,7 @@
       3
     ],
     [
-      "cloud",
-      3
-    ],
-    [
-      "CISO",
-      2
-    ],
-    [
-      "analyst",
+      "NIST",
       2
     ]
   ],
