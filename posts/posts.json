@@ -1,7 +1,26 @@
 {
-  "generated": "2026-03-06T00:04:27.180673",
-  "count": 19,
+  "generated": "2026-03-06T00:11:31.402780",
+  "count": 20,
   "posts": [
+    {
+      "title": "Security Job Market: March 2026 Update",
+      "excerpt": "Latest hiring trends, salary data, and what's changed.",
+      "date": "2026-03-06",
+      "category": "Salaries",
+      "category_slug": "salaries",
+      "category_css": "sal",
+      "tags": [
+        "Salaries",
+        "Cybersecurity",
+        "Career",
+        "Cloud",
+        "cloud"
+      ],
+      "filepath": "posts/2026/03/security-job-market-march-2026-update.html",
+      "slug": "security-job-market-march-2026-update",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/03/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Phishing Skills Are in Demand\u2014Here's Why",
