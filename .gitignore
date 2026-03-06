@@ -1,0 +1,5 @@
+scripts/
+*.py
+scheduler_state.json
+data_cache.json
+__pycache__/
