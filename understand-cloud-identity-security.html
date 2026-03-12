@@ -825,6 +825,142 @@
       .zt-assess-body { padding: 16px; }
       .ac-legend { gap: 12px; }
     }
+  
+    /* ===================================================
+       BLOG PROMO SECTION
+    =================================================== */
+    .blog-promo-section {
+      background: #0d0d0f;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 4rem 2rem;
+    }
+
+    .blog-promo-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .blog-promo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 900px) {
+      .blog-promo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .blog-promo-grid { grid-template-columns: 1fr; }
+    }
+
+    .blog-promo-card {
+      display: flex;
+      flex-direction: column;
+      background: #16161a;
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 6px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      height: 100%;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.45);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .blog-promo-card:hover {
+      border-color: rgba(201,168,76,0.5);
+      box-shadow: 0 0 28px rgba(201,168,76,0.12);
+      transform: translateY(-3px);
+    }
+
+    .blog-promo-accent {
+      height: 3px;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .blog-accent-cti     { background: linear-gradient(90deg, var(--gold), #c96a4c); }
+    .blog-accent-careers { background: linear-gradient(90deg, #4c8ec9, #4caf82); }
+    .blog-accent-reports { background: linear-gradient(90deg, #9b6ec9, var(--gold)); }
+
+    .blog-promo-body {
+      padding: 1.8rem 1.8rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-grow: 1;
+    }
+
+    .blog-promo-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-disp);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.7);
+    }
+
+    .blog-promo-title {
+      font-family: var(--font-disp);
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #ffffff;
+      line-height: 1.1;
+      transition: color 0.2s;
+    }
+
+    .blog-promo-card:hover .blog-promo-title { color: #c9a84c; }
+
+    .blog-promo-desc {
+      font-size: 0.84rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    .blog-promo-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.2rem;
+    }
+
+    .blog-promo-tags span {
+      font-family: var(--font-disp);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8a8a9a;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.14rem 0.48rem;
+      border-radius: 2px;
+    }
+
+    .blog-promo-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 1rem 1.8rem 1.5rem;
+      font-family: var(--font-disp);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      transition: gap 0.2s;
+    }
+
+    .blog-promo-card:hover .blog-promo-cta { gap: 0.72rem; }
+
+
   </style>
 </head>
 <body>
@@ -1921,42 +2057,89 @@
   </div>
 
   <!-- RELATED RESOURCES RAIL -->
-  <div class="related-rail">
-    <div class="related-rail-label">Also from TacRaven</div>
-    <div class="related-cards">
 
-      <a href="/blackfeather.html" class="related-card" style="--rc-accent:#c9a84c;">
-        <div class="related-card-tag">Platform</div>
-        <div class="related-card-name">BlackFeather</div>
-        <p class="related-card-desc">Air-gapped threat intelligence analysis platform built for defense and intelligence environments.</p>
-        <div class="related-card-arrow">
-          Explore BlackFeather
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
-      </a>
+  <!-- ===================================================
+       BLOG PROMO SECTION
+       Promotes Black Wing Dispatch, Cyber Careers, and Weekly Threat Reports.
+  =================================================== -->
+  <section class="blog-promo-section" id="from-the-blog">
+    <div class="blog-promo-inner">
 
-      <a href="/security-operations.html" class="related-card" style="--rc-accent:#a08030;">
-        <div class="related-card-tag">Pillar Guide</div>
-        <div class="related-card-name">Security Operations</div>
-        <p class="related-card-desc">A comprehensive guide to modern security operations covering SOC, threat intelligence, detection engineering, incident response, and vulnerability management.</p>
-        <div class="related-card-arrow">
-          Read the Guide
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
-      </a>
+      <p class="section-eyebrow">From TacRaven</p>
+      <h2 class="section-title">Keep Reading</h2>
+      <p class="section-sub">Go deeper with original intelligence reporting, career resources, and weekly threat data from TacRaven's editorial team.</p>
 
-      <a href="/apt-intelligence-library.html" class="related-card" style="--rc-accent:#c05a3a;">
-        <div class="related-card-tag">Reference</div>
-        <div class="related-card-name">APT Intelligence Library</div>
-        <p class="related-card-desc">Structured threat actor profiles covering attribution, TTPs, infrastructure patterns, and historical campaigns.</p>
-        <div class="related-card-arrow">
-          Browse APT Profiles
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
-      </a>
+      <div class="blog-promo-grid">
 
+        <!-- CARD: BLACK WING DISPATCH -->
+        <a href="/intel/blackwing/index.html" class="blog-promo-card" aria-label="Black Wing Dispatch - CTI Blog">
+          <div class="blog-promo-accent blog-accent-cti"></div>
+          <div class="blog-promo-body">
+            <div class="blog-promo-eyebrow">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Threat Intelligence
+            </div>
+            <h3 class="blog-promo-title">Black Wing Dispatch</h3>
+            <p class="blog-promo-desc">Weekly cyber threat intelligence briefings covering active adversary groups, emerging TTPs, CISA KEV updates, and malware campaigns - written for analysts and defenders.</p>
+            <div class="blog-promo-tags">
+              <span>APT Profiles</span>
+              <span>CISA KEV</span>
+              <span>Malware</span>
+              <span>TTPs</span>
+            </div>
+          </div>
+          <div class="blog-promo-cta">
+            Read Dispatches <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+        <!-- CARD: CYBER CAREERS BLOG -->
+        <a href="/Blog.html" class="blog-promo-card" aria-label="Cyber Careers Blog">
+          <div class="blog-promo-accent blog-accent-careers"></div>
+          <div class="blog-promo-body">
+            <div class="blog-promo-eyebrow">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              Career Development
+            </div>
+            <h3 class="blog-promo-title">Cyber Careers</h3>
+            <p class="blog-promo-desc">Practical guidance for breaking into and advancing in cybersecurity - certifications, resume strategies, SOC analyst insights, and how to navigate the job market from people who've done it.</p>
+            <div class="blog-promo-tags">
+              <span>Certifications</span>
+              <span>SOC Careers</span>
+              <span>Job Search</span>
+              <span>Salaries</span>
+            </div>
+          </div>
+          <div class="blog-promo-cta">
+            Browse Articles <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+        <!-- CARD: WEEKLY THREAT REPORTS -->
+        <a href="/intel/weekly/index.html" class="blog-promo-card" aria-label="Weekly Cybersecurity Threat Reports">
+          <div class="blog-promo-accent blog-accent-reports"></div>
+          <div class="blog-promo-body">
+            <div class="blog-promo-eyebrow">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              Published Weekly
+            </div>
+            <h3 class="blog-promo-title">Threat Reports</h3>
+            <p class="blog-promo-desc">Structured weekly reports aggregating live threat data - active C2 infrastructure, CISA Known Exploited Vulnerabilities, and indicator feeds - delivered as downloadable PDFs.</p>
+            <div class="blog-promo-tags">
+              <span>C2 Tracking</span>
+              <span>KEV Feed</span>
+              <span>IOCs</span>
+              <span>PDF Download</span>
+            </div>
+          </div>
+          <div class="blog-promo-cta">
+            View Reports <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+      </div>
     </div>
-  </div>
+  </section>
 
 </div><!-- /page-wrap -->
 </main>
