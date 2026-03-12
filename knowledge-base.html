@@ -1367,6 +1367,170 @@
       .hero-stat { padding: 0.6rem 0.9rem; min-width: 70px; }
       .hero-stat-num { font-size: 1.2rem; }
     }
+
+    /* ===================================================
+       PILLAR NAVIGATION SECTION
+       "Explore Knowledge Base Topics" - four pillar cards
+       inserted between hero and search bar.
+    =================================================== */
+    .pillar-nav-section {
+      padding: 3.5rem 2rem 3rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .pillar-nav-header {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .pillar-nav-eyebrow {
+      display: inline-block;
+      font-family: var(--font-disp);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-nav-section h2 {
+      font-family: var(--font-disp);
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .pillar-nav-section h2 span { color: var(--gold); }
+
+    .pillar-nav-intro {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    .pillar-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .pillar-nav-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Colored top accent bar per pillar */
+    .pillar-nav-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .pillar-nav-card-gold::before   { background: var(--gold); }
+    .pillar-nav-card-blue::before   { background: #4c8ec9; }
+    .pillar-nav-card-green::before  { background: #4caf82; }
+    .pillar-nav-card-purple::before { background: #9b6ec9; }
+
+    .pillar-nav-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 22px var(--gold-glow), inset 0 0 40px rgba(201,168,76,0.02);
+    }
+
+    .pillar-nav-card-gold:hover   { border-color: var(--gold-dim);       box-shadow: 0 0 22px rgba(201,168,76,0.22); }
+    .pillar-nav-card-blue:hover   { border-color: rgba(76,142,201,0.55); box-shadow: 0 0 22px rgba(76,142,201,0.18); }
+    .pillar-nav-card-green:hover  { border-color: rgba(76,175,130,0.55); box-shadow: 0 0 22px rgba(76,175,130,0.18); }
+    .pillar-nav-card-purple:hover { border-color: rgba(155,110,201,0.55);box-shadow: 0 0 22px rgba(155,110,201,0.18);}
+
+    .pillar-nav-card-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      margin-bottom: 0.1rem;
+    }
+
+    .pillar-nav-card-title {
+      font-family: var(--font-disp);
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.2;
+      transition: color var(--transition);
+    }
+
+    .pillar-nav-card-gold:hover   .pillar-nav-card-title { color: var(--gold); }
+    .pillar-nav-card-blue:hover   .pillar-nav-card-title { color: #4c8ec9; }
+    .pillar-nav-card-green:hover  .pillar-nav-card-title { color: #4caf82; }
+    .pillar-nav-card-purple:hover .pillar-nav-card-title { color: #9b6ec9; }
+
+    .pillar-nav-card-desc {
+      font-size: 0.82rem;
+      color: #6a6a6a;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .pillar-nav-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-disp);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid;
+      margin-top: 0.2rem;
+      align-self: flex-start;
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .pillar-nav-card-cta-gold   { color: var(--gold);  border-color: var(--gold-dim);         background: transparent; }
+    .pillar-nav-card-cta-blue   { color: #4c8ec9;       border-color: rgba(76,142,201,0.45);   background: transparent; }
+    .pillar-nav-card-cta-green  { color: #4caf82;       border-color: rgba(76,175,130,0.45);   background: transparent; }
+    .pillar-nav-card-cta-purple { color: #9b6ec9;       border-color: rgba(155,110,201,0.45);  background: transparent; }
+
+    .pillar-nav-card-gold:hover   .pillar-nav-card-cta { background: var(--gold-glow);              border-color: var(--gold);      box-shadow: 0 0 12px rgba(201,168,76,0.2); }
+    .pillar-nav-card-blue:hover   .pillar-nav-card-cta { background: rgba(76,142,201,0.1);          border-color: #4c8ec9;          box-shadow: 0 0 12px rgba(76,142,201,0.18); }
+    .pillar-nav-card-green:hover  .pillar-nav-card-cta { background: rgba(76,175,130,0.1);          border-color: #4caf82;          box-shadow: 0 0 12px rgba(76,175,130,0.18); }
+    .pillar-nav-card-purple:hover .pillar-nav-card-cta { background: rgba(155,110,201,0.1);         border-color: #9b6ec9;          box-shadow: 0 0 12px rgba(155,110,201,0.18);}
+
+    .pillar-nav-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 2rem;
+    }
+
+    @media (max-width: 680px) {
+      .pillar-nav-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 440px) {
+      .pillar-nav-grid { grid-template-columns: 1fr; }
+      .pillar-nav-section { padding: 2.5rem 1.2rem 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -1385,7 +1549,7 @@
     <p class="hero-sub">Plain-language explanations of the most important cybersecurity technologies, frameworks, and operational concepts.</p>
 
     <p class="hero-desc">
-      This library is built for students, working professionals, and organizations who need to quickly understand cybersecurity tools and standards - without wading through dense technical documentation. Each article is written to be clear, actionable, and directly applicable to real environments.
+      This library is built for students, working professionals, and organizations who need to quickly understand cybersecurity tools and standards — without wading through dense technical documentation. Explore <a href="/security-technologies.html" style="color:var(--gold-dim);text-decoration:none;border-bottom:1px solid var(--gold-dim);">Security Technologies</a>, <a href="/compliance-frameworks.html" style="color:var(--gold-dim);text-decoration:none;border-bottom:1px solid var(--gold-dim);">Compliance &amp; Frameworks</a>, <a href="/security-operations.html" style="color:var(--gold-dim);text-decoration:none;border-bottom:1px solid var(--gold-dim);">Security Operations</a>, and <a href="/cloud-identity-security.html" style="color:var(--gold-dim);text-decoration:none;border-bottom:1px solid var(--gold-dim);">Cloud &amp; Identity Security</a>.
     </p>
 
     <!-- HERO STAT BAR - update numbers when adding new topics/categories -->
@@ -1414,6 +1578,75 @@
     </a>
 
   </header>
+
+
+  <!-- ===================================================
+       PILLAR NAVIGATION SECTION
+       "Explore Knowledge Base Topics"
+       Inserted directly below the hero to provide top-level
+       wayfinding into the four main pillar content areas.
+  =================================================== -->
+  <section aria-label="Explore Knowledge Base Topics">
+    <div class="pillar-nav-section">
+
+      <div class="pillar-nav-header">
+        <div class="pillar-nav-eyebrow">Browse by Area</div>
+        <h2>Explore <span>Knowledge Base</span> Topics</h2>
+        <p class="pillar-nav-intro">
+          The TacRaven Knowledge Base is organized into four core cybersecurity domains. Each pillar contains a comprehensive guide along with individual deep-dive articles covering the key technologies, standards, and operational concepts within that area. Select a pillar to explore the full collection.
+        </p>
+      </div>
+
+      <div class="pillar-nav-grid">
+
+        <!-- PILLAR 1: Security Technologies -->
+        <a href="/security-technologies.html" class="pillar-nav-card pillar-nav-card-gold" aria-label="Explore Security Technologies pillar">
+          <div class="pillar-nav-card-icon">🛡️</div>
+          <div class="pillar-nav-card-title">Security Technologies</div>
+          <p class="pillar-nav-card-desc">Learn how modern cybersecurity platforms like <strong style="color:#888;font-weight:500;">SIEM</strong>, <strong style="color:#888;font-weight:500;">EDR</strong>, <strong style="color:#888;font-weight:500;">XDR</strong>, <strong style="color:#888;font-weight:500;">SOAR</strong>, and <strong style="color:#888;font-weight:500;">Zero Trust</strong> work together to detect, investigate, and respond to threats.</p>
+          <span class="pillar-nav-card-cta pillar-nav-card-cta-gold">
+            Explore Security Technologies
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <!-- PILLAR 2: Compliance & Frameworks -->
+        <a href="/compliance-frameworks.html" class="pillar-nav-card pillar-nav-card-blue" aria-label="Explore Compliance and Security Frameworks pillar">
+          <div class="pillar-nav-card-icon">📋</div>
+          <div class="pillar-nav-card-title">Compliance &amp; Security Frameworks</div>
+          <p class="pillar-nav-card-desc">Understand the cybersecurity standards organizations rely on to manage risk and demonstrate security maturity, including <strong style="color:#888;font-weight:500;">SOC 2</strong>, <strong style="color:#888;font-weight:500;">ISO 27001</strong>, <strong style="color:#888;font-weight:500;">CMMC</strong>, <strong style="color:#888;font-weight:500;">NIST CSF</strong>, and <strong style="color:#888;font-weight:500;">PCI-DSS</strong>.</p>
+          <span class="pillar-nav-card-cta pillar-nav-card-cta-blue">
+            Explore Compliance Frameworks
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <!-- PILLAR 3: Security Operations -->
+        <a href="/security-operations.html" class="pillar-nav-card pillar-nav-card-green" aria-label="Explore Security Operations pillar">
+          <div class="pillar-nav-card-icon">⚙️</div>
+          <div class="pillar-nav-card-title">Security Operations</div>
+          <p class="pillar-nav-card-desc">Discover how modern security teams monitor, detect, investigate, and respond to cyber threats through <strong style="color:#888;font-weight:500;">SOC operations</strong>, <strong style="color:#888;font-weight:500;">threat intelligence</strong>, <strong style="color:#888;font-weight:500;">incident response</strong>, <strong style="color:#888;font-weight:500;">detection engineering</strong>, and <strong style="color:#888;font-weight:500;">vulnerability management</strong>.</p>
+          <span class="pillar-nav-card-cta pillar-nav-card-cta-green">
+            Explore Security Operations
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <!-- PILLAR 4: Cloud & Identity Security -->
+        <a href="/cloud-identity-security.html" class="pillar-nav-card pillar-nav-card-purple" aria-label="Explore Cloud and Identity Security pillar">
+          <div class="pillar-nav-card-icon">☁️</div>
+          <div class="pillar-nav-card-title">Cloud &amp; Identity Security</div>
+          <p class="pillar-nav-card-desc">Explore the identity and cloud security technologies that protect modern infrastructure, including <strong style="color:#888;font-weight:500;">IAM</strong>, <strong style="color:#888;font-weight:500;">PAM</strong>, <strong style="color:#888;font-weight:500;">CSPM</strong>, <strong style="color:#888;font-weight:500;">DevSecOps</strong>, and <strong style="color:#888;font-weight:500;">cloud security architecture</strong>.</p>
+          <span class="pillar-nav-card-cta pillar-nav-card-cta-purple">
+            Explore Cloud &amp; Identity
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+    <div class="pillar-nav-divider" aria-hidden="true"></div>
+  </section>
 
 
   <!-- ===================================================
