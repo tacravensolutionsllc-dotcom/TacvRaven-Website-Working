@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is Detection Engineering? | TacRaven Cybersecurity Knowledge Base</title>
+  <meta name="description" content="Learn what detection engineering is, how security teams build detection logic and SIEM rules, and how organizations identify malicious behavior through telemetry and log analysis." />
+  <meta name="keywords" content="detection engineering, SIEM detection rules, security detection engineering, cyber threat detection, security analytics, threat detection engineering, security monitoring rules, detection development" />
+  <meta name="author" content="TacRaven Solutions" />
+  <link rel="canonical" href="https://tacraven.com/knowledge/detection-engineering.html" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="What is Detection Engineering? | TacRaven Cybersecurity Knowledge Base" />
+  <meta property="og:description" content="Learn what detection engineering is, how security teams build detection logic and SIEM rules, and how organizations identify malicious behavior through telemetry and log analysis." />
+  <meta property="og:url" content="https://tacraven.com/knowledge/detection-engineering.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is Detection Engineering? | TacRaven Cybersecurity Knowledge Base" />
+  <meta name="twitter:description" content="Learn what detection engineering is, how security teams build detection logic and SIEM rules, and how organizations identify malicious behavior through telemetry and log analysis." />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is Detection Engineering? Understanding How Security Teams Build and Maintain Detection Logic to Identify Adversary Behavior",
+    "description": "Learn what detection engineering is, how security teams build detection logic and SIEM rules, and how organizations identify malicious behavior through telemetry and log analysis.",
+    "url": "https://tacraven.com/knowledge/detection-engineering.html",
+    "datePublished": "2025-01-15",
+    "dateModified": "2025-07-01",
+    "author": {
+      "@type": "Organization",
+      "name": "TacRaven Solutions",
+      "url": "https://tacraven.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TacRaven Solutions",
+      "url": "https://tacraven.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tacraven.com/knowledge/detection-engineering.html"
+    },
+    "articleSection": "Security Operations",
+    "keywords": ["detection engineering", "SIEM detection rules", "security detection engineering", "cyber threat detection", "security analytics", "threat detection engineering", "security monitoring rules", "detection development"],
+    "educationalLevel": "Advanced",
+    "about": {
+      "@type": "Thing",
+      "name": "Detection Engineering"
+    }
+  }
+  </script>
+
+  <style>
+    /* =========================================
+       CSS CUSTOM PROPERTIES - TacRaven Theme
+    ========================================= */
+    :root {
+      --black:        #0a0a0a;
+      --dark:         #111111;
+      --dark-card:    #161616;
+      --dark-border:  #1f1f1f;
+      --gold:         #c9a84c;
+      --gold-light:   #e2c06e;
+      --gold-dim:     #8a6e2f;
+      --red:          #c0392b;
+      --text:         #d4d4d4;
+      --text-muted:   #7a7a7a;
+      --text-dim:     #4a4a4a;
+      --white:        #f0f0f0;
+      --font-display: 'Courier New', Courier, monospace;
+      --font-body:    Georgia, 'Times New Roman', serif;
+      --font-ui:      'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    }
+
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =========================================
+       BACK BUTTON BAR
+    ========================================= */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--dark-border);
+      backdrop-filter: blur(6px);
+      padding: 12px 24px;
+    }
+
+    .btn-back {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      padding: 8px 18px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .btn-back:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .btn-back::before {
+      content: '\2190';
+      font-size: 0.85rem;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--dark-border);
+      background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a { color: var(--gold-dim); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: bold;
+      color: var(--white);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 .accent { color: var(--gold); }
+
+    .hero-subtitle {
+      font-family: var(--font-ui);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .hero-intro {
+      font-size: 1rem;
+      color: var(--text);
+      max-width: 780px;
+      margin-bottom: 32px;
+      border-left: 3px solid var(--gold-dim);
+      padding-left: 18px;
+    }
+
+    .meta-bar { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .meta-tag {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid #3a3a3a;
+      border-radius: 2px;
+      color: #c8c8c8;
+      background: #1e1e1e;
+    }
+
+    .meta-tag.cat { border-color: var(--gold); color: var(--gold-light); }
+
+    /* =========================================
+       MAIN LAYOUT
+    ========================================= */
+    .page-body {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    article { min-width: 0; }
+
+    .kb-section { margin-bottom: 52px; }
+
+    .kb-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kb-section h2::before { content: '//'; color: var(--gold); font-size: 0.85rem; }
+
+    .kb-section h3 {
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin: 28px 0 10px;
+    }
+
+    .kb-section p { margin-bottom: 16px; color: var(--text); }
+
+    .card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 22px 26px;
+      margin-bottom: 16px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .card-small {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+
+    .card-small h4 {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .card-small p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .usecase-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 3px solid var(--gold-dim);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 18px;
+    }
+
+    .usecase-card h4 {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .usecase-card p { font-size: 0.9rem; color: var(--text); margin-bottom: 0; }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 14px;
+    }
+
+    .compare-table th {
+      font-family: var(--font-display);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--gold);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--gold-dim);
+      background: var(--dark);
+    }
+
+    .compare-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--dark-border);
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.04); }
+
+    .platform-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .platform-list li {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+
+    .platform-list li strong {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .platform-list li span { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    .takeaway-list { list-style: none; padding: 0; }
+
+    .takeaway-list li {
+      padding: 12px 16px 12px 44px;
+      position: relative;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .takeaway-list li:last-child { border-bottom: none; }
+
+    .takeaway-list li::before {
+      content: '\25BA';
+      position: absolute;
+      left: 16px;
+      color: var(--gold);
+      font-size: 0.65rem;
+      top: 16px;
+    }
+
+    .arch-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 18px 0;
+      align-items: stretch;
+    }
+
+    .arch-step {
+      flex: 1;
+      min-width: 100px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 14px 12px;
+      text-align: center;
+      position: relative;
+    }
+
+    .arch-step:not(:last-child)::after {
+      content: '\2192';
+      position: absolute;
+      right: -13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold-dim);
+      font-size: 0.9rem;
+      z-index: 2;
+    }
+
+    .arch-step .step-num {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      color: var(--gold-dim);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .arch-step .step-name {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    .callout-warning {
+      background: rgba(192,57,43,0.08);
+      border: 1px solid rgba(192,57,43,0.25);
+      border-left: 3px solid var(--red);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    .callout-warning strong {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #e05c4a;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .callout-warning p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+
+    /* Detection maturity tiers */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .tier-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+
+    .tier-badge {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+
+    .tier-1 { background: rgba(192,57,43,0.18);  color: #e74c3c; border: 1px solid #c0392b; }
+    .tier-2 { background: rgba(230,126,34,0.18); color: #e67e22; border: 1px solid #d35400; }
+    .tier-3 { background: rgba(241,196,15,0.18); color: #f1c40f; border: 1px solid #f39c12; }
+    .tier-4 { background: rgba(39,174,96,0.18);  color: #2ecc71; border: 1px solid #27ae60; }
+
+    .tier-card h4 {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .tier-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    .ref-list { list-style: none; padding: 0; counter-reset: refs; }
+
+    .ref-list li {
+      counter-increment: refs;
+      padding: 10px 0 10px 36px;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .ref-list li:last-child { border-bottom: none; }
+
+    .ref-list li::before {
+      content: '[' counter(refs) ']';
+      position: absolute;
+      left: 0;
+      color: var(--gold-dim);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+    }
+
+    .ref-list a { color: var(--gold-dim); text-decoration: none; }
+    .ref-list a:hover { color: var(--gold); }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .related-link {
+      display: block;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .related-link:hover {
+      border-color: var(--gold-dim);
+      background: rgba(201,168,76,0.05);
+    }
+
+    .related-link .rl-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888888;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .related-link .rl-title {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    /* =========================================
+       SIDEBAR
+    ========================================= */
+    aside { position: sticky; top: 80px; }
+
+    .sidebar-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-card h3 {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .toc-list { list-style: none; padding: 0; }
+    .toc-list li { margin-bottom: 2px; }
+
+    .toc-list a {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: block;
+      padding: 5px 8px;
+      border-radius: 2px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .toc-list a:hover { color: var(--gold-light); background: rgba(201,168,76,0.06); }
+
+    .toc-list a.toc-active {
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.08);
+      border-left: 2px solid var(--gold);
+      padding-left: 6px;
+    }
+
+    .toc-toggle-btn {
+      display: none;
+      width: 100%;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      cursor: pointer;
+      text-align: left;
+      margin-bottom: 0;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toc-toggle-btn .toc-chevron {
+      display: inline-block;
+      transition: transform 0.25s;
+      font-style: normal;
+      font-size: 0.8rem;
+    }
+
+    .toc-toggle-btn.open .toc-chevron { transform: rotate(180deg); }
+
+    .toc-drawer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .toc-drawer.open { max-height: 600px; opacity: 1; }
+    .toc-drawer-inner { padding-top: 4px; }
+
+    @media (max-width: 900px) {
+      .toc-toggle-btn { display: flex; }
+      .sidebar-toc-card .toc-list {
+        border-top: 1px solid var(--dark-border);
+        margin-top: 0;
+        padding-top: 8px;
+      }
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 24px 28px;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .footer-brand .logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer-brand p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 6px; }
+    .footer-col ul a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-col ul a:hover { color: var(--gold-light); }
+
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1px; color: var(--text-dim); }
+    .footer-tagline { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); }
+
+    .divider { border: none; border-top: 1px solid var(--dark-border); margin: 0; }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 900px) {
+      .page-body { grid-template-columns: 1fr; }
+      aside { position: static; order: -1; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .arch-step:not(:last-child)::after { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .arch-step { min-width: 80px; }
+      .compare-table { font-size: 0.78rem; }
+      .hero h1 { letter-spacing: -0.5px; }
+    }
+
+    @media print {
+      .top-bar, aside, footer { display: none; }
+      body { background: white; color: black; }
+      .page-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <a href="/knowledge" class="btn-back">Return to Knowledge Base</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <p class="breadcrumb">
+        <a href="/">Home</a> &nbsp;/&nbsp;
+        <a href="/knowledge">TacRaven Cybersecurity Knowledge Base</a> &nbsp;/&nbsp;
+        What is Detection Engineering?
+      </p>
+      <h1>What is <span class="accent">Detection Engineering</span>?</h1>
+      <p class="hero-subtitle">Understanding how security teams design, build, test, and maintain detection logic that identifies adversary behavior across organizational telemetry at scale.</p>
+      <p class="hero-intro">
+        Every organization that collects security telemetry faces the same challenge: the data alone means nothing without logic to interpret it. Detection engineering is the discipline that transforms raw logs and events into reliable, actionable alerts &mdash; the systematic practice of building detection content that finds attacker behavior in the noise of enterprise operations. In environments where adversaries operate for weeks before discovery, detection engineering is not optional. It is the core capability that determines whether a SOC can find threats or can only respond after the damage is already done.
+      </p>
+      <div class="meta-bar">
+        <span class="meta-tag cat">Security Operations</span>
+        <span class="meta-tag">Difficulty: Advanced</span>
+        <span class="meta-tag">Read Time: ~10 Minutes</span>
+        <span class="meta-tag">Updated: 2025</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PAGE BODY -->
+  <div class="page-body">
+
+    <article>
+
+      <!-- SECTION: Executive Overview -->
+      <section class="kb-section" id="overview" aria-labelledby="s-overview">
+        <h2 id="s-overview">Executive Overview</h2>
+        <p>
+          <strong>Detection engineering</strong> is the discipline of systematically designing, building, testing, deploying, and maintaining the detection logic that enables security teams to identify malicious activity within their environment. It treats the creation of security detections as an engineering problem &mdash; one requiring structured processes, version control, quality testing, and continuous improvement &mdash; rather than a one-time configuration task that can be handed off to a vendor and forgotten.
+        </p>
+        <p>
+          Security teams depend on detection engineering because threat actors do not announce themselves. Adversaries conducting espionage, ransomware operators staging for deployment, and insiders exfiltrating data all operate within the same systems and network traffic as legitimate users. Without carefully engineered detection logic tuned to the specific environment, these activities blend into normal operational noise and go undetected for weeks or months &mdash; a duration that consistently correlates with greater damage, wider lateral movement, and more complex incident response.
+        </p>
+        <p>
+          The relationship between detection quality and security outcomes is direct. Organizations with mature detection engineering programs detect intrusions earlier, generate fewer false positives that burn analyst capacity, and maintain documented coverage across the adversary techniques most relevant to their threat landscape. Those without structured detection programs rely on out-of-the-box vendor rules calibrated for generic environments &mdash; rules that frequently miss environment-specific attacker behavior while generating high volumes of noise that desensitize analysts to genuine alerts over time.
+        </p>
+        <div class="card">
+          <p>
+            Critically, detection engineering is not a project with an end date. New adversary techniques emerge continuously. MITRE ATT&amp;CK is updated as incident responders and threat hunters document novel TTPs. Environments change as new applications are deployed, cloud infrastructure is provisioned, and user behavior evolves. Detection engineers must maintain their rule libraries as living assets &mdash; retiring stale content, updating logic for changed environments, and continuously expanding coverage as organizational knowledge of adversary behavior deepens through intelligence consumption and SOC operational feedback.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION: What is a Security Detection? -->
+      <section class="kb-section" id="what-is-detection" aria-labelledby="s-detection">
+        <h2 id="s-detection">What is a Security Detection?</h2>
+        <p>
+          A security detection is a logical rule, query, or model that evaluates telemetry data and generates an alert when observed activity matches patterns associated with malicious behavior. Detections encode analyst knowledge about what adversary activity looks like in a specific environment &mdash; transforming that knowledge into automated monitoring logic that operates continuously at machine speed and scale, surfacing findings for human review or automated response.
+        </p>
+        <p>
+          Detections operate against telemetry collected from across the organization: endpoint process execution and file system events, network flow records and DNS queries, authentication logs from identity systems, API calls and configuration changes in cloud environments, and application-level events from business systems. The richness of that telemetry base determines the upper limit of what any detection can find &mdash; a log source that is not collected cannot be queried, and attacker activity that leaves no trace in collected logs cannot be detected regardless of how well the rule is written.
+        </p>
+
+        <div class="card-grid">
+          <div class="card-small">
+            <h4>Credential-Based Attacks</h4>
+            <p>Brute force sequences, credential stuffing patterns, password spray attempts across many accounts, and successful authentications following repeated failures from unusual geographies, source IPs, or time windows outside the user&rsquo;s established baseline of normal login behavior and access patterns.</p>
+          </div>
+          <div class="card-small">
+            <h4>Lateral Movement</h4>
+            <p>Workstations authenticating to unusual hosts via SMB, WMI, or RDP; Pass-the-Hash and Pass-the-Ticket activity; remote service creation; and Kerberos ticket anomalies consistent with internal reconnaissance and network traversal techniques used to expand access beyond the initial foothold.</p>
+          </div>
+          <div class="card-small">
+            <h4>Privilege Escalation</h4>
+            <p>Standard accounts spawning elevated child processes, unexpected LSASS memory access from non-system processes, token manipulation and impersonation activity, and UAC bypass techniques that allow attackers to gain administrative capabilities without triggering the standard elevation prompt or leaving standard audit events.</p>
+          </div>
+          <div class="card-small">
+            <h4>Persistence Mechanisms</h4>
+            <p>Registry run key modifications, scheduled task creation by non-administrative accounts, new service installations from unusual paths, startup folder additions, WMI subscription events, and boot or logon autostart extension abuse across Windows and Linux host environments that enable attacker access to survive reboots and credential rotations.</p>
+          </div>
+          <div class="card-small">
+            <h4>Data Exfiltration</h4>
+            <p>Abnormally large outbound transfers to external destinations, DNS tunneling patterns encoding data in query records, staging in temporary directories prior to upload, cloud sync tool abuse, and encrypted channel communications to infrastructure inconsistent with the organization&rsquo;s known-good network baseline during normal business operations.</p>
+          </div>
+          <div class="card-small">
+            <h4>Defense Evasion</h4>
+            <p>Security tool termination attempts, audit log clearing, signed binary proxy execution abusing trusted Windows utilities, process injection into legitimate system processes, and encoded command execution that attempts to obfuscate attacker-controlled payload delivery from endpoint and network security controls monitoring for known-bad patterns.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:18px;">
+          The detection logic that identifies these behaviors takes multiple forms depending on the platform and technique. Rules may match specific field values and sequences of events, establish statistical baselines and flag deviations, apply behavioral models trained on historical data, or correlate activity across multiple data sources over time windows. Effective detection programs combine all of these approaches rather than relying on any single technique, as each has complementary strengths and blind spots that the others compensate for across the full range of adversary tradecraft.
+        </p>
+      </section>
+
+      <!-- SECTION: The Detection Engineering Lifecycle -->
+      <section class="kb-section" id="lifecycle" aria-labelledby="s-lifecycle">
+        <h2 id="s-lifecycle">The Detection Engineering Lifecycle</h2>
+        <p>
+          Effective detection engineering follows a structured lifecycle. Each phase builds on the previous, and the cycle repeats continuously as adversary techniques evolve, environments change, and SOC feedback surfaces new gaps and tuning requirements. Organizations that skip phases &mdash; deploying detections without testing, or deploying without a maintenance process &mdash; consistently accumulate detection debt that degrades coverage quality over time without the team recognizing the degradation until an incident exposes it.
+        </p>
+
+        <div class="usecase-card">
+          <h4>Phase 1 &mdash; Intelligence-Driven Prioritization</h4>
+          <p>Detection development begins with consuming threat intelligence to understand which adversary techniques are most relevant to the organization. Threat actor profiles, MITRE ATT&amp;CK coverage gap analysis, recent incident reports, and red team findings all inform where detection development effort should be directed. Engineers who build without intelligence consistently produce coverage that does not reflect the actual threat landscape facing the organization&rsquo;s industry, geography, and technology stack &mdash; spending development cycles on low-probability techniques while leaving high-probability ones undetected.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Phase 2 &mdash; Telemetry Assessment</h4>
+          <p>Before writing detection logic, engineers must understand what data is available and whether it is sufficient to detect the target technique. This phase evaluates each relevant log source for field availability, normalization quality, collection gaps, and ingestion latency. A detection rule is only as good as the data it operates against &mdash; and engineers frequently discover that required data sources are not being collected, that field formats differ from what the rule expects, or that ingestion latency makes real-time detection unreliable for specific technique categories that require sub-minute response to be operationally useful.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Phase 3 &mdash; Detection Rule Development</h4>
+          <p>With target techniques prioritized and telemetry availability confirmed, engineers write detection logic using the appropriate query language for the target platform &mdash; KQL for Microsoft Sentinel, SPL for Splunk, EQL or ESQL for Elastic, or Sigma as a cross-platform portable format. Rules encode the behavioral conditions that distinguish malicious activity from benign operations, incorporating field filters, threshold conditions, and time-window aggregations tuned to minimize false positives while maintaining sufficient sensitivity to catch real attacker behavior in the specific environment being defended.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Phase 4 &mdash; Testing and Validation</h4>
+          <p>Detection logic must be validated against realistic attacker behavior before production deployment. Engineers use adversary emulation frameworks &mdash; Atomic Red Team, MITRE Caldera, or custom purple team exercises &mdash; to simulate the specific techniques the rule is designed to detect, confirming that the logic fires correctly. Testing against historical production telemetry validates that the rule does not produce excessive false positives from legitimate activity that superficially resembles the target technique in the actual environment where it will be deployed and operated by the SOC team.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Phase 5 &mdash; Deployment and Operational Tuning</h4>
+          <p>Validated detections are deployed through a controlled process &mdash; ideally version-controlled with peer review, maintaining rule history, and enabling rapid rollback if a deployed rule causes operational problems. Post-deployment tuning addresses false positives identified by SOC analysts in production, refines exclusions for legitimate behaviors that were not apparent during pre-deployment testing, and adjusts detection thresholds as the team accumulates operational data about how the rule performs across the full diversity of real production traffic, user behavior, and system activity patterns.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Phase 6 &mdash; Maintenance, Review, and Retirement</h4>
+          <p>The detection library requires ongoing governance. Rules become stale when monitored assets are decommissioned, when adversaries change their techniques, or when environmental changes alter the telemetry patterns the rule relies on. Detection engineers periodically review the library to retire obsolete content, update logic for changed environments, re-test existing detections against current adversary techniques, and identify coverage gaps that represent the highest-priority targets for new development cycles in the next iteration of the detection engineering program roadmap.</p>
+        </div>
+      </section>
+
+      <!-- SECTION: How Detection Engineering Works -->
+      <section class="kb-section" id="workflow" aria-labelledby="s-workflow">
+        <h2 id="s-workflow">How Detection Engineering Works</h2>
+        <p>
+          Detection engineering operates as a continuous function integrated tightly with SOC operations, threat intelligence, and security architecture. The following flow illustrates how modern detection programs function from raw telemetry collection through SOC investigation and back into the detection improvement cycle that drives ongoing coverage expansion and quality refinement.
+        </p>
+
+        <div class="arch-flow">
+          <div class="arch-step">
+            <span class="step-num">01</span>
+            <span class="step-name">Telemetry Collection</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">02</span>
+            <span class="step-name">Log Normalization</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">03</span>
+            <span class="step-name">Rule Development</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">04</span>
+            <span class="step-name">Emulation Testing</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">05</span>
+            <span class="step-name">Alert Generation</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">06</span>
+            <span class="step-name">SOC Investigation</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">07</span>
+            <span class="step-name">Feedback &amp; Tuning</span>
+          </div>
+        </div>
+
+        <h3>Telemetry and Log Sources</h3>
+        <p>
+          Detection quality is bounded by data quality. Engineers work closely with security architecture and IT operations teams to ensure that the right log sources are enabled, that agent-based and agentless collection covers the full asset inventory, and that cloud-native logging &mdash; AWS CloudTrail, Azure Activity Logs, GCP Audit Logs, and identity provider sign-in events &mdash; is ingested at a fidelity level sufficient to support the detection techniques required by the program. Logging gaps are a leading cause of detection failures, and identifying them proactively through telemetry gap analysis is more efficient than discovering them during post-incident review when the missed attacker activity is already documented in the forensic record.
+        </p>
+
+        <h3>Detection Rule Languages and Frameworks</h3>
+        <p>
+          Detection engineers use a range of languages and formats depending on the target platform and the portability requirements of the detection library. <strong>Sigma</strong> is a vendor-agnostic rule format that can be compiled to platform-specific query languages, enabling detection content to be maintained in a portable format and deployed across Splunk, Sentinel, Elastic, and other platforms without duplication. <strong>YARA</strong> covers file and memory-based detection for malware identification. <strong>Suricata rules</strong> address network-based detection. Platform-native languages including <strong>KQL</strong>, <strong>SPL</strong>, and <strong>EQL</strong> are used when full platform capabilities &mdash; aggregation, machine learning, lookup enrichment, and time-series analysis &mdash; are required for more sophisticated correlation and behavioral detection logic that cannot be expressed in generic portable formats.
+        </p>
+
+        <h3>MITRE ATT&amp;CK Coverage Mapping</h3>
+        <p>
+          ATT&amp;CK provides detection engineers with a structured taxonomy of adversary techniques organized by tactic that enables systematic coverage planning. Mapping the detection library against ATT&amp;CK using Navigator allows teams to visualize which techniques are covered, which have gaps, and where coverage exists only at the tool level rather than through behavioral detection logic that would survive adversary tool changes. Coverage maps communicate detection posture to security leadership in a format that is meaningful to non-technical stakeholders and that supports data-driven prioritization of detection development investment across program roadmap cycles.
+        </p>
+      </section>
+
+      <!-- SECTION: Detection Engineering vs. Threat Hunting -->
+      <section class="kb-section" id="comparison" aria-labelledby="s-compare">
+        <h2 id="s-compare">Detection Engineering vs. Threat Hunting</h2>
+        <p>
+          Detection engineering and threat hunting are frequently discussed together but represent distinct functions with complementary roles in a mature security operations program. Understanding the difference &mdash; and how the two functions reinforce each other &mdash; is essential for building teams that improve coverage continuously rather than cycling between the same undetected threat categories.
+        </p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Function</th>
+              <th>Detection Engineering</th>
+              <th>Threat Hunting</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary Purpose</td>
+              <td>Build and maintain persistent, automated detection logic that continuously monitors the environment for known and anticipated adversary TTPs without requiring manual analyst queries</td>
+              <td>Proactively search for attacker activity that existing automated detections have not surfaced &mdash; uncovering unknown presence and novel technique usage that rules have not yet been written to catch</td>
+            </tr>
+            <tr>
+              <td>Operational Mode</td>
+              <td>Systematic, engineering-driven, governed by a formal development lifecycle with defined processes for development, testing, deployment, and maintenance across the full rule library</td>
+              <td>Hypothesis-driven, analyst-led investigation applying threat intelligence and analytical intuition to historical telemetry in search of indicators not captured by automated alerting</td>
+            </tr>
+            <tr>
+              <td>Tools Used</td>
+              <td>SIEM rule editors, Sigma repositories, adversary emulation platforms, ATT&amp;CK Navigator, CI/CD pipelines for detection deployment and version control of detection content across environments</td>
+              <td>SIEM and EDR query interfaces, TIPs, network analysis tools, memory forensics platforms, and custom scripts for ad hoc data analysis and iterative hypothesis testing during active hunt campaigns</td>
+            </tr>
+            <tr>
+              <td>Output</td>
+              <td>Deployed detection rules, updated coverage maps, tuning documentation, and false positive reduction improvements that persistently improve the quality of automated monitoring across subsequent SOC shifts</td>
+              <td>Hunt reports documenting discovered attacker activity, newly observed TTPs, and detection coverage gaps &mdash; with handoff to detection engineering for codification into persistent automated monitoring</td>
+            </tr>
+            <tr>
+              <td>Relationship</td>
+              <td>Provides hunters with coverage maps that reveal where gaps in automated detection create the highest-value hypothesis targets for the next hunt cycle</td>
+              <td>Provides detection engineers with newly observed adversary techniques and confirmed detection gaps that drive the next iteration of rule development and coverage expansion work</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top:16px;">
+          The relationship between detection engineering and threat hunting is cyclical and mutually reinforcing. Hunters discover adversary techniques not caught by existing detections &mdash; either novel TTPs, evasion of known rules, or technique variants the detection library does not cover. Those findings are handed to detection engineers who codify the new behavior into persistent monitoring logic that closes the coverage gap permanently. Detection engineers provide hunters with ATT&amp;CK coverage maps and telemetry quality assessments that help hunters formulate hypotheses targeting the most meaningful blind spots rather than re-hunting areas already covered by deployed rules. Organizations that tightly integrate these two functions build a continuously improving detection capability that compounds in effectiveness with each hunt cycle and development iteration.
+        </p>
+      </section>
+
+      <!-- SECTION: Detection Maturity Tiers -->
+      <section class="kb-section" id="maturity" aria-labelledby="s-maturity">
+        <h2 id="s-maturity">Detection Maturity and Rule Quality Tiers</h2>
+        <p>
+          Not all detections are created equal. The quality and sophistication of detection logic exists on a spectrum, and understanding where each rule sits on that spectrum informs how much confidence analysts should place in its alerts and how much evasion resistance it provides against an adversary who knows it exists. The Pyramid of Pain, developed by David Bianco, provides a useful framework for thinking about detection value relative to how easily an adversary can evade the detection by changing what the rule targets.
+        </p>
+
+        <h3>Pyramid of Pain &mdash; Detection Value Tiers</h3>
+        <p>
+          The pyramid illustrates that detections targeting higher-level adversary behaviors are far more valuable than those targeting low-level indicators because they are correspondingly harder for attackers to evade. IOC-based rules at the bottom of the pyramid can be bypassed by changing a hash or IP address in seconds. Behavioral detections at the top require attackers to fundamentally change their operational tradecraft &mdash; a far more costly and disruptive requirement that may force them to abandon entire phases of their operation.
+        </p>
+
+        <div class="tier-grid">
+          <div class="tier-card">
+            <span class="tier-badge tier-1">Tier 1 &mdash; Hash / IP / Domain</span>
+            <h4>Trivial to Evade</h4>
+            <p>File hash, IP address, and domain-based IOC matching. Attacker evades by recompiling malware, changing infrastructure, or rotating C2 domains &mdash; changes that take minutes and are performed as routine operational security. Still useful for catching commodity threats and applying known-bad indicators from threat intelligence feeds.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-2">Tier 2 &mdash; Tools &amp; Signatures</span>
+            <h4>Moderate Evasion Cost</h4>
+            <p>YARA rules targeting specific tool characteristics, named pipe patterns, mutex names, and tool-specific artifacts. Attacker evades by modifying tool source code or switching to a different tool with equivalent capability. More durable than pure IOCs but still bypassable with modest development effort for sophisticated adversaries.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-3">Tier 3 &mdash; TTPs</span>
+            <h4>High Evasion Cost</h4>
+            <p>Behavior-based rules targeting adversary techniques regardless of specific tools &mdash; process injection patterns, LSASS access from unexpected processes, lateral movement behavior sequences, and staged exfiltration patterns. Attacker must change their fundamental operational approach, requiring significant replanning and capability development to avoid triggering the detection.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-4">Tier 4 &mdash; Adversary Behavior</span>
+            <h4>Maximum Evasion Cost</h4>
+            <p>High-fidelity behavioral detections correlating sequences of activity across multiple data sources over time &mdash; modeling the full attack pattern rather than individual technique signatures. Attacker must completely redesign their operation to evade detection, making this the highest-value detection investment for organizations with the telemetry maturity to support it.</p>
+          </div>
+        </div>
+
+        <h3>Detection-as-Code Practices</h3>
+        <p>
+          Mature detection engineering programs manage detection content as software &mdash; stored in version-controlled repositories, subject to peer review before deployment, tested in CI/CD pipelines against synthetic and historical telemetry, and tracked with performance metrics including alert volume, false positive rate, and analyst disposition outcomes. Detection-as-code practices ensure that the detection library is auditable, that changes are traceable, and that quality gates prevent poorly tested rules from reaching production environments where they generate noise that undermines analyst trust in the monitoring platform over time.
+        </p>
+      </section>
+
+      <!-- SECTION: Technologies -->
+      <section class="kb-section" id="technologies" aria-labelledby="s-tech">
+        <h2 id="s-tech">Technologies Used in Detection Engineering</h2>
+        <p>
+          Modern detection engineering programs rely on an integrated set of technologies that work together to collect telemetry, support rule development and testing, deploy detection content, and provide the operational platform on which detections run continuously against incoming data. The depth and quality of this technology stack directly constrains what detection engineers can build and how effectively the SOC can act on what is surfaced.
+        </p>
+
+        <ul class="platform-list">
+          <li>
+            <strong>SIEM Platforms</strong>
+            <span>Splunk, Microsoft Sentinel, IBM QRadar, and Elastic SIEM serve as the primary detection execution environment where rules are authored, deployed, and evaluated at scale. Engineers must be proficient in platform-native query languages and understand performance implications of complex detection logic run continuously against high-volume telemetry ingestion pipelines in production environments.</span>
+          </li>
+          <li>
+            <strong>Endpoint Detection &amp; Response (EDR)</strong>
+            <span>EDR platforms provide rich behavioral telemetry from endpoints: process execution trees, file and registry operations, network connections, and memory activity. EDR-native detection logic enables high-fidelity behavior-based rules at the host level that are significantly harder for attackers to evade than network-layer detections and provide the process context analysts need to assess alert severity and investigate quickly.</span>
+          </li>
+          <li>
+            <strong>Extended Detection &amp; Response (XDR)</strong>
+            <span>XDR platforms consolidate telemetry across endpoints, networks, email, cloud, and identity into a unified detection surface. Cross-domain correlation rules connect attacker activity spanning multiple control points &mdash; enabling detections that catch multi-stage attack chains which appear innocuous when any single telemetry source is examined in isolation but reveal clear attacker intent when correlated across the full kill chain.</span>
+          </li>
+          <li>
+            <strong>Adversary Emulation Frameworks</strong>
+            <span>Atomic Red Team, MITRE Caldera, and commercial purple team platforms allow engineers to simulate specific ATT&amp;CK techniques in controlled lab or production environments to validate that detection rules fire correctly against realistic attacker activity. Systematic emulation testing across the technique library builds confidence in coverage claims and identifies detection gaps before adversaries do.</span>
+          </li>
+          <li>
+            <strong>Threat Intelligence Platforms</strong>
+            <span>TIPs aggregate actor profiles, TTP mappings, IOC feeds, and campaign reports from commercial, open-source, and government sources. Detection engineers consume TIP data to drive development prioritization, enrich detection rule context, and validate that coverage aligns with the techniques actually used by threat actors targeting the organization&rsquo;s industry, geography, and technology stack rather than building against abstract theoretical threats.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- SECTION: Benefits -->
+      <section class="kb-section" id="benefits" aria-labelledby="s-benefits">
+        <h2 id="s-benefits">Benefits of Detection Engineering</h2>
+        <p>
+          A mature detection engineering program delivers measurable security and operational benefits that compound over time as the detection library grows, data quality improves, and the team builds institutional knowledge about the environment and adversary techniques relevant to the organization. These benefits extend beyond the technical security team to every function that depends on early threat visibility &mdash; from incident response to compliance to executive risk reporting.
+        </p>
+
+        <h3>Earlier Threat Detection</h3>
+        <p>
+          Custom-engineered detections calibrated to the specific environment surface attacker activity significantly earlier than generic vendor content written for average baseline behavior across all customer deployments. Earlier detection directly reduces dwell time &mdash; the duration between attacker entry and discovery &mdash; which is the single metric most predictive of breach impact, data volume exfiltrated, systems compromised, and total remediation cost incurred by the organization in the aftermath of an intrusion.
+        </p>
+
+        <h3>Reduced False Positive Volume</h3>
+        <p>
+          Environment-specific detection logic tuned against real production telemetry produces a fraction of the false positives generated by generic out-of-the-box rules applied without customization. Reducing false positive volume is operationally critical: it reclaims analyst capacity spent triaging non-events, reduces alert fatigue that leads analysts to dismiss genuine threats, and improves analyst morale in SOC environments where chronic noise is a leading driver of burnout and attrition that degrades detection program effectiveness over time.
+        </p>
+
+        <h3>Measurable Coverage Posture</h3>
+        <p>
+          ATT&amp;CK-mapped detection libraries provide security leadership with an objective, communicable view of what the organization can and cannot detect. Coverage matrices allow teams to demonstrate detection posture to executives, board members, and auditors in a structured format that translates technical capability into business risk language and supports evidence-based security investment decisions based on documented coverage gaps rather than subjective program assessments that cannot be independently verified or compared across annual reporting cycles.
+        </p>
+
+        <h3>Accelerated Incident Response</h3>
+        <p>
+          High-quality detections with rich contextual metadata dramatically accelerate incident response timelines. When SOC analysts receive alerts that include the process tree, user context, associated network connections, and ATT&amp;CK technique mapping, they can begin substantive investigation immediately rather than spending the first phase of response reconstructing basic event context from raw logs. Detection engineering directly reduces mean time to detect (MTTD) and mean time to respond (MTTR) &mdash; the two operational metrics most consequential to breach impact and recovery cost across all incident categories.
+        </p>
+
+        <h3>Improved Compliance Posture</h3>
+        <p>
+          Compliance frameworks including NIST CSF, PCI-DSS, CMMC, ISO 27001, and HIPAA require documented monitoring capabilities, detection procedures, and evidence of continuous security monitoring across in-scope systems. A mature detection engineering program directly supports audit evidence collection, providing the rule documentation, coverage maps, alert history, and testing records that auditors require to validate that the organization maintains the monitoring capabilities its compliance posture asserts across all applicable control frameworks.
+        </p>
+      </section>
+
+      <!-- SECTION: Challenges -->
+      <section class="kb-section" id="challenges" aria-labelledby="s-challenges">
+        <h2 id="s-challenges">Challenges of Detection Engineering</h2>
+        <p>
+          Despite its critical importance, detection engineering is operationally demanding. Security teams must navigate significant technical and organizational challenges to build and sustain an effective program. Security leaders should anticipate these obstacles when building or maturing a detection engineering capability and invest in the processes, tooling, and personnel required to address them before they undermine detection quality during a period when the organization faces active adversary targeting.
+        </p>
+
+        <div class="callout-warning">
+          <strong>Telemetry Volume and Data Quality</strong>
+          <p>Enterprise environments generate billions of log events daily. Detection engineers must identify which data sources provide the highest-fidelity signals for each technique category, design rules that run efficiently at production data volumes, and maintain ongoing awareness of logging gaps, normalization inconsistencies, and ingestion latency that can cause well-written rules to fail silently &mdash; appearing healthy in the platform console while never alerting on real attacker activity because the data they require is missing, malformed, or delayed at the collection layer.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>False Positive Management at Scale</strong>
+          <p>Writing detection rules that reliably distinguish malicious from benign behavior in complex, heterogeneous enterprise environments is genuinely difficult. A rule calibrated too broadly floods the SOC with noise that trains analysts to ignore alerts; a rule calibrated too narrowly misses real attacker activity through overly restrictive conditions. Finding and maintaining the correct calibration requires deep environmental knowledge, continuous tuning investment, and a sustained feedback loop with the SOC analysts who encounter the real-world performance of deployed rules across the full diversity of the production environment on every shift.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Rapidly Evolving Adversary Techniques</strong>
+          <p>Adversaries continuously modify their tradecraft to evade known detections. Living-off-the-land techniques abusing legitimate system utilities, novel malware delivery mechanisms, rapidly rotating infrastructure, and deliberate detection evasion designed to defeat specific published rules mean that detection coverage requires active maintenance to remain effective. Detections that reliably caught attacker behavior last year may completely miss the same technique today after the adversary community observed and adapted to the detection pattern in operational deployments across their targeted organizations and victim environments.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Detection Library Technical Debt</strong>
+          <p>Detection libraries grow over time and accumulate stale content without active governance. Rules written for decommissioned assets, replaced applications, or patched adversary techniques generate false positives and clutter the library with content that can never correctly fire on real attacker behavior. Without deliberate lifecycle management including regular review cycles, rule health monitoring, and formal retirement procedures, detection libraries degrade progressively in quality as the environment evolves around static rules that have not been updated to reflect changes that make them operationally unreliable across the population of assets and systems they were originally written to monitor.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Staffing and Specialized Skill Requirements</strong>
+          <p>Detection engineering requires practitioners who combine threat intelligence knowledge, security analytics proficiency, software engineering discipline, and deep familiarity with both the environment being defended and the adversary techniques targeting it. This combination of skills is difficult to recruit and develops slowly through hands-on operational experience that cannot be fully acquired through certification programs alone. Many organizations lack dedicated detection engineering staff, resulting in detection programs that are understaffed, reactive, and unable to sustain the continuous development and maintenance operations that distinguish mature programs from collections of aging vendor-supplied rules that have never been validated against real attacker behavior in the specific organizational environment they are intended to protect.</p>
+        </div>
+      </section>
+
+      <!-- SECTION: Key Takeaways -->
+      <section class="kb-section" id="takeaways" aria-labelledby="s-take">
+        <h2 id="s-take">Key Takeaways</h2>
+        <ul class="takeaway-list">
+          <li>Detection engineering is the discipline of systematically building, testing, deploying, and maintaining detection logic to identify adversary activity in organizational telemetry &mdash; it is a standing engineering function, not a one-time project that concludes after the initial rule set is deployed to the SIEM platform.</li>
+          <li>Effective detections are behavior-based, environment-specific, and mapped to MITRE ATT&amp;CK &mdash; not just signature-matching against static IOCs that adversaries can change trivially without altering the underlying technique the detection should be designed to identify through observable behavioral patterns in telemetry.</li>
+          <li>The detection engineering lifecycle encompasses intelligence-driven prioritization, telemetry assessment, rule development, emulation-based testing, deployment, operational tuning, and ongoing maintenance &mdash; with SOC feedback informing continuous improvement at every stage across the full operational lifetime of each deployed detection rule.</li>
+          <li>Detection quality is bounded by telemetry quality &mdash; data sources that are not collected, not normalized correctly, or not ingested at sufficient fidelity create blind spots that no detection rule can compensate for, making telemetry gap analysis a prerequisite for accurate detection coverage assessment.</li>
+          <li>Detection engineering and threat hunting are complementary: hunters proactively discover adversary techniques and coverage gaps that automated detections have missed, and detection engineers codify those findings into persistent monitoring rules that close the gap permanently for all subsequent attacker activity using the same technique against the organization.</li>
+          <li>The Pyramid of Pain demonstrates that behavioral detections targeting adversary TTPs provide far greater and more durable value than IOC-based rules &mdash; forcing attackers to change fundamental operational tradecraft rather than simply rotating infrastructure or recompiling tools to evade detection.</li>
+          <li>False positive reduction is not an optional optimization &mdash; it is a core engineering responsibility that determines whether the detection program delivers actionable signal or creates alert fatigue that degrades analyst effectiveness and causes genuine threat activity to go uninvestigated amid the noise of a miscalibrated detection library.</li>
+          <li>ATT&amp;CK coverage mapping enables teams to visualize detection posture, identify the highest-priority gaps, and communicate detection capability to leadership in a structured format that supports data-driven security investment decisions rather than subjective program assessments that cannot demonstrate objective coverage improvement over time.</li>
+          <li>Detection-as-code practices &mdash; version control, peer review, automated testing, and formal lifecycle governance &mdash; distinguish mature programs from ad hoc rule management approaches and dramatically improve detection quality, deployment reliability, and the team&rsquo;s ability to maintain the detection library as organizational environments and adversary techniques both evolve continuously.</li>
+          <li>The most significant long-term challenge in detection engineering is not writing rules &mdash; it is maintaining them as environments change, adversaries adapt, and the detection library accumulates technical debt that requires active governance investment to prevent progressive quality degradation across the full rule set over extended operational time horizons.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION: References -->
+      <section class="kb-section" id="references" aria-labelledby="s-ref">
+        <h2 id="s-ref">References</h2>
+        <ol class="ref-list">
+          <li>MITRE Corporation. <em>MITRE ATT&amp;CK Framework for Enterprise.</em> <a href="https://attack.mitre.org/" target="_blank" rel="noopener noreferrer">attack.mitre.org</a></li>
+          <li>National Institute of Standards and Technology. <em>NIST SP 800-137: Information Security Continuous Monitoring for Federal Information Systems and Organizations.</em> <a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-137.pdf" target="_blank" rel="noopener noreferrer">nvlpubs.nist.gov</a></li>
+          <li>SigmaHQ. <em>Sigma: Generic Signature Format for SIEM Systems.</em> <a href="https://github.com/SigmaHQ/sigma" target="_blank" rel="noopener noreferrer">github.com/SigmaHQ</a></li>
+          <li>Center for Threat-Informed Defense. <em>Summiting the Pyramid: Operationalizing ATT&amp;CK for Robust Detection.</em> <a href="https://center-for-threat-informed-defense.github.io/summiting-the-pyramid/" target="_blank" rel="noopener noreferrer">center-for-threat-informed-defense.github.io</a></li>
+          <li>Red Canary. <em>Atomic Red Team: Open Library of Adversary Emulation Tests.</em> <a href="https://github.com/redcanaryco/atomic-red-team" target="_blank" rel="noopener noreferrer">github.com/redcanaryco</a></li>
+          <li>David Bianco. <em>The Pyramid of Pain.</em> <a href="https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html" target="_blank" rel="noopener noreferrer">detect-respond.blogspot.com</a></li>
+          <li>Elastic. <em>Elastic Security Labs: Detection Engineering Research and EQL Documentation.</em> <a href="https://www.elastic.co/security-labs" target="_blank" rel="noopener noreferrer">elastic.co/security-labs</a></li>
+          <li>TacRaven Solutions. <em>TacRaven Cybersecurity Knowledge Base.</em> <a href="https://tacraven.com/knowledge" target="_blank" rel="noopener noreferrer">tacraven.com/knowledge</a></li>
+        </ol>
+      </section>
+
+      <!-- SECTION: Related Topics -->
+      <section class="kb-section" id="related" aria-labelledby="s-rel">
+        <h2 id="s-rel">Related Topics</h2>
+        <div class="related-grid">
+          <a href="/knowledge/siem.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is SIEM?</span>
+          </a>
+          <a href="/knowledge/edr.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is EDR?</span>
+          </a>
+          <a href="/knowledge/xdr.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is XDR?</span>
+          </a>
+          <a href="/knowledge/threat-intelligence.html" class="related-link">
+            <span class="rl-label">Security Operations</span>
+            <span class="rl-title">Threat Intelligence</span>
+          </a>
+          <a href="/knowledge/soc.html" class="related-link">
+            <span class="rl-label">Security Operations</span>
+            <span class="rl-title">What is a SOC?</span>
+          </a>
+          <a href="/knowledge/incident-response.html" class="related-link">
+            <span class="rl-label">Security Operations</span>
+            <span class="rl-title">Incident Response</span>
+          </a>
+          <a href="/knowledge/soar.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is SOAR?</span>
+          </a>
+          <a href="/knowledge/vulnerability-management.html" class="related-link">
+            <span class="rl-label">Security Operations</span>
+            <span class="rl-title">Vulnerability Management</span>
+          </a>
+        </div>
+      </section>
+
+    </article>
+    <!-- END ARTICLE -->
+
+    <!-- SIDEBAR -->
+    <aside aria-label="Article navigation">
+
+      <!-- Table of Contents -->
+      <div class="sidebar-card sidebar-toc-card">
+        <button class="toc-toggle-btn" id="tocToggle" aria-expanded="false" aria-controls="tocDrawer">
+          Contents
+          <i class="toc-chevron">&#9662;</i>
+        </button>
+        <h3 class="toc-heading" style="display:none;" aria-hidden="true">Contents</h3>
+        <div class="toc-drawer" id="tocDrawer">
+          <div class="toc-drawer-inner">
+            <ul class="toc-list" id="tocList">
+              <li><a href="#overview">Executive Overview</a></li>
+              <li><a href="#what-is-detection">What is a Detection?</a></li>
+              <li><a href="#lifecycle">The DE Lifecycle</a></li>
+              <li><a href="#workflow">How DE Works</a></li>
+              <li><a href="#comparison">DE vs. Threat Hunting</a></li>
+              <li><a href="#maturity">Detection Maturity</a></li>
+              <li><a href="#technologies">Technologies</a></li>
+              <li><a href="#benefits">Benefits</a></li>
+              <li><a href="#challenges">Challenges</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+              <li><a href="#references">References</a></li>
+              <li><a href="#related">Related Topics</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Reference -->
+      <div class="sidebar-card">
+        <h3>Quick Reference</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.65;">
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">FUNCTION</strong><br>
+          Detection Engineering (DE)<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">LIFECYCLE PHASES</strong><br>
+          Intelligence &nbsp;&#183;&nbsp; Telemetry &nbsp;&#183;&nbsp; Development &nbsp;&#183;&nbsp; Testing &nbsp;&#183;&nbsp; Deployment &nbsp;&#183;&nbsp; Maintenance<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">CORE TECHNOLOGIES</strong><br>
+          SIEM &nbsp;&#183;&nbsp; EDR &nbsp;&#183;&nbsp; XDR &nbsp;&#183;&nbsp; TIP &nbsp;&#183;&nbsp; Emulation Tools<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">KEY FRAMEWORKS</strong><br>
+          MITRE ATT&amp;CK &nbsp;&#183;&nbsp; Sigma &nbsp;&#183;&nbsp; YARA &nbsp;&#183;&nbsp; Pyramid of Pain
+        </p>
+      </div>
+
+      <!-- Black Wing Dispatch promo -->
+      <div class="sidebar-card" style="border-color: #2a2a2a; background: linear-gradient(160deg, #161616 60%, rgba(201,168,76,0.04) 100%);">
+        <h3 style="border-bottom-color: var(--gold-dim);">Black Wing Dispatch</h3>
+        <p style="font-size:0.78rem; color:#b8b8b8; line-height:1.65; margin-bottom:6px;">
+          Cyber threat intelligence, TTPs, and adversary analysis &mdash; written for practitioners, not executives.
+        </p>
+        <p style="font-size:0.75rem; color:#8a8a8a; line-height:1.5; margin-bottom:14px;">
+          APT profiles &nbsp;&#183;&nbsp; Malware breakdowns &nbsp;&#183;&nbsp; Detection engineering &nbsp;&#183;&nbsp; Weekly threat briefs
+        </p>
+        <a href="/blog" style="display:block; text-align:center; font-family:var(--font-display); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); background: transparent; border: 1px solid var(--gold-dim); padding:10px; border-radius:2px; text-decoration:none; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.08)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='transparent';this.style.borderColor='var(--gold-dim)'">
+          Read the Dispatch &#8594;
+        </a>
+      </div>
+
+      <!-- Cyber Careers promo -->
+      <div class="sidebar-card" style="border-color: #2a2a2a;">
+        <h3>Cyber Careers</h3>
+        <p style="font-size:0.78rem; color:#b8b8b8; line-height:1.65; margin-bottom:6px;">
+          Breaking into cybersecurity or leveling up your detection engineering career? Our careers blog covers the roles, certifications, and skills that actually matter.
+        </p>
+        <p style="font-size:0.75rem; color:#8a8a8a; line-height:1.5; margin-bottom:14px;">
+          Analyst paths &nbsp;&#183;&nbsp; Cert roadmaps &nbsp;&#183;&nbsp; Resume strategy &nbsp;&#183;&nbsp; Interview prep
+        </p>
+        <a href="/careers/blog" style="display:block; text-align:center; font-family:var(--font-display); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--black); background:var(--gold); padding:10px; border-radius:2px; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">
+          Explore Careers Blog &#8594;
+        </a>
+      </div>
+
+    </aside>
+    <!-- END SIDEBAR -->
+
+  </div>
+  <!-- END PAGE BODY -->
+
+  <hr class="divider" />
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">TacRaven Solutions</span>
+          <p>
+            TacRaven Solutions is committed to advancing cybersecurity education. We partner with academic institutions and training programs to help build the next generation of cyber professionals &mdash; bridging the gap between classroom instruction and real-world operational practice.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/learning-hub">Learning Hub</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/threat-map">Threat Map</a></li>
+            <li><a href="/reports">Weekly Reports</a></li>
+            <li><a href="/knowledge">Knowledge Base</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+        <p class="footer-tagline">Intelligence-Driven Cybersecurity</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT - TOC scroll spy + mobile drawer -->
+  <script>
+    (function () {
+
+      function applyTocLayout() {
+        var btn     = document.getElementById('tocToggle');
+        var heading = document.querySelector('.toc-heading');
+        var drawer  = document.getElementById('tocDrawer');
+        if (!btn || !heading || !drawer) return;
+
+        if (window.innerWidth > 900) {
+          btn.style.display     = 'none';
+          heading.style.display = 'block';
+          heading.removeAttribute('aria-hidden');
+          drawer.classList.add('open');
+          drawer.style.maxHeight = 'none';
+          drawer.style.opacity   = '1';
+          drawer.style.overflow  = 'visible';
+          drawer.style.transition = 'none';
+        } else {
+          btn.style.display = 'flex';
+          heading.style.display = 'none';
+          heading.setAttribute('aria-hidden', 'true');
+          drawer.style.transition = '';
+          drawer.style.overflow   = '';
+          if (!drawer.classList.contains('open')) {
+            drawer.style.maxHeight = '0';
+            drawer.style.opacity   = '0';
+          }
+        }
+      }
+
+      applyTocLayout();
+      window.addEventListener('resize', applyTocLayout);
+
+      var tocBtn    = document.getElementById('tocToggle');
+      var tocDrawer = document.getElementById('tocDrawer');
+
+      if (tocBtn && tocDrawer) {
+        tocBtn.addEventListener('click', function () {
+          var isOpen = tocDrawer.classList.toggle('open');
+          tocBtn.classList.toggle('open', isOpen);
+          tocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        tocDrawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (window.innerWidth <= 900) {
+              tocDrawer.classList.remove('open');
+              tocBtn.classList.remove('open');
+              tocBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
+
+      var sectionIds = [
+        'overview', 'what-is-detection', 'lifecycle', 'workflow',
+        'comparison', 'maturity', 'technologies',
+        'benefits', 'challenges', 'takeaways', 'references', 'related'
+      ];
+
+      var tocLinks = {};
+      sectionIds.forEach(function (id) {
+        var link = document.querySelector('#tocList a[href="#' + id + '"]');
+        if (link) tocLinks[id] = link;
+      });
+
+      var activeId = null;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            if (id !== activeId) {
+              if (activeId && tocLinks[activeId]) {
+                tocLinks[activeId].classList.remove('toc-active');
+              }
+              activeId = id;
+              if (tocLinks[id]) {
+                tocLinks[id].classList.add('toc-active');
+              }
+            }
+          }
+        });
+      }, {
+        rootMargin: '-10% 0px -80% 0px',
+        threshold: 0
+      });
+
+      sectionIds.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

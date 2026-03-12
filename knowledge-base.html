@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity Knowledge Base | TacRaven Solutions</title>
+  <meta name="description" content="Explore TacRaven's Cybersecurity Knowledge Base. Learn the fundamentals of SIEM, EDR, XDR, SOAR, Zero Trust, SOC 2, ISO 27001, CMMC, and other key cybersecurity technologies and frameworks." />
+  <meta name="keywords" content="cybersecurity, SIEM, EDR, XDR, SOAR, Zero Trust, SOC 2, ISO 27001, CMMC, NIST, threat intelligence, security operations" />
+  <meta property="og:title" content="Cybersecurity Knowledge Base | TacRaven Solutions" />
+  <meta property="og:description" content="Plain-language explanations of the most important cybersecurity technologies, frameworks, and operational concepts." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tacraven.com/knowledge-base.html" />
+  <link rel="canonical" href="https://tacraven.com/knowledge-base.html" />
+
+  <!-- ===================================================
+       JSON-LD STRUCTURED DATA — ItemList schema
+       Helps Google index and surface the knowledge base
+       as a rich result in search. Update when adding topics.
+  =================================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Cybersecurity Knowledge Base",
+    "description": "Plain-language explanations of the most important cybersecurity technologies, frameworks, and operational concepts.",
+    "url": "https://tacraven.com/knowledge-base.html",
+    "numberOfItems": 20,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1,  "name": "What is SIEM?",                       "url": "https://tacraven.com/knowledge/siem.html" },
+      { "@type": "ListItem", "position": 2,  "name": "What is EDR?",                        "url": "https://tacraven.com/knowledge/edr.html" },
+      { "@type": "ListItem", "position": 3,  "name": "What is XDR?",                        "url": "https://tacraven.com/knowledge/xdr.html" },
+      { "@type": "ListItem", "position": 4,  "name": "What is SOAR?",                       "url": "https://tacraven.com/knowledge/soar.html" },
+      { "@type": "ListItem", "position": 5,  "name": "What is Zero Trust?",                 "url": "https://tacraven.com/knowledge/zero-trust.html" },
+      { "@type": "ListItem", "position": 6,  "name": "What is SOC 2?",                      "url": "https://tacraven.com/knowledge/soc2.html" },
+      { "@type": "ListItem", "position": 7,  "name": "What is ISO 27001?",                  "url": "https://tacraven.com/knowledge/iso-27001.html" },
+      { "@type": "ListItem", "position": 8,  "name": "What is CMMC?",                       "url": "https://tacraven.com/knowledge/cmmc.html" },
+      { "@type": "ListItem", "position": 9,  "name": "What is NIST Cybersecurity Framework?","url": "https://tacraven.com/knowledge/nist-csf.html" },
+      { "@type": "ListItem", "position": 10, "name": "What is PCI-DSS?",                    "url": "https://tacraven.com/knowledge/pci-dss.html" },
+      { "@type": "ListItem", "position": 11, "name": "What is a Security Operations Center?","url": "https://tacraven.com/knowledge/soc.html" },
+      { "@type": "ListItem", "position": 12, "name": "What is Threat Intelligence?",        "url": "https://tacraven.com/knowledge/threat-intelligence.html" },
+      { "@type": "ListItem", "position": 13, "name": "What is Incident Response?",          "url": "https://tacraven.com/knowledge/incident-response.html" },
+      { "@type": "ListItem", "position": 14, "name": "What is Vulnerability Management?",   "url": "https://tacraven.com/knowledge/vulnerability-management.html" },
+      { "@type": "ListItem", "position": 15, "name": "What is Detection Engineering?",      "url": "https://tacraven.com/knowledge/detection-engineering.html" },
+      { "@type": "ListItem", "position": 16, "name": "What is IAM?",                        "url": "https://tacraven.com/knowledge/iam.html" },
+      { "@type": "ListItem", "position": 17, "name": "What is PAM?",                        "url": "https://tacraven.com/knowledge/pam.html" },
+      { "@type": "ListItem", "position": 18, "name": "What is Cloud Security?",             "url": "https://tacraven.com/knowledge/cloud-security.html" },
+      { "@type": "ListItem", "position": 19, "name": "What is CSPM?",                       "url": "https://tacraven.com/knowledge/cspm.html" },
+      { "@type": "ListItem", "position": 20, "name": "What is DevSecOps?",                  "url": "https://tacraven.com/knowledge/devsecops.html" }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ===================================================
+       TACRAVEN KNOWLEDGE BASE — CSS
+       Font stack: Barlow Condensed (display) + Barlow (body)
+       Palette: #0a0a0a bg | #c9a84c gold | #fff text
+    =================================================== */
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap');
+
+    :root {
+      --bg:        #080808;
+      --surface:   #0f0f0f;
+      --surface2:  #141414;
+      --border:    #1e1e1e;
+      --gold:      #c9a84c;
+      --gold-dim:  #8a6f2e;
+      --gold-glow: rgba(201,168,76,0.18);
+      --white:     #f0ece2;
+      --muted:     #888;
+      --danger:    #c94c4c;
+      --font-disp: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+      --radius:    6px;
+      --transition: 0.22s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── CYBER GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body > * { position: relative; z-index: 1; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+    /* ===================================================
+       HERO
+    =================================================== */
+    .hero {
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 300px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--font-disp);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 0.3rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-disp);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      line-height: 1.08;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 1.2rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      color: #666;
+      max-width: 560px;
+      margin: 0 auto 2.6rem;
+      line-height: 1.7;
+    }
+
+    /* ===================================================
+       HERO STAT BAR
+    =================================================== */
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin: 0 auto 2rem;
+      max-width: 560px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.75rem 1.4rem;
+      flex: 1;
+      min-width: 100px;
+      position: relative;
+      background: var(--surface);
+    }
+
+    .hero-stat + .hero-stat::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 20%; bottom: 20%;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-disp);
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-family: var(--font-disp);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      white-space: nowrap;
+    }
+
+    .hero-return {
+      margin-top: 0.5rem;
+    }
+
+    /* ===================================================
+       CATEGORY ACCENT BARS  (#5)
+       Each category section gets a unique left-bar color
+       on its header via nth-of-type or explicit classes.
+    =================================================== */
+    .category-section { position: relative; }
+
+    .category-header {
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    /* The left accent bar */
+    .category-header::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      border-radius: 2px;
+    }
+
+    /* Unique color per category */
+    #cat-security-tech  .category-header::before { background: var(--gold); }
+    #cat-compliance     .category-header::before { background: #4c8ec9; }
+    #cat-sec-ops        .category-header::before { background: #4caf82; }
+    #cat-cloud-identity .category-header::before { background: #9b6ec9; }
+    /* ▼ Add a new color here when adding a new category ▼ */
+
+    /* Tint the category icon border to match */
+    #cat-security-tech  .category-icon { border-color: rgba(201,168,76,0.5);  }
+    #cat-compliance     .category-icon { border-color: rgba(76,142,201,0.5);  }
+    #cat-sec-ops        .category-icon { border-color: rgba(76,175,130,0.5);  }
+    #cat-cloud-identity .category-icon { border-color: rgba(155,110,201,0.5); }
+
+    /* ===================================================
+       CARD SKELETON SHIMMER  (#9)
+       Cards render as shimmer placeholders while page
+       initialises, then swap to real content.
+    =================================================== */
+    @keyframes shimmer {
+      0%   { background-position: -600px 0; }
+      100% { background-position:  600px 0; }
+    }
+
+    .topic-card.skeleton {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .topic-card.skeleton * { visibility: hidden; }
+
+    .topic-card.skeleton::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      background: linear-gradient(
+        90deg,
+        var(--surface)  0px,
+        rgba(201,168,76,0.06) 200px,
+        var(--surface)  400px
+      );
+      background-size: 600px 100%;
+      animation: shimmer 1.4s infinite linear;
+    }
+
+    /* Cards need relative positioning for the ::after overlay */
+    .topic-card { position: relative; }
+
+    /* ===================================================
+       CARD ENTRANCE ANIMATIONS  (#1)
+       Cards start invisible (card-hidden) and animate
+       in via IntersectionObserver once skeleton clears.
+       Uses will-change for GPU compositing.
+    =================================================== */
+    .topic-card {
+      will-change: transform, opacity;
+    }
+
+    .topic-card.card-hidden {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+
+    .topic-card.card-visible {
+      animation: cardReveal 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes cardReveal {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .topic-card.card-hidden  { opacity: 0; transform: none; }
+      .topic-card.card-visible { animation: fadeOnly 0.3s ease forwards; }
+      @keyframes fadeOnly {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+    }
+
+    /* ===================================================
+       BUTTONS
+    =================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-disp);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.7rem 1.6rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #080808;
+    }
+
+    .btn-primary:hover {
+      background: #e0be6a;
+      box-shadow: 0 0 20px rgba(201,168,76,0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+    }
+
+    .btn-ghost:hover {
+      background: var(--gold-glow);
+      border-color: var(--gold);
+    }
+
+    .btn-card {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      font-size: 0.72rem;
+      padding: 0.45rem 1rem;
+      margin-top: auto;
+    }
+
+    .btn-card:hover {
+      background: var(--gold-glow);
+      border-color: var(--gold);
+      box-shadow: 0 0 12px rgba(201,168,76,0.2);
+    }
+
+    /* ===================================================
+       SEARCH BAR
+    =================================================== */
+    .search-wrap {
+      padding: 3rem 2rem 1rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .search-box {
+      position: relative;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold-dim);
+      pointer-events: none;
+    }
+
+    #kb-search {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 0.85rem 1.2rem 0.85rem 2.8rem;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    #kb-search::placeholder { color: #444; }
+
+    #kb-search:focus {
+      border-color: var(--gold-dim);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+    }
+
+    #search-count {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.7rem;
+      min-height: 1.2em;
+    }
+
+    /* ===================================================
+       MAIN CONTENT
+    =================================================== */
+    .kb-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 2rem 5rem;
+    }
+
+    /* ===================================================
+       CATEGORY SECTION
+    =================================================== */
+    .category-section {
+      margin-bottom: 4rem;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--gold-dim);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .category-header h2 {
+      font-family: var(--font-disp);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .category-header h2 span { color: var(--gold); }
+
+    .category-count {
+      margin-left: auto;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ===================================================
+       CARD GRID
+    =================================================== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    /* ===================================================
+       TOPIC CARD
+    =================================================== */
+    .topic-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .topic-card:hover {
+      border-color: var(--gold-dim);
+      box-shadow: 0 0 18px var(--gold-glow), inset 0 0 40px rgba(201,168,76,0.03);
+      transform: translateY(-2px);
+    }
+
+    .topic-card:hover .card-title { color: var(--gold); }
+
+    .card-badge {
+      display: inline-block;
+      font-family: var(--font-disp);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      border: 1px solid var(--border);
+      padding: 0.18rem 0.5rem;
+      border-radius: 2px;
+      align-self: flex-start;
+    }
+
+    .card-title {
+      font-family: var(--font-disp);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-transform: uppercase;
+      line-height: 1.2;
+      transition: color var(--transition);
+    }
+
+    .card-desc {
+      font-size: 0.83rem;
+      color: #777;
+      line-height: 1.55;
+      flex-grow: 1;
+    }
+
+    /* ===================================================
+       CARD SHARE BUTTON
+    =================================================== */
+    .card-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card-share {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: transparent;
+      color: #444;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+      position: relative;
+    }
+
+    .card-share:hover {
+      color: var(--gold);
+      border-color: var(--gold-dim);
+      background: var(--gold-glow);
+    }
+
+    .card-share:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* "Copied!" tooltip that flashes on click */
+    .card-share::after {
+      content: 'Copied!';
+      position: absolute;
+      top: -2rem;
+      right: 0;
+      font-family: var(--font-disp);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #080808;
+      background: var(--gold);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .card-share.copied::after {
+      opacity: 1;
+    }
+
+    /* ===================================================
+       RELATED TOPICS ROW
+    =================================================== */
+    .card-related {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+      padding-top: 0.55rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.2rem;
+    }
+
+    .card-related-label {
+      font-family: var(--font-disp);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #444;
+      white-space: nowrap;
+    }
+
+    .card-related a {
+      font-family: var(--font-disp);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.14rem 0.45rem;
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+      white-space: nowrap;
+    }
+
+    .card-related a:hover {
+      color: var(--gold);
+      border-color: var(--gold-dim);
+      background: var(--gold-glow);
+    }
+
+    /* Stop card-level onclick from firing when clicking related links */
+    .card-related a { position: relative; z-index: 2; }
+
+    /* ===================================================
+       SHARED SECTION UTILITIES
+       Used by blog promo and any future sections
+    =================================================== */
+    .section-eyebrow {
+      font-family: var(--font-disp);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--font-disp);
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ===================================================
+       BLOG PROMO SECTION
+    =================================================== */
+    .blog-promo-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem;
+    }
+
+    .blog-promo-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .blog-promo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .blog-promo-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+
+    .blog-promo-card:hover {
+      border-color: var(--gold-dim);
+      box-shadow: 0 0 28px var(--gold-glow);
+      transform: translateY(-2px);
+    }
+
+    .blog-promo-accent {
+      height: 3px;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .blog-accent-cti     { background: linear-gradient(90deg, var(--gold), #c96a4c); }
+    .blog-accent-careers { background: linear-gradient(90deg, #4c8ec9, #4caf82); }
+    .blog-accent-reports { background: linear-gradient(90deg, #9b6ec9, var(--gold)); }
+
+    .blog-promo-body {
+      padding: 1.8rem 1.8rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-grow: 1;
+    }
+
+    .blog-promo-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-disp);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    .blog-promo-title {
+      font-family: var(--font-disp);
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.1;
+      transition: color var(--transition);
+    }
+
+    .blog-promo-card:hover .blog-promo-title { color: var(--gold); }
+
+    .blog-promo-desc {
+      font-size: 0.84rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    .blog-promo-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.2rem;
+    }
+
+    .blog-promo-tags span {
+      font-family: var(--font-disp);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.14rem 0.48rem;
+      border-radius: 2px;
+    }
+
+    .blog-promo-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 1rem 1.8rem 1.5rem;
+      font-family: var(--font-disp);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap var(--transition);
+    }
+
+    .blog-promo-card:hover .blog-promo-cta { gap: 0.72rem; }
+
+    /* ===================================================
+       NO RESULTS
+    =================================================== */
+    #no-results {
+      display: none;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--muted);
+    }
+
+    #no-results h3 {
+      font-family: var(--font-disp);
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    /* ===================================================
+       FOOTER
+    =================================================== */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-disp);
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-brand h3 span { color: var(--gold); }
+
+    .footer-brand p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-disp);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .footer-col a {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer-col a:hover { color: var(--gold); }
+
+    .footer-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.76rem;
+      color: #444;
+    }
+
+    .footer-bottom span { color: var(--gold-dim); }
+
+    /* ===================================================
+       FILTER TABS
+    =================================================== */
+    .filter-bar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-family: var(--font-disp);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #444;
+      margin-right: 0.3rem;
+      white-space: nowrap;
+    }
+
+    .filter-tab {
+      font-family: var(--font-disp);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.38rem 0.85rem;
+      cursor: pointer;
+      transition: color var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      white-space: nowrap;
+    }
+
+    .filter-tab:hover {
+      color: var(--gold);
+      border-color: var(--gold-dim);
+      background: var(--gold-glow);
+    }
+
+    .filter-tab.active {
+      color: #080808;
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 12px rgba(201,168,76,0.3);
+    }
+
+    .filter-tab:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* ── FILTER DIVIDER between category tabs and difficulty tabs ── */
+    .filter-divider {
+      width: 1px;
+      height: 22px;
+      background: var(--border);
+      margin: 0 0.3rem;
+      flex-shrink: 0;
+    }
+
+    .filter-group-label {
+      font-family: var(--font-disp);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #333;
+      white-space: nowrap;
+    }
+
+    /* Difficulty filter tabs use color-coded active states */
+    .filter-tab[data-filter="beginner"].active   { background: #4caf82; border-color: #4caf82; color: #080808; box-shadow: 0 0 12px rgba(76,175,130,0.3); }
+    .filter-tab[data-filter="intermediate"].active { background: var(--gold); border-color: var(--gold); color: #080808; box-shadow: 0 0 12px rgba(201,168,76,0.3); }
+    .filter-tab[data-filter="advanced"].active   { background: #c96a4c; border-color: #c96a4c; color: #fff; box-shadow: 0 0 12px rgba(201,106,76,0.3); }
+
+    .filter-tab[data-filter="beginner"]:hover     { color: #4caf82; border-color: rgba(76,175,130,0.5); background: rgba(76,175,130,0.08); }
+    .filter-tab[data-filter="intermediate"]:hover { color: var(--gold); border-color: var(--gold-dim); background: var(--gold-glow); }
+    .filter-tab[data-filter="advanced"]:hover     { color: #c96a4c; border-color: rgba(201,106,76,0.5); background: rgba(201,106,76,0.08); }
+
+    /* ===================================================
+       BACK-TO-TOP BUTTON
+    =================================================== */
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      width: 42px;
+      height: 42px;
+      background: var(--surface);
+      border: 1px solid var(--gold-dim);
+      border-radius: var(--radius);
+      color: var(--gold);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease, background var(--transition), box-shadow var(--transition);
+      pointer-events: none;
+    }
+
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    #back-to-top:hover {
+      background: var(--gold-glow);
+      box-shadow: 0 0 16px rgba(201,168,76,0.25);
+    }
+
+    #back-to-top:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* ===================================================
+       SUGGEST A TOPIC CTA
+    =================================================== */
+    .suggest-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.8rem;
+      margin-top: 2.5rem;
+      transition: border-color var(--transition);
+    }
+
+    .suggest-cta:hover {
+      border-color: var(--gold-dim);
+    }
+
+    .suggest-cta-text {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .suggest-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      color: var(--gold-dim);
+    }
+
+    .suggest-cta h4 {
+      font-family: var(--font-disp);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+
+    .suggest-cta p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 480px) {
+      .suggest-cta { flex-direction: column; align-items: flex-start; }
+      #back-to-top { bottom: 1.2rem; right: 1.2rem; }
+    }
+
+    /* ===================================================
+       CARD META ROW (read time + difficulty)
+    =================================================== */
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.1rem;
+    }
+
+    .card-read-time {
+      font-size: 0.68rem;
+      color: #555;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 0.28rem;
+    }
+
+    .card-read-time svg { flex-shrink: 0; }
+
+    /* Difficulty pill */
+    .diff {
+      display: inline-block;
+      font-family: var(--font-disp);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.16rem 0.5rem;
+      border-radius: 2px;
+      border: 1px solid;
+    }
+
+    .diff-beginner   { color: #4caf82; border-color: rgba(76,175,130,0.35); background: rgba(76,175,130,0.07); }
+    .diff-intermediate { color: #c9a84c; border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.07); }
+    .diff-advanced   { color: #c96a4c; border-color: rgba(201,106,76,0.35); background: rgba(201,106,76,0.07); }
+
+    /* ===================================================
+       KEYBOARD FOCUS — CARD
+    =================================================== */
+    .topic-card:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.2), 0 0 18px var(--gold-glow);
+    }
+
+    .topic-card:focus .card-title { color: var(--gold); }
+
+    /* ===================================================
+       HIDDEN STATE (search + filter)
+    =================================================== */
+    .topic-card.hidden { display: none; }
+    .category-section.all-hidden { display: none; }
+
+    /* ===================================================
+       RESPONSIVE
+    =================================================== */
+    @media (max-width: 900px) {
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 680px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: auto; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 4rem 1.2rem 3.5rem; }
+      .kb-main { padding: 1.5rem 1.2rem 4rem; }
+      .search-wrap { padding: 2rem 1.2rem 0.5rem; }
+      .blog-promo-section { padding: 3rem 1.2rem; }
+      footer { padding: 2.5rem 1.2rem 1.5rem; }
+      .hero-stats { gap: 0; }
+      .hero-stat { padding: 0.6rem 0.9rem; min-width: 70px; }
+      .hero-stat-num { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================================================
+       NAVIGATION
+  =================================================== -->
+  <!-- ===================================================
+       HERO
+  =================================================== -->
+  <header class="hero">
+    <div class="hero-eyebrow">TacRaven Solutions</div>
+
+    <h1>Cybersecurity<br /><span>Knowledge Base</span></h1>
+
+    <p class="hero-sub">Plain-language explanations of the most important cybersecurity technologies, frameworks, and operational concepts.</p>
+
+    <p class="hero-desc">
+      This library is built for students, working professionals, and organizations who need to quickly understand cybersecurity tools and standards — without wading through dense technical documentation. Each article is written to be clear, actionable, and directly applicable to real environments.
+    </p>
+
+    <!-- HERO STAT BAR — update numbers when adding new topics/categories -->
+    <div class="hero-stats" aria-label="Knowledge base statistics">
+      <div class="hero-stat">
+        <span class="hero-stat-num">20</span>
+        <span class="hero-stat-label">Topics</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">4</span>
+        <span class="hero-stat-label">Categories</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">3</span>
+        <span class="hero-stat-label">Skill Levels</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">Free</span>
+        <span class="hero-stat-label">Always</span>
+      </div>
+    </div>
+
+    <a href="/learning-hub.html" class="btn btn-ghost hero-return">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Return to Learning Hub
+    </a>
+
+  </header>
+
+
+  <!-- ===================================================
+       SEARCH
+  =================================================== -->
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input
+        type="search"
+        id="kb-search"
+        placeholder="Search topics — SIEM, Zero Trust, CMMC..."
+        autocomplete="off"
+        aria-label="Search knowledge base topics"
+      />
+    </div>
+    <p id="search-count"></p>
+  </div>
+
+
+  <!-- ===================================================
+       FILTER TABS
+  =================================================== -->
+  <div class="filter-bar" id="filter-bar" role="group" aria-label="Filter topics by category and difficulty">
+    <span class="filter-label">Category:</span>
+    <button class="filter-tab active" data-filter="all"                    tabindex="0">All Topics</button>
+    <button class="filter-tab"        data-filter="Security Technologies"  tabindex="0">Security Tech</button>
+    <button class="filter-tab"        data-filter="Compliance & Frameworks" tabindex="0">Compliance</button>
+    <button class="filter-tab"        data-filter="Security Operations"    tabindex="0">Sec Ops</button>
+    <button class="filter-tab"        data-filter="Cloud & Identity"       tabindex="0">Cloud &amp; Identity</button>
+    <!-- ▼ ADD NEW CATEGORY FILTER TAB HERE when adding a new category ▼ -->
+
+    <span class="filter-divider" aria-hidden="true"></span>
+    <span class="filter-group-label">Level:</span>
+
+    <button class="filter-tab diff-tab" data-filter="beginner"     data-type="difficulty" tabindex="0">Beginner</button>
+    <button class="filter-tab diff-tab" data-filter="intermediate" data-type="difficulty" tabindex="0">Intermediate</button>
+    <button class="filter-tab diff-tab" data-filter="advanced"     data-type="difficulty" tabindex="0">Advanced</button>
+  </div>
+
+
+  <!-- ===================================================
+       MAIN KNOWLEDGE BASE CONTENT
+  =================================================== -->
+  <main class="kb-main" id="topics" aria-label="Knowledge Base Topics">
+
+    <!-- ── NO RESULTS MESSAGE ── -->
+    <div id="no-results">
+      <h3>No results found</h3>
+      <p>Try a different search term or browse the categories below.</p>
+    </div>
+
+
+    <!-- ============================================================
+         CATEGORY 1: SECURITY TECHNOLOGIES
+         ▶ TO ADD MORE CARDS: Copy a <article class="topic-card"> block
+           and paste it before the closing </div> of the .card-grid
+    ============================================================ -->
+    <section class="category-section" id="cat-security-tech" data-category="Security Technologies">
+      <div class="category-header">
+        <div class="category-icon">🛡</div>
+        <h2>Security <span>Technologies</span></h2>
+        <span class="category-count">5 Topics</span>
+      </div>
+
+      <div class="card-grid">
+
+        <!-- CARD: SIEM -->
+        <article class="topic-card" data-title="What is SIEM?" data-desc="Learn how Security Information and Event Management platforms collect and analyze security logs." data-difficulty="beginner" data-url="/knowledge/siem.html" onclick="location.href='/knowledge/siem.html'" tabindex="0" role="button" aria-label="What is SIEM? — Beginner — 7 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Security Tech</span>
+            <button class="card-share" aria-label="Copy link to SIEM article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/siem.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is SIEM?</div>
+          <p class="card-desc">Learn how Security Information and Event Management platforms collect, correlate, and analyze security logs across an enterprise environment.</p>
+          <div class="card-meta">
+            <span class="diff diff-beginner">Beginner</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/detection-engineering.html" onclick="event.stopPropagation()">Detection Engineering</a><a href="/knowledge/soar.html" onclick="event.stopPropagation()">SOAR</a></div>
+          <a href="/knowledge/siem.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: EDR -->
+        <article class="topic-card" data-title="What is EDR?" data-desc="Understand Endpoint Detection and Response tools and how they protect devices from advanced threats." data-difficulty="beginner" data-url="/knowledge/edr.html" onclick="location.href='/knowledge/edr.html'" tabindex="0" role="button" aria-label="What is EDR? — Beginner — 6 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Security Tech</span>
+            <button class="card-share" aria-label="Copy link to EDR article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/edr.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is EDR?</div>
+          <p class="card-desc">Understand how Endpoint Detection and Response tools monitor devices, detect behavioral anomalies, and respond to advanced threats at the endpoint level.</p>
+          <div class="card-meta">
+            <span class="diff diff-beginner">Beginner</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/xdr.html" onclick="event.stopPropagation()">XDR</a><a href="/knowledge/vulnerability-management.html" onclick="event.stopPropagation()">Vulnerability Management</a></div>
+          <a href="/knowledge/edr.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: XDR -->
+        <article class="topic-card" data-title="What is XDR?" data-desc="Explore Extended Detection and Response and how it unifies visibility across endpoints, networks, and cloud." data-difficulty="intermediate" data-url="/knowledge/xdr.html" onclick="location.href='/knowledge/xdr.html'" tabindex="0" role="button" aria-label="What is XDR? — Intermediate — 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Security Tech</span>
+            <button class="card-share" aria-label="Copy link to XDR article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/xdr.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is XDR?</div>
+          <p class="card-desc">Explore Extended Detection and Response and how it unifies threat visibility across endpoints, networks, email, and cloud environments into a single platform.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/edr.html" onclick="event.stopPropagation()">EDR</a><a href="/knowledge/siem.html" onclick="event.stopPropagation()">SIEM</a></div>
+          <a href="/knowledge/xdr.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: SOAR -->
+        <article class="topic-card" data-title="What is SOAR?" data-desc="Discover how Security Orchestration, Automation and Response platforms accelerate incident workflows." data-difficulty="intermediate" data-url="/knowledge/soar.html" onclick="location.href='/knowledge/soar.html'" tabindex="0" role="button" aria-label="What is SOAR? — Intermediate — 7 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Security Tech</span>
+            <button class="card-share" aria-label="Copy link to SOAR article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/soar.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is SOAR?</div>
+          <p class="card-desc">Discover how Security Orchestration, Automation, and Response platforms streamline and accelerate incident detection, triage, and response workflows.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/siem.html" onclick="event.stopPropagation()">SIEM</a><a href="/knowledge/incident-response.html" onclick="event.stopPropagation()">Incident Response</a></div>
+          <a href="/knowledge/soar.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: ZERO TRUST -->
+        <article class="topic-card" data-title="What is Zero Trust?" data-desc="Learn the Zero Trust security model and why never trust, always verify is the modern standard." data-difficulty="intermediate" data-url="/knowledge/zero-trust.html" onclick="location.href='/knowledge/zero-trust.html'" tabindex="0" role="button" aria-label="What is Zero Trust? — Intermediate — 9 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Security Tech</span>
+            <button class="card-share" aria-label="Copy link to Zero Trust article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/zero-trust.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is Zero Trust?</div>
+          <p class="card-desc">Learn the Zero Trust security model and why "never trust, always verify" has become the standard architecture for modern enterprise security.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/iam.html" onclick="event.stopPropagation()">IAM</a><a href="/knowledge/pam.html" onclick="event.stopPropagation()">PAM</a></div>
+          <a href="/knowledge/zero-trust.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- ▼ ADD NEW SECURITY TECHNOLOGY CARDS HERE ▼ -->
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CATEGORY 2: COMPLIANCE & FRAMEWORKS
+         ▶ TO ADD MORE CARDS: Copy a <article class="topic-card"> block
+           and paste it before the closing </div> of the .card-grid
+    ============================================================ -->
+    <section class="category-section" id="cat-compliance" data-category="Compliance & Frameworks">
+      <div class="category-header">
+        <div class="category-icon">📋</div>
+        <h2>Compliance <span>&amp; Frameworks</span></h2>
+        <span class="category-count">5 Topics</span>
+      </div>
+
+      <div class="card-grid">
+
+        <!-- CARD: SOC 2 -->
+        <article class="topic-card" data-title="What is SOC 2?" data-desc="Understand SOC 2 compliance, what it audits, and why it matters for service organizations." data-difficulty="intermediate" data-url="/knowledge/soc2.html" onclick="location.href='/knowledge/soc2.html'" tabindex="0" role="button" aria-label="What is SOC 2? — Intermediate — 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Compliance</span>
+            <button class="card-share" aria-label="Copy link to SOC 2 article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/soc2.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is SOC 2?</div>
+          <p class="card-desc">Understand SOC 2 compliance, the five trust service criteria it audits, and why it matters for service organizations handling customer data.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/iso-27001.html" onclick="event.stopPropagation()">ISO 27001</a><a href="/knowledge/nist-csf.html" onclick="event.stopPropagation()">NIST CSF</a></div>
+          <a href="/knowledge/soc2.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: ISO 27001 -->
+        <article class="topic-card" data-title="What is ISO 27001?" data-desc="Explore the international standard for information security management systems and certification." data-difficulty="advanced" data-url="/knowledge/iso-27001.html" onclick="location.href='/knowledge/iso-27001.html'" tabindex="0" role="button" aria-label="What is ISO 27001? — Advanced — 10 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Compliance</span>
+            <button class="card-share" aria-label="Copy link to ISO 27001 article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/iso-27001.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is ISO 27001?</div>
+          <p class="card-desc">Explore the international standard for establishing, implementing, and maintaining an Information Security Management System (ISMS) and what certification requires.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/soc2.html" onclick="event.stopPropagation()">SOC 2</a><a href="/knowledge/nist-csf.html" onclick="event.stopPropagation()">NIST CSF</a></div>
+          <a href="/knowledge/iso-27001.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: CMMC -->
+        <article class="topic-card" data-title="What is CMMC?" data-desc="Learn how the Cybersecurity Maturity Model Certification applies to defense contractors and supply chains." data-difficulty="advanced" data-url="/knowledge/cmmc.html" onclick="location.href='/knowledge/cmmc.html'" tabindex="0" role="button" aria-label="What is CMMC? — Advanced — 11 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Compliance</span>
+            <button class="card-share" aria-label="Copy link to CMMC article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/cmmc.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is CMMC?</div>
+          <p class="card-desc">Learn how the Cybersecurity Maturity Model Certification affects defense contractors handling CUI and FCI, and what each maturity level demands.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>11 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/nist-csf.html" onclick="event.stopPropagation()">NIST CSF</a><a href="/knowledge/vulnerability-management.html" onclick="event.stopPropagation()">Vulnerability Management</a></div>
+          <a href="/knowledge/cmmc.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: NIST CSF -->
+        <article class="topic-card" data-title="What is NIST Cybersecurity Framework?" data-desc="Break down the NIST CSF's five core functions and how organizations use it to manage cyber risk." data-difficulty="beginner" data-url="/knowledge/nist-csf.html" onclick="location.href='/knowledge/nist-csf.html'" tabindex="0" role="button" aria-label="What is NIST CSF? — Beginner — 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Compliance</span>
+            <button class="card-share" aria-label="Copy link to NIST CSF article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/nist-csf.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is NIST CSF?</div>
+          <p class="card-desc">Break down the five core functions of the NIST Cybersecurity Framework — Identify, Protect, Detect, Respond, and Recover — and how organizations use it to manage cyber risk.</p>
+          <div class="card-meta">
+            <span class="diff diff-beginner">Beginner</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/cmmc.html" onclick="event.stopPropagation()">CMMC</a><a href="/knowledge/soc2.html" onclick="event.stopPropagation()">SOC 2</a></div>
+          <a href="/knowledge/nist-csf.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: PCI-DSS -->
+        <article class="topic-card" data-title="What is PCI-DSS?" data-desc="Understand Payment Card Industry Data Security Standard requirements for organizations that process card data." data-difficulty="intermediate" data-url="/knowledge/pci-dss.html" onclick="location.href='/knowledge/pci-dss.html'" tabindex="0" role="button" aria-label="What is PCI-DSS? — Intermediate — 9 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Compliance</span>
+            <button class="card-share" aria-label="Copy link to PCI-DSS article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/pci-dss.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is PCI-DSS?</div>
+          <p class="card-desc">Understand the Payment Card Industry Data Security Standard requirements that apply to any organization storing, processing, or transmitting cardholder data.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/soc2.html" onclick="event.stopPropagation()">SOC 2</a><a href="/knowledge/vulnerability-management.html" onclick="event.stopPropagation()">Vulnerability Management</a></div>
+          <a href="/knowledge/pci-dss.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- ▼ ADD NEW COMPLIANCE CARDS HERE ▼ -->
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CATEGORY 3: SECURITY OPERATIONS
+         ▶ TO ADD MORE CARDS: Copy a <article class="topic-card"> block
+           and paste it before the closing </div> of the .card-grid
+    ============================================================ -->
+    <section class="category-section" id="cat-sec-ops" data-category="Security Operations">
+      <div class="category-header">
+        <div class="category-icon">⚡</div>
+        <h2>Security <span>Operations</span></h2>
+        <span class="category-count">5 Topics</span>
+      </div>
+
+      <div class="card-grid">
+
+        <!-- CARD: SOC -->
+        <article class="topic-card" data-title="What is a Security Operations Center?" data-desc="Discover how a SOC functions, who staffs it, and what technologies power 24/7 threat monitoring." data-difficulty="beginner" data-url="/knowledge/soc.html" onclick="location.href='/knowledge/soc.html'" tabindex="0" role="button" aria-label="What is a SOC? — Beginner — 7 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Sec Ops</span>
+            <button class="card-share" aria-label="Copy link to SOC article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/soc.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is a SOC?</div>
+          <p class="card-desc">Discover how a Security Operations Center functions, the analyst tiers that staff it, and what technologies power continuous 24/7 threat monitoring and response.</p>
+          <div class="card-meta">
+            <span class="diff diff-beginner">Beginner</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/siem.html" onclick="event.stopPropagation()">SIEM</a><a href="/knowledge/threat-intelligence.html" onclick="event.stopPropagation()">Threat Intelligence</a></div>
+          <a href="/knowledge/soc.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: THREAT INTELLIGENCE -->
+        <article class="topic-card" data-title="What is Threat Intelligence?" data-desc="Learn how cyber threat intelligence is collected, analyzed, and used to anticipate adversary actions." data-difficulty="intermediate" data-url="/knowledge/threat-intelligence.html" onclick="location.href='/knowledge/threat-intelligence.html'" tabindex="0" role="button" aria-label="What is Threat Intelligence? — Intermediate — 9 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Sec Ops</span>
+            <button class="card-share" aria-label="Copy link to Threat Intelligence article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/threat-intelligence.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is Threat Intelligence?</div>
+          <p class="card-desc">Learn how cyber threat intelligence is collected, processed, and analyzed — and how organizations use it to anticipate and counter adversary tactics before an attack occurs.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/detection-engineering.html" onclick="event.stopPropagation()">Detection Engineering</a><a href="/knowledge/incident-response.html" onclick="event.stopPropagation()">Incident Response</a></div>
+          <a href="/knowledge/threat-intelligence.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: INCIDENT RESPONSE -->
+        <article class="topic-card" data-title="What is Incident Response?" data-desc="Understand the six phases of incident response and how teams contain and recover from cyber incidents." data-difficulty="intermediate" data-url="/knowledge/incident-response.html" onclick="location.href='/knowledge/incident-response.html'" tabindex="0" role="button" aria-label="What is Incident Response? — Intermediate — 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Sec Ops</span>
+            <button class="card-share" aria-label="Copy link to Incident Response article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/incident-response.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is Incident Response?</div>
+          <p class="card-desc">Understand the six phases of a structured incident response lifecycle and how security teams detect, contain, eradicate, and recover from cyber incidents.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/soar.html" onclick="event.stopPropagation()">SOAR</a><a href="/knowledge/threat-intelligence.html" onclick="event.stopPropagation()">Threat Intelligence</a></div>
+          <a href="/knowledge/incident-response.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: VULNERABILITY MANAGEMENT -->
+        <article class="topic-card" data-title="What is Vulnerability Management?" data-desc="Explore the continuous process of identifying, prioritizing, and remediating security weaknesses in systems." data-difficulty="intermediate" data-url="/knowledge/vulnerability-management.html" onclick="location.href='/knowledge/vulnerability-management.html'" tabindex="0" role="button" aria-label="What is Vulnerability Management? — Intermediate — 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Sec Ops</span>
+            <button class="card-share" aria-label="Copy link to Vulnerability Management article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/vulnerability-management.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is Vulnerability Management?</div>
+          <p class="card-desc">Explore the continuous process of discovering, classifying, prioritizing, and remediating security weaknesses before threat actors can exploit them.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/edr.html" onclick="event.stopPropagation()">EDR</a><a href="/knowledge/cmmc.html" onclick="event.stopPropagation()">CMMC</a></div>
+          <a href="/knowledge/vulnerability-management.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: DETECTION ENGINEERING -->
+        <article class="topic-card" data-title="What is Detection Engineering?" data-desc="Learn how detection engineers build rules and logic to surface attacker behavior in log and telemetry data." data-difficulty="advanced" data-url="/knowledge/detection-engineering.html" onclick="location.href='/knowledge/detection-engineering.html'" tabindex="0" role="button" aria-label="What is Detection Engineering? — Advanced — 10 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Sec Ops</span>
+            <button class="card-share" aria-label="Copy link to Detection Engineering article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/detection-engineering.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is Detection Engineering?</div>
+          <p class="card-desc">Learn how detection engineers create, test, and maintain detection logic and SIEM rules to reliably surface malicious behavior in telemetry and log data.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/siem.html" onclick="event.stopPropagation()">SIEM</a><a href="/knowledge/threat-intelligence.html" onclick="event.stopPropagation()">Threat Intelligence</a></div>
+          <a href="/knowledge/detection-engineering.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- ▼ ADD NEW SECURITY OPERATIONS CARDS HERE ▼ -->
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CATEGORY 4: CLOUD & IDENTITY
+         ▶ TO ADD MORE CARDS: Copy a <article class="topic-card"> block
+           and paste it before the closing </div> of the .card-grid
+    ============================================================ -->
+    <section class="category-section" id="cat-cloud-identity" data-category="Cloud & Identity">
+      <div class="category-header">
+        <div class="category-icon">☁</div>
+        <h2>Cloud <span>&amp; Identity</span></h2>
+        <span class="category-count">5 Topics</span>
+      </div>
+
+      <div class="card-grid">
+
+        <!-- CARD: IAM -->
+        <article class="topic-card" data-title="What is IAM?" data-desc="Understand Identity and Access Management and how it controls who can access what within an organization." data-difficulty="beginner" data-url="/knowledge/iam.html" onclick="location.href='/knowledge/iam.html'" tabindex="0" role="button" aria-label="What is IAM? — Beginner — 7 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Cloud / Identity</span>
+            <button class="card-share" aria-label="Copy link to IAM article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/iam.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is IAM?</div>
+          <p class="card-desc">Understand Identity and Access Management — the policies, technologies, and processes that control which users can access which systems, data, and applications.</p>
+          <div class="card-meta">
+            <span class="diff diff-beginner">Beginner</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/pam.html" onclick="event.stopPropagation()">PAM</a><a href="/knowledge/zero-trust.html" onclick="event.stopPropagation()">Zero Trust</a></div>
+          <a href="/knowledge/iam.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: PAM -->
+        <article class="topic-card" data-title="What is PAM?" data-desc="Explore Privileged Access Management and why controlling admin credentials is critical to stopping breaches." data-difficulty="intermediate" data-url="/knowledge/pam.html" onclick="location.href='/knowledge/pam.html'" tabindex="0" role="button" aria-label="What is PAM? — Intermediate — 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Cloud / Identity</span>
+            <button class="card-share" aria-label="Copy link to PAM article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/pam.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is PAM?</div>
+          <p class="card-desc">Explore Privileged Access Management and why controlling, monitoring, and auditing admin and service account credentials is critical to stopping lateral movement attacks.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/iam.html" onclick="event.stopPropagation()">IAM</a><a href="/knowledge/zero-trust.html" onclick="event.stopPropagation()">Zero Trust</a></div>
+          <a href="/knowledge/pam.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: CLOUD SECURITY -->
+        <article class="topic-card" data-title="What is Cloud Security?" data-desc="Learn the shared responsibility model and the key controls that protect workloads in AWS, Azure, and GCP." data-difficulty="intermediate" data-url="/knowledge/cloud-security.html" onclick="location.href='/knowledge/cloud-security.html'" tabindex="0" role="button" aria-label="What is Cloud Security? — Intermediate — 9 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Cloud / Identity</span>
+            <button class="card-share" aria-label="Copy link to Cloud Security article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/cloud-security.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is Cloud Security?</div>
+          <p class="card-desc">Learn the shared responsibility model and the key technical controls that protect cloud workloads across AWS, Azure, and Google Cloud environments.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/cspm.html" onclick="event.stopPropagation()">CSPM</a><a href="/knowledge/iam.html" onclick="event.stopPropagation()">IAM</a></div>
+          <a href="/knowledge/cloud-security.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: CSPM -->
+        <article class="topic-card" data-title="What is CSPM?" data-desc="Discover how Cloud Security Posture Management tools detect misconfigurations across cloud environments." data-difficulty="advanced" data-url="/knowledge/cspm.html" onclick="location.href='/knowledge/cspm.html'" tabindex="0" role="button" aria-label="What is CSPM? — Advanced — 9 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Cloud / Identity</span>
+            <button class="card-share" aria-label="Copy link to CSPM article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/cspm.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is CSPM?</div>
+          <p class="card-desc">Discover how Cloud Security Posture Management tools continuously scan for misconfigurations, compliance violations, and excessive permissions across cloud environments.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/cloud-security.html" onclick="event.stopPropagation()">Cloud Security</a><a href="/knowledge/devsecops.html" onclick="event.stopPropagation()">DevSecOps</a></div>
+          <a href="/knowledge/cspm.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: DEVSECOPS -->
+        <article class="topic-card" data-title="What is DevSecOps?" data-desc="Explore how DevSecOps integrates security practices directly into CI/CD pipelines and software delivery." data-difficulty="advanced" data-url="/knowledge/devsecops.html" onclick="location.href='/knowledge/devsecops.html'" tabindex="0" role="button" aria-label="What is DevSecOps? — Advanced — 10 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Cloud / Identity</span>
+            <button class="card-share" aria-label="Copy link to DevSecOps article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/knowledge/devsecops.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is DevSecOps?</div>
+          <p class="card-desc">Explore how DevSecOps integrates security testing, policy enforcement, and vulnerability scanning directly into CI/CD pipelines to catch flaws before deployment.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/knowledge/cspm.html" onclick="event.stopPropagation()">CSPM</a><a href="/knowledge/vulnerability-management.html" onclick="event.stopPropagation()">Vulnerability Management</a></div>
+          <a href="/knowledge/devsecops.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- ▼ ADD NEW CLOUD & IDENTITY CARDS HERE ▼ -->
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ▶ TO ADD A NEW CATEGORY:
+         1. Copy the entire <section class="category-section"> block above.
+         2. Give it a unique id (e.g., id="cat-network").
+         3. Update the data-category attribute, icon, heading, and count.
+         4. Replace the cards inside .card-grid with your new topic cards.
+         5. Paste before the closing </main> tag.
+         6. Add a matching filter tab in the filter-bar above.
+         7. Add entries to the JSON-LD ItemList in the <head>.
+    ============================================================ -->
+
+    <!-- ===================================================
+         SUGGEST A TOPIC CTA
+         Links to contact page. Update href as needed.
+    =================================================== -->
+    <div class="suggest-cta">
+      <div class="suggest-cta-text">
+        <div class="suggest-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div>
+          <h4>Don't see what you're looking for?</h4>
+          <p>The knowledge base grows continuously. Submit a topic request and we'll prioritize it.</p>
+        </div>
+      </div>
+      <a href="/contact.html" class="btn btn-ghost">Suggest a Topic ›</a>
+    </div>
+
+  </main><!-- /.kb-main -->
+
+
+  <!-- ===================================================
+       BLOG PROMO SECTION
+       Promotes Black Wing Dispatch, Cyber Careers, and Weekly Threat Reports.
+       Update hrefs to match actual URLs on tacraven.com.
+  =================================================== -->
+  <section class="blog-promo-section" id="from-the-blog">
+    <div class="blog-promo-inner">
+
+      <p class="section-eyebrow">From TacRaven</p>
+      <h2 class="section-title">Keep Reading</h2>
+      <p class="section-sub">Go deeper with original intelligence reporting, career resources, and weekly threat data from TacRaven's editorial team.</p>
+
+      <div class="blog-promo-grid">
+
+        <!-- CARD: BLACK WING DISPATCH -->
+        <a href="/blog/blackwing/" class="blog-promo-card" aria-label="Black Wing Dispatch — CTI Blog">
+          <div class="blog-promo-accent blog-accent-cti"></div>
+          <div class="blog-promo-body">
+            <div class="blog-promo-eyebrow">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Threat Intelligence
+            </div>
+            <h3 class="blog-promo-title">Black Wing Dispatch</h3>
+            <p class="blog-promo-desc">Weekly cyber threat intelligence briefings covering active adversary groups, emerging TTPs, CISA KEV updates, and malware campaigns — written for analysts and defenders.</p>
+            <div class="blog-promo-tags">
+              <span>APT Profiles</span>
+              <span>CISA KEV</span>
+              <span>Malware</span>
+              <span>TTPs</span>
+            </div>
+          </div>
+          <div class="blog-promo-cta">
+            Read Dispatches <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+        <!-- CARD: CYBER CAREERS BLOG -->
+        <a href="/blog/careers/" class="blog-promo-card" aria-label="Cyber Careers Blog">
+          <div class="blog-promo-accent blog-accent-careers"></div>
+          <div class="blog-promo-body">
+            <div class="blog-promo-eyebrow">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              Career Development
+            </div>
+            <h3 class="blog-promo-title">Cyber Careers</h3>
+            <p class="blog-promo-desc">Practical guidance for breaking into and advancing in cybersecurity — certifications, resume strategies, SOC analyst insights, and how to navigate the job market from people who've done it.</p>
+            <div class="blog-promo-tags">
+              <span>Certifications</span>
+              <span>SOC Careers</span>
+              <span>Job Search</span>
+              <span>Salaries</span>
+            </div>
+          </div>
+          <div class="blog-promo-cta">
+            Browse Articles <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+        <!-- CARD: WEEKLY THREAT REPORTS -->
+        <a href="/reports/" class="blog-promo-card" aria-label="Weekly Cybersecurity Threat Reports">
+          <div class="blog-promo-accent blog-accent-reports"></div>
+          <div class="blog-promo-body">
+            <div class="blog-promo-eyebrow">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              Published Weekly
+            </div>
+            <h3 class="blog-promo-title">Threat Reports</h3>
+            <p class="blog-promo-desc">Structured weekly reports aggregating live threat data — active C2 infrastructure, CISA Known Exploited Vulnerabilities, and indicator feeds — delivered as downloadable PDFs.</p>
+            <div class="blog-promo-tags">
+              <span>C2 Tracking</span>
+              <span>KEV Feed</span>
+              <span>IOCs</span>
+              <span>PDF Download</span>
+            </div>
+          </div>
+          <div class="blog-promo-cta">
+            View Reports <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       BACK-TO-TOP BUTTON
+  =================================================== -->
+  <button id="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+
+  <!-- ===================================================
+       FOOTER
+  =================================================== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>TAC<span>RAVEN</span> Solutions</h3>
+          <p>Bridging intelligence community tradecraft with modern cybersecurity. We build air-gapped tools, training resources, and threat intelligence platforms for defense, intelligence, and critical infrastructure clients.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="/knowledge-base.html">Knowledge Base</a></li>
+            <li><a href="/blog/blackwing/">Black Wing Dispatch</a></li>
+            <li><a href="/blog/careers/">Cyber Careers Blog</a></li>
+            <li><a href="/reports/">Weekly Threat Reports</a></li>
+            <li><a href="/tools.html">Free Tools</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/careers.html">Careers</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="footer-year"></span> TacRaven Solutions LLC · Beavercreek, Ohio · All rights reserved.</p>
+        <p>Built for <span>defenders</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================================================
+       JAVASCRIPT
+  =================================================== -->
+  <script>
+    /* =====================================================
+       SHARE BUTTON — Copy article URL to clipboard
+       Builds the full URL from the current origin + path.
+       Shows a "Copied!" tooltip for 1.8 seconds.
+    ===================================================== */
+    function copyCardLink(btn, path) {
+      const fullUrl = window.location.origin + path;
+      navigator.clipboard.writeText(fullUrl).then(() => {
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 1800);
+      }).catch(() => {
+        // Fallback for older browsers / non-HTTPS
+        const ta = document.createElement('textarea');
+        ta.value = fullUrl;
+        ta.style.position = 'fixed';
+        ta.style.opacity  = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 1800);
+      });
+    }
+
+    /* =====================================================
+       SKELETON SHIMMER + ENTRANCE ANIMATION
+       Flow:
+         1. Cards start with .skeleton (shimmer placeholder).
+         2. .skeleton is removed in staggered row chunks.
+         3. After removal, each card gets .card-hidden
+            (invisible, shifted down 22px).
+         4. IntersectionObserver watches for cards entering
+            the viewport and adds .card-visible to play the
+            fade-up animation with a per-card stagger delay.
+         5. Cards already in view on load animate in ~900ms
+            after page ready (skeleton duration + buffer).
+    ===================================================== */
+    (function initSkeletons() {
+      const cards = Array.from(document.querySelectorAll('.topic-card'));
+      cards.forEach(c => c.classList.add('skeleton'));
+
+      // Stagger skeleton removal in groups of 5 (one row at a time)
+      const chunkSize  = 5;
+      const maxDelay   = 300 + Math.floor((cards.length - 1) / chunkSize) * 120 + ((cards.length - 1) % chunkSize) * 40;
+
+      cards.forEach((card, i) => {
+        const delay = 300 + Math.floor(i / chunkSize) * 120 + (i % chunkSize) * 40;
+        setTimeout(() => {
+          card.classList.remove('skeleton');
+          card.classList.add('card-hidden');
+        }, delay);
+      });
+
+      // Launch observer after all skeletons have cleared
+      setTimeout(initEntranceObserver, maxDelay + 60);
+    })();
+
+    /* =====================================================
+       CARD ENTRANCE OBSERVER
+       Stagger delay based on card position within its row.
+    ===================================================== */
+    function initEntranceObserver() {
+      // Determine approx cards-per-row from grid width
+      const grid        = document.querySelector('.card-grid');
+      const cardWidth   = grid ? grid.querySelector('.topic-card')?.offsetWidth || 260 : 260;
+      const cols        = grid ? Math.max(1, Math.round(grid.offsetWidth / (cardWidth + 19))) : 3;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const card = entry.target;
+
+          // Stagger within the visual row
+          const allCards    = Array.from(document.querySelectorAll('.topic-card.card-hidden, .topic-card.card-visible'));
+          const cardIndex   = allCards.indexOf(card);
+          const colPosition = cardIndex % cols;
+          const staggerMs   = colPosition * 70; // 0, 70, 140ms per column
+
+          card.style.animationDelay = `${staggerMs}ms`;
+          card.classList.remove('card-hidden');
+          card.classList.add('card-visible');
+
+          observer.unobserve(card);
+        });
+      }, {
+        threshold:   0.08,   // trigger when 8% of card is visible
+        rootMargin: '0px 0px -30px 0px'  // slight bottom offset so cards don't fire before they're meaningfully in view
+      });
+
+      // Observe all hidden cards
+      document.querySelectorAll('.topic-card.card-hidden').forEach(card => {
+        observer.observe(card);
+      });
+    }
+
+    /* ── FOOTER YEAR ── */
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    /* =====================================================
+       STATE — two independent filter axes
+    ===================================================== */
+    let activeCategory   = 'all';   // category tab value
+    let activeDifficulty = 'all';   // difficulty tab value  ('all' = no filter)
+    let activeSearch     = '';      // search query
+
+    /* =====================================================
+       FILTER TABS
+       Category tabs: data-type is absent (default)
+       Difficulty tabs: data-type="difficulty"
+    ===================================================== */
+    const allTabs      = document.querySelectorAll('.filter-tab');
+    const catTabs      = document.querySelectorAll('.filter-tab:not(.diff-tab)');
+    const diffTabs     = document.querySelectorAll('.filter-tab.diff-tab');
+
+    catTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        activeCategory = tab.dataset.filter;
+        catTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        applyFilters();
+      });
+      tab.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tab.click(); }
+      });
+    });
+
+    diffTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Toggle: clicking an already-active difficulty tab resets it
+        if (activeDifficulty === tab.dataset.filter) {
+          activeDifficulty = 'all';
+          diffTabs.forEach(t => t.classList.remove('active'));
+        } else {
+          activeDifficulty = tab.dataset.filter;
+          diffTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+        }
+        applyFilters();
+      });
+      tab.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tab.click(); }
+      });
+    });
+
+    /* =====================================================
+       LIVE SEARCH
+    ===================================================== */
+    const searchInput  = document.getElementById('kb-search');
+    const countDisplay = document.getElementById('search-count');
+    const noResults    = document.getElementById('no-results');
+
+    searchInput.addEventListener('input', () => {
+      activeSearch = searchInput.value.trim().toLowerCase();
+      applyFilters();
+    });
+
+    /* =====================================================
+       APPLY FILTERS
+       All three axes (category, difficulty, search) combine
+       with AND logic — a card must pass all active filters.
+    ===================================================== */
+    function applyFilters() {
+      const cards    = document.querySelectorAll('.topic-card');
+      const sections = document.querySelectorAll('.category-section');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const section = card.closest('.category-section');
+        const cat     = (section?.dataset.category || '').toLowerCase();
+        const diff    = (card.dataset.difficulty   || '').toLowerCase();
+        const title   = (card.dataset.title        || '').toLowerCase();
+        const desc    = (card.dataset.desc         || '').toLowerCase();
+
+        // 1 — Category tab
+        const catMatch  = activeCategory === 'all' || cat === activeCategory.toLowerCase();
+
+        // 2 — Difficulty tab
+        const diffMatch = activeDifficulty === 'all' || diff === activeDifficulty;
+
+        // 3 — Search text (searches title, desc, category name, difficulty)
+        const searchMatch = !activeSearch ||
+          title.includes(activeSearch) ||
+          desc.includes(activeSearch)  ||
+          cat.includes(activeSearch)   ||
+          diff.includes(activeSearch);
+
+        const visible = catMatch && diffMatch && searchMatch;
+        card.classList.toggle('hidden', !visible);
+        // If a card is being shown and is still in pre-animation state, reveal it immediately
+        if (visible && card.classList.contains('card-hidden')) {
+          card.style.animationDelay = '0ms';
+          card.classList.remove('card-hidden');
+          card.classList.add('card-visible');
+        }
+        if (visible) visibleCount++;
+      });
+
+      // Collapse empty category sections
+      sections.forEach(section => {
+        const anyVisible = [...section.querySelectorAll('.topic-card')]
+          .some(c => !c.classList.contains('hidden'));
+        section.classList.toggle('all-hidden', !anyVisible);
+      });
+
+      // Search result counter + no-results state
+      const filtering = activeSearch || activeDifficulty !== 'all' || activeCategory !== 'all';
+      if (filtering && activeSearch) {
+        countDisplay.textContent = `${visibleCount} topic${visibleCount !== 1 ? 's' : ''} found`;
+      } else if (activeDifficulty !== 'all' || (activeCategory !== 'all' && activeSearch === '')) {
+        countDisplay.textContent = `${visibleCount} topic${visibleCount !== 1 ? 's' : ''} shown`;
+      } else {
+        countDisplay.textContent = '';
+      }
+      noResults.style.display = (filtering && visibleCount === 0) ? 'block' : 'none';
+    }
+
+    /* =====================================================
+       KEYBOARD ACCESSIBILITY — Topic Cards
+    ===================================================== */
+    document.querySelectorAll('.topic-card').forEach(card => {
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const link = card.querySelector('.btn-card');
+          if (link) window.location.href = link.getAttribute('href');
+        }
+      });
+    });
+
+    /* =====================================================
+       BACK-TO-TOP BUTTON
+       Appears after scrolling 400px down the page.
+    ===================================================== */
+    const backToTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    backToTop.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>

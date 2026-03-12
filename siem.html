@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is SIEM? | TacRaven Cybersecurity Knowledge Base</title>
+  <meta name="description" content="Learn what SIEM (Security Information and Event Management) is, how it works, and how organizations use SIEM platforms to detect threats, correlate security events, and manage security operations." />
+  <meta name="keywords" content="SIEM, Security Information and Event Management, threat detection, log management, security analytics, SOC, cybersecurity" />
+  <meta name="author" content="TacRaven Solutions" />
+  <link rel="canonical" href="https://tacraven.com/knowledge/siem.html" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="What is SIEM? | TacRaven Cybersecurity Knowledge Base" />
+  <meta property="og:description" content="Learn what SIEM is, how it works, and how organizations use SIEM platforms to detect threats, correlate security events, and manage security operations." />
+  <meta property="og:url" content="https://tacraven.com/knowledge/siem.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is SIEM? | TacRaven Cybersecurity Knowledge Base" />
+  <meta name="twitter:description" content="Learn what SIEM is, how it works, and how organizations use SIEM platforms to detect threats and manage security operations." />
+
+  <!-- JSON-LD Structured Data - Article schema for Google rich results (#5) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is SIEM? Security Information and Event Management Explained",
+    "description": "Learn what SIEM (Security Information and Event Management) is, how it works, and how organizations use SIEM platforms to detect threats, correlate security events, and manage security operations.",
+    "url": "https://tacraven.com/knowledge/siem.html",
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-03-01",
+    "author": {
+      "@type": "Organization",
+      "name": "TacRaven Solutions",
+      "url": "https://tacraven.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TacRaven Solutions",
+      "url": "https://tacraven.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tacraven.com/knowledge/siem.html"
+    },
+    "articleSection": "Security Technologies",
+    "keywords": ["SIEM", "Security Information and Event Management", "threat detection", "log management", "SOC", "security analytics", "cybersecurity"],
+    "educationalLevel": "Beginner",
+    "about": {
+      "@type": "Thing",
+      "name": "Security Information and Event Management",
+      "sameAs": "https://en.wikipedia.org/wiki/Security_information_and_event_management"
+    }
+  }
+  </script>
+
+  <style>
+    /* =========================================
+       CSS CUSTOM PROPERTIES - TacRaven Theme
+    ========================================= */
+    :root {
+      --black:        #0a0a0a;
+      --dark:         #111111;
+      --dark-card:    #161616;
+      --dark-border:  #1f1f1f;
+      --gold:         #c9a84c;
+      --gold-light:   #e2c06e;
+      --gold-dim:     #8a6e2f;
+      --red:          #c0392b;
+      --text:         #d4d4d4;
+      --text-muted:   #7a7a7a;
+      --text-dim:     #4a4a4a;
+      --white:        #f0f0f0;
+      --font-display: 'Courier New', Courier, monospace;
+      --font-body:    Georgia, 'Times New Roman', serif;
+      --font-ui:      'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    }
+
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle cyber grid overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =========================================
+       BACK BUTTON BAR
+    ========================================= */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--dark-border);
+      backdrop-filter: blur(6px);
+      padding: 12px 24px;
+    }
+
+    .btn-back {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      padding: 8px 18px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .btn-back:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .btn-back::before {
+      content: '←';
+      font-size: 0.85rem;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--dark-border);
+      background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a {
+      color: var(--gold-dim);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: var(--gold); }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: bold;
+      color: var(--white);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 .accent { color: var(--gold); }
+
+    .hero-subtitle {
+      font-family: var(--font-ui);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .hero-intro {
+      font-size: 1rem;
+      color: var(--text);
+      max-width: 780px;
+      margin-bottom: 32px;
+      border-left: 3px solid var(--gold-dim);
+      padding-left: 18px;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .meta-tag {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid #3a3a3a;
+      border-radius: 2px;
+      color: #c8c8c8;
+      background: #1e1e1e;
+    }
+
+    .meta-tag.cat { border-color: var(--gold); color: var(--gold-light); }
+
+    /* =========================================
+       MAIN LAYOUT
+    ========================================= */
+    .page-body {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* =========================================
+       ARTICLE CONTENT
+    ========================================= */
+    article {
+      min-width: 0;
+    }
+
+    /* Section spacing */
+    .kb-section {
+      margin-bottom: 52px;
+    }
+
+    /* Section headings */
+    .kb-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kb-section h2::before {
+      content: '//';
+      color: var(--gold-dim);
+      font-size: 0.85rem;
+    }
+
+    .kb-section h3 {
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin: 28px 0 10px;
+    }
+
+    .kb-section p {
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 22px 26px;
+      margin-bottom: 16px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .card-small {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+
+    .card-small h4 {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .card-small p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Use-case cards */
+    .usecase-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 3px solid var(--gold-dim);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 18px;
+    }
+
+    .usecase-card h4 {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .usecase-card ol {
+      padding-left: 20px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .usecase-card ol li {
+      margin-bottom: 6px;
+    }
+
+    /* Comparison table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 14px;
+    }
+
+    .compare-table th {
+      font-family: var(--font-display);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--gold);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--gold-dim);
+      background: var(--dark);
+    }
+
+    .compare-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--dark-border);
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.04); }
+
+    /* Platform list */
+    .platform-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .platform-list li {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+
+    .platform-list li strong {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .platform-list li span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Takeaways list */
+    .takeaway-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .takeaway-list li {
+      padding: 12px 16px 12px 44px;
+      position: relative;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .takeaway-list li:last-child { border-bottom: none; }
+
+    .takeaway-list li::before {
+      content: '►';
+      position: absolute;
+      left: 16px;
+      color: var(--gold);
+      font-size: 0.65rem;
+      top: 16px;
+    }
+
+    /* Data source tags */
+    .source-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .source-tag {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 2px;
+      color: var(--text-muted);
+    }
+
+    /* Architecture flow */
+    .arch-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 18px 0;
+      align-items: stretch;
+    }
+
+    .arch-step {
+      flex: 1;
+      min-width: 100px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 14px 12px;
+      text-align: center;
+      position: relative;
+    }
+
+    .arch-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold-dim);
+      font-size: 0.9rem;
+      z-index: 2;
+    }
+
+    .arch-step .step-num {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      color: var(--gold-dim);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .arch-step .step-name {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    /* Warning / challenge callout */
+    .callout-warning {
+      background: rgba(192,57,43,0.08);
+      border: 1px solid rgba(192,57,43,0.25);
+      border-left: 3px solid var(--red);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    .callout-warning strong {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #e05c4a;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .callout-warning p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* References */
+    .ref-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: refs;
+    }
+
+    .ref-list li {
+      counter-increment: refs;
+      padding: 10px 0 10px 36px;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .ref-list li:last-child { border-bottom: none; }
+
+    .ref-list li::before {
+      content: '[' counter(refs) ']';
+      position: absolute;
+      left: 0;
+      color: var(--gold-dim);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+    }
+
+    .ref-list a {
+      color: var(--gold-dim);
+      text-decoration: none;
+    }
+
+    .ref-list a:hover { color: var(--gold); }
+
+    /* Related topics */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .related-link {
+      display: block;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .related-link:hover {
+      border-color: var(--gold-dim);
+      background: rgba(201,168,76,0.05);
+    }
+
+    .related-link .rl-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .related-link .rl-title {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    /* =========================================
+       SIDEBAR
+    ========================================= */
+    aside {
+      position: sticky;
+      top: 80px;
+    }
+
+    .sidebar-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-card h3 {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .toc-list li {
+      margin-bottom: 2px;
+    }
+
+    .toc-list a {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: block;
+      padding: 5px 8px;
+      border-radius: 2px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .toc-list a:hover {
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.06);
+    }
+
+    .toc-list a.sub {
+      padding-left: 20px;
+      font-size: 0.73rem;
+    }
+
+    /* =========================================
+       MITRE ATT&CK TECHNIQUE BADGES (#7)
+    ========================================= */
+    .attck-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .attck-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 4px 10px 4px 8px;
+      border-radius: 2px;
+      background: rgba(192,57,43,0.1);
+      border: 1px solid rgba(192,57,43,0.35);
+      color: #e07060;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .attck-badge:hover {
+      background: rgba(192,57,43,0.2);
+      border-color: rgba(192,57,43,0.6);
+      color: #f08878;
+    }
+
+    .attck-badge::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #c0392b;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .attck-label {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    /* =========================================
+       ACTIVE TOC HIGHLIGHT (#2)
+    ========================================= */
+    .toc-list a.toc-active {
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.08);
+      border-left: 2px solid var(--gold);
+      padding-left: 6px;
+    }
+
+    /* =========================================
+       MOBILE SIDEBAR DRAWER (#11)
+    ========================================= */
+    .toc-toggle-btn {
+      display: none;
+      width: 100%;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      cursor: pointer;
+      text-align: left;
+      margin-bottom: 0;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toc-toggle-btn .toc-chevron {
+      display: inline-block;
+      transition: transform 0.25s;
+      font-style: normal;
+      font-size: 0.8rem;
+    }
+
+    .toc-toggle-btn.open .toc-chevron {
+      transform: rotate(180deg);
+    }
+
+    .toc-drawer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .toc-drawer.open {
+      max-height: 600px;
+      opacity: 1;
+    }
+
+    .toc-drawer-inner {
+      padding-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .toc-toggle-btn {
+        display: flex;
+      }
+
+      /* Wrap the toc-list in the drawer on mobile */
+      .sidebar-toc-card .toc-list {
+        border-top: 1px solid var(--dark-border);
+        margin-top: 0;
+        padding-top: 8px;
+      }
+    }
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 24px 28px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .footer-brand .logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer-brand p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 6px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-col ul a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-copy {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+    }
+
+    .footer-tagline {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    /* =========================================
+       DIVIDER
+    ========================================= */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--dark-border);
+      margin: 0;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 900px) {
+      .page-body {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+        order: -1;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .arch-step:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .arch-step { min-width: 80px; }
+
+      .compare-table { font-size: 0.78rem; }
+
+      .hero h1 { letter-spacing: -0.5px; }
+    }
+
+    /* Print */
+    @media print {
+      .top-bar, aside, footer { display: none; }
+      body { background: white; color: black; }
+      .page-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       TOP BAR - single return button
+  ============================================================ -->
+  <div class="top-bar">
+    <a href="/knowledge" class="btn-back">Return to Knowledge Base</a>
+  </div>
+
+  <!-- ============================================================
+       HERO SECTION - edit subtitle and intro paragraph here
+  ============================================================ -->
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <p class="breadcrumb">
+        <a href="/">Home</a> &nbsp;/&nbsp;
+        <a href="/knowledge">TacRaven Cybersecurity Knowledge Base</a> &nbsp;/&nbsp;
+        What is SIEM?
+      </p>
+      <h1>What is <span class="accent">SIEM</span>?</h1>
+      <p class="hero-subtitle">Understanding Security Information and Event Management in modern cybersecurity operations.</p>
+      <p class="hero-intro">
+        SIEM platforms give security teams a centralized command post for the torrent of log data generated by modern IT environments. By aggregating, normalizing, and correlating events from networks, endpoints, applications, and cloud systems, SIEM transforms raw log noise into actionable intelligence - enabling organizations to detect threats faster, investigate incidents with context, and demonstrate compliance to auditors.
+      </p>
+      <div class="meta-bar">
+        <span class="meta-tag cat">Security Technologies</span>
+        <span class="meta-tag">Difficulty: Beginner</span>
+        <span class="meta-tag">Read Time: 12 Minutes</span>
+        <span class="meta-tag">Updated: 2025</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN PAGE BODY - article + sidebar
+  ============================================================ -->
+  <div class="page-body">
+
+    <!-- =====================================================
+         ARTICLE
+    ===================================================== -->
+    <article>
+
+      <!-- ========================
+           SECTION: Executive Overview
+           Add/edit content below
+      ======================== -->
+      <section class="kb-section" id="overview" aria-labelledby="s-overview">
+        <h2 id="s-overview">Executive Overview</h2>
+        <p>
+          <strong>SIEM</strong> - Security Information and Event Management - is a category of security technology that combines two previously distinct disciplines: Security Information Management (SIM), which focused on long-term log storage and compliance reporting, and Security Event Management (SEM), which focused on real-time monitoring and alerting. Modern SIEM platforms unify both functions into a single platform that ingests log data from across an enterprise, applies analytical rules and machine learning, and surfaces security events requiring human investigation.
+        </p>
+        <p>
+          The core value proposition is simple but difficult to replicate manually: no security analyst can watch thousands of systems simultaneously. A SIEM does it automatically, applying detection logic at scale and presenting analysts with prioritized, correlated alerts rather than raw log files. Without a SIEM, even a well-staffed security operations center (SOC) would be flying blind.
+        </p>
+        <p>
+          SIEM sits at the center of enterprise security operations. It is not a firewall, antivirus, or endpoint agent - it is the analytical layer that makes all of those tools more effective by bringing their data together. Understanding SIEM is foundational for anyone entering cybersecurity, whether as a practitioner, architect, or leader.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: Definition
+      ======================== -->
+      <section class="kb-section" id="definition" aria-labelledby="s-def">
+        <h2 id="s-def">Defining SIEM</h2>
+        <p>
+          In formal terms, a SIEM platform is software that aggregates security event data from heterogeneous sources, normalizes that data into a common schema, stores it in a searchable repository, applies detection logic to identify suspicious patterns, and presents findings through dashboards and alerting mechanisms.
+        </p>
+        <p>
+          In plain language: a SIEM is a security analyst's central screen. Every firewall block, failed login, malware quarantine, DNS query, and privilege escalation event across your entire organization flows into one platform where it can be searched, correlated with other events, and acted upon.
+        </p>
+        <div class="card">
+          <p>
+            The term was coined in 2005 by Gartner analysts Mark Nicolett and Amrit Williams. Their original definition described SIEM as a technology that provides "real-time analysis of security alerts generated by network hardware and applications." Two decades later, the category has expanded dramatically to include behavioral analytics, cloud-native ingestion, threat intelligence integration, and AI-powered anomaly detection - but the core concept remains unchanged.
+          </p>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Why SIEM Exists
+      ======================== -->
+      <section class="kb-section" id="why" aria-labelledby="s-why">
+        <h2 id="s-why">Why SIEM Exists</h2>
+        <p>
+          The problem SIEM solves is structural. A mid-sized enterprise running 500 servers, 2,000 workstations, a cloud environment, and a handful of network appliances might generate tens of millions of log entries per day. Each log is a single data point - mostly normal activity. But somewhere in that flood of routine events, an attacker may be performing reconnaissance, escalating privileges, or exfiltrating data. The challenge is not collecting logs; it is finding the signal in the noise.
+        </p>
+        <p>
+          Before SIEM, security teams managed logs in siloed, tool-specific formats. A network engineer might review firewall logs; a system administrator might check Windows Event Logs; a web team might scan application access logs. Each looked at their slice in isolation, meaning that a coordinated attack spanning multiple systems would appear as a minor anomaly in each log source - not suspicious when viewed individually, but obviously malicious when viewed together.
+        </p>
+        <div class="callout-warning">
+          <strong>The Visibility Gap</strong>
+          <p>Modern threat actors deliberately operate across multiple attack surfaces - endpoint, network, identity, cloud - to stay below the detection threshold of any single tool. SIEM directly addresses this by making cross-domain correlation possible.</p>
+        </div>
+        <p>
+          Compliance requirements accelerated SIEM adoption. Regulations such as PCI DSS, HIPAA, SOX, and later GDPR and CMMC require organizations to demonstrate that they are monitoring access to sensitive systems and retaining logs for defined periods. SIEM provides both the monitoring capability and the centralized, tamper-evident log repository that auditors require.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: How SIEM Works
+           Add new subsections inside this section
+      ======================== -->
+      <section class="kb-section" id="how-it-works" aria-labelledby="s-how">
+        <h2 id="s-how">How SIEM Works</h2>
+        <p>
+          Modern SIEM platforms follow a well-defined data pipeline from ingestion to analyst action. Understanding each stage clarifies both the power and the limitations of SIEM technology.
+        </p>
+
+        <div class="arch-flow">
+          <div class="arch-step"><span class="step-num">01</span><span class="step-name">Collect</span></div>
+          <div class="arch-step"><span class="step-num">02</span><span class="step-name">Normalize</span></div>
+          <div class="arch-step"><span class="step-num">03</span><span class="step-name">Correlate</span></div>
+          <div class="arch-step"><span class="step-num">04</span><span class="step-name">Alert</span></div>
+          <div class="arch-step"><span class="step-num">05</span><span class="step-name">Investigate</span></div>
+          <div class="arch-step"><span class="step-num">06</span><span class="step-name">Report</span></div>
+        </div>
+
+        <h3>Log Collection</h3>
+        <p>
+          SIEM platforms ingest log data through multiple mechanisms: forwarding agents installed on endpoints and servers, syslog receivers that accept UDP or TCP data from network devices, API connections to cloud services, and protocol-specific connectors for applications and databases. Enterprise SIEM deployments often ingest data from hundreds of unique log sources simultaneously, at rates of tens of thousands of events per second.
+        </p>
+
+        <h3>Log Normalization</h3>
+        <p>
+          Raw logs arrive in dozens of different formats - CEF, LEEF, JSON, plain text, Windows XML event format, and vendor-specific proprietary schemas. Normalization translates all of these into a common data model where fields like "source IP," "username," and "timestamp" mean the same thing regardless of which device generated the event. This is what makes cross-source correlation possible.
+        </p>
+
+        <h3>Event Correlation</h3>
+        <p>
+          Correlation is the analytical core of SIEM. Correlation rules define patterns of events - sequences, thresholds, statistical anomalies - that indicate potential threats. A simple correlation rule might trigger an alert if a single IP address generates more than 50 failed SSH authentication attempts in 60 seconds. A more complex rule might identify a user who successfully authenticated from an unusual country, then immediately accessed a sensitive database, then transferred an unusually large file - behavior consistent with credential compromise. Each event alone is low-signal; their combination is high-fidelity.
+        </p>
+
+        <h3>Alert Generation</h3>
+        <p>
+          When correlation logic fires, the SIEM generates an alert enriched with the relevant supporting events, asset context, user identity information, and threat intelligence lookups. Modern SIEM platforms assign risk scores to alerts to help analysts prioritize their queues. Alerts route to analyst consoles, ticketing systems, or SOAR platforms for automated response workflows.
+        </p>
+
+        <h3>Security Analytics and Behavioral Detection</h3>
+        <p>
+          Beyond static correlation rules, next-generation SIEM platforms incorporate User and Entity Behavior Analytics (UEBA). UEBA establishes behavioral baselines for individual users and systems, then flags statistically anomalous deviations - a developer suddenly accessing HR systems at 2:00 AM, a service account scanning the entire internal subnet, a user logging in from two geographically impossible locations simultaneously. Behavioral analytics excel at detecting threats that evade signature-based rules.
+        </p>
+
+        <h3>Dashboards and Monitoring</h3>
+        <p>
+          SIEM interfaces provide real-time dashboards for SOC analysts, customizable views for specific threat categories, and investigation workbenches that allow analysts to pivot from an alert into the full timeline of events. Long-term reporting functions support compliance documentation and security program metrics.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: Data Sources
+      ======================== -->
+      <section class="kb-section" id="data-sources" aria-labelledby="s-sources">
+        <h2 id="s-sources">Common Data Sources</h2>
+        <p>
+          The security value of a SIEM is directly proportional to the breadth and quality of its log sources. A SIEM that only receives firewall logs has a narrow field of view. The more diverse the data, the more accurately it can reconstruct attacker behavior across the kill chain.
+        </p>
+        <p>
+          Common log sources fed into SIEM platforms include:
+        </p>
+        <div class="source-tags">
+          <span class="source-tag">Firewalls</span>
+          <span class="source-tag">IDS / IPS</span>
+          <span class="source-tag">Endpoint Security (EDR)</span>
+          <span class="source-tag">Active Directory / LDAP</span>
+          <span class="source-tag">VPN Gateways</span>
+          <span class="source-tag">DNS Servers</span>
+          <span class="source-tag">Web Proxies</span>
+          <span class="source-tag">Email Security</span>
+          <span class="source-tag">Cloud Platforms (AWS, Azure, GCP)</span>
+          <span class="source-tag">SaaS Applications</span>
+          <span class="source-tag">Databases</span>
+          <span class="source-tag">Windows Event Logs</span>
+          <span class="source-tag">Linux Syslog</span>
+          <span class="source-tag">Application Servers</span>
+          <span class="source-tag">Vulnerability Scanners</span>
+          <span class="source-tag">Threat Intelligence Feeds</span>
+        </div>
+        <p style="margin-top: 18px;">
+          Log diversity matters because sophisticated threat actors deliberately pivot between systems to obscure their path. An attacker who compromises a VPN credential, escalates privileges through Active Directory, and then exfiltrates data through a cloud storage service will leave traces in at least three distinct log sources. Only a SIEM with visibility into all three can assemble the complete picture.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: Detection and Investigation
+      ======================== -->
+      <section class="kb-section" id="detection" aria-labelledby="s-detect">
+        <h2 id="s-detect">Detection and Investigation</h2>
+        <p>
+          Threat detection in a SIEM environment operates across multiple layers. Signature-based detection matches known indicators of compromise (IoCs) - malicious IP addresses, domain names, file hashes - against incoming log data. Rule-based correlation identifies behavioral patterns associated with specific attack techniques. Statistical analytics flag deviations from established baselines.
+        </p>
+        <p>
+          When an alert fires, an analyst begins triage: assessing whether the alert reflects genuine malicious activity or a false positive. The analyst queries the SIEM for additional context - what did this user or system do in the hours before and after the triggering event? Are there related alerts from other sources? Does the activity correlate with any known threat actor TTPs documented in MITRE ATT&CK?
+        </p>
+        <p>
+          Modern SIEM platforms support timeline views that allow analysts to reconstruct the sequence of events across multiple log sources in chronological order, providing the full context needed for confident incident classification and escalation decisions. This investigation capability is what distinguishes SIEM from simple log management - the data is already aggregated and searchable in near real-time, not sitting in isolated flat files on distant servers.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: Real-World Use Cases
+           Add additional use-case cards here
+      ======================== -->
+      <section class="kb-section" id="use-cases" aria-labelledby="s-cases">
+        <h2 id="s-cases">Real-World Use Cases</h2>
+
+        <div class="usecase-card">
+          <h4>Use Case 01 - Brute Force Attack Detection</h4>
+          <div class="attck-badges">
+            <span class="attck-label">ATT&amp;CK Techniques:</span>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1110/" target="_blank" rel="noopener noreferrer">T1110 - Brute Force</a>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1078/" target="_blank" rel="noopener noreferrer">T1078 - Valid Accounts</a>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1190/" target="_blank" rel="noopener noreferrer">T1190 - Exploit Public-Facing App</a>
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom: 10px;">An external actor attempts to guess credentials for an internet-facing VPN portal.</p>
+          <ol>
+            <li>The VPN appliance generates authentication failure events for each attempt.</li>
+            <li>The SIEM ingests these events and a threshold-based correlation rule detects 100+ failures from a single IP in 90 seconds.</li>
+            <li>An alert fires, enriched with geolocation data showing the source IP is associated with a known hosting provider used for credential stuffing campaigns.</li>
+            <li>The analyst confirms the pattern, blocks the IP at the firewall, and checks whether any related IP addresses have succeeded in authenticating.</li>
+            <li>A SOAR playbook automatically creates a ticket and notifies the identity team to review affected accounts.</li>
+          </ol>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Use Case 02 - Insider Threat Detection</h4>
+          <div class="attck-badges">
+            <span class="attck-label">ATT&amp;CK Techniques:</span>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1078/" target="_blank" rel="noopener noreferrer">T1078 - Valid Accounts</a>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1530/" target="_blank" rel="noopener noreferrer">T1530 - Data from Cloud Storage</a>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1567/" target="_blank" rel="noopener noreferrer">T1567 - Exfil to Web Service</a>
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom: 10px;">A privileged user begins accessing systems outside their normal operational scope.</p>
+          <ol>
+            <li>A finance employee begins querying the HR database at 11:30 PM on a Friday - behavior inconsistent with their 18-month baseline.</li>
+            <li>The UEBA module flags the anomalous access. A separate correlation rule fires when the same user begins transferring files to a personal cloud storage account.</li>
+            <li>The SIEM generates a high-priority alert combining both signals with a risk score of 87/100.</li>
+            <li>The SOC analyst reviews the timeline: database query, file download, cloud upload - all within 45 minutes. The pattern matches data staging and exfiltration behavior.</li>
+            <li>HR and legal are notified. The user's access is suspended pending investigation.</li>
+          </ol>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Use Case 03 - Data Exfiltration Detection</h4>
+          <div class="attck-badges">
+            <span class="attck-label">ATT&amp;CK Techniques:</span>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1048/" target="_blank" rel="noopener noreferrer">T1048 - Exfil Over Alt Protocol</a>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1560/" target="_blank" rel="noopener noreferrer">T1560 - Archive Collected Data</a>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1071/" target="_blank" rel="noopener noreferrer">T1071 - App Layer Protocol</a>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1078/" target="_blank" rel="noopener noreferrer">T1078 - Valid Accounts</a>
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom: 10px;">A compromised service account is used to move data out of a sensitive repository.</p>
+          <ol>
+            <li>A service account that normally generates 200MB of outbound traffic per day suddenly initiates 14GB of outbound transfers to an unfamiliar external IP.</li>
+            <li>Network flow logs and DLP alerts both fire, and both are ingested by the SIEM simultaneously.</li>
+            <li>The SIEM correlates these with an earlier alert - 72 hours prior, the same service account authenticated from a new geographic location, which was logged but not escalated.</li>
+            <li>The analyst reconstructs a timeline showing initial access, lateral movement, data staging, and exfiltration - consistent with a multi-stage intrusion.</li>
+            <li>Incident response is initiated. The SIEM's historical log retention allows forensic reconstruction back to initial access.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Benefits
+      ======================== -->
+      <section class="kb-section" id="benefits" aria-labelledby="s-ben">
+        <h2 id="s-ben">Benefits of SIEM</h2>
+        <div class="card-grid">
+          <div class="card-small">
+            <h4>Centralized Visibility</h4>
+            <p>All security-relevant log data from across the enterprise - on-premises and cloud - available in a single searchable platform.</p>
+          </div>
+          <div class="card-small">
+            <h4>Compliance Support</h4>
+            <p>Automates log retention, access reporting, and audit trail generation required by PCI DSS, HIPAA, SOX, GDPR, and CMMC frameworks.</p>
+          </div>
+          <div class="card-small">
+            <h4>Faster Incident Response</h4>
+            <p>Reduces mean time to detect (MTTD) and mean time to respond (MTTR) by surfacing correlated, enriched alerts rather than raw log data.</p>
+          </div>
+          <div class="card-small">
+            <h4>Historical Analysis</h4>
+            <p>Long-term log retention enables retrospective threat hunting and forensic investigation of incidents discovered after the fact.</p>
+          </div>
+          <div class="card-small">
+            <h4>Threat Intelligence Integration</h4>
+            <p>Real-time lookups against threat intelligence feeds add context to alerts - known malicious IPs, domains, and file hashes matched automatically.</p>
+          </div>
+          <div class="card-small">
+            <h4>Behavioral Baseline</h4>
+            <p>UEBA components establish normal behavior for users and systems, enabling detection of threats that evade signature-based controls.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Limitations
+           This section is critical for credibility
+      ======================== -->
+      <section class="kb-section" id="limitations" aria-labelledby="s-lim">
+        <h2 id="s-lim">Limitations and Challenges</h2>
+        <p>
+          A candid assessment of SIEM technology must acknowledge the significant operational challenges that organizations face. SIEM is not a "plug-in and protect" solution - it is a platform that requires sustained investment, tuning, and skilled personnel to deliver value.
+        </p>
+
+        <div class="callout-warning">
+          <strong>Alert Fatigue</strong>
+          <p>Poorly tuned SIEM deployments generate thousands of alerts per day. Analysts overwhelmed by false positives begin to treat all alerts as noise, ultimately missing genuine threats. Alert fatigue is one of the most significant factors contributing to SOC analyst burnout and security incidents going undetected.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Implementation Complexity</strong>
+          <p>Enterprise SIEM deployment projects can span 6–18 months. Connecting hundreds of log sources, writing effective correlation rules, and tuning behavioral baselines requires deep technical expertise. Many organizations underestimate this investment and end up with partially deployed SIEM systems that provide incomplete visibility.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Cost at Scale</strong>
+          <p>SIEM licensing is frequently tied to data ingestion volume - gigabytes per day or events per second. Organizations with high log volumes can face substantial costs. Balancing cost with coverage requires deliberate decisions about which log sources are truly necessary.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Log Noise and Data Quality</strong>
+          <p>The quality of SIEM output depends entirely on the quality and completeness of its inputs. Misconfigured log sources, incomplete audit policies, and gaps in log forwarding create blind spots that attackers can exploit. Log hygiene is a continuous operational discipline, not a one-time configuration task.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Skilled Personnel Requirement</strong>
+          <p>SIEM generates value only when trained analysts operate it effectively. Writing and tuning correlation rules, performing threat hunting in SIEM query languages, and interpreting behavioral analytics all require specialized skills that remain in short supply in the cybersecurity labor market.</p>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: SIEM vs Related Technologies
+      ======================== -->
+      <section class="kb-section" id="comparisons" aria-labelledby="s-cmp">
+        <h2 id="s-cmp">SIEM vs. Related Technologies</h2>
+        <p>
+          SIEM is frequently discussed alongside a cluster of overlapping security technologies. Understanding the distinctions helps clarify what SIEM does - and what it does not do.
+        </p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Technology</th>
+              <th>Primary Function</th>
+              <th>Relationship to SIEM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SIEM</strong></td>
+              <td>Centralized log aggregation, correlation, and alert generation across all data sources.</td>
+              <td>The analytical hub. Consumes data from other tools.</td>
+            </tr>
+            <tr>
+              <td><strong>EDR</strong> (Endpoint Detection &amp; Response)</td>
+              <td>Deep visibility and response capabilities at the individual endpoint level - process execution, file changes, memory analysis.</td>
+              <td>EDR is a primary log source for SIEM. EDR excels at endpoint depth; SIEM excels at breadth across the environment. They are complementary, not competing.</td>
+            </tr>
+            <tr>
+              <td><strong>XDR</strong> (Extended Detection &amp; Response)</td>
+              <td>Integrated detection and response across endpoint, network, identity, and cloud - natively unified by a single vendor.</td>
+              <td>XDR can reduce the need for complex SIEM correlation by providing cross-domain detection within a single platform. However, XDR typically lacks the log depth, long-term retention, and customization of mature SIEM deployments. Many organizations use both.</td>
+            </tr>
+            <tr>
+              <td><strong>SOAR</strong> (Security Orchestration, Automation &amp; Response)</td>
+              <td>Automated response playbooks, case management, and orchestration of security tools and workflows.</td>
+              <td>SOAR is the response layer that sits on top of SIEM. SIEM detects and alerts; SOAR automates the response actions triggered by those alerts. The two are frequently integrated.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ========================
+           SECTION: Popular Platforms
+           Add or remove vendors as needed
+      ======================== -->
+      <section class="kb-section" id="platforms" aria-labelledby="s-plat">
+        <h2 id="s-plat">Popular SIEM Platforms</h2>
+        <p>
+          The SIEM market is mature and competitive. The following platforms represent widely deployed solutions across enterprise, government, and mid-market environments. This is an informational overview, not an endorsement.
+        </p>
+        <ul class="platform-list">
+          <li>
+            <strong>Splunk Enterprise Security</strong>
+            <span>The most widely deployed SIEM in large enterprise and federal environments. Known for powerful query language (SPL), extensive ecosystem integrations, and high scalability. Premium pricing reflects premium capability.</span>
+          </li>
+          <li>
+            <strong>IBM QRadar</strong>
+            <span>Long-established enterprise SIEM with strong network flow analytics. Historically favored in financial services and government. IBM has been transitioning QRadar toward a cloud-native SaaS model.</span>
+          </li>
+          <li>
+            <strong>Microsoft Sentinel</strong>
+            <span>Cloud-native SIEM built on Azure Log Analytics. Tight integration with Microsoft 365 and Azure environments. Consumption-based pricing makes it attractive for organizations already invested in the Microsoft ecosystem.</span>
+          </li>
+          <li>
+            <strong>Elastic Security</strong>
+            <span>Open-core platform built on the Elasticsearch stack. Highly flexible and customizable, with strong support for both SIEM and threat hunting use cases. Popular in cloud-native and engineering-heavy organizations.</span>
+          </li>
+          <li>
+            <strong>LogRhythm</strong>
+            <span>Mid-market SIEM with strong out-of-the-box detection content and compliance reporting. Includes integrated SOAR capabilities, making it attractive for organizations building initial SOC programs.</span>
+          </li>
+          <li>
+            <strong>Exabeam</strong>
+            <span>UEBA-first SIEM with sophisticated behavioral analytics. Differentiates on Smart Timelines - automated reconstruction of user and entity activity sequences - that reduce analyst investigation effort significantly.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ========================
+           SECTION: Role in SOC
+      ======================== -->
+      <section class="kb-section" id="soc" aria-labelledby="s-soc">
+        <h2 id="s-soc">Role of SIEM in a Security Operations Center</h2>
+        <p>
+          The Security Operations Center (SOC) is the organizational function responsible for monitoring, detecting, and responding to security incidents. SIEM is the technological foundation upon which SOC operations are built. Understanding how SOC analysts interact with SIEM in practice is essential for anyone entering this field.
+        </p>
+
+        <h3>Tier 1 Analysts - Alert Triage</h3>
+        <p>
+          Tier 1 analysts are the first point of contact for SIEM alerts. Their role is triage: reviewing the alert queue, classifying alerts as true positives, false positives, or low-priority noise, and escalating confirmed incidents to Tier 2. Effective Tier 1 analysts develop pattern recognition for common alert types, understand the organization's environment well enough to distinguish normal from anomalous behavior, and use SIEM search capabilities to gather basic context before escalating.
+        </p>
+
+        <h3>Tier 2 Analysts - Investigation</h3>
+        <p>
+          Tier 2 analysts handle confirmed incidents requiring deeper investigation. They use SIEM timeline views, custom queries, and threat intelligence integrations to reconstruct attacker activity, determine scope, and assess impact. They are proficient in SIEM query languages (SPL, KQL, Lucene) and familiar with MITRE ATT&CK tactics and techniques. Their investigation output feeds into incident response and remediation workflows.
+        </p>
+
+        <h3>Threat Hunters - Proactive Detection</h3>
+        <p>
+          Experienced analysts perform proactive threat hunting directly within the SIEM - formulating hypotheses about how an attacker might operate undetected, querying historical log data for evidence of those techniques, and using findings to inform new correlation rules. Threat hunting transforms SIEM from a reactive alert tool into a proactive threat discovery platform.
+        </p>
+
+        <h3>Detection Engineers - Rule Development</h3>
+        <p>
+          Detection engineers write, tune, and maintain the correlation rules and detection logic that drive SIEM alerting. They translate threat intelligence, MITRE ATT&CK techniques, and incident learnings into structured detection content. The quality of a SIEM deployment is largely determined by the quality of its detection engineering program.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: Key Takeaways
+      ======================== -->
+      <section class="kb-section" id="takeaways" aria-labelledby="s-take">
+        <h2 id="s-take">Key Takeaways</h2>
+        <ul class="takeaway-list">
+          <li>SIEM stands for Security Information and Event Management - a platform that centralizes log aggregation, correlation, and security alerting across an entire organization.</li>
+          <li>SIEM solves the visibility problem: modern enterprises generate too much log data for analysts to review manually, and threats span multiple systems. SIEM correlates events across sources to surface high-confidence detections.</li>
+          <li>The core SIEM pipeline is: collect → normalize → correlate → alert → investigate → report. Each stage adds value to raw log data.</li>
+          <li>SIEM is not a standalone security solution - it is an analytical hub that integrates data from firewalls, EDR, identity systems, cloud platforms, and applications to provide a unified security picture.</li>
+          <li>Limitations are real: alert fatigue, implementation complexity, cost, and the requirement for skilled operators are common challenges that must be actively managed.</li>
+          <li>SIEM, EDR, XDR, and SOAR are complementary technologies - not competing alternatives. Mature security programs typically use several of them in combination.</li>
+          <li>The quality of a SIEM deployment depends primarily on data coverage and detection engineering quality - not the platform brand. A well-tuned Elastic deployment often outperforms a poorly configured Splunk instance.</li>
+        </ul>
+      </section>
+
+      <!-- ========================
+           SECTION: References
+           Add new references as list items
+      ======================== -->
+      <section class="kb-section" id="references" aria-labelledby="s-ref">
+        <h2 id="s-ref">References</h2>
+        <ol class="ref-list">
+          <li>NIST SP 800-92: Guide to Computer Security Log Management. National Institute of Standards and Technology, 2006. <a href="https://csrc.nist.gov/publications/detail/sp/800-92/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>CISA: Security Information and Event Management (SIEM) Implementation Guide. Cybersecurity and Infrastructure Security Agency. <a href="https://www.cisa.gov" target="_blank" rel="noopener noreferrer">cisa.gov</a></li>
+          <li>MITRE ATT&CK Framework. The MITRE Corporation, 2024. <a href="https://attack.mitre.org" target="_blank" rel="noopener noreferrer">attack.mitre.org</a></li>
+          <li>Nicolett, M. &amp; Williams, A. "Improve IT Security with Vulnerability Management." Gartner Research, 2005. (Original SIEM terminology publication.)</li>
+          <li>NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide. National Institute of Standards and Technology, 2012. <a href="https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>SANS Institute: Security Operations Center (SOC) Survey and Best Practices. SANS Reading Room. <a href="https://www.sans.org" target="_blank" rel="noopener noreferrer">sans.org</a></li>
+          <li>Splunk. "The State of Security 2024." Splunk Inc. <a href="https://www.splunk.com" target="_blank" rel="noopener noreferrer">splunk.com</a></li>
+          <li>Microsoft. "What is Microsoft Sentinel?" Microsoft Learn. <a href="https://learn.microsoft.com/en-us/azure/sentinel/overview" target="_blank" rel="noopener noreferrer">learn.microsoft.com</a></li>
+          <li>Elastic. "Elastic Security: SIEM and Threat Hunting." Elastic Documentation. <a href="https://www.elastic.co/security" target="_blank" rel="noopener noreferrer">elastic.co</a></li>
+        </ol>
+      </section>
+
+      <!-- ========================
+           SECTION: Related Topics
+           Add new related article links here
+      ======================== -->
+      <section class="kb-section" id="related" aria-labelledby="s-rel">
+        <h2 id="s-rel">Related Topics</h2>
+        <div class="related-grid">
+          <a href="/knowledge/edr.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is EDR?</span>
+          </a>
+          <a href="/knowledge/xdr.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is XDR?</span>
+          </a>
+          <a href="/knowledge/soar.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is SOAR?</span>
+          </a>
+          <a href="/knowledge/detection-engineering.html" class="related-link">
+            <span class="rl-label">Detection &amp; Response</span>
+            <span class="rl-title">Detection Engineering</span>
+          </a>
+        </div>
+      </section>
+
+    </article>
+    <!-- END ARTICLE -->
+
+    <!-- =====================================================
+         SIDEBAR - add new sidebar cards below
+    ===================================================== -->
+    <aside aria-label="Article navigation">
+
+      <!-- Table of Contents - collapsible on mobile (#11), scroll-spy active state (#2) -->
+      <div class="sidebar-card sidebar-toc-card">
+        <button class="toc-toggle-btn" id="tocToggle" aria-expanded="false" aria-controls="tocDrawer">
+          Contents
+          <i class="toc-chevron">▾</i>
+        </button>
+        <h3 class="toc-heading" style="display:none;" aria-hidden="true">Contents</h3>
+        <div class="toc-drawer" id="tocDrawer">
+          <div class="toc-drawer-inner">
+            <ul class="toc-list" id="tocList">
+              <li><a href="#overview">Executive Overview</a></li>
+              <li><a href="#definition">Defining SIEM</a></li>
+              <li><a href="#why">Why SIEM Exists</a></li>
+              <li><a href="#how-it-works">How SIEM Works</a></li>
+              <li><a href="#data-sources">Data Sources</a></li>
+              <li><a href="#detection">Detection &amp; Investigation</a></li>
+              <li><a href="#use-cases">Real-World Use Cases</a></li>
+              <li><a href="#benefits">Benefits</a></li>
+              <li><a href="#limitations">Limitations</a></li>
+              <li><a href="#comparisons">SIEM vs. Related Tech</a></li>
+              <li><a href="#platforms">Popular Platforms</a></li>
+              <li><a href="#soc">Role in SOC</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+              <li><a href="#references">References</a></li>
+              <li><a href="#related">Related Topics</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick reference card -->
+      <div class="sidebar-card">
+        <h3>Quick Reference</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.65;">
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">SIEM</strong><br>
+          Security Information and Event Management<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">ORIGIN</strong><br>
+          Term coined by Gartner, 2005<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">PRIMARY USE</strong><br>
+          Threat detection, compliance, SOC operations<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">KEY STANDARDS</strong><br>
+          NIST SP 800-92, NIST SP 800-61, MITRE ATT&CK
+        </p>
+      </div>
+
+      <!-- Black Wing Dispatch promo -->
+      <div class="sidebar-card" style="border-color: #2a2a2a; background: linear-gradient(160deg, #161616 60%, rgba(201,168,76,0.04) 100%);">
+        <h3 style="border-bottom-color: var(--gold-dim);">Black Wing Dispatch</h3>
+        <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.65; margin-bottom:6px;">
+          Cyber threat intelligence, TTPs, and adversary analysis - written for practitioners, not executives.
+        </p>
+        <p style="font-size:0.75rem; color:var(--text-dim); line-height:1.5; margin-bottom:14px;">
+          APT profiles &nbsp;·&nbsp; Malware breakdowns &nbsp;·&nbsp; Detection engineering &nbsp;·&nbsp; Weekly threat briefs
+        </p>
+        <a href="/blog" style="display:block; text-align:center; font-family:var(--font-display); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); background: transparent; border: 1px solid var(--gold-dim); padding:10px; border-radius:2px; text-decoration:none; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.08)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='transparent';this.style.borderColor='var(--gold-dim)'">
+          Read the Dispatch →
+        </a>
+      </div>
+
+      <!-- Cyber Careers promo -->
+      <div class="sidebar-card" style="border-color: #2a2a2a;">
+        <h3>Cyber Careers</h3>
+        <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.65; margin-bottom:6px;">
+          Breaking into cybersecurity or leveling up your SOC career? Our careers blog covers the roles, certifications, and skills that actually matter.
+        </p>
+        <p style="font-size:0.75rem; color:var(--text-dim); line-height:1.5; margin-bottom:14px;">
+          SOC analyst paths &nbsp;·&nbsp; Cert roadmaps &nbsp;·&nbsp; Resume strategy &nbsp;·&nbsp; Interview prep
+        </p>
+        <a href="/careers/blog" style="display:block; text-align:center; font-family:var(--font-display); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--black); background:var(--gold); padding:10px; border-radius:2px; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">
+          Explore Careers Blog →
+        </a>
+      </div>
+
+    </aside>
+    <!-- END SIDEBAR -->
+
+  </div>
+  <!-- END PAGE BODY -->
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       FOOTER - edit links and description here
+  ============================================================ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">TACRAVEN // SOLUTIONS LLC</span>
+          <p>
+            TacRaven Solutions is committed to advancing cybersecurity education. We partner with academic institutions and training programs to help build the next generation of cyber professionals - bridging the gap between classroom instruction and real-world operational practice.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/learning-hub">Learning Hub</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/threat-map">Threat Map</a></li>
+            <li><a href="/reports">Weekly Reports</a></li>
+            <li><a href="/knowledge">Knowledge Base</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+        <p class="footer-tagline">Intelligence-Driven Cybersecurity</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       - #2:  IntersectionObserver scroll spy → active TOC link
+       - #11: Mobile TOC drawer toggle
+  ============================================================ -->
+  <script>
+    (function () {
+
+      /* ── Desktop: show static heading, hide toggle button ── */
+      function applyTocLayout() {
+        const btn     = document.getElementById('tocToggle');
+        const heading = document.querySelector('.toc-heading');
+        const drawer  = document.getElementById('tocDrawer');
+        if (!btn || !heading || !drawer) return;
+
+        if (window.innerWidth > 900) {
+          // Desktop - always expanded, no button
+          btn.style.display     = 'none';
+          heading.style.display = 'block';
+          heading.removeAttribute('aria-hidden');
+          drawer.classList.add('open');
+          drawer.style.maxHeight = 'none';
+          drawer.style.opacity   = '1';
+          drawer.style.overflow  = 'visible';
+          drawer.style.transition = 'none';
+        } else {
+          // Mobile - collapsible drawer
+          btn.style.display = 'flex';
+          heading.style.display = 'none';
+          heading.setAttribute('aria-hidden', 'true');
+          // Restore transition
+          drawer.style.transition = '';
+          drawer.style.overflow   = '';
+          // Keep current open/closed state
+          if (!drawer.classList.contains('open')) {
+            drawer.style.maxHeight = '0';
+            drawer.style.opacity   = '0';
+          }
+        }
+      }
+
+      applyTocLayout();
+      window.addEventListener('resize', applyTocLayout);
+
+      /* ── Mobile drawer toggle ── */
+      const tocBtn    = document.getElementById('tocToggle');
+      const tocDrawer = document.getElementById('tocDrawer');
+
+      if (tocBtn && tocDrawer) {
+        tocBtn.addEventListener('click', function () {
+          const isOpen = tocDrawer.classList.toggle('open');
+          tocBtn.classList.toggle('open', isOpen);
+          tocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Close drawer when a TOC link is clicked on mobile
+        tocDrawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (window.innerWidth <= 900) {
+              tocDrawer.classList.remove('open');
+              tocBtn.classList.remove('open');
+              tocBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
+
+      /* ── Scroll spy: highlight active TOC link (#2) ── */
+      const sectionIds = [
+        'overview','definition','why','how-it-works','data-sources',
+        'detection','use-cases','benefits','limitations','comparisons',
+        'platforms','soc','takeaways','references','related'
+      ];
+
+      const tocLinks = {};
+      sectionIds.forEach(function (id) {
+        const link = document.querySelector('#tocList a[href="#' + id + '"]');
+        if (link) tocLinks[id] = link;
+      });
+
+      let activeId = null;
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            if (id !== activeId) {
+              // Remove previous active
+              if (activeId && tocLinks[activeId]) {
+                tocLinks[activeId].classList.remove('toc-active');
+              }
+              activeId = id;
+              if (tocLinks[id]) {
+                tocLinks[id].classList.add('toc-active');
+              }
+            }
+          }
+        });
+      }, {
+        rootMargin: '-10% 0px -80% 0px',
+        threshold: 0
+      });
+
+      sectionIds.forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

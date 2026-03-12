@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is EDR? | TacRaven Cybersecurity Knowledge Base</title>
+  <meta name="description" content="Learn what Endpoint Detection and Response (EDR) is, how it works, and how organizations use EDR platforms to detect advanced threats, monitor endpoint activity, and respond to cyber incidents." />
+  <meta name="keywords" content="EDR, Endpoint Detection and Response, threat detection, endpoint security, behavioral analytics, SOC, cybersecurity, MITRE ATT&CK" />
+  <meta name="author" content="TacRaven Solutions" />
+  <link rel="canonical" href="https://tacraven.com/knowledge/edr.html" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="What is EDR? | TacRaven Cybersecurity Knowledge Base" />
+  <meta property="og:description" content="Learn what Endpoint Detection and Response (EDR) is, how it works, and how organizations use EDR platforms to detect advanced threats, monitor endpoint activity, and respond to cyber incidents." />
+  <meta property="og:url" content="https://tacraven.com/knowledge/edr.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is EDR? | TacRaven Cybersecurity Knowledge Base" />
+  <meta name="twitter:description" content="Learn what Endpoint Detection and Response (EDR) is, how it works, and how organizations use EDR platforms to detect threats and respond to incidents." />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is EDR? Endpoint Detection and Response Explained",
+    "description": "Learn what Endpoint Detection and Response (EDR) is, how it works, and how organizations use EDR platforms to detect advanced threats, monitor endpoint activity, and respond to cyber incidents.",
+    "url": "https://tacraven.com/knowledge/edr.html",
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-03-01",
+    "author": {
+      "@type": "Organization",
+      "name": "TacRaven Solutions",
+      "url": "https://tacraven.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TacRaven Solutions",
+      "url": "https://tacraven.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tacraven.com/knowledge/edr.html"
+    },
+    "articleSection": "Security Technologies",
+    "keywords": ["EDR", "Endpoint Detection and Response", "threat detection", "endpoint security", "behavioral analytics", "SOC", "cybersecurity"],
+    "educationalLevel": "Beginner",
+    "about": {
+      "@type": "Thing",
+      "name": "Endpoint Detection and Response",
+      "sameAs": "https://en.wikipedia.org/wiki/Endpoint_detection_and_response"
+    }
+  }
+  </script>
+
+  <style>
+    /* =========================================
+       CSS CUSTOM PROPERTIES - TacRaven Theme
+    ========================================= */
+    :root {
+      --black:        #0a0a0a;
+      --dark:         #111111;
+      --dark-card:    #161616;
+      --dark-border:  #1f1f1f;
+      --gold:         #c9a84c;
+      --gold-light:   #e2c06e;
+      --gold-dim:     #8a6e2f;
+      --red:          #c0392b;
+      --text:         #d4d4d4;
+      --text-muted:   #a8a8a8;
+      --text-dim:     #787878;
+      --white:        #f0f0f0;
+      --font-display: 'Courier New', Courier, monospace;
+      --font-body:    Georgia, 'Times New Roman', serif;
+      --font-ui:      'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    }
+
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Subtle cyber grid overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =========================================
+       BACK BUTTON BAR
+    ========================================= */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--dark-border);
+      backdrop-filter: blur(6px);
+      padding: 12px 24px;
+    }
+
+    .btn-back {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      padding: 8px 18px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .btn-back:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .btn-back::before {
+      content: '←';
+      font-size: 0.85rem;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--dark-border);
+      background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a {
+      color: var(--gold-dim);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: var(--gold); }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: bold;
+      color: var(--white);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 .accent { color: var(--gold); }
+
+    .hero-subtitle {
+      font-family: var(--font-ui);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .hero-intro {
+      font-size: 1rem;
+      color: var(--text);
+      max-width: 780px;
+      margin-bottom: 32px;
+      border-left: 3px solid var(--gold-dim);
+      padding-left: 18px;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .meta-tag {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid #3a3a3a;
+      border-radius: 2px;
+      color: #c8c8c8;
+      background: #1e1e1e;
+    }
+
+    .meta-tag.cat { border-color: var(--gold); color: var(--gold-light); }
+
+    /* =========================================
+       MAIN LAYOUT
+    ========================================= */
+    .page-body {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* =========================================
+       ARTICLE CONTENT
+    ========================================= */
+    article {
+      min-width: 0;
+    }
+
+    .kb-section {
+      margin-bottom: 52px;
+    }
+
+    .kb-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kb-section h2::before {
+      content: '//';
+      color: var(--gold-dim);
+      font-size: 0.85rem;
+    }
+
+    .kb-section h3 {
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin: 28px 0 10px;
+    }
+
+    .kb-section p {
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 22px 26px;
+      margin-bottom: 16px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .card-small {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+
+    .card-small h4 {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .card-small p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Use-case cards */
+    .usecase-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 3px solid var(--gold-dim);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 18px;
+    }
+
+    .usecase-card h4 {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .usecase-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .usecase-card ol {
+      padding-left: 20px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .usecase-card ol li {
+      margin-bottom: 6px;
+    }
+
+    /* Comparison table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 14px;
+    }
+
+    .compare-table th {
+      font-family: var(--font-display);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--gold);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--gold-dim);
+      background: var(--dark);
+    }
+
+    .compare-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--dark-border);
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.04); }
+
+    /* Platform list */
+    .platform-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .platform-list li {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+
+    .platform-list li strong {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .platform-list li span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Takeaways list */
+    .takeaway-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .takeaway-list li {
+      padding: 12px 16px 12px 44px;
+      position: relative;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .takeaway-list li:last-child { border-bottom: none; }
+
+    .takeaway-list li::before {
+      content: '►';
+      position: absolute;
+      left: 16px;
+      color: var(--gold);
+      font-size: 0.65rem;
+      top: 16px;
+    }
+
+    /* Source / telemetry tags */
+    .source-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .source-tag {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 2px;
+      color: var(--text-muted);
+    }
+
+    /* Architecture flow */
+    .arch-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 18px 0;
+      align-items: stretch;
+    }
+
+    .arch-step {
+      flex: 1;
+      min-width: 100px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 14px 12px;
+      text-align: center;
+      position: relative;
+    }
+
+    .arch-step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold-dim);
+      font-size: 0.9rem;
+      z-index: 2;
+    }
+
+    .arch-step .step-num {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      color: var(--gold-dim);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .arch-step .step-name {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    /* Warning / challenge callout */
+    .callout-warning {
+      background: rgba(192,57,43,0.08);
+      border: 1px solid rgba(192,57,43,0.25);
+      border-left: 3px solid var(--red);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    .callout-warning strong {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #e05c4a;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .callout-warning p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* References */
+    .ref-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: refs;
+    }
+
+    .ref-list li {
+      counter-increment: refs;
+      padding: 10px 0 10px 36px;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .ref-list li:last-child { border-bottom: none; }
+
+    .ref-list li::before {
+      content: '[' counter(refs) ']';
+      position: absolute;
+      left: 0;
+      color: var(--gold-dim);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+    }
+
+    .ref-list a {
+      color: var(--gold-dim);
+      text-decoration: none;
+    }
+
+    .ref-list a:hover { color: var(--gold); }
+
+    /* Related topics */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .related-link {
+      display: block;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .related-link:hover {
+      border-color: var(--gold-dim);
+      background: rgba(201,168,76,0.05);
+    }
+
+    .related-link .rl-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .related-link .rl-title {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    /* =========================================
+       SIDEBAR
+    ========================================= */
+    aside {
+      position: sticky;
+      top: 80px;
+    }
+
+    .sidebar-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-card h3 {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .toc-list li {
+      margin-bottom: 2px;
+    }
+
+    .toc-list a {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: block;
+      padding: 5px 8px;
+      border-radius: 2px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .toc-list a:hover {
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.06);
+    }
+
+    .toc-list a.sub {
+      padding-left: 20px;
+      font-size: 0.73rem;
+    }
+
+    /* =========================================
+       MITRE ATT&CK TECHNIQUE BADGES
+    ========================================= */
+    .attck-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .attck-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 4px 10px 4px 8px;
+      border-radius: 2px;
+      background: rgba(192,57,43,0.1);
+      border: 1px solid rgba(192,57,43,0.35);
+      color: #e07060;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .attck-badge:hover {
+      background: rgba(192,57,43,0.2);
+      border-color: rgba(192,57,43,0.6);
+      color: #f08878;
+    }
+
+    .attck-badge::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #c0392b;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .attck-label {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    /* =========================================
+       ACTIVE TOC HIGHLIGHT
+    ========================================= */
+    .toc-list a.toc-active {
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.08);
+      border-left: 2px solid var(--gold);
+      padding-left: 6px;
+    }
+
+    /* =========================================
+       MOBILE SIDEBAR DRAWER
+    ========================================= */
+    .toc-toggle-btn {
+      display: none;
+      width: 100%;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      cursor: pointer;
+      text-align: left;
+      margin-bottom: 0;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toc-toggle-btn .toc-chevron {
+      display: inline-block;
+      transition: transform 0.25s;
+      font-style: normal;
+      font-size: 0.8rem;
+    }
+
+    .toc-toggle-btn.open .toc-chevron {
+      transform: rotate(180deg);
+    }
+
+    .toc-drawer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .toc-drawer.open {
+      max-height: 600px;
+      opacity: 1;
+    }
+
+    .toc-drawer-inner {
+      padding-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .toc-toggle-btn {
+        display: flex;
+      }
+
+      .sidebar-toc-card .toc-list {
+        border-top: 1px solid var(--dark-border);
+        margin-top: 0;
+        padding-top: 8px;
+      }
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 24px 28px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .footer-brand .logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer-brand p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 6px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-col ul a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-copy {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+    }
+
+    .footer-tagline {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    /* =========================================
+       DIVIDER
+    ========================================= */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--dark-border);
+      margin: 0;
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 900px) {
+      .page-body {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+        order: -1;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .arch-step:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .arch-step { min-width: 80px; }
+      .compare-table { font-size: 0.78rem; }
+      .hero h1 { letter-spacing: -0.5px; }
+    }
+
+    /* Print */
+    @media print {
+      .top-bar, aside, footer { display: none; }
+      body { background: white; color: black; }
+      .page-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       TOP BAR
+  ============================================================ -->
+  <div class="top-bar">
+    <a href="/knowledge" class="btn-back">Return to Knowledge Base</a>
+  </div>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <p class="breadcrumb">
+        <a href="/">Home</a> &nbsp;/&nbsp;
+        <a href="/knowledge">TacRaven Cybersecurity Knowledge Base</a> &nbsp;/&nbsp;
+        What is EDR?
+      </p>
+      <h1>What is <span class="accent">EDR</span>?</h1>
+      <p class="hero-subtitle">Understanding Endpoint Detection and Response in modern cybersecurity defense.</p>
+      <p class="hero-intro">
+        EDR platforms continuously monitor activity across workstations, servers, and mobile devices to detect advanced threats that evade traditional defenses - including malware execution, lateral movement, credential theft, and privilege escalation. By collecting behavioral telemetry from every managed endpoint, EDR gives security teams the visibility to detect, investigate, and contain incidents at the source.
+      </p>
+      <div class="meta-bar">
+        <span class="meta-tag cat">Security Technologies</span>
+        <span class="meta-tag">Difficulty: Beginner</span>
+        <span class="meta-tag">Read Time: 6 Minutes</span>
+        <span class="meta-tag">Updated: 2025</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN PAGE BODY
+  ============================================================ -->
+  <div class="page-body">
+
+    <!-- =====================================================
+         ARTICLE
+    ===================================================== -->
+    <article>
+
+      <!-- ========================
+           SECTION: Executive Overview
+      ======================== -->
+      <section class="kb-section" id="overview" aria-labelledby="s-overview">
+        <h2 id="s-overview">Executive Overview</h2>
+        <p>
+          Endpoints - laptops, desktops, servers, mobile devices - are the most consistently targeted entry points in modern cyberattacks. The overwhelming majority of breaches begin at an endpoint: a phishing email that executes a payload, a vulnerable application exploited remotely, or a legitimate user credential stolen and misused. Yet for decades, the primary defense for endpoints was antivirus software built around a fundamentally reactive model: compare files against a database of known-bad signatures.
+        </p>
+        <p>
+          <strong>Endpoint Detection and Response (EDR)</strong> emerged to close the gap left by signature-based tools. EDR provides continuous visibility into what is happening on every monitored endpoint - not just whether a file matches a known pattern, but <em>how</em> processes behave, what network connections they establish, which registry keys they modify, and whether their activity deviates from expected baselines.
+        </p>
+        <p>
+          In plain terms: antivirus checks whether something <em>looks</em> malicious. EDR monitors whether something <em>acts</em> malicious - and provides the tooling to investigate and respond when it does. Understanding EDR is foundational for anyone entering security operations, threat hunting, or incident response.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: Definition
+      ======================== -->
+      <section class="kb-section" id="definition" aria-labelledby="s-def">
+        <h2 id="s-def">Defining EDR</h2>
+        <p>
+          In formal terms, an EDR platform is software that deploys a lightweight agent on managed endpoints to collect continuous behavioral telemetry, transmits that telemetry to a central platform, applies detection logic to identify suspicious or malicious patterns, and provides analysts with the tools to investigate and respond to threats - remotely, at scale.
+        </p>
+        <p>
+          In plain language: EDR is an always-on recorder for every endpoint in your environment. Every process launch, file write, network connection, and registry change is captured and made searchable, so that when an attacker moves through your environment, the evidence trail exists - and your team can find it.
+        </p>
+        <div class="card">
+          <p>
+            The term <strong>Endpoint Detection and Response</strong> was coined in 2013 by Gartner analyst Anton Chuvakin to describe a new category of tools designed to address threats that bypass traditional endpoint protection. The core capabilities - monitoring, detection, investigation, and response - have remained consistent, while the underlying technology has evolved dramatically to incorporate machine learning, cloud-native architectures, and deep MITRE ATT&CK integration.
+          </p>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Why EDR Exists
+      ======================== -->
+      <section class="kb-section" id="why" aria-labelledby="s-why">
+        <h2 id="s-why">Why EDR Exists</h2>
+        <p>
+          The evolution from traditional antivirus to EDR tracks directly with how attackers adapted their methods to evade defenses. First-generation antivirus relied almost entirely on signature matching - comparing files against a database of known malware hashes. This worked when malware was static and distribution was slow. As attackers began generating polymorphic variants and encrypting payloads to alter file hashes, signature detection became insufficient.
+        </p>
+        <p>
+          Next-Generation AV (NGAV) added heuristic analysis, machine learning, and sandboxing to detect suspicious patterns without relying solely on signatures. But NGAV still focused primarily on pre-execution analysis - detecting threats before they ran rather than monitoring behavior after execution. Sophisticated actors adapted by moving to techniques that operate entirely in memory, leaving no file on disk for any scanner to find.
+        </p>
+        <div class="callout-warning">
+          <strong>The Fileless and Living-Off-the-Land Problem</strong>
+          <p>Fileless malware operates entirely in memory, leaving no file on disk for antivirus to scan. Living-off-the-land (LotL) attacks use legitimate system tools - PowerShell, WMI, Certutil - to carry out malicious activity. Because these tools are trusted and pre-installed, their use alone does not trigger antivirus alerts. The malicious behavior is in <em>how</em> they are used. Detecting LotL attacks requires behavioral monitoring - exactly what EDR provides.</p>
+        </div>
+        <p>
+          EDR directly addresses the full range of sophisticated endpoint threats: persistence mechanisms, credential theft, lateral movement tooling, and extended attacker dwell time - none of which generate a file that antivirus can scan. Without EDR, security teams are effectively blind to the techniques used by every serious threat actor operating today.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: How EDR Works
+      ======================== -->
+      <section class="kb-section" id="how-it-works" aria-labelledby="s-how">
+        <h2 id="s-how">How EDR Works</h2>
+        <p>
+          EDR platforms process endpoint telemetry through a structured pipeline that transforms raw system events into actionable security alerts. Understanding each stage clarifies both the power and the limitations of EDR technology.
+        </p>
+
+        <div class="arch-flow">
+          <div class="arch-step"><span class="step-num">01</span><span class="step-name">Collect</span></div>
+          <div class="arch-step"><span class="step-num">02</span><span class="step-name">Monitor</span></div>
+          <div class="arch-step"><span class="step-num">03</span><span class="step-name">Detect</span></div>
+          <div class="arch-step"><span class="step-num">04</span><span class="step-name">Alert</span></div>
+          <div class="arch-step"><span class="step-num">05</span><span class="step-name">Respond</span></div>
+        </div>
+
+        <h3>Telemetry Collection</h3>
+        <p>
+          The EDR agent, deployed on each endpoint, hooks into operating system kernel APIs and event subsystems to capture a continuous stream of activity data. On Windows systems, this typically leverages ETW (Event Tracing for Windows) and minifilter drivers. This kernel-level instrumentation gives the agent visibility that user-space applications cannot achieve. Telemetry is streamed in real time to the EDR platform's cloud or data lake, or buffered and forwarded at defined intervals.
+        </p>
+
+        <h3>Behavior Monitoring</h3>
+        <p>
+          Raw telemetry is analyzed against behavioral profiles and baselines. Rather than asking "is this file malicious?", the platform asks "is this sequence of actions consistent with normal behavior for this user, this process, or this system type?" Behavioral analysis enables detection of anomalies that signature engines would miss entirely - a Word document spawning PowerShell, a service account scanning internal subnets, or a user authenticating from two countries simultaneously.
+        </p>
+
+        <h3>Threat Detection</h3>
+        <p>
+          The detection engine applies multiple layers of analysis: predefined behavioral detection rules, machine learning classifiers trained on attack patterns, threat intelligence feeds, and MITRE ATT&CK technique mappings. Detection outcomes are enriched with context - affected process trees, parent-child relationships, associated network connections, and user account information - to support rapid analyst triage.
+        </p>
+
+        <h3>Alert Generation</h3>
+        <p>
+          When the detection engine identifies a pattern with sufficient confidence, it generates an alert enriched with available context. Modern EDR platforms aggregate related events into incidents rather than producing individual alerts for each event, reducing analyst cognitive load and presenting a coherent view of attacker activity. Alerts route to analyst consoles, ticketing systems, or SOAR platforms for automated response workflows.
+        </p>
+
+        <h3>Response Actions</h3>
+        <p>
+          EDR consoles provide analysts with response capabilities executable remotely without requiring physical access to the affected endpoint. Common response actions include network isolation (quarantining the endpoint while maintaining the EDR management connection), process termination, file quarantine, registry remediation, and remote shell access for live forensic investigation. These capabilities dramatically compress incident response timelines compared to traditional approaches requiring local access.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: Endpoint Telemetry
+      ======================== -->
+      <section class="kb-section" id="telemetry" aria-labelledby="s-telemetry">
+        <h2 id="s-telemetry">Endpoint Telemetry</h2>
+        <p>
+          The security value of an EDR platform is directly proportional to the depth and fidelity of its telemetry collection. The following data types form the foundation of EDR behavioral analysis:
+        </p>
+        <div class="source-tags">
+          <span class="source-tag">Process Execution</span>
+          <span class="source-tag">Command-Line Arguments</span>
+          <span class="source-tag">File Modifications</span>
+          <span class="source-tag">Registry Changes</span>
+          <span class="source-tag">Network Connections</span>
+          <span class="source-tag">DNS Queries</span>
+          <span class="source-tag">User Authentication</span>
+          <span class="source-tag">Memory Injections</span>
+          <span class="source-tag">Script Execution</span>
+          <span class="source-tag">Module Loads (DLLs)</span>
+          <span class="source-tag">Scheduled Tasks</span>
+          <span class="source-tag">Service Installations</span>
+          <span class="source-tag">Named Pipe Activity</span>
+          <span class="source-tag">WMI Events</span>
+        </div>
+        <p style="margin-top: 18px;">
+          The combination of these telemetry types is what makes EDR powerful. A Word document spawning a PowerShell process that establishes an outbound network connection may produce three individually unremarkable events. But the parent-child process relationship combined with the outbound network behavior is a strong indicator of malicious document execution - a pattern EDR can detect and surface as a high-confidence alert where antivirus would see nothing.
+        </p>
+        <p>
+          Historical telemetry retention is also a critical EDR capability. Most platforms retain raw endpoint telemetry for 30 to 365 days, enabling threat hunters and incident responders to query historical data and reconstruct the full timeline of an attack - including activity that predated detection by days or weeks.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: Detection Methods
+      ======================== -->
+      <section class="kb-section" id="detection" aria-labelledby="s-detect">
+        <h2 id="s-detect">Detection Methods</h2>
+        <p>
+          Modern EDR platforms employ multiple overlapping detection methods, each addressing different attacker techniques and threat categories. The layered approach is deliberate: signatures catch known malware quickly; behavioral analytics detect techniques used across many malware families regardless of file obfuscation; machine learning surfaces anomalous behavior without requiring explicit rules; MITRE mapping provides the analytical context for understanding what stage of an attack is being observed.
+        </p>
+
+        <div class="card-grid">
+          <div class="card-small">
+            <h4>Signature Detection</h4>
+            <p>File hashes, YARA rules, and indicators of compromise from threat intelligence are applied to file system events and memory scans. Effective against known malware families with high speed and low false-positive rates.</p>
+          </div>
+          <div class="card-small">
+            <h4>Behavioral Analytics</h4>
+            <p>Rule-based detection of known-bad behavior sequences - process injection patterns, credential access attempts, suspicious parent-child chains. Effective against novel malware using familiar techniques.</p>
+          </div>
+          <div class="card-small">
+            <h4>Machine Learning</h4>
+            <p>Statistical models trained on large corpora of benign and malicious behavior classify endpoint activity and surface anomalies that fall outside expected baselines, even without predefined detection rules.</p>
+          </div>
+          <div class="card-small">
+            <h4>MITRE ATT&CK Mapping</h4>
+            <p>Detections are aligned to specific tactics, techniques, and procedures from the MITRE ATT&CK framework, giving analysts immediate context on what stage of an attack they are observing and how to respond.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Real-World Use Cases
+      ======================== -->
+      <section class="kb-section" id="use-cases" aria-labelledby="s-cases">
+        <h2 id="s-cases">Real-World Use Cases</h2>
+
+        <div class="usecase-card">
+          <h4>Use Case 01 - Malicious Document Execution</h4>
+          <div class="attck-badges">
+            <span class="attck-label">ATT&amp;CK Techniques:</span>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1059/" target="_blank" rel="noopener noreferrer">T1059 - Command Execution</a>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1204/" target="_blank" rel="noopener noreferrer">T1204 - User Execution</a>
+          </div>
+          <p>A targeted employee receives a phishing email containing a macro-enabled Word document. Upon opening, the document executes an embedded VBA macro that invokes PowerShell with an encoded command, downloading a remote access tool in memory to avoid leaving artifacts on disk.</p>
+          <ol>
+            <li>The EDR agent records WINWORD.EXE spawning POWERSHELL.EXE with encoded arguments - a well-documented malicious process chain aligned to T1059.</li>
+            <li>A behavioral detection rule fires. The outbound network connection to the attacker-controlled server is recorded and correlated with threat intelligence feeds.</li>
+            <li>The analyst reviews the full process tree and network telemetry, confirms the intrusion, and isolates the affected endpoint remotely from the EDR console.</li>
+            <li>The malicious document and downloaded payload are quarantined. The C2 IP and domain are extracted and blocked at the network perimeter.</li>
+          </ol>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Use Case 02 - Credential Dumping via LSASS</h4>
+          <div class="attck-badges">
+            <span class="attck-label">ATT&amp;CK Techniques:</span>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1003/" target="_blank" rel="noopener noreferrer">T1003 - OS Credential Dumping</a>
+          </div>
+          <p>An attacker with initial access on a Windows workstation attempts to dump credentials from the LSASS process memory using a modified Mimikatz variant. Access to LSASS credentials enables pass-the-hash attacks for lateral movement to other systems.</p>
+          <ol>
+            <li>The EDR agent monitors all process access calls to LSASS and flags any non-system process attempting to read LSASS memory.</li>
+            <li>A high-confidence detection aligned to T1003 fires. Memory scanning detects Mimikatz signatures in process memory regardless of file-level obfuscation.</li>
+            <li>Given the critical severity, the analyst immediately isolates the endpoint and terminates the offending process from the EDR console.</li>
+            <li>A full password reset is initiated for all accounts authenticated on the compromised system. EDR telemetry is used to determine whether lateral movement preceded detection.</li>
+          </ol>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Use Case 03 - Lateral Movement via Remote Services</h4>
+          <div class="attck-badges">
+            <span class="attck-label">ATT&amp;CK Techniques:</span>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1021/" target="_blank" rel="noopener noreferrer">T1021 - Remote Services</a>
+            <a class="attck-badge" href="https://attack.mitre.org/techniques/T1078/" target="_blank" rel="noopener noreferrer">T1078 - Valid Accounts</a>
+          </div>
+          <p>Using harvested credentials, an attacker authenticates via RDP to a file server they would not normally access, deploys a binary via SMB, and creates a remote service to establish persistent access on the new host.</p>
+          <ol>
+            <li>The EDR agent on the target server records the inbound authentication from an unusual source account at an unusual time - consistent with T1078 (Valid Accounts).</li>
+            <li>A new Windows service is created and an unsigned binary executes from a non-standard path. The combination triggers a lateral movement detection aligned to T1021.</li>
+            <li>The analyst queries all endpoints for similar service creation events in the preceding 72 hours, revealing the full lateral movement path through the environment.</li>
+            <li>Affected hosts are isolated in sequence, and the investigation pivots to identifying the original point of compromise and scope of access.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Benefits
+      ======================== -->
+      <section class="kb-section" id="benefits" aria-labelledby="s-ben">
+        <h2 id="s-ben">Benefits of EDR</h2>
+        <p>
+          EDR delivers capabilities that fundamentally change what a security operations team can see, detect, and respond to across managed endpoints.
+        </p>
+        <div class="card-grid">
+          <div class="card-small">
+            <h4>Endpoint Visibility</h4>
+            <p>Continuous behavioral telemetry provides a high-fidelity picture of what is happening on every managed endpoint at any time - in real time and historically.</p>
+          </div>
+          <div class="card-small">
+            <h4>Advanced Threat Detection</h4>
+            <p>Behavioral analytics and machine learning detect fileless malware, LotL attacks, and sophisticated TTPs that bypass traditional antivirus and NGAV controls entirely.</p>
+          </div>
+          <div class="card-small">
+            <h4>Rapid Response</h4>
+            <p>Remote isolation, process termination, and file quarantine compress incident response timelines from days to minutes without requiring physical access to the affected system.</p>
+          </div>
+          <div class="card-small">
+            <h4>Threat Hunting</h4>
+            <p>Historical telemetry enables proactive hunting for attacker activity not yet surfaced by automated detection, directly reducing attacker dwell time across the environment.</p>
+          </div>
+          <div class="card-small">
+            <h4>Timeline Reconstruction</h4>
+            <p>EDR telemetry enables forensic reconstruction of the full attack timeline from initial access through impact, supporting both incident response and post-incident review.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Limitations
+      ======================== -->
+      <section class="kb-section" id="limitations" aria-labelledby="s-lim">
+        <h2 id="s-lim">Limitations of EDR</h2>
+        <p>
+          An honest assessment of EDR requires acknowledging its real-world operational challenges. No security technology is a silver bullet, and EDR is no exception.
+        </p>
+
+        <div class="callout-warning">
+          <strong>Alert Fatigue</strong>
+          <p>High-volume EDR deployments can generate large numbers of alerts, particularly in environments with diverse software configurations. Without effective tuning and triage workflows, analysts can become overwhelmed, causing genuine threats to be missed in the noise.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Agent Performance Impact</strong>
+          <p>EDR agents operate at the kernel level and continuously process system events, introducing CPU and memory overhead. On legacy or resource-constrained systems this impact can be operationally significant and requires configuration tuning to manage effectively.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>False Positives</strong>
+          <p>Behavioral detection engines may flag legitimate administrative activity, development tooling, or unusual-but-authorized software as suspicious. Tuning detection rules to an organization's specific environment is an ongoing operational requirement, not a one-time configuration task.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Limited Scope Outside Managed Endpoints</strong>
+          <p>EDR provides visibility only into endpoints where agents are deployed. Network infrastructure, cloud workloads, IoT devices, and unmanaged assets remain outside EDR coverage - a gap addressed by Extended Detection and Response (XDR) platforms.</p>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION: Comparisons
+      ======================== -->
+      <section class="kb-section" id="comparisons" aria-labelledby="s-comp">
+        <h2 id="s-comp">EDR vs. Related Technologies</h2>
+        <p>
+          EDR exists within a broader ecosystem of security technologies. Understanding how it compares and integrates with complementary tools is essential for security architects and practitioners building layered defenses.
+        </p>
+
+        <table class="compare-table" role="table" aria-label="Comparison of EDR with related security technologies">
+          <thead>
+            <tr>
+              <th>Technology</th>
+              <th>Primary Function</th>
+              <th>Scope</th>
+              <th>Relationship to EDR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>EDR</strong></td>
+              <td>Endpoint behavioral monitoring, detection, and response</td>
+              <td>Managed endpoints (workstations, servers)</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>Antivirus / NGAV</strong></td>
+              <td>Malware blocking and pre-execution detection</td>
+              <td>Files and processes on endpoints</td>
+              <td>Often integrated with or replaced by EDR; complementary for fast known-malware blocking at the file level</td>
+            </tr>
+            <tr>
+              <td><strong>XDR</strong></td>
+              <td>Unified detection across endpoint, network, cloud, and identity</td>
+              <td>Cross-domain telemetry</td>
+              <td>XDR extends EDR by incorporating non-endpoint telemetry for richer cross-domain correlation and response</td>
+            </tr>
+            <tr>
+              <td><strong>SIEM</strong></td>
+              <td>Log aggregation, correlation, and compliance reporting</td>
+              <td>Enterprise-wide log sources</td>
+              <td>EDR telemetry feeds into SIEM for broader correlation; SIEM provides organizational and compliance context EDR lacks</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top: 16px;">
+          In a mature security operations environment, EDR, SIEM, and XDR are complementary rather than competing. Most organizations begin with EDR as the foundational endpoint security control and expand to XDR and SIEM as their security operations capability matures.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: Platforms
+      ======================== -->
+      <section class="kb-section" id="platforms" aria-labelledby="s-plat">
+        <h2 id="s-plat">EDR Platforms</h2>
+        <p>
+          The EDR market includes a range of mature platforms, each with distinct technical approaches, deployment models, and integration ecosystems. The following is a neutral overview of widely deployed solutions.
+        </p>
+        <ul class="platform-list">
+          <li>
+            <strong>CrowdStrike Falcon</strong>
+            <span>Cloud-native EDR with a single lightweight agent architecture. Known for threat intelligence integration, managed detection services, and broad third-party integrations. Widely deployed across enterprise and government environments.</span>
+          </li>
+          <li>
+            <strong>Microsoft Defender for Endpoint</strong>
+            <span>Integrated EDR included in Microsoft 365 E5 licensing with native integration into the Microsoft security stack. No additional agent required on modern Windows systems.</span>
+          </li>
+          <li>
+            <strong>SentinelOne Singularity</strong>
+            <span>AI-driven behavioral detection with automated threat response. Storyline technology automatically correlates related events into a complete attack narrative without requiring analyst intervention.</span>
+          </li>
+          <li>
+            <strong>Sophos Intercept X</strong>
+            <span>Strong anti-exploit and anti-ransomware capabilities with managed detection and response (MDR) services. Well-suited for mid-market organizations with smaller security teams.</span>
+          </li>
+          <li>
+            <strong>VMware Carbon Black</strong>
+            <span>Behavioral detection and threat hunting emphasis with both cloud and on-premises deployment options. Granular watchlist and reputation controls suited to complex enterprise environments.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ========================
+           SECTION: SOC Role
+      ======================== -->
+      <section class="kb-section" id="soc" aria-labelledby="s-soc">
+        <h2 id="s-soc">EDR in Security Operations</h2>
+        <p>
+          EDR is the primary daily-use tool for many security operations center analysts. Understanding how it integrates into SOC workflows at each tier is important context for practitioners preparing to work in security operations roles.
+        </p>
+
+        <h3>Tier 1 - Alert Triage</h3>
+        <p>
+          Tier 1 analysts receive EDR alerts and perform initial classification: determining whether an alert is a true positive, false positive, or requires escalation. This involves reviewing alert details, examining the process tree, and checking associated indicators against threat intelligence. Tier 1 SOC work is heavily EDR-console-centric, and familiarity with EDR alert structures and common detection patterns is a baseline competency for entry-level SOC analysts.
+        </p>
+
+        <h3>Tier 2 - Incident Investigation</h3>
+        <p>
+          Tier 2 analysts take escalated alerts and conduct deeper investigations using EDR's historical telemetry query capabilities. This includes mapping the full attack timeline, identifying all affected endpoints, assessing whether data exfiltration occurred, and determining the initial access vector. Tier 2 analysts also initiate containment actions - host isolation, credential resets, and IOC blocking at the perimeter.
+        </p>
+
+        <h3>Threat Hunting</h3>
+        <p>
+          Experienced analysts use EDR's query interface to proactively search for indicators of attacker activity that have not yet generated automated alerts. Hunters develop hypotheses based on current threat intelligence and test them against historical telemetry - for example, searching all endpoints for evidence of a specific LotL technique observed in a recent threat report. Effective threat hunting directly reduces attacker dwell time across the environment.
+        </p>
+
+        <h3>Incident Response Containment</h3>
+        <p>
+          During active incident response, EDR provides the primary interface for remote containment: isolating compromised endpoints from the network while maintaining management connectivity, terminating malicious processes, quarantining files, and deploying detection rules for new indicators discovered during investigation. EDR telemetry forms the evidentiary foundation for post-incident forensic analysis and lessons-learned reporting.
+        </p>
+      </section>
+
+      <!-- ========================
+           SECTION: Key Takeaways
+      ======================== -->
+      <section class="kb-section" id="takeaways" aria-labelledby="s-take">
+        <h2 id="s-take">Key Takeaways</h2>
+        <ul class="takeaway-list">
+          <li>EDR provides continuous behavioral monitoring of endpoints, collecting process, file, network, registry, and user activity telemetry that enables detection of threats signature-based tools miss entirely.</li>
+          <li>Unlike antivirus, EDR analyzes whether behavior <em>acts</em> malicious rather than whether a file <em>looks</em> malicious - making it effective against fileless malware, living-off-the-land attacks, and novel threat actor techniques.</li>
+          <li>The EDR detection pipeline - collect, monitor, detect, alert, respond - transforms raw endpoint events into actionable, MITRE ATT&CK-aligned security alerts enriched with investigative context.</li>
+          <li>EDR supports the full SOC workflow: Tier 1 triage, Tier 2 investigation, threat hunting, and incident response containment - making it a foundational tool for analysts at every experience level.</li>
+          <li>Realistic limitations - alert fatigue, performance overhead, and scope limited to managed endpoints - mean EDR is most effective when properly tuned, staffed by skilled analysts, and integrated with SIEM and XDR.</li>
+          <li>EDR, SIEM, and XDR are complementary controls: EDR provides deep endpoint visibility, SIEM aggregates enterprise-wide log data, and XDR extends detection across endpoint, network, cloud, and identity telemetry.</li>
+          <li>Historical telemetry retention enables forensic reconstruction of the full attack timeline and identification of attacker activity that predated initial detection by days or weeks.</li>
+        </ul>
+      </section>
+
+      <!-- ========================
+           SECTION: References
+      ======================== -->
+      <section class="kb-section" id="references" aria-labelledby="s-ref">
+        <h2 id="s-ref">References</h2>
+        <ul class="ref-list">
+          <li><a href="https://attack.mitre.org" target="_blank" rel="noopener noreferrer">MITRE ATT&amp;CK Enterprise Matrix</a> - attack.mitre.org</li>
+          <li><a href="https://csrc.nist.gov/publications/detail/sp/800-137/final" target="_blank" rel="noopener noreferrer">NIST SP 800-137</a> - Information Security Continuous Monitoring (ISCM) for Federal Information Systems</li>
+          <li><a href="https://www.cisa.gov/topics/cybersecurity-best-practices/endpoint-security" target="_blank" rel="noopener noreferrer">CISA Endpoint Security Guidance</a> - cisa.gov</li>
+          <li>SANS Institute - Endpoint Detection and Response: How Hackers Have Changed the Game (sans.org/white-papers)</li>
+          <li><a href="https://attack.mitre.org/techniques/T1059/" target="_blank" rel="noopener noreferrer">MITRE ATT&amp;CK T1059</a> - Command and Scripting Interpreter</li>
+          <li><a href="https://attack.mitre.org/techniques/T1204/" target="_blank" rel="noopener noreferrer">MITRE ATT&amp;CK T1204</a> - User Execution</li>
+          <li><a href="https://attack.mitre.org/techniques/T1003/" target="_blank" rel="noopener noreferrer">MITRE ATT&amp;CK T1003</a> - OS Credential Dumping</li>
+          <li><a href="https://attack.mitre.org/techniques/T1021/" target="_blank" rel="noopener noreferrer">MITRE ATT&amp;CK T1021</a> - Remote Services</li>
+          <li><a href="https://attack.mitre.org/techniques/T1078/" target="_blank" rel="noopener noreferrer">MITRE ATT&amp;CK T1078</a> - Valid Accounts</li>
+          <li>Chuvakin, A. (2013). "Endpoint Threat Detection &amp; Response." Gartner Research Note - term coined for the EDR product category</li>
+        </ul>
+      </section>
+
+      <!-- ========================
+           SECTION: Related Articles
+      ======================== -->
+      <section class="kb-section" id="related" aria-labelledby="s-rel">
+        <h2 id="s-rel">Related Topics</h2>
+        <div class="related-grid">
+          <a href="/knowledge/siem.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is SIEM?</span>
+          </a>
+          <a href="/knowledge/xdr.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is XDR?</span>
+          </a>
+          <a href="/knowledge/soar.html" class="related-link">
+            <span class="rl-label">Security Operations</span>
+            <span class="rl-title">What is SOAR?</span>
+          </a>
+          <a href="/knowledge/vulnerability-management.html" class="related-link">
+            <span class="rl-label">Risk Management</span>
+            <span class="rl-title">Vulnerability Management</span>
+          </a>
+        </div>
+      </section>
+
+    </article>
+    <!-- END ARTICLE -->
+
+    <!-- =====================================================
+         SIDEBAR
+    ===================================================== -->
+    <aside aria-label="Article sidebar">
+
+      <!-- TOC Card -->
+      <div class="sidebar-card sidebar-toc-card">
+        <button class="toc-toggle-btn" id="tocToggle" aria-expanded="false" aria-controls="tocDrawer">
+          Contents <span class="toc-chevron">▾</span>
+        </button>
+        <h3 class="toc-heading">Contents</h3>
+        <div class="toc-drawer" id="tocDrawer">
+          <div class="toc-drawer-inner">
+            <ul class="toc-list" id="tocList">
+              <li><a href="#overview">Executive Overview</a></li>
+              <li><a href="#definition">Defining EDR</a></li>
+              <li><a href="#why">Why EDR Exists</a></li>
+              <li><a href="#how-it-works">How EDR Works</a></li>
+              <li><a href="#how-it-works" class="sub">Telemetry Collection</a></li>
+              <li><a href="#how-it-works" class="sub">Behavior Monitoring</a></li>
+              <li><a href="#how-it-works" class="sub">Response Actions</a></li>
+              <li><a href="#telemetry">Endpoint Telemetry</a></li>
+              <li><a href="#detection">Detection Methods</a></li>
+              <li><a href="#use-cases">Real-World Use Cases</a></li>
+              <li><a href="#benefits">Benefits</a></li>
+              <li><a href="#limitations">Limitations</a></li>
+              <li><a href="#comparisons">EDR vs. Related Tools</a></li>
+              <li><a href="#platforms">EDR Platforms</a></li>
+              <li><a href="#soc">EDR in Security Operations</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+              <li><a href="#references">References</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Reference Card -->
+      <div class="sidebar-card">
+        <h3>Quick Reference</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.65;">
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">EDR</strong><br>
+          Endpoint Detection and Response<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">ORIGIN</strong><br>
+          Term coined by Gartner, 2013<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">PRIMARY USE</strong><br>
+          Endpoint threat detection, investigation, and response<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">KEY STANDARDS</strong><br>
+          MITRE ATT&amp;CK, NIST SP 800-137, CISA Guidance
+        </p>
+      </div>
+
+      <!-- Black Wing Dispatch promo -->
+      <div class="sidebar-card" style="border-color: #2a2a2a; background: linear-gradient(160deg, #161616 60%, rgba(201,168,76,0.04) 100%);">
+        <h3 style="border-bottom-color: var(--gold-dim);">Black Wing Dispatch</h3>
+        <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.65; margin-bottom:6px;">
+          Cyber threat intelligence, TTPs, and adversary analysis - written for practitioners, not executives.
+        </p>
+        <p style="font-size:0.75rem; color:var(--text-dim); line-height:1.5; margin-bottom:14px;">
+          APT profiles &nbsp;·&nbsp; Malware breakdowns &nbsp;·&nbsp; Detection engineering &nbsp;·&nbsp; Weekly threat briefs
+        </p>
+        <a href="/blog" style="display:block; text-align:center; font-family:var(--font-display); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); background: transparent; border: 1px solid var(--gold-dim); padding:10px; border-radius:2px; text-decoration:none; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.08)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='transparent';this.style.borderColor='var(--gold-dim)'">
+          Read the Dispatch →
+        </a>
+      </div>
+
+      <!-- Cyber Careers promo -->
+      <div class="sidebar-card" style="border-color: #2a2a2a;">
+        <h3>Cyber Careers</h3>
+        <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.65; margin-bottom:6px;">
+          Breaking into cybersecurity or leveling up your SOC career? Our careers blog covers the roles, certifications, and skills that actually matter.
+        </p>
+        <p style="font-size:0.75rem; color:var(--text-dim); line-height:1.5; margin-bottom:14px;">
+          SOC analyst paths &nbsp;·&nbsp; Cert roadmaps &nbsp;·&nbsp; Resume strategy &nbsp;·&nbsp; Interview prep
+        </p>
+        <a href="/careers/blog" style="display:block; text-align:center; font-family:var(--font-display); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--black); background:var(--gold); padding:10px; border-radius:2px; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">
+          Explore Careers Blog →
+        </a>
+      </div>
+
+    </aside>
+    <!-- END SIDEBAR -->
+
+  </div>
+  <!-- END PAGE BODY -->
+
+  <hr class="divider" />
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">TacRaven Solutions</span>
+          <p>
+            TacRaven Solutions is committed to advancing cybersecurity education. We partner with academic institutions and training programs to help build the next generation of cyber professionals - bridging the gap between classroom instruction and real-world operational practice.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/learning-hub">Learning Hub</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/threat-map">Threat Map</a></li>
+            <li><a href="/reports">Weekly Reports</a></li>
+            <li><a href="/knowledge">Knowledge Base</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+        <p class="footer-tagline">Intelligence-Driven Cybersecurity</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       - IntersectionObserver scroll spy → active TOC link
+       - Mobile TOC drawer toggle
+  ============================================================ -->
+  <script>
+    (function () {
+
+      /* ── Desktop: show static heading, hide toggle button ── */
+      function applyTocLayout() {
+        const btn     = document.getElementById('tocToggle');
+        const heading = document.querySelector('.toc-heading');
+        const drawer  = document.getElementById('tocDrawer');
+        if (!btn || !heading || !drawer) return;
+
+        if (window.innerWidth > 900) {
+          btn.style.display     = 'none';
+          heading.style.display = 'block';
+          heading.removeAttribute('aria-hidden');
+          drawer.classList.add('open');
+          drawer.style.maxHeight = 'none';
+          drawer.style.opacity   = '1';
+          drawer.style.overflow  = 'visible';
+          drawer.style.transition = 'none';
+        } else {
+          btn.style.display = 'flex';
+          heading.style.display = 'none';
+          heading.setAttribute('aria-hidden', 'true');
+          drawer.style.transition = '';
+          drawer.style.overflow   = '';
+          if (!drawer.classList.contains('open')) {
+            drawer.style.maxHeight = '0';
+            drawer.style.opacity   = '0';
+          }
+        }
+      }
+
+      applyTocLayout();
+      window.addEventListener('resize', applyTocLayout);
+
+      /* ── Mobile drawer toggle ── */
+      const tocBtn    = document.getElementById('tocToggle');
+      const tocDrawer = document.getElementById('tocDrawer');
+
+      if (tocBtn && tocDrawer) {
+        tocBtn.addEventListener('click', function () {
+          const isOpen = tocDrawer.classList.toggle('open');
+          tocBtn.classList.toggle('open', isOpen);
+          tocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        tocDrawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (window.innerWidth <= 900) {
+              tocDrawer.classList.remove('open');
+              tocBtn.classList.remove('open');
+              tocBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
+
+      /* ── Scroll spy: highlight active TOC link ── */
+      const sectionIds = [
+        'overview','definition','why','how-it-works','telemetry',
+        'detection','use-cases','benefits','limitations','comparisons',
+        'platforms','soc','takeaways','references','related'
+      ];
+
+      const tocLinks = {};
+      sectionIds.forEach(function (id) {
+        const link = document.querySelector('#tocList a[href="#' + id + '"]');
+        if (link) tocLinks[id] = link;
+      });
+
+      let activeId = null;
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            if (id !== activeId) {
+              if (activeId && tocLinks[activeId]) {
+                tocLinks[activeId].classList.remove('toc-active');
+              }
+              activeId = id;
+              if (tocLinks[id]) {
+                tocLinks[id].classList.add('toc-active');
+              }
+            }
+          }
+        });
+      }, {
+        rootMargin: '-10% 0px -80% 0px',
+        threshold: 0
+      });
+
+      sectionIds.forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

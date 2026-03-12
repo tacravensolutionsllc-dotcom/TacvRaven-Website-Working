@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is PCI-DSS? | TacRaven Cybersecurity Knowledge Base</title>
+  <meta name="description" content="Learn what PCI-DSS (Payment Card Industry Data Security Standard) is, why it exists, and how organizations protect cardholder data by complying with PCI security requirements." />
+  <meta name="keywords" content="PCI-DSS, Payment Card Industry Data Security Standard, PCI compliance, cardholder data security, payment security standard, PCI DSS requirements, credit card security compliance, payment processing security" />
+  <meta name="author" content="TacRaven Solutions" />
+  <link rel="canonical" href="https://tacraven.com/knowledge/pci-dss.html" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="What is PCI-DSS? | TacRaven Cybersecurity Knowledge Base" />
+  <meta property="og:description" content="Learn what PCI-DSS (Payment Card Industry Data Security Standard) is, why it exists, and how organizations protect cardholder data by complying with PCI security requirements." />
+  <meta property="og:url" content="https://tacraven.com/knowledge/pci-dss.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is PCI-DSS? | TacRaven Cybersecurity Knowledge Base" />
+  <meta name="twitter:description" content="Learn what PCI-DSS (Payment Card Industry Data Security Standard) is, why it exists, and how organizations protect cardholder data by complying with PCI security requirements." />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is PCI-DSS? Understanding the Payment Card Industry Data Security Standard",
+    "description": "Learn what PCI-DSS (Payment Card Industry Data Security Standard) is, why it exists, and how organizations protect cardholder data by complying with PCI security requirements.",
+    "url": "https://tacraven.com/knowledge/pci-dss.html",
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-07-01",
+    "author": {
+      "@type": "Organization",
+      "name": "TacRaven Solutions",
+      "url": "https://tacraven.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TacRaven Solutions",
+      "url": "https://tacraven.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tacraven.com/knowledge/pci-dss.html"
+    },
+    "articleSection": "Compliance",
+    "keywords": ["PCI-DSS", "Payment Card Industry Data Security Standard", "PCI compliance", "cardholder data security", "payment security standard", "credit card security compliance"],
+    "educationalLevel": "Intermediate",
+    "about": {
+      "@type": "Thing",
+      "name": "Payment Card Industry Data Security Standard"
+    }
+  }
+  </script>
+
+  <style>
+    /* =========================================
+       CSS CUSTOM PROPERTIES - TacRaven Theme
+    ========================================= */
+    :root {
+      --black:        #0a0a0a;
+      --dark:         #111111;
+      --dark-card:    #161616;
+      --dark-border:  #1f1f1f;
+      --gold:         #c9a84c;
+      --gold-light:   #e2c06e;
+      --gold-dim:     #8a6e2f;
+      --red:          #c0392b;
+      --text:         #d4d4d4;
+      --text-muted:   #7a7a7a;
+      --text-dim:     #4a4a4a;
+      --white:        #f0f0f0;
+      --font-display: 'Courier New', Courier, monospace;
+      --font-body:    Georgia, 'Times New Roman', serif;
+      --font-ui:      'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    }
+
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =========================================
+       BACK BUTTON BAR
+    ========================================= */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--dark-border);
+      backdrop-filter: blur(6px);
+      padding: 12px 24px;
+    }
+
+    .btn-back {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      padding: 8px 18px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .btn-back:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .btn-back::before {
+      content: '\2190';
+      font-size: 0.85rem;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--dark-border);
+      background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a { color: var(--gold-dim); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: bold;
+      color: var(--white);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 .accent { color: var(--gold); }
+
+    .hero-subtitle {
+      font-family: var(--font-ui);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .hero-intro {
+      font-size: 1rem;
+      color: var(--text);
+      max-width: 780px;
+      margin-bottom: 32px;
+      border-left: 3px solid var(--gold-dim);
+      padding-left: 18px;
+    }
+
+    .meta-bar { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .meta-tag {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid #3a3a3a;
+      border-radius: 2px;
+      color: #c8c8c8;
+      background: #1e1e1e;
+    }
+
+    .meta-tag.cat { border-color: var(--gold); color: var(--gold-light); }
+
+    /* =========================================
+       MAIN LAYOUT
+    ========================================= */
+    .page-body {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    article { min-width: 0; }
+
+    .kb-section { margin-bottom: 52px; }
+
+    .kb-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kb-section h2::before { content: '//'; color: var(--gold); font-size: 0.85rem; }
+
+    .kb-section h3 {
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin: 28px 0 10px;
+    }
+
+    .kb-section p { margin-bottom: 16px; color: var(--text); }
+
+    .card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 22px 26px;
+      margin-bottom: 16px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .card-small {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+
+    .card-small h4 {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .card-small p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .usecase-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 3px solid var(--gold-dim);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 18px;
+    }
+
+    .usecase-card h4 {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .usecase-card p { font-size: 0.9rem; color: var(--text); margin-bottom: 0; }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 14px;
+    }
+
+    .compare-table th {
+      font-family: var(--font-display);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--gold);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--gold-dim);
+      background: var(--dark);
+    }
+
+    .compare-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--dark-border);
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.04); }
+
+    .platform-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .platform-list li {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+
+    .platform-list li strong {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .platform-list li span { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    .takeaway-list { list-style: none; padding: 0; }
+
+    .takeaway-list li {
+      padding: 12px 16px 12px 44px;
+      position: relative;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .takeaway-list li:last-child { border-bottom: none; }
+
+    .takeaway-list li::before {
+      content: '\25BA';
+      position: absolute;
+      left: 16px;
+      color: var(--gold);
+      font-size: 0.65rem;
+      top: 16px;
+    }
+
+    .arch-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 18px 0;
+      align-items: stretch;
+    }
+
+    .arch-step {
+      flex: 1;
+      min-width: 100px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 14px 12px;
+      text-align: center;
+      position: relative;
+    }
+
+    .arch-step:not(:last-child)::after {
+      content: '\2192';
+      position: absolute;
+      right: -13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold-dim);
+      font-size: 0.9rem;
+      z-index: 2;
+    }
+
+    .arch-step .step-num {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      color: var(--gold-dim);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .arch-step .step-name {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    .callout-warning {
+      background: rgba(192,57,43,0.08);
+      border: 1px solid rgba(192,57,43,0.25);
+      border-left: 3px solid var(--red);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    .callout-warning strong {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #e05c4a;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .callout-warning p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+
+    .ref-list { list-style: none; padding: 0; counter-reset: refs; }
+
+    .ref-list li {
+      counter-increment: refs;
+      padding: 10px 0 10px 36px;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .ref-list li:last-child { border-bottom: none; }
+
+    .ref-list li::before {
+      content: '[' counter(refs) ']';
+      position: absolute;
+      left: 0;
+      color: var(--gold-dim);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+    }
+
+    .ref-list a { color: var(--gold-dim); text-decoration: none; }
+    .ref-list a:hover { color: var(--gold); }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .related-link {
+      display: block;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .related-link:hover {
+      border-color: var(--gold-dim);
+      background: rgba(201,168,76,0.05);
+    }
+
+    .related-link .rl-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888888;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .related-link .rl-title {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    /* =========================================
+       SIDEBAR
+    ========================================= */
+    aside { position: sticky; top: 80px; }
+
+    .sidebar-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-card h3 {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .toc-list { list-style: none; padding: 0; }
+    .toc-list li { margin-bottom: 2px; }
+
+    .toc-list a {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: block;
+      padding: 5px 8px;
+      border-radius: 2px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .toc-list a:hover { color: var(--gold-light); background: rgba(201,168,76,0.06); }
+
+    .toc-list a.toc-active {
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.08);
+      border-left: 2px solid var(--gold);
+      padding-left: 6px;
+    }
+
+    .toc-toggle-btn {
+      display: none;
+      width: 100%;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      cursor: pointer;
+      text-align: left;
+      margin-bottom: 0;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toc-toggle-btn .toc-chevron {
+      display: inline-block;
+      transition: transform 0.25s;
+      font-style: normal;
+      font-size: 0.8rem;
+    }
+
+    .toc-toggle-btn.open .toc-chevron { transform: rotate(180deg); }
+
+    .toc-drawer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .toc-drawer.open { max-height: 600px; opacity: 1; }
+    .toc-drawer-inner { padding-top: 4px; }
+
+    @media (max-width: 900px) {
+      .toc-toggle-btn { display: flex; }
+      .sidebar-toc-card .toc-list {
+        border-top: 1px solid var(--dark-border);
+        margin-top: 0;
+        padding-top: 8px;
+      }
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 24px 28px;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .footer-brand .logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer-brand p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 6px; }
+    .footer-col ul a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-col ul a:hover { color: var(--gold-light); }
+
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1px; color: var(--text-dim); }
+    .footer-tagline { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); }
+
+    .divider { border: none; border-top: 1px solid var(--dark-border); margin: 0; }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 900px) {
+      .page-body { grid-template-columns: 1fr; }
+      aside { position: static; order: -1; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .arch-step:not(:last-child)::after { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .arch-step { min-width: 80px; }
+      .compare-table { font-size: 0.78rem; }
+      .hero h1 { letter-spacing: -0.5px; }
+    }
+
+    @media print {
+      .top-bar, aside, footer { display: none; }
+      body { background: white; color: black; }
+      .page-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <a href="/knowledge" class="btn-back">Return to Knowledge Base</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <p class="breadcrumb">
+        <a href="/">Home</a> &nbsp;/&nbsp;
+        <a href="/knowledge">TacRaven Cybersecurity Knowledge Base</a> &nbsp;/&nbsp;
+        What is PCI-DSS?
+      </p>
+      <h1>What is <span class="accent">PCI-DSS</span>?</h1>
+      <p class="hero-subtitle">Understanding the Payment Card Industry Data Security Standard and how organizations protect cardholder data across retail, e-commerce, financial, and payment processing environments.</p>
+      <p class="hero-intro">
+        Any organization that stores, processes, or transmits payment card data &mdash; regardless of size or industry &mdash; is required to comply with the Payment Card Industry Data Security Standard. PCI-DSS establishes a comprehensive set of security controls designed to protect cardholder data, minimize payment fraud, and reduce the risk of costly breaches that erode consumer trust. Understanding PCI-DSS is essential for security professionals, compliance officers, IT leaders, and any business operating within the modern digital payment ecosystem.
+      </p>
+      <div class="meta-bar">
+        <span class="meta-tag cat">Compliance</span>
+        <span class="meta-tag">Difficulty: Intermediate</span>
+        <span class="meta-tag">Read Time: ~9 Minutes</span>
+        <span class="meta-tag">Updated: 2025</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PAGE BODY -->
+  <div class="page-body">
+
+    <article>
+
+      <!-- SECTION: Executive Overview -->
+      <section class="kb-section" id="overview" aria-labelledby="s-overview">
+        <h2 id="s-overview">Executive Overview</h2>
+        <p>
+          <strong>PCI-DSS</strong> &mdash; the Payment Card Industry Data Security Standard &mdash; is a globally recognized set of technical and operational security requirements designed to protect payment card data from theft, fraud, and unauthorized exposure. Established in 2004 through collaboration among the major card brands &mdash; Visa, Mastercard, American Express, Discover, and JCB &mdash; PCI-DSS was created in direct response to a surge in payment card fraud and large-scale data breaches that exposed millions of cardholders to serious financial harm.
+        </p>
+        <p>
+          The standard is governed and maintained by the <strong>Payment Card Industry Security Standards Council (PCI SSC)</strong>, a global body responsible for developing, managing, and evolving PCI security standards. The PCI SSC does not enforce compliance directly; rather, enforcement is carried out by the individual payment card brands and acquiring banks, who require their merchants and service providers to demonstrate adherence to the standard as a condition of accepting card payments.
+        </p>
+        <p>
+          Protecting payment card data is critical because cardholder data &mdash; including Primary Account Numbers (PANs), cardholder names, expiration dates, and CVV codes &mdash; is among the most targeted categories of personally identifiable information in existence. A single breach can result in fraudulent transactions, chargebacks, regulatory penalties, litigation, and permanent reputational damage that takes years to recover from.
+        </p>
+        <div class="card">
+          <p>
+            PCI-DSS helps reduce payment fraud and data breaches by mandating encryption, access control, vulnerability management, network segmentation, and continuous monitoring. These controls address threats across the full lifecycle of a payment transaction &mdash; from the point of card entry to final authorization and long-term data retention &mdash; giving organizations a structured, risk-based framework to build defense-in-depth payment security architectures that protect both their customers and their business operations.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION: Understanding PCI-DSS -->
+      <section class="kb-section" id="framework" aria-labelledby="s-framework">
+        <h2 id="s-framework">Understanding PCI-DSS</h2>
+        <p>
+          PCI-DSS provides a prescriptive yet adaptable framework for securing cardholder data environments (CDEs). A cardholder data environment encompasses the people, processes, and technologies that store, process, or transmit cardholder data &mdash; including all connected systems and network segments that could impact the security of that data. Accurately scoping the CDE is one of the most consequential decisions in any PCI compliance program, as it determines which systems and controls fall under the standard's requirements.
+        </p>
+
+        <h3>Cardholder Data Environment</h3>
+        <p>
+          Unlike some cybersecurity frameworks that operate primarily at a policy or governance level, PCI-DSS is notably prescriptive. It specifies not just what outcomes organizations must achieve, but in many cases how they should achieve them &mdash; defining encryption algorithms, key lengths, log retention periods, and testing frequencies. This prescriptiveness makes PCI-DSS particularly actionable for security teams but also demanding for organizations operating complex or legacy environments where retrofit compliance work is common.
+        </p>
+
+        <h3>Scope and Network Segmentation</h3>
+        <p>
+          Organizations can significantly reduce the burden and cost of PCI-DSS compliance by implementing effective network segmentation that isolates the cardholder data environment from the rest of the corporate network. When properly implemented, segmentation limits the number of systems subject to PCI-DSS requirements, simplifying compliance assessments and reducing the attack surface available to adversaries. Improper or insufficient segmentation is one of the most common findings in PCI compliance assessments and one of the most frequent contributing factors in payment data breaches.
+        </p>
+
+        <h3>PCI-DSS Version 4.0</h3>
+        <p>
+          The PCI SSC released PCI-DSS version 4.0 in 2022, introducing significant updates including a customized approach option that allows organizations to meet the intent of each requirement using alternative controls tailored to their environment, expanded multi-factor authentication requirements, and stronger focus on targeted risk analysis. Understanding which version of the standard applies to your environment &mdash; and the transition timelines established by the PCI SSC &mdash; is essential for accurate compliance planning and investment prioritization across the organization.
+        </p>
+      </section>
+
+      <!-- SECTION: 12 Core Requirements -->
+      <section class="kb-section" id="requirements" aria-labelledby="s-req">
+        <h2 id="s-req">The 12 Core PCI-DSS Requirements</h2>
+        <p>
+          PCI-DSS is organized around twelve major requirements grouped into six overarching control objectives. Together, these requirements form a comprehensive security baseline for any organization handling payment card data. Each requirement contains detailed sub-controls, testing procedures, and guidance that specify how compliance is demonstrated and assessed by qualified assessors.
+        </p>
+
+        <div class="usecase-card">
+          <h4>Req 1 &mdash; Install and Maintain Network Security Controls</h4>
+          <p>Organizations must deploy and configure firewalls and other network security controls to restrict inbound and outbound traffic to only what is necessary for cardholder data operations. Network security configurations must be reviewed and documented regularly to remain effective against current threats and to accurately reflect changes in the network environment.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 2 &mdash; Apply Secure Configurations</h4>
+          <p>All system components must be configured according to security hardening standards appropriate to the technology and vendor. Default vendor passwords and security settings must be changed before deployment into the cardholder data environment. Configuration management processes must ensure that approved, secure baselines are maintained consistently across all in-scope systems over time.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 3 &mdash; Protect Stored Cardholder Data</h4>
+          <p>Organizations must minimize cardholder data retention and implement data retention and disposal policies that limit exposure to only what is operationally necessary. Strong cryptographic controls must protect stored Primary Account Numbers, and sensitive authentication data must never be retained after authorization is complete &mdash; even when stored in encrypted form.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 4 &mdash; Encrypt Cardholder Data in Transit</h4>
+          <p>Cardholder data transmitted over open, public networks must be protected using strong cryptography and approved security protocols. The use of insecure protocols such as SSL and early TLS versions is explicitly prohibited within PCI-DSS cardholder data environments, as these protocols remain vulnerable to well-documented downgrade and interception attacks.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 5 &mdash; Protect Systems Against Malware</h4>
+          <p>All systems commonly affected by malicious software must be protected by maintained anti-malware solutions. Anti-malware software must be kept current, generate audit logs, and be capable of detecting, removing, and protecting against all known malware types targeting the platforms in use within the cardholder data environment, including endpoint and server workloads.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 6 &mdash; Develop and Maintain Secure Systems</h4>
+          <p>Security vulnerabilities in system components must be identified and addressed through a risk-ranked patching program aligned to defined criticality timelines. All software developed for use in the cardholder data environment must follow secure development practices and be protected against common web application attack techniques documented in sources such as the OWASP Top 10.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 7 &mdash; Restrict Access to Cardholder Data</h4>
+          <p>Access to system components and cardholder data must be granted only to individuals whose specific job function requires it. Organizations must implement a formal access control model that enforces the principle of least privilege across all roles and user types with any level of access to the cardholder data environment, including privileged and administrative accounts.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 8 &mdash; Identify and Authenticate Access</h4>
+          <p>All users with access to the cardholder data environment must be uniquely identified and authenticated. Multi-factor authentication is required for all administrative and remote access into the CDE. Passwords and other authentication credentials must meet defined strength requirements and be managed through defined lifecycle processes including regular rotation and immediate revocation upon separation from the organization.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 9 &mdash; Restrict Physical Access</h4>
+          <p>Physical access to systems that store, process, or transmit cardholder data must be controlled and monitored through appropriate physical security controls. This includes securing physical media containing cardholder data, controlling visitor access to sensitive areas, and maintaining logs of physical access to all restricted zones within the cardholder data environment.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 10 &mdash; Monitor and Log Network Activity</h4>
+          <p>All access to system components and cardholder data must be logged, and audit logs must be protected from unauthorized modification or deletion. Logs must be reviewed at least daily, and log management processes must enable the accurate reconstruction of events to support incident investigation and forensic analysis following any security event affecting the cardholder data environment.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 11 &mdash; Test Security Systems Regularly</h4>
+          <p>Organizations must conduct regular security testing including internal and external vulnerability scans, penetration testing, and wireless access point scanning. Testing must be performed at defined intervals and after any significant changes to the cardholder data environment to verify that controls remain effective and that new vulnerabilities have not been introduced through changes or additions to the environment.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Req 12 &mdash; Maintain Security Policies</h4>
+          <p>Organizations must establish, publish, and maintain a comprehensive information security policy that addresses all PCI-DSS requirements and assigns clear responsibility for security throughout the organization. Security awareness training must be provided to all personnel with access to the CDE, and the security policy must be reviewed at least annually and updated to reflect changes in the threat environment and business operations.</p>
+        </div>
+      </section>
+
+      <!-- SECTION: How PCI-DSS Compliance Works -->
+      <section class="kb-section" id="lifecycle" aria-labelledby="s-lifecycle">
+        <h2 id="s-lifecycle">How PCI-DSS Compliance Works</h2>
+        <p>
+          Achieving and maintaining PCI-DSS compliance is a continuous process rather than a one-time certification event. The compliance lifecycle moves through several distinct stages, each building on the last to establish and sustain the security controls required to protect the cardholder data environment year over year.
+        </p>
+
+        <div class="arch-flow">
+          <div class="arch-step">
+            <span class="step-num">STAGE 01</span>
+            <span class="step-name">CDE Identification</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">STAGE 02</span>
+            <span class="step-name">Control Implementation</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">STAGE 03</span>
+            <span class="step-name">Scanning &amp; Testing</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">STAGE 04</span>
+            <span class="step-name">Compliance Assessment</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">STAGE 05</span>
+            <span class="step-name">Certification &amp; Reporting</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">STAGE 06</span>
+            <span class="step-name">Continuous Monitoring</span>
+          </div>
+        </div>
+
+        <p>
+          The lifecycle begins with <strong>Cardholder Data Environment Identification</strong> &mdash; mapping payment data flows, inventorying all systems that store, process, or transmit cardholder data, and establishing the precise compliance scope boundary. This foundational step determines the full extent of the compliance effort and must be revisited whenever the network architecture or business processes change materially.
+        </p>
+        <p>
+          <strong>Security Control Implementation</strong> follows, deploying required controls across the CDE including firewalls, encryption, access management, logging infrastructure, anti-malware, and hardened configuration baselines aligned to all twelve PCI-DSS requirements. Gap remediation at this stage typically requires significant investment in technology, process redesign, and security staff training before assessments can proceed.
+        </p>
+        <p>
+          <strong>Vulnerability Scanning and Testing</strong> validates control effectiveness by conducting scans using PCI SSC-approved Approved Scanning Vendors (ASVs) for external network scans, and penetration tests performed by qualified testers to identify and remediate exploitable weaknesses before they can be leveraged in an actual attack against the cardholder data environment.
+        </p>
+        <p>
+          <strong>Compliance Assessment</strong> is performed by a Qualified Security Assessor (QSA) for Level 1 merchants, or through a Self-Assessment Questionnaire (SAQ) for lower-tier merchants. The assessment validates that controls are in place, operating effectively, and correctly implemented across the full scope of the cardholder data environment as defined during scoping.
+        </p>
+        <p>
+          <strong>Certification and Reporting</strong> requires submission of compliance documentation &mdash; including a Report on Compliance (ROC) and Attestation of Compliance (AOC) for Level 1 merchants, or the applicable SAQ and AOC for lower-tier merchants &mdash; to the acquiring bank or card brand to formally demonstrate that PCI-DSS requirements have been satisfied for the assessment period.
+        </p>
+        <p>
+          <strong>Continuous Monitoring</strong> sustains compliance between annual assessments through ongoing daily log reviews, quarterly ASV external scans, annual penetration tests, and regular policy and control reviews that keep the security program aligned with changes to the threat landscape and any modifications to the cardholder data environment throughout the year.
+        </p>
+      </section>
+
+      <!-- SECTION: Compliance Levels -->
+      <section class="kb-section" id="levels" aria-labelledby="s-levels">
+        <h2 id="s-levels">PCI-DSS Compliance Levels</h2>
+        <p>
+          PCI-DSS compliance requirements are not identical for all organizations. The payment card brands have defined merchant compliance levels based primarily on annual transaction volume, with higher transaction volumes carrying greater systemic risk and therefore requiring more rigorous independent validation processes. Service providers are subject to a separate but analogous tiering system with its own validation requirements.
+        </p>
+
+        <div class="usecase-card">
+          <h4>Level 1 &mdash; Large Merchants</h4>
+          <p>Merchants processing over 6 million card transactions annually across all channels, or any merchant that has experienced a breach or attack that resulted in account data compromise. Level 1 merchants must complete an annual on-site assessment conducted by a Qualified Security Assessor (QSA), quarterly external network scans by an Approved Scanning Vendor (ASV), and an annual penetration test. A Report on Compliance (ROC) signed by both the merchant and the QSA must be submitted to the acquiring bank as evidence of compliance.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Level 2 &mdash; Medium Merchants</h4>
+          <p>Merchants processing 1 million to 6 million card transactions annually across all channels. Level 2 merchants may complete an annual Self-Assessment Questionnaire (SAQ) in lieu of a formal QSA assessment, depending on the specific card brand requirements of their acquiring bank. Quarterly external vulnerability scans by an ASV are also required. Some card brands require Level 2 merchants to have their SAQ validated by a QSA or certified Internal Security Assessor (ISA).</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Level 3 &mdash; Smaller Merchants</h4>
+          <p>Merchants processing 20,000 to 1 million e-commerce transactions annually. Level 3 merchants are required to complete an annual Self-Assessment Questionnaire appropriate to their specific payment acceptance method and submit quarterly vulnerability scans from an ASV. The applicable SAQ type depends on how cardholder data flows through the merchant's environment and whether they utilize redirect-based or iFrame-based hosted payment solutions that reduce scope.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Level 4 &mdash; Small Businesses</h4>
+          <p>Merchants processing fewer than 20,000 e-commerce transactions annually, or up to 1 million transactions through all other channels. Validation requirements for Level 4 merchants are set by the acquiring bank and typically include an annual SAQ and may include ASV scans depending on the payment environment. Despite the lighter validation process, Level 4 merchants are fully subject to all PCI-DSS requirements and face the same consequences for non-compliance as larger merchants following a security incident.</p>
+        </div>
+
+        <p>
+          It is important to note that even Level 4 merchants &mdash; small businesses processing relatively low transaction volumes &mdash; are completely subject to all PCI-DSS requirements. Small businesses represent a disproportionate share of payment card breach incidents precisely because their security programs are often underdeveloped relative to the risks they carry. Card brands may also require re-tiering to Level 1 following any breach event regardless of the merchant's prior transaction volume tier, significantly increasing compliance obligations in the aftermath of an incident.
+        </p>
+      </section>
+
+      <!-- SECTION: Comparison -->
+      <section class="kb-section" id="comparison" aria-labelledby="s-comp">
+        <h2 id="s-comp">PCI-DSS vs Other Security Frameworks</h2>
+        <p>
+          PCI-DSS is one of several major security and compliance frameworks organizations may be required to implement simultaneously. Understanding how it relates to broader frameworks helps security teams prioritize controls and identify areas of overlap that can reduce redundant compliance effort, documentation overhead, and associated costs.
+        </p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>PCI-DSS</th>
+              <th>SOC 2</th>
+              <th>ISO 27001</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary Purpose</td>
+              <td>Protect payment cardholder data and reduce payment fraud</td>
+              <td>Demonstrate trust and security to service organization customers</td>
+              <td>Establish and maintain an information security management system (ISMS)</td>
+            </tr>
+            <tr>
+              <td>Industry Scope</td>
+              <td>Any organization that stores, processes, or transmits payment card data</td>
+              <td>Primarily technology and SaaS service providers; broadly applicable</td>
+              <td>Any organization globally across all industries and sectors</td>
+            </tr>
+            <tr>
+              <td>Certification Requirements</td>
+              <td>QSA assessment or SAQ depending on merchant level; enforced by card brands</td>
+              <td>Type I or Type II report issued by a licensed CPA firm</td>
+              <td>Formal certification by an accredited ISO certification body</td>
+            </tr>
+            <tr>
+              <td>Control Structure</td>
+              <td>12 prescriptive requirements with detailed sub-controls and testing procedures</td>
+              <td>Five Trust Service Criteria (Security, Availability, Confidentiality, Privacy, Processing Integrity)</td>
+              <td>Annex A with 93 controls organized across four organizational themes</td>
+            </tr>
+            <tr>
+              <td>Compliance Enforcement</td>
+              <td>Contractually enforced by card brands and acquiring banks</td>
+              <td>Market-driven; customers request SOC 2 reports as a condition of business</td>
+              <td>Market-driven or regulatory in some sectors; demonstrates ISMS maturity</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          Unlike SOC 2 and ISO 27001, which address broad information security management across any category of sensitive data, PCI-DSS is narrowly focused on payment card data. However, the security controls it mandates &mdash; access control, encryption, logging, vulnerability management, and incident response &mdash; overlap substantially with the requirements of both broader frameworks. Organizations subject to multiple compliance obligations can often leverage a unified control framework to satisfy all three standards with significantly reduced duplication of effort and documentation overhead.
+        </p>
+      </section>
+
+      <!-- SECTION: Who Must Comply -->
+      <section class="kb-section" id="who-complies" aria-labelledby="s-who">
+        <h2 id="s-who">Who Must Comply with PCI-DSS</h2>
+        <p>
+          PCI-DSS applies to any organization &mdash; regardless of size, industry, or geography &mdash; that stores, processes, or transmits cardholder data. This scope is deliberately broad and encompasses a wide range of organizational types that interact with payment card data in different ways and at different points in the payment transaction chain.
+        </p>
+
+        <ul class="platform-list">
+          <li>
+            <strong>Retail Companies</strong>
+            <span>Merchants accepting cards at physical point-of-sale terminals must comply with PCI-DSS. Even when using a third-party processor, the retailer's network and POS systems may remain in scope if they touch card data at any point in the transaction flow.</span>
+          </li>
+          <li>
+            <strong>E-Commerce Businesses</strong>
+            <span>Online merchants processing card payments through web checkout are fully subject to PCI-DSS. Hosted payment pages and redirect solutions can reduce scope significantly, but do not eliminate compliance obligations for the merchant entirely.</span>
+          </li>
+          <li>
+            <strong>Payment Processors</strong>
+            <span>Payment processors and acquiring banks handle the greatest volume of cardholder data and are subject to the most rigorous PCI-DSS requirements, typically including annual Level 1 assessments and additional payment network-specific security standards.</span>
+          </li>
+          <li>
+            <strong>Financial Institutions</strong>
+            <span>Card-issuing banks and financial institutions that facilitate card-based transactions must comply with PCI-DSS in addition to sector-specific regulatory obligations covering PIN security, card production, and authentication data management.</span>
+          </li>
+          <li>
+            <strong>Service Providers</strong>
+            <span>Cloud hosting providers, managed security service providers, and third-party payment facilitators that handle cardholder data on behalf of merchants must comply as service providers and undergo their own independent compliance validation processes.</span>
+          </li>
+          <li>
+            <strong>Small Businesses</strong>
+            <span>Any small business accepting card payments is fully subject to PCI-DSS. Low transaction volume does not reduce compliance obligations, and acquiring banks can impose significant penalties on merchants found non-compliant following any breach event.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- SECTION: Benefits -->
+      <section class="kb-section" id="benefits" aria-labelledby="s-benefits">
+        <h2 id="s-benefits">Benefits of PCI-DSS Compliance</h2>
+        <p>
+          PCI-DSS compliance delivers benefits that extend well beyond the immediate goal of avoiding fines or maintaining card acceptance privileges. Organizations that achieve and sustain genuine compliance &mdash; rather than treating it as a checkbox exercise &mdash; typically realize meaningful improvements across their broader security posture and long-term operational resilience.
+        </p>
+
+        <h3>Improved Payment Data Security</h3>
+        <p>
+          By implementing the standard's requirements for encryption, access control, and network segmentation, organizations dramatically reduce the attack surface available to adversaries seeking to compromise cardholder data. The controls mandated by PCI-DSS address the most commonly exploited vectors in payment card breaches, including weak credentials, unpatched vulnerabilities, insufficient monitoring, and poorly segmented networks that allow lateral movement after initial compromise.
+        </p>
+
+        <h3>Reduced Risk of Financial Fraud</h3>
+        <p>
+          When cardholder data is properly encrypted, access is tightly controlled, and monitoring detects anomalous behavior in near-real-time, the likelihood of a successful breach that enables fraudulent transactions is substantially reduced. This protects both the organization and its customers from the downstream financial impact of payment card fraud, including chargebacks, reimbursement costs, and the operational burden of card reissuance following a breach.
+        </p>
+
+        <h3>Increased Customer Trust</h3>
+        <p>
+          Merchants and service providers that can demonstrate PCI-DSS compliance signal to customers that their payment data is handled responsibly and to a recognized industry standard. In an era where consumers are acutely aware of data breach risks, this demonstrated commitment to payment security is an increasingly important competitive differentiator that influences purchasing decisions and drives long-term customer loyalty.
+        </p>
+
+        <h3>Stronger Overall Security Controls</h3>
+        <p>
+          Because PCI-DSS requirements &mdash; including logging, vulnerability management, access control, and encryption &mdash; represent cybersecurity best practices applicable well beyond the cardholder data environment, organizations that fully implement the standard typically emerge with stronger enterprise-wide security programs. Investment made to achieve PCI compliance frequently benefits the entire organizational security posture rather than just the payment processing environment.
+        </p>
+
+        <h3>Better Incident Response Preparedness</h3>
+        <p>
+          PCI-DSS Requirement 12 mandates an incident response plan that is tested at least annually. Organizations with tested, rehearsed incident response capabilities recover faster from security events, contain damage more effectively, and are better positioned to meet notification obligations under applicable breach notification laws and card brand requirements following a payment data security incident.
+        </p>
+      </section>
+
+      <!-- SECTION: Challenges -->
+      <section class="kb-section" id="challenges" aria-labelledby="s-challenges">
+        <h2 id="s-challenges">Challenges of PCI-DSS Compliance</h2>
+        <p>
+          While the benefits of PCI-DSS compliance are substantial, the path to achieving and sustaining compliance presents significant operational and financial challenges that organizations must plan for carefully. Awareness of these challenges enables more realistic project scoping, stakeholder alignment, and resource planning from the outset of any PCI compliance initiative.
+        </p>
+
+        <div class="callout-warning">
+          <strong>Implementation Complexity</strong>
+          <p>PCI-DSS is among the most technically detailed compliance frameworks in existence. Its twelve requirements encompass hundreds of sub-controls with specific testing procedures, system configuration requirements, and documentation standards. Organizations with complex or legacy IT environments often face substantial remediation work before achieving compliance, requiring specialized expertise in network security, cryptography, access control, and log management that may not exist in-house without dedicated investment in staff or third-party support.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Cost of Compliance</strong>
+          <p>The cost of achieving and maintaining PCI-DSS compliance can be significant, particularly for Level 1 merchants that must engage a Qualified Security Assessor for annual on-site assessments, conduct quarterly ASV scans, and perform annual penetration testing. Beyond direct assessment costs, organizations must invest in the technical controls &mdash; encryption solutions, SIEM platforms, network segmentation infrastructure, endpoint protection &mdash; required to satisfy the standard's requirements. For small and mid-sized organizations, these costs represent a meaningful portion of the total IT security budget.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Ongoing Monitoring Requirements</strong>
+          <p>PCI-DSS is not a point-in-time certification &mdash; it demands continuous compliance throughout the year. Organizations must conduct daily log reviews, maintain current anti-malware, apply security patches within defined timeframes, and perform quarterly vulnerability scans year-round. For organizations without mature security operations functions, meeting these ongoing requirements demands either significant internal investment in staff and tooling or engagement of managed security service providers with PCI-specific experience and operational capability.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Scope Definition Challenges</strong>
+          <p>Accurately defining the cardholder data environment and implementing effective network segmentation to contain it is one of the most challenging aspects of PCI-DSS compliance. Overly broad scoping results in unnecessary compliance burden; overly narrow scoping creates compliance gaps and breach risk. Modern IT environments with cloud workloads, virtualization, containerization, and hybrid architectures add significant complexity to scope determination, requiring careful data flow analysis and ongoing scope management discipline as the environment inevitably evolves over time.</p>
+        </div>
+      </section>
+
+      <!-- SECTION: Key Takeaways -->
+      <section class="kb-section" id="takeaways" aria-labelledby="s-take">
+        <h2 id="s-take">Key Takeaways</h2>
+        <ul class="takeaway-list">
+          <li>PCI-DSS is a globally mandated security standard that applies to any organization that stores, processes, or transmits payment card data, regardless of size, industry, or geography &mdash; with no exceptions for low transaction volumes or indirect card data handling.</li>
+          <li>The standard is governed by the PCI Security Standards Council and enforced by payment card brands and acquiring banks through merchant and service provider contractual agreements, not through direct government regulation.</li>
+          <li>PCI-DSS is organized around 12 core requirements addressing network security, data protection, access control, malware defense, secure development, monitoring, vulnerability management, testing, and comprehensive security policy maintenance.</li>
+          <li>Merchants are tiered into four compliance levels based on annual transaction volume, with different validation requirements ranging from annual QSA on-site assessments for Level 1 merchants to self-assessment questionnaires for smaller merchants at Levels 2 through 4.</li>
+          <li>The cardholder data environment (CDE) scope definition is among the most critical decisions in any PCI compliance program; effective network segmentation simultaneously minimizes compliance burden and reduces the attack surface available to adversaries.</li>
+          <li>PCI-DSS version 4.0 introduced a customized approach option allowing organizations to meet requirement intent through alternative controls, and strengthened multi-factor authentication requirements to address modern credential-based attack techniques.</li>
+          <li>Even Level 4 small businesses accepting payment cards are subject to all PCI-DSS requirements and face significant consequences &mdash; including fines, increased transaction fees, and loss of card acceptance privileges &mdash; for non-compliance identified in the aftermath of a breach event.</li>
+          <li>PCI-DSS controls overlap substantially with SOC 2, ISO 27001, and NIST CSF requirements, enabling organizations subject to multiple frameworks to leverage a unified control approach that satisfies all obligations without redundant documentation or parallel compliance programs.</li>
+          <li>Compliance is a continuous process requiring daily log reviews, quarterly vulnerability scans, annual penetration testing, and ongoing policy maintenance &mdash; not a one-time assessment event or annual certification milestone that can be deprioritized between cycles.</li>
+          <li>Organizations that achieve genuine PCI-DSS compliance rather than treating it as a checkbox exercise consistently realize meaningful improvements in overall cybersecurity posture, customer trust, and incident response readiness that benefit the entire organization well beyond the cardholder data environment itself.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION: References -->
+      <section class="kb-section" id="references" aria-labelledby="s-ref">
+        <h2 id="s-ref">References</h2>
+        <ol class="ref-list">
+          <li>PCI Security Standards Council. <em>PCI DSS v4.0 Documentation and Resources.</em> <a href="https://www.pcisecuritystandards.org/document_library/" target="_blank" rel="noopener noreferrer">pcisecuritystandards.org</a></li>
+          <li>PCI Security Standards Council. <em>Navigating PCI DSS &mdash; Understanding the Intent of the Requirements.</em> PCI SSC, 2022.</li>
+          <li>National Institute of Standards and Technology. <em>NIST SP 800-53 Rev. 5: Security and Privacy Controls for Information Systems and Organizations.</em> <a href="https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>Verizon. <em>Payment Security Report.</em> Annual analysis of PCI-DSS compliance trends and payment data breach patterns. <a href="https://enterprise.verizon.com/resources/reports/pci-dss-compliance-report/" target="_blank" rel="noopener noreferrer">enterprise.verizon.com</a></li>
+          <li>SANS Institute. <em>Understanding PCI DSS Scoping and Segmentation.</em> SANS Reading Room, 2021.</li>
+          <li>Coalfire. <em>PCI DSS 4.0 Compliance Guide: What&rsquo;s New and What&rsquo;s Changed.</em> Coalfire Research, 2022.</li>
+          <li>OWASP Foundation. <em>OWASP Top Ten Web Application Security Risks.</em> Referenced in PCI-DSS Requirement 6 guidance. <a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer">owasp.org</a></li>
+          <li>TacRaven Solutions. <em>TacRaven Cybersecurity Knowledge Base.</em> <a href="https://tacraven.com/knowledge" target="_blank" rel="noopener noreferrer">tacraven.com/knowledge</a></li>
+        </ol>
+      </section>
+
+      <!-- SECTION: Related Topics -->
+      <section class="kb-section" id="related" aria-labelledby="s-rel">
+        <h2 id="s-rel">Related Topics</h2>
+        <div class="related-grid">
+          <a href="/knowledge/soc2.html" class="related-link">
+            <span class="rl-label">Compliance</span>
+            <span class="rl-title">What is SOC 2?</span>
+          </a>
+          <a href="/knowledge/iso-27001.html" class="related-link">
+            <span class="rl-label">Compliance</span>
+            <span class="rl-title">What is ISO 27001?</span>
+          </a>
+          <a href="/knowledge/nist-csf.html" class="related-link">
+            <span class="rl-label">Compliance</span>
+            <span class="rl-title">What is NIST CSF?</span>
+          </a>
+          <a href="/knowledge/vulnerability-management.html" class="related-link">
+            <span class="rl-label">Security Operations</span>
+            <span class="rl-title">Vulnerability Management</span>
+          </a>
+          <a href="/knowledge/risk-management.html" class="related-link">
+            <span class="rl-label">GRC</span>
+            <span class="rl-title">Risk Management</span>
+          </a>
+          <a href="/knowledge/zero-trust.html" class="related-link">
+            <span class="rl-label">Security Architecture</span>
+            <span class="rl-title">Zero Trust</span>
+          </a>
+          <a href="/knowledge/cloud-security.html" class="related-link">
+            <span class="rl-label">Security Architecture</span>
+            <span class="rl-title">Cloud Security</span>
+          </a>
+          <a href="/knowledge/siem.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is SIEM?</span>
+          </a>
+        </div>
+      </section>
+
+    </article>
+    <!-- END ARTICLE -->
+
+    <!-- SIDEBAR -->
+    <aside aria-label="Article navigation">
+
+      <!-- Table of Contents -->
+      <div class="sidebar-card sidebar-toc-card">
+        <button class="toc-toggle-btn" id="tocToggle" aria-expanded="false" aria-controls="tocDrawer">
+          Contents
+          <i class="toc-chevron">&#9662;</i>
+        </button>
+        <h3 class="toc-heading" style="display:none;" aria-hidden="true">Contents</h3>
+        <div class="toc-drawer" id="tocDrawer">
+          <div class="toc-drawer-inner">
+            <ul class="toc-list" id="tocList">
+              <li><a href="#overview">Executive Overview</a></li>
+              <li><a href="#framework">Understanding PCI-DSS</a></li>
+              <li><a href="#requirements">The 12 Core Requirements</a></li>
+              <li><a href="#lifecycle">How Compliance Works</a></li>
+              <li><a href="#levels">Compliance Levels</a></li>
+              <li><a href="#comparison">PCI-DSS vs Other Frameworks</a></li>
+              <li><a href="#who-complies">Who Must Comply</a></li>
+              <li><a href="#benefits">Benefits</a></li>
+              <li><a href="#challenges">Challenges</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+              <li><a href="#references">References</a></li>
+              <li><a href="#related">Related Topics</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Reference -->
+      <div class="sidebar-card">
+        <h3>Quick Reference</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.65;">
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">STANDARD</strong><br>
+          PCI-DSS v4.0<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">GOVERNED BY</strong><br>
+          PCI Security Standards Council (PCI SSC)<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">CORE REQUIREMENTS</strong><br>
+          12 Requirements &nbsp;&#183;&nbsp; 6 Control Objectives<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">COMPLIANCE LEVELS</strong><br>
+          Level 1 &nbsp;&#183;&nbsp; Level 2 &nbsp;&#183;&nbsp; Level 3 &nbsp;&#183;&nbsp; Level 4<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">CERTIFICATION</strong><br>
+          QSA Assessment or SAQ &nbsp;&#183;&nbsp; Enforced by card brands
+        </p>
+      </div>
+
+      <!-- Black Wing Dispatch promo -->
+      <div class="sidebar-card" style="border-color: #2a2a2a; background: linear-gradient(160deg, #161616 60%, rgba(201,168,76,0.04) 100%);">
+        <h3 style="border-bottom-color: var(--gold-dim);">Black Wing Dispatch</h3>
+        <p style="font-size:0.78rem; color:#b8b8b8; line-height:1.65; margin-bottom:6px;">
+          Cyber threat intelligence, TTPs, and adversary analysis &mdash; written for practitioners, not executives.
+        </p>
+        <p style="font-size:0.75rem; color:#8a8a8a; line-height:1.5; margin-bottom:14px;">
+          APT profiles &nbsp;&#183;&nbsp; Malware breakdowns &nbsp;&#183;&nbsp; Detection engineering &nbsp;&#183;&nbsp; Weekly threat briefs
+        </p>
+        <a href="/blog" style="display:block; text-align:center; font-family:var(--font-display); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); background: transparent; border: 1px solid var(--gold-dim); padding:10px; border-radius:2px; text-decoration:none; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.08)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='transparent';this.style.borderColor='var(--gold-dim)'">
+          Read the Dispatch &#8594;
+        </a>
+      </div>
+
+      <!-- Cyber Careers promo -->
+      <div class="sidebar-card" style="border-color: #2a2a2a;">
+        <h3>Cyber Careers</h3>
+        <p style="font-size:0.78rem; color:#b8b8b8; line-height:1.65; margin-bottom:6px;">
+          Breaking into cybersecurity or leveling up your SOC career? Our careers blog covers the roles, certifications, and skills that actually matter.
+        </p>
+        <p style="font-size:0.75rem; color:#8a8a8a; line-height:1.5; margin-bottom:14px;">
+          SOC analyst paths &nbsp;&#183;&nbsp; Cert roadmaps &nbsp;&#183;&nbsp; Resume strategy &nbsp;&#183;&nbsp; Interview prep
+        </p>
+        <a href="/careers/blog" style="display:block; text-align:center; font-family:var(--font-display); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--black); background:var(--gold); padding:10px; border-radius:2px; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">
+          Explore Careers Blog &#8594;
+        </a>
+      </div>
+
+    </aside>
+    <!-- END SIDEBAR -->
+
+  </div>
+  <!-- END PAGE BODY -->
+
+  <hr class="divider" />
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">TacRaven Solutions</span>
+          <p>
+            TacRaven Solutions is committed to advancing cybersecurity education. We partner with academic institutions and training programs to help build the next generation of cyber professionals &mdash; bridging the gap between classroom instruction and real-world operational practice.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/learning-hub">Learning Hub</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/threat-map">Threat Map</a></li>
+            <li><a href="/reports">Weekly Reports</a></li>
+            <li><a href="/knowledge">Knowledge Base</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+        <p class="footer-tagline">Intelligence-Driven Cybersecurity</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT - TOC scroll spy + mobile drawer -->
+  <script>
+    (function () {
+
+      function applyTocLayout() {
+        var btn     = document.getElementById('tocToggle');
+        var heading = document.querySelector('.toc-heading');
+        var drawer  = document.getElementById('tocDrawer');
+        if (!btn || !heading || !drawer) return;
+
+        if (window.innerWidth > 900) {
+          btn.style.display     = 'none';
+          heading.style.display = 'block';
+          heading.removeAttribute('aria-hidden');
+          drawer.classList.add('open');
+          drawer.style.maxHeight = 'none';
+          drawer.style.opacity   = '1';
+          drawer.style.overflow  = 'visible';
+          drawer.style.transition = 'none';
+        } else {
+          btn.style.display = 'flex';
+          heading.style.display = 'none';
+          heading.setAttribute('aria-hidden', 'true');
+          drawer.style.transition = '';
+          drawer.style.overflow   = '';
+          if (!drawer.classList.contains('open')) {
+            drawer.style.maxHeight = '0';
+            drawer.style.opacity   = '0';
+          }
+        }
+      }
+
+      applyTocLayout();
+      window.addEventListener('resize', applyTocLayout);
+
+      var tocBtn    = document.getElementById('tocToggle');
+      var tocDrawer = document.getElementById('tocDrawer');
+
+      if (tocBtn && tocDrawer) {
+        tocBtn.addEventListener('click', function () {
+          var isOpen = tocDrawer.classList.toggle('open');
+          tocBtn.classList.toggle('open', isOpen);
+          tocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        tocDrawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (window.innerWidth <= 900) {
+              tocDrawer.classList.remove('open');
+              tocBtn.classList.remove('open');
+              tocBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
+
+      var sectionIds = [
+        'overview', 'framework', 'requirements', 'lifecycle',
+        'levels', 'comparison', 'who-complies',
+        'benefits', 'challenges', 'takeaways', 'references', 'related'
+      ];
+
+      var tocLinks = {};
+      sectionIds.forEach(function (id) {
+        var link = document.querySelector('#tocList a[href="#' + id + '"]');
+        if (link) tocLinks[id] = link;
+      });
+
+      var activeId = null;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            if (id !== activeId) {
+              if (activeId && tocLinks[activeId]) {
+                tocLinks[activeId].classList.remove('toc-active');
+              }
+              activeId = id;
+              if (tocLinks[id]) {
+                tocLinks[id].classList.add('toc-active');
+              }
+            }
+          }
+        });
+      }, {
+        rootMargin: '-10% 0px -80% 0px',
+        threshold: 0
+      });
+
+      sectionIds.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

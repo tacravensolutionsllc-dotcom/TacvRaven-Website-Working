@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is CMMC? | TacRaven Cybersecurity Knowledge Base</title>
+  <meta name="description" content="Learn what CMMC (Cybersecurity Maturity Model Certification) is, how it protects Controlled Unclassified Information (CUI) within the defense industrial base, and what organizations must do to achieve CMMC compliance." />
+  <meta name="keywords" content="CMMC, Cybersecurity Maturity Model Certification, CMMC compliance, DoD cybersecurity requirements, defense contractor cybersecurity, CUI protection, DFARS cybersecurity, NIST 800-171 compliance" />
+  <meta name="author" content="TacRaven Solutions" />
+  <link rel="canonical" href="https://tacraven.com/knowledge/cmmc.html" />
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="What is CMMC? | TacRaven Cybersecurity Knowledge Base" />
+  <meta property="og:description" content="Learn what CMMC (Cybersecurity Maturity Model Certification) is, how it protects Controlled Unclassified Information (CUI) within the defense industrial base, and what organizations must do to achieve CMMC compliance." />
+  <meta property="og:url" content="https://tacraven.com/knowledge/cmmc.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is CMMC? | TacRaven Cybersecurity Knowledge Base" />
+  <meta name="twitter:description" content="Learn what CMMC (Cybersecurity Maturity Model Certification) is, how it protects Controlled Unclassified Information (CUI) within the defense industrial base, and what organizations must do to achieve CMMC compliance." />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is CMMC? Understanding the Cybersecurity Maturity Model Certification",
+    "description": "Learn what CMMC (Cybersecurity Maturity Model Certification) is, how it protects Controlled Unclassified Information (CUI) within the defense industrial base, and what organizations must do to achieve CMMC compliance.",
+    "url": "https://tacraven.com/knowledge/cmmc.html",
+    "datePublished": "2025-03-01",
+    "dateModified": "2025-06-01",
+    "author": {
+      "@type": "Organization",
+      "name": "TacRaven Solutions",
+      "url": "https://tacraven.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TacRaven Solutions",
+      "url": "https://tacraven.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://tacraven.com/knowledge/cmmc.html"
+    },
+    "articleSection": "Compliance",
+    "keywords": ["CMMC", "Cybersecurity Maturity Model Certification", "CMMC compliance", "DoD cybersecurity requirements", "defense contractor cybersecurity", "CUI protection", "DFARS cybersecurity", "NIST 800-171 compliance"],
+    "educationalLevel": "Advanced",
+    "about": {
+      "@type": "Thing",
+      "name": "CMMC Compliance"
+    }
+  }
+  </script>
+
+  <style>
+    /* =========================================
+       CSS CUSTOM PROPERTIES - TacRaven Theme
+    ========================================= */
+    :root {
+      --black:        #0a0a0a;
+      --dark:         #111111;
+      --dark-card:    #161616;
+      --dark-border:  #1f1f1f;
+      --gold:         #c9a84c;
+      --gold-light:   #e2c06e;
+      --gold-dim:     #8a6e2f;
+      --red:          #c0392b;
+      --text:         #d4d4d4;
+      --text-muted:   #7a7a7a;
+      --text-dim:     #4a4a4a;
+      --white:        #f0f0f0;
+      --font-display: 'Courier New', Courier, monospace;
+      --font-body:    Georgia, 'Times New Roman', serif;
+      --font-ui:      'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    }
+
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =========================================
+       BACK BUTTON BAR
+    ========================================= */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid var(--dark-border);
+      backdrop-filter: blur(6px);
+      padding: 12px 24px;
+    }
+
+    .btn-back {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      padding: 8px 18px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .btn-back:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .btn-back::before {
+      content: '\2190';
+      font-size: 0.85rem;
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 72px 24px 56px;
+      border-bottom: 1px solid var(--dark-border);
+      background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%);
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a { color: var(--gold-dim); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: bold;
+      color: var(--white);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 .accent { color: var(--gold); }
+
+    .hero-subtitle {
+      font-family: var(--font-ui);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .hero-intro {
+      font-size: 1rem;
+      color: var(--text);
+      max-width: 780px;
+      margin-bottom: 32px;
+      border-left: 3px solid var(--gold-dim);
+      padding-left: 18px;
+    }
+
+    .meta-bar { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .meta-tag {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid #3a3a3a;
+      border-radius: 2px;
+      color: #c8c8c8;
+      background: #1e1e1e;
+    }
+
+    .meta-tag.cat { border-color: var(--gold); color: var(--gold-light); }
+
+    /* =========================================
+       MAIN LAYOUT
+    ========================================= */
+    .page-body {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    article { min-width: 0; }
+
+    .kb-section { margin-bottom: 52px; }
+
+    .kb-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .kb-section h2::before { content: '//'; color: var(--gold); font-size: 0.85rem; }
+
+    .kb-section h3 {
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin: 28px 0 10px;
+    }
+
+    .kb-section p { margin-bottom: 16px; color: var(--text); }
+
+    .card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 22px 26px;
+      margin-bottom: 16px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .card-small {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+
+    .card-small h4 {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .card-small p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .usecase-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 3px solid var(--gold-dim);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 18px;
+    }
+
+    .usecase-card h4 {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .usecase-card p { font-size: 0.9rem; color: var(--text); margin-bottom: 0; }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 14px;
+    }
+
+    .compare-table th {
+      font-family: var(--font-display);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--gold);
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--gold-dim);
+      background: var(--dark);
+    }
+
+    .compare-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--dark-border);
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.04); }
+
+    .platform-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .platform-list li {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+
+    .platform-list li strong {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .platform-list li span { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    .takeaway-list { list-style: none; padding: 0; }
+
+    .takeaway-list li {
+      padding: 12px 16px 12px 44px;
+      position: relative;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .takeaway-list li:last-child { border-bottom: none; }
+
+    .takeaway-list li::before {
+      content: '\25BA';
+      position: absolute;
+      left: 16px;
+      color: var(--gold);
+      font-size: 0.65rem;
+      top: 16px;
+    }
+
+    .arch-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 18px 0;
+      align-items: stretch;
+    }
+
+    .arch-step {
+      flex: 1;
+      min-width: 100px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 14px 12px;
+      text-align: center;
+      position: relative;
+    }
+
+    .arch-step:not(:last-child)::after {
+      content: '\2192';
+      position: absolute;
+      right: -13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold-dim);
+      font-size: 0.9rem;
+      z-index: 2;
+    }
+
+    .arch-step .step-num {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      color: var(--gold-dim);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .arch-step .step-name {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    .callout-warning {
+      background: rgba(192,57,43,0.08);
+      border: 1px solid rgba(192,57,43,0.25);
+      border-left: 3px solid var(--red);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    .callout-warning strong {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #e05c4a;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .callout-warning p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+
+    .ref-list { list-style: none; padding: 0; counter-reset: refs; }
+
+    .ref-list li {
+      counter-increment: refs;
+      padding: 10px 0 10px 36px;
+      border-bottom: 1px solid var(--dark-border);
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .ref-list li:last-child { border-bottom: none; }
+
+    .ref-list li::before {
+      content: '[' counter(refs) ']';
+      position: absolute;
+      left: 0;
+      color: var(--gold-dim);
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+    }
+
+    .ref-list a { color: var(--gold-dim); text-decoration: none; }
+    .ref-list a:hover { color: var(--gold); }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .related-link {
+      display: block;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 16px 18px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .related-link:hover {
+      border-color: var(--gold-dim);
+      background: rgba(201,168,76,0.05);
+    }
+
+    .related-link .rl-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888888;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .related-link .rl-title {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    /* =========================================
+       SIDEBAR
+    ========================================= */
+    aside { position: sticky; top: 80px; }
+
+    .sidebar-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-card h3 {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .toc-list { list-style: none; padding: 0; }
+    .toc-list li { margin-bottom: 2px; }
+
+    .toc-list a {
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: block;
+      padding: 5px 8px;
+      border-radius: 2px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .toc-list a:hover { color: var(--gold-light); background: rgba(201,168,76,0.06); }
+
+    .toc-list a.toc-active {
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.08);
+      border-left: 2px solid var(--gold);
+      padding-left: 6px;
+    }
+
+    .toc-toggle-btn {
+      display: none;
+      width: 100%;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      cursor: pointer;
+      text-align: left;
+      margin-bottom: 0;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toc-toggle-btn .toc-chevron {
+      display: inline-block;
+      transition: transform 0.25s;
+      font-style: normal;
+      font-size: 0.8rem;
+    }
+
+    .toc-toggle-btn.open .toc-chevron { transform: rotate(180deg); }
+
+    .toc-drawer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .toc-drawer.open { max-height: 600px; opacity: 1; }
+    .toc-drawer-inner { padding-top: 4px; }
+
+    @media (max-width: 900px) {
+      .toc-toggle-btn { display: flex; }
+      .sidebar-toc-card .toc-list {
+        border-top: 1px solid var(--dark-border);
+        margin-top: 0;
+        padding-top: 8px;
+      }
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 48px 24px 28px;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .footer-brand .logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer-brand p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 6px; }
+    .footer-col ul a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-col ul a:hover { color: var(--gold-light); }
+
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1px; color: var(--text-dim); }
+    .footer-tagline { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); }
+
+    .divider { border: none; border-top: 1px solid var(--dark-border); margin: 0; }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 900px) {
+      .page-body { grid-template-columns: 1fr; }
+      aside { position: static; order: -1; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .arch-step:not(:last-child)::after { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .arch-step { min-width: 80px; }
+      .compare-table { font-size: 0.78rem; }
+      .hero h1 { letter-spacing: -0.5px; }
+    }
+
+    @media print {
+      .top-bar, aside, footer { display: none; }
+      body { background: white; color: black; }
+      .page-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <a href="/knowledge" class="btn-back">Return to Knowledge Base</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <p class="breadcrumb">
+        <a href="/">Home</a> &nbsp;/&nbsp;
+        <a href="/knowledge">TacRaven Cybersecurity Knowledge Base</a> &nbsp;/&nbsp;
+        What is CMMC?
+      </p>
+      <h1>What is <span class="accent">CMMC</span>?</h1>
+      <p class="hero-subtitle">Understanding the Cybersecurity Maturity Model Certification and how it protects Controlled Unclassified Information (CUI) across the defense industrial base — and what achieving compliance actually requires.</p>
+      <p class="hero-intro">
+        As nation-state adversaries increasingly targeted defense contractors holding sensitive program data, the U.S. Department of Defense recognized that self-attestation was no longer sufficient. The Cybersecurity Maturity Model Certification was created to close that gap — shifting cybersecurity from a contractual obligation that organizations self-reported to a verified, independently assessed prerequisite for DoD contract award. For defense contractors, subcontractors, and technology providers across the defense supply chain, CMMC defines exactly what cybersecurity maturity looks like and what must be demonstrated before work on covered programs can begin.
+      </p>
+      <div class="meta-bar">
+        <span class="meta-tag cat">Compliance</span>
+        <span class="meta-tag">Difficulty: Advanced</span>
+        <span class="meta-tag">Read Time: ~11 Minutes</span>
+        <span class="meta-tag">Updated: 2025</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PAGE BODY -->
+  <div class="page-body">
+
+    <article>
+
+      <!-- SECTION: Executive Overview -->
+      <section class="kb-section" id="overview" aria-labelledby="s-overview">
+        <h2 id="s-overview">Executive Overview</h2>
+        <p>
+          <strong>CMMC</strong> — the Cybersecurity Maturity Model Certification — is a unified cybersecurity standard developed by the U.S. Department of Defense to ensure that contractors and subcontractors within the Defense Industrial Base adequately protect sensitive government information. Rather than relying on contractors to self-report compliance, CMMC introduces mandatory third-party verification, making cybersecurity a contractual prerequisite rather than a self-assessed checkbox.
+        </p>
+        <p>
+          At the center of CMMC's mission is the protection of <strong>Controlled Unclassified Information (CUI)</strong> — data that is sensitive but not classified. CUI spans a wide range of defense-related categories, including technical specifications, weapons system design data, export-controlled research, and contractor proprietary information tied to DoD programs. When this information is compromised, it creates strategic, operational, and national security risks that extend far beyond any single contractor's organization.
+        </p>
+        <p>
+          The Defense Industrial Base is one of the most targeted sectors in the world. Nation-state actors — particularly those conducting long-term espionage campaigns — have repeatedly demonstrated the ability to harvest CUI from contractors who lack the security controls required to defend against sophisticated intrusion techniques. The DoD's analysis of breaches across the supply chain revealed that many contractors had minimal or inconsistent cybersecurity postures despite holding contractual obligations to protect federal information.
+        </p>
+        <div class="card">
+          <p>
+            CMMC directly addresses this exposure gap by standardizing security requirements, tiering them according to the sensitivity of information handled, and requiring independent validation for higher-level certifications. Under CMMC, cybersecurity is no longer an internal self-assessment exercise — it is a measurable, auditable condition of contract performance enforced through the acquisition process.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION: Understanding the CMMC Framework -->
+      <section class="kb-section" id="framework" aria-labelledby="s-framework">
+        <h2 id="s-framework">Understanding the CMMC Framework</h2>
+        <p>
+          CMMC was designed to consolidate and enforce pre-existing cybersecurity requirements that the DoD had long articulated but struggled to verify. The framework draws primarily from <strong>NIST SP 800-171</strong>, which defines requirements for protecting CUI in non-federal systems, and incorporates additional practices from <strong>NIST SP 800-172</strong> for advanced adversary scenarios at its highest tier.
+        </p>
+
+        <h3>Origins in DFARS</h3>
+        <p>
+          Prior to CMMC, the primary cybersecurity obligation for defense contractors was the Defense Federal Acquisition Regulation Supplement (DFARS) clause 252.204-7012. This clause required contractors to implement NIST SP 800-171 controls and report cyber incidents to the DoD within 72 hours. However, DFARS was largely a compliance-on-paper regime — contractors self-attested to their security posture, creating an environment in which superficial documentation could substitute for genuine security implementation. Scores submitted to the Supplier Performance Risk System (SPRS) were frequently inflated, with minimal verification or consequence.
+        </p>
+
+        <h3>The CMMC 2.0 Revision</h3>
+        <p>
+          CMMC 2.0, released in 2021 following substantial industry feedback on the original five-level model, streamlined the framework into three levels, reduced compliance overhead for smaller companies at the foundational tier, and reinforced independent assessment requirements for entities handling the most sensitive categories of CUI. The revision reflects lessons learned from real-world breach patterns, closer alignment with existing NIST publications, and the operational reality of a supply chain spanning tens of thousands of businesses — from large defense primes to small engineering firms and specialized technology providers.
+        </p>
+
+        <h3>CMMC as an Enforcement Layer</h3>
+        <p>
+          CMMC is not a standalone framework — it is an enforcement mechanism layered on top of existing standards. Organizations that have already implemented NIST SP 800-171 are significantly better positioned for CMMC compliance, though the certification process adds documentation rigor, independent assessment requirements, and ongoing compliance obligations that NIST SP 800-171 self-attestation alone does not impose. The two frameworks are complementary, not competing — NIST SP 800-171 defines what must be done; CMMC verifies that it has actually been done.
+        </p>
+      </section>
+
+      <!-- SECTION: CMMC Maturity Levels -->
+      <section class="kb-section" id="levels" aria-labelledby="s-levels">
+        <h2 id="s-levels">CMMC Maturity Levels</h2>
+        <p>
+          CMMC 2.0 defines three certification levels, each corresponding to a tier of risk, information sensitivity, and required security control depth. Contractors must achieve the level specified in their contract before award. The level assigned to a contract is determined by the program office and contracting officer based on the category and sensitivity of information the contractor will access.
+        </p>
+
+        <div class="usecase-card">
+          <h4>Level 1 &mdash; Foundational Cyber Hygiene</h4>
+          <p>Applicable to contracts involving Federal Contract Information (FCI) that is not CUI. Level 1 encompasses 17 practices aligned with FAR clause 52.204-21, covering basic cyber hygiene such as access control, password management, malware protection, and identification of security incidents. Compliance is demonstrated through annual self-assessment with executive affirmation submitted to SPRS. No third-party assessment is required at this level, making it the lowest-cost tier for contractors working only with non-CUI federal contract information.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Level 2 &mdash; Advanced Cyber Hygiene</h4>
+          <p>Applicable to contracts involving CUI. Level 2 encompasses 110 practices fully aligned with NIST SP 800-171 Rev. 2, organized across 14 security domains. For most program-designated contracts, triennial third-party assessment by an authorized CMMC Third Party Assessment Organization (C3PAO) is required, with findings submitted to the CMMC Accreditation Body (Cyber AB). A subset of lower-risk Level 2 programs may permit triennial self-assessment with annual affirmation. Level 2 represents the compliance threshold for the large majority of defense contractors with CUI access.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Level 3 &mdash; Expert Cybersecurity Practices</h4>
+          <p>Applicable to contracts involving CUI that supports critical or highly sensitive national security programs where Advanced Persistent Threat (APT) activity is a primary concern. Level 3 encompasses the 110 practices from NIST SP 800-171 plus additional requirements drawn from NIST SP 800-172, specifically designed to counter nation-state-level adversaries. Assessment is conducted by the Defense Contract Management Agency (DCMA) Defense Industrial Base Cybersecurity Assessment Center (DIBCAC) — a government-led process with more intensive evaluation requirements than C3PAO-led assessments at Level 2.</p>
+        </div>
+      </section>
+
+      <!-- SECTION: Key Security Requirements -->
+      <section class="kb-section" id="requirements" aria-labelledby="s-requirements">
+        <h2 id="s-requirements">Key Security Requirements</h2>
+        <p>
+          CMMC organizes its requirements across multiple security domains, each addressing a distinct category of risk associated with CUI handling. The following domains represent the core areas that organizations must address to demonstrate compliance at Levels 2 and 3. Each domain maps directly to NIST SP 800-171 control families, providing a structured and traceable path from practice to control objective.
+        </p>
+
+        <div class="card-grid">
+          <div class="card-small">
+            <h4>Access Control</h4>
+            <p>Limits system access to authorized users, processes, and devices. Requires enforcement of least privilege, separation of duties, remote access controls, and restriction of CUI system access to authorized personnel only. The largest single domain in the framework at Level 2, encompassing 22 individual practices.</p>
+          </div>
+          <div class="card-small">
+            <h4>Incident Response</h4>
+            <p>Requires an operational incident response capability covering detection, reporting, analysis, containment, and recovery. Includes mandatory DoD reporting within 72 hours of a confirmed cyber incident affecting CUI, preservation of forensic images, and post-incident review processes that drive organizational learning and control improvement.</p>
+          </div>
+          <div class="card-small">
+            <h4>System &amp; Comms Protection</h4>
+            <p>Controls information flows between systems and external networks. Requires encryption of CUI in transit using FIPS-validated cryptography, network segmentation, boundary protections, and denial of unauthorized communication pathways that could expose sensitive data to untrusted environments or adversary interception.</p>
+          </div>
+          <div class="card-small">
+            <h4>Configuration Management</h4>
+            <p>Establishes and maintains baseline configurations for all organizational systems handling CUI. Requires formal change control processes, restrictions on unapproved software, user-installed software controls, and configuration monitoring to detect unauthorized modifications that could introduce exploitable vulnerabilities.</p>
+          </div>
+          <div class="card-small">
+            <h4>Security Awareness Training</h4>
+            <p>Ensures personnel understand security responsibilities and current threat vectors. Requires role-based training for individuals with privileged access, awareness of insider threat indicators, recognition of social engineering techniques, and documented training records demonstrating completion for all relevant personnel.</p>
+          </div>
+          <div class="card-small">
+            <h4>Audit and Accountability</h4>
+            <p>Requires creation, protection, retention, and review of audit logs sufficient to support forensic investigation of security incidents. Logs must capture user activity, system events, and CUI access, with defined retention periods, review processes, and protections from unauthorized deletion or alteration.</p>
+          </div>
+          <div class="card-small">
+            <h4>Identification &amp; Authentication</h4>
+            <p>Manages the identification of users, devices, and processes accessing CUI systems. Requires multi-factor authentication for all privileged accounts and remote CUI access, strong password policies, management of authenticator lifecycle, and controls preventing reuse of compromised credentials across the CUI environment.</p>
+          </div>
+          <div class="card-small">
+            <h4>Risk Assessment</h4>
+            <p>Requires periodic assessment of organizational risk from the processing, storage, and transmission of CUI. Organizations must scan for vulnerabilities in information systems at defined intervals and remediate findings in accordance with documented risk assessment results and established risk tolerance thresholds.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Assessment Lifecycle -->
+      <section class="kb-section" id="assessment" aria-labelledby="s-assessment">
+        <h2 id="s-assessment">How CMMC Assessments Work</h2>
+        <p>
+          Achieving CMMC certification is a structured process that begins well before an assessor arrives. Organizations that approach CMMC as a last-minute compliance task rather than an ongoing security program consistently face remediation failures, extended timelines, and assessment findings that delay contract award. The following flow represents the typical certification lifecycle for a Level 2 program-required assessment.
+        </p>
+
+        <div class="arch-flow">
+          <div class="arch-step">
+            <span class="step-num">STEP 01</span>
+            <span class="step-name">Gap Analysis</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">STEP 02</span>
+            <span class="step-name">Control Implementation</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">STEP 03</span>
+            <span class="step-name">Documentation</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">STEP 04</span>
+            <span class="step-name">C3PAO Assessment</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">STEP 05</span>
+            <span class="step-name">Certification</span>
+          </div>
+          <div class="arch-step">
+            <span class="step-num">STEP 06</span>
+            <span class="step-name">Ongoing Compliance</span>
+          </div>
+        </div>
+
+        <div class="usecase-card">
+          <h4>01 &mdash; Preparation and Gap Analysis</h4>
+          <p>Organizations conduct an internal assessment against the applicable CMMC level requirements. A gap analysis identifies control deficiencies, documentation gaps, and system boundaries that define the CUI environment. The System Security Plan (SSP) and Plan of Action and Milestones (POA&amp;M) are initiated or reviewed. This phase must accurately represent actual system configurations — assessors who discover that an SSP does not reflect reality consistently treat the discrepancy as a significant finding, not a technicality.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>02 &mdash; Security Control Implementation</h4>
+          <p>Identified gaps are remediated through technical and administrative controls. This includes deploying multi-factor authentication, configuring audit logging, implementing FIPS-validated encryption, segmenting CUI-handling systems from general corporate networks, and establishing access control policies. Technical implementation must align precisely with NIST SP 800-171 practices — assessors evaluate both the existence of controls and documentary evidence of their consistent operational enforcement over the assessment period.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>03 &mdash; Documentation and Policy Development</h4>
+          <p>CMMC requires robust documentation demonstrating how security controls operate in practice. This includes the finalized System Security Plan, incident response plan, configuration management policies, access control procedures, and supporting evidence artifacts covering the assessment period. Documentation that describes processes no one follows generates nonconformity findings regardless of how well the underlying technical controls are implemented — assessors cross-reference documentation against observed system state and personnel interviews.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>04 &mdash; Third-Party Assessment (C3PAO)</h4>
+          <p>For Level 2 program-required certifications, a CMMC Third Party Assessment Organization (C3PAO) authorized by the Cyber AB conducts the formal assessment. Assessors interview personnel, review documentation, observe system configurations, and test technical controls against each of the 110 NIST SP 800-171 practices. Findings are documented and scored. Organizations with unmet practices must remediate before certification is granted — the framework does not permit conditional certifications for organizations with open critical findings.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>05 &mdash; Certification Decision</h4>
+          <p>Upon successful assessment, the C3PAO submits findings to the Cyber AB for Level 2 certifications. For Level 3, DCMA DIBCAC conducts the government assessment and renders the determination. Certification status is recorded in the Supplier Performance Risk System (SPRS), which contracting officers query directly when evaluating contractor eligibility during source selection — making certification status a visible, verifiable element of the acquisition process.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>06 &mdash; Ongoing Compliance Monitoring</h4>
+          <p>CMMC certifications are valid for three years but require continuous compliance maintenance throughout that cycle. Organizations must sustain controls, manage changes through configuration control, update documentation to reflect system and process changes, conduct recurring security training, and perform internal reviews. Annual affirmations of compliance status are required between formal assessments. Significant architectural changes or security incidents affecting CUI may require re-evaluation before the three-year cycle completes.</p>
+        </div>
+      </section>
+
+      <!-- SECTION: CMMC vs NIST 800-171 -->
+      <section class="kb-section" id="comparison" aria-labelledby="s-comparison">
+        <h2 id="s-comparison">CMMC vs. NIST SP 800-171</h2>
+        <p>
+          CMMC and NIST SP 800-171 are closely related but serve fundamentally different functions. Understanding the distinction is critical for organizations managing compliance obligations across both frameworks. NIST SP 800-171 functions as the technical blueprint; CMMC provides the verification and enforcement structure that makes compliance binding and independently verified rather than self-reported.
+        </p>
+
+        <table class="compare-table" aria-label="CMMC vs NIST SP 800-171 comparison">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>CMMC 2.0</th>
+              <th>NIST SP 800-171</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="font-family:var(--font-display);font-size:0.8rem;color:var(--gold-light);">Purpose</strong></td>
+              <td>Contractual enforcement mechanism ensuring DIB contractor cybersecurity maturity is independently verified before DoD contract award.</td>
+              <td>Technical guidance for protecting the confidentiality of CUI in non-federal systems and organizations. Standards-focused, not enforcement-focused.</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--font-display);font-size:0.8rem;color:var(--gold-light);">Certification Required</strong></td>
+              <td>Yes — third-party C3PAO assessment for Level 2 program contracts; government DIBCAC assessment for Level 3. Annual self-assessment at Level 1.</td>
+              <td>No formal certification. Organizations self-assess and submit a numeric score to SPRS under DFARS 252.204-7019, with no independent verification required.</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--font-display);font-size:0.8rem;color:var(--gold-light);">Scope of Controls</strong></td>
+              <td>17 practices at Level 1; 110 practices at Level 2 (aligned to NIST 800-171); 110+ advanced practices at Level 3 drawn from NIST 800-172.</td>
+              <td>110 security requirements organized across 14 control families. Focused on technical and procedural CUI protection in non-federal information systems.</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--font-display);font-size:0.8rem;color:var(--gold-light);">Assessment Process</strong></td>
+              <td>Formal assessment by authorized C3PAO or DCMA DIBCAC. Findings submitted to Cyber AB. Certification status tracked in SPRS with official DoD record of verification.</td>
+              <td>Self-assessment methodology defined in NIST SP 800-171A. Organization-conducted; numeric score self-submitted to SPRS with no third-party review or verification.</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--font-display);font-size:0.8rem;color:var(--gold-light);">Government Enforcement</strong></td>
+              <td>Mandatory contract requirement enforced by DoD contracting officers. Non-compliant contractors cannot receive covered contract awards once requirements are embedded.</td>
+              <td>Required via DFARS clause 252.204-7012. Historically limited enforcement due to reliance on self-attestation with no independent verification mechanism.</td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--font-display);font-size:0.8rem;color:var(--gold-light);">Applicability</strong></td>
+              <td>Defense contractors and subcontractors with DoD contracts involving FCI or CUI, with compliance requirements flowing through the entire defense supply chain.</td>
+              <td>Non-federal organizations that process, store, or transmit CUI on behalf of federal agencies broadly — not limited to DoD contracts or the defense industrial base.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top:18px;">
+          An organization that has genuinely implemented NIST SP 800-171 in a documented, operational manner has completed the substantive security work required for CMMC Level 2. The remaining effort lies in formalizing evidence artifacts, engaging an authorized C3PAO, and sustaining that posture through the three-year certification cycle — together with meeting the additional process and documentation requirements that CMMC imposes beyond what 800-171 alone demands.
+        </p>
+      </section>
+
+      <!-- SECTION: Who Must Comply -->
+      <section class="kb-section" id="who-needs" aria-labelledby="s-who">
+        <h2 id="s-who">Who Must Comply with CMMC</h2>
+        <p>
+          CMMC applies to any organization seeking to do business with the Department of Defense under contracts that involve Federal Contract Information or Controlled Unclassified Information. The scope is broad and extends well beyond large defense prime contractors. Once CMMC requirements are fully incorporated into DoD contract vehicles, compliance becomes a non-negotiable prerequisite for the entire defense supply chain — not just the primes who hold the primary contract vehicle.
+        </p>
+
+        <h3>Defense Prime Contractors</h3>
+        <p>
+          Large defense companies — systems integrators, platform developers, and major program contractors — are typically required to achieve Level 2 or Level 3 certification depending on the programs they support. These organizations are also responsible for contractual flow-down of CMMC requirements to their supply chains and for verifying subcontractor compliance before allowing CUI to flow to lower-tier participants.
+        </p>
+
+        <h3>Defense Subcontractors</h3>
+        <p>
+          Any subcontractor that receives, generates, processes, or transmits CUI in support of a prime contractor's DoD program must independently achieve the CMMC level required for their scope of work. CMMC compliance cannot be inherited or delegated from the prime — each entity in the supply chain is assessed independently and must hold its own verified certification status in SPRS.
+        </p>
+
+        <h3>Technology and Managed Service Providers</h3>
+        <p>
+          Cloud service providers, managed security service providers, and IT vendors that host or manage CUI-containing systems on behalf of defense contractors fall within CMMC scope. Organizations using external IT infrastructure must ensure their providers meet applicable security requirements — FedRAMP Moderate authorization or equivalent is a commonly referenced baseline for cloud service providers handling CUI within the defense supply chain.
+        </p>
+
+        <h3>Small and Mid-Sized Businesses</h3>
+        <p>
+          CMMC's reach extends to small and mid-sized businesses that may not have historically considered themselves defense contractors. Engineering firms, logistics providers, software developers, and research organizations that hold DoD contracts involving CUI must achieve compliance regardless of organizational size. The DoD explicitly acknowledged the compliance burden on small businesses in designing the tiered framework — but certification at Level 2 or above remains mandatory when program requirements demand it, regardless of company size or available compliance resources.
+        </p>
+      </section>
+
+      <!-- SECTION: Benefits -->
+      <section class="kb-section" id="benefits" aria-labelledby="s-benefits">
+        <h2 id="s-benefits">Benefits of CMMC Compliance</h2>
+
+        <h3>Improved Cybersecurity Maturity</h3>
+        <p>
+          Organizations that complete a genuine CMMC implementation — rather than a documentation-only compliance exercise — emerge with measurably stronger security architectures. The process forces organizations to close gaps in access management, logging, encryption, and incident response that may have persisted for years without formal assessment pressure. Many organizations discover and remediate significant security deficiencies during CMMC preparation that would otherwise have remained undetected and unaddressed indefinitely.
+        </p>
+
+        <h3>Protection of Sensitive Defense Information</h3>
+        <p>
+          CMMC directly reduces the risk of CUI exfiltration through inadequately secured contractor environments. For organizations working on technically sensitive programs, the controls required at Level 2 and Level 3 are specifically calibrated to counter the threat vectors used by nation-state adversaries — particularly the persistent intrusion campaigns that have historically targeted defense contractors for long-term access to program data and intellectual property.
+        </p>
+
+        <h3>Eligibility for DoD Contracts</h3>
+        <p>
+          As CMMC requirements are incorporated into DoD solicitations, certification becomes a non-negotiable prerequisite for contract award. Organizations that achieve and maintain certification eliminate the contractual risk associated with non-compliance findings during performance reviews and gain a credible competitive position in the defense market against competitors who have not yet invested in their security programs.
+        </p>
+
+        <h3>Strengthened Risk Management</h3>
+        <p>
+          CMMC's structured control framework supports broader enterprise risk management objectives. The discipline required to maintain CMMC compliance — continuous monitoring, documented change management, staff training, vulnerability management, and incident response readiness — aligns directly with sound information security governance and reduces organizational exposure to both external adversaries and internal security failures that could affect program performance.
+        </p>
+
+        <h3>Verified Security Credibility</h3>
+        <p>
+          Third-party verified CMMC certification provides objective evidence of security maturity that self-attestation cannot replicate. For contractors competing on programs where information security is a discriminating evaluation factor, certification signals to program offices and government customers that CUI protection has been independently validated — not self-reported — by an assessor operating under Cyber AB oversight with accountability for the quality of their findings.
+        </p>
+      </section>
+
+      <!-- SECTION: Challenges -->
+      <section class="kb-section" id="challenges" aria-labelledby="s-challenges">
+        <h2 id="s-challenges">Challenges of CMMC Implementation</h2>
+        <p>
+          While the security and business benefits of CMMC compliance are substantial, organizations should approach the process with a realistic understanding of the significant effort, investment, and sustained organizational commitment required to achieve and maintain certification. Underestimating this commitment is the most common cause of failed assessments, missed contract deadlines, and total program costs that significantly exceed initial estimates.
+        </p>
+
+        <div class="callout-warning">
+          <strong>Implementation Complexity</strong>
+          <p>CMMC Level 2 requires implementation of 110 security practices across 14 control domains — simultaneously addressing people, processes, and technology. Organizations with legacy IT environments, limited security staffing, or fragmented infrastructure may face substantial remediation timelines. Scoping the CUI environment correctly before beginning remediation is critical; imprecise CUI boundary definitions are a leading source of project cost overrun, scope expansion, and delayed assessment readiness.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Cost of Compliance</strong>
+          <p>CMMC compliance costs vary significantly based on organizational size, current security posture, and target level. Small businesses targeting Level 2 certification should anticipate investment spanning C3PAO assessment fees, technical remediation projects, staffing or consulting support, GRC platform and tooling costs, and ongoing operational expenditures. Organizations beginning from a low security maturity baseline consistently face higher total costs and longer timelines than those with existing NIST SP 800-171 programs that are well-documented and operationally enforced.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Technical Security Requirements</strong>
+          <p>Several CMMC practices require non-trivial technical implementations that exceed the capabilities of many small businesses operating without dedicated security staff. Multi-factor authentication for all privileged accounts, FIPS-validated cryptography for CUI in transit and at rest, vulnerability scanning programs, audit log management infrastructure, and endpoint protection capabilities all require either internal technical expertise or qualified external support from CMMC Registered Practitioners or Registered Provider Organizations authorized by the Cyber AB.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Documentation and Policy Development</strong>
+          <p>Assessors evaluate documentation as extensively as technical controls. Organizations must maintain a current System Security Plan accurately describing all in-scope systems and implemented controls, an operationally current incident response plan, configuration management policies, access control procedures, and supporting evidence artifacts covering the full assessment period. Documentation that describes processes no one follows generates nonconformity findings regardless of how well the underlying technical controls have been deployed and configured.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>Maintaining Certification Over Time</strong>
+          <p>CMMC certification is a three-year credential, but compliance is not a one-time achievement — it is a continuous operational discipline. System changes, personnel turnover, new threats, and evolving DoD guidance require ongoing compliance management between formal assessment cycles. Organizations that allow controls to drift between assessments risk annual affirmation failures, contract performance issues, and emergency remediation costs that consistently exceed the investment required to sustain the compliance program proactively throughout the certification lifecycle.</p>
+        </div>
+      </section>
+
+      <!-- SECTION: Key Takeaways -->
+      <section class="kb-section" id="takeaways" aria-labelledby="s-take">
+        <h2 id="s-take">Key Takeaways</h2>
+        <ul class="takeaway-list">
+          <li>CMMC is a DoD-mandated cybersecurity certification framework designed to protect Controlled Unclassified Information across the Defense Industrial Base by replacing self-attestation with independently verified compliance enforced through the acquisition process.</li>
+          <li>CMMC 2.0 defines three maturity levels — Foundational (Level 1, 17 practices), Advanced (Level 2, 110 practices), and Expert (Level 3, 110+ practices) — each requiring progressively more rigorous security implementation and assessment processes tied to the sensitivity of information handled.</li>
+          <li>Level 2 aligns directly to the 110 requirements of NIST SP 800-171 and requires third-party assessment by an authorized C3PAO for most program-designated contracts. It is the compliance threshold for the large majority of defense contractors with CUI access.</li>
+          <li>Level 3 addresses Advanced Persistent Threat activity using additional practices from NIST SP 800-172 and requires a government-led assessment conducted by DCMA DIBCAC — the most rigorous certification tier in the framework.</li>
+          <li>CMMC compliance is a contractual prerequisite — organizations that do not hold the required certification level cannot receive covered DoD contract awards once CMMC requirements are fully embedded in applicable solicitations and contract vehicles.</li>
+          <li>CMMC requirements flow down through the supply chain. Subcontractors handling CUI must independently achieve and maintain the appropriate certification level — compliance cannot be inherited or delegated from the prime contractor.</li>
+          <li>NIST SP 800-171 provides the technical control foundation for CMMC Level 2, but CMMC adds mandatory third-party verification, documentation standards, and acquisition enforcement mechanisms that self-attestation alone does not satisfy.</li>
+          <li>The certification lifecycle requires preparation, gap analysis, control implementation, documentation development, C3PAO assessment, and ongoing compliance maintenance through annual affirmations between formal three-year assessment cycles.</li>
+          <li>Genuine CMMC compliance requires sustained investment in technical controls, policy documentation, staff training, and continuous monitoring — organizations that treat it as a documentation exercise rather than an operational security program consistently encounter assessment failures and delays.</li>
+          <li>Certification status is tracked in the Supplier Performance Risk System (SPRS) and reviewed directly by contracting officers during source selection, making it a visible, verifiable component of contractor eligibility throughout the DoD acquisition process.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION: References -->
+      <section class="kb-section" id="references" aria-labelledby="s-ref">
+        <h2 id="s-ref">References</h2>
+        <ol class="ref-list">
+          <li>U.S. Department of Defense. <em>Cybersecurity Maturity Model Certification (CMMC) Program.</em> Office of the Under Secretary of Defense for Acquisition and Sustainment. <a href="https://www.acq.osd.mil/cmmc/" target="_blank" rel="noopener noreferrer">acq.osd.mil/cmmc</a></li>
+          <li>Federal Register. <em>32 CFR Part 170 &mdash; Cybersecurity Maturity Model Certification (CMMC) Program Final Rule.</em> U.S. Department of Defense, October 2024. <a href="https://www.federalregister.gov/documents/2024/10/15/2024-22905/cybersecurity-maturity-model-certification-cmmc-program" target="_blank" rel="noopener noreferrer">federalregister.gov</a></li>
+          <li>NIST. <em>SP 800-171 Rev. 2 &mdash; Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations.</em> National Institute of Standards and Technology, 2020. <a href="https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>NIST. <em>SP 800-172 &mdash; Enhanced Security Requirements for Protecting Controlled Unclassified Information.</em> National Institute of Standards and Technology, 2021. <a href="https://csrc.nist.gov/publications/detail/sp/800-172/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>NIST. <em>SP 800-171A &mdash; Assessing Security Requirements for Controlled Unclassified Information.</em> Assessment methodology supporting CMMC preparation and DFARS self-assessment programs. <a href="https://csrc.nist.gov/publications/detail/sp/800-171a/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>CISA. <em>Cybersecurity Supply Chain Risk Management.</em> Guidance on supply chain security practices applicable to defense contractors and critical infrastructure organizations. <a href="https://www.cisa.gov/topics/cybersecurity-best-practices/cybersecurity-supply-chain-risk-management" target="_blank" rel="noopener noreferrer">cisa.gov</a></li>
+          <li>CMMC Accreditation Body (Cyber AB). <em>CMMC Marketplace &mdash; Authorized C3PAOs, RPOs, and Registered Practitioners.</em> Directory of organizations authorized to conduct CMMC assessments and provide advisory services. <a href="https://cyberab.org/Catalog" target="_blank" rel="noopener noreferrer">cyberab.org</a></li>
+          <li>DoD Cyber Exchange. <em>CUI Registry and CMMC Program Resources.</em> Defense contractor cybersecurity reference materials, CUI category definitions, and CMMC implementation guidance. <a href="https://public.cyber.mil/cmmc/" target="_blank" rel="noopener noreferrer">public.cyber.mil/cmmc</a></li>
+        </ol>
+      </section>
+
+      <!-- SECTION: Related Topics -->
+      <section class="kb-section" id="related" aria-labelledby="s-rel">
+        <h2 id="s-rel">Related Topics</h2>
+        <div class="related-grid">
+          <a href="/knowledge/iso-27001.html" class="related-link">
+            <span class="rl-label">Compliance</span>
+            <span class="rl-title">What is ISO 27001?</span>
+          </a>
+          <a href="/knowledge/soc2.html" class="related-link">
+            <span class="rl-label">Compliance</span>
+            <span class="rl-title">What is SOC 2?</span>
+          </a>
+          <a href="/knowledge/nist-csf.html" class="related-link">
+            <span class="rl-label">Frameworks</span>
+            <span class="rl-title">NIST Cybersecurity Framework</span>
+          </a>
+          <a href="/knowledge/risk-management.html" class="related-link">
+            <span class="rl-label">GRC</span>
+            <span class="rl-title">Risk Management</span>
+          </a>
+          <a href="/knowledge/zero-trust.html" class="related-link">
+            <span class="rl-label">Security Architecture</span>
+            <span class="rl-title">Zero Trust</span>
+          </a>
+          <a href="/knowledge/vulnerability-management.html" class="related-link">
+            <span class="rl-label">Security Operations</span>
+            <span class="rl-title">Vulnerability Management</span>
+          </a>
+          <a href="/knowledge/siem.html" class="related-link">
+            <span class="rl-label">Security Technologies</span>
+            <span class="rl-title">What is SIEM?</span>
+          </a>
+          <a href="/knowledge/incident-response.html" class="related-link">
+            <span class="rl-label">Security Operations</span>
+            <span class="rl-title">Incident Response</span>
+          </a>
+        </div>
+      </section>
+
+    </article>
+    <!-- END ARTICLE -->
+
+    <!-- SIDEBAR -->
+    <aside aria-label="Article navigation">
+
+      <!-- Table of Contents -->
+      <div class="sidebar-card sidebar-toc-card">
+        <button class="toc-toggle-btn" id="tocToggle" aria-expanded="false" aria-controls="tocDrawer">
+          Contents
+          <i class="toc-chevron">&#9662;</i>
+        </button>
+        <h3 class="toc-heading" style="display:none;" aria-hidden="true">Contents</h3>
+        <div class="toc-drawer" id="tocDrawer">
+          <div class="toc-drawer-inner">
+            <ul class="toc-list" id="tocList">
+              <li><a href="#overview">Executive Overview</a></li>
+              <li><a href="#framework">Understanding CMMC</a></li>
+              <li><a href="#levels">Maturity Levels</a></li>
+              <li><a href="#requirements">Key Security Requirements</a></li>
+              <li><a href="#assessment">Assessment Process</a></li>
+              <li><a href="#comparison">CMMC vs NIST 800-171</a></li>
+              <li><a href="#who-needs">Who Must Comply</a></li>
+              <li><a href="#benefits">Benefits</a></li>
+              <li><a href="#challenges">Challenges</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+              <li><a href="#references">References</a></li>
+              <li><a href="#related">Related Topics</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Reference -->
+      <div class="sidebar-card">
+        <h3>Quick Reference</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.65;">
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">FRAMEWORK</strong><br>
+          CMMC 2.0<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">DEVELOPED BY</strong><br>
+          U.S. Department of Defense (DoD)<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">LEVELS</strong><br>
+          Level 1 (17) &nbsp;&#183;&nbsp; Level 2 (110) &nbsp;&#183;&nbsp; Level 3 (110+)<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">CERT VALIDITY</strong><br>
+          3 years &nbsp;&#183;&nbsp; Annual affirmations required
+        </p>
+      </div>
+
+      <!-- Black Wing Dispatch promo -->
+      <div class="sidebar-card" style="border-color: #2a2a2a; background: linear-gradient(160deg, #161616 60%, rgba(201,168,76,0.04) 100%);">
+        <h3 style="border-bottom-color: var(--gold-dim);">Black Wing Dispatch</h3>
+        <p style="font-size:0.78rem; color:#b8b8b8; line-height:1.65; margin-bottom:6px;">
+          Cyber threat intelligence, TTPs, and adversary analysis &mdash; written for practitioners, not executives.
+        </p>
+        <p style="font-size:0.75rem; color:#8a8a8a; line-height:1.5; margin-bottom:14px;">
+          APT profiles &nbsp;&#183;&nbsp; Malware breakdowns &nbsp;&#183;&nbsp; Detection engineering &nbsp;&#183;&nbsp; Weekly threat briefs
+        </p>
+        <a href="/blog" style="display:block; text-align:center; font-family:var(--font-display); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); background: transparent; border: 1px solid var(--gold-dim); padding:10px; border-radius:2px; text-decoration:none; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.08)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='transparent';this.style.borderColor='var(--gold-dim)'">
+          Read the Dispatch &#8594;
+        </a>
+      </div>
+
+      <!-- Cyber Careers promo -->
+      <div class="sidebar-card" style="border-color: #2a2a2a;">
+        <h3>Cyber Careers</h3>
+        <p style="font-size:0.78rem; color:#b8b8b8; line-height:1.65; margin-bottom:6px;">
+          Breaking into cybersecurity or leveling up your SOC career? Our careers blog covers the roles, certifications, and skills that actually matter.
+        </p>
+        <p style="font-size:0.75rem; color:#8a8a8a; line-height:1.5; margin-bottom:14px;">
+          SOC analyst paths &nbsp;&#183;&nbsp; Cert roadmaps &nbsp;&#183;&nbsp; Resume strategy &nbsp;&#183;&nbsp; Interview prep
+        </p>
+        <a href="/careers/blog" style="display:block; text-align:center; font-family:var(--font-display); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--black); background:var(--gold); padding:10px; border-radius:2px; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">
+          Explore Careers Blog &#8594;
+        </a>
+      </div>
+
+    </aside>
+    <!-- END SIDEBAR -->
+
+  </div>
+  <!-- END PAGE BODY -->
+
+  <hr class="divider" />
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">TacRaven Solutions</span>
+          <p>
+            TacRaven Solutions is committed to advancing cybersecurity education. We partner with academic institutions and training programs to help build the next generation of cyber professionals &mdash; bridging the gap between classroom instruction and real-world operational practice.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/learning-hub">Learning Hub</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/threat-map">Threat Map</a></li>
+            <li><a href="/reports">Weekly Reports</a></li>
+            <li><a href="/knowledge">Knowledge Base</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+        <p class="footer-tagline">Intelligence-Driven Cybersecurity</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT - TOC scroll spy + mobile drawer -->
+  <script>
+    (function () {
+
+      function applyTocLayout() {
+        var btn     = document.getElementById('tocToggle');
+        var heading = document.querySelector('.toc-heading');
+        var drawer  = document.getElementById('tocDrawer');
+        if (!btn || !heading || !drawer) return;
+
+        if (window.innerWidth > 900) {
+          btn.style.display     = 'none';
+          heading.style.display = 'block';
+          heading.removeAttribute('aria-hidden');
+          drawer.classList.add('open');
+          drawer.style.maxHeight = 'none';
+          drawer.style.opacity   = '1';
+          drawer.style.overflow  = 'visible';
+          drawer.style.transition = 'none';
+        } else {
+          btn.style.display = 'flex';
+          heading.style.display = 'none';
+          heading.setAttribute('aria-hidden', 'true');
+          drawer.style.transition = '';
+          drawer.style.overflow   = '';
+          if (!drawer.classList.contains('open')) {
+            drawer.style.maxHeight = '0';
+            drawer.style.opacity   = '0';
+          }
+        }
+      }
+
+      applyTocLayout();
+      window.addEventListener('resize', applyTocLayout);
+
+      var tocBtn    = document.getElementById('tocToggle');
+      var tocDrawer = document.getElementById('tocDrawer');
+
+      if (tocBtn && tocDrawer) {
+        tocBtn.addEventListener('click', function () {
+          var isOpen = tocDrawer.classList.toggle('open');
+          tocBtn.classList.toggle('open', isOpen);
+          tocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        tocDrawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (window.innerWidth <= 900) {
+              tocDrawer.classList.remove('open');
+              tocBtn.classList.remove('open');
+              tocBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+      }
+
+      var sectionIds = [
+        'overview', 'framework', 'levels', 'requirements', 'assessment',
+        'comparison', 'who-needs', 'benefits', 'challenges',
+        'takeaways', 'references', 'related'
+      ];
+
+      var tocLinks = {};
+      sectionIds.forEach(function (id) {
+        var link = document.querySelector('#tocList a[href="#' + id + '"]');
+        if (link) tocLinks[id] = link;
+      });
+
+      var activeId = null;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            if (id !== activeId) {
+              if (activeId && tocLinks[activeId]) {
+                tocLinks[activeId].classList.remove('toc-active');
+              }
+              activeId = id;
+              if (tocLinks[id]) {
+                tocLinks[id].classList.add('toc-active');
+              }
+            }
+          }
+        });
+      }, {
+        rootMargin: '-10% 0px -80% 0px',
+        threshold: 0
+      });
+
+      sectionIds.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
