@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── PRIMARY META ── -->
+  <title>Security Operations Explained: SOC, Threat Intelligence, Detection Engineering, Incident Response & Vulnerability Management | TacRaven Solutions</title>
+  <meta name="description" content="A comprehensive guide to modern security operations covering SOCs, threat intelligence, detection engineering, incident response, and vulnerability management. Learn how cybersecurity teams defend organizations." />
+  <meta name="author" content="TacRaven Solutions" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="canonical" href="https://tacraven.com/security-operations.html" />
+
+  <!-- ── OPEN GRAPH ── -->
+  <meta property="og:title" content="Security Operations Explained: SOC, Threat Intelligence, Detection Engineering & More | TacRaven Solutions" />
+  <meta property="og:description" content="A comprehensive guide to modern security operations covering SOCs, threat intelligence, detection engineering, incident response, and vulnerability management." />
+  <meta property="og:url" content="https://tacraven.com/security-operations.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://tacraven.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Security Operations guide — TacRaven Solutions" />
+  <meta property="article:published_time" content="2025-01-01T00:00:00Z" />
+  <meta property="article:modified_time" content="2025-03-01T00:00:00Z" />
+  <meta property="article:author" content="TacRaven Solutions" />
+  <meta property="article:section" content="Cybersecurity" />
+  <meta property="article:tag" content="SOC" />
+  <meta property="article:tag" content="Threat Intelligence" />
+  <meta property="article:tag" content="Incident Response" />
+  <meta property="article:tag" content="Detection Engineering" />
+  <meta property="article:tag" content="Vulnerability Management" />
+
+  <!-- ── TWITTER / X CARD ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Security Operations Explained | TacRaven Solutions" />
+  <meta name="twitter:description" content="How cybersecurity teams detect, investigate, and respond to threats: SOC, threat intelligence, detection engineering, incident response, and vulnerability management explained." />
+  <meta name="twitter:image" content="https://tacraven.com/og-image.png" />
+  <meta name="twitter:image:alt" content="Security Operations guide — TacRaven Solutions" />
+  <meta name="twitter:site" content="@TacRaven" />
+
+  <!-- ── JSON-LD STRUCTURED DATA ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://tacraven.com/security-operations.html#article",
+        "headline": "Security Operations Explained: SOC, Threat Intelligence, Detection Engineering, Incident Response, and Vulnerability Management",
+        "description": "A comprehensive guide to modern security operations covering SOCs, threat intelligence, detection engineering, incident response, and vulnerability management.",
+        "image": "https://tacraven.com/og-image.png",
+        "author": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" },
+        "publisher": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com", "logo": { "@type": "ImageObject", "url": "https://tacraven.com/assets/logo.png" } },
+        "datePublished": "2025-01-01",
+        "dateModified": "2025-03-01",
+        "mainEntityOfPage": "https://tacraven.com/security-operations.html",
+        "url": "https://tacraven.com/security-operations.html",
+        "keywords": ["SOC", "threat intelligence", "incident response", "detection engineering", "vulnerability management", "security operations", "SIEM", "EDR"],
+        "articleSection": "Security Operations",
+        "inLanguage": "en-US",
+        "isPartOf": { "@type": "WebSite", "name": "TacRaven Solutions Knowledge Base", "url": "https://tacraven.com/knowledge-base.html" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://tacraven.com/security-operations.html#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tacraven.com" },
+          { "@type": "ListItem", "position": 2, "name": "Knowledge Base", "item": "https://tacraven.com/knowledge-base.html" },
+          { "@type": "ListItem", "position": 3, "name": "Security Operations", "item": "https://tacraven.com/security-operations.html" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://tacraven.com/security-operations.html#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is a Security Operations Center (SOC)?", "acceptedAnswer": { "@type": "Answer", "text": "A Security Operations Center is the team and technology stack responsible for continuous monitoring, alert triage, and first-line response to security events. SOC analysts work in tiers — Tier 1 handles alert triage, Tier 2 investigates escalated incidents, and Tier 3 conducts threat hunting and advanced forensics." } },
+          { "@type": "Question", "name": "What is threat intelligence in cybersecurity?", "acceptedAnswer": { "@type": "Answer", "text": "Threat intelligence is the practice of researching adversaries, campaigns, and techniques that pose risk to an organization, and converting that knowledge into operationally useful information. It exists at strategic, operational, tactical, and technical levels, and informs detection engineering, SOC triage, and incident response." } },
+          { "@type": "Question", "name": "What are the six phases of incident response?", "acceptedAnswer": { "@type": "Answer", "text": "The six phases of incident response are: Preparation, Identification, Containment, Eradication, Recovery, and Lessons Learned. Each phase builds on the previous, and the lessons learned phase feeds back into improving the program for future incidents." } },
+          { "@type": "Question", "name": "What is detection engineering?", "acceptedAnswer": { "@type": "Answer", "text": "Detection engineering is the practice of systematically building, testing, and maintaining detection logic that makes security monitoring effective. It translates threat intelligence and adversary behavior knowledge into SIEM rules, behavioral analytics, and detection content that surfaces real threats reliably from log telemetry." } },
+          { "@type": "Question", "name": "What is vulnerability management?", "acceptedAnswer": { "@type": "Answer", "text": "Vulnerability management is the continuous process of discovering, assessing, prioritizing, and remediating security weaknesses across an organization's technology environment. It reduces attack surface by closing exploitable gaps before attackers find them, with prioritization informed by threat intelligence and exploitability data." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── GA4 ── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PEYM947EG8', {
+      page_title: 'Security Operations Pillar Page',
+      page_location: 'https://tacraven.com/security-operations.html'
+    });
+  </script>
+
+  <!-- ── PERFORMANCE ── -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-dim: rgba(201,168,76,0.15);
+      --gold-border: rgba(201,168,76,0.3);
+      --gold-bright: rgba(201,168,76,0.7);
+      --bg: #0a0a0b;
+      --bg-card: #111113;
+      --bg-card2: #16161a;
+      --text: #e8e8e8;
+      --text-muted: #8a8a9a;
+      --white: #ffffff;
+      --max-w: 860px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.75;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--gold); color: #0a0a0b;
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── HERO ACTION BAR ── */
+    .hero-actions {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-back-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: transparent; color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .hero-back-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.05); }
+    .hero-back-btn svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .hero-share-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: transparent; color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 2px; cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .hero-share-btn:hover { background: var(--gold-dim); border-color: var(--gold); }
+    .hero-share-btn svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 100px 24px 80px;
+      text-align: center; overflow: hidden;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: var(--max-w); margin: 0 auto; text-align: center;
+    }
+    .hero-inner .hero-actions { text-align: left; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold-border);
+      padding: 5px 14px; border-radius: 2px;
+      margin-bottom: 28px; background: var(--gold-dim);
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800; line-height: 1.1; color: var(--white);
+      max-width: 820px; margin: 0 auto 20px; letter-spacing: 0.01em;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-subtitle {
+      font-size: 1.15rem; color: var(--text-muted);
+      max-width: 600px; margin: 0 auto 40px; font-weight: 300;
+    }
+    .hero-meta {
+      display: flex; justify-content: center;
+      gap: 32px; font-size: 13px; color: var(--text-muted);
+      letter-spacing: 0.06em; flex-wrap: wrap;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+    .hero-meta span::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+    /* ── LAYOUT ── */
+    .page-wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px 80px; width: 100%; text-align: left; }
+
+    /* ── SECTION ── */
+    .section { padding: 72px 0 0; }
+    .section:last-of-type { padding-bottom: 80px; }
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .section-bar { width: 4px; height: 32px; background: var(--gold); border-radius: 2px; flex-shrink: 0; }
+    .section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700; color: var(--white); letter-spacing: 0.02em;
+    }
+    .section h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem; font-weight: 600; color: var(--gold);
+      letter-spacing: 0.06em; text-transform: uppercase; margin: 36px 0 10px;
+    }
+    .section p { margin-bottom: 20px; color: var(--text); }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.055);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px; padding: 28px 32px;
+      margin-bottom: 24px; transition: border-color 0.2s;
+    }
+    .card:hover { border-left-color: #e0b85a; }
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--white);
+      letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .card p { margin-bottom: 0; font-size: 15.5px; color: var(--text-muted); }
+
+    /* ── TECH GRID ── */
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 32px 0; }
+    .tech-tile {
+      background: var(--bg-card2); border: 1px solid var(--gold-border);
+      border-radius: 4px; padding: 22px 22px 18px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .tech-tile:hover { background: var(--bg-card); transform: translateY(-2px); }
+    .tech-tile-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    .tech-tile-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: 8px;
+    }
+    .tech-tile p { font-size: 14px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    /* ── FEATURE LIST ── */
+    .feature-list { list-style: none; margin: 16px 0 24px; padding: 0; }
+    .feature-list li {
+      padding: 8px 0 8px 22px; position: relative;
+      color: var(--text); border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 15.5px;
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list li::before {
+      content: ''; position: absolute; left: 0; top: 50%;
+      width: 7px; height: 7px; border: 1.5px solid var(--gold);
+      border-radius: 1px; transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* ── STACK TABLE ── */
+    .stack-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+    .stack-table th {
+      background: var(--gold-dim); color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 12px 16px; text-align: left;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .stack-table td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text); vertical-align: top; }
+    .stack-table tr:hover td { background: rgba(201,168,76,0.04); }
+    .stack-table td:first-child { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--white); white-space: nowrap; }
+
+    /* ── CTA BUTTON ── */
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 11px 22px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      margin-top: 12px;
+    }
+    .cta-btn:hover { background: var(--gold); color: #0a0a0b; border-color: var(--gold); }
+    .cta-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      background: var(--bg-card); border: 1px solid var(--gold-border);
+      border-radius: 4px; padding: 40px 36px;
+      text-align: center; margin: 72px 0 0;
+    }
+    .cta-block h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 10px;
+    }
+    .cta-block p { color: var(--text-muted); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 64px 0 0; }
+
+    /* ── INTRO CARD ── */
+    .intro-card {
+      background: var(--bg-card); border-left: 3px solid var(--gold);
+      padding: 28px 32px; margin: 40px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .intro-card p { margin: 0; font-size: 16px; color: var(--text-muted); }
+
+    /* ── SCENARIO ACCORDIONS ── */
+    .scenario-accordion { margin: 28px 0 0; border: 1px solid var(--gold-border); border-radius: 4px; overflow: hidden; }
+    .scenario-trigger {
+      width: 100%; background: var(--gold-dim); border: none;
+      padding: 15px 20px; display: flex; align-items: center; gap: 12px;
+      cursor: pointer; text-align: left; transition: background 0.2s;
+    }
+    .scenario-trigger:hover { background: rgba(201,168,76,0.22); }
+    .scenario-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--bg); background: var(--gold);
+      padding: 3px 8px; border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+    }
+    .scenario-trigger-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px; font-weight: 700; color: var(--gold); letter-spacing: 0.04em; flex: 1;
+    }
+    .scenario-chevron {
+      width: 16px; height: 16px; flex-shrink: 0;
+      fill: none; stroke: var(--gold); stroke-width: 2.5;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.25s ease;
+    }
+    .scenario-accordion.open .scenario-chevron { transform: rotate(180deg); }
+    .scenario-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; background: var(--bg-card); }
+    .scenario-accordion.open .scenario-body { max-height: 900px; }
+    .scenario-inner { padding: 20px 22px 22px; border-top: 1px solid var(--gold-border); }
+    .scenario-steps { display: flex; flex-direction: column; gap: 0; }
+    .scenario-step { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .scenario-step:last-child { border-bottom: none; }
+    .scenario-step-num { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; min-width: 24px; padding-top: 2px; }
+    .scenario-step-content { flex: 1; }
+    .scenario-step-platform { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
+    .scenario-step-desc { font-size: 14.5px; color: var(--text); line-height: 1.55; margin: 0; }
+
+    /* ── RELATED RESOURCES RAIL ── */
+    .related-rail { margin: 56px 0 0; padding-top: 48px; padding-bottom: 64px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .related-rail-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; }
+    .related-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .related-card { display: block; text-decoration: none; background: var(--bg-card2); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 20px 20px 18px; transition: border-color 0.2s, background 0.2s, transform 0.2s; position: relative; overflow: hidden; }
+    .related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--rc-accent, var(--gold)); opacity: 0.5; transition: opacity 0.2s; }
+    .related-card:hover { background: var(--bg-card); border-color: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .related-card:hover::before { opacity: 1; }
+    .related-card-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rc-accent, var(--gold)); margin-bottom: 8px; }
+    .related-card-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 8px; }
+    .related-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+    .related-card-arrow { display: inline-flex; align-items: center; gap: 5px; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rc-accent, var(--gold)); margin-top: 12px; opacity: 0.6; transition: opacity 0.2s; }
+    .related-card:hover .related-card-arrow { opacity: 1; }
+    .related-card-arrow svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── SHARE TOAST ── */
+    .share-toast {
+      position: absolute; bottom: calc(100% + 8px); right: 0;
+      background: #1e1e22; border: 1px solid var(--gold-border); color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 2px; white-space: nowrap;
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+    }
+    .share-toast.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── TABLE OF CONTENTS ── */
+    .toc-wrap {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.055);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 4px 4px 0; padding: 24px 28px; margin: 40px 0 0;
+    }
+    .toc-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .toc-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 4px 24px; list-style: none; padding: 0; margin: 0;
+    }
+    .toc-grid li a {
+      display: flex; align-items: baseline; gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600;
+      color: var(--text-muted); text-decoration: none; letter-spacing: 0.02em;
+      padding: 5px 0; border-bottom: 1px solid transparent;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .toc-grid li a:hover { color: var(--gold); border-bottom-color: var(--gold-border); }
+    .toc-grid li a::before {
+      content: ''; display: inline-block; width: 5px; height: 5px;
+      border: 1.5px solid var(--gold); border-radius: 1px;
+      transform: rotate(45deg); flex-shrink: 0; opacity: 0.5;
+      transition: opacity 0.18s;
+    }
+    .toc-grid li a:hover::before { opacity: 1; }
+
+    /* ── INLINE TEXT LINK ── */
+    .inline-link {
+      color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid var(--gold-border);
+      transition: border-color 0.18s;
+    }
+    .inline-link:hover { border-color: var(--gold); }
+
+    /* ── DISCIPLINE SELECTOR ── */
+    .selector-wrap {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px; overflow: hidden; margin: 32px 0 0;
+    }
+    .selector-header {
+      padding: 18px 24px 0;
+    }
+    .selector-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .selector-options {
+      display: flex; flex-wrap: wrap; gap: 8px; padding: 0 24px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .selector-opt {
+      background: var(--bg-card2); border: 1px solid var(--gold-border);
+      color: var(--text-muted); border-radius: 2px; padding: 7px 14px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+    }
+    .selector-opt:hover { background: var(--gold-dim); color: var(--gold); border-color: var(--gold); }
+    .selector-opt.active { background: var(--gold); color: #0a0a0b; border-color: var(--gold); }
+    .selector-result { padding: 22px 24px 24px; min-height: 130px; }
+    .selector-result-inner { display: none; }
+    .selector-result-inner.visible { display: block; }
+    .selector-result-tag {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .selector-result-heading {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 800;
+      color: var(--white); margin-bottom: 10px; letter-spacing: 0.02em;
+    }
+    .selector-result-body { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+    .selector-result-body strong { color: var(--text); }
+    .selector-placeholder {
+      font-size: 14px; color: var(--text-muted); font-style: italic; opacity: 0.6;
+      padding-top: 8px;
+    }
+
+    /* ── FEEDBACK WIDGET ── */
+    .feedback-wrap {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.055);
+      border-radius: 4px; padding: 18px 24px; margin: 56px 0 0;
+    }
+    .feedback-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); flex: 1;
+    }
+    .feedback-btns { display: flex; gap: 8px; }
+    .feedback-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--bg-card2); border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted); border-radius: 2px; padding: 7px 16px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+    }
+    .feedback-btn:hover { background: var(--gold-dim); color: var(--gold); border-color: var(--gold-border); }
+    .feedback-btn.voted-yes { background: rgba(80,180,100,0.15); color: #6dca80; border-color: rgba(80,180,100,0.35); cursor: default; }
+    .feedback-btn.voted-no  { background: rgba(200,80,60,0.12); color: #e07060; border-color: rgba(200,80,60,0.3); cursor: default; }
+    .feedback-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .feedback-thanks {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.06em; color: var(--gold); display: none; margin-left: 4px;
+    }
+    .feedback-thanks.visible { display: inline; }
+
+    /* ── ATT&CK CALLOUT ── */
+    .attck-callout {
+      background: var(--bg-card2); border: 1px solid var(--gold-border);
+      border-radius: 4px; padding: 14px 18px; margin: 16px 0;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .attck-badge {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: #0a0a0b;
+      background: var(--gold); padding: 3px 8px; border-radius: 2px;
+      white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    }
+    .attck-body { flex: 1; }
+    .attck-id {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      color: var(--gold); letter-spacing: 0.08em; margin-bottom: 3px;
+    }
+    .attck-desc { font-size: 14px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+    .attck-desc strong { color: var(--text); }
+
+    /* ── DISCIPLINE COMPARISON TABLE ── */
+    .compare-wrap { margin: 32px 0 0; overflow-x: auto; }
+    .compare-table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      min-width: 640px;
+    }
+    .compare-table th {
+      background: var(--gold-dim); color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 11px 14px; text-align: left;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .compare-table th:first-child { width: 170px; }
+    .compare-table td {
+      padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-muted); vertical-align: top; line-height: 1.45;
+    }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.03); }
+    .compare-table td:first-child {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      color: var(--white); font-size: 15px; white-space: nowrap;
+    }
+    .compare-pill {
+      display: inline-block; font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 2px; white-space: nowrap;
+    }
+    .pill-low  { background: rgba(80,180,100,0.12); color: #6dca80; border: 1px solid rgba(80,180,100,0.25); }
+    .pill-med  { background: rgba(201,168,76,0.14); color: var(--gold); border: 1px solid var(--gold-border); }
+    .pill-high { background: rgba(200,80,60,0.12); color: #e07060; border: 1px solid rgba(200,80,60,0.25); }
+    .compare-filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .compare-filter {
+      background: var(--bg-card2); border: 1px solid var(--gold-border);
+      color: var(--text-muted); border-radius: 2px; padding: 5px 12px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+    }
+    .compare-filter:hover, .compare-filter.active { background: var(--gold-dim); color: var(--gold); border-color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { padding: 72px 20px 60px; }
+      .hero-meta { gap: 18px; }
+      .related-cards { grid-template-columns: 1fr; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .selector-options { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header role="banner">
+<section class="hero" aria-label="Page introduction">
+  <div class="hero-inner">
+  <div class="hero-actions">
+    <a href="/knowledge-base.html" class="hero-back-btn">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Return to Knowledge Base
+    </a>
+    <button class="hero-share-btn" id="shareBtn" type="button">
+      <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Share This Page
+      <span class="share-toast" id="shareToast">Link copied!</span>
+    </button>
+  </div>
+  <div class="hero-eyebrow">TacRaven Knowledge Base &mdash; Security Operations</div>
+  <h1>Modern <span>Security</span> Operations</h1>
+  <p class="hero-subtitle">Understanding how cybersecurity teams detect, investigate, and respond to threats.</p>
+  <div class="hero-meta">
+    <span>SOC</span>
+    <span>Threat Intelligence</span>
+    <span>Incident Response</span>
+    <span>Detection Engineering</span>
+    <span>Vuln Management</span>
+  </div>
+  </div>
+</section>
+</header>
+
+<main id="main-content" role="main">
+<div class="page-wrap">
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="intro-card">
+      <p>Every organization that takes cyber risk seriously has made some investment in security operations. Whether that means a dedicated Security Operations Center with around-the-clock analyst coverage, a lean team wearing multiple hats, or an outsourced managed detection and response provider, the mission is the same: see threats early, understand what matters, and shut down attacks before they cause lasting damage. This guide covers the core disciplines that make up modern security operations and explains how they fit together into a coherent defensive program.</p>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc-wrap" aria-label="Page contents">
+    <div class="toc-label">On This Page</div>
+    <ol class="toc-grid">
+      <li><a href="#what-is-secops">What Are Security Operations?</a></li>
+      <li><a href="#secops-workflow">The SecOps Workflow</a></li>
+      <li><a href="#soc">Security Operations Centers</a></li>
+      <li><a href="#threat-intelligence">Cyber Threat Intelligence</a></li>
+      <li><a href="#incident-response">Incident Response</a></li>
+      <li><a href="#vulnerability-management">Vulnerability Management</a></li>
+      <li><a href="#detection-engineering">Detection Engineering</a></li>
+      <li><a href="#integrated-secops">How They Work Together</a></li>
+      <li><a href="#secops-technology">Technology Architecture</a></li>
+      <li><a href="#building-secops">Building a Program</a></li>
+    </ol>
+  </nav>
+
+  <!-- DISCIPLINE SELECTOR -->
+  <div class="selector-wrap" id="disciplineSelector">
+    <div class="selector-header">
+      <div class="selector-title">Where Should My Program Focus First?</div>
+    </div>
+    <div class="selector-options" role="group" aria-label="Organization type selector">
+      <button class="selector-opt" data-key="no-soc" type="button">No formal SOC yet</button>
+      <button class="selector-opt" data-key="small-team" type="button">Small security team</button>
+      <button class="selector-opt" data-key="alert-noise" type="button">Too much alert noise</button>
+      <button class="selector-opt" data-key="had-incident" type="button">Recovering from an incident</button>
+      <button class="selector-opt" data-key="cloud-first" type="button">Cloud-first environment</button>
+      <button class="selector-opt" data-key="defense-ic" type="button">Defense / IC sector</button>
+    </div>
+    <div class="selector-result" id="selectorResult" aria-live="polite">
+      <p class="selector-placeholder">Select your situation above to get a recommended starting point.</p>
+
+      <div class="selector-result-inner" data-result="no-soc">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">Build SOC Foundations First</div>
+        <p class="selector-result-body">Without a structured monitoring capability, other investments have nowhere to land. Start by deploying a <strong>SIEM</strong>, establishing basic alert triage procedures, and defining escalation paths. Even a lean two-person team with solid playbooks outperforms a large team with no process. Once monitoring is running, layer in detection engineering to improve alert quality.</p>
+        <a href="#soc" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Security Operations Centers
+        </a>
+      </div>
+
+      <div class="selector-result-inner" data-result="small-team">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">Maximize Leverage with Detection Engineering &amp; Automation</div>
+        <p class="selector-result-body">Small teams cannot outwork volume — they have to outthink it. Focus on <strong>detection engineering</strong> to raise alert fidelity so analysts spend time on real threats, and use <strong>SOAR automation</strong> to handle repetitive triage tasks. Pair this with threat intelligence to ensure detection effort targets the highest-probability threats for your sector rather than everything equally.</p>
+        <a href="#detection-engineering" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Detection Engineering
+        </a>
+      </div>
+
+      <div class="selector-result-inner" data-result="alert-noise">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">Detection Engineering: Tune Before You Scale</div>
+        <p class="selector-result-body">High false positive rates are a detection engineering problem, not a staffing problem. Adding analysts to a noisy SIEM just adds more people ignoring alerts. The fix is systematic <strong>rule tuning</strong> — profiling normal environment behavior, adjusting thresholds, building allowlists for known-good patterns, and retiring rules that consistently fire on nothing. Reducing noise by 60% is worth more than doubling headcount.</p>
+        <a href="#detection-engineering" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Detection Engineering
+        </a>
+      </div>
+
+      <div class="selector-result-inner" data-result="had-incident">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">Incident Response &amp; Vulnerability Management in Parallel</div>
+        <p class="selector-result-body">A recent incident means two things: your IR process was tested and likely found wanting, and there are probably unpatched vulnerabilities that made the intrusion possible. Prioritize <strong>IR program improvement</strong> — formalize playbooks, clarify roles, and run a tabletop. Simultaneously, run a threat-intelligence-informed <strong>vulnerability scan</strong> to find and close the gaps the attacker used. Both need attention before the next event.</p>
+        <a href="#incident-response" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Incident Response
+        </a>
+      </div>
+
+      <div class="selector-result-inner" data-result="cloud-first">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">Extend Detection Coverage to Cloud Telemetry</div>
+        <p class="selector-result-body">Cloud environments generate fundamentally different telemetry than on-prem infrastructure — API calls, IAM events, misconfiguration signals, and ephemeral workload logs. Most on-prem detection rules do not translate. Focus <strong>detection engineering</strong> on cloud-native log sources (CloudTrail, Azure Monitor, GCP Audit Logs) and pair this with <strong>CSPM</strong> to catch misconfiguration exposure before attackers do. Vulnerability management in cloud means continuous configuration drift detection, not just CVE scanning.</p>
+        <a href="#secops-technology" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Technology Architecture
+        </a>
+      </div>
+
+      <div class="selector-result-inner" data-result="defense-ic">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">Threat Intelligence as the Program Foundation</div>
+        <p class="selector-result-body">Defense and IC sector organizations face nation-state level adversaries with persistent targeting campaigns. Generic detection rules and compliance-driven security programs are not adequate. Build your SecOps program around <strong>threat intelligence</strong> — specifically, adversary TTPs mapped to MITRE ATT&amp;CK — and use that intelligence to drive detection engineering priorities, SOC analyst training, and vulnerability remediation sequencing. <a href="/blackfeather.html" class="inline-link">BlackFeather</a> was built specifically for this operational environment.</p>
+        <a href="#threat-intelligence" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Threat Intelligence
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SECTION 1 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="what-is-secops">What Are Security Operations?</h2>
+    </div>
+    <p>Security operations refers to the ongoing organizational effort to monitor, detect, analyze, and respond to cybersecurity threats. It sits at the intersection of people, technology, and process, combining trained analysts, detection tooling, and documented procedures into a system designed to catch and contain attacks before they cause significant harm.</p>
+    <p>Unlike compliance-oriented security work, which focuses on meeting a standard at a point in time, security operations is a continuous function. Adversaries do not observe business hours, and many intrusions are designed to move slowly and quietly over days or weeks. An effective security operations program keeps eyes on the environment at all times, looking for anomalies, validating alerts, and connecting small signals into a coherent picture of what is happening across the network.</p>
+    <p>The scope of security operations has expanded significantly as organizations have moved workloads to the cloud, adopted remote work at scale, and accumulated larger and more fragmented technology estates. A modern SecOps program has to account for endpoints, cloud infrastructure, identity systems, network traffic, third-party integrations, and more. That breadth makes both the job harder and the investment more consequential.</p>
+
+    <h3>The Five Core Disciplines</h3>
+
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-label">Monitoring &amp; Triage</div>
+        <div class="tech-tile-name">SOC</div>
+        <p>The team and technology stack responsible for continuous monitoring, alert triage, and first-line response to security events across the organization.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Adversary Research</div>
+        <div class="tech-tile-name">Threat Intelligence</div>
+        <p>Researching adversary tactics, campaigns, and indicators to help defenders anticipate threats and prioritize detection and response efforts.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Structured Response</div>
+        <div class="tech-tile-name">Incident Response</div>
+        <p>The structured process for investigating and containing confirmed security incidents from initial detection through recovery and post-incident review.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Exposure Reduction</div>
+        <div class="tech-tile-name">Vulnerability Management</div>
+        <p>Discovering, assessing, and remediating security weaknesses before attackers exploit them to gain initial access or escalate privileges.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Detection Logic</div>
+        <div class="tech-tile-name">Detection Engineering</div>
+        <p>Building, testing, and maintaining the detection rules and analytics that translate threat knowledge into reliable, actionable alerts.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 2 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="secops-workflow">The Modern Security Operations Workflow</h2>
+    </div>
+    <p>Security operations functions as a continuous cycle rather than a series of isolated tasks. When a potential threat surfaces, it moves through a defined operational lifecycle. Understanding that lifecycle helps both practitioners and organizational leaders evaluate how well a program is actually functioning.</p>
+    <p>Modern security teams operate across all hours of the day, often using shift rotations or follow-the-sun models to ensure no period of low visibility. Large enterprises may staff a fully dedicated SOC. Smaller organizations increasingly use Managed Detection and Response (MDR) providers to extend coverage without the overhead of building an in-house team from scratch.</p>
+
+    <h3>The Detection-to-Recovery Cycle</h3>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>What Happens</th>
+          <th>Key Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Detection</td>
+          <td>Security tools generate alerts from logs, endpoint telemetry, and network data based on detection rules and behavioral analytics</td>
+          <td>Alert queue requiring analyst review</td>
+        </tr>
+        <tr>
+          <td>Investigation</td>
+          <td>Analysts pull additional context to determine whether an alert represents a real threat or a false positive</td>
+          <td>Confirmed incident or closed alert</td>
+        </tr>
+        <tr>
+          <td>Containment</td>
+          <td>Confirmed incidents are isolated to limit damage — isolating endpoints, blocking domains, disabling compromised accounts</td>
+          <td>Attacker lateral movement halted</td>
+        </tr>
+        <tr>
+          <td>Remediation</td>
+          <td>Malware removed, exploited vulnerabilities patched, compromised credentials reset, persistence mechanisms eliminated</td>
+          <td>Attacker presence eliminated</td>
+        </tr>
+        <tr>
+          <td>Recovery</td>
+          <td>Affected systems restored to normal operation, environment verified clean, monitoring heightened for re-compromise</td>
+          <td>Normal operations resumed</td>
+        </tr>
+        <tr>
+          <td>Lessons Learned</td>
+          <td>Post-incident review documents what happened, what worked, and what should improve — feeding back into detection rules and response procedures</td>
+          <td>Program improvements implemented</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 3: SOC -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="soc">Security Operations Centers (SOC)</h2>
+    </div>
+    <p>The <a href="/soc.html" class="inline-link">Security Operations Center</a> is the organizational hub of a security operations program. It is the team — and often the physical or virtual space — where analysts monitor telemetry, triage alerts, investigate suspicious activity, and coordinate response efforts. For many organizations, the SOC represents the front line of cyber defense.</p>
+    <p>SOCs are typically structured around a tiered analyst model that distributes work based on complexity and required expertise. This structure allows high-volume, lower-complexity alert triage to be handled at scale while reserving senior analyst time for sophisticated threat investigations and threat hunting activity.</p>
+
+    <h3>The Tiered Analyst Model</h3>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Role</th>
+          <th>Primary Responsibilities</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tier 1</td>
+          <td>Alert Triage Analyst</td>
+          <td>Monitor security dashboards, review and categorize incoming alerts, follow defined playbooks, escalate confirmed or suspicious activity. High alert volume, structured workflow.</td>
+        </tr>
+        <tr>
+          <td>Tier 2</td>
+          <td>Incident Analyst</td>
+          <td>Deep-dive investigation of escalated events, correlating log data across multiple sources, determining scope of compromise, coordinating containment actions.</td>
+        </tr>
+        <tr>
+          <td>Tier 3</td>
+          <td>Senior Analyst / Threat Hunter</td>
+          <td>Proactive threat hunting, advanced forensics, malware analysis, threat intelligence integration, detection rule development, and mentoring lower tiers.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>SOC Technology Stack</h3>
+    <p>Beyond analyst staffing, a SOC depends on a well-integrated technology stack. At the center is typically a <strong>Security Information and Event Management (SIEM)</strong> platform that aggregates logs from across the environment and provides a unified interface for searching, correlating, and alerting on security events. Endpoint Detection and Response (EDR) tools provide granular visibility into activity on individual endpoints. Network monitoring, cloud security posture management tools, and identity integrations round out the full picture.</p>
+    <p>The effectiveness of a SOC is not measured purely by headcount or tool investment. How analysts use those tools, the quality of detection rules, the clarity of escalation processes, and the feedback loops between incident response and detection improvement all determine whether a SOC is a genuine defensive capability or an expensive set of dashboards that nobody trusts.</p>
+
+    <div class="card">
+      <div class="card-title">What Makes a SOC Effective</div>
+      <ul class="feature-list">
+        <li><strong>Alert quality:</strong> High-fidelity detection rules that surface real threats without generating overwhelming noise that conditions analysts to ignore alerts</li>
+        <li><strong>Analyst training:</strong> Consistent investment in skill development across all tiers, particularly in threat intelligence application and investigation methodology</li>
+        <li><strong>Documented playbooks:</strong> Defined response procedures for common incident types so analysts do not improvise under pressure</li>
+        <li><strong>Tool integration:</strong> SIEM, EDR, and SOAR platforms that share data and enable analysts to act quickly across the full environment</li>
+        <li><strong>Metrics and feedback:</strong> Tracking mean time to detect and respond, false positive rates, and escalation accuracy to identify where the program needs improvement</li>
+        <li><strong>Threat intelligence context:</strong> Intelligence feeds and analyst research that give alerts meaning beyond raw log data</li>
+      </ul>
+    </div>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">SOC Alert Triage: From First Alert to Confirmed Intrusion</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Alert Fires</div>
+                <p class="scenario-step-desc">At 2:17 AM, the SIEM fires a medium-severity alert: a Windows endpoint has executed PowerShell with an encoded command and established an outbound connection to an external IP. The Tier 1 analyst on shift sees the alert in the queue.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Initial Triage</div>
+                <p class="scenario-step-desc">The Tier 1 analyst checks the host against the asset inventory. It is a workstation belonging to an accountant who has no legitimate reason to run encoded PowerShell. The external IP resolves to a hosting provider with no business relationship. The alert is escalated to Tier 2 immediately.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Investigation</div>
+                <p class="scenario-step-desc">The Tier 2 analyst pulls EDR telemetry for the host. The encoded PowerShell decoded to a command that downloaded and executed a second-stage payload from the same external IP. Process genealogy shows the parent process was a Microsoft Office document opened via a phishing email three hours earlier. The incident is confirmed.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Containment</div>
+                <p class="scenario-step-desc">The Tier 2 analyst isolates the endpoint via EDR, disables the user account pending investigation, and blocks the external IP and associated domain at the perimeter. The incident is handed to the Tier 3 analyst and incident response team for full investigation and scope determination.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="attck-callout">
+      <span class="attck-badge">ATT&amp;CK</span>
+      <div class="attck-body">
+        <div class="attck-id">T1566.001 — Spearphishing Attachment → T1059.001 — PowerShell → T1071.001 — Web Protocols C2</div>
+        <p class="attck-desc">The scenario above maps to a classic initial access chain. The phishing document (<strong>T1566.001</strong>) drops an Office macro that spawns encoded PowerShell (<strong>T1059.001</strong>), which beacons over HTTPS to attacker infrastructure (<strong>T1071.001</strong>). SOC analysts who know this kill chain can validate or rule out each stage quickly rather than investigating each alert in isolation.</p>
+      </div>
+    </div>
+
+    <a href="/soc.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is a SOC?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 4: Threat Intelligence -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="threat-intelligence">Cyber Threat Intelligence</h2>
+    </div>
+    <p>Threat intelligence is the discipline of researching and understanding the adversaries, campaigns, and techniques that pose a risk to an organization — and converting that knowledge into something operationally useful for defenders. Good intelligence answers questions that raw data cannot: who is targeting organizations like ours, what tools and techniques are they using, and where should we focus our detection efforts right now? A mature <a href="/threat-intelligence.html" class="inline-link">threat intelligence program</a> shifts defenders from purely reactive postures to anticipatory ones.</p>
+    <p>The threat intelligence lifecycle describes how raw information becomes usable intelligence. It begins with defining requirements — what questions does the security team need answered? Intelligence is then collected from technical sources like malware repositories, dark web forums, open-source feeds, and information sharing communities. Raw data is processed, analyzed, and assessed for reliability before being disseminated to the people and systems that need it.</p>
+
+    <h3>Intelligence Types</h3>
+    <p>Intelligence exists at multiple levels of abstraction, and different stakeholders need different types:</p>
+
+    <div class="card">
+      <div class="card-title">The Four Intelligence Types</div>
+      <ul class="feature-list">
+        <li><strong>Strategic Intelligence:</strong> High-level analysis of threat actors, geopolitical factors, and industry trends. Useful for executive decision-makers and security program investment decisions. Long time horizon, non-technical.</li>
+        <li><strong>Operational Intelligence:</strong> Campaign-level intelligence about specific threat actors, their targeting preferences, and the infrastructure they use. Helps defenders understand active threats relevant to their sector.</li>
+        <li><strong>Tactical Intelligence:</strong> Detailed adversary techniques, tools, and procedures mapped to frameworks like MITRE ATT&amp;CK. Directly informs detection engineering and analyst investigation workflows.</li>
+        <li><strong>Technical Intelligence:</strong> Specific indicators of compromise — IP addresses, domains, file hashes, URLs — that can be ingested into security tools for automated detection and blocking.</li>
+      </ul>
+    </div>
+
+    <h3>How Intelligence Improves Security Operations</h3>
+    <p>The most important contribution intelligence makes to security operations is context. When a SOC analyst sees an alert, intelligence can tell them whether the observed technique is consistent with a known threat actor targeting their industry, whether the indicators have been seen in active campaigns, and what the next likely attacker moves might be. That context converts an isolated alert into a meaningful threat narrative, which improves triage accuracy and speeds up investigation.</p>
+    <p>Organizations that build mature threat intelligence programs shift from purely reactive postures toward anticipatory defense — identifying likely attack patterns before they materialize and building detection coverage against them in advance. The MITRE ATT&amp;CK framework provides a common language for describing adversary techniques, making it easier to map intelligence findings to detection gaps.</p>
+
+    <a href="/threat-intelligence.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is Threat Intelligence?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 5: Incident Response -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="incident-response">Incident Response</h2>
+    </div>
+    <p>Incident response (IR) is the structured process an organization follows when a security incident is confirmed. The goal is to limit damage, reduce recovery time, and gather enough information to prevent recurrence. Without a defined <a href="/incident-response.html" class="inline-link">incident response process</a>, organizations improvise under pressure — which typically leads to slower response, incomplete remediation, and recurring incidents.</p>
+    <p>The six-phase incident response lifecycle is the most widely referenced framework in the field. Each phase builds on the previous one, and the lessons learned phase feeds directly back into improving preparation for future incidents.</p>
+
+    <h3>The Six-Phase IR Lifecycle</h3>
+
+    <div class="card">
+      <div class="card-title">Phase 1 — Preparation</div>
+      <p>Before an incident occurs, organizations must build the capability to respond effectively. This means defining response roles and responsibilities, documenting playbooks for common incident types, establishing communication protocols, ensuring IR tools are deployed and accessible, and conducting tabletop exercises to test readiness. A team that has never rehearsed a ransomware response will perform far worse during a real event than one that has walked through it multiple times.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Phase 2 — Identification</div>
+      <p>This phase involves determining that a security incident has actually occurred, establishing its initial scope, and classifying its severity. Identification draws on alerting data, analyst investigation, threat hunting findings, and sometimes external notification from law enforcement or third parties. The sooner a real incident is identified and separated from false positives, the sooner effective response can begin.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Phase 3 — Containment</div>
+      <p>Containment halts the spread of an incident while preserving evidence for investigation. Short-term containment actions — network isolation, account suspension, traffic blocking — happen fast to limit immediate damage. Longer-term containment involves more deliberate measures that allow business operations to continue while the full scope of the incident is being determined.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Phase 4 — Eradication</div>
+      <p>With the incident contained, the team removes the attacker's presence from the environment. This includes identifying and deleting malware, removing attacker-created accounts, closing exploited vulnerabilities, and eliminating any persistence mechanisms — scheduled tasks, registry keys, or backdoors — that would allow the attacker to regain access. Eradication must be thorough; partial cleanup often leads to re-compromise.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Phase 5 — Recovery</div>
+      <p>Systems are restored to normal operation after eradication is confirmed. Recovery involves rebuilding or restoring affected systems, validating that they are functioning correctly, verifying that no residual attacker access exists, and returning business processes to normal. Monitoring is heightened during the recovery window to catch any signs of re-compromise.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Phase 6 — Lessons Learned</div>
+      <p>A post-incident review documents what happened, how it was handled, what worked, and what should improve. Lessons learned feed directly into all other phases — updating detection rules, improving playbooks, identifying training gaps, and initiating remediation work on vulnerabilities identified during the investigation. Without this phase, the same incident patterns tend to repeat.</p>
+    </div>
+
+    <a href="/incident-response.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is Incident Response?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 6: Vulnerability Management -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="vulnerability-management">Vulnerability Management</h2>
+    </div>
+    <p>Vulnerability management is the continuous process of finding, assessing, prioritizing, and remediating security weaknesses across an organization's technology environment. It is fundamentally a risk reduction discipline: the goal is not to eliminate every known vulnerability — that is impossible at any meaningful scale — but to close the most dangerous gaps before attackers find and exploit them. A well-run <a href="/vulnerability-management.html" class="inline-link">vulnerability management program</a> is one of the highest-leverage investments a security team can make.</p>
+    <p>Effective vulnerability management requires a clear view of what assets exist in the environment, what vulnerabilities affect those assets, which of those vulnerabilities represent meaningful risk given the organization's threat landscape, and what the remediation or mitigation path looks like for each.</p>
+
+    <h3>The Vulnerability Management Lifecycle</h3>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th>Activity</th>
+          <th>Key Consideration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Asset Discovery</td>
+          <td>Build and maintain an accurate inventory of all systems, applications, and services — including cloud resources and shadow IT</td>
+          <td>You cannot protect what you do not know exists</td>
+        </tr>
+        <tr>
+          <td>Vulnerability Scanning</td>
+          <td>Automated tools query systems for known vulnerabilities based on version analysis and comparison against CVE databases</td>
+          <td>Scanning frequency must keep pace with newly disclosed vulnerabilities</td>
+        </tr>
+        <tr>
+          <td>Risk Prioritization</td>
+          <td>CVSS scores combined with exploit availability, asset criticality, and threat intelligence context to focus remediation effort</td>
+          <td>Known exploited vulnerabilities in active campaigns take highest priority</td>
+        </tr>
+        <tr>
+          <td>Patch Management</td>
+          <td>Updates tested, approved, and deployed within timeframes commensurate with the severity and exploitability of each vulnerability</td>
+          <td>Patching timelines should be risk-tiered, not uniformly scheduled</td>
+        </tr>
+        <tr>
+          <td>Continuous Remediation</td>
+          <td>New vulnerabilities discovered continuously as software changes and new CVEs publish — remediation is an ongoing operation, not a periodic project</td>
+          <td>Vulnerability debt compounds quickly without a continuous process</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Threat Intelligence Integration</h3>
+    <p>Vulnerability management programs that incorporate threat intelligence can dramatically improve prioritization accuracy. Knowing that a specific vulnerability is being actively exploited by a threat actor targeting your industry — as tracked in sources like CISA's Known Exploited Vulnerabilities catalog — elevates its urgency far beyond what CVSS score alone would suggest. The intersection of high CVSS score, public exploit availability, and confirmed active exploitation represents the highest-priority remediation targets in any environment.</p>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">Vulnerability Prioritization: Why CVSS Score Alone Is Not Enough</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Scan Results</div>
+                <p class="scenario-step-desc">A vulnerability scan returns 847 findings across production systems. Sorting by CVSS score yields 23 Critical and 94 High severity findings. The security team has capacity to remediate roughly 30 vulnerabilities this cycle. Applying CVSS rank alone does not meaningfully narrow the list given how many share identical scores.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Intelligence Overlay</div>
+                <p class="scenario-step-desc">The team cross-references the Critical findings against the CISA KEV catalog and a threat intelligence feed tracking active campaigns against their industry vertical. Three of the 23 Critical vulnerabilities appear in active exploitation campaigns by threat actors known to target manufacturing sector organizations. Those three jump to the top of the list regardless of their relative CVSS scores.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Asset Criticality</div>
+                <p class="scenario-step-desc">Of the remaining 20 Critical findings, the team filters by asset criticality. Vulnerabilities affecting internet-facing systems or those hosting sensitive production data are prioritized over internal development systems with limited network exposure. This brings the prioritized list to a manageable 28 findings for the current remediation cycle.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Outcome</div>
+                <p class="scenario-step-desc">The three actively-exploited vulnerabilities are patched within 48 hours. The remaining 25 prioritized findings are remediated across the two-week sprint window. The team's effort is concentrated where actual risk lives rather than distributed evenly across a raw CVSS-sorted list that does not reflect real-world threat context.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/vulnerability-management.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is Vulnerability Management?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 7: Detection Engineering -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="detection-engineering">Detection Engineering</h2>
+    </div>
+    <p>Detection engineering is the practice of systematically building, testing, and maintaining the detection logic that makes security monitoring actually work. It bridges the gap between knowing what adversaries do — through threat intelligence and purple team exercises — and having the technical rules and analytics in place to surface that activity reliably from logs and telemetry. It is one of the fastest-growing specializations in the field, and for good reason: without it, even the most expensive SIEM becomes a <a href="/detection-engineering.html" class="inline-link">noise machine that defenders learn to ignore</a>.</p>
+    <p>The discipline has grown in prominence as organizations have recognized that out-of-the-box detection rules from SIEM vendors are rarely sufficient on their own. Default rules tend to generate high false positive volumes, miss environment-specific attacker patterns, and fail to keep pace with evolving adversary techniques. Detection engineers address those gaps through a continuous development cycle that treats detection content as code.</p>
+
+    <h3>Core Detection Engineering Practices</h3>
+
+    <div class="card">
+      <div class="card-title">Detection Rule Development</div>
+      <p>Writing detection logic in query languages like SIGMA, KQL, SPL, or platform-specific formats. Rules are built from threat intelligence, ATT&amp;CK technique analysis, and observed attacker behavior in the specific environment. Effective rules balance specificity — catching real threats — against generality — catching variations of known techniques.</p>
+    </div>
+
+    <div class="attck-callout">
+      <span class="attck-badge">ATT&amp;CK</span>
+      <div class="attck-body">
+        <div class="attck-id">T1059 — Command and Scripting Interpreter</div>
+        <p class="attck-desc">One of the most frequently detected technique categories. Adversaries abuse scripting environments — <strong>PowerShell (T1059.001)</strong>, <strong>Bash (T1059.004)</strong>, <strong>Python (T1059.006)</strong> — to execute payloads, move laterally, and establish persistence. High-fidelity detections for this technique family are foundational to any detection library.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Log Coverage Assessment</div>
+      <p>Evaluating what data sources are available, whether they are properly ingested, and whether the right telemetry exists to detect specific attack techniques. Detection gaps are as important to document as detection rules themselves. A gap map against the MITRE ATT&amp;CK framework gives programs a structured view of where visibility is weakest.</p>
+    </div>
+
+    <div class="attck-callout">
+      <span class="attck-badge">ATT&amp;CK</span>
+      <div class="attck-body">
+        <div class="attck-id">T1078 — Valid Accounts &amp; T1550 — Use Alternate Authentication Material</div>
+        <p class="attck-desc">Identity-based attacks are consistently among the hardest to detect due to log coverage gaps. Detecting <strong>T1078</strong> (credential abuse) and <strong>T1550.002</strong> (Pass the Hash) requires Windows Security Event Log, Sysmon, and identity provider logs to all be ingested and correlated — a common gap in coverage assessments.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tuning and False Positive Reduction</div>
+      <p>A detection rule that fires constantly on benign activity trains analysts to ignore it. Tuning is the ongoing process of refining logic to reduce noise while maintaining coverage — one of the most time-intensive parts of detection engineering work, requiring both technical understanding of normal environment behavior and analytical judgment about acceptable risk tolerance.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Detection-as-Code</div>
+      <p>Treating detection content with the same rigor as software: version control, peer review, automated testing, and deployment pipelines that validate rules before they reach production. This approach improves quality, enables rapid iteration, and ensures that changes to detection content are tracked and reversible. Teams using detection-as-code practices consistently produce higher-quality detection libraries than those managing rules ad hoc.</p>
+    </div>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">Purple Team Exercise: Building a Detection for T1059.001 PowerShell Abuse</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Intelligence Input</div>
+                <p class="scenario-step-desc">A threat intelligence report identifies that a threat actor actively targeting the organization's sector is using encoded PowerShell commands to download second-stage payloads — consistent with ATT&CK T1059.001. The detection engineer reviews the TTP details and pulls the relevant SIGMA rules community as a starting reference.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Coverage Gap Assessment</div>
+                <p class="scenario-step-desc">The engineer queries the SIEM for PowerShell execution events over the last 30 days. The telemetry exists but there is no active rule targeting encoded command-line arguments (-EncodedCommand or -enc flags) combined with outbound network connections. The gap is documented in the ATT&CK coverage matrix against T1059.001.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Rule Development &amp; Testing</div>
+                <p class="scenario-step-desc">A KQL detection rule is written targeting: process name powershell.exe, command line containing "-enc" or "-EncodedCommand", and a child network connection within 60 seconds. The red team runs the technique in a sandbox and confirms the rule fires. The rule is tuned against 30 days of historical data — two false positives are identified and allowlisted (a legitimate IT automation script).</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Deployment &amp; Documentation</div>
+                <p class="scenario-step-desc">The rule is committed to the detection-as-code repository with a PR review, linked to the ATT&CK technique ID, intelligence source, and tuning notes. It deploys to production SIEM via CI/CD pipeline. The ATT&CK coverage matrix is updated — T1059.001 moves from "gap" to "detected." The SOC team is notified of the new rule and provided investigation guidance for when it fires.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Purple Team Integration</h3>
+    <p>The most mature detection engineering programs run continuous purple team exercises that simulate adversary techniques in the environment, validate whether existing detection rules fire, and identify gaps that need new rule development. This creates a feedback loop that directly ties adversary behavior to detection coverage. Intelligence about a new campaign targeting your sector can be operationalized as both a detection rule and a purple team test scenario within the same sprint cycle.</p>
+
+    <a href="/detection-engineering.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is Detection Engineering?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 8: How They Work Together -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="integrated-secops">How These Functions Work Together</h2>
+    </div>
+    <p>The five security operations disciplines are more valuable in combination than any of them is in isolation. An organization with excellent threat intelligence but no detection engineering to operationalize it is sitting on a library nobody reads. A SOC with capable analysts but no intelligence context is triaging alerts in the dark. Incident response without strong detection coverage means incidents get identified late, when damage is already done.</p>
+    <p>The most effective security programs treat these functions as an integrated system with continuous feedback flowing between them. The following walkthrough illustrates how a threat can be addressed end-to-end when the functions are properly connected.</p>
+
+    <div class="intro-card">
+      <p>This model is sometimes described as <strong>threat-informed defense</strong> — where knowledge of real adversary behavior directly shapes detection priorities, defensive investments, and response procedures. Frameworks like MITRE ATT&amp;CK exist specifically to support this kind of structured alignment between threat knowledge and defensive action.</p>
+    </div>
+
+    <h3>Comparing the Five Disciplines</h3>
+    <p>Each discipline has a distinct profile in terms of required investment, time-to-value, and maturity prerequisites. Use this comparison to evaluate where your program stands and what to prioritize next.</p>
+
+    <div class="compare-filter-row" id="compareFilterRow">
+      <button class="compare-filter active" data-filter="all" type="button">All Disciplines</button>
+      <button class="compare-filter" data-filter="quick-win" type="button">Quick Wins</button>
+      <button class="compare-filter" data-filter="people-heavy" type="button">People-Heavy</button>
+      <button class="compare-filter" data-filter="tooling-driven" type="button">Tooling-Driven</button>
+    </div>
+
+    <div class="compare-wrap">
+      <table class="compare-table" id="compareTable">
+        <thead>
+          <tr>
+            <th>Discipline</th>
+            <th>Primary Goal</th>
+            <th>Headcount Need</th>
+            <th>Time to Value</th>
+            <th>Key Tools</th>
+            <th>Maturity Prereq</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-tags="people-heavy tooling-driven">
+            <td>SOC</td>
+            <td>Continuous monitoring, alert triage, and first-line response</td>
+            <td><span class="compare-pill pill-high">High</span></td>
+            <td><span class="compare-pill pill-med">Weeks–Months</span></td>
+            <td>SIEM, EDR, Ticketing</td>
+            <td>Log ingestion, basic playbooks</td>
+          </tr>
+          <tr data-tags="tooling-driven quick-win">
+            <td>Threat Intelligence</td>
+            <td>Understand adversaries to anticipate and prioritize threats</td>
+            <td><span class="compare-pill pill-low">Low–Med</span></td>
+            <td><span class="compare-pill pill-low">Days–Weeks</span></td>
+            <td>TIP, OSINT feeds, MISP</td>
+            <td>None — can start with OSINT</td>
+          </tr>
+          <tr data-tags="people-heavy">
+            <td>Incident Response</td>
+            <td>Contain and eradicate confirmed security incidents</td>
+            <td><span class="compare-pill pill-med">Medium</span></td>
+            <td><span class="compare-pill pill-low">Immediate</span></td>
+            <td>EDR, forensic tools, comms</td>
+            <td>Playbooks, defined roles</td>
+          </tr>
+          <tr data-tags="tooling-driven quick-win">
+            <td>Vulnerability Mgmt</td>
+            <td>Find and close exploitable weaknesses before attackers do</td>
+            <td><span class="compare-pill pill-low">Low</span></td>
+            <td><span class="compare-pill pill-low">Days</span></td>
+            <td>Scanner, CMDB, patch tools</td>
+            <td>Asset inventory</td>
+          </tr>
+          <tr data-tags="people-heavy tooling-driven">
+            <td>Detection Engineering</td>
+            <td>Build detection logic that turns telemetry into actionable alerts</td>
+            <td><span class="compare-pill pill-med">Medium</span></td>
+            <td><span class="compare-pill pill-med">Weeks–Months</span></td>
+            <td>SIEM, SIGMA, Git, ATT&amp;CK</td>
+            <td>Log coverage, SIEM deployed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>An End-to-End Integrated Response</h3>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Function</th>
+          <th>What Happens</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Threat Intelligence</td>
+          <td>Analysts identify a campaign targeting organizations in your sector. Initial access techniques, post-compromise tools, and indicators of compromise are documented and shared with the detection engineering and SOC teams.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Detection Engineering</td>
+          <td>Engineers map campaign techniques to ATT&amp;CK, evaluate whether existing rules would catch the observed behaviors, and develop new detection logic for gaps. Rules are tested and pushed to the SIEM ahead of the anticipated campaign targeting window.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Vulnerability Management</td>
+          <td>The campaign exploits a specific vulnerability for initial access. The VM team identifies affected systems, prioritizes the patch above normal scheduling, and verifies remediation across the environment — closing the door before the attack arrives.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>SOC</td>
+          <td>Informed by intelligence context, analysts are primed to watch for specific activity patterns. When a new rule fires matching expected post-exploitation behavior, analysts have the context they need to quickly confirm a real intrusion and escalate appropriately.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Incident Response</td>
+          <td>A confirmed intrusion is handed to IR. Because detection caught the activity early in the attack chain, scope is limited. The team contains and eradicates the threat, and feeds new intelligence and detection improvements back into the cycle through lessons learned.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="attck-callout">
+      <span class="attck-badge">ATT&amp;CK</span>
+      <div class="attck-body">
+        <div class="attck-id">TA0001 → TA0002 → TA0003 — Initial Access, Execution, Persistence</div>
+        <p class="attck-desc">The integrated response model maps directly to ATT&CK tactics. Threat intelligence identifies adversary preference for specific <strong>Initial Access (TA0001)</strong> techniques. Detection engineering builds coverage for the expected <strong>Execution (TA0002)</strong> behaviors. Vulnerability management closes the doors the attacker needs for initial entry. When detection fires, SOC and IR work the <strong>Persistence (TA0003)</strong> and lateral movement tactics that follow. ATT&CK provides the common language that makes this coordination possible.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 9: Technology Architecture -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="secops-technology">Security Operations Technology Architecture</h2>
+    </div>
+    <p>Modern security operations programs are supported by a layered technology stack. No single tool provides complete visibility or control across the entire environment, so organizations deploy multiple specialized platforms that each contribute a different data type or capability. The following technologies form the core of most mature security operations architectures.</p>
+
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-label">Log Aggregation &amp; Alerting</div>
+        <div class="tech-tile-name">SIEM</div>
+        <p>Aggregates log and event data from across the environment, enables search, correlation, and alerting. Central console for most SOC workflows. Examples: Splunk, Microsoft Sentinel, Elastic SIEM, IBM QRadar.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Endpoint Visibility</div>
+        <div class="tech-tile-name">EDR</div>
+        <p>Deep visibility into endpoint activity — process execution, file changes, registry modifications, network connections. Enables remote isolation and investigation. Examples: CrowdStrike Falcon, Microsoft Defender for Endpoint, SentinelOne.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Workflow Automation</div>
+        <div class="tech-tile-name">SOAR</div>
+        <p>Automates repetitive analyst tasks — alert enrichment, indicator lookups, ticket creation, containment actions — and orchestrates workflows across multiple security tools to reduce workload and accelerate response times.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Intelligence Management</div>
+        <div class="tech-tile-name">TIP</div>
+        <p>Aggregates intelligence feeds, manages indicator lifecycle, enables analyst research, and integrates with SIEM and other tools to operationalize intelligence. Examples: MISP, Recorded Future, ThreatConnect, OpenCTI.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Network Visibility</div>
+        <div class="tech-tile-name">NDR</div>
+        <p>Monitors network traffic for anomalous behavior and known attack patterns. Particularly valuable for detecting lateral movement and data exfiltration that may not surface through endpoint-only visibility.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Cloud Security</div>
+        <div class="tech-tile-name">CSPM / CNAPP</div>
+        <p>Extends security operations visibility into cloud infrastructure, identifying misconfigurations, excessive permissions, and cloud-specific attack techniques across multi-cloud environments.</p>
+      </div>
+    </div>
+
+    <p>Integration between these platforms is as important as the platforms themselves. A SIEM that cannot ingest EDR telemetry, or a SOAR that cannot automate actions in the EDR, limits the speed and coverage of the overall capability. Mature programs invest significantly in integration engineering to ensure data flows freely between tools and that response actions can be executed quickly across the full environment.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 10: Building a Program -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="building-secops">Building an Effective Security Operations Program</h2>
+    </div>
+    <p>Building a security operations program is a significant organizational investment that takes time to mature. Most programs do not start fully formed. They begin with the highest-priority capabilities, build competency, and expand scope over time. Understanding the key dimensions of program development helps organizations set realistic expectations and make sound investment decisions.</p>
+
+    <h3>Staffing and Skills</h3>
+    <p>Security operations is labor-intensive and requires specialized expertise. A capable SOC needs analysts who can work under pressure, think like adversaries, and communicate clearly. The chronic talent shortage in cybersecurity makes staffing difficult, and organizations need realistic plans for recruiting, developing internal talent, and retaining experienced people. For organizations that cannot build a fully staffed in-house team, managed service providers and MDR vendors offer a viable path to coverage without the full overhead of an internal program.</p>
+
+    <h3>Tooling Selection</h3>
+    <p>The technology choices made when standing up a security operations program shape its capabilities for years. Organizations should prioritize tools that address their specific threat landscape, integrate well with their existing environment, and are actually usable by the analysts they have. Expensive platforms with poor adoption due to complexity deliver less value than simpler tools that analysts use effectively every day. Proof-of-concept evaluations with actual SOC analysts are essential before major platform commitments.</p>
+
+    <h3>Automation</h3>
+    <p>Alert volumes in modern environments exceed what human analysts can manually review without automation support. SOAR platforms and SIEM-native automation enable programs to automatically enrich alerts with context, filter obvious false positives, execute first-response containment actions, and ensure consistent handling of routine event types. Automation does not replace analyst judgment — it removes the repetitive work that prevents analysts from focusing on the investigations that actually require human reasoning.</p>
+
+    <h3>Threat Intelligence Integration</h3>
+    <p>Programs that operate without threat intelligence context tend to focus exclusively on what is happening in their environment without adequate understanding of why. Integrating even basic open-source intelligence feeds into SIEM alerting and analyst workflows significantly improves the quality of detection and triage decisions. More mature programs build dedicated intelligence functions that produce tailored analysis for their specific sector and threat landscape.</p>
+
+    <h3>Metrics and Continuous Improvement</h3>
+    <p>Security operations programs should be measured against meaningful outcomes, not activity. Mean time to detect (MTTD) and mean time to respond (MTTR) are the most fundamental measures of SOC effectiveness. Detection coverage percentage against known adversary techniques, false positive rates, and vulnerability remediation velocity provide additional signal. These metrics should be reviewed regularly, with honest assessment of where the program is falling short and clear improvement plans to address identified gaps.</p>
+
+    <div class="card">
+      <div class="card-title">Security Operations Program Maturity Indicators</div>
+      <ul class="feature-list">
+        <li><strong>Initial:</strong> Ad hoc monitoring, no documented playbooks, reactive only — incidents discovered by users or external parties rather than internal detection</li>
+        <li><strong>Developing:</strong> SIEM deployed and alerting, basic playbooks for common incident types, formal IR process in place, vulnerability scanning running on a schedule</li>
+        <li><strong>Defined:</strong> Tiered SOC model operational, threat intelligence feeds integrated, detection rules mapped to ATT&amp;CK, MTTD and MTTR tracked and improving</li>
+        <li><strong>Managed:</strong> Detection-as-code practices in place, purple team exercises running regularly, vulnerability management risk-prioritized with intelligence context, automation reducing analyst workload</li>
+        <li><strong>Optimizing:</strong> Threat-informed defense model fully operational, proactive threat hunting program, continuous improvement driven by metrics, intelligence program producing tailored sector-specific analysis</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FEEDBACK WIDGET -->
+  <div class="feedback-wrap" id="feedbackWrap">
+    <span class="feedback-label">Was this guide helpful?</span>
+    <div class="feedback-btns">
+      <button class="feedback-btn" id="feedbackYes" type="button">
+        <svg viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+        Yes
+      </button>
+      <button class="feedback-btn" id="feedbackNo" type="button">
+        <svg viewBox="0 0 24 24"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>
+        Not Really
+      </button>
+    </div>
+    <span class="feedback-thanks" id="feedbackThanks">Thanks for the feedback.</span>
+  </div>
+
+  <!-- CTA BLOCK -->
+  <div class="cta-block">
+    <h3>TacRaven Cybersecurity Knowledge Base</h3>
+    <p>Explore the full library of reference guides covering security technologies, threat intelligence, APT profiles, and security operations concepts.</p>
+    <a href="/knowledge-base.html" class="cta-btn" style="margin-top:0;">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Go to the Knowledge Base
+    </a>
+  </div>
+
+  <!-- RELATED RESOURCES RAIL -->
+  <div class="related-rail">
+    <div class="related-rail-label">Also from TacRaven</div>
+    <div class="related-cards">
+
+      <a href="/blackfeather.html" class="related-card" style="--rc-accent:#c9a84c;">
+        <div class="related-card-tag">Platform</div>
+        <div class="related-card-name">BlackFeather</div>
+        <p class="related-card-desc">Air-gapped threat intelligence analysis platform built for defense and intelligence environments.</p>
+        <div class="related-card-arrow">
+          Explore BlackFeather
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+      <a href="/black-wing-dispatch.html" class="related-card" style="--rc-accent:#a08030;">
+        <div class="related-card-tag">CTI Blog</div>
+        <div class="related-card-name">Black Wing Dispatch</div>
+        <p class="related-card-desc">Weekly cyber threat intelligence reporting covering active threat actors, TTPs, and emerging campaigns.</p>
+        <div class="related-card-arrow">
+          Read the Dispatch
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+      <a href="/apt-intelligence-library.html" class="related-card" style="--rc-accent:#c05a3a;">
+        <div class="related-card-tag">Reference</div>
+        <div class="related-card-name">APT Intelligence Library</div>
+        <p class="related-card-desc">Structured threat actor profiles covering attribution, TTPs, infrastructure patterns, and historical campaigns.</p>
+        <div class="related-card-arrow">
+          Browse APT Profiles
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════
+   SCENARIO ACCORDIONS
+═══════════════════════════════════════════════ */
+document.querySelectorAll('[data-accordion]').forEach(function(acc) {
+  var trigger = acc.querySelector('.scenario-trigger');
+  var body    = acc.querySelector('.scenario-body');
+  if (!trigger || !body) return;
+  trigger.addEventListener('click', function() {
+    var isOpen = acc.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   SHARE BUTTON
+═══════════════════════════════════════════════ */
+(function() {
+  var btn   = document.getElementById('shareBtn');
+  var toast = document.getElementById('shareToast');
+  if (!btn || !toast) return;
+
+  btn.addEventListener('click', async function() {
+    var title = document.title;
+    var url   = window.location.href;
+    if (navigator.share) {
+      try { await navigator.share({ title: title, url: url }); return; } catch(e) {}
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch(e) {
+      var ta = document.createElement('textarea');
+      ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    toast.classList.add('visible');
+    setTimeout(function() { toast.classList.remove('visible'); }, 2200);
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   FEEDBACK WIDGET
+═══════════════════════════════════════════════ */
+(function() {
+  var yes    = document.getElementById('feedbackYes');
+  var no     = document.getElementById('feedbackNo');
+  var thanks = document.getElementById('feedbackThanks');
+  if (!yes || !no) return;
+
+  function vote(rating) {
+    yes.disabled = true; no.disabled = true;
+    yes.classList.remove('voted-yes'); no.classList.remove('voted-no');
+    if (rating === 'yes') yes.classList.add('voted-yes');
+    else no.classList.add('voted-no');
+    thanks.classList.add('visible');
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'page_feedback', {
+        event_category: 'Engagement',
+        event_label: rating,
+        page_rating: rating,
+        page_id: 'security-operations'
+      });
+    }
+  }
+
+  yes.addEventListener('click', function() { vote('yes'); });
+  no.addEventListener('click',  function() { vote('no');  });
+})();
+
+/* ═══════════════════════════════════════════════
+   DISCIPLINE COMPARISON FILTER
+═══════════════════════════════════════════════ */
+(function() {
+  var filters = document.querySelectorAll('.compare-filter');
+  var rows    = document.querySelectorAll('#compareTable tbody tr');
+  if (!filters.length || !rows.length) return;
+
+  filters.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var filter = this.getAttribute('data-filter');
+
+      filters.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+
+      rows.forEach(function(row) {
+        if (filter === 'all') {
+          row.style.display = '';
+        } else {
+          var tags = row.getAttribute('data-tags') || '';
+          row.style.display = tags.indexOf(filter) !== -1 ? '' : 'none';
+        }
+      });
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'compare_filter', {
+          event_category: 'Engagement',
+          event_label: filter
+        });
+      }
+    });
+  });
+})();
+
+
+(function() {
+  var opts    = document.querySelectorAll('.selector-opt');
+  var results = document.querySelectorAll('.selector-result-inner');
+  var placeholder = document.querySelector('.selector-placeholder');
+
+  opts.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var key = this.getAttribute('data-key');
+
+      // Toggle active state on buttons
+      opts.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+
+      // Hide placeholder, show matching result
+      if (placeholder) placeholder.style.display = 'none';
+      results.forEach(function(r) { r.classList.remove('visible'); });
+      var target = document.querySelector('[data-result="' + key + '"]');
+      if (target) target.classList.add('visible');
+
+      // GA4 event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'discipline_selected', {
+          event_category: 'Engagement',
+          event_label: key,
+          selector_choice: key
+        });
+      }
+    });
+  });
+
+  // Track clicks on CTA buttons inside results
+  document.querySelectorAll('.selector-result-inner .cta-btn').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'selector_cta_click', {
+          event_category: 'Navigation',
+          event_label: this.textContent.trim(),
+          link_url: this.getAttribute('href')
+        });
+      }
+    });
+  });
+})();
+
+
+(function() {
+  var scrollMilestones = [25, 50, 75, 90];
+  var firedMilestones  = new Set();
+
+  function getScrollPct() {
+    var el = document.documentElement;
+    var scrolled = el.scrollTop || document.body.scrollTop;
+    var total    = el.scrollHeight - el.clientHeight;
+    return total > 0 ? Math.round((scrolled / total) * 100) : 0;
+  }
+
+  window.addEventListener('scroll', function() {
+    var pct = getScrollPct();
+    scrollMilestones.forEach(function(m) {
+      if (pct >= m && !firedMilestones.has(m)) {
+        firedMilestones.add(m);
+        gtag('event', 'scroll_depth', { event_category: 'Engagement', event_label: m + '%', scroll_depth_pct: m });
+      }
+    });
+  }, { passive: true });
+
+  var sectionMap = {
+    'what-is-secops':           'What Are Security Operations',
+    'secops-workflow':          'Security Operations Workflow',
+    'soc':                      'Security Operations Center',
+    'threat-intelligence':      'Threat Intelligence',
+    'incident-response':        'Incident Response',
+    'vulnerability-management': 'Vulnerability Management',
+    'detection-engineering':    'Detection Engineering',
+    'integrated-secops':        'How Functions Work Together',
+    'secops-technology':        'Technology Architecture',
+    'building-secops':          'Building a Program'
+  };
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          if (id && sectionMap[id]) {
+            gtag('event', 'section_viewed', { event_category: 'Content', event_label: sectionMap[id], section_id: id });
+            obs.unobserve(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+    Object.keys(sectionMap).forEach(function(id) { var el = document.getElementById(id); if (el) obs.observe(el); });
+  }
+
+  document.querySelectorAll('a.cta-btn').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'cta_click', { event_category: 'Navigation', event_label: this.textContent.trim(), link_url: this.getAttribute('href') });
+    });
+  });
+
+  var backBtn = document.querySelector('.hero-back-btn');
+  if (backBtn) { backBtn.addEventListener('click', function() { gtag('event', 'navigation_click', { event_category: 'Navigation', event_label: 'Return to Knowledge Base' }); }); }
+
+  document.querySelectorAll('.toc-grid a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'toc_click', { event_category: 'Navigation', event_label: this.textContent.trim(), anchor: this.getAttribute('href') });
+    });
+  });
+
+  document.querySelectorAll('.related-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var nameEl = this.querySelector('.related-card-name');
+      gtag('event', 'related_resource_click', { event_category: 'Engagement', event_label: nameEl ? nameEl.textContent.trim() : 'Unknown', link_url: this.getAttribute('href') });
+    });
+  });
+
+  document.querySelectorAll('[data-accordion]').forEach(function(acc) {
+    var trigger = acc.querySelector('.scenario-trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', function() {
+      var willOpen = !acc.classList.contains('open');
+      if (willOpen) { var labelEl = acc.querySelector('.scenario-trigger-text'); gtag('event', 'scenario_expanded', { event_category: 'Engagement', event_label: labelEl ? labelEl.textContent.trim() : 'Unknown' }); }
+    });
+  });
+
+  var shareBtn2 = document.getElementById('shareBtn');
+  if (shareBtn2) { shareBtn2.addEventListener('click', function() { gtag('event', 'share', { event_category: 'Engagement', method: navigator.share ? 'native_share' : 'clipboard_copy', content_type: 'article', item_id: 'security-operations' }); }); }
+
+  [30, 60, 120, 300].forEach(function(s) {
+    setTimeout(function() { gtag('event', 'time_on_page', { event_category: 'Engagement', event_label: s + 's', seconds_on_page: s }); }, s * 1000);
+  });
+})();
+</script>
+
+</body>
+</html>

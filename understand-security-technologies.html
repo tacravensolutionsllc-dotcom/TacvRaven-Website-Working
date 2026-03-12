@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── PRIMARY META ── -->
+  <title>Modern Security Technologies: SIEM, EDR, XDR, SOAR, and Zero Trust Explained | TacRaven Solutions</title>
+  <meta name="description" content="A complete guide to modern cybersecurity platforms including SIEM, EDR, XDR, SOAR, and Zero Trust. Learn how these technologies work together to defend enterprise environments." />
+  <meta name="author" content="TacRaven Solutions" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="canonical" href="https://tacraven.com/security-technologies.html" />
+
+  <!-- ── OPEN GRAPH ── -->
+  <meta property="og:title" content="Modern Security Technologies: SIEM, EDR, XDR, SOAR, and Zero Trust Explained" />
+  <meta property="og:description" content="A complete guide to modern cybersecurity platforms including SIEM, EDR, XDR, SOAR, and Zero Trust. Learn how these technologies work together to defend enterprise environments." />
+  <meta property="og:url" content="https://tacraven.com/security-technologies.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://tacraven.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Modern Security Technologies guide — TacRaven Solutions" />
+  <meta property="article:published_time" content="2025-01-01T00:00:00Z" />
+  <meta property="article:modified_time" content="2025-03-01T00:00:00Z" />
+  <meta property="article:author" content="TacRaven Solutions" />
+  <meta property="article:section" content="Cybersecurity" />
+  <meta property="article:tag" content="SIEM" />
+  <meta property="article:tag" content="EDR" />
+  <meta property="article:tag" content="XDR" />
+  <meta property="article:tag" content="SOAR" />
+  <meta property="article:tag" content="Zero Trust" />
+
+  <!-- ── TWITTER / X CARD ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Modern Security Technologies: SIEM, EDR, XDR, SOAR, and Zero Trust Explained" />
+  <meta name="twitter:description" content="A complete guide to the five core platforms powering modern cyber defense. How SIEM, EDR, XDR, SOAR, and Zero Trust work individually and together." />
+  <meta name="twitter:image" content="https://tacraven.com/og-image.png" />
+  <meta name="twitter:image:alt" content="Modern Security Technologies guide — TacRaven Solutions" />
+  <meta name="twitter:site" content="@TacRaven" />
+
+  <!-- ── JSON-LD STRUCTURED DATA ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://tacraven.com/security-technologies.html#article",
+        "headline": "Modern Security Technologies: SIEM, EDR, XDR, SOAR, and Zero Trust Explained",
+        "description": "A complete guide to modern cybersecurity platforms including SIEM, EDR, XDR, SOAR, and Zero Trust Architecture. Learn how these technologies work together to defend enterprise environments.",
+        "image": "https://tacraven.com/og-image.png",
+        "author": {
+          "@type": "Organization",
+          "name": "TacRaven Solutions",
+          "url": "https://tacraven.com"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "TacRaven Solutions",
+          "url": "https://tacraven.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://tacraven.com/assets/logo.png"
+          }
+        },
+        "datePublished": "2025-01-01",
+        "dateModified": "2025-03-01",
+        "mainEntityOfPage": "https://tacraven.com/security-technologies.html",
+        "url": "https://tacraven.com/security-technologies.html",
+        "keywords": ["SIEM", "EDR", "XDR", "SOAR", "Zero Trust", "cybersecurity", "security operations", "SOC", "threat detection", "endpoint security"],
+        "articleSection": "Security Technologies",
+        "inLanguage": "en-US",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "TacRaven Solutions Knowledge Base",
+          "url": "https://tacraven.com/knowledge-base.html"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://tacraven.com/security-technologies.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tacraven.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Base",
+            "item": "https://tacraven.com/knowledge-base.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Security Technologies",
+            "item": "https://tacraven.com/security-technologies.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://tacraven.com/security-technologies.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a SIEM?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A SIEM (Security Information and Event Management) platform collects and aggregates log data from across an organization's technology environment, normalizes it, and applies correlation rules to detect security threats. It also supports compliance reporting for frameworks such as PCI-DSS, HIPAA, and NIST."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is EDR in cybersecurity?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "EDR (Endpoint Detection and Response) is a security platform that deploys a lightweight agent on endpoint devices to continuously collect telemetry on process execution, file activity, registry changes, and network connections. It uses behavioral detection to identify threats and allows analysts to remotely isolate devices, kill processes, and remediate malware."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between EDR and XDR?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "EDR focuses exclusively on endpoint devices, while XDR (Extended Detection and Response) extends detection and response capabilities across multiple security domains including endpoints, email, cloud workloads, identity, and network traffic. XDR correlates signals from all these sources into unified incidents, reducing the alert fragmentation that occurs when each domain operates in a separate tool."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does SOAR stand for and what does it do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SOAR stands for Security Orchestration, Automation, and Response. It automates repetitive investigation and response tasks in the SOC through structured playbooks, enriches alerts automatically, orchestrates coordinated response actions across multiple tools simultaneously, and helps reduce analyst alert fatigue."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is Zero Trust Architecture?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Zero Trust Architecture is a security model based on the principle that no user, device, or system should be trusted by default regardless of network location. It enforces continuous identity verification, least-privilege access, network micro-segmentation, and continuous session risk scoring to limit the blast radius of any breach."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do SIEM, EDR, XDR, SOAR, and Zero Trust work together?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "These platforms form a coordinated security stack. EDR collects endpoint telemetry and feeds it into both the SIEM and XDR. XDR correlates signals across all domains into unified incidents. SOAR automates alert triage and orchestrates response actions across all connected platforms. Zero Trust enforces access policies and receives risk signals from XDR to restrict sessions in real time."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── GA4 ── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PEYM947EG8', {
+      page_title: 'Security Technologies Pillar Page',
+      page_location: 'https://tacraven.com/security-technologies.html'
+    });
+  </script>
+
+  <!-- ── PERFORMANCE ── -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-dim: rgba(201,168,76,0.15);
+      --gold-border: rgba(201,168,76,0.3);
+      --gold-bright: rgba(201,168,76,0.7);
+      --bg: #0a0a0b;
+      --bg-card: #111113;
+      --bg-card2: #16161a;
+      --text: #e8e8e8;
+      --text-muted: #8a8a9a;
+      --white: #ffffff;
+      --max-w: 860px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.75;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gold);
+      color: #0a0a0b;
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── HERO ACTION BAR ── */
+    .hero-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .hero-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .hero-back-btn:hover {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.05);
+    }
+    .hero-back-btn svg {
+      width: 12px; height: 12px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .hero-share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .hero-share-btn:hover {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+    }
+    .hero-share-btn svg {
+      width: 12px; height: 12px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 100px 24px 80px;
+      text-align: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+      background: var(--gold-dim);
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--white);
+      max-width: 820px;
+      margin: 0 auto 20px;
+      letter-spacing: 0.01em;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      flex-wrap: wrap;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+    .hero-meta span::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+    /* ── LAYOUT ── */
+    .page-wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ── SECTION ── */
+    .section { padding: 72px 0 0; }
+    .section:last-of-type { padding-bottom: 80px; }
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .section-bar { width: 4px; height: 32px; background: var(--gold); border-radius: 2px; flex-shrink: 0; }
+    .section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .section h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 36px 0 10px;
+    }
+    .section p { margin-bottom: 20px; color: var(--text); }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.055);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-left-color: #e0b85a; }
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+    .card p { margin-bottom: 0; font-size: 15.5px; color: var(--text-muted); }
+
+    /* ── TECH GRID ── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .tech-tile {
+      background: var(--bg-card2);
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      padding: 22px 22px 18px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .tech-tile:hover { background: var(--bg-card); transform: translateY(-2px); }
+    .tech-tile-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .tech-tile-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .tech-tile p { font-size: 14px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    /* ── FEATURE LIST ── */
+    .feature-list { list-style: none; margin: 16px 0 24px; padding: 0; }
+    .feature-list li {
+      padding: 8px 0 8px 22px;
+      position: relative;
+      color: var(--text);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 15.5px;
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      border: 1.5px solid var(--gold);
+      border-radius: 1px;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* ── STACK TABLE ── */
+    .stack-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+    .stack-table th {
+      background: var(--gold-dim);
+      color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .stack-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--text);
+      vertical-align: top;
+    }
+    .stack-table tr:hover td { background: rgba(201,168,76,0.04); }
+    .stack-table td:first-child {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 11px 22px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      margin-top: 12px;
+    }
+    .cta-btn:hover { background: var(--gold); color: #0a0a0b; border-color: var(--gold); }
+    .cta-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      background: var(--bg-card);
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      padding: 40px 36px;
+      text-align: center;
+      margin: 72px 0 0;
+    }
+    .cta-block h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .cta-block p { color: var(--text-muted); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 64px 0 0; }
+
+    /* ── INTRO CARD ── */
+    .intro-card {
+      background: var(--bg-card);
+      border-left: 3px solid var(--gold);
+      padding: 28px 32px;
+      margin: 40px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .intro-card p { margin: 0; font-size: 16px; color: var(--text-muted); }
+
+    /* ════════════════════════════════════════
+       ENHANCEMENT 1: ANIMATED STACK DIAGRAM
+    ════════════════════════════════════════ */
+    .stack-diagram {
+      margin: 40px 0;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 32px 24px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stack-diagram::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(201,168,76,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .diagram-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* SVG canvas */
+    .diagram-svg-wrap { width: 100%; overflow: visible; }
+    #stackSvg { width: 100%; display: block; }
+
+    /* Node boxes */
+    .d-node {
+      cursor: default;
+      transition: filter 0.2s;
+    }
+    .d-node:hover { filter: brightness(1.25); }
+    .d-node rect {
+      rx: 3;
+      ry: 3;
+    }
+
+    /* Animated pulse dots on paths */
+    @keyframes flowPulse {
+      0%   { opacity: 0; offset-distance: 0%;   }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { opacity: 0; offset-distance: 100%; }
+    }
+
+    .flow-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      position: absolute;
+      offset-rotate: 0deg;
+      animation: flowPulse 2.4s ease-in-out infinite;
+      box-shadow: 0 0 6px 2px rgba(201,168,76,0.5);
+    }
+
+    /* Legend */
+    .diagram-legend {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.08em;
+    }
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Attack phase animation */
+    .diagram-phase-bar {
+      display: flex;
+      gap: 8px;
+      margin-top: 22px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .phase-chip {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      transition: all 0.35s ease;
+      opacity: 0.35;
+    }
+    .phase-chip.active {
+      opacity: 1;
+      border-color: var(--gold-border);
+      background: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    /* ════════════════════════════════════════
+       ENHANCEMENT 2: COMPARISON TOGGLE
+    ════════════════════════════════════════ */
+    .compare-wrap {
+      margin: 36px 0;
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .compare-header {
+      padding: 20px 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .compare-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .compare-selectors {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-bottom: 16px;
+      align-items: center;
+    }
+
+    .compare-selector-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex: 1;
+      min-width: 130px;
+    }
+
+    .compare-selector-group label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .compare-select {
+      background: var(--bg-card2);
+      border: 1px solid var(--gold-border);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 3px;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+    }
+    .compare-select:focus { outline: none; border-color: var(--gold); }
+
+    .compare-vs {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--gold);
+      padding-top: 18px;
+      text-align: center;
+    }
+
+    .compare-body { padding: 0; }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr 1fr;
+    }
+
+    .compare-row {
+      display: contents;
+    }
+
+    .compare-row:not(:last-child) .compare-cell {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .compare-cell {
+      padding: 14px 20px;
+      font-size: 14.5px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .compare-cell.dim-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      align-items: center;
+    }
+
+    .compare-cell.col-a { background: rgba(201,168,76,0.03); border-left: 2px solid rgba(201,168,76,0.2); }
+    .compare-cell.col-b { background: rgba(100,160,255,0.03); border-left: 2px solid rgba(100,160,255,0.2); }
+
+    .compare-col-header {
+      padding: 14px 20px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .compare-col-header.label-col { background: rgba(255,255,255,0.02); }
+    .compare-col-header.col-a { background: rgba(201,168,76,0.06); border-left: 2px solid rgba(201,168,76,0.3); }
+    .compare-col-header.col-b { background: rgba(100,160,255,0.06); border-left: 2px solid rgba(100,160,255,0.3); }
+
+    .compare-col-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .compare-col-name.col-b { color: #a0c4ff; }
+
+    .compare-col-full {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .compare-grid { grid-template-columns: 110px 1fr 1fr; }
+      .compare-cell { padding: 10px 12px; font-size: 13px; }
+      .compare-col-header { padding: 10px 12px; }
+    }
+
+    /* ════════════════════════════════════════
+       ENHANCEMENT 3: SCENARIO ACCORDIONS
+    ════════════════════════════════════════ */
+    .scenario-accordion {
+      margin: 28px 0 0;
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .scenario-trigger {
+      width: 100%;
+      background: var(--gold-dim);
+      border: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s;
+    }
+    .scenario-trigger:hover { background: rgba(201,168,76,0.22); }
+
+    .scenario-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--gold);
+      padding: 3px 8px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .scenario-trigger-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      flex: 1;
+    }
+
+    .scenario-chevron {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.25s ease;
+    }
+
+    .scenario-accordion.open .scenario-chevron { transform: rotate(180deg); }
+
+    .scenario-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      background: var(--bg-card);
+    }
+
+    .scenario-accordion.open .scenario-body { max-height: 600px; }
+
+    .scenario-inner {
+      padding: 20px 22px 22px;
+      border-top: 1px solid var(--gold-border);
+    }
+
+    .scenario-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .scenario-step {
+      display: flex;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+    }
+
+    .scenario-step:last-child { border-bottom: none; }
+
+    .scenario-step-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      min-width: 24px;
+      padding-top: 2px;
+    }
+
+    .scenario-step-content { flex: 1; }
+
+    .scenario-step-platform {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .scenario-step-desc {
+      font-size: 14.5px;
+      color: var(--text);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ── RELATED RESOURCES RAIL ── */
+    .related-rail {
+      margin: 56px 0 0;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .related-rail-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .related-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .related-card {
+      display: block;
+      text-decoration: none;
+      background: var(--bg-card2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 20px 20px 18px;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .related-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--rc-accent, var(--gold));
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+    .related-card:hover {
+      background: var(--bg-card);
+      border-color: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    .related-card:hover::before { opacity: 1; }
+    .related-card-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rc-accent, var(--gold));
+      margin-bottom: 8px;
+    }
+    .related-card-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .related-card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .related-card-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rc-accent, var(--gold));
+      margin-top: 12px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .related-card:hover .related-card-arrow { opacity: 1; }
+    .related-card-arrow svg {
+      width: 11px; height: 11px;
+      fill: none; stroke: currentColor;
+      stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ── SHARE TOAST ── */
+    .share-toast {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      right: 0;
+      background: #1e1e22;
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 2px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+    }
+    .share-toast.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { padding: 72px 20px 60px; }
+      .hero-meta { gap: 18px; }
+      .related-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header role="banner">
+<!-- HERO -->
+<section class="hero" aria-label="Page introduction">
+  <div class="hero-actions">
+    <a href="/knowledge-base.html" class="hero-back-btn">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Return to Knowledge Base
+    </a>
+    <button class="hero-share-btn" id="shareBtn" type="button">
+      <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Share This Page
+      <span class="share-toast" id="shareToast">Link copied!</span>
+    </button>
+  </div>
+  <div class="hero-eyebrow">TacRaven Knowledge Base &mdash; Security Technologies</div>
+  <h1>Modern <span>Security Technologies</span></h1>
+  <p class="hero-subtitle">Understanding the core platforms that power modern cyber defense.</p>
+  <div class="hero-meta">
+    <span>SIEM</span>
+    <span>EDR</span>
+    <span>XDR</span>
+    <span>SOAR</span>
+    <span>Zero Trust</span>
+  </div>
+</section>
+</header>
+
+<main id="main-content" role="main">
+<div class="page-wrap">
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="intro-card">
+      <p>Adversaries do not limit themselves to a single entry point. They move laterally across endpoints, cloud services, identity systems, and network infrastructure. Defending against that kind of multi-vector threat requires more than a single product. It requires a coordinated set of platforms that can collect telemetry, detect anomalies, automate responses, and enforce access policies simultaneously. This guide breaks down the five core security technologies that form the backbone of a modern security operations program.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 1 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="why-security-technologies-matter">Why Security Technologies Matter</h2>
+    </div>
+    <p>The threat landscape organizations face today is fundamentally different from what it was a decade ago. Ransomware operators run structured business models. Nation-state actors conduct multi-stage intrusion campaigns that persist inside environments for months without triggering traditional alerts. Criminal groups deploy commodity malware through phishing campaigns targeting employees at every level of an organization.</p>
+    <p>At the same time, enterprise attack surfaces have grown dramatically. Remote workforces, cloud migrations, software-as-a-service adoption, and bring-your-own-device policies have pushed endpoints and data beyond the traditional network perimeter. There is no longer a clean boundary to defend. Security teams must assume that threats exist inside the environment and work backward from that assumption.</p>
+    <p>Effective defense in this environment depends on telemetry: continuous, structured data streams collected from endpoints, network traffic, authentication systems, cloud environments, and applications. Without comprehensive telemetry, security analysts are working with incomplete information. Detections are missed. Investigations stall. Recovery takes longer than it should.</p>
+    <h3>The Role of Security Operations Centers</h3>
+    <p>Security Operations Centers (SOCs) are the teams responsible for monitoring, detecting, investigating, and responding to threats. A modern SOC functions more like an intelligence operation than a helpdesk. Analysts triage incoming alerts, hunt for hidden adversary activity, investigate incidents, and coordinate containment and recovery efforts.</p>
+    <p>To support that work, SOC teams rely on purpose-built platforms. Each of the technologies covered in this guide was designed to address a specific gap in detection or response capability. Together they give SOC analysts the visibility, context, and automation they need to operate at speed and scale.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 2 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="overview">Overview of Modern Security Platforms</h2>
+    </div>
+    <p>SIEM, EDR, XDR, SOAR, and Zero Trust each address different layers of the security problem. They are not interchangeable and are not competing solutions. In practice, organizations deploy several of these technologies in combination, feeding data from one platform into another and using automation to close the gap between detection and response.</p>
+
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-label">Visibility</div>
+        <div class="tech-tile-name">SIEM</div>
+        <p>Aggregates and correlates log data from across the environment to surface security events and support compliance reporting.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Endpoint</div>
+        <div class="tech-tile-name">EDR</div>
+        <p>Monitors endpoint activity in real time, detects behavioral anomalies, and enables rapid containment of threats at the device level.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Unified Detection</div>
+        <div class="tech-tile-name">XDR</div>
+        <p>Extends detection beyond endpoints to correlate activity across email, cloud, identity, and network into a single unified view.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Automation</div>
+        <div class="tech-tile-name">SOAR</div>
+        <p>Automates repetitive analyst tasks, orchestrates responses across tools, and standardizes incident handling through structured playbooks.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Access Control</div>
+        <div class="tech-tile-name">Zero Trust</div>
+        <p>Replaces implicit network trust with continuous identity verification and least-privilege access policies applied to every session.</p>
+      </div>
+    </div>
+
+    <p>The sections below cover each technology in depth, explain how they work, and link to dedicated reference pages for organizations that want to go deeper on any single platform.</p>
+
+    <!-- ═══ ENHANCEMENT 2: COMPARISON TOGGLE ═══ -->
+    <div class="compare-wrap" id="compareWrap">
+      <div class="compare-header">
+        <div class="compare-title">Side-by-Side Technology Comparison</div>
+        <div class="compare-selectors">
+          <div class="compare-selector-group">
+            <label for="compareA">Platform A</label>
+            <select id="compareA" class="compare-select" aria-label="Select first platform to compare">
+              <option value="siem">SIEM</option>
+              <option value="edr">EDR</option>
+              <option value="xdr">XDR</option>
+              <option value="soar">SOAR</option>
+              <option value="zt">Zero Trust</option>
+            </select>
+          </div>
+          <div class="compare-vs">VS</div>
+          <div class="compare-selector-group">
+            <label for="compareB">Platform B</label>
+            <select id="compareB" class="compare-select" aria-label="Select second platform to compare">
+              <option value="siem">SIEM</option>
+              <option value="edr">EDR</option>
+              <option value="xdr" selected>XDR</option>
+              <option value="soar">SOAR</option>
+              <option value="zt">Zero Trust</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="compare-body">
+        <div class="compare-grid" id="compareGrid">
+          <!-- rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 3: SIEM -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="siem">Security Information and Event Management (SIEM)</h2>
+    </div>
+    <p>A SIEM platform collects log and event data from across an organization's technology environment and consolidates it into a central location where it can be searched, correlated, and analyzed. The goal is to give security teams a single unified view of activity across endpoints, servers, network devices, identity platforms, cloud services, and applications.</p>
+    <h3>Log Aggregation</h3>
+    <p>Log aggregation is the foundation of every SIEM deployment. Without a reliable, normalized stream of log data flowing into the platform, detection rules have nothing to act on. A well-configured SIEM ingests logs from operating systems, firewalls, intrusion detection systems, web proxies, authentication platforms, and cloud provider activity logs. Each data source adds another layer of visibility.</p>
+    <p>Normalization is a critical step in this process. Raw logs arrive in different formats from different systems. The SIEM must translate all of that data into a consistent schema so that analysts and correlation rules can query across sources without worrying about format inconsistencies.</p>
+    <h3>Threat Detection Through Correlation</h3>
+    <p>Correlation rules are the detection engine of a SIEM. A rule watches for combinations of events that, taken together, indicate malicious activity. A single failed login attempt is noise. Fifty failed login attempts against the same account from a foreign IP address, followed by a successful login and immediate data access, is a pattern worth investigating. Correlation rules allow analysts to codify that logic and have the SIEM surface it automatically.</p>
+    <p>Modern SIEMs also apply behavioral analytics and machine learning to detect anomalies that do not match known attack patterns. This is particularly useful for detecting insider threats and novel techniques that pre-written correlation rules would miss.</p>
+    <h3>Compliance Reporting</h3>
+    <p>Many organizations operate under regulatory frameworks that require documented evidence of security monitoring activity. SIEM platforms typically include pre-built report templates for common frameworks such as PCI-DSS, HIPAA, SOX, and NIST. These reports aggregate log retention data, access control activity, and security event summaries in a format that satisfies audit requirements.</p>
+    <div class="card">
+      <div class="card-title">Key Capabilities</div>
+      <ul class="feature-list">
+        <li>Centralized log collection from heterogeneous sources across the environment</li>
+        <li>Log normalization and parsing into a queryable common schema</li>
+        <li>Correlation rule engine for pattern-based detection</li>
+        <li>User and entity behavior analytics (UEBA) for anomaly detection</li>
+        <li>Long-term log retention to support forensic investigations</li>
+        <li>Pre-built compliance report templates for major regulatory frameworks</li>
+      </ul>
+    </div>
+
+    <!-- ═══ ENHANCEMENT 3: SCENARIO ACCORDION ═══ -->
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">Credential Stuffing Attack: How SIEM Surfaces It</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Attack</div>
+                <p class="scenario-step-desc">An adversary runs a credential stuffing tool against the company's VPN login portal using a list of breached username and password pairs from a third-party data leak.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">SIEM — Log Ingestion</div>
+                <p class="scenario-step-desc">The VPN appliance sends authentication failure logs to the SIEM every few seconds. Within minutes, the volume of failed logins from a single IP range exceeds the threshold defined in a brute-force correlation rule.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">SIEM — Correlation Rule Fires</div>
+                <p class="scenario-step-desc">The rule triggers a medium-severity alert. The SIEM enriches the alert with geolocation data showing the source IPs map to a known hosting provider with no prior relationship to the organization.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">SIEM — Escalation</div>
+                <p class="scenario-step-desc">Three accounts successfully authenticate during the campaign. The SIEM raises a high-severity alert combining the failed login pattern with successful authentication events from the same source block, and routes it to the SOC queue.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">05</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Analyst Response</div>
+                <p class="scenario-step-desc">The SOC analyst reviews the correlated alert, queries the SIEM for all activity from the three affected accounts over the past 24 hours, and hands the incident off for containment and account remediation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/siem.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is SIEM?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 4: EDR -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="edr">Endpoint Detection and Response (EDR)</h2>
+    </div>
+    <p>EDR platforms operate directly on endpoint devices: workstations, servers, and laptops. A lightweight agent installed on each device continuously records operating system activity and sends that telemetry to a central platform where it can be analyzed, searched, and acted upon. This gives security teams deep visibility into what is happening on individual machines, down to the level of process execution, file writes, registry changes, and network connections initiated by running processes.</p>
+    <h3>Endpoint Telemetry</h3>
+    <p>Traditional antivirus solutions relied on signature matching. They looked for known malicious files and blocked them. EDR takes a fundamentally different approach. Instead of asking "is this file known to be bad," EDR asks "what is this process doing, and does that behavior look like an attack." This shift from signature-based to behavior-based detection is what makes EDR effective against novel malware and living-off-the-land techniques where attackers use legitimate system tools for malicious purposes.</p>
+    <p>The telemetry collected by an EDR agent typically includes process creation and termination events, parent-child process relationships, file system activity, registry modifications, network connections, user logon events, and script execution. This data is retained in a searchable timeline that analysts can query during investigations.</p>
+    <h3>Behavior Detection</h3>
+    <p>EDR platforms apply detection logic to the continuous stream of endpoint telemetry. When a behavior pattern matches a known technique, the platform generates an alert and associates it with the relevant MITRE ATT&CK technique where applicable. This context helps analysts quickly understand the nature of a potential threat without starting from scratch on every alert.</p>
+    <h3>Threat Containment and Malware Response</h3>
+    <p>One of the most operationally valuable features of an EDR platform is the ability to take immediate action on a compromised endpoint without requiring physical access to the device or a support ticket to IT. Analysts can isolate a device from the network, kill a malicious process, delete a file, or collect a forensic artifact directly from the EDR console. This dramatically shortens the time between detection and containment.</p>
+    <div class="card">
+      <div class="card-title">Key Capabilities</div>
+      <ul class="feature-list">
+        <li>Continuous endpoint telemetry collection including process, file, network, and registry activity</li>
+        <li>Behavior-based detection mapped to MITRE ATT&CK techniques</li>
+        <li>Searchable historical activity timeline for each endpoint</li>
+        <li>Remote isolation, process kill, and file remediation from a central console</li>
+        <li>Automated threat response for high-confidence detections</li>
+        <li>Integration with threat intelligence to enrich detections with adversary context</li>
+      </ul>
+    </div>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">Living-Off-the-Land Attack: How EDR Catches What AV Misses</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Attack</div>
+                <p class="scenario-step-desc">A user opens a malicious Office document that executes a macro. The macro launches PowerShell using a legitimate Windows process rather than dropping any malware file to disk. Traditional antivirus finds nothing to scan.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">EDR — Process Telemetry</div>
+                <p class="scenario-step-desc">The EDR agent records the parent-child process chain: winword.exe spawning cmd.exe spawning powershell.exe. This relationship is flagged immediately as an anomalous parent process.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">EDR — Behavioral Detection</div>
+                <p class="scenario-step-desc">The PowerShell command is encoded. The EDR platform decodes it and identifies a Base64-encoded download cradle attempting to reach an external IP. This matches a MITRE ATT&CK T1059.001 signature and fires a high-severity alert.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">EDR — Automated Containment</div>
+                <p class="scenario-step-desc">The EDR platform automatically kills the PowerShell process and network-isolates the endpoint within seconds, preventing the download from completing and cutting off the attacker's C2 channel.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">05</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Analyst Response</div>
+                <p class="scenario-step-desc">The analyst reviews the full process timeline in the EDR console, collects the original document as a forensic artifact, and determines that no data exfiltration occurred before containment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/edr.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is EDR?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 5: XDR -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="xdr">Extended Detection and Response (XDR)</h2>
+    </div>
+    <p>XDR evolved from EDR by extending detection and response capabilities beyond the endpoint. An XDR platform pulls telemetry from multiple security domains simultaneously: endpoints, email gateways, cloud workloads, identity providers, and network traffic. It correlates signals from all of these sources into a unified detection layer, giving analysts a complete picture of an attack rather than isolated fragments viewed through separate tools.</p>
+    <h3>Unified Detection Across Domains</h3>
+    <p>The core problem that XDR addresses is alert fragmentation. In a traditional security environment, endpoint alerts appear in the EDR console, email alerts appear in the email security platform, cloud alerts appear in the CSPM tool, and identity alerts appear in the identity provider's dashboard. Each platform has its own interface, its own alert format, and its own context. Connecting the dots across all of those signals requires significant manual effort from the analyst.</p>
+    <p>XDR consolidates those signals into a single platform and applies cross-domain correlation logic. An alert that appears to be a low-confidence phishing attempt in the email platform can be automatically stitched to the subsequent endpoint process execution event and the unusual outbound connection that followed. What looked like three separate low-priority alerts becomes one high-confidence incident with a complete attack chain attached to it.</p>
+    <h3>Cross-Domain Visibility and Cloud Integration</h3>
+    <p>Modern enterprise environments are heavily cloud-dependent. Workloads run in AWS, Azure, and GCP. Identity lives in Azure Active Directory or Okta. Applications are delivered as SaaS. XDR platforms have built-in integrations with the major cloud providers and identity platforms, pulling activity logs and applying detection logic across cloud control plane activity, identity events, and application access alongside traditional endpoint and network telemetry.</p>
+    <h3>Threat Correlation at Scale</h3>
+    <p>Because XDR operates across the full environment, it is well-positioned to detect multi-stage attacks that leverage multiple vectors. Lateral movement from a compromised workstation to cloud infrastructure, for example, would require correlation across EDR telemetry and cloud activity logs. XDR platforms are built to do exactly that kind of cross-domain linking automatically, surfacing it as a single prioritized incident rather than leaving it for analysts to discover manually.</p>
+    <div class="card">
+      <div class="card-title">Key Capabilities</div>
+      <ul class="feature-list">
+        <li>Unified telemetry collection from endpoint, email, cloud, network, and identity sources</li>
+        <li>Cross-domain attack chain correlation and incident consolidation</li>
+        <li>Native cloud platform integrations with major providers</li>
+        <li>Automated incident enrichment and prioritization</li>
+        <li>Reduced mean time to detect (MTTD) through unified detection logic</li>
+        <li>Single investigation console covering all security domains</li>
+      </ul>
+    </div>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">BEC to Cloud Pivot: How XDR Connects the Dots</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Attack — Email</div>
+                <p class="scenario-step-desc">A targeted phishing email bypasses the email gateway. The email security platform logs it as low-confidence suspicious due to a newly registered domain. In isolation, no alert fires.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Attack — Endpoint</div>
+                <p class="scenario-step-desc">The user clicks the link. The EDR platform records a browser process spawning a PowerShell download cradle. On its own this fires a medium-severity alert that sits in the queue.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Attack — Identity</div>
+                <p class="scenario-step-desc">Four hours later the attacker uses harvested credentials to log into the organization's Azure tenant from an overseas IP. The identity provider logs an unusual sign-in. Another isolated medium-severity alert.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">XDR — Cross-Domain Correlation</div>
+                <p class="scenario-step-desc">The XDR platform links all three events by user identity and time window. Three low-to-medium signals become a single critical incident: phishing delivery, endpoint execution, and identity compromise confirmed as a connected attack chain.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">05</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Analyst Response</div>
+                <p class="scenario-step-desc">The analyst receives one prioritized, fully correlated incident instead of three separate alerts, and immediately initiates account revocation, endpoint isolation, and a cloud access audit in parallel.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/xdr.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is XDR?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 6: SOAR -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="soar">Security Orchestration, Automation, and Response (SOAR)</h2>
+    </div>
+    <p>SOAR platforms address the operational side of security: the work analysts do after a detection fires. A SOAR platform connects to the other tools in the security stack, automates repetitive investigation and response tasks, and provides structured playbooks that guide analysts through standardized workflows for common incident types. The goal is to reduce the time analysts spend on low-value manual tasks so they can focus on the work that actually requires human judgment.</p>
+    <h3>Automation and Playbooks</h3>
+    <p>A SOAR playbook is a defined sequence of steps that the platform executes automatically when triggered by an alert or incident type. A phishing playbook, for example, might automatically extract URLs from the reported email, check those URLs against threat intelligence feeds, retrieve header information to validate the sender, query the EDR platform for any endpoints that clicked the link, and then generate a summary report, all without any analyst intervention. The analyst receives a completed initial investigation package rather than a raw alert.</p>
+    <p>Playbooks can be fully automated for high-confidence, low-risk actions, or they can include human-in-the-loop steps where an analyst must approve an action before it executes. This flexibility makes SOAR applicable across a wide range of incident types and organizational risk tolerances.</p>
+    <h3>Alert Triage at Scale</h3>
+    <p>SOC teams consistently report alert fatigue as one of the primary operational challenges they face. When a platform generates thousands of alerts per day, a significant percentage of analyst time is spent dismissing false positives rather than investigating genuine threats. SOAR platforms attack this problem by automatically enriching and triaging alerts before they reach an analyst. An alert that would previously require ten minutes of manual investigation to determine was a false positive can be auto-closed by the SOAR within seconds, with a documented rationale.</p>
+    <h3>Response Orchestration</h3>
+    <p>When a confirmed incident requires a coordinated response, SOAR platforms orchestrate actions across multiple tools simultaneously. Blocking a malicious IP at the firewall, isolating an affected endpoint in the EDR platform, disabling a compromised user account in Active Directory, and opening a ticket in the incident management system can all be triggered by a single analyst action rather than requiring separate logins to four different tools. This kind of orchestrated response reduces mean time to respond (MTTR) and ensures that response actions are consistent and documented.</p>
+    <div class="card">
+      <div class="card-title">Key Capabilities</div>
+      <ul class="feature-list">
+        <li>Automated playbook execution for common incident types such as phishing, malware, and account compromise</li>
+        <li>Alert enrichment through automated queries to threat intelligence and asset databases</li>
+        <li>Cross-platform response orchestration across firewall, EDR, identity, and ticketing systems</li>
+        <li>Human-in-the-loop approval workflows for sensitive or high-impact actions</li>
+        <li>Documented audit trail for all automated and manual actions taken during an incident</li>
+        <li>Case management and metrics tracking to support SOC performance measurement</li>
+      </ul>
+    </div>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">Phishing Response Playbook: From Alert to Contained in 90 Seconds</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Trigger</div>
+                <p class="scenario-step-desc">A user submits a suspicious email via the phishing report button. The SOAR playbook is triggered automatically on receipt of the report.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">SOAR — Automated Enrichment</div>
+                <p class="scenario-step-desc">Within seconds the playbook extracts all URLs and sender information, checks each URL against three threat intelligence feeds, queries the email gateway for how many other users received the same message, and pulls a WHOIS record on the sending domain.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">SOAR — Scope Assessment</div>
+                <p class="scenario-step-desc">The playbook queries the EDR platform for any process execution events linked to the URLs in the past 48 hours. It finds two additional endpoints where users clicked the link before the report came in.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">SOAR — Orchestrated Response</div>
+                <p class="scenario-step-desc">The playbook automatically deletes the phishing email from all mailboxes, blocks the sending domain at the email gateway, and queues the two affected endpoints for analyst-approved isolation. A pre-formatted incident ticket is opened automatically.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">05</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Analyst Review</div>
+                <p class="scenario-step-desc">The analyst reviews a fully enriched case summary, approves endpoint isolation, and closes the incident. Total analyst time: under four minutes. Time for automated steps: under 90 seconds.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/soar.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is SOAR?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 7: ZERO TRUST -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="zero-trust">Zero Trust Architecture</h2>
+    </div>
+    <p>Zero Trust is a security model built on a single foundational principle: no user, device, or system should be trusted by default, regardless of whether it is inside or outside the network perimeter. Every access request must be verified before it is granted, and access should be scoped to the minimum required to complete the task at hand.</p>
+    <p>This stands in contrast to the traditional perimeter-based security model, where users and devices inside the network were implicitly trusted. That model assumed the perimeter would hold. In a world where endpoints roam freely, employees work remotely, and cloud services sit entirely outside the corporate network, the perimeter no longer exists as a meaningful security boundary.</p>
+    <h3>Identity Verification</h3>
+    <p>Identity is the foundation of Zero Trust. Before any resource access is granted, the requesting identity must be verified through strong authentication. This typically means multi-factor authentication as a baseline requirement, with additional verification steps for access to sensitive systems or data. Identity verification is not a one-time event at login; it is a continuous process that can revoke or restrict access in real time if risk signals change.</p>
+    <h3>Least Privilege Access</h3>
+    <p>Least privilege means that users, applications, and service accounts should only have access to the specific resources they need to perform their function, and nothing more. Broad standing access to systems and data creates unnecessary risk. If an attacker compromises an account with administrator access to the entire environment, the blast radius of that compromise is enormous. If the same account only has access to the specific systems required for its role, the attacker's options are dramatically limited.</p>
+    <h3>Network Segmentation</h3>
+    <p>Zero Trust networks are segmented into logical zones with strict controls on traffic between them. A compromised workstation in one segment cannot freely communicate with servers in another segment without that traffic passing through a control point that validates the legitimacy of the connection. This limits lateral movement and contains the damage an attacker can do after gaining an initial foothold.</p>
+    <h3>Continuous Authentication</h3>
+    <p>Traditional authentication models grant a session token at login and then trust that session until it expires. Zero Trust environments apply continuous risk scoring to active sessions, monitoring for signals such as unusual data access patterns, geographic anomalies, or device health changes that might indicate the session has been compromised. When risk scores exceed a threshold, the platform can require re-authentication or terminate the session automatically.</p>
+    <div class="card">
+      <div class="card-title">Key Capabilities</div>
+      <ul class="feature-list">
+        <li>Multi-factor authentication enforced for all resource access, not just perimeter login</li>
+        <li>Just-in-time and just-enough access provisioning to limit standing privileges</li>
+        <li>Micro-segmentation to restrict lateral movement between network zones</li>
+        <li>Continuous session risk scoring with automated access adjustment</li>
+        <li>Device health verification as a condition of access</li>
+        <li>Application-level access controls that bypass network-level trust assumptions</li>
+      </ul>
+    </div>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">Stolen Credentials: How Zero Trust Limits the Blast Radius</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Attack</div>
+                <p class="scenario-step-desc">An attacker obtains valid credentials for a junior analyst account through a phishing campaign. In a traditional perimeter model, this grants broad network access. Under Zero Trust, the credential alone is not enough.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Zero Trust — MFA Challenge</div>
+                <p class="scenario-step-desc">The attacker attempts to authenticate from an unrecognized device in a foreign country. The Zero Trust policy requires MFA and device compliance verification. The unregistered attacker device fails the compliance check and the session is blocked.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Zero Trust — Least Privilege Enforcement</div>
+                <p class="scenario-step-desc">In a scenario where the attacker manages to pass initial authentication, the compromised account has access only to the specific applications required for the analyst role. Lateral movement to HR systems, financial platforms, and infrastructure consoles is blocked at the access policy layer.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Zero Trust — Continuous Risk Scoring</div>
+                <p class="scenario-step-desc">The session risk score spikes as the attacker begins querying data at an unusual volume and speed. The Zero Trust platform downgrades the session trust level and forces re-authentication, terminating the attacker's access window.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">05</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Outcome</div>
+                <p class="scenario-step-desc">The attacker gained access to a narrow slice of applications for a brief session before being evicted automatically. The blast radius of the credential compromise was constrained to the minimum possible scope by architecture rather than by analyst intervention.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/zero-trust.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is Zero Trust?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 8: HOW THEY WORK TOGETHER — animated diagram -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="how-they-work-together">How These Technologies Work Together</h2>
+    </div>
+
+    <p>In isolation, each of these platforms solves part of the security problem. The real operational value comes when they are integrated into a coherent security stack where data flows between platforms and each tool informs the others.</p>
+
+    <!-- ═══ ENHANCEMENT 1: ANIMATED STACK DIAGRAM ═══ -->
+    <div class="stack-diagram">
+      <div class="diagram-label">Live Data Flow — Modern Security Stack</div>
+      <svg id="stackSvg" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated diagram showing data flow between SIEM, EDR, XDR, SOAR, and Zero Trust platforms in a modern security stack">
+        <defs>
+          <marker id="arrowGold" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#c9a84c" opacity="0.6"/>
+          </marker>
+          <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#64a0ff" opacity="0.5"/>
+          </marker>
+          <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#4ecfa8" opacity="0.5"/>
+          </marker>
+          <filter id="glowGold" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- ── ROW 1: Data Sources (top) ── -->
+        <!-- Endpoints -->
+        <g class="d-node" id="dn-endpoints">
+          <rect x="20" y="20" width="110" height="46" rx="3" fill="#16161a" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+          <text x="75" y="38" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#8a8a9a" letter-spacing="1.5">SOURCE</text>
+          <text x="75" y="55" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="14" font-weight="700" fill="#e8e8e8">Endpoints</text>
+        </g>
+
+        <!-- Network -->
+        <g class="d-node" id="dn-network">
+          <rect x="150" y="20" width="110" height="46" rx="3" fill="#16161a" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+          <text x="205" y="38" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#8a8a9a" letter-spacing="1.5">SOURCE</text>
+          <text x="205" y="55" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="14" font-weight="700" fill="#e8e8e8">Network</text>
+        </g>
+
+        <!-- Identity -->
+        <g class="d-node" id="dn-identity">
+          <rect x="280" y="20" width="110" height="46" rx="3" fill="#16161a" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+          <text x="335" y="38" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#8a8a9a" letter-spacing="1.5">SOURCE</text>
+          <text x="335" y="55" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="14" font-weight="700" fill="#e8e8e8">Identity</text>
+        </g>
+
+        <!-- Cloud -->
+        <g class="d-node" id="dn-cloud">
+          <rect x="410" y="20" width="110" height="46" rx="3" fill="#16161a" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+          <text x="465" y="38" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#8a8a9a" letter-spacing="1.5">SOURCE</text>
+          <text x="465" y="55" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="14" font-weight="700" fill="#e8e8e8">Cloud</text>
+        </g>
+
+        <!-- Email -->
+        <g class="d-node" id="dn-email">
+          <rect x="540" y="20" width="110" height="46" rx="3" fill="#16161a" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+          <text x="595" y="38" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#8a8a9a" letter-spacing="1.5">SOURCE</text>
+          <text x="595" y="55" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="14" font-weight="700" fill="#e8e8e8">Email</text>
+        </g>
+
+        <!-- ── ROW 2: Detection layer ── -->
+        <!-- EDR -->
+        <g class="d-node" id="dn-edr">
+          <rect x="20" y="130" width="110" height="52" rx="3" fill="#16161a" stroke="rgba(201,168,76,0.55)" stroke-width="1.5"/>
+          <text x="75" y="150" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#c9a84c" letter-spacing="1.5">DETECTION</text>
+          <text x="75" y="170" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="16" font-weight="800" fill="#ffffff">EDR</text>
+        </g>
+
+        <!-- SIEM -->
+        <g class="d-node" id="dn-siem">
+          <rect x="215" y="130" width="110" height="52" rx="3" fill="#16161a" stroke="rgba(201,168,76,0.55)" stroke-width="1.5"/>
+          <text x="270" y="150" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#c9a84c" letter-spacing="1.5">VISIBILITY</text>
+          <text x="270" y="170" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="16" font-weight="800" fill="#ffffff">SIEM</text>
+        </g>
+
+        <!-- XDR (center, slightly taller — the hub) -->
+        <g class="d-node" id="dn-xdr" filter="url(#glowGold)">
+          <rect x="345" y="122" width="120" height="68" rx="3" fill="#1a1810" stroke="#c9a84c" stroke-width="2"/>
+          <text x="405" y="144" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#c9a84c" letter-spacing="1.5">UNIFIED</text>
+          <text x="405" y="164" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="18" font-weight="800" fill="#c9a84c">XDR</text>
+          <text x="405" y="180" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" fill="rgba(201,168,76,0.6)" letter-spacing="1">CORRELATION HUB</text>
+        </g>
+
+        <!-- Zero Trust -->
+        <g class="d-node" id="dn-zt">
+          <rect x="540" y="130" width="110" height="52" rx="3" fill="#16161a" stroke="rgba(100,160,255,0.5)" stroke-width="1.5"/>
+          <text x="595" y="150" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#64a0ff" letter-spacing="1.5">ACCESS</text>
+          <text x="595" y="170" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="14" font-weight="800" fill="#ffffff">ZERO TRUST</text>
+        </g>
+
+        <!-- ── ROW 3: Response layer ── -->
+        <!-- SOAR -->
+        <g class="d-node" id="dn-soar">
+          <rect x="215" y="252" width="110" height="52" rx="3" fill="#16161a" stroke="rgba(78,207,168,0.5)" stroke-width="1.5"/>
+          <text x="270" y="272" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#4ecfa8" letter-spacing="1.5">AUTOMATION</text>
+          <text x="270" y="292" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="16" font-weight="800" fill="#ffffff">SOAR</text>
+        </g>
+
+        <!-- SOC Analyst -->
+        <g class="d-node" id="dn-soc">
+          <rect x="420" y="252" width="110" height="52" rx="3" fill="#16161a" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <text x="475" y="272" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" fill="#8a8a9a" letter-spacing="1.5">OUTCOME</text>
+          <text x="475" y="292" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="13" font-weight="700" fill="#e8e8e8">SOC Analyst</text>
+        </g>
+
+        <!-- ── CONNECTIONS: sources → detection ── -->
+        <!-- Endpoints → EDR -->
+        <line x1="75" y1="66" x2="75" y2="130" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4 3" marker-end="url(#arrowGold)"/>
+        <!-- Endpoints → SIEM -->
+        <line x1="110" y1="43" x2="215" y2="143" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4 3" marker-end="url(#arrowGold)"/>
+        <!-- Network → SIEM -->
+        <line x1="205" y1="66" x2="240" y2="130" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4 3" marker-end="url(#arrowGold)"/>
+        <!-- Identity → XDR -->
+        <line x1="335" y1="66" x2="385" y2="122" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4 3" marker-end="url(#arrowGold)"/>
+        <!-- Cloud → XDR -->
+        <line x1="465" y1="66" x2="440" y2="122" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4 3" marker-end="url(#arrowGold)"/>
+        <!-- Email → XDR -->
+        <line x1="595" y1="66" x2="465" y2="122" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="4 3" marker-end="url(#arrowGold)"/>
+
+        <!-- ── CONNECTIONS: EDR → SIEM ── -->
+        <line x1="130" y1="156" x2="215" y2="156" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.45" marker-end="url(#arrowGold)"/>
+
+        <!-- ── CONNECTIONS: SIEM → XDR ── -->
+        <line x1="325" y1="156" x2="345" y2="156" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.45" marker-end="url(#arrowGold)"/>
+
+        <!-- ── CONNECTIONS: Zero Trust ↔ XDR ── -->
+        <line x1="465" y1="154" x2="540" y2="154" stroke="#64a0ff" stroke-width="1.5" stroke-opacity="0.4" marker-end="url(#arrowBlue)"/>
+        <line x1="540" y1="165" x2="465" y2="165" stroke="#64a0ff" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="3 3" marker-end="url(#arrowBlue)"/>
+
+        <!-- ── CONNECTIONS: XDR → SOAR ── -->
+        <line x1="390" y1="190" x2="310" y2="252" stroke="#4ecfa8" stroke-width="1.5" stroke-opacity="0.45" marker-end="url(#arrowGreen)"/>
+
+        <!-- ── CONNECTIONS: SOAR → SOC ── -->
+        <line x1="325" y1="278" x2="420" y2="278" stroke="#4ecfa8" stroke-width="1.5" stroke-opacity="0.45" marker-end="url(#arrowGreen)"/>
+
+        <!-- ── CONNECTIONS: XDR → SOC ── -->
+        <line x1="430" y1="190" x2="470" y2="252" stroke="#c9a84c" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4 3" marker-end="url(#arrowGold)"/>
+
+        <!-- ── ANIMATED FLOW PATHS (CSS offset-path) ── -->
+        <!-- These are invisible paths used for dot animation via JS -->
+        <path id="flow1" d="M75,66 L75,130" fill="none" stroke="none"/>
+        <path id="flow2" d="M205,66 L240,130" fill="none" stroke="none"/>
+        <path id="flow3" d="M465,66 L440,122" fill="none" stroke="none"/>
+        <path id="flow4" d="M130,156 L215,156" fill="none" stroke="none"/>
+        <path id="flow5" d="M325,156 L345,156" fill="none" stroke="none"/>
+        <path id="flow6" d="M390,190 L310,252" fill="none" stroke="none"/>
+        <path id="flow7" d="M325,278 L420,278" fill="none" stroke="none"/>
+        <path id="flow8" d="M465,154 L540,154" fill="none" stroke="none"/>
+      </svg>
+
+      <!-- Animated phase indicator -->
+      <div class="diagram-phase-bar" id="phaseBar">
+        <span class="phase-chip" data-phase="0">Telemetry</span>
+        <span class="phase-chip" data-phase="1">Detection</span>
+        <span class="phase-chip" data-phase="2">Correlation</span>
+        <span class="phase-chip" data-phase="3">Automation</span>
+        <span class="phase-chip" data-phase="4">Response</span>
+      </div>
+
+      <div class="diagram-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#c9a84c;"></div> Telemetry / Detection Flow</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#64a0ff;"></div> Zero Trust Signals</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#4ecfa8;"></div> Automated Response</div>
+      </div>
+    </div>
+
+    <h3>Detection Phase</h3>
+    <p>An attack begins with adversary action. The attacker delivers a phishing email, exploits a vulnerable service, or authenticates with stolen credentials. At this stage, Zero Trust policies may block or flag the access attempt if the risk signals are strong enough. If the attack proceeds past initial access, the EDR agent on the endpoint begins recording process execution, and the SIEM starts correlating authentication and network events. The XDR platform ties these signals together across domains.</p>
+    <h3>Investigation Phase</h3>
+    <p>Once a detection fires, the SOAR platform automatically enriches the alert: it queries threat intelligence for context on the involved IP addresses and hashes, checks asset databases to identify the affected system owner and criticality, and pulls the relevant timeline from the EDR platform. By the time the alert reaches an analyst, much of the initial investigation has already been completed automatically. The analyst can review a structured incident package rather than starting from a raw alert.</p>
+    <h3>Response and Containment Phase</h3>
+    <p>When the analyst confirms the incident, the SOAR platform orchestrates response actions across the stack. The EDR agent isolates the compromised endpoint. The identity platform revokes the compromised user's session tokens. The firewall blocks the attacker's infrastructure. Zero Trust policies are updated to require additional verification for the affected user's future access attempts. All of these actions happen through a single coordinated workflow, with a documented audit trail for each step.</p>
+    <p>This integrated model is why security architects rarely recommend deploying these technologies in isolation. The effectiveness of each platform is multiplied when it has access to the data and actions of the others.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 9: EXAMPLE STACK -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="example-security-stack">Example Modern Security Stack</h2>
+    </div>
+    <p>A mid-to-large enterprise with a mature security program might deploy a stack that looks like the following. Specific vendor choices will vary based on existing investments, procurement relationships, and technical requirements, but the architecture pattern is broadly representative of how these technologies are combined in practice.</p>
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Layer</th>
+          <th>Technology</th>
+          <th>Function in Stack</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Log Management</td>
+          <td>SIEM</td>
+          <td>Ingests logs from all sources, applies correlation rules, generates compliance reports, and serves as the long-term data store for forensic investigations.</td>
+        </tr>
+        <tr>
+          <td>Endpoint Defense</td>
+          <td>EDR</td>
+          <td>Provides deep endpoint telemetry, behavioral detections, and remote response capabilities across all managed workstations and servers.</td>
+        </tr>
+        <tr>
+          <td>Unified Detection</td>
+          <td>XDR</td>
+          <td>Correlates signals across endpoint, email, cloud, and identity domains to surface complete attack chains and reduce alert fragmentation.</td>
+        </tr>
+        <tr>
+          <td>Automation</td>
+          <td>SOAR</td>
+          <td>Automates alert enrichment and triage, executes response playbooks, and orchestrates coordinated actions across all connected platforms.</td>
+        </tr>
+        <tr>
+          <td>Access Control</td>
+          <td>Zero Trust</td>
+          <td>Enforces continuous identity verification, least-privilege access, and micro-segmentation to limit attacker movement if a breach occurs.</td>
+        </tr>
+        <tr>
+          <td>Threat Intelligence</td>
+          <td>TIP / CTI Feeds</td>
+          <td>Enriches detections with adversary context, supports proactive threat hunting, and informs detection rule development across all platforms.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Data flows between these layers continuously. The EDR feeds telemetry into both the SIEM and the XDR platform. The XDR platform surfaces correlated incidents into the SOAR for automated triage. The SOAR queries the threat intelligence platform during enrichment workflows and sends response actions back to the EDR and identity platforms. The Zero Trust system receives risk signals from the XDR and adjusts access policies in near-real time. This interconnected architecture is more than the sum of its parts.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 10: CHOOSING -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="choosing-security-technologies">Choosing the Right Security Technologies</h2>
+    </div>
+    <p>Not every organization needs to deploy all five of these technologies simultaneously. The right combination depends on several factors, including organizational size, security maturity, regulatory obligations, and the operational capacity of the security team. Starting with the most impactful platforms for the current threat profile and expanding from there is a more effective approach than attempting to deploy everything at once.</p>
+    <h3>Company Size and Resources</h3>
+    <p>Smaller organizations with limited security budgets and no dedicated SOC team often benefit most from starting with a cloud-delivered EDR and a SIEM. These two platforms provide the foundational telemetry and detection capability that everything else builds on. As the team grows, SOAR automation becomes increasingly valuable for reducing the manual burden on a small analyst team. XDR capabilities often come bundled with modern EDR platforms, making the progression from EDR to XDR a natural next step.</p>
+    <p>Larger organizations with mature security programs typically have all five technologies deployed and are focused on integration quality: ensuring that data flows cleanly between platforms, playbooks are current and tested, and detection coverage maps to the threat actor profiles most relevant to their industry.</p>
+    <h3>Security Maturity</h3>
+    <p>An organization that is just beginning to formalize its security program should prioritize foundational visibility before investing in automation. A SOAR platform cannot add value if the underlying detection stack is generating low-quality alerts. Getting log collection, normalization, and basic detection rules right in the SIEM, and getting EDR deployed across the endpoint fleet, creates the data quality that makes subsequent automation investments worthwhile.</p>
+    <p>More mature organizations often find that their biggest operational bottleneck is analyst capacity. At that stage, SOAR automation and XDR's reduction in alert fragmentation both have a significant impact on the volume of work landing on the analyst team each shift.</p>
+    <h3>Compliance Requirements</h3>
+    <p>Regulatory frameworks often drive technology adoption decisions. Organizations subject to PCI-DSS are generally required to implement centralized logging, which drives SIEM adoption. HIPAA covered entities need audit logging and access controls that map closely to both SIEM and Zero Trust capabilities. Defense industrial base contractors operating under CMMC requirements will find that several of the controls they need to satisfy are directly addressed by EDR and Zero Trust architecture.</p>
+    <p>Understanding which compliance requirements apply before selecting platforms allows organizations to consolidate investments, choosing platforms that satisfy multiple compliance requirements simultaneously rather than deploying separate tools for each framework.</p>
+    <h3>Operational Staffing</h3>
+    <p>Every security technology requires staff to operate it effectively. A SIEM with poorly tuned detection rules generates noise that burns analyst time. An EDR platform that no one is monitoring provides little protective value. Organizations should be realistic about the staffing capacity they have to operate these tools and select platforms with appropriate levels of managed service support, vendor-provided analytics, or automation built in.</p>
+    <p>SOAR platforms, when properly implemented, can extend the operational capacity of a small analyst team by automating a significant portion of the repetitive investigation work that would otherwise consume their time. For resource-constrained organizations, this can be a compelling reason to prioritize SOAR earlier in the maturity journey than might otherwise seem logical.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CONCLUSION -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="conclusion">Conclusion</h2>
+    </div>
+    <p>Modern cyber defense is not a single tool or a single strategy. It is a coordinated architecture of platforms that each address a different layer of the problem: visibility, detection, response, automation, and access control. SIEM provides the log aggregation and correlation backbone. EDR delivers deep endpoint telemetry and response capability. XDR unifies detection across the full attack surface. SOAR automates the operational work that would otherwise slow analysts down. Zero Trust limits the damage an attacker can do once inside the environment.</p>
+    <p>The value of each technology is amplified when it is integrated with the others. Organizations that deploy these platforms as isolated tools, without the integrations and data flows that connect them, leave significant capability on the table. The goal is a security stack where data moves freely between platforms, where detections in one domain automatically inform response actions in another, and where analysts spend their time on genuine investigation and threat hunting rather than manual alert processing.</p>
+    <p>Whether your organization is building a security program from scratch or evaluating gaps in an existing stack, the knowledge base pages linked throughout this guide provide detailed reference material on each technology. Use them as a starting point for vendor evaluation, architecture planning, or simply developing a stronger operational understanding of the tools your team depends on.</p>
+    <div class="cta-block">
+      <h3>Explore the Full Knowledge Base</h3>
+      <p>Browse all TacRaven cybersecurity reference guides covering tools, techniques, frameworks, and threat intelligence.</p>
+      <a href="/knowledge-base.html" class="cta-btn">
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        Go to the Knowledge Base
+      </a>
+    </div>
+  </section>
+
+  <!-- RELATED RESOURCES RAIL -->
+  <div class="related-rail">
+    <div class="related-rail-label">Also from TacRaven</div>
+    <div class="related-cards">
+
+      <a href="/blackfeather.html" class="related-card" style="--rc-accent:#c9a84c;">
+        <div class="related-card-tag">Platform</div>
+        <div class="related-card-name">BlackFeather</div>
+        <p class="related-card-desc">Air-gapped threat intelligence analysis platform built for defense and intelligence environments.</p>
+        <div class="related-card-arrow">
+          Explore BlackFeather
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+      <a href="/black-wing-dispatch.html" class="related-card" style="--rc-accent:#a08030;">
+        <div class="related-card-tag">CTI Blog</div>
+        <div class="related-card-name">Black Wing Dispatch</div>
+        <p class="related-card-desc">Weekly cyber threat intelligence reporting covering active threat actors, TTPs, and emerging campaigns.</p>
+        <div class="related-card-arrow">
+          Read the Dispatch
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+      <a href="/apt-intelligence-library.html" class="related-card" style="--rc-accent:#c05a3a;">
+        <div class="related-card-tag">Reference</div>
+        <div class="related-card-name">APT Intelligence Library</div>
+        <p class="related-card-desc">Structured threat actor profiles covering attribution, TTPs, infrastructure patterns, and historical campaigns.</p>
+        <div class="related-card-arrow">
+          Browse APT Profiles
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+
+</div><!-- /page-wrap -->
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════
+   ENHANCEMENT 2: COMPARISON TOGGLE — DATA & RENDER
+═══════════════════════════════════════════════ */
+const techData = {
+  siem: {
+    name: 'SIEM',
+    full: 'Security Information & Event Management',
+    scope: 'Enterprise-wide log aggregation',
+    dataSource: 'System logs, firewall logs, auth events, cloud logs',
+    primaryUse: 'Threat detection via correlation rules, compliance reporting',
+    detectionMethod: 'Rule-based correlation + behavioral analytics (UEBA)',
+    responseCapability: 'Alerting and escalation only — no automated remediation',
+    bestFor: 'Compliance-driven orgs, large log volumes, long-term forensics',
+    mttd: 'Medium — depends on rule quality and log coverage',
+    staffingLoad: 'High — requires rule tuning and alert triage',
+  },
+  edr: {
+    name: 'EDR',
+    full: 'Endpoint Detection and Response',
+    scope: 'Managed endpoints (workstations, servers, laptops)',
+    dataSource: 'Process execution, file events, registry, network from agent',
+    primaryUse: 'Endpoint threat detection, behavioral analysis, containment',
+    detectionMethod: 'Behavioral pattern matching, MITRE ATT&CK correlation',
+    responseCapability: 'Direct: isolate host, kill process, delete file remotely',
+    bestFor: 'Orgs with large endpoint fleets, high malware risk',
+    mttd: 'Fast — real-time telemetry from agent',
+    staffingLoad: 'Medium — automated detections reduce manual work',
+  },
+  xdr: {
+    name: 'XDR',
+    full: 'Extended Detection and Response',
+    scope: 'Cross-domain: endpoint, email, cloud, identity, network',
+    dataSource: 'Aggregated from EDR, email gateway, cloud, IdP, network sensors',
+    primaryUse: 'Unified incident detection across all security domains',
+    detectionMethod: 'Cross-domain correlation, attack chain reconstruction',
+    responseCapability: 'Coordinated across domains from a single console',
+    bestFor: 'Orgs with fragmented alert sources, cloud-heavy environments',
+    mttd: 'Fast — cross-domain correlation reduces missed detections',
+    staffingLoad: 'Low-Medium — incident consolidation reduces analyst workload',
+  },
+  soar: {
+    name: 'SOAR',
+    full: 'Security Orchestration, Automation & Response',
+    scope: 'SOC operations layer — sits above detection platforms',
+    dataSource: 'Receives alerts from SIEM, EDR, XDR, email, ticketing systems',
+    primaryUse: 'Alert triage automation, playbook execution, response orchestration',
+    detectionMethod: 'No independent detection — processes alerts from other tools',
+    responseCapability: 'Orchestrated: firewall block, EDR isolate, AD disable, ticketing',
+    bestFor: 'High-volume SOCs, alert-fatigued teams, compliance-heavy orgs',
+    mttd: 'N/A — response acceleration, not detection',
+    staffingLoad: 'Low — automates high-volume repetitive tasks',
+  },
+  zt: {
+    name: 'Zero Trust',
+    full: 'Zero Trust Architecture',
+    scope: 'Identity and access layer across all resources',
+    dataSource: 'Identity provider, device health, session behavior, risk scoring',
+    primaryUse: 'Prevent unauthorized access, limit lateral movement',
+    detectionMethod: 'Risk-based access policy enforcement and session scoring',
+    responseCapability: 'Session termination, step-up MFA, access revocation',
+    bestFor: 'Cloud-first orgs, remote workforces, privileged access control',
+    mttd: 'Preventive — stops attacks before they require detection',
+    staffingLoad: 'Low once deployed — policy-driven, largely automated',
+  },
+};
+
+const dimensions = [
+  { key: 'scope',              label: 'Scope' },
+  { key: 'dataSource',         label: 'Data Sources' },
+  { key: 'primaryUse',         label: 'Primary Use Case' },
+  { key: 'detectionMethod',    label: 'Detection Method' },
+  { key: 'responseCapability', label: 'Response Capability' },
+  { key: 'bestFor',            label: 'Best Suited For' },
+  { key: 'mttd',               label: 'Detection Speed' },
+  { key: 'staffingLoad',       label: 'Staffing Load' },
+];
+
+function renderCompare() {
+  const aKey = document.getElementById('compareA').value;
+  const bKey = document.getElementById('compareB').value;
+  const a = techData[aKey];
+  const b = techData[bKey];
+  const grid = document.getElementById('compareGrid');
+
+  let html = `
+    <div class="compare-col-header label-col"></div>
+    <div class="compare-col-header col-a">
+      <div class="compare-col-name">${a.name}</div>
+      <div class="compare-col-full">${a.full}</div>
+    </div>
+    <div class="compare-col-header col-b">
+      <div class="compare-col-name col-b">${b.name}</div>
+      <div class="compare-col-full">${b.full}</div>
+    </div>
+  `;
+
+  dimensions.forEach(dim => {
+    html += `
+      <div class="compare-row">
+        <div class="compare-cell dim-label">${dim.label}</div>
+        <div class="compare-cell col-a">${a[dim.key]}</div>
+        <div class="compare-cell col-b">${b[dim.key]}</div>
+      </div>
+    `;
+  });
+
+  grid.innerHTML = html;
+}
+
+document.getElementById('compareA').addEventListener('change', renderCompare);
+document.getElementById('compareB').addEventListener('change', renderCompare);
+renderCompare();
+
+
+/* ═══════════════════════════════════════════════
+   ENHANCEMENT 3: SCENARIO ACCORDIONS
+═══════════════════════════════════════════════ */
+document.querySelectorAll('[data-accordion]').forEach(acc => {
+  const trigger = acc.querySelector('.scenario-trigger');
+  trigger.addEventListener('click', () => {
+    const isOpen = acc.classList.contains('open');
+    // Close all
+    document.querySelectorAll('[data-accordion]').forEach(a => a.classList.remove('open'));
+    // Toggle clicked
+    if (!isOpen) acc.classList.add('open');
+  });
+});
+
+
+/* ═══════════════════════════════════════════════
+   ENHANCEMENT 1: ANIMATED STACK DIAGRAM
+   CSS offset-path animated dots on SVG paths
+═══════════════════════════════════════════════ */
+(function() {
+  const svg = document.getElementById('stackSvg');
+  if (!svg) return;
+
+  // Flow dot definitions: pathId, color, delay, duration
+  const flows = [
+    { path: 'flow1', color: '#c9a84c', delay: 0,    dur: 1.6 },
+    { path: 'flow2', color: '#c9a84c', delay: 0.3,  dur: 1.8 },
+    { path: 'flow3', color: '#c9a84c', delay: 0.6,  dur: 1.6 },
+    { path: 'flow4', color: '#c9a84c', delay: 1.0,  dur: 2.0 },
+    { path: 'flow5', color: '#c9a84c', delay: 1.2,  dur: 1.4 },
+    { path: 'flow6', color: '#4ecfa8', delay: 1.8,  dur: 2.0 },
+    { path: 'flow7', color: '#4ecfa8', delay: 2.2,  dur: 1.6 },
+    { path: 'flow8', color: '#64a0ff', delay: 1.4,  dur: 1.8 },
+  ];
+
+  const NS = 'http://www.w3.org/2000/svg';
+
+  flows.forEach(f => {
+    const pathEl = document.getElementById(f.path);
+    if (!pathEl) return;
+
+    // Create animated circle on the SVG path using animateMotion
+    const circle = document.createElementNS(NS, 'circle');
+    circle.setAttribute('r', '4');
+    circle.setAttribute('fill', f.color);
+    circle.setAttribute('opacity', '0.9');
+
+    const filter = document.createElementNS(NS, 'filter');
+    const filtId = 'glow_' + f.path;
+    filter.setAttribute('id', filtId);
+    filter.setAttribute('x', '-60%');
+    filter.setAttribute('y', '-60%');
+    filter.setAttribute('width', '220%');
+    filter.setAttribute('height', '220%');
+    const blur = document.createElementNS(NS, 'feGaussianBlur');
+    blur.setAttribute('stdDeviation', '2');
+    blur.setAttribute('result', 'blur');
+    const merge = document.createElementNS(NS, 'feMerge');
+    const mn1 = document.createElementNS(NS, 'feMergeNode');
+    mn1.setAttribute('in', 'blur');
+    const mn2 = document.createElementNS(NS, 'feMergeNode');
+    mn2.setAttribute('in', 'SourceGraphic');
+    merge.appendChild(mn1);
+    merge.appendChild(mn2);
+    filter.appendChild(blur);
+    filter.appendChild(merge);
+    svg.querySelector('defs').appendChild(filter);
+    circle.setAttribute('filter', `url(#${filtId})`);
+
+    const animMotion = document.createElementNS(NS, 'animateMotion');
+    const mpath = document.createElementNS(NS, 'mpath');
+    mpath.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#' + f.path);
+    animMotion.appendChild(mpath);
+    animMotion.setAttribute('dur', f.dur + 's');
+    animMotion.setAttribute('begin', f.delay + 's');
+    animMotion.setAttribute('repeatCount', 'indefinite');
+    animMotion.setAttribute('calcMode', 'linear');
+
+    const animOpacity = document.createElementNS(NS, 'animate');
+    animOpacity.setAttribute('attributeName', 'opacity');
+    animOpacity.setAttribute('values', '0;1;1;0');
+    animOpacity.setAttribute('keyTimes', '0;0.1;0.85;1');
+    animOpacity.setAttribute('dur', f.dur + 's');
+    animOpacity.setAttribute('begin', f.delay + 's');
+    animOpacity.setAttribute('repeatCount', 'indefinite');
+
+    circle.appendChild(animMotion);
+    circle.appendChild(animOpacity);
+    svg.appendChild(circle);
+  });
+
+  // Phase bar cycling
+  const phases = document.querySelectorAll('.phase-chip');
+  let currentPhase = 0;
+  const phaseDurations = [1600, 2000, 2200, 2000, 1800];
+
+  function cyclePhase() {
+    phases.forEach(p => p.classList.remove('active'));
+    phases[currentPhase].classList.add('active');
+    const dur = phaseDurations[currentPhase] || 2000;
+    currentPhase = (currentPhase + 1) % phases.length;
+    setTimeout(cyclePhase, dur);
+  }
+
+  setTimeout(cyclePhase, 400);
+})();
+/* ═══════════════════════════════════════════════
+   SHARE BUTTON
+═══════════════════════════════════════════════ */
+(function() {
+  const btn = document.getElementById('shareBtn');
+  const toast = document.getElementById('shareToast');
+  if (!btn || !toast) return;
+
+  btn.addEventListener('click', async () => {
+    const url = window.location.href;
+    const title = document.title;
+
+    // Try native Web Share API first (mobile)
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+        return;
+      } catch(e) { /* user cancelled or unsupported — fall through */ }
+    }
+
+    // Fall back to clipboard copy
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch(e) {
+      // Final fallback for older browsers
+      const ta = document.createElement('textarea');
+      ta.value = url;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+
+    toast.classList.add('visible');
+    setTimeout(() => toast.classList.remove('visible'), 2200);
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   GA4 ENHANCED EVENT TRACKING
+═══════════════════════════════════════════════ */
+(function() {
+
+  // ── Scroll depth milestones ──
+  const scrollMilestones = [25, 50, 75, 90];
+  const firedMilestones = new Set();
+
+  function getScrollPct() {
+    const el = document.documentElement;
+    const scrolled = el.scrollTop || document.body.scrollTop;
+    const total = el.scrollHeight - el.clientHeight;
+    return total > 0 ? Math.round((scrolled / total) * 100) : 0;
+  }
+
+  window.addEventListener('scroll', function() {
+    const pct = getScrollPct();
+    scrollMilestones.forEach(function(m) {
+      if (pct >= m && !firedMilestones.has(m)) {
+        firedMilestones.add(m);
+        gtag('event', 'scroll_depth', {
+          event_category: 'Engagement',
+          event_label: m + '%',
+          scroll_depth_pct: m
+        });
+      }
+    });
+  }, { passive: true });
+
+  // ── Section visibility via IntersectionObserver ──
+  var sectionMap = {
+    'why-security-technologies-matter': 'Why Security Technologies Matter',
+    'overview':                          'Platform Overview',
+    'siem':                              'SIEM',
+    'edr':                               'EDR',
+    'xdr':                               'XDR',
+    'soar':                              'SOAR',
+    'zero-trust':                        'Zero Trust',
+    'how-they-work-together':            'How They Work Together',
+    'example-security-stack':            'Example Stack',
+    'choosing-security-technologies':    'Choosing Technologies',
+    'conclusion':                        'Conclusion'
+  };
+
+  if ('IntersectionObserver' in window) {
+    var sectionObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          if (id && sectionMap[id]) {
+            gtag('event', 'section_viewed', {
+              event_category: 'Content',
+              event_label: sectionMap[id],
+              section_id: id
+            });
+            sectionObserver.unobserve(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+
+    Object.keys(sectionMap).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) sectionObserver.observe(el);
+    });
+  }
+
+  // ── CTA cluster page link clicks ──
+  document.querySelectorAll('a.cta-btn').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'cta_click', {
+        event_category: 'Navigation',
+        event_label: this.textContent.trim(),
+        link_url: this.getAttribute('href')
+      });
+    });
+  });
+
+  // ── Return to Knowledge Base ──
+  var backBtn = document.querySelector('.hero-back-btn');
+  if (backBtn) {
+    backBtn.addEventListener('click', function() {
+      gtag('event', 'navigation_click', {
+        event_category: 'Navigation',
+        event_label: 'Return to Knowledge Base'
+      });
+    });
+  }
+
+  // ── Related resource card clicks ──
+  document.querySelectorAll('.related-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var nameEl = this.querySelector('.related-card-name');
+      gtag('event', 'related_resource_click', {
+        event_category: 'Engagement',
+        event_label: nameEl ? nameEl.textContent.trim() : 'Unknown',
+        link_url: this.getAttribute('href')
+      });
+    });
+  });
+
+  // ── Scenario accordion opens ──
+  document.querySelectorAll('[data-accordion]').forEach(function(acc) {
+    var trigger = acc.querySelector('.scenario-trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', function() {
+      var willOpen = !acc.classList.contains('open');
+      this.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      if (willOpen) {
+        var labelEl = acc.querySelector('.scenario-trigger-text');
+        gtag('event', 'scenario_expanded', {
+          event_category: 'Engagement',
+          event_label: labelEl ? labelEl.textContent.trim() : 'Unknown'
+        });
+      }
+    });
+  });
+
+  // ── Comparison tool changes ──
+  ['compareA', 'compareB'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', function() {
+      var a = (document.getElementById('compareA').value || '').toUpperCase();
+      var b = (document.getElementById('compareB').value || '').toUpperCase();
+      gtag('event', 'comparison_changed', {
+        event_category: 'Engagement',
+        event_label: a + ' vs ' + b,
+        platform_a: a,
+        platform_b: b
+      });
+    });
+  });
+
+  // ── Share button ──
+  var shareBtn2 = document.getElementById('shareBtn');
+  if (shareBtn2) {
+    shareBtn2.addEventListener('click', function() {
+      gtag('event', 'share', {
+        event_category: 'Engagement',
+        method: navigator.share ? 'native_share' : 'clipboard_copy',
+        content_type: 'article',
+        item_id: 'security-technologies'
+      });
+    });
+  }
+
+  // ── Time on page milestones ──
+  [30, 60, 120, 300].forEach(function(s) {
+    setTimeout(function() {
+      gtag('event', 'time_on_page', {
+        event_category: 'Engagement',
+        event_label: s + 's',
+        seconds_on_page: s
+      });
+    }, s * 1000);
+  });
+
+})();
+
+</script>
+
+</body>
+</html>

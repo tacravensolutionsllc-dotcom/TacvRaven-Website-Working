@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── PRIMARY META ── -->
+  <title>Cybersecurity Compliance & Security Frameworks Explained | TacRaven Solutions</title>
+  <meta name="description" content="A complete guide to cybersecurity compliance and security frameworks including SOC 2, ISO 27001, CMMC, NIST CSF, and PCI-DSS. Learn how organizations manage cyber risk and regulatory requirements." />
+  <meta name="author" content="TacRaven Solutions" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="canonical" href="https://tacraven.com/compliance-frameworks.html" />
+
+  <!-- ── OPEN GRAPH ── -->
+  <meta property="og:title" content="Cybersecurity Compliance & Security Frameworks Explained | TacRaven Solutions" />
+  <meta property="og:description" content="A complete guide to cybersecurity compliance and security frameworks including SOC 2, ISO 27001, CMMC, NIST CSF, and PCI-DSS." />
+  <meta property="og:url" content="https://tacraven.com/compliance-frameworks.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://tacraven.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cybersecurity Compliance & Frameworks guide — TacRaven Solutions" />
+  <meta property="article:published_time" content="2025-01-01T00:00:00Z" />
+  <meta property="article:modified_time" content="2025-03-01T00:00:00Z" />
+  <meta property="article:author" content="TacRaven Solutions" />
+  <meta property="article:section" content="Cybersecurity" />
+  <meta property="article:tag" content="SOC 2" />
+  <meta property="article:tag" content="ISO 27001" />
+  <meta property="article:tag" content="CMMC" />
+  <meta property="article:tag" content="NIST CSF" />
+  <meta property="article:tag" content="PCI-DSS" />
+
+  <!-- ── TWITTER / X CARD ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cybersecurity Compliance & Security Frameworks Explained | TacRaven Solutions" />
+  <meta name="twitter:description" content="A complete guide to the standards and frameworks organizations use to manage cyber risk: SOC 2, ISO 27001, CMMC, NIST CSF, and PCI-DSS." />
+  <meta name="twitter:image" content="https://tacraven.com/og-image.png" />
+  <meta name="twitter:image:alt" content="Cybersecurity Compliance & Frameworks guide — TacRaven Solutions" />
+  <meta name="twitter:site" content="@TacRaven" />
+
+  <!-- ── JSON-LD STRUCTURED DATA ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://tacraven.com/compliance-frameworks.html#article",
+        "headline": "Cybersecurity Compliance & Security Frameworks Explained",
+        "description": "A complete guide to cybersecurity compliance and security frameworks including SOC 2, ISO 27001, CMMC, NIST CSF, and PCI-DSS.",
+        "image": "https://tacraven.com/og-image.png",
+        "author": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" },
+        "publisher": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com", "logo": { "@type": "ImageObject", "url": "https://tacraven.com/assets/logo.png" } },
+        "datePublished": "2025-01-01",
+        "dateModified": "2025-03-01",
+        "mainEntityOfPage": "https://tacraven.com/compliance-frameworks.html",
+        "url": "https://tacraven.com/compliance-frameworks.html",
+        "keywords": ["SOC 2", "ISO 27001", "CMMC", "NIST CSF", "PCI-DSS", "cybersecurity compliance", "security frameworks", "risk management"],
+        "articleSection": "Compliance & Frameworks",
+        "inLanguage": "en-US",
+        "isPartOf": { "@type": "WebSite", "name": "TacRaven Solutions Knowledge Base", "url": "https://tacraven.com/knowledge-base.html" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://tacraven.com/compliance-frameworks.html#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tacraven.com" },
+          { "@type": "ListItem", "position": 2, "name": "Knowledge Base", "item": "https://tacraven.com/knowledge-base.html" },
+          { "@type": "ListItem", "position": 3, "name": "Compliance & Frameworks", "item": "https://tacraven.com/compliance-frameworks.html" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://tacraven.com/compliance-frameworks.html#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is SOC 2 compliance?", "acceptedAnswer": { "@type": "Answer", "text": "SOC 2 is an AICPA auditing standard that evaluates whether a service organization's controls meet the Trust Services Criteria across Security, Availability, Confidentiality, Processing Integrity, and Privacy. A SOC 2 Type II report is widely required by enterprise customers before sharing data with SaaS vendors or cloud service providers." } },
+          { "@type": "Question", "name": "What is ISO 27001?", "acceptedAnswer": { "@type": "Answer", "text": "ISO 27001 is the international standard for Information Security Management Systems (ISMS). It requires organizations to establish, implement, and continuously improve a structured security management program based on formal risk assessment. Certification is granted by accredited third-party bodies and recognized globally." } },
+          { "@type": "Question", "name": "What is CMMC and who needs it?", "acceptedAnswer": { "@type": "Answer", "text": "The Cybersecurity Maturity Model Certification (CMMC) is a DoD program establishing cybersecurity requirements for defense contractors handling Controlled Unclassified Information (CUI). Contractors must achieve a specific CMMC level to be eligible for covered DoD contracts." } },
+          { "@type": "Question", "name": "What is the NIST Cybersecurity Framework?", "acceptedAnswer": { "@type": "Answer", "text": "The NIST Cybersecurity Framework (NIST CSF) is a voluntary framework that helps organizations structure their security programs around six functions: Govern, Identify, Protect, Detect, Respond, and Recover. It is widely used across critical infrastructure, government contractors, and commercial enterprises." } },
+          { "@type": "Question", "name": "What is the difference between a security framework and a compliance standard?", "acceptedAnswer": { "@type": "Answer", "text": "A security framework like NIST CSF guides how a security program is built and managed. A compliance standard like SOC 2 or PCI-DSS defines requirements an organization must satisfy to demonstrate a specific level of security to regulators, auditors, or customers through a formal audit or attestation." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── GA4 ── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PEYM947EG8', {
+      page_title: 'Compliance & Frameworks Pillar Page',
+      page_location: 'https://tacraven.com/compliance-frameworks.html'
+    });
+  </script>
+
+  <!-- ── PERFORMANCE ── -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-dim: rgba(201,168,76,0.15);
+      --gold-border: rgba(201,168,76,0.3);
+      --gold-bright: rgba(201,168,76,0.7);
+      --bg: #0a0a0b;
+      --bg-card: #111113;
+      --bg-card2: #16161a;
+      --text: #e8e8e8;
+      --text-muted: #8a8a9a;
+      --white: #ffffff;
+      --max-w: 860px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.75;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--gold); color: #0a0a0b;
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── HERO ACTION BAR ── */
+    .hero-actions {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-back-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: transparent; color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .hero-back-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.05); }
+    .hero-back-btn svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .hero-share-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: transparent; color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 2px; cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .hero-share-btn:hover { background: var(--gold-dim); border-color: var(--gold); }
+    .hero-share-btn svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 100px 24px 80px;
+      text-align: center; overflow: hidden;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold-border);
+      padding: 5px 14px; border-radius: 2px;
+      margin-bottom: 28px; background: var(--gold-dim);
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800; line-height: 1.1; color: var(--white);
+      max-width: 820px; margin: 0 auto 20px; letter-spacing: 0.01em;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-subtitle {
+      font-size: 1.15rem; color: var(--text-muted);
+      max-width: 600px; margin: 0 auto 40px; font-weight: 300;
+    }
+    .hero-meta {
+      display: flex; justify-content: center;
+      gap: 32px; font-size: 13px; color: var(--text-muted);
+      letter-spacing: 0.06em; flex-wrap: wrap;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+    .hero-meta span::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+    /* ── LAYOUT ── */
+    .page-wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px 80px; }
+
+    /* ── SECTION ── */
+    .section { padding: 72px 0 0; }
+    .section:last-of-type { padding-bottom: 80px; }
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .section-bar { width: 4px; height: 32px; background: var(--gold); border-radius: 2px; flex-shrink: 0; }
+    .section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700; color: var(--white); letter-spacing: 0.02em;
+    }
+    .section h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem; font-weight: 600; color: var(--gold);
+      letter-spacing: 0.06em; text-transform: uppercase; margin: 36px 0 10px;
+    }
+    .section p { margin-bottom: 20px; color: var(--text); }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.055);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px; padding: 28px 32px;
+      margin-bottom: 24px; transition: border-color 0.2s;
+    }
+    .card:hover { border-left-color: #e0b85a; }
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--white);
+      letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .card p { margin-bottom: 0; font-size: 15.5px; color: var(--text-muted); }
+
+    /* ── TECH GRID ── */
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 32px 0; }
+    .tech-tile {
+      background: var(--bg-card2); border: 1px solid var(--gold-border);
+      border-radius: 4px; padding: 22px 22px 18px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .tech-tile:hover { background: var(--bg-card); transform: translateY(-2px); }
+    .tech-tile-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    .tech-tile-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: 8px;
+    }
+    .tech-tile p { font-size: 14px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    /* ── FEATURE LIST ── */
+    .feature-list { list-style: none; margin: 16px 0 24px; padding: 0; }
+    .feature-list li {
+      padding: 8px 0 8px 22px; position: relative;
+      color: var(--text); border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 15.5px;
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list li::before {
+      content: ''; position: absolute; left: 0; top: 50%;
+      width: 7px; height: 7px; border: 1.5px solid var(--gold);
+      border-radius: 1px; transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* ── STACK TABLE ── */
+    .stack-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+    .stack-table th {
+      background: var(--gold-dim); color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 12px 16px; text-align: left;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .stack-table td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text); vertical-align: top; }
+    .stack-table tr:hover td { background: rgba(201,168,76,0.04); }
+    .stack-table td:first-child { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--white); white-space: nowrap; }
+
+    /* ── CTA BUTTON ── */
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 11px 22px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      margin-top: 12px;
+    }
+    .cta-btn:hover { background: var(--gold); color: #0a0a0b; border-color: var(--gold); }
+    .cta-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      background: var(--bg-card); border: 1px solid var(--gold-border);
+      border-radius: 4px; padding: 40px 36px;
+      text-align: center; margin: 72px 0 0;
+    }
+    .cta-block h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 10px;
+    }
+    .cta-block p { color: var(--text-muted); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 64px 0 0; }
+
+    /* ── INTRO CARD ── */
+    .intro-card {
+      background: var(--bg-card); border-left: 3px solid var(--gold);
+      padding: 28px 32px; margin: 40px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .intro-card p { margin: 0; font-size: 16px; color: var(--text-muted); }
+
+    /* ── SCENARIO ACCORDIONS ── */
+    .scenario-accordion { margin: 28px 0 0; border: 1px solid var(--gold-border); border-radius: 4px; overflow: hidden; }
+    .scenario-trigger {
+      width: 100%; background: var(--gold-dim); border: none;
+      padding: 15px 20px; display: flex; align-items: center; gap: 12px;
+      cursor: pointer; text-align: left; transition: background 0.2s;
+    }
+    .scenario-trigger:hover { background: rgba(201,168,76,0.22); }
+    .scenario-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--bg); background: var(--gold);
+      padding: 3px 8px; border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+    }
+    .scenario-trigger-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px; font-weight: 700; color: var(--gold); letter-spacing: 0.04em; flex: 1;
+    }
+    .scenario-chevron {
+      width: 16px; height: 16px; flex-shrink: 0;
+      fill: none; stroke: var(--gold); stroke-width: 2.5;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.25s ease;
+    }
+    .scenario-accordion.open .scenario-chevron { transform: rotate(180deg); }
+    .scenario-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; background: var(--bg-card); }
+    .scenario-accordion.open .scenario-body { max-height: 700px; }
+    .scenario-inner { padding: 20px 22px 22px; border-top: 1px solid var(--gold-border); }
+    .scenario-steps { display: flex; flex-direction: column; gap: 0; }
+    .scenario-step { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .scenario-step:last-child { border-bottom: none; }
+    .scenario-step-num { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; min-width: 24px; padding-top: 2px; }
+    .scenario-step-content { flex: 1; }
+    .scenario-step-platform { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
+    .scenario-step-desc { font-size: 14.5px; color: var(--text); line-height: 1.55; margin: 0; }
+
+    /* ── COMPARISON TOOL ── */
+    .compare-wrap { margin: 36px 0; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; }
+    .compare-header { padding: 20px 24px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .compare-title { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .compare-selectors { display: flex; gap: 12px; flex-wrap: wrap; padding-bottom: 16px; align-items: center; }
+    .compare-selector-group { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 130px; }
+    .compare-selector-group label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+    .compare-select {
+      background: var(--bg-card2); border: 1px solid var(--gold-border); color: var(--white);
+      font-family: 'Barlow', sans-serif; font-size: 14px; padding: 8px 12px;
+      border-radius: 3px; appearance: none; -webkit-appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px;
+    }
+    .compare-select:focus { outline: none; border-color: var(--gold); }
+    .compare-vs { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; color: var(--gold); padding-top: 18px; text-align: center; }
+    .compare-body { padding: 0; }
+    .compare-grid { display: grid; grid-template-columns: 200px 1fr 1fr; }
+    .compare-row { display: contents; }
+    .compare-row:not(:last-child) .compare-cell { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .compare-cell { padding: 14px 20px; font-size: 14.5px; color: var(--text); line-height: 1.5; }
+    .compare-cell.dim-label { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); background: rgba(255,255,255,0.02); display: flex; align-items: center; }
+    .compare-cell.col-a { background: rgba(201,168,76,0.03); border-left: 2px solid rgba(201,168,76,0.2); }
+    .compare-cell.col-b { background: rgba(100,160,255,0.03); border-left: 2px solid rgba(100,160,255,0.2); }
+    .compare-col-header { padding: 14px 20px 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .compare-col-header.label-col { background: rgba(255,255,255,0.02); }
+    .compare-col-header.col-a { background: rgba(201,168,76,0.06); border-left: 2px solid rgba(201,168,76,0.3); }
+    .compare-col-header.col-b { background: rgba(100,160,255,0.06); border-left: 2px solid rgba(100,160,255,0.3); }
+    .compare-col-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 800; letter-spacing: 0.04em; color: var(--white); }
+    .compare-col-name.col-b { color: #a0c4ff; }
+    .compare-col-full { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ── RELATED RESOURCES RAIL ── */
+    .related-rail { margin: 56px 0 0; padding-top: 48px; padding-bottom: 64px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .related-rail-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; }
+    .related-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .related-card { display: block; text-decoration: none; background: var(--bg-card2); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 20px 20px 18px; transition: border-color 0.2s, background 0.2s, transform 0.2s; position: relative; overflow: hidden; }
+    .related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--rc-accent, var(--gold)); opacity: 0.5; transition: opacity 0.2s; }
+    .related-card:hover { background: var(--bg-card); border-color: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .related-card:hover::before { opacity: 1; }
+    .related-card-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rc-accent, var(--gold)); margin-bottom: 8px; }
+    .related-card-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 8px; }
+    .related-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+    .related-card-arrow { display: inline-flex; align-items: center; gap: 5px; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rc-accent, var(--gold)); margin-top: 12px; opacity: 0.6; transition: opacity 0.2s; }
+    .related-card:hover .related-card-arrow { opacity: 1; }
+    .related-card-arrow svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── SHARE TOAST ── */
+    .share-toast {
+      position: absolute; bottom: calc(100% + 8px); right: 0;
+      background: #1e1e22; border: 1px solid var(--gold-border); color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 2px; white-space: nowrap;
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+    }
+    .share-toast.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { padding: 72px 20px 60px; }
+      .hero-meta { gap: 18px; }
+      .compare-grid { grid-template-columns: 110px 1fr 1fr; }
+      .compare-cell { padding: 10px 12px; font-size: 13px; }
+      .compare-col-header { padding: 10px 12px; }
+      .related-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header role="banner">
+<section class="hero" aria-label="Page introduction">
+  <div class="hero-actions">
+    <a href="/knowledge-base.html" class="hero-back-btn">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Return to Knowledge Base
+    </a>
+    <button class="hero-share-btn" id="shareBtn" type="button">
+      <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Share This Page
+      <span class="share-toast" id="shareToast">Link copied!</span>
+    </button>
+  </div>
+  <div class="hero-eyebrow">TacRaven Knowledge Base &mdash; Compliance &amp; Frameworks</div>
+  <h1>Cybersecurity <span>Compliance</span> &amp; Security Frameworks</h1>
+  <p class="hero-subtitle">Understanding the standards and frameworks organizations use to manage cyber risk and meet regulatory requirements.</p>
+  <div class="hero-meta">
+    <span>SOC 2</span>
+    <span>ISO 27001</span>
+    <span>CMMC</span>
+    <span>NIST CSF</span>
+    <span>PCI-DSS</span>
+  </div>
+</section>
+</header>
+
+<main id="main-content" role="main">
+<div class="page-wrap">
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="intro-card">
+      <p>Every organization that handles data, processes payments, or operates within a regulated industry faces a common challenge: how do you demonstrate that your security posture is sound? Compliance frameworks and security standards answer that question. They give security teams a common language, a structured approach to risk management, and a defensible record of due diligence. This guide covers the most widely adopted frameworks in use today and explains how they fit into a broader security program.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 1 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="why-compliance-matters">Why Cybersecurity Compliance Matters</h2>
+    </div>
+    <p>Security compliance is not just a checkbox activity. When done well, it is evidence that an organization has systematically assessed its risk landscape and put controls in place to address it. Several forces have made compliance a practical requirement for most modern organizations.</p>
+
+    <h3>Regulatory Pressure</h3>
+    <p>Governments and industry bodies have enacted data protection laws with real financial and operational consequences. GDPR in Europe, HIPAA in healthcare, GLBA in financial services, and an expanding set of state-level privacy laws create legal obligations that compliance frameworks help organizations meet. Regulators increasingly expect documented evidence of security controls, not just good-faith effort.</p>
+
+    <h3>Data Protection Requirements</h3>
+    <p>Compliance standards define specific technical and administrative controls for protecting sensitive data. Encryption requirements, access control specifications, logging mandates, and incident response procedures all translate abstract security goals into concrete, auditable requirements.</p>
+
+    <h3>Third-Party Risk</h3>
+    <p>Customers and business partners increasingly require vendors to demonstrate compliance before sharing data or signing contracts. A SOC 2 Type II report or ISO 27001 certificate often determines whether a vendor makes the shortlist in enterprise procurement. This dynamic has pushed compliance from a back-office function to a direct revenue consideration for technology companies and service providers.</p>
+
+    <h3>Customer Trust</h3>
+    <p>Security certifications and audit reports are tangible signals that an organization takes data protection seriously. They reduce friction in sales cycles and build confidence with customers managing sensitive information or operating in regulated industries.</p>
+
+    <h3>Cyber Insurance Requirements</h3>
+    <p>The cyber insurance market has tightened considerably in recent years. Underwriters now evaluate security posture before issuing policies, and organizations demonstrating alignment with a recognized framework often qualify for better coverage terms and lower premiums. Some insurers now require minimum control implementations as a condition of coverage.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 2 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="frameworks-vs-compliance">Security Frameworks vs. Compliance Standards</h2>
+    </div>
+    <p>These terms are often used interchangeably, but they serve different purposes. Understanding the distinction helps organizations allocate resources correctly and avoid building compliance programs that create audit debt rather than actual security capability.</p>
+
+    <div class="intro-card">
+      <p>A security framework is a structured methodology for building and managing a security program. A compliance standard is a set of requirements an organization must satisfy to demonstrate a specific level of security to an external audience, typically through a formal audit or attestation process.</p>
+    </div>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Purpose</th>
+          <th>Enforcement</th>
+          <th>Examples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Security Framework</td>
+          <td>Guide how a security program is built and operated</td>
+          <td>Self-directed or advisory</td>
+          <td>NIST CSF, CIS Controls</td>
+        </tr>
+        <tr>
+          <td>Compliance Standard</td>
+          <td>Prove security to a regulator, auditor, or customer</td>
+          <td>Third-party auditors or regulators</td>
+          <td>SOC 2, PCI-DSS, HIPAA</td>
+        </tr>
+        <tr>
+          <td>Certification Program</td>
+          <td>Demonstrate that an organization meets a defined standard</td>
+          <td>Accredited certification bodies</td>
+          <td>ISO 27001, CMMC</td>
+        </tr>
+        <tr>
+          <td>Best Practice Guideline</td>
+          <td>Inform control selection and configuration decisions</td>
+          <td>Industry consensus, voluntary</td>
+          <td>CIS Benchmarks, OWASP</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>In practice, frameworks and compliance standards complement each other. NIST CSF helps an organization structure its overall security program, while a SOC 2 audit provides third-party validation that specific controls are operating effectively. Most mature security programs use one or more frameworks as their architecture and layer compliance certifications on top to satisfy external requirements.</p>
+
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-label">Audit Standard</div>
+        <div class="tech-tile-name">SOC 2</div>
+        <p>Evaluates service organization controls against Trust Services Criteria. Required by most enterprise SaaS customers and cloud service buyers.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">International Standard</div>
+        <div class="tech-tile-name">ISO 27001</div>
+        <p>Defines requirements for an Information Security Management System. Globally recognized certification with mandatory risk-based control selection.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Defense Compliance</div>
+        <div class="tech-tile-name">CMMC</div>
+        <p>DoD program protecting Controlled Unclassified Information across the defense supply chain. Contract eligibility depends on CMMC level achieved.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Risk Framework</div>
+        <div class="tech-tile-name">NIST CSF</div>
+        <p>Voluntary framework organizing security activities into six functions. Foundation for security programs across critical infrastructure and federal contractors.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Payment Security</div>
+        <div class="tech-tile-name">PCI-DSS</div>
+        <p>Mandatory for any organization storing, processing, or transmitting payment card data. Enforced by card brands through contractual merchant agreements.</p>
+      </div>
+    </div>
+
+    <!-- Framework comparison tool -->
+    <div class="compare-wrap" id="compareWrap">
+      <div class="compare-header">
+        <div class="compare-title">Side-by-Side Framework Comparison</div>
+        <div class="compare-selectors">
+          <div class="compare-selector-group">
+            <label for="compareA">Framework A</label>
+            <select id="compareA" class="compare-select" aria-label="Select first framework to compare">
+              <option value="soc2">SOC 2</option>
+              <option value="iso">ISO 27001</option>
+              <option value="cmmc">CMMC</option>
+              <option value="nist">NIST CSF</option>
+              <option value="pci">PCI-DSS</option>
+            </select>
+          </div>
+          <div class="compare-vs">VS</div>
+          <div class="compare-selector-group">
+            <label for="compareB">Framework B</label>
+            <select id="compareB" class="compare-select" aria-label="Select second framework to compare">
+              <option value="soc2">SOC 2</option>
+              <option value="iso" selected>ISO 27001</option>
+              <option value="cmmc">CMMC</option>
+              <option value="nist">NIST CSF</option>
+              <option value="pci">PCI-DSS</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="compare-body">
+        <div class="compare-grid" id="compareGrid"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 3: SOC 2 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="soc2">Service Organization Control 2 (SOC 2)</h2>
+    </div>
+    <p>SOC 2 is an auditing standard developed by the American Institute of Certified Public Accountants (AICPA). It evaluates whether a service organization's controls are designed and operating effectively against the Trust Services Criteria (TSC). SOC 2 is particularly relevant for SaaS companies, cloud service providers, and any technology vendor that stores or processes customer data. A SOC 2 Type II report covering a defined observation period has become a standard vendor security requirement in enterprise procurement.</p>
+
+    <h3>Trust Services Criteria</h3>
+    <p>The Trust Services Criteria define five areas of control that can be included in a SOC 2 examination. Security is the only required criterion. Organizations choose which additional criteria to include based on customer requirements and the nature of their services.</p>
+
+    <div class="card">
+      <div class="card-title">The Five Trust Services Criteria</div>
+      <ul class="feature-list">
+        <li><strong>Security:</strong> Controls protecting the system against unauthorized access, both physical and logical. Required for all SOC 2 examinations. Covers access control, encryption, vulnerability management, and monitoring.</li>
+        <li><strong>Availability:</strong> System performance meets uptime and performance commitments defined in service level agreements. Relevant for providers whose customers depend on continuous service access.</li>
+        <li><strong>Confidentiality:</strong> Information designated as confidential is protected throughout its lifecycle. Often included by vendors handling sensitive legal, financial, or business data.</li>
+        <li><strong>Processing Integrity:</strong> System processing is complete, accurate, timely, and authorized. Relevant for financial processing systems and applications where data accuracy is a core service commitment.</li>
+        <li><strong>Privacy:</strong> Personal information is collected, used, retained, and disclosed in accordance with the organization's privacy notice and applicable regulations including GDPR and CCPA.</li>
+      </ul>
+    </div>
+
+    <h3>Type I vs. Type II Reports</h3>
+    <p>A SOC 2 Type I report describes an organization's controls at a single point in time and confirms they are suitably designed. A Type II report covers a period of time, typically six to twelve months, and provides evidence that controls operated effectively throughout. Enterprise procurement teams almost universally require Type II reports because they demonstrate sustained control effectiveness rather than a one-day snapshot.</p>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">SOC 2 in the Enterprise Sales Cycle: What Buyers Actually Require</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Vendor Evaluation</div>
+                <p class="scenario-step-desc">A mid-size enterprise evaluates three SaaS platforms for a contract management system that will store sensitive legal documents. Their security team issues a vendor questionnaire with a mandatory field for SOC 2 Type II report date and scope.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Initial Screening</div>
+                <p class="scenario-step-desc">Two of three vendors provide current Type II reports covering Security and Confidentiality. The third vendor offers only a self-completed security questionnaire with no external validation. That vendor is removed from consideration before demos begin.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Report Review</div>
+                <p class="scenario-step-desc">The enterprise security team reviews both reports, focusing on the auditor's opinion and the exception log. One vendor has two exceptions around patch management timing. The security team requests written remediation status before contract execution.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Contract Requirement</div>
+                <p class="scenario-step-desc">After receiving remediation documentation, the enterprise legal team adds a contractual clause requiring the vendor to maintain SOC 2 Type II certification and provide updated reports annually. Non-compliance triggers a right to terminate.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/soc2.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is SOC 2?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 4: ISO 27001 -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="iso27001">ISO 27001</h2>
+    </div>
+    <p>ISO 27001 is the international standard for Information Security Management Systems (ISMS). Published by the International Organization for Standardization and the International Electrotechnical Commission, it defines a systematic approach for managing information security risk across an entire organization. Unlike SOC 2, which focuses on service delivery controls, ISO 27001 covers the full breadth of an organization's information security practices.</p>
+    <p>The standard requires organizations to establish, implement, maintain, and continuously improve an ISMS that includes documented policies, a formal risk assessment process, risk treatment decisions, and management oversight. Annex A provides a catalog of 93 controls organized into four themes: organizational, people, physical, and technological.</p>
+
+    <h3>The Risk-Based ISMS Approach</h3>
+    <p>The defining characteristic of ISO 27001 is its management system structure. Rather than prescribing a fixed set of controls, the standard requires organizations to identify their own risks and select appropriate controls to treat them. Two organizations can both hold ISO 27001 certification while implementing different controls, provided each has documented justification for their control selection based on their risk assessment.</p>
+
+    <div class="card">
+      <div class="card-title">Core ISMS Components</div>
+      <ul class="feature-list">
+        <li>Formal risk assessment identifying information assets, threats, vulnerabilities, and risk owners</li>
+        <li>Risk treatment plan documenting how each identified risk will be addressed or accepted</li>
+        <li>Statement of Applicability recording which Annex A controls apply and the justification for any exclusions</li>
+        <li>Documented policies and procedures covering all applicable control areas</li>
+        <li>Internal audit program verifying the ISMS operates as designed and identifying nonconformities</li>
+        <li>Management review process ensuring leadership oversight of ISMS performance and continuous improvement</li>
+        <li>Corrective action process for addressing root causes of identified nonconformities</li>
+      </ul>
+    </div>
+
+    <h3>Certification Process</h3>
+    <p>ISO 27001 certification requires a two-stage audit by an accredited certification body. Stage 1 reviews documentation to confirm the ISMS is appropriately designed. Stage 2 tests whether controls operate as designed and whether the management system functions as required. A successful audit produces a certificate valid for three years, with annual surveillance audits required to maintain certification.</p>
+    <p>ISO 27001 is widely recognized in European enterprise procurement and across multinational corporations. Organizations selling into European markets or financial services environments frequently find that certification is a baseline expectation rather than a competitive differentiator.</p>
+
+    <a href="/iso-27001.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is ISO 27001?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 5: CMMC -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="cmmc">Cybersecurity Maturity Model Certification (CMMC)</h2>
+    </div>
+    <p>CMMC is a Department of Defense program establishing cybersecurity requirements for contractors across the Defense Industrial Base (DIB). It was developed in response to persistent targeting of defense supply chains by nation-state adversaries seeking access to sensitive government information. At the center of CMMC is the protection of Controlled Unclassified Information (CUI): sensitive government data that does not rise to the level of classified but still requires protection under federal regulation.</p>
+    <p>CMMC requirements are embedded directly into DoD contracts through the Defense Federal Acquisition Regulation Supplement (DFARS). Contractors that fail to achieve the required CMMC level cannot compete for or perform covered contracts, making compliance an existential business requirement for defense-adjacent organizations.</p>
+
+    <h3>CMMC Maturity Levels</h3>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Name</th>
+          <th>Requirement Basis</th>
+          <th>Assessment Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Level 1</td>
+          <td>Foundational</td>
+          <td>17 basic practices from FAR 52.204-21</td>
+          <td>Annual self-assessment permitted for most contracts</td>
+        </tr>
+        <tr>
+          <td>Level 2</td>
+          <td>Advanced</td>
+          <td>110 practices from NIST SP 800-171</td>
+          <td>Third-party assessment by C3PAO required for most contracts handling CUI</td>
+        </tr>
+        <tr>
+          <td>Level 3</td>
+          <td>Expert</td>
+          <td>Level 2 plus NIST SP 800-172 enhancements</td>
+          <td>Government-led assessment required; targets advanced persistent threat actors</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Supply Chain Implications</h3>
+    <p>CMMC requirements flow through the entire defense supply chain. Prime contractors must achieve the required level and are responsible for ensuring subcontractors meet applicable requirements when CUI passes to them. This means even small, niche suppliers in the defense ecosystem may face Level 2 assessment requirements if their work involves CUI, regardless of company size or revenue.</p>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">CMMC Level 2 Readiness: What a Defense Contractor Gap Assessment Uncovers</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Contract Notice</div>
+                <p class="scenario-step-desc">A 60-person defense contractor receives notice that an upcoming DoD contract renewal will require CMMC Level 2 certification. The company handles engineering drawings classified as CUI and has never been formally assessed against NIST SP 800-171.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Gap Assessment</div>
+                <p class="scenario-step-desc">An outside consultant assesses all 110 NIST SP 800-171 practices and finds 34 gaps, clustered around multi-factor authentication enforcement, audit logging configuration, incident response documentation, and media protection procedures.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Remediation Planning</div>
+                <p class="scenario-step-desc">The contractor develops a System Security Plan (SSP) documenting current control implementation and a Plan of Action and Milestones (POAM) for identified gaps. Authentication and logging gaps are prioritized given their central role in CMMC scoring.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">C3PAO Assessment</div>
+                <p class="scenario-step-desc">After eight months of remediation, the company engages a Certified Third-Party Assessment Organization (C3PAO). Two remaining POAM items are accepted as documented ongoing remediation, and the contractor achieves Level 2 certification ahead of the contract renewal deadline.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/cmmc.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is CMMC?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 6: NIST CSF -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="nist-csf">NIST Cybersecurity Framework (NIST CSF)</h2>
+    </div>
+    <p>The NIST Cybersecurity Framework was developed in response to a 2013 executive order directing the creation of a voluntary cybersecurity framework for critical infrastructure. It has since been adopted far beyond that original scope and is now one of the most widely referenced security frameworks globally. NIST CSF 2.0, released in 2024, expanded the original framework to address governance more explicitly and incorporated a decade of real-world implementation experience across sectors.</p>
+    <p>The framework is deliberately technology-neutral and sector-agnostic, making it applicable to organizations of any size or industry. Many compliance programs, including CMMC, map their requirements directly to NIST CSF categories, making it a natural foundation for any compliance effort.</p>
+
+    <h3>The Six Framework Functions</h3>
+
+    <div class="card">
+      <div class="card-title">NIST CSF 2.0 Core Functions</div>
+      <ul class="feature-list">
+        <li><strong>Govern (new in 2.0):</strong> Addresses organizational context, cybersecurity risk strategy, roles, responsibilities, and leadership oversight of cybersecurity activities. Governance activities inform all other functions.</li>
+        <li><strong>Identify:</strong> Develop organizational understanding of risks to systems, assets, data, and capabilities. Includes asset management, risk assessment, and supply chain risk management.</li>
+        <li><strong>Protect:</strong> Implement safeguards to ensure delivery of critical services. Covers identity and access management, awareness training, data security, and platform security controls.</li>
+        <li><strong>Detect:</strong> Define activities to identify cybersecurity events in a timely manner. Includes continuous monitoring, anomaly detection, and detection across all managed assets.</li>
+        <li><strong>Respond:</strong> Develop capabilities to take action regarding detected cybersecurity incidents. Covers incident management, analysis, mitigation activities, and communication.</li>
+        <li><strong>Recover:</strong> Identify activities to restore capabilities or services affected by an incident. Includes recovery planning, execution, and communication with affected parties.</li>
+      </ul>
+    </div>
+
+    <h3>Profiles and Implementation Tiers</h3>
+    <p>Organizations use NIST CSF profiles to align framework activities with their business requirements and risk tolerances. A Current Profile describes the security outcomes an organization achieves today. A Target Profile describes desired outcomes. The gap between the two becomes the basis for a prioritized improvement roadmap.</p>
+    <p>Implementation Tiers describe how deeply cybersecurity risk management is integrated into organizational decision-making, ranging from Partial (Tier 1) through Adaptive (Tier 4). Moving up a tier requires not just improved controls but better integration of cybersecurity into organizational risk processes and leadership culture.</p>
+
+    <a href="/nist-csf.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is NIST CSF?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 7: PCI-DSS -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="pci-dss">PCI-DSS</h2>
+    </div>
+    <p>The Payment Card Industry Data Security Standard (PCI-DSS) is a set of security requirements established by the PCI Security Standards Council, governed by the major card brands: Visa, Mastercard, American Express, Discover, and JCB. Any organization that stores, processes, or transmits cardholder data must comply with PCI-DSS. The obligation flows from the card brand rules that all merchants and payment processors accept when agreeing to process card payments.</p>
+    <p>PCI-DSS v4.0 contains 12 requirements organized across six control objectives. These requirements cover network architecture, encryption, vulnerability management, access control, monitoring, and security policy. The standard applies to any system that is part of or connected to the cardholder data environment (CDE), which defines the scope of compliance work.</p>
+
+    <h3>Core Security Requirements</h3>
+
+    <div class="card">
+      <div class="card-title">PCI-DSS v4.0 Requirement Areas</div>
+      <ul class="feature-list">
+        <li>Install and maintain network security controls, including firewalls and network segmentation isolating the cardholder data environment from other systems</li>
+        <li>Apply secure configurations to all system components and eliminate vendor-supplied default credentials and unnecessary services</li>
+        <li>Protect stored account data using strong encryption; sensitive authentication data must never be stored after authorization</li>
+        <li>Protect cardholder data in transit over open, public networks using strong cryptographic protocols</li>
+        <li>Protect all systems from malicious software with regularly updated anti-malware controls and configurations</li>
+        <li>Develop and maintain secure systems with timely patch management and secure software development practices</li>
+        <li>Restrict access to system components and cardholder data based on business need; implement least-privilege access controls</li>
+        <li>Identify users and authenticate access using strong authentication methods; multi-factor authentication required for all non-console administrative access</li>
+        <li>Restrict physical access to system components and cardholder data in the CDE</li>
+        <li>Log and monitor all access to system components and cardholder data; maintain audit trails sufficient for forensic reconstruction</li>
+        <li>Test security of systems and networks regularly through vulnerability scanning, penetration testing, and integrity monitoring</li>
+        <li>Support information security with documented organizational policies and programs addressing all personnel with system access</li>
+      </ul>
+    </div>
+
+    <h3>Merchant Levels and Validation</h3>
+    <p>Compliance validation requirements vary by merchant level, determined by annual transaction volume. Level 1 merchants processing over six million card transactions per year must complete an annual on-site assessment by a Qualified Security Assessor (QSA) and quarterly network scans by an Approved Scanning Vendor (ASV). Lower-volume merchants may self-assess using a Self-Assessment Questionnaire (SAQ), with different SAQ types applying depending on how card data is processed. Non-compliance can result in fines from card brands, increased transaction fees, and loss of the ability to accept card payments.</p>
+
+    <a href="/pci-dss.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is PCI-DSS?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 8: MULTI-FRAMEWORK -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="multi-framework">How Organizations Use Multiple Frameworks</h2>
+    </div>
+    <p>Most mature organizations operate under more than one framework. Regulatory requirements, customer expectations, and operational complexity typically push organizations toward a multi-framework environment. The key challenge is managing that complexity without duplicating control work or fragmenting the security program into disconnected compliance silos.</p>
+
+    <h3>Common Framework Combinations</h3>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Combination</th>
+          <th>Why Organizations Pair These</th>
+          <th>Control Overlap</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NIST CSF + SOC 2</td>
+          <td>Technology companies using NIST CSF for security governance and SOC 2 for customer-facing attestation</td>
+          <td>High — NIST CSF categories map closely to SOC 2 common criteria</td>
+        </tr>
+        <tr>
+          <td>ISO 27001 + SOC 2</td>
+          <td>Organizations serving European and North American enterprise markets simultaneously</td>
+          <td>Significant — shared control areas in access, monitoring, and incident response</td>
+        </tr>
+        <tr>
+          <td>PCI-DSS + NIST CSF</td>
+          <td>Payment processors using NIST CSF for overall program governance alongside PCI-DSS for the CDE</td>
+          <td>Moderate — PCI-DSS requirements map to multiple NIST CSF subcategories</td>
+        </tr>
+        <tr>
+          <td>CMMC + NIST CSF</td>
+          <td>Defense contractors building security programs on NIST CSF as the underlying architecture</td>
+          <td>Very high — CMMC Level 2 is drawn directly from NIST SP 800-171, which aligns with NIST CSF</td>
+        </tr>
+        <tr>
+          <td>ISO 27001 + CMMC</td>
+          <td>International defense contractors with both global enterprise and U.S. government clients</td>
+          <td>Moderate — ISMS structure supports CMMC SSP and documentation requirements</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Building a Unified Control Library</h3>
+    <p>The most effective approach in a multi-framework environment is to maintain a single set of controls mapped to all applicable requirements. Rather than running separate compliance programs, organizations with a unified control library implement each control once and map it to every applicable requirement across all relevant standards. This approach reduces audit fatigue, keeps documentation manageable, and ensures that security investments address multiple obligations simultaneously.</p>
+    <p>GRC platforms are commonly used to manage this mapping. They allow security teams to link control evidence to multiple framework requirements, track control effectiveness over time, and generate framework-specific audit packages without duplicating effort across each audit cycle.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 9: BUILDING A COMPLIANCE PROGRAM -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="building-compliance">Building a Modern Compliance Program</h2>
+    </div>
+    <p>A compliance program is more than a collection of audit evidence. Done well, it is a living system that continuously assesses risk, validates controls, and drives security improvements across the organization. The components below are common to effective compliance programs regardless of which frameworks an organization operates under.</p>
+
+    <h3>Risk Management Foundation</h3>
+    <p>Compliance programs begin with a formal risk assessment. Identifying assets, threats, and vulnerabilities gives organizations the basis for prioritizing control investments and scoping audit activities appropriately. Without a documented risk assessment, control selection becomes arbitrary, and auditors have nothing to validate control selection against.</p>
+
+    <h3>Policy Development</h3>
+    <p>Documented policies define the organization's security expectations. Effective policies are specific enough to guide behavior and auditable enough to demonstrate intent, without being so rigid they cannot adapt to operational change. Policies that exist on paper but do not reflect actual operations are a common audit finding and a genuine security risk in their own right.</p>
+
+    <h3>Security Controls Implementation</h3>
+    <p>Controls are the technical and procedural safeguards that implement policy requirements. A well-designed control library maps each control to applicable framework requirements, making audit evidence collection straightforward. Controls should be designed to generate evidence as a byproduct of normal operations rather than requiring manual collection before each audit.</p>
+
+    <h3>Continuous Monitoring</h3>
+    <p>Point-in-time audits reveal the state of controls at a single moment. Continuous monitoring fills the gaps between audits, providing ongoing assurance that controls remain effective and that drift or degradation is caught quickly. Automated scanning, log analysis, and configuration monitoring all contribute to a viable continuous monitoring program.</p>
+
+    <h3>Audit Readiness and Evidence Management</h3>
+    <p>Maintaining audit readiness means keeping evidence current rather than scrambling to collect documentation before an assessment. For each in-scope control, there should be a defined evidence owner, collection frequency, and storage location. Organizations that treat audit preparation as continuous rather than periodic consistently achieve better outcomes with less organizational disruption.</p>
+
+    <h3>Continuous Improvement</h3>
+    <p>Compliance programs that treat audit findings as one-time remediation items tend to regress. The most effective programs establish formal review cycles, maintain management reporting on compliance performance, and use corrective action processes to address root causes rather than symptoms. This principle applies equally to all compliance frameworks regardless of whether they formally require it.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 10: CHOOSING -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="choosing-frameworks">Choosing the Right Compliance Framework</h2>
+    </div>
+    <p>No single framework is right for every organization. The appropriate starting point depends on industry requirements, customer expectations, contractual obligations, and current security maturity. Several selection factors consistently shape framework decisions across different types of organizations.</p>
+
+    <h3>Industry and Regulatory Environment</h3>
+    <p>Organizations in healthcare, financial services, defense, and government contracting often face mandatory compliance requirements that narrow framework choices significantly. Defense contractors have CMMC defined by contract. Payment processors and merchants have PCI-DSS as a baseline obligation. Healthcare organizations subject to HIPAA find that NIST CSF and ISO 27001 provide practical implementation guidance for meeting HIPAA's Security Rule requirements.</p>
+
+    <h3>Customer and Market Requirements</h3>
+    <p>For organizations without hard regulatory mandates, customer requirements typically drive framework selection. Technology companies selling to enterprise customers in North America usually prioritize SOC 2 because it is the attestation format enterprise procurement teams expect. Organizations with significant European business find ISO 27001 more valuable in that market. Organizations pursuing federal contracts may find NIST CSF alignment or CMMC more strategically useful than commercial certifications.</p>
+
+    <h3>Maturity-Based Starting Points</h3>
+    <p>Early-stage organizations should typically begin with NIST CSF to build a coherent security architecture before layering compliance requirements on top. Starting with a compliance certification before having a structured security program often produces fragmented controls designed around audit checklists rather than actual risk. Growing technology companies facing enterprise sales requirements should prioritize SOC 2 next, as the preparation process forces documentation and formalization of controls that will serve as the foundation for future compliance work. Mature organizations with existing programs often find that ISO 27001 validates and formalizes what they have already built, while expanding market access in regions where certification is expected.</p>
+
+    <div class="card">
+      <div class="card-title">Framework Selection Quick Reference</div>
+      <ul class="feature-list">
+        <li><strong>SaaS / Cloud Service Provider:</strong> SOC 2 Type II covering Security, Availability, and Confidentiality. Add ISO 27001 for European enterprise clients.</li>
+        <li><strong>Defense Contractor Handling CUI:</strong> CMMC Level 2 (mandatory). NIST CSF as the underlying program architecture.</li>
+        <li><strong>Payment Processing / E-Commerce:</strong> PCI-DSS (mandatory). NIST CSF for overall security program governance beyond the CDE.</li>
+        <li><strong>Global Enterprise / Financial Services:</strong> ISO 27001 as the management system foundation. SOC 2 for U.S. customer attestation requirements.</li>
+        <li><strong>Early-Stage / Building from Scratch:</strong> NIST CSF to establish program structure, then add certifications based on market and contractual requirements.</li>
+        <li><strong>Federal Contractor (non-DoD):</strong> NIST SP 800-171 and NIST CSF alignment. FedRAMP authorization if providing cloud services directly to federal agencies.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- CTA BLOCK -->
+  <div class="cta-block">
+    <h3>TacRaven Cybersecurity Knowledge Base</h3>
+    <p>Explore the full library of reference guides covering security technologies, threat intelligence, APT profiles, and compliance frameworks.</p>
+    <a href="/knowledge-base.html" class="cta-btn" style="margin-top:0;">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Go to the Knowledge Base
+    </a>
+  </div>
+
+  <!-- RELATED RESOURCES RAIL -->
+  <div class="related-rail">
+    <div class="related-rail-label">Also from TacRaven</div>
+    <div class="related-cards">
+
+      <a href="/blackfeather.html" class="related-card" style="--rc-accent:#c9a84c;">
+        <div class="related-card-tag">Platform</div>
+        <div class="related-card-name">BlackFeather</div>
+        <p class="related-card-desc">Air-gapped threat intelligence analysis platform built for defense and intelligence environments.</p>
+        <div class="related-card-arrow">
+          Explore BlackFeather
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+      <a href="/black-wing-dispatch.html" class="related-card" style="--rc-accent:#a08030;">
+        <div class="related-card-tag">CTI Blog</div>
+        <div class="related-card-name">Black Wing Dispatch</div>
+        <p class="related-card-desc">Weekly cyber threat intelligence reporting covering active threat actors, TTPs, and emerging campaigns.</p>
+        <div class="related-card-arrow">
+          Read the Dispatch
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+      <a href="/apt-intelligence-library.html" class="related-card" style="--rc-accent:#c05a3a;">
+        <div class="related-card-tag">Reference</div>
+        <div class="related-card-name">APT Intelligence Library</div>
+        <p class="related-card-desc">Structured threat actor profiles covering attribution, TTPs, infrastructure patterns, and historical campaigns.</p>
+        <div class="related-card-arrow">
+          Browse APT Profiles
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════
+   FRAMEWORK COMPARISON TOOL
+═══════════════════════════════════════════════ */
+var fwData = {
+  soc2: {
+    name: 'SOC 2', full: 'Service Organization Control 2',
+    type: 'Audit attestation (AICPA)',
+    scope: 'Service organization controls in cloud/SaaS contexts',
+    authority: 'AICPA — audited by licensed CPA firms',
+    whoNeeds: 'SaaS companies, MSPs, cloud service providers',
+    assessment: 'Type I (point-in-time) or Type II (observation period)',
+    frequency: 'Annual audit cycle; Type II typically covers 12 months',
+    controls: 'Trust Services Criteria — Security required; others optional',
+    output: 'SOC 2 Type I or Type II Audit Report',
+    recognition: 'Strong in North America; growing internationally',
+  },
+  iso: {
+    name: 'ISO 27001', full: 'ISO/IEC 27001 ISMS Standard',
+    type: 'Management system certification',
+    scope: 'Organization-wide information security management',
+    authority: 'ISO/IEC — audited by accredited certification bodies',
+    whoNeeds: 'Any organization; widely required in European enterprise markets',
+    assessment: 'Two-stage certification audit by accredited body',
+    frequency: '3-year certificate with annual surveillance audits',
+    controls: 'Risk-based selection from Annex A (93 controls, 4 themes)',
+    output: 'ISO 27001 Certificate from accredited body',
+    recognition: 'Strongest global recognition; required across international markets',
+  },
+  cmmc: {
+    name: 'CMMC', full: 'Cybersecurity Maturity Model Certification',
+    type: 'Government compliance certification',
+    scope: 'Defense contractor CUI environments and supply chain',
+    authority: 'DoD — assessed by C3PAO or government assessors',
+    whoNeeds: 'DoD contractors and subcontractors handling CUI',
+    assessment: 'Self-assessment (L1), C3PAO third-party (L2), government-led (L3)',
+    frequency: 'Level 1: annual self-assessment. Level 2-3: triennial with annual affirmations',
+    controls: '17 practices (L1), 110 NIST SP 800-171 practices (L2), + SP 800-172 (L3)',
+    output: 'CMMC Level certification — required for contract award',
+    recognition: 'U.S. DoD-specific; no direct international equivalent',
+  },
+  nist: {
+    name: 'NIST CSF', full: 'NIST Cybersecurity Framework 2.0',
+    type: 'Voluntary security framework',
+    scope: 'Organization-wide cybersecurity risk management',
+    authority: 'NIST — self-directed; no certification body',
+    whoNeeds: 'Any organization; baseline for critical infrastructure and federal contractors',
+    assessment: 'Self-assessment against framework profiles; no formal certification',
+    frequency: 'Continuous — profiles reviewed on organizational schedule',
+    controls: 'Six functions: Govern, Identify, Protect, Detect, Respond, Recover',
+    output: 'No certificate — internal program documentation and maturity profiles',
+    recognition: 'Strong in U.S.; internationally referenced but not a certification',
+  },
+  pci: {
+    name: 'PCI-DSS', full: 'Payment Card Industry Data Security Standard',
+    type: 'Mandatory industry compliance standard',
+    scope: 'Cardholder data environments and connected systems',
+    authority: 'PCI SSC — enforced by card brands through merchant agreements',
+    whoNeeds: 'Any entity storing, processing, or transmitting payment card data',
+    assessment: 'QSA on-site assessment (Level 1) or Self-Assessment Questionnaire (L2-L4)',
+    frequency: 'Annual validation with quarterly vulnerability scans',
+    controls: '12 requirements across six control objectives (v4.0)',
+    output: 'Report on Compliance (RoC) or Self-Assessment Questionnaire (SAQ)',
+    recognition: 'Global — applies to any merchant accepting major card brands',
+  },
+};
+
+var fwDimensions = [
+  { key: 'type',        label: 'Standard Type' },
+  { key: 'scope',       label: 'Scope' },
+  { key: 'authority',   label: 'Authority / Auditor' },
+  { key: 'whoNeeds',    label: 'Who Needs It' },
+  { key: 'assessment',  label: 'Assessment Type' },
+  { key: 'frequency',   label: 'Frequency' },
+  { key: 'controls',    label: 'Core Controls' },
+  { key: 'output',      label: 'Output / Evidence' },
+  { key: 'recognition', label: 'Global Recognition' },
+];
+
+function renderCompare() {
+  var aKey = document.getElementById('compareA').value;
+  var bKey = document.getElementById('compareB').value;
+  var a    = fwData[aKey];
+  var b    = fwData[bKey];
+  var grid = document.getElementById('compareGrid');
+
+  var html = '<div class="compare-col-header label-col"></div>'
+    + '<div class="compare-col-header col-a"><div class="compare-col-name">' + a.name + '</div><div class="compare-col-full">' + a.full + '</div></div>'
+    + '<div class="compare-col-header col-b"><div class="compare-col-name col-b">' + b.name + '</div><div class="compare-col-full">' + b.full + '</div></div>';
+
+  fwDimensions.forEach(function(dim) {
+    html += '<div class="compare-row">'
+      + '<div class="compare-cell dim-label">' + dim.label + '</div>'
+      + '<div class="compare-cell col-a">' + a[dim.key] + '</div>'
+      + '<div class="compare-cell col-b">' + b[dim.key] + '</div>'
+      + '</div>';
+  });
+
+  grid.innerHTML = html;
+}
+
+renderCompare();
+document.getElementById('compareA').addEventListener('change', renderCompare);
+document.getElementById('compareB').addEventListener('change', renderCompare);
+
+/* ═══════════════════════════════════════════════
+   SCENARIO ACCORDIONS
+═══════════════════════════════════════════════ */
+document.querySelectorAll('[data-accordion]').forEach(function(acc) {
+  var trigger = acc.querySelector('.scenario-trigger');
+  var body    = acc.querySelector('.scenario-body');
+  if (!trigger || !body) return;
+  trigger.addEventListener('click', function() {
+    var isOpen = acc.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   SHARE BUTTON
+═══════════════════════════════════════════════ */
+(function() {
+  var btn   = document.getElementById('shareBtn');
+  var toast = document.getElementById('shareToast');
+  if (!btn || !toast) return;
+
+  btn.addEventListener('click', async function() {
+    var title = document.title;
+    var url   = window.location.href;
+    if (navigator.share) {
+      try { await navigator.share({ title: title, url: url }); return; } catch(e) {}
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch(e) {
+      var ta = document.createElement('textarea');
+      ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    toast.classList.add('visible');
+    setTimeout(function() { toast.classList.remove('visible'); }, 2200);
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   GA4 ENHANCED EVENT TRACKING
+═══════════════════════════════════════════════ */
+(function() {
+  var scrollMilestones = [25, 50, 75, 90];
+  var firedMilestones  = new Set();
+
+  function getScrollPct() {
+    var el = document.documentElement;
+    var scrolled = el.scrollTop || document.body.scrollTop;
+    var total    = el.scrollHeight - el.clientHeight;
+    return total > 0 ? Math.round((scrolled / total) * 100) : 0;
+  }
+
+  window.addEventListener('scroll', function() {
+    var pct = getScrollPct();
+    scrollMilestones.forEach(function(m) {
+      if (pct >= m && !firedMilestones.has(m)) {
+        firedMilestones.add(m);
+        gtag('event', 'scroll_depth', { event_category: 'Engagement', event_label: m + '%', scroll_depth_pct: m });
+      }
+    });
+  }, { passive: true });
+
+  var sectionMap = {
+    'why-compliance-matters':   'Why Compliance Matters',
+    'frameworks-vs-compliance': 'Frameworks vs Compliance',
+    'soc2':                     'SOC 2',
+    'iso27001':                 'ISO 27001',
+    'cmmc':                     'CMMC',
+    'nist-csf':                 'NIST CSF',
+    'pci-dss':                  'PCI-DSS',
+    'multi-framework':          'Multi-Framework',
+    'building-compliance':      'Building Compliance Program',
+    'choosing-frameworks':      'Choosing Frameworks'
+  };
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          if (id && sectionMap[id]) {
+            gtag('event', 'section_viewed', { event_category: 'Content', event_label: sectionMap[id], section_id: id });
+            obs.unobserve(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+    Object.keys(sectionMap).forEach(function(id) { var el = document.getElementById(id); if (el) obs.observe(el); });
+  }
+
+  document.querySelectorAll('a.cta-btn').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'cta_click', { event_category: 'Navigation', event_label: this.textContent.trim(), link_url: this.getAttribute('href') });
+    });
+  });
+
+  var backBtn = document.querySelector('.hero-back-btn');
+  if (backBtn) { backBtn.addEventListener('click', function() { gtag('event', 'navigation_click', { event_category: 'Navigation', event_label: 'Return to Knowledge Base' }); }); }
+
+  document.querySelectorAll('.related-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var nameEl = this.querySelector('.related-card-name');
+      gtag('event', 'related_resource_click', { event_category: 'Engagement', event_label: nameEl ? nameEl.textContent.trim() : 'Unknown', link_url: this.getAttribute('href') });
+    });
+  });
+
+  document.querySelectorAll('[data-accordion]').forEach(function(acc) {
+    var trigger = acc.querySelector('.scenario-trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', function() {
+      var willOpen = !acc.classList.contains('open');
+      if (willOpen) { var labelEl = acc.querySelector('.scenario-trigger-text'); gtag('event', 'scenario_expanded', { event_category: 'Engagement', event_label: labelEl ? labelEl.textContent.trim() : 'Unknown' }); }
+    });
+  });
+
+  ['compareA', 'compareB'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', function() {
+      var a = (document.getElementById('compareA').value || '').toUpperCase();
+      var b = (document.getElementById('compareB').value || '').toUpperCase();
+      gtag('event', 'comparison_changed', { event_category: 'Engagement', event_label: a + ' vs ' + b, framework_a: a, framework_b: b });
+    });
+  });
+
+  var shareBtn2 = document.getElementById('shareBtn');
+  if (shareBtn2) { shareBtn2.addEventListener('click', function() { gtag('event', 'share', { event_category: 'Engagement', method: navigator.share ? 'native_share' : 'clipboard_copy', content_type: 'article', item_id: 'compliance-frameworks' }); }); }
+
+  [30, 60, 120, 300].forEach(function(s) {
+    setTimeout(function() { gtag('event', 'time_on_page', { event_category: 'Engagement', event_label: s + 's', seconds_on_page: s }); }, s * 1000);
+  });
+})();
+</script>
+
+</body>
+</html>

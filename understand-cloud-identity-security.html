@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── PRIMARY META ── -->
+  <title>Cloud Security & Identity Management: IAM, PAM, CSPM, DevSecOps | TacRaven</title>
+  <meta name="description" content="A practical guide to cloud security and identity management: IAM, PAM, CSPM, DevSecOps, and Zero Trust architecture explained for security practitioners." />
+  <meta name="author" content="TacRaven Solutions" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="canonical" href="https://tacraven.com/cloud-identity-security.html" />
+
+  <!-- ── OPEN GRAPH ── -->
+  <meta property="og:title" content="Cloud Security and Identity Management Explained: IAM, PAM, CSPM, DevSecOps | TacRaven Solutions" />
+  <meta property="og:description" content="A comprehensive guide to cloud security and identity management covering IAM, PAM, CSPM, DevSecOps, and cloud security architecture for modern enterprises." />
+  <meta property="og:url" content="https://tacraven.com/cloud-identity-security.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://tacraven.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cloud Security and Identity Management guide — TacRaven Solutions" />
+  <meta property="article:published_time" content="2025-01-01T00:00:00Z" />
+  <meta property="article:modified_time" content="2026-03-12T00:00:00Z" />
+  <meta property="article:author" content="TacRaven Solutions" />
+  <meta property="article:section" content="Cybersecurity" />
+  <meta property="article:tag" content="IAM" />
+  <meta property="article:tag" content="PAM" />
+  <meta property="article:tag" content="CSPM" />
+  <meta property="article:tag" content="DevSecOps" />
+  <meta property="article:tag" content="Cloud Security" />
+
+  <!-- ── TWITTER / X CARD ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cloud Security and Identity Management Explained | TacRaven Solutions" />
+  <meta name="twitter:description" content="How enterprises protect cloud infrastructure and identity: IAM, PAM, CSPM, DevSecOps, and cloud security architecture explained." />
+  <meta name="twitter:image" content="https://tacraven.com/og-image.png" />
+  <meta name="twitter:image:alt" content="Cloud Security and Identity Management guide — TacRaven Solutions" />
+  <meta name="twitter:site" content="@TacRaven" />
+  <meta name="twitter:creator" content="@TacRaven" />
+
+  <!-- ── JSON-LD STRUCTURED DATA ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://tacraven.com/#website",
+        "name": "TacRaven Solutions",
+        "url": "https://tacraven.com",
+        "description": "Cybersecurity tools, threat intelligence platforms, and knowledge base resources for defense, intelligence, and critical infrastructure.",
+        "publisher": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" }
+      },
+      {
+        "@type": "Article",
+        "@id": "https://tacraven.com/cloud-identity-security.html#article",
+        "headline": "Cloud Security and Identity Management: IAM, PAM, CSPM, DevSecOps, and Zero Trust",
+        "description": "A practical guide to cloud security and identity management covering IAM, PAM, CSPM, DevSecOps, and Zero Trust architecture for security practitioners.",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://tacraven.com/og-image.png",
+          "width": 1200,
+          "height": 630
+        },
+        "author": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" },
+        "publisher": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com", "logo": { "@type": "ImageObject", "url": "https://tacraven.com/assets/logo.png", "width": 600, "height": 60 } },
+        "datePublished": "2025-01-01",
+        "dateModified": "2026-03-12",
+        "mainEntityOfPage": "https://tacraven.com/cloud-identity-security.html",
+        "url": "https://tacraven.com/cloud-identity-security.html",
+        "wordCount": 4800,
+        "keywords": ["IAM", "PAM", "CSPM", "DevSecOps", "cloud security", "identity management", "zero trust", "privileged access", "cloud security posture management", "identity and access management"],
+        "articleSection": "Cloud and Identity Security",
+        "inLanguage": "en-US",
+        "isPartOf": { "@type": "WebSite", "@id": "https://tacraven.com/#website" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://tacraven.com/cloud-identity-security.html#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tacraven.com" },
+          { "@type": "ListItem", "position": 2, "name": "Knowledge Base", "item": "https://tacraven.com/knowledge-base.html" },
+          { "@type": "ListItem", "position": 3, "name": "Cloud and Identity Security", "item": "https://tacraven.com/cloud-identity-security.html" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://tacraven.com/cloud-identity-security.html#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is Identity and Access Management (IAM)?", "acceptedAnswer": { "@type": "Answer", "text": "Identity and Access Management is the set of policies, processes, and technologies that control how digital identities are created, managed, and used to access systems and data. IAM covers authentication, authorization, role-based access control, single sign-on, and the full lifecycle of user and service identities across an organization." } },
+          { "@type": "Question", "name": "What is Privileged Access Management (PAM)?", "acceptedAnswer": { "@type": "Answer", "text": "Privileged Access Management focuses on securing accounts with elevated permissions to critical systems. PAM platforms vault credentials so administrators never hold passwords directly, monitor and record privileged sessions, and support just-in-time access models that grant elevated permissions only for the duration of a specific task." } },
+          { "@type": "Question", "name": "What is Cloud Security Posture Management (CSPM)?", "acceptedAnswer": { "@type": "Answer", "text": "CSPM tools continuously monitor cloud environments to detect misconfigurations, compliance gaps, and excessive permissions across cloud accounts. They compare discovered configurations against security benchmarks and flag deviations that represent real risk, such as publicly accessible storage buckets or overly permissive IAM policies." } },
+          { "@type": "Question", "name": "What is DevSecOps?", "acceptedAnswer": { "@type": "Answer", "text": "DevSecOps is the practice of integrating security controls directly into the software development and deployment pipeline. Rather than treating security as a gate at the end of development, DevSecOps embeds security scanning, secrets management, and compliance checks throughout the CI/CD process as a shared responsibility across development, operations, and security teams." } },
+          { "@type": "Question", "name": "Why is identity considered the new security perimeter?", "acceptedAnswer": { "@type": "Answer", "text": "Traditional network perimeters relied on physical or logical boundaries to separate trusted from untrusted users. Cloud adoption, remote work, and SaaS proliferation have eliminated those boundaries. Today, identity is the primary control point. Compromising a credential often grants an attacker broader access than breaking through a firewall." } },
+          { "@type": "Question", "name": "What is Zero Trust security?", "acceptedAnswer": { "@type": "Answer", "text": "Zero Trust is a security model that requires all users, devices, and systems to be authenticated and authorized regardless of their network location. Rather than assuming anything inside the network perimeter is trusted, Zero Trust continuously verifies every access request. In cloud environments, identity becomes the primary enforcement point for Zero Trust principles." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── GA4 ── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PEYM947EG8', {
+      page_title: 'Cloud and Identity Security Pillar Page',
+      page_location: 'https://tacraven.com/cloud-identity-security.html',
+      send_page_view: true
+    });
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" alt=""
+      src="https://www.googletagmanager.com/ns.html?id=G-PEYM947EG8" />
+  </noscript>
+
+  <!-- ── PERFORMANCE ── -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Preload primary display font to reduce CLS -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-dim: rgba(201,168,76,0.15);
+      --gold-border: rgba(201,168,76,0.3);
+      --gold-bright: rgba(201,168,76,0.7);
+      --bg: #0a0a0b;
+      --bg-card: #111113;
+      --bg-card2: #16161a;
+      --text: #e8e8e8;
+      --text-muted: #8a8a9a;
+      --white: #ffffff;
+      --max-w: 860px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.75;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--gold); color: #0a0a0b;
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── HERO ACTION BAR ── */
+    .hero-actions {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .hero-back-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: transparent; color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .hero-back-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.05); }
+    .hero-back-btn svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .hero-share-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: transparent; color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 8px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 2px; cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .hero-share-btn:hover { background: var(--gold-dim); border-color: var(--gold); }
+    .hero-share-btn svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 100px 24px 80px;
+      text-align: center; overflow: hidden;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: var(--max-w); margin: 0 auto; text-align: center; }
+    .hero-inner .hero-actions { text-align: left; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold-border);
+      padding: 5px 14px; border-radius: 2px;
+      margin-bottom: 28px; background: var(--gold-dim);
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800; line-height: 1.1; color: var(--white);
+      max-width: 820px; margin: 0 auto 20px; letter-spacing: 0.01em;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-subtitle {
+      font-size: 1.15rem; color: var(--text-muted);
+      max-width: 600px; margin: 0 auto 40px; font-weight: 300;
+    }
+    .hero-meta {
+      display: flex; justify-content: center;
+      gap: 32px; font-size: 13px; color: var(--text-muted);
+      letter-spacing: 0.06em; flex-wrap: wrap;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+    .hero-meta span::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+    /* ── LAYOUT ── */
+    .page-wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px 80px; width: 100%; text-align: left; }
+
+    /* ── SECTION ── */
+    .section { padding: 72px 0 0; }
+    .section:last-of-type { padding-bottom: 80px; }
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .section-bar { width: 4px; height: 32px; background: var(--gold); border-radius: 2px; flex-shrink: 0; }
+    .section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700; color: var(--white); letter-spacing: 0.02em;
+    }
+    .section h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem; font-weight: 600; color: var(--gold);
+      letter-spacing: 0.06em; text-transform: uppercase; margin: 36px 0 10px;
+    }
+    .section p { margin-bottom: 20px; color: var(--text); }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.055);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px; padding: 28px 32px;
+      margin-bottom: 24px; transition: border-color 0.2s;
+    }
+    .card:hover { border-left-color: #e0b85a; }
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--white);
+      letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .card p { margin-bottom: 0; font-size: 15.5px; color: var(--text-muted); }
+
+    /* ── TECH GRID ── */
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 32px 0; }
+    .tech-tile {
+      background: var(--bg-card2); border: 1px solid var(--gold-border);
+      border-radius: 4px; padding: 22px 22px 18px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .tech-tile:hover { background: var(--bg-card); transform: translateY(-2px); }
+    .tech-tile-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    .tech-tile-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: 8px;
+    }
+    .tech-tile p { font-size: 14px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    /* ── FEATURE LIST ── */
+    .feature-list { list-style: none; margin: 16px 0 24px; padding: 0; }
+    .feature-list li {
+      padding: 8px 0 8px 22px; position: relative;
+      color: var(--text); border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 15.5px;
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list li::before {
+      content: ''; position: absolute; left: 0; top: 50%;
+      width: 7px; height: 7px; border: 1.5px solid var(--gold);
+      border-radius: 1px; transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* ── STACK TABLE ── */
+    .stack-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+    .stack-table th {
+      background: var(--gold-dim); color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 12px 16px; text-align: left;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .stack-table td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text); vertical-align: top; }
+    .stack-table tr:hover td { background: rgba(201,168,76,0.04); }
+    .stack-table td:first-child { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--white); white-space: nowrap; }
+
+    /* ── CTA BUTTON ── */
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 11px 22px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      margin-top: 12px;
+    }
+    .cta-btn:hover { background: var(--gold); color: #0a0a0b; border-color: var(--gold); }
+    .cta-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      background: var(--bg-card); border: 1px solid var(--gold-border);
+      border-radius: 4px; padding: 40px 36px;
+      text-align: center; margin: 72px 0 0;
+    }
+    .cta-block h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 10px;
+    }
+    .cta-block p { color: var(--text-muted); margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 64px 0 0; }
+
+    /* ── INTRO CARD ── */
+    .intro-card {
+      background: var(--bg-card); border-left: 3px solid var(--gold);
+      padding: 28px 32px; margin: 40px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .intro-card p { margin: 0; font-size: 16px; color: var(--text-muted); }
+
+    /* ── SCENARIO ACCORDIONS ── */
+    .scenario-accordion { margin: 28px 0 0; border: 1px solid var(--gold-border); border-radius: 4px; overflow: hidden; }
+    .scenario-trigger {
+      width: 100%; background: var(--gold-dim); border: none;
+      padding: 15px 20px; display: flex; align-items: center; gap: 12px;
+      cursor: pointer; text-align: left; transition: background 0.2s;
+    }
+    .scenario-trigger:hover { background: rgba(201,168,76,0.22); }
+    .scenario-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--bg); background: var(--gold);
+      padding: 3px 8px; border-radius: 2px; white-space: nowrap; flex-shrink: 0;
+    }
+    .scenario-trigger-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px; font-weight: 700; color: var(--gold); letter-spacing: 0.04em; flex: 1;
+    }
+    .scenario-chevron {
+      width: 16px; height: 16px; flex-shrink: 0;
+      fill: none; stroke: var(--gold); stroke-width: 2.5;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.25s ease;
+    }
+    .scenario-accordion.open .scenario-chevron { transform: rotate(180deg); }
+    .scenario-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; background: var(--bg-card); }
+    .scenario-accordion.open .scenario-body { max-height: 900px; }
+    .scenario-inner { padding: 20px 22px 22px; border-top: 1px solid var(--gold-border); }
+    .scenario-steps { display: flex; flex-direction: column; gap: 0; }
+    .scenario-step { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .scenario-step:last-child { border-bottom: none; }
+    .scenario-step-num { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; min-width: 24px; padding-top: 2px; }
+    .scenario-step-content { flex: 1; }
+    .scenario-step-platform { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
+    .scenario-step-desc { font-size: 14.5px; color: var(--text); line-height: 1.55; margin: 0; }
+
+    /* ── RELATED RESOURCES RAIL ── */
+    .related-rail { margin: 56px 0 0; padding-top: 48px; padding-bottom: 64px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .related-rail-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; }
+    .related-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .related-card { display: block; text-decoration: none; background: var(--bg-card2); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 20px 20px 18px; transition: border-color 0.2s, background 0.2s, transform 0.2s; position: relative; overflow: hidden; }
+    .related-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--rc-accent, var(--gold)); opacity: 0.5; transition: opacity 0.2s; }
+    .related-card:hover { background: var(--bg-card); border-color: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .related-card:hover::before { opacity: 1; }
+    .related-card-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rc-accent, var(--gold)); margin-bottom: 8px; }
+    .related-card-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 8px; }
+    .related-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+    .related-card-arrow { display: inline-flex; align-items: center; gap: 5px; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rc-accent, var(--gold)); margin-top: 12px; opacity: 0.6; transition: opacity 0.2s; }
+    .related-card:hover .related-card-arrow { opacity: 1; }
+    .related-card-arrow svg { width: 11px; height: 11px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── SHARE TOAST ── */
+    .share-toast {
+      position: absolute; bottom: calc(100% + 8px); right: 0;
+      background: #1e1e22; border: 1px solid var(--gold-border); color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 2px; white-space: nowrap;
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+    }
+    .share-toast.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── TABLE OF CONTENTS ── */
+    .toc-wrap {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.055);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 4px 4px 0; padding: 24px 28px; margin: 40px 0 0;
+    }
+    .toc-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .toc-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 4px 24px; list-style: none; padding: 0; margin: 0;
+    }
+    .toc-grid li a {
+      display: flex; align-items: baseline; gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600;
+      color: var(--text-muted); text-decoration: none; letter-spacing: 0.02em;
+      padding: 5px 0; border-bottom: 1px solid transparent;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .toc-grid li a:hover { color: var(--gold); border-bottom-color: var(--gold-border); }
+    .toc-grid li a::before {
+      content: ''; display: inline-block; width: 5px; height: 5px;
+      border: 1.5px solid var(--gold); border-radius: 1px;
+      transform: rotate(45deg); flex-shrink: 0; opacity: 0.5;
+      transition: opacity 0.18s;
+    }
+    .toc-grid li a:hover::before { opacity: 1; }
+
+    /* ── INLINE TEXT LINK ── */
+    .inline-link {
+      color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid var(--gold-border);
+      transition: border-color 0.18s;
+    }
+    .inline-link:hover { border-color: var(--gold); }
+
+    /* ── DISCIPLINE SELECTOR ── */
+    .selector-wrap {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px; overflow: hidden; margin: 32px 0 0;
+    }
+    .selector-header { padding: 18px 24px 0; }
+    .selector-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .selector-options {
+      display: flex; flex-wrap: wrap; gap: 8px; padding: 0 24px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .selector-opt {
+      background: var(--bg-card2); border: 1px solid var(--gold-border);
+      color: var(--text-muted); border-radius: 2px; padding: 7px 14px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+    }
+    .selector-opt:hover { background: var(--gold-dim); color: var(--gold); border-color: var(--gold); }
+    .selector-opt.active { background: var(--gold); color: #0a0a0b; border-color: var(--gold); }
+    .selector-result { padding: 22px 24px 24px; min-height: 130px; }
+    .selector-result-inner { display: none; }
+    .selector-result-inner.visible { display: block; }
+    .selector-result-tag {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .selector-result-heading {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 800;
+      color: var(--white); margin-bottom: 10px; letter-spacing: 0.02em;
+    }
+    .selector-result-body { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+    .selector-result-body strong { color: var(--text); }
+    .selector-placeholder {
+      font-size: 14px; color: var(--text-muted); font-style: italic; opacity: 0.6;
+      padding-top: 8px;
+    }
+
+    /* ── FEEDBACK WIDGET ── */
+    .feedback-wrap {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.055);
+      border-radius: 4px; padding: 18px 24px; margin: 56px 0 0;
+    }
+    .feedback-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); flex: 1;
+    }
+    .feedback-btns { display: flex; gap: 8px; }
+    .feedback-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--bg-card2); border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted); border-radius: 2px; padding: 7px 16px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+    }
+    .feedback-btn:hover { background: var(--gold-dim); color: var(--gold); border-color: var(--gold-border); }
+    .feedback-btn.voted-yes { background: rgba(80,180,100,0.15); color: #6dca80; border-color: rgba(80,180,100,0.35); cursor: default; }
+    .feedback-btn.voted-no  { background: rgba(200,80,60,0.12); color: #e07060; border-color: rgba(200,80,60,0.3); cursor: default; }
+    .feedback-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .feedback-thanks {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.06em; color: var(--gold); display: none; margin-left: 4px;
+    }
+    .feedback-thanks.visible { display: inline; }
+
+    /* ── ATT&CK CALLOUT ── */
+    .attck-callout {
+      background: var(--bg-card2); border: 1px solid var(--gold-border);
+      border-radius: 4px; padding: 14px 18px; margin: 16px 0;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .attck-badge {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: #0a0a0b;
+      background: var(--gold); padding: 3px 8px; border-radius: 2px;
+      white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    }
+    .attck-body { flex: 1; }
+    .attck-id {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+      color: var(--gold); letter-spacing: 0.08em; margin-bottom: 3px;
+    }
+    .attck-desc { font-size: 14px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+    .attck-desc strong { color: var(--text); }
+
+    /* ── COMPARE TABLE ── */
+    .compare-wrap { margin: 32px 0 0; overflow-x: auto; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 640px; }
+    .compare-table th {
+      background: var(--gold-dim); color: var(--gold);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--gold-border);
+    }
+    .compare-table th:first-child { width: 170px; }
+    .compare-table td {
+      padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-muted); vertical-align: top; line-height: 1.45;
+    }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.03); }
+    .compare-table td:first-child { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--white); font-size: 15px; white-space: nowrap; }
+    .compare-pill {
+      display: inline-block; font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 2px; white-space: nowrap;
+    }
+    .pill-low  { background: rgba(80,180,100,0.12); color: #6dca80; border: 1px solid rgba(80,180,100,0.25); }
+    .pill-med  { background: rgba(201,168,76,0.14); color: var(--gold); border: 1px solid var(--gold-border); }
+    .pill-high { background: rgba(200,80,60,0.12); color: #e07060; border: 1px solid rgba(200,80,60,0.25); }
+    .compare-filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .compare-filter {
+      background: var(--bg-card2); border: 1px solid var(--gold-border);
+      color: var(--text-muted); border-radius: 2px; padding: 5px 12px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+    }
+    .compare-filter:hover, .compare-filter.active { background: var(--gold-dim); color: var(--gold); border-color: var(--gold); }
+
+    /* ── ZERO TRUST ASSESSMENT WIDGET ── */
+    .zt-assess-wrap {
+      background: var(--bg-card); border: 1px solid var(--gold-border);
+      border-radius: 4px; overflow: hidden; margin: 40px 0 0;
+    }
+    .zt-assess-header {
+      background: var(--gold-dim); border-bottom: 1px solid var(--gold-border);
+      padding: 16px 24px; display: flex; align-items: center; gap: 12px;
+    }
+    .zt-assess-badge {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: #0a0a0b;
+      background: var(--gold); padding: 3px 8px; border-radius: 2px; white-space: nowrap;
+    }
+    .zt-assess-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700;
+      color: var(--gold); letter-spacing: 0.04em;
+    }
+    .zt-assess-body { padding: 24px; }
+    .zt-progress-bar {
+      height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px;
+      margin-bottom: 24px; overflow: hidden;
+    }
+    .zt-progress-fill {
+      height: 100%; background: var(--gold); border-radius: 2px;
+      transition: width 0.4s ease; width: 20%;
+    }
+    .zt-question { display: none; }
+    .zt-question.active { display: block; }
+    .zt-q-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .zt-q-text {
+      font-size: 17px; color: var(--white); font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; letter-spacing: 0.02em; margin-bottom: 20px; line-height: 1.3;
+    }
+    .zt-options { display: flex; flex-direction: column; gap: 8px; }
+    .zt-opt {
+      background: var(--bg-card2); border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted); border-radius: 2px; padding: 11px 16px;
+      font-family: 'Barlow', sans-serif; font-size: 15px;
+      cursor: pointer; text-align: left; transition: background 0.18s, color 0.18s, border-color 0.18s;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .zt-opt::before {
+      content: ''; width: 7px; height: 7px; border: 1.5px solid var(--gold);
+      border-radius: 1px; transform: rotate(45deg); flex-shrink: 0; opacity: 0.4;
+      transition: opacity 0.18s, background 0.18s;
+    }
+    .zt-opt:hover { background: var(--gold-dim); color: var(--text); border-color: var(--gold-border); }
+    .zt-opt:hover::before { opacity: 1; }
+    .zt-opt.selected { background: var(--gold-dim); color: var(--gold); border-color: var(--gold); }
+    .zt-opt.selected::before { opacity: 1; background: var(--gold); }
+    .zt-nav { display: flex; justify-content: flex-end; margin-top: 20px; }
+    .zt-next-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border);
+      padding: 9px 20px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px;
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 2px; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .zt-next-btn:hover { background: var(--gold); color: #0a0a0b; border-color: var(--gold); }
+    .zt-next-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .zt-next-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Result panel */
+    .zt-result { display: none; }
+    .zt-result.active { display: block; }
+    .zt-result-tier {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .zt-result-heading {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 800;
+      color: var(--white); letter-spacing: 0.02em; margin-bottom: 16px; line-height: 1.15;
+    }
+    .zt-score-bar-wrap {
+      background: rgba(255,255,255,0.06); border-radius: 2px; height: 6px;
+      margin-bottom: 6px; overflow: hidden;
+    }
+    .zt-score-bar { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.6s ease 0.1s; }
+    .zt-score-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px;
+    }
+    .zt-result-desc { font-size: 15px; color: var(--text-muted); line-height: 1.65; margin-bottom: 20px; }
+    .zt-result-desc strong { color: var(--text); }
+    .zt-next-steps {
+      border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; margin-top: 4px;
+    }
+    .zt-next-steps-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .zt-steps-list { list-style: none; padding: 0; margin: 0 0 16px; }
+    .zt-steps-list li {
+      display: flex; gap: 10px; padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 14.5px; color: var(--text);
+    }
+    .zt-steps-list li:last-child { border-bottom: none; }
+    .zt-step-num {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      color: var(--gold); min-width: 22px; padding-top: 2px;
+    }
+    .zt-retake-btn {
+      background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
+      border-radius: 2px; padding: 7px 16px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+      transition: border-color 0.18s, color 0.18s;
+    }
+    .zt-retake-btn:hover { border-color: rgba(255,255,255,0.25); color: var(--white); }
+
+    /* ── ATTACK CHAIN ACCORDION ── */
+    .attack-chain-wrap { margin: 28px 0 0; }
+    .attack-chain-accordion {
+      border: 1px solid rgba(200,80,60,0.35); border-radius: 4px; overflow: hidden;
+    }
+    .attack-chain-trigger {
+      width: 100%; background: rgba(200,80,60,0.1); border: none;
+      padding: 15px 20px; display: flex; align-items: center; gap: 12px;
+      cursor: pointer; text-align: left; transition: background 0.2s;
+    }
+    .attack-chain-trigger:hover { background: rgba(200,80,60,0.17); }
+    .attack-chain-tag {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #fff; background: #c05040; padding: 3px 8px; border-radius: 2px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .attack-chain-trigger-text {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700;
+      color: #e07060; letter-spacing: 0.04em; flex: 1;
+    }
+    .attack-chain-chevron {
+      width: 16px; height: 16px; flex-shrink: 0;
+      fill: none; stroke: #e07060; stroke-width: 2.5;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: transform 0.25s ease;
+    }
+    .attack-chain-accordion.open .attack-chain-chevron { transform: rotate(180deg); }
+    .attack-chain-body { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; background: var(--bg-card); }
+    .attack-chain-accordion.open .attack-chain-body { max-height: 2000px; }
+    .attack-chain-inner { padding: 0 0 0; border-top: 1px solid rgba(200,80,60,0.25); }
+
+    .ac-phase {
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .ac-phase:last-child { border-bottom: none; }
+    .ac-phase-header {
+      display: flex; align-items: stretch; min-height: 44px;
+    }
+    .ac-phase-side {
+      width: 6px; flex-shrink: 0;
+    }
+    .ac-phase-side.attacker { background: rgba(200,80,60,0.7); }
+    .ac-phase-side.defense  { background: rgba(80,180,100,0.5); }
+    .ac-phase-side.partial  { background: rgba(201,168,76,0.6); }
+    .ac-phase-content { flex: 1; padding: 14px 20px; }
+    .ac-phase-label {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
+    }
+    .ac-phase-step {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted);
+    }
+    .ac-phase-discipline {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; padding: 2px 7px; border-radius: 2px;
+    }
+    .ac-disc-devsecops { background: rgba(80,140,220,0.15); color: #6aaae0; border: 1px solid rgba(80,140,220,0.25); }
+    .ac-disc-iam       { background: rgba(201,168,76,0.14); color: var(--gold); border: 1px solid var(--gold-border); }
+    .ac-disc-pam       { background: rgba(120,80,200,0.15); color: #a070e0; border: 1px solid rgba(120,80,200,0.25); }
+    .ac-disc-cspm      { background: rgba(60,180,140,0.15); color: #50c8a0; border: 1px solid rgba(60,180,140,0.25); }
+    .ac-disc-cloud     { background: rgba(200,120,40,0.15); color: #d08030; border: 1px solid rgba(200,120,40,0.25); }
+    .ac-disc-attacker  { background: rgba(200,80,60,0.15); color: #e07060; border: 1px solid rgba(200,80,60,0.25); }
+    .ac-phase-heading {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700;
+      color: var(--white); letter-spacing: 0.03em; margin-bottom: 5px;
+    }
+    .ac-phase-desc { font-size: 14px; color: var(--text-muted); line-height: 1.55; margin: 0; }
+    .ac-phase-outcome {
+      font-size: 13px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      letter-spacing: 0.06em; margin-top: 6px; padding: 4px 10px; display: inline-block;
+      border-radius: 2px;
+    }
+    .ac-outcome-blocked { background: rgba(80,180,100,0.12); color: #6dca80; border: 1px solid rgba(80,180,100,0.25); }
+    .ac-outcome-partial { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid var(--gold-border); }
+    .ac-outcome-breach  { background: rgba(200,80,60,0.12); color: #e07060; border: 1px solid rgba(200,80,60,0.25); }
+    .ac-legend {
+      display: flex; gap: 20px; flex-wrap: wrap; padding: 12px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      background: rgba(0,0,0,0.15);
+    }
+    .ac-legend-item {
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);
+    }
+    .ac-legend-swatch { width: 10px; height: 10px; border-radius: 1px; flex-shrink: 0; }
+
+    /* ── ARCHITECTURE DIAGRAM ── */
+    .arch-diagram-wrap {
+      margin: 32px 0 0; background: var(--bg-card);
+      border: 1px solid var(--gold-border); border-radius: 4px;
+      padding: 32px 24px; text-align: center; overflow: hidden;
+    }
+    .arch-diagram-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .arch-diagram-wrap svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { padding: 72px 20px 60px; }
+      .hero-meta { gap: 18px; }
+      .related-cards { grid-template-columns: 1fr; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .selector-options { gap: 6px; }
+      .zt-assess-body { padding: 16px; }
+      .ac-legend { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header role="banner">
+<section class="hero" aria-label="Page introduction">
+  <div class="hero-inner">
+    <div class="hero-actions">
+      <a href="/knowledge-base.html" class="hero-back-btn">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        Return to Knowledge Base
+      </a>
+      <button class="hero-share-btn" id="shareBtn" type="button">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Share This Page
+        <span class="share-toast" id="shareToast">Link copied!</span>
+      </button>
+    </div>
+    <div class="hero-eyebrow">TacRaven Knowledge Base &mdash; Cloud &amp; Identity</div>
+    <h1>Cloud Security and <span>Identity Management</span></h1>
+    <p class="hero-subtitle">Understanding how identity, access control, and cloud security architectures protect modern environments.</p>
+    <div class="hero-meta">
+      <span>IAM</span>
+      <span>PAM</span>
+      <span>Cloud Security</span>
+      <span>CSPM</span>
+      <span>DevSecOps</span>
+    </div>
+  </div>
+</section>
+</header>
+
+<main id="main-content" role="main">
+<div class="page-wrap">
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="intro-card">
+      <p>The cloud has fundamentally changed how organizations build, deploy, and secure their systems. With infrastructure spanning multiple providers, workloads distributed across hybrid environments, and remote access now the default, traditional perimeter-based security models simply do not hold up. Identity has become the new perimeter, and protecting it requires a layered strategy that spans access management, privileged controls, cloud configuration, and secure development practices. This guide covers the core disciplines of cloud and identity security and explains how they connect into a coherent defensive program.</p>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc-wrap" aria-label="Page contents">
+    <div class="toc-label">On This Page</div>
+    <ol class="toc-grid">
+      <li><a href="#why-critical">Why Identity and Cloud Security Are Critical</a></li>
+      <li><a href="#identity-fundamentals">Identity Security Fundamentals</a></li>
+      <li><a href="#iam">Identity and Access Management</a></li>
+      <li><a href="#pam">Privileged Access Management</a></li>
+      <li><a href="#cloud-security">Cloud Security</a></li>
+      <li><a href="#cspm">Cloud Security Posture Management</a></li>
+      <li><a href="#devsecops">DevSecOps</a></li>
+      <li><a href="#integrated">How They Work Together</a></li>
+      <li><a href="#architecture">Modern Cloud Security Architecture</a></li>
+      <li><a href="#building">Building a Secure Cloud Environment</a></li>
+    </ol>
+  </nav>
+
+  <!-- DISCIPLINE SELECTOR -->
+  <div class="selector-wrap" id="disciplineSelector">
+    <div class="selector-header">
+      <div class="selector-title">Where Should My Cloud and Identity Program Focus First?</div>
+    </div>
+    <div class="selector-options" role="group" aria-label="Organization situation selector">
+      <button class="selector-opt" data-key="no-iam" type="button">No formal IAM yet</button>
+      <button class="selector-opt" data-key="cloud-migration" type="button">Mid-cloud migration</button>
+      <button class="selector-opt" data-key="priv-accounts" type="button">Unsecured admin accounts</button>
+      <button class="selector-opt" data-key="cloud-misconfig" type="button">Cloud misconfigs found</button>
+      <button class="selector-opt" data-key="pipeline-security" type="button">DevOps team scaling fast</button>
+      <button class="selector-opt" data-key="defense-ic" type="button">Defense / IC sector</button>
+    </div>
+    <div class="selector-result" id="selectorResult" aria-live="polite">
+      <p class="selector-placeholder">Select your situation above to get a recommended starting point.</p>
+
+      <div class="selector-result-inner" data-result="no-iam">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">Build IAM Foundations First</div>
+        <p class="selector-result-body">Without a structured identity program, no other cloud security control can be fully effective. Start by inventorying all accounts and service identities, enforcing <strong>MFA</strong> across every user-facing system, and establishing a centralized identity provider. Even basic role-based access control with SSO in place reduces attack surface significantly before any other investment is made.</p>
+        <a href="#iam" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Identity and Access Management
+        </a>
+      </div>
+
+      <div class="selector-result-inner" data-result="cloud-migration">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">CSPM from Day One of Cloud Adoption</div>
+        <p class="selector-result-body">Cloud migrations are where misconfigurations are born. Teams moving fast to ship workloads frequently create storage buckets, security groups, and IAM policies that are too permissive and never revisited. Deploy a <strong>CSPM</strong> tool before or alongside the migration to catch configuration drift as infrastructure is built. Fixing a misconfiguration at creation time costs minutes; finding it six months later costs an incident response engagement.</p>
+        <a href="#cspm" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Cloud Security Posture Management
+        </a>
+      </div>
+
+      <div class="selector-result-inner" data-result="priv-accounts">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">PAM Before an Attacker Gets There First</div>
+        <p class="selector-result-body">Unprotected administrative accounts are the highest-value targets in any environment. An attacker who compromises one admin credential in an organization without PAM controls can move laterally without friction. Start with <strong>credential vaulting</strong> for all privileged accounts and enforce MFA on every admin access path. Just-in-time access can follow later, but basic vaulting provides immediate, significant risk reduction.</p>
+        <a href="#pam" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Privileged Access Management
+        </a>
+      </div>
+
+      <div class="selector-result-inner" data-result="cloud-misconfig">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">Remediate, Then Monitor Continuously</div>
+        <p class="selector-result-body">If a scan or audit has surfaced misconfigurations, the immediate priority is triage and remediation by risk level. Publicly exposed storage, overly permissive security groups, and disabled logging should be addressed first. Once the backlog is under control, deploy a <strong>CSPM</strong> platform and integrate findings into your ticketing workflow so drift is caught and routed to teams rather than accumulating into a future audit finding.</p>
+        <a href="#cspm" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Cloud Security Posture Management
+        </a>
+      </div>
+
+      <div class="selector-result-inner" data-result="pipeline-security">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">Embed Security Before Scale Locks In Bad Patterns</div>
+        <p class="selector-result-body">Engineering teams that grow fast without security guardrails develop habits that are very hard to change later. The best time to embed <strong>DevSecOps</strong> practices is before those habits are established. Start with secrets scanning in CI/CD pipelines, IaC template scanning, and dependency vulnerability checks. These are low-friction additions that developers largely accept when introduced early, and much harder to push retroactively once a team is large.</p>
+        <a href="#devsecops" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: DevSecOps
+        </a>
+      </div>
+
+      <div class="selector-result-inner" data-result="defense-ic">
+        <div class="selector-result-tag">Recommended Starting Point</div>
+        <div class="selector-result-heading">Zero Trust Identity as a Program Foundation</div>
+        <p class="selector-result-body">Defense and IC sector organizations face persistent, well-resourced adversaries who specifically target identity systems as the path to high-value data. Build your cloud and identity program around a <strong>Zero Trust</strong> architecture where every access request is authenticated and authorized regardless of origin. Start with strong IAM and MFA, follow with PAM for privileged accounts, and enforce least privilege as a non-negotiable standard. <a href="/blackfeather.html" class="inline-link">BlackFeather</a> was built specifically for this operational environment.</p>
+        <a href="#iam" class="cta-btn" style="margin-top:0;">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Read: Identity and Access Management
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ZERO TRUST MATURITY SELF-ASSESSMENT -->
+  <div class="zt-assess-wrap" id="ztAssessment">
+    <div class="zt-assess-header">
+      <span class="zt-assess-badge">Self-Assessment</span>
+      <span class="zt-assess-title">Zero Trust Maturity Check — 5 Questions</span>
+    </div>
+    <div class="zt-assess-body">
+      <!-- Progress bar -->
+      <div class="zt-progress-bar"><div class="zt-progress-fill" id="ztProgressFill"></div></div>
+
+      <!-- Q1 -->
+      <div class="zt-question active" data-q="1">
+        <div class="zt-q-label">Question 1 of 5</div>
+        <div class="zt-q-text">How is multi-factor authentication (MFA) enforced across your organization?</div>
+        <div class="zt-options">
+          <button class="zt-opt" data-score="0" type="button">Not required — users set it up if they want to</button>
+          <button class="zt-opt" data-score="1" type="button">Required for remote access or VPN only</button>
+          <button class="zt-opt" data-score="2" type="button">Required for all users on all systems</button>
+          <button class="zt-opt" data-score="3" type="button">Required everywhere, including service accounts and CI/CD pipelines</button>
+        </div>
+        <div class="zt-nav">
+          <button class="zt-next-btn" id="ztNext1" disabled type="button">Next <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="zt-question" data-q="2">
+        <div class="zt-q-label">Question 2 of 5</div>
+        <div class="zt-q-text">How are privileged and administrative credentials managed?</div>
+        <div class="zt-options">
+          <button class="zt-opt" data-score="0" type="button">Shared admin passwords, spreadsheets, or nothing formal</button>
+          <button class="zt-opt" data-score="1" type="button">Documented but not vaulted — admins hold credentials directly</button>
+          <button class="zt-opt" data-score="2" type="button">Credentials stored in a vault; admin access requires checkout</button>
+          <button class="zt-opt" data-score="3" type="button">Full PAM deployment with just-in-time access and session recording</button>
+        </div>
+        <div class="zt-nav">
+          <button class="zt-next-btn" id="ztNext2" disabled type="button">Next <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="zt-question" data-q="3">
+        <div class="zt-q-label">Question 3 of 5</div>
+        <div class="zt-q-text">How often are cloud infrastructure configurations reviewed for security issues?</div>
+        <div class="zt-options">
+          <button class="zt-opt" data-score="0" type="button">Rarely or never — configurations are set at deployment and not revisited</button>
+          <button class="zt-opt" data-score="1" type="button">Periodically during audits or after incidents</button>
+          <button class="zt-opt" data-score="2" type="button">Automated scanning runs on a schedule and findings are reviewed</button>
+          <button class="zt-opt" data-score="3" type="button">Continuous CSPM monitoring with findings routed automatically to remediation workflows</button>
+        </div>
+        <div class="zt-nav">
+          <button class="zt-next-btn" id="ztNext3" disabled type="button">Next <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="zt-question" data-q="4">
+        <div class="zt-q-label">Question 4 of 5</div>
+        <div class="zt-q-text">How are access permissions and user roles reviewed and maintained?</div>
+        <div class="zt-options">
+          <button class="zt-opt" data-score="0" type="button">Access is provisioned on request and rarely removed</button>
+          <button class="zt-opt" data-score="1" type="button">Roles are defined but access reviews happen infrequently</button>
+          <button class="zt-opt" data-score="2" type="button">Quarterly access reviews with a formal process for revoking unused permissions</button>
+          <button class="zt-opt" data-score="3" type="button">Continuous least-privilege enforcement with automated entitlement analysis and right-sizing</button>
+        </div>
+        <div class="zt-nav">
+          <button class="zt-next-btn" id="ztNext4" disabled type="button">Next <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="zt-question" data-q="5">
+        <div class="zt-q-label">Question 5 of 5</div>
+        <div class="zt-q-text">How is security integrated into your software development and deployment pipeline?</div>
+        <div class="zt-options">
+          <button class="zt-opt" data-score="0" type="button">Security is reviewed after development is complete</button>
+          <button class="zt-opt" data-score="1" type="button">Some manual code review for security, but no automated gates</button>
+          <button class="zt-opt" data-score="2" type="button">Automated SAST and/or secrets scanning integrated into CI/CD</button>
+          <button class="zt-opt" data-score="3" type="button">Full DevSecOps: SAST, SCA, IaC scanning, secrets vault, and enforced security gates in all pipelines</button>
+        </div>
+        <div class="zt-nav">
+          <button class="zt-next-btn" id="ztNext5" disabled type="button">See Results <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="zt-result" id="ztResult">
+        <div class="zt-result-tier" id="ztResultTier"></div>
+        <div class="zt-result-heading" id="ztResultHeading"></div>
+        <div class="zt-score-bar-wrap"><div class="zt-score-bar" id="ztScoreBar" style="width:0%"></div></div>
+        <div class="zt-score-label" id="ztScoreLabel"></div>
+        <div class="zt-result-desc" id="ztResultDesc"></div>
+        <div class="zt-next-steps">
+          <div class="zt-next-steps-label">Recommended Next Steps</div>
+          <ul class="zt-steps-list" id="ztStepsList"></ul>
+          <button class="zt-retake-btn" id="ztRetake" type="button">Retake Assessment</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SECTION 1: Why Critical -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="why-critical">Why Identity and Cloud Security Are Critical</h2>
+    </div>
+    <p>Cloud adoption over the past decade has been one of the most significant shifts in enterprise IT history. Organizations that once owned and operated their own data centers now run core workloads on platforms like AWS, Azure, and Google Cloud. The result is an IT landscape that is faster and more scalable than ever, and also fundamentally more complex to secure.</p>
+    <p>That complexity starts with identity. In a traditional on-premises environment, the network edge acted as a hard boundary. Firewalls, VPNs, and physical access controls defined who could reach what. That model has broken down almost entirely. Users work from personal devices, home networks, and unfamiliar locations. APIs communicate across cloud providers with no human in the loop. Contractors, partners, and automated systems all need access to internal resources. Controlling who is who and what each identity is allowed to do is now a primary security challenge.</p>
+    <p>Multi-cloud environments add another layer of difficulty. A single organization might use AWS for compute, Azure Active Directory for identity, Salesforce for customer data, and GitHub for source code. Each platform has its own access models, permission structures, and configuration options. Keeping that patchwork consistent and auditable requires deliberate architecture, not just good intentions.</p>
+    <p>Remote work has accelerated these trends. The expanded attack surface created by millions of employees logging in from outside the office produced a target-rich environment for credential-based attacks and unauthorized access attempts. Attackers learned quickly that compromising an identity is often far easier than breaking through a hardened firewall.</p>
+
+    <h3>The Five Core Disciplines</h3>
+
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-label">User and Service Access</div>
+        <div class="tech-tile-name">IAM</div>
+        <p>Manages the full lifecycle of digital identities and enforces access policies that determine what each identity can reach across all systems and services.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">High-Risk Account Control</div>
+        <div class="tech-tile-name">PAM</div>
+        <p>Protects administrative and service accounts through credential vaulting, session monitoring, and just-in-time access controls that eliminate standing privilege.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Infrastructure Protection</div>
+        <div class="tech-tile-name">Cloud Security</div>
+        <p>Applies the shared responsibility model, network segmentation, data protection, and workload security to cloud-hosted infrastructure and applications.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Configuration Monitoring</div>
+        <div class="tech-tile-name">CSPM</div>
+        <p>Continuously scans cloud environments for misconfigurations, compliance gaps, and policy violations before they become exploitable security incidents.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Pipeline Security</div>
+        <div class="tech-tile-name">DevSecOps</div>
+        <p>Embeds security scanning, secrets management, and compliance controls directly into CI/CD pipelines so vulnerabilities are caught before reaching production.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 2: Identity Fundamentals -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="identity-fundamentals">Identity Security Fundamentals</h2>
+    </div>
+    <p>Before diving into specific tools and technologies, it helps to understand the core concepts that underpin all of identity security. These principles appear repeatedly across IAM systems, PAM platforms, cloud security policies, and development workflows.</p>
+
+    <h3>Authentication, Authorization, and Governance</h3>
+
+    <div class="card">
+      <div class="card-title">Authentication</div>
+      <p>The process of verifying that an identity is who it claims to be. Passwords alone are inadequate for protecting sensitive systems. Multi-factor authentication adds a second layer of verification through a time-based code, push notification, or hardware token. The goal is to make impersonation significantly harder even when credentials are exposed through phishing or data breaches.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Authorization</div>
+      <p>What happens after authentication succeeds. Authorization determines what an authenticated identity is actually allowed to do. A user who successfully logs in should only be able to perform the actions their role requires. Authorization systems use policies, roles, and permission sets to enforce these boundaries at scale across thousands of users, services, and resources.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Least Privilege</div>
+      <p>Every user, service, and application should operate with the minimum permissions required to perform its function. In practice, organizations struggle with this because permissions tend to accumulate over time as access is granted for specific projects and never revoked. Least privilege enforcement requires both initial discipline and ongoing review processes to remain effective as environments and roles change.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Identity Governance</div>
+      <p>The organizational practice of defining, enforcing, and auditing who has access to what, and why. It covers the policies and processes that connect HR systems to access provisioning, drive periodic access reviews, and produce audit trails that satisfy compliance requirements. Without governance, identity programs drift back toward the same permissive sprawl they were designed to prevent.</p>
+    </div>
+
+    <div class="intro-card">
+      <p>A useful mental model: authentication answers "who are you?", authorization answers "what are you allowed to do?", and governance answers "should you still have that access, and can we prove it?"</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 3: IAM -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="iam">Identity and Access Management (IAM)</h2>
+    </div>
+    <p><a href="/iam.html" class="inline-link">Identity and Access Management</a> is the foundational layer of identity security. IAM systems are responsible for creating, managing, and controlling digital identities across an organization, and for enforcing the access policies that determine what each identity can reach.</p>
+    <p>At its core, IAM handles the full lifecycle of a user identity: provisioning when someone joins the organization, adjusting access as their role changes, and deprovisioning promptly when they leave. Automated provisioning through identity governance platforms reduces manual work and cuts down the risk of orphaned accounts sitting idle with active permissions long after they are no longer needed.</p>
+
+    <h3>Core IAM Capabilities</h3>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>What It Does</th>
+          <th>Why It Matters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Single Sign-On</td>
+          <td>Users authenticate once and access multiple applications without logging in repeatedly</td>
+          <td>Centralizes authentication and reduces credential sprawl without sacrificing control over access</td>
+        </tr>
+        <tr>
+          <td>Role-Based Access Control</td>
+          <td>Users are assigned to roles that carry defined permission sets aligned to job functions</td>
+          <td>Scales access policy management across large user populations without requiring per-user configuration</td>
+        </tr>
+        <tr>
+          <td>Multi-Factor Authentication</td>
+          <td>Requires a second verification factor in addition to a password</td>
+          <td>Prevents credential theft from resulting in unauthorized access, the most common initial access vector in cloud breaches</td>
+        </tr>
+        <tr>
+          <td>Directory Services</td>
+          <td>Central repository of user identities, group memberships, and associated attributes</td>
+          <td>Provides the source of truth for all downstream access decisions across the organization</td>
+        </tr>
+        <tr>
+          <td>Identity Federation</td>
+          <td>Extends trust across organizational or cloud provider boundaries using SAML and OIDC</td>
+          <td>Allows users to access cloud resources and partner systems without maintaining separate credentials for each</td>
+        </tr>
+        <tr>
+          <td>Lifecycle Management</td>
+          <td>Automated provisioning and deprovisioning tied to HR system events</td>
+          <td>Ensures accounts are disabled promptly when employees leave, closing a gap that attackers actively probe</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="attck-callout">
+      <span class="attck-badge">ATT&amp;CK</span>
+      <div class="attck-body">
+        <div class="attck-id">T1078 — Valid Accounts &amp; T1556 — Modify Authentication Process</div>
+        <p class="attck-desc">Credential-based attacks are the dominant initial access technique against cloud environments. <strong>T1078</strong> covers adversary use of stolen or brute-forced credentials to access systems as legitimate users. <strong>T1556</strong> covers attacks that modify identity infrastructure itself to establish persistence. Strong IAM controls, including MFA and conditional access policies, directly reduce the exploitability of both technique families.</p>
+      </div>
+    </div>
+
+    <a href="/iam.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is IAM?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 4: PAM -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="pam">Privileged Access Management (PAM)</h2>
+    </div>
+    <p><a href="/pam.html" class="inline-link">Privileged Access Management</a> focuses specifically on the identities that carry the most risk: administrators, service accounts, and any user with elevated permissions to critical systems. These accounts are high-value targets because compromising one often gives an attacker broad access, lateral movement capability, and the ability to cover their tracks across the environment.</p>
+    <p>The core function of a PAM platform is credential vaulting. Instead of administrators knowing and storing privileged passwords themselves, the PAM system holds credentials in an encrypted vault. When a user needs to perform an administrative task, they check out a credential through the PAM system, which may rotate the password automatically after each session. Even if an insider threat actor separates from the organization, they cannot use cached credentials to access systems later.</p>
+
+    <h3>PAM Capabilities</h3>
+
+    <div class="card">
+      <div class="card-title">Credential Vaulting</div>
+      <p>Privileged passwords are stored in an encrypted vault, eliminating direct administrator knowledge of credentials. Access is brokered through the PAM platform with full audit logging of every checkout event and session. Automatic rotation after each session ensures that credentials cannot be reused even if a session is somehow captured.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Session Monitoring and Recording</div>
+      <p>When privileged sessions are proxied through a PAM platform, every command typed, file accessed, and screen viewed can be recorded and reviewed. This creates an audit trail that is invaluable during incident investigation and satisfies compliance requirements across regulated industries including healthcare, finance, and federal environments.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Just-in-Time Access</div>
+      <p>Rather than maintaining standing privileged access that sits available at all times, JIT systems grant elevated permissions only for the duration of a specific task. When the task is complete, the elevated access is revoked automatically. This dramatically reduces the attack surface by eliminating persistent administrative accounts that could be hijacked between legitimate use events.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Service Account Management</div>
+      <p>Non-human identities used by applications, scripts, and automation tools frequently accumulate excessive permissions and are rarely reviewed. A mature PAM strategy includes discovery and management of machine identities alongside human privileged accounts, since service account compromise is a common lateral movement path in cloud and hybrid environments.</p>
+    </div>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">PAM in Action: Containing an Insider Threat Through Vaulted Credentials</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Separation Event</div>
+                <p class="scenario-step-desc">A senior database administrator resigns. Prior to the organization deploying PAM, this individual had direct knowledge of production database credentials for ten systems. Under a PAM model, they had never seen those passwords directly. All access was brokered through the vault with full session recording enabled throughout their tenure.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Offboarding</div>
+                <p class="scenario-step-desc">HR notifies the IAM team. The administrator's account is immediately deprovisioned in the identity provider, which cascades to revoke PAM vault access. The PAM system automatically rotates all credentials previously available to that user's role. No cached passwords exist that could be used post-separation, regardless of what the individual may have noted down or retained.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Post-Separation Attempt</div>
+                <p class="scenario-step-desc">Three days after separation, an external login attempt is detected from a VPN service targeting one of the production systems. The attempt fails because the rotated credentials are no longer valid and the account is deprovisioned. The PAM session logs confirm the administrator had access to this system during employment and allow the security team to review all prior privileged sessions for any exfiltration activity.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Outcome</div>
+                <p class="scenario-step-desc">What would have been an undetected unauthorized access event under a legacy model is blocked at the credential layer, detected through login monitoring, and fully auditable through PAM session recordings. The combination of vaulting, automatic rotation, and session recording contained the insider risk without requiring any manual intervention after the initial offboarding action.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/pam.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is PAM?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 5: Cloud Security -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="cloud-security">Cloud Security</h2>
+    </div>
+    <p><a href="/cloud-security.html" class="inline-link">Cloud security</a> encompasses the full set of controls, policies, and technologies used to protect cloud-based infrastructure, data, and applications. While cloud providers offer substantial built-in security capabilities, the shared responsibility model makes clear that customers are accountable for securing what they build on top of the platform.</p>
+    <p>The shared responsibility model divides security obligations between the cloud provider and the customer. AWS, Azure, and GCP are responsible for securing the physical infrastructure, hypervisors, and foundational cloud services. Customers are responsible for everything above that line: operating systems, application code, data, access controls, and network configuration. Misunderstanding this boundary is a persistent source of cloud security incidents.</p>
+
+    <h3>Key Cloud Security Domains</h3>
+
+    <table class="stack-table">
+      <thead>
+        <tr>
+          <th>Domain</th>
+          <th>What It Covers</th>
+          <th>Common Risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Network Security</td>
+          <td>VPCs, security groups, NACLs, private endpoints, and traffic inspection between workloads</td>
+          <td>Overly permissive security group rules that allow unrestricted inbound traffic from the internet to internal resources</td>
+        </tr>
+        <tr>
+          <td>Data Protection</td>
+          <td>Encryption at rest and in transit, key management, and storage permission controls</td>
+          <td>Publicly accessible object storage buckets that expose sensitive data without any authentication requirement</td>
+        </tr>
+        <tr>
+          <td>Identity Controls</td>
+          <td>Cloud IAM policies, role assignments, service account permissions, and federation configurations</td>
+          <td>Wildcard IAM permissions granted to workloads that far exceed what those workloads actually require</td>
+        </tr>
+        <tr>
+          <td>Workload Security</td>
+          <td>Container image scanning, runtime protection for VMs and functions, and workload identity</td>
+          <td>Containers running as root or built from vulnerable base images that are deployed without any security scanning</td>
+        </tr>
+        <tr>
+          <td>Logging and Monitoring</td>
+          <td>Cloud audit logs, API call recording, and integration with SIEM platforms for detection</td>
+          <td>CloudTrail or equivalent audit logging disabled on accounts, removing all visibility into API activity and configuration changes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="attck-callout">
+      <span class="attck-badge">ATT&amp;CK</span>
+      <div class="attck-body">
+        <div class="attck-id">T1530 — Data from Cloud Storage &amp; T1537 — Transfer Data to Cloud Account</div>
+        <p class="attck-desc">Cloud environments introduce unique data exfiltration techniques. <strong>T1530</strong> covers direct access to misconfigured or compromised cloud storage objects by adversaries with or without valid credentials. <strong>T1537</strong> covers adversary use of cloud provider infrastructure for staging exfiltrated data. Both are enabled by weak access controls and absent monitoring — exactly the gaps cloud security architecture is designed to close.</p>
+      </div>
+    </div>
+
+    <a href="/cloud-security.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is Cloud Security?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 6: CSPM -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="cspm">Cloud Security Posture Management (CSPM)</h2>
+    </div>
+    <p>Cloud environments are large, dynamic, and change constantly. Developers spin up new services, engineers modify security groups, and automation creates resources that may not follow established security policies. <a href="/cspm.html" class="inline-link">CSPM tools</a> continuously monitor cloud environments to detect misconfigurations and compliance gaps before they become security incidents.</p>
+    <p>CSPM platforms work by connecting to cloud provider APIs and inventorying resources, configurations, and permission settings across an organization's cloud accounts. They compare discovered configurations against security benchmarks such as the CIS Cloud Foundations Benchmark or provider-specific best practices and flag deviations. The output is a prioritized list of findings that security and cloud operations teams can act on systematically.</p>
+
+    <h3>What CSPM Detects</h3>
+
+    <div class="card">
+      <div class="card-title">Misconfiguration Detection</div>
+      <p>Common findings include overly permissive IAM policies, storage buckets exposed to the public internet, encryption disabled on databases, security groups allowing unrestricted inbound access, and audit logging not enabled on critical services. Each represents real risk in the environment right now, not a theoretical future vulnerability.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Compliance Scanning</div>
+      <p>CSPM tools map discovered configurations to regulatory frameworks such as PCI DSS, HIPAA, FedRAMP, and SOC 2 and generate compliance reports that support audit processes. This reduces the manual effort of pulling evidence for compliance reviews and surfaces gaps before an auditor finds them first.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Identity and Entitlement Analysis</div>
+      <p>CIEM capabilities within CSPM platforms analyze IAM permissions across cloud accounts to surface roles and users with far more access than they actually use. Right-sizing permissions based on actual usage data enforces least privilege at cloud scale, closing the gap between what identities are allowed to do and what they actually need to do.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Continuous Drift Detection</div>
+      <p>Configuration drift occurs as infrastructure changes over time, moving away from established secure baselines. CSPM platforms detect this drift in near real time, allowing operations teams to catch and remediate deviations before they compound into larger exposure. Integrating findings into ticketing workflows ensures discovered issues are tracked to resolution rather than sitting in a dashboard nobody reviews.</p>
+    </div>
+
+    <div class="scenario-accordion" data-accordion>
+      <button class="scenario-trigger" type="button" aria-expanded="false">
+        <span class="scenario-tag">Scenario</span>
+        <span class="scenario-trigger-text">CSPM Finding to Remediation: A Publicly Exposed S3 Bucket</span>
+        <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="scenario-body">
+        <div class="scenario-inner">
+          <div class="scenario-steps">
+            <div class="scenario-step">
+              <div class="scenario-step-num">01</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Finding Generated</div>
+                <p class="scenario-step-desc">At 2:34 AM, a developer creates a new S3 bucket to temporarily stage a large data export for analysis. They set the bucket to public to avoid working through access control configuration at that hour, intending to fix it in the morning. The CSPM platform detects the public ACL within four minutes of bucket creation and generates a High severity finding.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">02</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Alert Routing</div>
+                <p class="scenario-step-desc">The CSPM finding triggers an automated ticket in the organization's ITSM platform and sends a Slack notification to the cloud security channel. The ticket includes the bucket ARN, the creating IAM principal, and the CIS benchmark control the finding maps to. The on-call security engineer receives a pager alert for the High severity finding.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">03</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Immediate Response</div>
+                <p class="scenario-step-desc">The on-call engineer reviews the finding and confirms the bucket contains export files. They apply a block public access policy to the bucket immediately, reducing the exposure window to under twenty minutes. The ticket is flagged for the developer's manager with a note about the policy violation and a request for a follow-up review of what data was stored in the bucket.</p>
+              </div>
+            </div>
+            <div class="scenario-step">
+              <div class="scenario-step-num">04</div>
+              <div class="scenario-step-content">
+                <div class="scenario-step-platform">Policy Improvement</div>
+                <p class="scenario-step-desc">The incident feeds back into the CSPM configuration. An AWS Config rule is implemented that automatically blocks public access on any new S3 bucket at creation time, preventing this class of finding from recurring. The detection-to-remediation time is recorded for the team's monthly metrics review.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="/cspm.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is CSPM?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 7: DevSecOps -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="devsecops">DevSecOps</h2>
+    </div>
+    <p><a href="/devsecops.html" class="inline-link">DevSecOps</a> is the practice of integrating security controls directly into the software development and deployment pipeline. Rather than treating security as a gate at the end of development or a separate team's responsibility, DevSecOps embeds security into the process from the start, making it a shared responsibility across development, operations, and security teams.</p>
+    <p>The discipline has grown in prominence as organizations recognized that shipping vulnerable code to production is not primarily a detection problem but a development workflow problem. Security findings discovered in production cost an order of magnitude more to remediate than findings caught during development. The pipeline is where the cost-of-fix curve is most favorable, and where controls can be enforced at scale without depending on individual developer judgment.</p>
+
+    <h3>Security at Every Stage of the Pipeline</h3>
+
+    <div class="card">
+      <div class="card-title">Static Application Security Testing (SAST)</div>
+      <p>Analyzes source code for common vulnerability patterns including SQL injection, insecure deserialization, and hard-coded secrets before the application is ever built or deployed. SAST runs automatically on every commit or pull request, giving developers feedback in their existing workflow rather than as an external process they have to separately engage with.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Software Composition Analysis (SCA)</div>
+      <p>Scans third-party and open-source dependencies for known vulnerabilities in the libraries an application depends on. Supply chain attacks targeting widely-used open-source packages have made SCA an increasingly critical pipeline control. SCA findings map directly to CVEs and CVSS scores, enabling risk-based prioritization of dependency updates rather than treating all dependency flags equally.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Infrastructure as Code Scanning</div>
+      <p>When infrastructure is defined in Terraform, CloudFormation, or similar tools, scanning those templates before deployment can catch misconfigurations at the point where they are cheapest to fix. IaC scanning tools check for permissive security group rules, unencrypted storage definitions, and other policy violations before any real infrastructure is created in the cloud environment.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Secrets Scanning and Management</div>
+      <p>Developers frequently need to handle API keys, database passwords, and other sensitive credentials in their code and pipelines. Hard-coding secrets into source files is a persistent risk that secrets scanning tools detect automatically. Centralizing secrets in a dedicated vault and using short-lived credentials through vault integration removes the risk of long-lived credentials sitting in repositories where they can be discovered through code leaks or repository exposure events.</p>
+    </div>
+
+    <div class="attck-callout">
+      <span class="attck-badge">ATT&amp;CK</span>
+      <div class="attck-body">
+        <div class="attck-id">T1195 — Supply Chain Compromise &amp; T1552.001 — Credentials in Files</div>
+        <p class="attck-desc">DevSecOps directly addresses two high-impact technique families. <strong>T1195</strong> covers supply chain attacks through compromised build tools, dependencies, or repositories — mitigated through SCA and pipeline integrity controls. <strong>T1552.001</strong> covers credentials exposed in source files and configuration — mitigated through automated secrets scanning and vault-based credential management integrated into CI/CD workflows.</p>
+      </div>
+    </div>
+
+    <a href="/devsecops.html" class="cta-btn">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Learn More: What Is DevSecOps?
+    </a>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 8: How They Work Together -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="integrated">How These Disciplines Work Together</h2>
+    </div>
+    <p>IAM, PAM, cloud security controls, CSPM tools, and DevSecOps practices are more valuable in combination than any of them is in isolation. An organization with strong IAM but no CSPM may have controlled user access while leaving infrastructure misconfigured. A team running CSPM without DevSecOps may catch cloud configuration drift while shipping vulnerable application code. Each discipline addresses a distinct attack surface, and together they create a defense where multiple controls must fail simultaneously for a breach to reach its objective.</p>
+    <p>The following walkthrough illustrates how a credential-based attack is addressed end-to-end when the disciplines are properly connected and functioning as an integrated system.</p>
+
+    <div class="intro-card">
+      <p>This model reflects a <strong>Zero Trust</strong> approach to cloud security — where no access is implicitly trusted, every request is verified, and multiple layered controls ensure that the failure of any single layer does not result in uncontrolled access. Each discipline in this framework contributes a different verification and control layer to the overall architecture.</p>
+    </div>
+
+    <h3>Comparing the Five Disciplines</h3>
+    <p>Each discipline has a distinct profile in terms of required investment, time-to-value, and maturity prerequisites. Use this comparison to evaluate where your program stands and what to prioritize next.</p>
+
+    <div class="compare-filter-row" id="compareFilterRow">
+      <button class="compare-filter active" data-filter="all" type="button">All Disciplines</button>
+      <button class="compare-filter" data-filter="quick-win" type="button">Quick Wins</button>
+      <button class="compare-filter" data-filter="people-heavy" type="button">People-Heavy</button>
+      <button class="compare-filter" data-filter="tooling-driven" type="button">Tooling-Driven</button>
+    </div>
+
+    <div class="compare-wrap">
+      <table class="compare-table" id="compareTable">
+        <thead>
+          <tr>
+            <th>Discipline</th>
+            <th>Primary Goal</th>
+            <th>Headcount Need</th>
+            <th>Time to Value</th>
+            <th>Key Tools</th>
+            <th>Maturity Prereq</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-tags="people-heavy tooling-driven">
+            <td>IAM</td>
+            <td>Control who can access what across all systems and services</td>
+            <td><span class="compare-pill pill-med">Medium</span></td>
+            <td><span class="compare-pill pill-med">Weeks–Months</span></td>
+            <td>IdP, SSO, MFA platform</td>
+            <td>Directory services, user inventory</td>
+          </tr>
+          <tr data-tags="tooling-driven quick-win">
+            <td>PAM</td>
+            <td>Protect privileged accounts from abuse and compromise</td>
+            <td><span class="compare-pill pill-low">Low</span></td>
+            <td><span class="compare-pill pill-low">Days–Weeks</span></td>
+            <td>Vault, session proxy, JIT tool</td>
+            <td>Privileged account inventory</td>
+          </tr>
+          <tr data-tags="tooling-driven quick-win">
+            <td>CSPM</td>
+            <td>Find and fix cloud misconfigurations before they become incidents</td>
+            <td><span class="compare-pill pill-low">Low</span></td>
+            <td><span class="compare-pill pill-low">Days</span></td>
+            <td>CSPM platform, Config rules</td>
+            <td>Cloud account access, resource tagging</td>
+          </tr>
+          <tr data-tags="people-heavy tooling-driven">
+            <td>Cloud Security</td>
+            <td>Secure cloud infrastructure, data, and workloads end-to-end</td>
+            <td><span class="compare-pill pill-high">High</span></td>
+            <td><span class="compare-pill pill-med">Months</span></td>
+            <td>CWPP, network controls, encryption</td>
+            <td>Cloud architecture review, CSPM baseline</td>
+          </tr>
+          <tr data-tags="tooling-driven quick-win">
+            <td>DevSecOps</td>
+            <td>Prevent vulnerable code and configurations from reaching production</td>
+            <td><span class="compare-pill pill-low">Low–Med</span></td>
+            <td><span class="compare-pill pill-low">Days–Weeks</span></td>
+            <td>SAST, SCA, IaC scanner, secrets vault</td>
+            <td>CI/CD pipeline in place</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>An End-to-End Attack Chain: One Stolen Credential, Five Defense Layers</h3>
+    <p>The following scenario traces a credential-based attack from initial compromise through lateral movement and exfiltration — showing exactly where and how each discipline activates to stop the attacker. This is not a sequential playbook; these controls operate in parallel. Any single one failing does not result in an uncontrolled breach because the others are still standing.</p>
+
+    <div class="attack-chain-wrap">
+      <div class="attack-chain-accordion" data-attack-accordion>
+        <button class="attack-chain-trigger" type="button" aria-expanded="false">
+          <span class="attack-chain-tag">Attack Chain</span>
+          <span class="attack-chain-trigger-text">Scenario: Phishing → Credential Theft → Cloud Exfiltration Attempt</span>
+          <svg class="attack-chain-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="attack-chain-body">
+          <div class="attack-chain-inner">
+            <div class="ac-legend">
+              <div class="ac-legend-item"><div class="ac-legend-swatch" style="background:#c05040;"></div>Attacker Action</div>
+              <div class="ac-legend-item"><div class="ac-legend-swatch" style="background:rgba(80,180,100,0.7);"></div>Blocked by Defense</div>
+              <div class="ac-legend-item"><div class="ac-legend-swatch" style="background:rgba(201,168,76,0.7);"></div>Partially Mitigated</div>
+            </div>
+
+            <!-- Phase 1: Initial Access -->
+            <div class="ac-phase">
+              <div class="ac-phase-header">
+                <div class="ac-phase-side attacker"></div>
+                <div class="ac-phase-content">
+                  <div class="ac-phase-label">
+                    <span class="ac-phase-step">Phase 1</span>
+                    <span class="ac-phase-discipline ac-disc-attacker">Initial Access</span>
+                  </div>
+                  <div class="ac-phase-heading">Phishing email delivers credential harvesting page</div>
+                  <p class="ac-phase-desc">An attacker sends a convincing phishing email to a cloud operations engineer. The engineer clicks a link to a spoofed identity provider login page and enters their username and password. The attacker now holds valid corporate credentials.</p>
+                  <span class="ac-phase-outcome ac-outcome-partial">Partially Mitigated — MFA required by IAM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 2: IAM blocks MFA -->
+            <div class="ac-phase">
+              <div class="ac-phase-header">
+                <div class="ac-phase-side defense"></div>
+                <div class="ac-phase-content">
+                  <div class="ac-phase-label">
+                    <span class="ac-phase-step">Defense — Phase 1</span>
+                    <span class="ac-phase-discipline ac-disc-iam">IAM</span>
+                  </div>
+                  <div class="ac-phase-heading">MFA challenge stops the credential replay attempt</div>
+                  <p class="ac-phase-desc">The attacker attempts to use the stolen credentials to authenticate to the cloud console. IAM policy requires MFA for all interactive sign-ins regardless of network origin. The attacker receives a push notification prompt they cannot approve. The login attempt is logged and a risky sign-in alert is triggered.</p>
+                  <span class="ac-phase-outcome ac-outcome-blocked">Attack Stopped — Attacker cannot complete authentication</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 3: Attacker pivots to service account -->
+            <div class="ac-phase">
+              <div class="ac-phase-header">
+                <div class="ac-phase-side attacker"></div>
+                <div class="ac-phase-content">
+                  <div class="ac-phase-label">
+                    <span class="ac-phase-step">Phase 2 — Pivot</span>
+                    <span class="ac-phase-discipline ac-disc-attacker">Attacker Adapts</span>
+                  </div>
+                  <div class="ac-phase-heading">Attacker finds an old API key exposed in a public GitHub repository</div>
+                  <p class="ac-phase-desc">Rather than abandoning the operation, the attacker searches public code repositories and finds an AWS access key that was accidentally committed by a developer two months ago. The key belongs to a service account with broad S3 and IAM permissions — no MFA required for programmatic access.</p>
+                  <span class="ac-phase-outcome ac-outcome-breach">Foothold Gained — DevSecOps gap exploited</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 4: DevSecOps detection -->
+            <div class="ac-phase">
+              <div class="ac-phase-header">
+                <div class="ac-phase-side partial"></div>
+                <div class="ac-phase-content">
+                  <div class="ac-phase-label">
+                    <span class="ac-phase-step">Defense — Phase 2</span>
+                    <span class="ac-phase-discipline ac-disc-devsecops">DevSecOps</span>
+                  </div>
+                  <div class="ac-phase-heading">Secrets scanning detects the exposed key and triggers rotation</div>
+                  <p class="ac-phase-desc">The organization's secrets scanning tool monitors public repositories for exposed credentials associated with known naming patterns. It identifies the exposed key and automatically triggers an alert. The IAM team is notified and begins key rotation — but the attacker had already downloaded a snapshot of the S3 bucket contents in the 47 minutes before the key was invalidated.</p>
+                  <span class="ac-phase-outcome ac-outcome-partial">Partial Mitigation — Key rotated, but data already accessed</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 5: CSPM detects over-permission -->
+            <div class="ac-phase">
+              <div class="ac-phase-header">
+                <div class="ac-phase-side defense"></div>
+                <div class="ac-phase-content">
+                  <div class="ac-phase-label">
+                    <span class="ac-phase-step">Defense — Phase 3</span>
+                    <span class="ac-phase-discipline ac-disc-cspm">CSPM / CIEM</span>
+                  </div>
+                  <div class="ac-phase-heading">CIEM analysis reveals the service account had excessive permissions</div>
+                  <p class="ac-phase-desc">Post-incident CIEM analysis shows the compromised service account had S3 read access to 34 buckets when its application only required access to 2. The attacker's blast radius was dramatically larger than necessary. The CSPM platform generates a remediation recommendation that scopes the account's permissions to only what its application actually uses, reducing future exposure by over 90%.</p>
+                  <span class="ac-phase-outcome ac-outcome-blocked">Remediated — Blast radius contained for future incidents</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 6: Attacker attempts lateral movement via privileged account -->
+            <div class="ac-phase">
+              <div class="ac-phase-header">
+                <div class="ac-phase-side attacker"></div>
+                <div class="ac-phase-content">
+                  <div class="ac-phase-label">
+                    <span class="ac-phase-step">Phase 3 — Escalation</span>
+                    <span class="ac-phase-discipline ac-disc-attacker">Attacker Adapts</span>
+                  </div>
+                  <div class="ac-phase-heading">Attacker uses S3 data to identify admin usernames and attempt privilege escalation</div>
+                  <p class="ac-phase-desc">Data from the exfiltrated bucket includes configuration files with administrator usernames and internal system references. The attacker attempts to authenticate as an administrator to the cloud environment using credential stuffing and a list of common password patterns. The goal is to reach the organization's production databases and identity systems.</p>
+                  <span class="ac-phase-outcome ac-outcome-partial">Attempted Escalation — Multiple controls in the path</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 7: PAM blocks admin access -->
+            <div class="ac-phase">
+              <div class="ac-phase-header">
+                <div class="ac-phase-side defense"></div>
+                <div class="ac-phase-content">
+                  <div class="ac-phase-label">
+                    <span class="ac-phase-step">Defense — Phase 4</span>
+                    <span class="ac-phase-discipline ac-disc-pam">PAM</span>
+                  </div>
+                  <div class="ac-phase-heading">PAM vault means no standing admin credentials exist to steal</div>
+                  <p class="ac-phase-desc">All administrative credentials are rotated automatically and stored in the PAM vault. No administrator holds a long-lived password. The credential stuffing attack finds no valid targets because the credentials it tries do not match anything currently valid. The PAM system logs the failed access attempts and the security team is alerted to the escalation attempt in real time.</p>
+                  <span class="ac-phase-outcome ac-outcome-blocked">Attack Stopped — No valid credentials to compromise</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase 8: Cloud Security contains exfiltration path -->
+            <div class="ac-phase">
+              <div class="ac-phase-header">
+                <div class="ac-phase-side defense"></div>
+                <div class="ac-phase-content">
+                  <div class="ac-phase-label">
+                    <span class="ac-phase-step">Defense — Phase 5</span>
+                    <span class="ac-phase-discipline ac-disc-cloud">Cloud Security</span>
+                  </div>
+                  <div class="ac-phase-heading">Network controls and logging enable full incident reconstruction</div>
+                  <p class="ac-phase-desc">CloudTrail and VPC flow logs captured every API call, data access event, and network connection during the attack. Security group rules limited the attacker's outbound paths. The SIEM triggered a high-severity alert when it detected unusual data volume on the S3 API calls. The incident response team uses the complete audit trail to determine exactly what data was accessed, when, and where it was sent — enabling regulatory notification decisions and customer impact scoping.</p>
+                  <span class="ac-phase-outcome ac-outcome-blocked">Contained — Full forensic record preserved, scope determined</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SECTION 9: Architecture -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="architecture">Modern Cloud Security Architecture</h2>
+    </div>
+    <p>A mature cloud security architecture looks less like a single product and more like a set of integrated capabilities working in concert. Understanding the typical components helps organizations identify where they have coverage and where gaps remain in their defensive posture.</p>
+
+    <div class="tech-grid">
+      <div class="tech-tile">
+        <div class="tech-tile-label">Identity Foundation</div>
+        <div class="tech-tile-name">Identity Provider</div>
+        <p>Central platforms like Azure AD, Okta, or Google Workspace manage identity lifecycle and serve as the trust anchor for authentication across all connected services and cloud accounts.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Privileged Access</div>
+        <div class="tech-tile-name">PAM Platform</div>
+        <p>Dedicated PAM solutions manage privileged credentials, broker administrative sessions, and provide full audit records for all elevated access across cloud and on-premises environments.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Posture Management</div>
+        <div class="tech-tile-name">CSPM / CIEM</div>
+        <p>CSPM handles configuration drift and compliance scanning. CIEM analyzes and right-sizes cloud permissions. Together they provide continuous visibility into posture across multi-cloud environments.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Workload Protection</div>
+        <div class="tech-tile-name">CWPP</div>
+        <p>Cloud Workload Protection Platforms secure compute resources including VMs, containers, and serverless functions at runtime, detecting threats that bypass configuration and perimeter controls.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Pipeline Security</div>
+        <div class="tech-tile-name">CI/CD Security Tools</div>
+        <p>SAST, SCA, IaC scanning, and secrets management integrate into development pipelines to prevent vulnerable code and insecure configurations from reaching production environments.</p>
+      </div>
+      <div class="tech-tile">
+        <div class="tech-tile-label">Monitoring and Detection</div>
+        <div class="tech-tile-name">SIEM / Cloud Logging</div>
+        <p>Cloud-native audit logs from IAM events, API calls, and resource changes feed into SIEM platforms that support detection rules and incident investigation across the full cloud estate.</p>
+      </div>
+    </div>
+
+    <p>Integration between these platforms is as important as the platforms themselves. An IAM system that does not feed events to the SIEM, or a CSPM platform whose findings never reach a remediation workflow, limits the program's real-world effectiveness regardless of what the dashboards report. Mature programs invest in integration engineering to ensure data flows freely and response actions can be executed quickly across the full environment.</p>
+
+    <div class="arch-diagram-wrap">
+      <div class="arch-diagram-label">Zero Trust Cloud Security Architecture — Discipline Relationship Map</div>
+      <svg viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture diagram showing Identity as the core surrounded by PAM, CSPM, Cloud Security, and DevSecOps disciplines connected by integration lines">
+        <defs>
+          <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(201,168,76,0.05)"/>
+            <stop offset="100%" stop-color="rgba(10,10,11,0)"/>
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <!-- Discipline colors -->
+          <!-- IAM: gold, PAM: purple, CSPM: teal, Cloud: orange, DevSecOps: blue -->
+        </defs>
+
+        <!-- Background radial glow -->
+        <ellipse cx="390" cy="250" rx="280" ry="220" fill="url(#bgGrad)"/>
+
+        <!-- Outer ring dashes representing Zero Trust boundary -->
+        <circle cx="390" cy="250" r="210" fill="none" stroke="rgba(201,168,76,0.12)" stroke-width="1" stroke-dasharray="6 6"/>
+        <circle cx="390" cy="250" r="148" fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="1" stroke-dasharray="3 5"/>
+
+        <!-- Zero Trust label on outer ring -->
+        <text x="390" y="44" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" font-weight="700" letter-spacing="0.18em" fill="rgba(201,168,76,0.4)" text-transform="uppercase">ZERO TRUST BOUNDARY</text>
+
+        <!-- Connection lines from IAM core to each discipline -->
+        <!-- IAM → PAM (top-left) -->
+        <line x1="370" y1="232" x2="212" y2="140" stroke="rgba(160,112,224,0.35)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <!-- IAM → CSPM (top-right) -->
+        <line x1="410" y1="232" x2="568" y2="140" stroke="rgba(80,200,160,0.35)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <!-- IAM → Cloud Security (bottom-right) -->
+        <line x1="415" y1="268" x2="568" y2="358" stroke="rgba(208,128,48,0.35)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <!-- IAM → DevSecOps (bottom-left) -->
+        <line x1="365" y1="268" x2="212" y2="358" stroke="rgba(106,170,224,0.35)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <!-- Cross-connections -->
+        <line x1="212" y1="160" x2="212" y2="340" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3 6"/>
+        <line x1="568" y1="160" x2="568" y2="340" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3 6"/>
+        <line x1="232" y1="145" x2="548" y2="145" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3 6"/>
+        <line x1="232" y1="358" x2="548" y2="358" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3 6"/>
+
+        <!-- SIEM/Logging ring at bottom center -->
+        <line x1="390" y1="270" x2="390" y2="430" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+        <!-- ── CORE: IAM ── -->
+        <circle cx="390" cy="250" r="64" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+        <circle cx="390" cy="250" r="52" fill="rgba(201,168,76,0.05)" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+        <text x="390" y="237" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="10" font-weight="700" letter-spacing="0.18em" fill="rgba(201,168,76,0.7)">IDENTITY CORE</text>
+        <text x="390" y="256" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="22" font-weight="800" fill="#c9a84c" filter="url(#glow)">IAM</text>
+        <text x="390" y="272" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="rgba(201,168,76,0.55)">Auth · Authz · Lifecycle</text>
+
+        <!-- ── PAM (top-left) ── -->
+        <circle cx="196" cy="128" r="52" fill="rgba(120,80,200,0.08)" stroke="rgba(120,80,200,0.4)" stroke-width="1.5"/>
+        <text x="196" y="118" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="10" font-weight="700" letter-spacing="0.16em" fill="rgba(160,112,224,0.7)">PRIVILEGED</text>
+        <text x="196" y="135" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="22" font-weight="800" fill="#a070e0">PAM</text>
+        <text x="196" y="150" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="rgba(160,112,224,0.55)">Vault · JIT · Sessions</text>
+
+        <!-- ── CSPM (top-right) ── -->
+        <circle cx="584" cy="128" r="52" fill="rgba(60,180,140,0.08)" stroke="rgba(60,180,140,0.4)" stroke-width="1.5"/>
+        <text x="584" y="118" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="10" font-weight="700" letter-spacing="0.16em" fill="rgba(80,200,160,0.7)">POSTURE</text>
+        <text x="584" y="135" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="22" font-weight="800" fill="#50c8a0">CSPM</text>
+        <text x="584" y="150" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="rgba(80,200,160,0.55)">Config · CIEM · Drift</text>
+
+        <!-- ── Cloud Security (bottom-right) ── -->
+        <circle cx="584" cy="372" r="52" fill="rgba(200,120,40,0.08)" stroke="rgba(200,120,40,0.4)" stroke-width="1.5"/>
+        <text x="584" y="358" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="10" font-weight="700" letter-spacing="0.14em" fill="rgba(208,128,48,0.7)">INFRASTRUCTURE</text>
+        <text x="584" y="376" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="16" font-weight="800" fill="#d08030">CLOUD SEC</text>
+        <text x="584" y="392" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="rgba(208,128,48,0.55)">Network · CWPP · Data</text>
+
+        <!-- ── DevSecOps (bottom-left) ── -->
+        <circle cx="196" cy="372" r="52" fill="rgba(80,140,220,0.08)" stroke="rgba(80,140,220,0.4)" stroke-width="1.5"/>
+        <text x="196" y="360" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="10" font-weight="700" letter-spacing="0.14em" fill="rgba(106,170,224,0.7)">PIPELINE</text>
+        <text x="196" y="378" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="15" font-weight="800" fill="#6aaae0">DEVSECOPS</text>
+        <text x="196" y="393" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="rgba(106,170,224,0.55)">SAST · SCA · IaC · Secrets</text>
+
+        <!-- ── SIEM / Logging (bottom center) ── -->
+        <rect x="330" y="430" width="120" height="52" rx="3" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <text x="390" y="450" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="10" font-weight="700" letter-spacing="0.16em" fill="rgba(200,200,200,0.5)">DETECTION</text>
+        <text x="390" y="467" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="16" font-weight="800" fill="rgba(220,220,220,0.7)">SIEM</text>
+
+        <!-- Feed lines from all disciplines to SIEM -->
+        <line x1="220" y1="415" x2="350" y2="432" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3 5"/>
+        <line x1="560" y1="415" x2="430" y2="432" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3 5"/>
+
+        <!-- Integration label -->
+        <text x="390" y="494" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="10" letter-spacing="0.1em" fill="rgba(255,255,255,0.2)">All disciplines feed events to unified detection</text>
+      </svg>
+    </div>
+
+  <hr class="divider" />
+
+  <!-- SECTION 10: Building -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <h2 id="building">Building a Secure Cloud Environment</h2>
+    </div>
+    <p>Securing a cloud environment is not a project with a finish line. It is an ongoing operational capability that requires the right combination of technology, processes, and organizational commitment. The following areas represent the practical foundations of a defensible cloud security program.</p>
+
+    <h3>Identity Governance and Access Reviews</h3>
+    <p>Access rights should be reviewed regularly — at least quarterly for standard users and more frequently for privileged access. Automated tools can surface accounts that have not been used recently, roles with excessive permissions relative to observed usage, and service accounts no longer actively required. Access reviews are the organizational process for acting on these findings and maintaining least privilege over time as environments change and people change roles.</p>
+    <p>Connecting the IAM system to the HR system for automated provisioning and deprovisioning removes manual burden. When an employee terminates, their accounts should be deactivated within hours, not days. Orphaned accounts are a consistent finding in incident investigations and a persistent gap in organizations that rely entirely on manual offboarding processes.</p>
+
+    <h3>Least Privilege Enforcement</h3>
+    <p>Cloud provider IAM systems offer extremely granular permission controls. The challenge is that defining precise permission sets takes time, so the path of least resistance is often to assign overly broad policies and move on. Tools that analyze actual permission usage against granted permissions help identify where permissions can be tightened without breaking functionality. Policy simulation features available in AWS IAM and Azure RBAC allow teams to test permission changes before applying them, reducing the risk that tightening access will break something in production.</p>
+
+    <h3>Cloud Configuration Monitoring and Automation</h3>
+    <p>CSPM tools provide continuous visibility, but remediation still requires action. Automating remediation of common, low-risk misconfigurations — enabling encryption on a newly created storage resource, blocking public access on new S3 buckets — can reduce the findings backlog and free analyst time for more complex issues. Cloud-native policy engines like AWS Config Rules and Azure Policy can enforce configurations at creation time, preventing certain misconfigurations from appearing in the first place rather than detecting them after the fact.</p>
+
+    <h3>Continuous Monitoring and Threat Detection</h3>
+    <p>Cloud providers offer native logging services such as AWS CloudTrail, Azure Monitor, and Google Cloud Audit Logs that capture API activity, resource changes, and authentication events. These logs feed into SIEM platforms where detection rules can alert on suspicious patterns including unusual authentication locations, high-volume API calls, or configuration changes to security controls. Developing and maintaining cloud-specific detection logic is an investment that pays off when incidents occur, since generic on-premises detection rules frequently miss cloud-specific attack patterns and techniques.</p>
+
+    <div class="card">
+      <div class="card-title">Cloud and Identity Security Maturity Indicators</div>
+      <ul class="feature-list">
+        <li><strong>Initial:</strong> Ad hoc access provisioning, no MFA enforced, privileged accounts not tracked, cloud configurations not monitored, security absent from CI/CD pipelines</li>
+        <li><strong>Developing:</strong> SSO and MFA deployed for user access, basic IAM policies defined, CSPM running with findings reviewed on a schedule, secrets scanning added to pipelines</li>
+        <li><strong>Defined:</strong> PAM deployed for privileged accounts, least privilege access reviews running quarterly, CSPM findings integrated into ticketing and remediation workflows, IaC scanning in all build pipelines</li>
+        <li><strong>Managed:</strong> Just-in-time access for all privileged roles, automated remediation of common misconfigurations, service account discovery and governance in place, DevSecOps practiced across all development teams with security gates enforced</li>
+        <li><strong>Optimizing:</strong> Zero Trust architecture fully operational, continuous access certification, CIEM right-sizing permissions at cloud scale, security deeply integrated in developer experience rather than bolted on as an external gate</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FEEDBACK WIDGET -->
+  <div class="feedback-wrap" id="feedbackWrap">
+    <span class="feedback-label">Was this guide helpful?</span>
+    <div class="feedback-btns">
+      <button class="feedback-btn" id="feedbackYes" type="button">
+        <svg viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+        Yes
+      </button>
+      <button class="feedback-btn" id="feedbackNo" type="button">
+        <svg viewBox="0 0 24 24"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>
+        Not Really
+      </button>
+    </div>
+    <span class="feedback-thanks" id="feedbackThanks">Thanks for the feedback.</span>
+  </div>
+
+  <!-- CTA BLOCK -->
+  <div class="cta-block">
+    <h3>TacRaven Cybersecurity Knowledge Base</h3>
+    <p>Explore the full library of reference guides covering security technologies, threat intelligence, APT profiles, and security operations concepts.</p>
+    <a href="/knowledge-base.html" class="cta-btn" style="margin-top:0;">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Go to the Knowledge Base
+    </a>
+  </div>
+
+  <!-- RELATED RESOURCES RAIL -->
+  <div class="related-rail">
+    <div class="related-rail-label">Also from TacRaven</div>
+    <div class="related-cards">
+
+      <a href="/blackfeather.html" class="related-card" style="--rc-accent:#c9a84c;">
+        <div class="related-card-tag">Platform</div>
+        <div class="related-card-name">BlackFeather</div>
+        <p class="related-card-desc">Air-gapped threat intelligence analysis platform built for defense and intelligence environments.</p>
+        <div class="related-card-arrow">
+          Explore BlackFeather
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+      <a href="/security-operations.html" class="related-card" style="--rc-accent:#a08030;">
+        <div class="related-card-tag">Pillar Guide</div>
+        <div class="related-card-name">Security Operations</div>
+        <p class="related-card-desc">A comprehensive guide to modern security operations covering SOC, threat intelligence, detection engineering, incident response, and vulnerability management.</p>
+        <div class="related-card-arrow">
+          Read the Guide
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+      <a href="/apt-intelligence-library.html" class="related-card" style="--rc-accent:#c05a3a;">
+        <div class="related-card-tag">Reference</div>
+        <div class="related-card-name">APT Intelligence Library</div>
+        <p class="related-card-desc">Structured threat actor profiles covering attribution, TTPs, infrastructure patterns, and historical campaigns.</p>
+        <div class="related-card-arrow">
+          Browse APT Profiles
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════
+   SCENARIO ACCORDIONS
+═══════════════════════════════════════════════ */
+document.querySelectorAll('[data-accordion]').forEach(function(acc) {
+  var trigger = acc.querySelector('.scenario-trigger');
+  var body    = acc.querySelector('.scenario-body');
+  if (!trigger || !body) return;
+  trigger.addEventListener('click', function() {
+    var isOpen = acc.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   SHARE BUTTON
+═══════════════════════════════════════════════ */
+(function() {
+  var btn   = document.getElementById('shareBtn');
+  var toast = document.getElementById('shareToast');
+  if (!btn || !toast) return;
+
+  btn.addEventListener('click', async function() {
+    var title = document.title;
+    var url   = window.location.href;
+    if (navigator.share) {
+      try { await navigator.share({ title: title, url: url }); return; } catch(e) {}
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch(e) {
+      var ta = document.createElement('textarea');
+      ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    toast.classList.add('visible');
+    setTimeout(function() { toast.classList.remove('visible'); }, 2200);
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   FEEDBACK WIDGET
+═══════════════════════════════════════════════ */
+(function() {
+  var yes    = document.getElementById('feedbackYes');
+  var no     = document.getElementById('feedbackNo');
+  var thanks = document.getElementById('feedbackThanks');
+  if (!yes || !no) return;
+
+  function vote(rating) {
+    yes.disabled = true; no.disabled = true;
+    yes.classList.remove('voted-yes'); no.classList.remove('voted-no');
+    if (rating === 'yes') yes.classList.add('voted-yes');
+    else no.classList.add('voted-no');
+    thanks.classList.add('visible');
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'page_feedback', {
+        event_category: 'Engagement',
+        event_label: rating,
+        page_rating: rating,
+        page_id: 'cloud-identity-security'
+      });
+    }
+  }
+
+  yes.addEventListener('click', function() { vote('yes'); });
+  no.addEventListener('click',  function() { vote('no');  });
+})();
+
+/* ═══════════════════════════════════════════════
+   DISCIPLINE COMPARISON FILTER
+═══════════════════════════════════════════════ */
+(function() {
+  var filters = document.querySelectorAll('.compare-filter');
+  var rows    = document.querySelectorAll('#compareTable tbody tr');
+  if (!filters.length || !rows.length) return;
+
+  filters.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var filter = this.getAttribute('data-filter');
+      filters.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      rows.forEach(function(row) {
+        if (filter === 'all') {
+          row.style.display = '';
+        } else {
+          var tags = row.getAttribute('data-tags') || '';
+          row.style.display = tags.indexOf(filter) !== -1 ? '' : 'none';
+        }
+      });
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'compare_filter', { event_category: 'Engagement', event_label: filter });
+      }
+    });
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   DISCIPLINE SELECTOR
+═══════════════════════════════════════════════ */
+(function() {
+  var opts        = document.querySelectorAll('.selector-opt');
+  var results     = document.querySelectorAll('.selector-result-inner');
+  var placeholder = document.querySelector('.selector-placeholder');
+
+  opts.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var key = this.getAttribute('data-key');
+      opts.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      if (placeholder) placeholder.style.display = 'none';
+      results.forEach(function(r) { r.classList.remove('visible'); });
+      var target = document.querySelector('[data-result="' + key + '"]');
+      if (target) target.classList.add('visible');
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'discipline_selected', { event_category: 'Engagement', event_label: key, selector_choice: key });
+      }
+    });
+  });
+
+  document.querySelectorAll('.selector-result-inner .cta-btn').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'selector_cta_click', { event_category: 'Navigation', event_label: this.textContent.trim(), link_url: this.getAttribute('href') });
+      }
+    });
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   SCROLL DEPTH + SECTION VIEWS + TRACKING
+═══════════════════════════════════════════════ */
+(function() {
+  var scrollMilestones = [25, 50, 75, 90];
+  var firedMilestones  = new Set();
+
+  function getScrollPct() {
+    var el = document.documentElement;
+    var scrolled = el.scrollTop || document.body.scrollTop;
+    var total    = el.scrollHeight - el.clientHeight;
+    return total > 0 ? Math.round((scrolled / total) * 100) : 0;
+  }
+
+  window.addEventListener('scroll', function() {
+    var pct = getScrollPct();
+    scrollMilestones.forEach(function(m) {
+      if (pct >= m && !firedMilestones.has(m)) {
+        firedMilestones.add(m);
+        gtag('event', 'scroll_depth', { event_category: 'Engagement', event_label: m + '%', scroll_depth_pct: m });
+      }
+    });
+  }, { passive: true });
+
+  var sectionMap = {
+    'why-critical':          'Why Identity and Cloud Security Are Critical',
+    'identity-fundamentals': 'Identity Security Fundamentals',
+    'iam':                   'Identity and Access Management',
+    'pam':                   'Privileged Access Management',
+    'cloud-security':        'Cloud Security',
+    'cspm':                  'Cloud Security Posture Management',
+    'devsecops':             'DevSecOps',
+    'integrated':            'How They Work Together',
+    'architecture':          'Modern Cloud Security Architecture',
+    'building':              'Building a Secure Cloud Environment'
+  };
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          if (id && sectionMap[id]) {
+            gtag('event', 'section_viewed', { event_category: 'Content', event_label: sectionMap[id], section_id: id });
+            obs.unobserve(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+    Object.keys(sectionMap).forEach(function(id) { var el = document.getElementById(id); if (el) obs.observe(el); });
+  }
+
+  document.querySelectorAll('a.cta-btn').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'cta_click', { event_category: 'Navigation', event_label: this.textContent.trim(), link_url: this.getAttribute('href') });
+    });
+  });
+
+  var backBtn = document.querySelector('.hero-back-btn');
+  if (backBtn) { backBtn.addEventListener('click', function() { gtag('event', 'navigation_click', { event_category: 'Navigation', event_label: 'Return to Knowledge Base' }); }); }
+
+  document.querySelectorAll('.toc-grid a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      gtag('event', 'toc_click', { event_category: 'Navigation', event_label: this.textContent.trim(), anchor: this.getAttribute('href') });
+    });
+  });
+
+  document.querySelectorAll('.related-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var nameEl = this.querySelector('.related-card-name');
+      gtag('event', 'related_resource_click', { event_category: 'Engagement', event_label: nameEl ? nameEl.textContent.trim() : 'Unknown', link_url: this.getAttribute('href') });
+    });
+  });
+
+  document.querySelectorAll('[data-accordion]').forEach(function(acc) {
+    var trigger = acc.querySelector('.scenario-trigger');
+    if (!trigger) return;
+    trigger.addEventListener('click', function() {
+      var willOpen = !acc.classList.contains('open');
+      if (willOpen) { var labelEl = acc.querySelector('.scenario-trigger-text'); gtag('event', 'scenario_expanded', { event_category: 'Engagement', event_label: labelEl ? labelEl.textContent.trim() : 'Unknown' }); }
+    });
+  });
+
+  var shareBtn2 = document.getElementById('shareBtn');
+  if (shareBtn2) { shareBtn2.addEventListener('click', function() { gtag('event', 'share', { event_category: 'Engagement', method: navigator.share ? 'native_share' : 'clipboard_copy', content_type: 'article', item_id: 'cloud-identity-security' }); }); }
+
+  [30, 60, 120, 300].forEach(function(s) {
+    setTimeout(function() { gtag('event', 'time_on_page', { event_category: 'Engagement', event_label: s + 's', seconds_on_page: s }); }, s * 1000);
+  });
+})();
+
+/* ═══════════════════════════════════════════════
+   ZERO TRUST MATURITY SELF-ASSESSMENT
+═══════════════════════════════════════════════ */
+(function() {
+  var scores = [null, null, null, null, null];
+  var currentQ = 1;
+
+  var results = [
+    {
+      tier: 'Maturity Level: Initial',
+      heading: 'Foundational Controls Are Missing',
+      desc: 'Your program is in its earliest stage. <strong>Key identity and cloud security controls are not yet in place</strong>, which means adversaries face minimal resistance on common attack paths. The good news: the highest-impact improvements are also the most straightforward to implement from this stage. Prioritize MFA deployment, basic credential management, and a CSPM deployment before anything else.',
+      steps: [
+        'Deploy MFA for all user accounts immediately — this is the single highest-ROI control available',
+        'Inventory all privileged accounts and begin evaluating a PAM solution for credential vaulting',
+        'Deploy a CSPM tool connected to your cloud accounts to get baseline visibility into your posture',
+        'Add secrets scanning to your version control system to prevent credential exposure in code'
+      ]
+    },
+    {
+      tier: 'Maturity Level: Developing',
+      heading: 'Core Controls in Place, Gaps Remain',
+      desc: 'You have deployed foundational controls, but <strong>coverage is incomplete and processes are not yet systematic</strong>. Attacks targeting privileged accounts, cloud misconfigurations, and pipeline secrets would find some resistance — but dedicated adversaries would find exploitable gaps. The focus now is closing the highest-risk remaining gaps and moving from ad hoc processes to repeatable ones.',
+      steps: [
+        'Expand MFA to service accounts and administrative roles if not already covered',
+        'Implement formal access reviews on at least a quarterly cadence for all privileged roles',
+        'Integrate CSPM findings into your ticketing workflow so they are tracked to resolution',
+        'Add IaC scanning to your build pipelines to catch infrastructure misconfigurations before deployment'
+      ]
+    },
+    {
+      tier: 'Maturity Level: Defined',
+      heading: 'Systematic Controls, Moving Toward Managed',
+      desc: 'Your program has <strong>documented processes and broad control coverage</strong> across identity and cloud security. You are detecting and responding to common attack patterns effectively. The next phase involves shifting from reactive detection to proactive enforcement — reducing exposure before incidents rather than catching them after.',
+      steps: [
+        'Implement just-in-time access for privileged roles to eliminate standing privilege entirely',
+        'Deploy CIEM capabilities to right-size cloud permissions based on actual usage patterns',
+        'Establish automated remediation for common, low-risk misconfigurations to reduce analyst backlog',
+        'Conduct a Zero Trust architecture assessment to identify gaps in your verification model'
+      ]
+    },
+    {
+      tier: 'Maturity Level: Managed',
+      heading: 'Proactive Posture, Optimization Opportunities Ahead',
+      desc: 'You have a <strong>mature, proactive cloud and identity security program</strong>. Controls are enforced systematically, processes are measured, and your teams operate with good visibility across the environment. The remaining focus is optimization: reducing friction for legitimate users while tightening controls further, and ensuring security is deeply integrated into developer experience rather than bolted on as an external gate.',
+      steps: [
+        'Complete Zero Trust architecture across all remaining access paths and workload connections',
+        'Implement continuous access certification to replace periodic point-in-time reviews',
+        'Integrate security metrics into developer experience dashboards to drive ownership',
+        'Evaluate CNAPP platforms to consolidate CSPM, CIEM, and CWPP into a unified posture view'
+      ]
+    }
+  ];
+
+  function progressPct(q) {
+    return Math.round((q / 5) * 100);
+  }
+
+  function showQuestion(q) {
+    document.querySelectorAll('.zt-question').forEach(function(el) { el.classList.remove('active'); });
+    var target = document.querySelector('[data-q="' + q + '"]');
+    if (target) target.classList.add('active');
+    document.getElementById('ztProgressFill').style.width = progressPct(q) + '%';
+  }
+
+  function wireQuestion(qNum, nextId) {
+    var qEl = document.querySelector('[data-q="' + qNum + '"]');
+    if (!qEl) return;
+    var opts = qEl.querySelectorAll('.zt-opt');
+    var nextBtn = document.getElementById(nextId);
+
+    opts.forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        opts.forEach(function(o) { o.classList.remove('selected'); });
+        this.classList.add('selected');
+        scores[qNum - 1] = parseInt(this.getAttribute('data-score'), 10);
+        if (nextBtn) nextBtn.disabled = false;
+      });
+    });
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        if (qNum < 5) {
+          currentQ = qNum + 1;
+          showQuestion(currentQ);
+        } else {
+          showResults();
+        }
+      });
+    }
+  }
+
+  function showResults() {
+    document.querySelectorAll('.zt-question').forEach(function(el) { el.classList.remove('active'); });
+    document.getElementById('ztProgressFill').style.width = '100%';
+
+    var total = scores.reduce(function(sum, v) { return sum + (v || 0); }, 0);
+    var max = 15;
+    var pct = Math.round((total / max) * 100);
+
+    var tier;
+    if (total <= 3)       tier = 0;
+    else if (total <= 7)  tier = 1;
+    else if (total <= 11) tier = 2;
+    else                  tier = 3;
+
+    var r = results[tier];
+    document.getElementById('ztResultTier').textContent    = r.tier;
+    document.getElementById('ztResultHeading').textContent = r.heading;
+    document.getElementById('ztResultDesc').innerHTML      = r.desc;
+    document.getElementById('ztScoreLabel').textContent    = 'Score: ' + total + ' / ' + max + ' (' + pct + '%)';
+
+    var stepsList = document.getElementById('ztStepsList');
+    stepsList.innerHTML = '';
+    r.steps.forEach(function(step, i) {
+      var li = document.createElement('li');
+      li.innerHTML = '<span class="zt-step-num">0' + (i + 1) + '</span><span>' + step + '</span>';
+      stepsList.appendChild(li);
+    });
+
+    var resultEl = document.getElementById('ztResult');
+    resultEl.classList.add('active');
+
+    // Animate score bar
+    setTimeout(function() {
+      document.getElementById('ztScoreBar').style.width = pct + '%';
+    }, 50);
+
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'zt_assessment_complete', {
+        event_category: 'Engagement',
+        event_label: r.tier,
+        zt_score: total,
+        zt_score_pct: pct
+      });
+    }
+  }
+
+  // Wire all 5 questions
+  wireQuestion(1, 'ztNext1');
+  wireQuestion(2, 'ztNext2');
+  wireQuestion(3, 'ztNext3');
+  wireQuestion(4, 'ztNext4');
+  wireQuestion(5, 'ztNext5');
+
+  // Retake
+  var retake = document.getElementById('ztRetake');
+  if (retake) {
+    retake.addEventListener('click', function() {
+      scores = [null, null, null, null, null];
+      currentQ = 1;
+      document.querySelectorAll('.zt-opt').forEach(function(o) { o.classList.remove('selected'); });
+      document.querySelectorAll('.zt-next-btn').forEach(function(b) { b.disabled = true; });
+      document.getElementById('ztResult').classList.remove('active');
+      document.getElementById('ztScoreBar').style.width = '0%';
+      showQuestion(1);
+    });
+  }
+})();
+
+/* ═══════════════════════════════════════════════
+   ATTACK CHAIN ACCORDION
+═══════════════════════════════════════════════ */
+document.querySelectorAll('[data-attack-accordion]').forEach(function(acc) {
+  var trigger = acc.querySelector('.attack-chain-trigger');
+  var body    = acc.querySelector('.attack-chain-body');
+  if (!trigger || !body) return;
+  trigger.addEventListener('click', function() {
+    var isOpen = acc.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (isOpen && typeof gtag !== 'undefined') {
+      gtag('event', 'attack_chain_expanded', { event_category: 'Engagement', event_label: 'Phishing Attack Chain' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
