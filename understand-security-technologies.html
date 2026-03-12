@@ -921,6 +921,7 @@
     .related-rail {
       margin: 56px 0 0;
       padding-top: 48px;
+      padding-bottom: 72px;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
     .related-rail-label {
@@ -943,10 +944,10 @@
       background: var(--bg-card2);
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 4px;
-      padding: 20px 20px 18px;
+      padding: 20px 20px 22px;
       transition: border-color 0.2s, background 0.2s, transform 0.2s;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
     .related-card::before {
       content: '';
@@ -954,6 +955,7 @@
       top: 0; left: 0; right: 0;
       height: 2px;
       background: var(--rc-accent, var(--gold));
+      border-radius: 4px 4px 0 0;
       opacity: 0.5;
       transition: opacity 0.2s;
     }
@@ -1885,7 +1887,7 @@
         </div>
       </a>
 
-      <a href="/black-wing-dispatch.html" class="related-card" style="--rc-accent:#a08030;">
+      <a href="/intel/blackwing/index.html" class="related-card" style="--rc-accent:#a08030;">
         <div class="related-card-tag">CTI Blog</div>
         <div class="related-card-name">Black Wing Dispatch</div>
         <p class="related-card-desc">Weekly cyber threat intelligence reporting covering active threat actors, TTPs, and emerging campaigns.</p>
