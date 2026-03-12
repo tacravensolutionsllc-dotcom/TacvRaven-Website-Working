@@ -1192,6 +1192,204 @@
             margin: 0 auto 60px;
         }
 
+        /* ========================================
+           KNOWLEDGE BASE SECTION
+           ======================================== */
+        .knowledge-base-section {
+            padding: 100px 0;
+            position: relative;
+            background: linear-gradient(180deg, var(--black) 0%, rgba(212, 160, 18, 0.03) 50%, var(--black) 100%);
+        }
+
+        .kb-callout-card {
+            position: relative;
+            background: var(--black-card);
+            border: 1px solid rgba(212, 160, 18, 0.15);
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 48px;
+            align-items: center;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .kb-callout-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .kb-callout-card::after {
+            content: 'KB';
+            position: absolute;
+            right: -20px;
+            bottom: -30px;
+            font-family: var(--font-display);
+            font-size: 140px;
+            font-weight: 900;
+            color: rgba(212, 160, 18, 0.04);
+            letter-spacing: -4px;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .kb-callout-card:hover {
+            border-color: rgba(212, 160, 18, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(212, 160, 18, 0.05);
+        }
+
+        .kb-content h3 {
+            font-family: var(--font-heading);
+            font-size: clamp(24px, 3.5vw, 36px);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .kb-content h3 span {
+            color: var(--gold);
+        }
+
+        .kb-content p {
+            font-size: 15px;
+            color: var(--gray-400);
+            line-height: 1.7;
+            max-width: 600px;
+            margin-bottom: 28px;
+        }
+
+        .kb-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 0;
+        }
+
+        .kb-topic-tag {
+            font-family: var(--font-display);
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: var(--gold);
+            background: rgba(212, 160, 18, 0.08);
+            border: 1px solid rgba(212, 160, 18, 0.2);
+            padding: 4px 10px;
+            text-transform: uppercase;
+        }
+
+        .kb-cta-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+
+        .kb-icon-ring {
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgba(212, 160, 18, 0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .kb-icon-ring::before {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border: 1px solid rgba(212, 160, 18, 0.1);
+            border-radius: 50%;
+        }
+
+        .kb-icon-ring svg {
+            width: 40px;
+            height: 40px;
+            color: var(--gold);
+        }
+
+        .kb-stats {
+            text-align: center;
+        }
+
+        .kb-stats .stat-num {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+            line-height: 1;
+        }
+
+        .kb-stats .stat-label {
+            font-size: 11px;
+            color: var(--gray-500);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .kb-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--black);
+            font-family: var(--font-display);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 14px 28px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .kb-btn:hover {
+            background: var(--gold-light);
+            box-shadow: 0 0 24px rgba(212, 160, 18, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .kb-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .kb-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 900px) {
+            .kb-callout-card {
+                grid-template-columns: 1fr;
+                padding: 40px 32px;
+                text-align: center;
+            }
+            .kb-topics {
+                justify-content: center;
+            }
+            .kb-cta-col {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .kb-callout-card {
+                padding: 32px 24px;
+            }
+        }
+
         .resources-header .section-label {
             justify-content: center;
         }
@@ -3021,6 +3219,62 @@
         </div>
     </section>
 
+    <!-- Knowledge Base Section -->
+    <section class="knowledge-base-section">
+        <div class="grid-bg"></div>
+        <div class="container">
+            <div class="resources-header reveal" style="text-align:center; margin-bottom: 48px;">
+                <div class="section-label" style="justify-content:center;">
+                    <span style="width:40px;height:1px;background:var(--gold);display:inline-block;"></span>
+                    Reference Library
+                </div>
+                <h2 class="section-title">Cybersecurity Knowledge Base</h2>
+                <p style="color:var(--gray-400);font-size:15px;max-width:560px;margin:0 auto;">Plain-language breakdowns of the technologies, frameworks, and concepts every cybersecurity professional needs to know.</p>
+            </div>
+
+            <div class="kb-callout-card reveal">
+                <div class="kb-content">
+                    <h3>From <span>SIEM to Zero Trust</span> —<br>No Jargon. Just Signal.</h3>
+                    <p>
+                        The TacRaven Knowledge Base covers 20+ core cybersecurity domains — SIEM, EDR, XDR, SOAR, Zero Trust, CMMC, NIST CSF, SOC operations, threat intelligence, incident response, and more. Each entry is written for practitioners: clear, concise, and operationally grounded.
+                    </p>
+                    <div class="kb-topics">
+                        <span class="kb-topic-tag">SIEM</span>
+                        <span class="kb-topic-tag">EDR</span>
+                        <span class="kb-topic-tag">Zero Trust</span>
+                        <span class="kb-topic-tag">CMMC</span>
+                        <span class="kb-topic-tag">NIST CSF</span>
+                        <span class="kb-topic-tag">SOC Ops</span>
+                        <span class="kb-topic-tag">Threat Intel</span>
+                        <span class="kb-topic-tag">IAM / PAM</span>
+                        <span class="kb-topic-tag">DevSecOps</span>
+                        <span class="kb-topic-tag">+ More</span>
+                    </div>
+                </div>
+
+                <div class="kb-cta-col">
+                    <div class="kb-icon-ring">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="kb-stats">
+                        <span class="stat-num">20+</span>
+                        <span class="stat-label">Topics Covered</span>
+                    </div>
+                    <a href="knowledge-base.html" class="kb-btn">
+                        Browse Knowledge Base
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Trust Badges -->
     <div class="trust-badges">
         <div class="container">
@@ -3072,76 +3326,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Blog Callout -->
-    <section class="section blog-callout">
-        <div class="grid-bg"></div>
-        <div class="container">
-            <div class="blog-callout-inner">
-                <div class="blog-callout-text">
-                    <div class="section-label">
-                        <span class="blog-preview-dot"></span>
-                        Careers &amp; Certifications
-                    </div>
-                    <h2 class="section-title">Cybersecurity Careers Blog</h2>
-                    <p>Breaking into cybersecurity or leveling up your career? Our blog covers certifications, salary insights, career paths, and job market trends — written by analysts who've been in the trenches.</p>
-                    <a href="Blog.html" class="btn-blog">
-                        Read the Blog
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                            <polyline points="12 5 19 12 12 19"/>
-                        </svg>
-                    </a>
-                </div>
-                <div class="blog-callout-visual">
-                    <div class="blog-preview-card">
-                        <div class="blog-preview-header">
-                            <span class="blog-preview-dot"></span>
-                            <span>LATEST ARTICLES</span>
-                        </div>
-                        <div class="blog-preview-items">
-                            <div class="blog-preview-item">
-                                <div class="blog-preview-icon cert">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                                </div>
-                                <div>
-                                    <div class="blog-preview-title">Security+ SY0-701: Complete Certification Guide</div>
-                                    <div class="blog-preview-meta"><span class="blog-preview-tag cert">Certifications</span> 8 min read</div>
-                                </div>
-                            </div>
-                            <div class="blog-preview-item">
-                                <div class="blog-preview-icon salary">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                                </div>
-                                <div>
-                                    <div class="blog-preview-title">Cybersecurity Salary Guide: What to Expect in 2025</div>
-                                    <div class="blog-preview-meta"><span class="blog-preview-tag salary">Salaries</span> 6 min read</div>
-                                </div>
-                            </div>
-                            <div class="blog-preview-item">
-                                <div class="blog-preview-icon career">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                </div>
-                                <div>
-                                    <div class="blog-preview-title">SOC Analyst to CISO: Mapping Your Career Path</div>
-                                    <div class="blog-preview-meta"><span class="blog-preview-tag career">Career Paths</span> 10 min read</div>
-                                </div>
-                            </div>
-                            <div class="blog-preview-item">
-                                <div class="blog-preview-icon skills">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                                </div>
-                                <div>
-                                    <div class="blog-preview-title">Top 10 Skills Every Cyber Analyst Needs in 2025</div>
-                                    <div class="blog-preview-meta"><span class="blog-preview-tag skills">Skills</span> 7 min read</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Learning Paths Section -->
     <section class="section learning-paths" id="learning-paths">
@@ -3259,73 +3443,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Table Section -->
-    <section class="comparison-section">
-        <div class="container">
-            <div class="comparison-header reveal">
-                <h2>How We Compare</h2>
-                <p>See why learners choose TacRaven's free tools over paid alternatives</p>
-            </div>
-
-            <div class="comparison-table-wrapper reveal">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th class="highlight">TacRaven Tools</th>
-                            <th>Paid Prep Courses</th>
-                            <th>Free Alternatives</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="feature-name">Price</td>
-                            <td class="highlight price-free">$0</td>
-                            <td class="price-paid">$150–$400</td>
-                            <td class="price-free">$0</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Account Required</td>
-                            <td class="highlight check-yes">No signup needed</td>
-                            <td class="check-no">Required</td>
-                            <td class="check-partial">Usually required</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Updated for Latest Exams</td>
-                            <td class="highlight check-yes">✓ SY0-701 & N10-009</td>
-                            <td class="check-yes">✓ Usually current</td>
-                            <td class="check-partial">⚠ Often outdated</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Detailed Explanations</td>
-                            <td class="highlight check-yes">✓ Every question</td>
-                            <td class="check-yes">✓ Most questions</td>
-                            <td class="check-no">✗ Rarely included</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Performance Analytics</td>
-                            <td class="highlight check-yes">✓ Domain breakdown</td>
-                            <td class="check-yes">✓ Detailed stats</td>
-                            <td class="check-no">✗ Basic or none</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Performance-Based Questions</td>
-                            <td class="highlight check-yes">✓ NetForge+ PBQs</td>
-                            <td class="check-partial">⚠ Limited</td>
-                            <td class="check-no">✗ Not available</td>
-                        </tr>
-                        <tr>
-                            <td class="feature-name">Mobile Friendly</td>
-                            <td class="highlight check-yes">✓ Fully responsive</td>
-                            <td class="check-partial">⚠ Varies</td>
-                            <td class="check-partial">⚠ Varies</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </section>
