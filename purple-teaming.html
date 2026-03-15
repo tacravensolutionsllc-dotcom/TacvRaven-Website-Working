@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is Purple Teaming? | TacRaven Cybersecurity Knowledge Base</title>
+  <meta name="description" content="Explain what purple teaming is, how collaborative security testing brings red team adversary simulation and blue team defensive operations together, and how organizations use purple team exercises to strengthen detection and response capabilities." />
+  <meta name="keywords" content="purple teaming, red team, blue team, adversary simulation, detection engineering, MITRE ATT&CK, security operations, SOC, threat hunting" />
+  <meta name="author" content="TacRaven Solutions" />
+  <link rel="canonical" href="https://tacraven.com/purple-teaming.html" />
+  <meta property="og:title" content="What is Purple Teaming? | TacRaven Cybersecurity Knowledge Base" />
+  <meta property="og:description" content="Discover how purple team exercises bring red team adversary simulation and blue team defensive operations together in real time to close detection gaps and strengthen security posture." />
+  <meta property="og:url" content="https://tacraven.com/purple-teaming.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is Purple Teaming? | TacRaven Cybersecurity Knowledge Base" />
+  <meta name="twitter:description" content="Discover how purple team exercises bring red team adversary simulation and blue team defensive operations together in real time to close detection gaps and strengthen security posture." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is Purple Teaming? Collaborative Adversary Simulation Explained",
+    "description": "Explain what purple teaming is, how collaborative security testing brings red team adversary simulation and blue team defensive operations together, and how organizations use purple team exercises to strengthen detection and response capabilities.",
+    "url": "https://tacraven.com/purple-teaming.html",
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-06-01",
+    "author": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" },
+    "publisher": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://tacraven.com/purple-teaming.html" },
+    "articleSection": "Security Operations",
+    "educationalLevel": "Advanced",
+    "about": { "@type": "Thing", "name": "Purple Teaming" }
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PEYM947EG8');
+  </script>
+
+  <style>
+    :root {
+      --black: #0a0a0a; --dark: #111111; --dark-card: #161616; --dark-border: #1f1f1f;
+      --gold: #c9a84c; --gold-light: #e2c06e; --gold-dim: #8a6e2f; --red: #c0392b;
+      --text: #d4d4d4; --text-muted: #7a7a7a; --text-dim: #4a4a4a; --white: #f0f0f0;
+      --font-display: 'Courier New', Courier, monospace;
+      --font-body: Georgia, 'Times New Roman', serif;
+      --font-ui: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--black); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.75; min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
+    .top-bar { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.97); border-bottom: 1px solid var(--dark-border); backdrop-filter: blur(6px); padding: 12px 24px; }
+    .btn-back { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid var(--gold-dim); border-radius: 2px; padding: 8px 18px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .btn-back:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); color: var(--gold-light); }
+    .btn-back::before { content: '\2190'; font-size: 0.85rem; }
+    .hero { position: relative; z-index: 1; padding: 72px 24px 56px; border-bottom: 1px solid var(--dark-border); background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%); }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .breadcrumb { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 20px; }
+    .breadcrumb a { color: var(--gold-dim); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: bold; color: var(--white); letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px; }
+    .hero h1 .accent { color: var(--gold); }
+    .hero-subtitle { font-family: var(--font-ui); font-size: 1.05rem; color: var(--text-muted); max-width: 680px; margin-bottom: 28px; line-height: 1.6; }
+    .hero-intro { font-size: 1rem; color: var(--text); max-width: 780px; margin-bottom: 32px; border-left: 3px solid var(--gold-dim); padding-left: 18px; }
+    .meta-bar { display: flex; flex-wrap: wrap; gap: 10px; }
+    .meta-tag { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border: 1px solid #3a3a3a; border-radius: 2px; color: #c8c8c8; background: #1e1e1e; }
+    .meta-tag.cat { border-color: var(--gold); color: var(--gold-light); }
+    .page-body { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 56px 24px 80px; display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start; }
+    article { min-width: 0; }
+    .kb-section { margin-bottom: 52px; }
+    .kb-section h2 { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--dark-border); display: flex; align-items: center; gap: 10px; }
+    .kb-section h2::before { content: '//'; color: var(--gold); font-size: 0.85rem; }
+    .kb-section h3 { font-family: var(--font-ui); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-light); margin: 28px 0 10px; }
+    .kb-section p { margin-bottom: 16px; color: var(--text); }
+    .card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 22px 26px; margin-bottom: 16px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+    .card-small { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; }
+    .card-small h4 { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .card-small p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+    .usecase-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-left: 3px solid var(--gold-dim); border-radius: 4px; padding: 20px 24px; margin-bottom: 18px; }
+    .usecase-card h4 { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .usecase-card p { font-size: 0.9rem; color: var(--text); margin-bottom: 0; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 14px; }
+    .compare-table th { font-family: var(--font-display); letter-spacing: 1px; text-transform: uppercase; font-size: 0.72rem; color: var(--gold); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--gold-dim); background: var(--dark); }
+    .compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--dark-border); color: var(--text); vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.04); }
+    .takeaway-list { list-style: none; padding: 0; }
+    .takeaway-list li { padding: 12px 16px 12px 44px; position: relative; border-bottom: 1px solid var(--dark-border); font-size: 0.95rem; color: var(--text); }
+    .takeaway-list li:last-child { border-bottom: none; }
+    .takeaway-list li::before { content: '\25BA'; position: absolute; left: 16px; color: var(--gold); font-size: 0.65rem; top: 16px; }
+    .arch-flow { display: flex; flex-wrap: wrap; gap: 0; margin: 18px 0; align-items: stretch; }
+    .arch-step { flex: 1; min-width: 100px; background: var(--dark-card); border: 1px solid var(--dark-border); padding: 14px 12px; text-align: center; position: relative; }
+    .arch-step:not(:last-child)::after { content: '\2192'; position: absolute; right: -13px; top: 50%; transform: translateY(-50%); color: var(--gold-dim); font-size: 0.9rem; z-index: 2; }
+    .arch-step .step-num { font-family: var(--font-display); font-size: 0.62rem; letter-spacing: 2px; color: var(--gold-dim); display: block; margin-bottom: 6px; }
+    .arch-step .step-name { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 1px; color: var(--gold-light); text-transform: uppercase; }
+    .callout-warning { background: rgba(192,57,43,0.08); border: 1px solid rgba(192,57,43,0.25); border-left: 3px solid var(--red); border-radius: 4px; padding: 16px 20px; margin-bottom: 14px; }
+    .callout-warning strong { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e05c4a; display: block; margin-bottom: 6px; }
+    .callout-warning p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+    .tier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+    .tier-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; }
+    .tier-badge { display: inline-block; font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; margin-bottom: 10px; }
+    .tier-red { background: rgba(192,57,43,0.12); color: #e05c4a; border: 1px solid rgba(192,57,43,0.4); }
+    .tier-blue { background: rgba(52,152,219,0.12); color: #5dade2; border: 1px solid #2e86c1; }
+    .tier-purple { background: rgba(201,168,76,0.12); color: var(--gold-light); border: 1px solid var(--gold-dim); }
+    .tier-card h4 { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .tier-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+    .ref-list { list-style: none; padding: 0; counter-reset: refs; }
+    .ref-list li { counter-increment: refs; padding: 10px 0 10px 36px; border-bottom: 1px solid var(--dark-border); font-size: 0.84rem; color: var(--text-muted); position: relative; }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-list li::before { content: '[' counter(refs) ']'; position: absolute; left: 0; color: var(--gold-dim); font-family: var(--font-display); font-size: 0.72rem; }
+    .ref-list a { color: var(--gold-dim); text-decoration: none; }
+    .ref-list a:hover { color: var(--gold); }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 14px; }
+    .related-link { display: block; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .related-link:hover { border-color: var(--gold-dim); background: rgba(201,168,76,0.05); }
+    .related-link .rl-label { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #888888; display: block; margin-bottom: 6px; }
+    .related-link .rl-title { font-family: var(--font-ui); font-size: 0.88rem; color: var(--gold-light); font-weight: bold; }
+    aside { position: sticky; top: 80px; }
+    .sidebar-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 20px; margin-bottom: 20px; }
+    .sidebar-card h3 { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--dark-border); }
+    .toc-list { list-style: none; padding: 0; }
+    .toc-list li { margin-bottom: 2px; }
+    .toc-list a { font-family: var(--font-ui); font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: block; padding: 5px 8px; border-radius: 2px; transition: color 0.15s, background 0.15s; }
+    .toc-list a:hover { color: var(--gold-light); background: rgba(201,168,76,0.06); }
+    .toc-list a.toc-active { color: var(--gold-light); background: rgba(201,168,76,0.08); border-left: 2px solid var(--gold); padding-left: 6px; }
+    .toc-toggle-btn { display: none; width: 100%; font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 12px 16px; cursor: pointer; text-align: left; margin-bottom: 0; align-items: center; justify-content: space-between; }
+    .toc-toggle-btn .toc-chevron { display: inline-block; transition: transform 0.25s; font-style: normal; font-size: 0.8rem; }
+    .toc-toggle-btn.open .toc-chevron { transform: rotate(180deg); }
+    .toc-drawer { overflow: hidden; max-height: 0; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0; }
+    .toc-drawer.open { max-height: 600px; opacity: 1; }
+    .toc-drawer-inner { padding-top: 4px; }
+    @media (max-width: 900px) { .toc-toggle-btn { display: flex; } .sidebar-toc-card .toc-list { border-top: 1px solid var(--dark-border); margin-top: 0; padding-top: 8px; } }
+    footer { position: relative; z-index: 1; background: var(--dark); border-top: 1px solid var(--dark-border); padding: 48px 24px 28px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--dark-border); }
+    .footer-brand .logo { font-family: var(--font-display); font-size: 1rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; display: block; }
+    .footer-brand p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+    .footer-col h4 { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 12px; }
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 6px; }
+    .footer-col ul a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-col ul a:hover { color: var(--gold-light); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1px; color: var(--text-dim); }
+    .footer-tagline { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); }
+    .divider { border: none; border-top: 1px solid var(--dark-border); margin: 0; }
+    @media (max-width: 900px) { .page-body { grid-template-columns: 1fr; } aside { position: static; order: -1; } .footer-top { grid-template-columns: 1fr; gap: 28px; } .arch-step:not(:last-child)::after { display: none; } }
+    @media (max-width: 640px) { .arch-step { min-width: 80px; } .compare-table { font-size: 0.78rem; } .hero h1 { letter-spacing: -0.5px; } }
+    @media print { .top-bar, aside, footer { display: none; } body { background: white; color: black; } .page-body { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="/knowledge-base.html" class="btn-back">Return to Knowledge Base</a>
+  </div>
+
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <p class="breadcrumb">
+        <a href="/">Home</a> &nbsp;/&nbsp;
+        <a href="/knowledge-base.html">TacRaven Cybersecurity Knowledge Base</a> &nbsp;/&nbsp;
+        What is Purple Teaming?
+      </p>
+      <h1>What is <span class="accent">Purple Teaming</span>?</h1>
+      <p class="hero-subtitle">Understanding collaborative adversary simulation — how red team offensive techniques and blue team defensive operations combine into a structured improvement cycle, why purple teaming accelerates detection maturity, and how organizations use it to close gaps that traditional security testing consistently leaves open.</p>
+      <p class="hero-intro">
+        Traditional security testing separates attackers and defenders. Red teams probe environments and deliver findings. Blue teams respond to what their tools surface. The two rarely interact during the exercise itself, which means the most valuable moment — when the red team knows exactly what they executed and the blue team knows exactly what they did or did not see — passes without a structured conversation. Purple teaming eliminates that gap. By placing red and blue team practitioners in direct collaboration during the exercise, purple teaming converts attack simulation into immediate, measurable defensive improvement. Every technique executed either validates existing detection coverage or generates an actionable finding that can be remediated before the exercise closes.
+      </p>
+      <div class="meta-bar">
+        <span class="meta-tag cat">Security Operations</span>
+        <span class="meta-tag">Difficulty: Advanced</span>
+        <span class="meta-tag">Read Time: ~8 Minutes</span>
+        <span class="meta-tag">Updated: 2025</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-body">
+    <article>
+
+      <section class="kb-section" id="overview" aria-labelledby="s-overview">
+        <h2 id="s-overview">Executive Overview</h2>
+        <p><strong>Purple teaming</strong> is a collaborative cybersecurity practice in which red team attackers and blue team defenders work together during the same exercise to test defenses, improve detection capabilities, and strengthen an organization's security posture. The term describes the blending of offensive red team tradecraft with defensive blue team operations — producing a combined function oriented toward continuous security improvement rather than adversarial competition.</p>
+        <p>Purple teaming does not replace red team assessments or blue team monitoring operations. It supplements and accelerates both. Where a traditional red team engagement produces a point-in-time finding delivered weeks after the exercise concludes, a purple team exercise produces detection rule updates, validated coverage data, and documented telemetry signatures before the exercise closes. The improvement cycle is compressed from weeks to hours.</p>
+        <div class="card">
+          <p>At its core, purple teaming acts as a <strong>structured feedback loop between offense and defense</strong>. Attack techniques are executed with full transparency. Detection gaps are identified, documented, and immediately remediated. Coverage is validated before the technique is retired from the exercise scope. The result is a security operations function that improves with each exercise iteration rather than waiting for the next assessment to reveal what changed.</p>
+        </div>
+        <p>The concept has matured significantly alongside the adoption of the MITRE ATT&amp;CK framework, which provides the common language and structured technique catalog that makes purple team exercises operationally tractable at scale. Organizations across defense, finance, healthcare, and critical infrastructure now treat purple team programs as a core component of their security operations strategy.</p>
+      </section>
+
+      <section class="kb-section" id="why-purple" aria-labelledby="s-why">
+        <h2 id="s-why">Why Traditional Testing Falls Short</h2>
+        <p>To understand what purple teaming solves, it helps to understand exactly where conventional security testing models break down. The failures are structural — they result from how traditional engagements are designed — and they cannot be resolved by running more frequent assessments within the same model.</p>
+
+        <div class="usecase-card">
+          <h4>The Knowledge Gap After Engagement</h4>
+          <p>In a standard red team engagement, offensive operators execute techniques covertly over days or weeks, then deliver a report. By the time the blue team reads the report, the red team's operational knowledge — exactly how each technique was executed, what tooling was used, what parameters were set — has faded. The blue team builds detection rules against a written description of the attack, not against live telemetry with the attacking team present to confirm execution details. Detection quality suffers as a result.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Slow Detection Improvement Cycles</h4>
+          <p>A penetration test or red team assessment delivered as a findings report creates a remediation queue that competes with every other security operations priority. Detection improvements tied to engagement findings are frequently deprioritized, partially implemented, or never validated against the original technique execution. The gap identified in January may still be open in October when the next assessment runs.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Missing Telemetry Validation</h4>
+          <p>Building a detection rule against a technique description and confirming that the rule fires correctly against live execution of that technique are fundamentally different activities. A rule that appears logically sound may fail against the actual telemetry produced by a specific tool or technique variant. Without the red team present during detection development, that validation never happens — and the organization carries false confidence that the gap is closed when it is not.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Competitive Framing Limits Learning</h4>
+          <p>Traditional red team engagements are implicitly structured as adversarial — the red team tries to compromise the environment while the blue team tries to detect and stop them. This framing produces useful assessment data but actively discourages the knowledge sharing that would make it most valuable. Red teamers who reveal their techniques during the exercise lose their operational advantage. Purple teaming inverts this incentive structure entirely: both teams benefit when detection improves.</p>
+        </div>
+      </section>
+
+      <section class="kb-section" id="team-roles" aria-labelledby="s-roles">
+        <h2 id="s-roles">Red, Blue, and Purple Team Roles</h2>
+        <p>Purple teaming is defined by the deliberate collaboration of two distinct security disciplines. Understanding what each team contributes — and what the purple function specifically adds — clarifies how the model works in practice.</p>
+
+        <div class="tier-grid">
+          <div class="tier-card">
+            <span class="tier-badge tier-red">Red Team</span>
+            <h4>Offense</h4>
+            <p>Simulates real-world adversary behavior using offensive techniques to compromise systems, move laterally, escalate privileges, and exfiltrate data. Generates the telemetry that the blue team must detect.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-blue">Blue Team</span>
+            <h4>Defense</h4>
+            <p>Monitors systems, manages detection tooling, responds to alerts, and documents what was and was not surfaced during the exercise. Validates existing detection coverage against live technique execution.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-purple">Purple Function</span>
+            <h4>Collaboration</h4>
+            <p>Facilitates structured communication between red and blue practitioners. Ensures that offensive findings translate directly into defensive improvements. Documents coverage data and tracks improvement across exercise iterations.</p>
+          </div>
+        </div>
+
+        <p>In many organizations, the purple team is not a separate dedicated function. It is a <em>mode of operation</em> — a structured collaboration format applied to existing red and blue team resources. A detection engineer working alongside a red team operator during a planned exercise is functionally performing purple team work regardless of job title. What distinguishes purple teaming is the process: shared scope, real-time communication, immediate remediation, and validated coverage confirmation before the technique is retired.</p>
+        <p>Larger security programs may have a dedicated purple team function that schedules and facilitates exercises, maintains the ATT&amp;CK coverage matrix, owns the detection engineering backlog generated by exercise findings, and coordinates between offensive and defensive teams that operate in separate organizational structures.</p>
+      </section>
+
+      <section class="kb-section" id="how-it-works" aria-labelledby="s-how">
+        <h2 id="s-how">How Purple Team Exercises Work</h2>
+        <p>Purple team exercises follow a structured workflow designed to maximize the detection improvement yield of each technique executed. The process is iterative — each technique execution produces a feedback cycle that either validates coverage or generates a remediation action before the exercise advances to the next technique.</p>
+        <p>The following diagram illustrates the core workflow of a purple team exercise, from initial scenario planning through coverage confirmation.</p>
+
+        <div class="arch-flow">
+          <div class="arch-step"><span class="step-num">01</span><span class="step-name">Scenario Planning</span></div>
+          <div class="arch-step"><span class="step-num">02</span><span class="step-name">Technique Execution</span></div>
+          <div class="arch-step"><span class="step-num">03</span><span class="step-name">Detection Review</span></div>
+          <div class="arch-step"><span class="step-num">04</span><span class="step-name">Gap Analysis</span></div>
+          <div class="arch-step"><span class="step-num">05</span><span class="step-name">Rule Development</span></div>
+          <div class="arch-step"><span class="step-num">06</span><span class="step-name">Coverage Validation</span></div>
+        </div>
+
+        <h3>Phase 1: Scenario Planning</h3>
+        <p>Exercise scope is defined around specific ATT&amp;CK tactics and techniques relevant to the organization's threat profile. Scenario selection is informed by threat intelligence — which adversary groups target the organization's industry, which techniques those groups favor, and which areas of the ATT&amp;CK matrix have not been tested in previous exercises. Both red and blue teams review scope before execution begins.</p>
+
+        <h3>Phase 2: Technique Execution</h3>
+        <p>The red team executes planned techniques in the target environment using realistic tooling and configurations. Unlike covert engagements, the blue team knows an exercise is underway. Specific technique timing may be disclosed or withheld depending on exercise design — some programs use a "lights on" format where every execution is announced in real time, while others maintain partial opacity to preserve realistic detection conditions.</p>
+
+        <h3>Phase 3: Detection Review</h3>
+        <p>Immediately following each technique execution, both teams review detection results. The blue team examines SIEM alerts, EDR telemetry, network logs, and any automated response triggers. The red team confirms execution parameters and tooling details. The joint review produces a clear determination: detected with alert, visible in telemetry but no alert generated, or not detected at all.</p>
+
+        <h3>Phase 4: Gap Analysis</h3>
+        <p>For each technique that did not produce a timely, high-fidelity alert, the teams conduct a collaborative root cause analysis. Was the technique not logged? Was the telemetry present but no rule evaluated it? Did the rule fire but the alert was suppressed or deprioritized? The specific failure mode determines the appropriate remediation action.</p>
+
+        <h3>Phase 5: Rule Development</h3>
+        <p>Detection engineers develop or refine detection logic for identified gaps with the red team present. The red team re-executes the technique against the updated rule during the same exercise session, providing immediate validation data. This execute-develop-validate cycle continues until the technique produces a reliable, actionable alert.</p>
+
+        <h3>Phase 6: Coverage Validation</h3>
+        <p>Before the exercise concludes, all techniques are mapped to their final coverage status in the ATT&amp;CK Navigator or equivalent tracking system. Confirmed-covered techniques are documented with the telemetry signatures and detection logic used. Techniques that required rule development during the exercise are flagged for regression testing in the next exercise cycle.</p>
+      </section>
+
+      <section class="kb-section" id="mitre-attck" aria-labelledby="s-attck">
+        <h2 id="s-attck">Purple Teaming and MITRE ATT&amp;CK</h2>
+        <p>The MITRE ATT&amp;CK framework is the operational foundation of most purple team programs. ATT&amp;CK provides a structured, evidence-based catalog of adversary tactics and techniques derived from real-world intrusion data, organized into the tactical phases of an attack lifecycle: initial access, execution, persistence, privilege escalation, defense evasion, credential access, lateral movement, collection, and exfiltration.</p>
+        <p>Purple teams use ATT&amp;CK in three primary ways. First, as a <strong>technique selection catalog</strong> — exercises are scoped by selecting specific ATT&amp;CK technique IDs, ensuring that both teams are working from the same precise behavioral description when discussing what was executed and whether it was detected. Second, as a <strong>coverage tracking framework</strong> — ATT&amp;CK Navigator provides a visual map of which techniques have been tested, their current coverage status, and which areas of the matrix remain untested across exercise iterations. Third, as a <strong>threat intelligence bridge</strong> — adversary group profiles in ATT&amp;CK map specific threat actors to the techniques they use, allowing exercise scope to be prioritized around techniques most relevant to the organization's actual threat landscape.</p>
+
+        <div class="card">
+          <p>The shared language ATT&amp;CK provides is functionally critical for purple team operations. When a red team operator and a detection engineer are jointly reviewing why a lateral movement technique failed to produce an alert, both parties need to be referencing exactly the same behavioral definition. ATT&amp;CK technique IDs eliminate definitional ambiguity and make exercise documentation consistently useful across teams and over time.</p>
+        </div>
+
+        <p>Atomic Red Team, the open-source library of atomic tests mapped to ATT&amp;CK techniques, is widely used in purple team exercises to provide reliable, repeatable, well-documented technique executions that both teams can use as a shared baseline. Each atomic test is executed identically across exercise sessions, ensuring that coverage status changes reflect improvements in detection logic rather than variations in attack execution methodology.</p>
+      </section>
+
+      <section class="kb-section" id="tools" aria-labelledby="s-tools">
+        <h2 id="s-tools">Tools and Technologies</h2>
+        <p>Purple team exercises draw on tooling from both offensive and defensive disciplines. Effective programs integrate these tools into a coherent exercise workflow rather than treating them as independent capabilities.</p>
+
+        <h3>Attack Simulation Platforms</h3>
+        <p>Platforms such as Atomic Red Team, VECTR, MITRE CALDERA, and commercial adversary simulation tools provide structured, repeatable technique executions mapped directly to ATT&amp;CK. These tools ensure consistent execution across exercise sessions and generate the predictable telemetry signatures that detection engineers need to build reliable rules.</p>
+
+        <h3>Red Team Toolkits</h3>
+        <p>Command-and-control frameworks, credential harvesting tools, lateral movement utilities, and post-exploitation toolkits allow red team operators to execute techniques with realistic tool configurations. The specific tooling used during execution matters for detection — different tools executing the same ATT&amp;CK technique produce different telemetry signatures, and detection rules must account for the full range of tooling variants a real adversary might use.</p>
+
+        <h3>SIEM Platforms</h3>
+        <p>Security Information and Event Management platforms are the primary detection validation surface during purple team exercises. Log ingestion coverage, correlation rule fidelity, and alert triage workflows are all evaluated against live technique execution. SIEM gaps identified during exercises — missing log sources, broken parsers, underconfigured rules — feed directly into the operations team's remediation backlog.</p>
+
+        <h3>EDR and XDR Platforms</h3>
+        <p>Endpoint Detection and Response tools provide the process-level, file-level, and behavioral telemetry that is most directly actionable for technique-level detection. Extended Detection and Response platforms correlate endpoint telemetry with network, identity, and cloud signals to surface cross-domain attack chains. Purple team exercises evaluate both alert coverage and the quality of investigation data these platforms provide when an alert fires.</p>
+
+        <h3>Exercise Tracking Platforms</h3>
+        <p>VECTR and similar purpose-built purple team platforms provide structured exercise tracking, coverage status documentation, and historical comparison across exercise iterations. These platforms maintain the institutional record of which techniques have been tested, what the detection outcome was, and how coverage has changed over time — making the improvement arc of a purple team program visible, measurable, and reportable to security leadership.</p>
+      </section>
+
+      <section class="kb-section" id="usecases" aria-labelledby="s-uc">
+        <h2 id="s-uc">Real-World Exercise Scenarios</h2>
+        <p>Purple team exercises can be scoped around any adversary behavior present in the ATT&amp;CK framework. The following scenarios represent common exercise focuses and the specific detection improvements they are designed to validate.</p>
+
+        <div class="usecase-card">
+          <h4>Lateral Movement and Credential-Based Traversal</h4>
+          <p>The red team executes techniques including Pass-the-Hash, Pass-the-Ticket, Kerberoasting, and remote service execution using harvested credentials. The blue team evaluates authentication log coverage, process execution telemetry, and network connection records to determine which authentication patterns produce reliable alerts and which require additional detection logic or log source onboarding.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Credential Access and Memory-Based Attacks</h4>
+          <p>LSASS memory access, SAM database credential extraction, Windows credential manager abuse, and Kerberos ticket manipulation are executed to evaluate endpoint detection coverage at the process and memory activity level. This scenario frequently surfaces gaps in EDR policy configurations, missing telemetry sources, or detection rules that fire on tool signatures rather than the underlying behavioral pattern — creating evasion opportunities for attackers using custom tooling.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Persistence Mechanism Detection</h4>
+          <p>Registry run key modifications, scheduled task creation, service installation, and startup folder manipulation are executed to validate whether persistence mechanisms are consistently detected across the range of techniques an attacker might use to maintain access. Persistence detection is frequently undercovered because it receives less operational focus than initial access and execution in standard detection engineering backlogs.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Data Staging and Exfiltration</h4>
+          <p>Data collection, archiving, and exfiltration over permitted channels — including encrypted web traffic, cloud storage services, and DNS — are exercised to evaluate DLP controls, network monitoring coverage, and whether behavioral anomalies in data transfer volumes surface actionable alerts. This scenario often reveals that detection logic covers obvious exfiltration channels while permitted-but-monitored channels remain unexamined.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Incident Response Playbook Validation</h4>
+          <p>Some purple team exercises are structured specifically to test the blue team's documented response procedures. The red team executes a multi-stage scenario designed to trigger specific playbooks — ransomware precursor activity, privilege escalation to domain admin, data exfiltration — and the blue team works through escalation, containment, and communication procedures in real time. This scenario identifies gaps in playbook completeness and cross-team communication that tabletop exercises cannot reliably surface.</p>
+        </div>
+      </section>
+
+      <section class="kb-section" id="limitations" aria-labelledby="s-lim">
+        <h2 id="s-lim">Challenges and Limitations</h2>
+        <p>Purple teaming offers significant operational advantages, but programs that are poorly scoped, inadequately resourced, or organizationally misaligned consistently fail to produce meaningful security improvement. Understanding the realistic challenges of purple team programs is essential for designing ones that actually work.</p>
+
+        <div class="callout-warning">
+          <strong>&#9888; Resource and Staffing Constraints</strong>
+          <p>Effective purple team exercises require dedicated time from practitioners with depth in both offensive and defensive disciplines — a combination that is scarce in most security teams. Smaller organizations attempting to run exercises with practitioners who are simultaneously managing operational responsibilities frequently find that exercise quality degrades and improvement outcomes are inconsistent. Honest resource assessment before committing to a purple team program prevents persistent under-delivery against stated objectives.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>&#9888; Organizational Silos Between Teams</strong>
+          <p>Red and blue teams that report to different management chains, operate under different mandates, and are evaluated against different success metrics will struggle to sustain the collaboration that purple teaming requires. When red teams are rewarded for finding vulnerabilities and blue teams are evaluated on alert volume, neither incentive structure supports the shared improvement orientation that makes exercises valuable. Leadership alignment on shared program objectives is a prerequisite, not an afterthought.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>&#9888; Telemetry Coverage Gaps Limit Exercise Value</strong>
+          <p>Purple teaming is only as useful as the telemetry available to evaluate detection coverage. Organizations with limited log ingestion, misconfigured data sources, or significant gaps in endpoint and network monitoring will find that exercises reveal telemetry infrastructure problems rather than detection logic problems. Addressing log coverage gaps is frequently the highest-value outcome of initial exercises — but organizations should enter with realistic expectations about what they are actually measuring.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>&#9888; Risk of Validation Theater</strong>
+          <p>Exercises scoped too narrowly, executed using only the tool variants that existing detection rules were written for, or evaluated only against techniques an organization already covers well will produce coverage data that overstates actual detection capability. This validation theater gives leadership false confidence and fails to identify the gaps that matter. Rigorous exercise design includes techniques and tool variants that stress-test detection coverage, not just those that confirm it.</p>
+        </div>
+
+        <p>These challenges are manageable with careful program design, organizational alignment, and realistic scoping. Organizations that sustain high-value purple team programs treat the exercise program as a continuous capability with dedicated resources, consistent methodology, and measurement frameworks that track improvement over time — not as a one-time initiative that generates a coverage report and is then retired.</p>
+      </section>
+
+      <section class="kb-section" id="architecture" aria-labelledby="s-arch">
+        <h2 id="s-arch">Purple Teaming in Modern Security Programs</h2>
+        <p>Purple teaming does not operate in isolation. Its value is highest when it functions as an integrated component of a broader security operations and offensive security program, contributing detection improvement data to the functions that consume it most directly.</p>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Security Function</th>
+              <th>Purple Team Contribution</th>
+              <th>Operational Benefit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Detection Engineering</strong></td>
+              <td>Generates a prioritized backlog of technique gaps with validated telemetry signatures and confirmed coverage data</td>
+              <td>Detection rules are built against confirmed live telemetry rather than technique descriptions, producing higher fidelity coverage and fewer false positives on deployment</td>
+            </tr>
+            <tr>
+              <td><strong>Threat Hunting</strong></td>
+              <td>Provides confirmed telemetry signatures for specific techniques that hunters can use to construct hypotheses against historical data</td>
+              <td>Hunters can validate that a technique of interest produces detectable signals in the environment before committing analyst time to a hunt based on that technique</td>
+            </tr>
+            <tr>
+              <td><strong>Red Team Assessments</strong></td>
+              <td>Establishes baseline ATT&amp;CK coverage data that informs red team scope selection and helps operators target techniques most likely to reveal meaningful gaps</td>
+              <td>Red team time is directed toward techniques with unknown or unvalidated coverage rather than re-testing areas already confirmed covered by the purple team program</td>
+            </tr>
+            <tr>
+              <td><strong>SOC Operations</strong></td>
+              <td>Validates that alerts reaching SOC analysts contain the context needed for accurate triage and effective investigation</td>
+              <td>Alert quality improves progressively as exercise feedback is incorporated into detection rule tuning, reducing false positive rates and analyst fatigue over time</td>
+            </tr>
+            <tr>
+              <td><strong>Security Leadership Reporting</strong></td>
+              <td>ATT&amp;CK coverage matrices and exercise improvement metrics provide concrete, technique-level data on detection posture and program progress</td>
+              <td>Leadership receives measurable, defensible evidence of security program maturity tied directly to the adversary techniques most relevant to the organization's threat profile</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Mature security organizations typically run purple team exercises on a quarterly or monthly cadence, cycling through different ATT&amp;CK tactics and technique clusters with each iteration. This cadence ensures that newly observed adversary techniques are tested before they appear in actual incidents, that detection coverage keeps pace with changes in the threat landscape, and that improvement data is consistently integrated into detection engineering and SOC operations workflows.</p>
+      </section>
+
+      <section class="kb-section" id="future" aria-labelledby="s-fut">
+        <h2 id="s-fut">The Future of Collaborative Security Testing</h2>
+        <p>Purple teaming as a practice is maturing from an advanced-program capability into a standard component of security operations at organizations of all sizes. Several developments are shaping how the practice evolves over the next several years.</p>
+        <p>Automation is increasingly being applied to the most time-intensive parts of purple team operations — technique execution, telemetry collection, and basic coverage determination. Platforms that can execute a defined set of ATT&amp;CK techniques, collect detection results, and generate a coverage gap report without requiring full analyst involvement for each technique execution are allowing smaller teams to run higher-tempo exercises than manual processes permit. Human judgment remains essential for gap analysis, rule development, and detection quality evaluation, but the operational overhead of exercises is declining as tooling matures.</p>
+        <p>Integration with continuous security validation platforms is extending the purple team model beyond scheduled exercises into ongoing automated coverage monitoring. Organizations are deploying breach and attack simulation platforms that continuously execute a defined technique set against production detection infrastructure, surfacing coverage drift as environment changes — new systems, updated tooling, modified configurations — affect the reliability of existing detection rules between formal exercise cycles.</p>
+        <p>The convergence of purple team programs with detection engineering platforms that track rule coverage, performance metrics, and alert quality data is producing a more quantitative discipline. Coverage data expressed in ATT&amp;CK technique terms, combined with alert fidelity metrics from production SOC operations, is giving security organizations a more complete picture of where their detection posture stands at any given point — and a more defensible method for prioritizing detection investment based on actual threat relevance and measured coverage gaps.</p>
+      </section>
+
+      <section class="kb-section" id="takeaways" aria-labelledby="s-take">
+        <h2 id="s-take">Key Takeaways</h2>
+        <ul class="takeaway-list">
+          <li>Purple teaming combines red team offensive technique execution with blue team detection and response operations in a structured collaborative exercise, converting attack simulation directly into measurable detection improvement rather than a point-in-time findings report delivered after the engagement concludes.</li>
+          <li>The core workflow — plan, execute, review, analyze gaps, develop detection logic, validate coverage — compresses the improvement cycle from weeks to hours. Every technique executed either confirms existing coverage or generates an actionable gap remediation that can be completed before the exercise advances to the next technique.</li>
+          <li>MITRE ATT&amp;CK provides the common operational language, technique catalog, and coverage tracking framework that makes purple team exercises tractable at scale. Technique IDs eliminate definitional ambiguity, map exercises to real-world adversary behavior, and produce coverage data that is comparable across exercise iterations and meaningful to both technical practitioners and security leadership.</li>
+          <li>Successful programs require genuine organizational alignment between offensive and defensive functions. Teams evaluated against conflicting incentive structures, operating under separate mandates, or lacking shared success metrics will struggle to sustain the collaboration that makes exercises valuable. Leadership support for a shared improvement orientation is a structural prerequisite, not an optional program element.</li>
+          <li>Purple teaming integrates directly with detection engineering, threat hunting, red team assessment, and SOC operations functions — contributing coverage data, telemetry signatures, and alert quality feedback that improves the effectiveness of each. Organizations that isolate purple team exercises from these downstream consumers significantly reduce the program's operational return.</li>
+          <li>The trajectory of the discipline points toward higher-tempo continuous validation, tighter integration with detection engineering platforms, and quantitative ATT&amp;CK coverage tracking. Organizations building purple team programs now are positioning themselves to absorb these capabilities as they mature rather than retrofitting a measurement framework onto a program that was never designed to produce comparable data across cycles.</li>
+        </ul>
+      </section>
+
+      <section class="kb-section" id="references" aria-labelledby="s-ref">
+        <h2 id="s-ref">References</h2>
+        <ol class="ref-list">
+          <li>MITRE Corporation. <em>MITRE ATT&amp;CK Framework.</em> <a href="https://attack.mitre.org" target="_blank" rel="noopener noreferrer">attack.mitre.org</a></li>
+          <li>MITRE Corporation. <em>ATT&amp;CK Navigator.</em> <a href="https://mitre-attack.github.io/attack-navigator/" target="_blank" rel="noopener noreferrer">mitre-attack.github.io/attack-navigator</a></li>
+          <li>Red Canary. <em>Atomic Red Team — Open Source ATT&amp;CK Test Library.</em> <a href="https://github.com/redcanaryco/atomic-red-team" target="_blank" rel="noopener noreferrer">github.com/redcanaryco/atomic-red-team</a></li>
+          <li>SecurityRisk Advisors. <em>VECTR — Purple Team Exercise Tracking Platform.</em> <a href="https://vectr.io" target="_blank" rel="noopener noreferrer">vectr.io</a></li>
+          <li>MITRE Corporation. <em>CALDERA Automated Adversary Emulation Platform.</em> <a href="https://caldera.mitre.org" target="_blank" rel="noopener noreferrer">caldera.mitre.org</a></li>
+          <li>Cybersecurity and Infrastructure Security Agency. <em>CISA Known Exploited Vulnerabilities Catalog.</em> <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener noreferrer">cisa.gov</a></li>
+          <li>TacRaven Solutions. <em>TacRaven Cybersecurity Knowledge Base.</em> <a href="https://tacraven.com/knowledge-base.html" target="_blank" rel="noopener noreferrer">tacraven.com/knowledge-base.html</a></li>
+        </ol>
+      </section>
+
+      <section class="kb-section" id="related" aria-labelledby="s-rel">
+        <h2 id="s-rel">Related Topics</h2>
+        <div class="related-grid">
+          <a href="/threat-intelligence.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">Threat Intelligence</span></a>
+          <a href="/detection-engineering.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">Detection Engineering</span></a>
+          <a href="/incident-response.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">Incident Response</span></a>
+          <a href="/soc.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">Security Operations Center</span></a>
+          <a href="/siem.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is SIEM?</span></a>
+          <a href="/edr.html" class="related-link"><span class="rl-label">Endpoint Security</span><span class="rl-title">What is EDR?</span></a>
+          <a href="/xdr.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is XDR?</span></a>
+          <a href="/vulnerability-management.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">Vulnerability Management</span></a>
+        </div>
+      </section>
+
+    </article>
+
+    <aside aria-label="Article navigation">
+      <div class="sidebar-card sidebar-toc-card">
+        <button class="toc-toggle-btn" id="tocToggle" aria-expanded="false" aria-controls="tocDrawer">
+          Contents <i class="toc-chevron">&#9662;</i>
+        </button>
+        <h3 class="toc-heading" style="display:none;" aria-hidden="true">Contents</h3>
+        <div class="toc-drawer" id="tocDrawer">
+          <div class="toc-drawer-inner">
+            <ul class="toc-list" id="tocList">
+              <li><a href="#overview">Executive Overview</a></li>
+              <li><a href="#why-purple">Why Traditional Testing Falls Short</a></li>
+              <li><a href="#team-roles">Red, Blue, and Purple Roles</a></li>
+              <li><a href="#how-it-works">How Exercises Work</a></li>
+              <li><a href="#mitre-attck">MITRE ATT&amp;CK Integration</a></li>
+              <li><a href="#tools">Tools and Technologies</a></li>
+              <li><a href="#usecases">Exercise Scenarios</a></li>
+              <li><a href="#limitations">Challenges and Limitations</a></li>
+              <li><a href="#architecture">Modern Security Programs</a></li>
+              <li><a href="#future">The Future of Collaborative Testing</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+              <li><a href="#references">References</a></li>
+              <li><a href="#related">Related Topics</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Quick Reference</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.65;">
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">FUNCTION</strong><br>
+          Collaborative Adversary Simulation &amp; Detection Improvement<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">CORE ACTIVITIES</strong><br>
+          Technique Execution &nbsp;&#183;&nbsp; Detection Validation &nbsp;&#183;&nbsp; Gap Analysis &nbsp;&#183;&nbsp; Rule Development &nbsp;&#183;&nbsp; Coverage Confirmation<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">KEY FRAMEWORKS</strong><br>
+          MITRE ATT&amp;CK &nbsp;&#183;&nbsp; Atomic Red Team &nbsp;&#183;&nbsp; ATT&amp;CK Navigator &nbsp;&#183;&nbsp; VECTR &nbsp;&#183;&nbsp; CALDERA<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">RELATED FUNCTIONS</strong><br>
+          Detection Engineering &nbsp;&#183;&nbsp; Threat Hunting &nbsp;&#183;&nbsp; Red Team &nbsp;&#183;&nbsp; SOC &nbsp;&#183;&nbsp; SIEM &nbsp;&#183;&nbsp; EDR
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="divider" />
+
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">TacRaven Solutions</span>
+          <p>TacRaven Solutions is committed to advancing cybersecurity education. We partner with academic institutions and training programs to help build the next generation of cyber professionals, bridging the gap between classroom instruction and real-world operational practice.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/learning-hub">Learning Hub</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/threat-map">Threat Map</a></li>
+            <li><a href="/intel/weekly/index.html">Weekly Reports</a></li>
+            <li><a href="/knowledge-base.html">Knowledge Base</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/careers.html">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+        <p class="footer-tagline">Intelligence-Driven Cybersecurity</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      function applyTocLayout() {
+        var btn = document.getElementById('tocToggle');
+        var heading = document.querySelector('.toc-heading');
+        var drawer = document.getElementById('tocDrawer');
+        if (!btn || !heading || !drawer) return;
+        if (window.innerWidth > 900) {
+          btn.style.display = 'none'; heading.style.display = 'block'; heading.removeAttribute('aria-hidden');
+          drawer.classList.add('open'); drawer.style.maxHeight = 'none'; drawer.style.opacity = '1';
+          drawer.style.overflow = 'visible'; drawer.style.transition = 'none';
+        } else {
+          btn.style.display = 'flex'; heading.style.display = 'none'; heading.setAttribute('aria-hidden', 'true');
+          drawer.style.transition = ''; drawer.style.overflow = '';
+          if (!drawer.classList.contains('open')) { drawer.style.maxHeight = '0'; drawer.style.opacity = '0'; }
+        }
+      }
+      applyTocLayout();
+      window.addEventListener('resize', applyTocLayout);
+      var tocBtn = document.getElementById('tocToggle');
+      var tocDrawer = document.getElementById('tocDrawer');
+      if (tocBtn && tocDrawer) {
+        tocBtn.addEventListener('click', function () {
+          var isOpen = tocDrawer.classList.toggle('open');
+          tocBtn.classList.toggle('open', isOpen);
+          tocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        tocDrawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (window.innerWidth <= 900) { tocDrawer.classList.remove('open'); tocBtn.classList.remove('open'); tocBtn.setAttribute('aria-expanded', 'false'); }
+          });
+        });
+      }
+      var sectionIds = ['overview','why-purple','team-roles','how-it-works','mitre-attck','tools','usecases','limitations','architecture','future','takeaways','references','related'];
+      var tocLinks = {};
+      sectionIds.forEach(function (id) { var link = document.querySelector('#tocList a[href="#' + id + '"]'); if (link) tocLinks[id] = link; });
+      var activeId = null;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            if (id !== activeId) {
+              if (activeId && tocLinks[activeId]) tocLinks[activeId].classList.remove('toc-active');
+              activeId = id;
+              if (tocLinks[id]) tocLinks[id].classList.add('toc-active');
+            }
+          }
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      sectionIds.forEach(function (id) { var el = document.getElementById(id); if (el) observer.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>

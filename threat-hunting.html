@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is Threat Hunting? | TacRaven Cybersecurity Knowledge Base</title>
+  <meta name="description" content="Learn what threat hunting is, how security teams proactively search environments for hidden adversaries, and how threat hunters identify malicious techniques and indicators that automated tools may miss." />
+  <meta name="keywords" content="threat hunting, proactive threat detection, hypothesis-driven hunting, MITRE ATT&CK, living off the land, SOC, behavioral hunting, threat intelligence, EDR, SIEM, lateral movement detection" />
+  <meta name="author" content="TacRaven Solutions" />
+  <link rel="canonical" href="https://tacraven.com/threat-hunting.html" />
+  <meta property="og:title" content="What is Threat Hunting? | TacRaven Cybersecurity Knowledge Base" />
+  <meta property="og:description" content="Learn how threat hunters proactively search environments for hidden adversaries, living-off-the-land techniques, and indicators of compromise that automated detection has not yet flagged." />
+  <meta property="og:url" content="https://tacraven.com/threat-hunting.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is Threat Hunting? | TacRaven Cybersecurity Knowledge Base" />
+  <meta name="twitter:description" content="Learn how threat hunters proactively search environments for hidden adversaries, living-off-the-land techniques, and indicators of compromise that automated detection has not yet flagged." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is Threat Hunting? Proactive Adversary Detection Explained",
+    "description": "Learn what threat hunting is, how security teams proactively search environments for hidden adversaries, and how threat hunters identify malicious techniques and indicators that automated tools may miss.",
+    "url": "https://tacraven.com/threat-hunting.html",
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-06-01",
+    "author": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" },
+    "publisher": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://tacraven.com/threat-hunting.html" },
+    "articleSection": "Security Operations",
+    "educationalLevel": "Advanced",
+    "about": { "@type": "Thing", "name": "Threat Hunting" }
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PEYM947EG8');
+  </script>
+
+  <style>
+    :root {
+      --black: #0a0a0a; --dark: #111111; --dark-card: #161616; --dark-border: #1f1f1f;
+      --gold: #c9a84c; --gold-light: #e2c06e; --gold-dim: #8a6e2f; --red: #c0392b;
+      --text: #d4d4d4; --text-muted: #7a7a7a; --text-dim: #4a4a4a; --white: #f0f0f0;
+      --font-display: 'Courier New', Courier, monospace;
+      --font-body: Georgia, 'Times New Roman', serif;
+      --font-ui: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--black); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.75; min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
+    .top-bar { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.97); border-bottom: 1px solid var(--dark-border); backdrop-filter: blur(6px); padding: 12px 24px; }
+    .btn-back { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid var(--gold-dim); border-radius: 2px; padding: 8px 18px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .btn-back:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); color: var(--gold-light); }
+    .btn-back::before { content: '\2190'; font-size: 0.85rem; }
+    .hero { position: relative; z-index: 1; padding: 72px 24px 56px; border-bottom: 1px solid var(--dark-border); background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%); }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .breadcrumb { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 20px; }
+    .breadcrumb a { color: var(--gold-dim); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: bold; color: var(--white); letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px; }
+    .hero h1 .accent { color: var(--gold); }
+    .hero-subtitle { font-family: var(--font-ui); font-size: 1.05rem; color: var(--text-muted); max-width: 680px; margin-bottom: 28px; line-height: 1.6; }
+    .hero-intro { font-size: 1rem; color: var(--text); max-width: 780px; margin-bottom: 32px; border-left: 3px solid var(--gold-dim); padding-left: 18px; }
+    .meta-bar { display: flex; flex-wrap: wrap; gap: 10px; }
+    .meta-tag { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border: 1px solid #3a3a3a; border-radius: 2px; color: #c8c8c8; background: #1e1e1e; }
+    .meta-tag.cat { border-color: var(--gold); color: var(--gold-light); }
+    .page-body { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 56px 24px 80px; display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start; }
+    article { min-width: 0; }
+    .kb-section { margin-bottom: 52px; }
+    .kb-section h2 { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--dark-border); display: flex; align-items: center; gap: 10px; }
+    .kb-section h2::before { content: '//'; color: var(--gold); font-size: 0.85rem; }
+    .kb-section h3 { font-family: var(--font-ui); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-light); margin: 28px 0 10px; }
+    .kb-section p { margin-bottom: 16px; color: var(--text); }
+    .card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 22px 26px; margin-bottom: 16px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+    .card-small { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; }
+    .card-small h4 { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .card-small p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+    .usecase-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-left: 3px solid var(--gold-dim); border-radius: 4px; padding: 20px 24px; margin-bottom: 18px; }
+    .usecase-card h4 { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .usecase-card p { font-size: 0.9rem; color: var(--text); margin-bottom: 0; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 14px; }
+    .compare-table th { font-family: var(--font-display); letter-spacing: 1px; text-transform: uppercase; font-size: 0.72rem; color: var(--gold); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--gold-dim); background: var(--dark); }
+    .compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--dark-border); color: var(--text); vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.04); }
+    .takeaway-list { list-style: none; padding: 0; }
+    .takeaway-list li { padding: 12px 16px 12px 44px; position: relative; border-bottom: 1px solid var(--dark-border); font-size: 0.95rem; color: var(--text); }
+    .takeaway-list li:last-child { border-bottom: none; }
+    .takeaway-list li::before { content: '\25BA'; position: absolute; left: 16px; color: var(--gold); font-size: 0.65rem; top: 16px; }
+    .arch-flow { display: flex; flex-wrap: wrap; gap: 0; margin: 18px 0; align-items: stretch; }
+    .arch-step { flex: 1; min-width: 100px; background: var(--dark-card); border: 1px solid var(--dark-border); padding: 14px 12px; text-align: center; position: relative; }
+    .arch-step:not(:last-child)::after { content: '\2192'; position: absolute; right: -13px; top: 50%; transform: translateY(-50%); color: var(--gold-dim); font-size: 0.9rem; z-index: 2; }
+    .arch-step .step-num { font-family: var(--font-display); font-size: 0.62rem; letter-spacing: 2px; color: var(--gold-dim); display: block; margin-bottom: 6px; }
+    .arch-step .step-name { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 1px; color: var(--gold-light); text-transform: uppercase; }
+    .callout-warning { background: rgba(192,57,43,0.08); border: 1px solid rgba(192,57,43,0.25); border-left: 3px solid var(--red); border-radius: 4px; padding: 16px 20px; margin-bottom: 14px; }
+    .callout-warning strong { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e05c4a; display: block; margin-bottom: 6px; }
+    .callout-warning p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+    .tier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+    .tier-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; }
+    .tier-badge { display: inline-block; font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; margin-bottom: 10px; }
+    .tier-1 { background: rgba(201,168,76,0.12); color: var(--gold-light); border: 1px solid var(--gold-dim); }
+    .tier-2 { background: rgba(39,174,96,0.12); color: #2ecc71; border: 1px solid #27ae60; }
+    .tier-3 { background: rgba(52,152,219,0.12); color: #5dade2; border: 1px solid #2e86c1; }
+    .tier-4 { background: rgba(155,89,182,0.12); color: #bb8fce; border: 1px solid #8e44ad; }
+    .tier-5 { background: rgba(230,126,34,0.12); color: #f0a860; border: 1px solid #ca6f1e; }
+    .tier-card h4 { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .tier-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+    .ref-list { list-style: none; padding: 0; counter-reset: refs; }
+    .ref-list li { counter-increment: refs; padding: 10px 0 10px 36px; border-bottom: 1px solid var(--dark-border); font-size: 0.84rem; color: var(--text-muted); position: relative; }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-list li::before { content: '[' counter(refs) ']'; position: absolute; left: 0; color: var(--gold-dim); font-family: var(--font-display); font-size: 0.72rem; }
+    .ref-list a { color: var(--gold-dim); text-decoration: none; }
+    .ref-list a:hover { color: var(--gold); }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 14px; }
+    .related-link { display: block; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .related-link:hover { border-color: var(--gold-dim); background: rgba(201,168,76,0.05); }
+    .related-link .rl-label { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #888888; display: block; margin-bottom: 6px; }
+    .related-link .rl-title { font-family: var(--font-ui); font-size: 0.88rem; color: var(--gold-light); font-weight: bold; }
+    aside { position: sticky; top: 80px; }
+    .sidebar-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 20px; margin-bottom: 20px; }
+    .sidebar-card h3 { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--dark-border); }
+    .toc-list { list-style: none; padding: 0; }
+    .toc-list li { margin-bottom: 2px; }
+    .toc-list a { font-family: var(--font-ui); font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: block; padding: 5px 8px; border-radius: 2px; transition: color 0.15s, background 0.15s; }
+    .toc-list a:hover { color: var(--gold-light); background: rgba(201,168,76,0.06); }
+    .toc-list a.toc-active { color: var(--gold-light); background: rgba(201,168,76,0.08); border-left: 2px solid var(--gold); padding-left: 6px; }
+    .toc-toggle-btn { display: none; width: 100%; font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 12px 16px; cursor: pointer; text-align: left; margin-bottom: 0; align-items: center; justify-content: space-between; }
+    .toc-toggle-btn .toc-chevron { display: inline-block; transition: transform 0.25s; font-style: normal; font-size: 0.8rem; }
+    .toc-toggle-btn.open .toc-chevron { transform: rotate(180deg); }
+    .toc-drawer { overflow: hidden; max-height: 0; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0; }
+    .toc-drawer.open { max-height: 600px; opacity: 1; }
+    .toc-drawer-inner { padding-top: 4px; }
+    @media (max-width: 900px) { .toc-toggle-btn { display: flex; } .sidebar-toc-card .toc-list { border-top: 1px solid var(--dark-border); margin-top: 0; padding-top: 8px; } }
+    footer { position: relative; z-index: 1; background: var(--dark); border-top: 1px solid var(--dark-border); padding: 48px 24px 28px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--dark-border); }
+    .footer-brand .logo { font-family: var(--font-display); font-size: 1rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; display: block; }
+    .footer-brand p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+    .footer-col h4 { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 12px; }
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 6px; }
+    .footer-col ul a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-col ul a:hover { color: var(--gold-light); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1px; color: var(--text-dim); }
+    .footer-tagline { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); }
+    .divider { border: none; border-top: 1px solid var(--dark-border); margin: 0; }
+    @media (max-width: 900px) { .page-body { grid-template-columns: 1fr; } aside { position: static; order: -1; } .footer-top { grid-template-columns: 1fr; gap: 28px; } .arch-step:not(:last-child)::after { display: none; } }
+    @media (max-width: 640px) { .arch-step { min-width: 80px; } .compare-table { font-size: 0.78rem; } .hero h1 { letter-spacing: -0.5px; } }
+    @media print { .top-bar, aside, footer { display: none; } body { background: white; color: black; } .page-body { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="/knowledge-base.html" class="btn-back">Return to Knowledge Base</a>
+  </div>
+
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <p class="breadcrumb">
+        <a href="/">Home</a> &nbsp;/&nbsp;
+        <a href="/knowledge-base.html">TacRaven Cybersecurity Knowledge Base</a> &nbsp;/&nbsp;
+        What is Threat Hunting?
+      </p>
+      <h1>What is <span class="accent">Threat Hunting</span>?</h1>
+      <p class="hero-subtitle">Understanding proactive adversary detection — how analysts actively search environments for hidden threats, what hypothesis-driven investigation looks like in practice, and why skilled human analysis finds what automated tools consistently miss.</p>
+      <p class="hero-intro">
+        Modern adversaries do not announce their presence. They use legitimate administrative tools, move slowly to stay below detection thresholds, and operate within normal-looking activity until they reach their objectives. Security teams that wait for alerts to act are conceding ground from the start. Threat hunting changes the dynamic: instead of waiting for a system to fire, trained analysts actively pursue the question of whether an adversary is already present. By combining knowledge of attacker tradecraft with deep familiarity with their environment, threat hunters surface intrusions that automated detection was never configured to catch, often weeks or months before a conventional alert would have fired.
+      </p>
+      <div class="meta-bar">
+        <span class="meta-tag cat">Security Operations</span>
+        <span class="meta-tag">Difficulty: Advanced</span>
+        <span class="meta-tag">Read Time: ~8 Minutes</span>
+        <span class="meta-tag">Updated: 2025</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-body">
+    <article>
+
+      <!-- SECTION 1: Executive Overview -->
+      <section class="kb-section" id="overview" aria-labelledby="s-overview">
+        <h2 id="s-overview">Executive Overview</h2>
+        <p><strong>Threat hunting</strong> is a proactive cybersecurity practice in which trained analysts actively investigate systems, networks, and security telemetry to identify adversaries that have bypassed existing defenses. Unlike reactive detection, which waits for automated systems to generate alerts, threat hunting begins with analyst-driven hypotheses about where and how an attacker might be operating, then pursues evidence to confirm or eliminate those theories.</p>
+        <p>The practice exists because automated detection tools — however well-configured — operate within defined parameters. They surface what they were built to look for. Advanced adversaries deliberately operate outside those parameters, using trusted tools, valid credentials, and low-noise techniques that produce no alert. The gap between what an attacker is doing and what detection systems are configured to flag is the space threat hunting is designed to close.</p>
+        <div class="card">
+          <p>Threat hunting is not a product or platform. It is a <strong>human-led analytical discipline</strong> that uses security tools as instruments of investigation rather than sources of automated verdicts. The hunter brings knowledge of adversary behavior, operating system internals, and network protocols that no rule set can fully encode. That expertise, applied to raw telemetry, surfaces threats that every automated layer missed.</p>
+        </div>
+        <p>Organizations that build mature threat hunting programs consistently detect intrusions earlier in the attack lifecycle, develop higher-quality detection content, and produce security operations teams with significantly deeper investigative capability than those relying on alert-driven workflows alone.</p>
+      </section>
+
+      <!-- SECTION 2: The Detection Gap -->
+      <section class="kb-section" id="detection-gap" aria-labelledby="s-gap">
+        <h2 id="s-gap">The Automated Detection Gap</h2>
+        <p>Understanding why threat hunting exists requires understanding how modern adversaries are built to evade the tools most organizations rely on. These evasion methods are not edge cases. They are standard operating procedure for any threat actor operating above the noise floor of commodity attacks.</p>
+
+        <div class="usecase-card">
+          <h4>Living-Off-the-Land Techniques</h4>
+          <p>Advanced attackers avoid deploying custom malware wherever possible. Instead, they abuse tools already present in the environment — PowerShell, WMI, PsExec, certutil, mshta, scheduled tasks — to execute their objectives using signed, trusted binaries. Because these tools are legitimate components of normal administration, their use does not trigger signature-based detection. The attacker looks like an administrator. No alert fires unless a detection rule is explicitly tuned to identify the specific combination of behavior being observed.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Valid Credential Use</h4>
+          <p>Phishing campaigns, credential harvesting, and password spray attacks routinely provide attackers with legitimate usernames and passwords. An attacker authenticating with valid credentials bypasses every detection layer that evaluates access based on credential validity alone. Authentication succeeds, access is granted, and the attacker operates inside the environment with no signature match, no policy violation, and no alert. The only indication that anything is wrong is behavioral context that rule-based systems are not built to evaluate.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Slow and Low Movement</h4>
+          <p>Sophisticated attackers understand detection thresholds and deliberately operate below them. Rather than scanning an entire subnet in minutes, they probe carefully over days. Rather than exfiltrating gigabytes at once, they transfer small volumes consistently over weeks. Each individual action is unremarkable. It is the aggregate pattern, evaluated across time and across multiple data sources, that reveals the intrusion. Automated detection systems evaluating events in isolation or within narrow time windows will not surface this pattern. Threat hunting, which actively queries for these patterns across historical data, will.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Misconfigured or Missing Detection Rules</h4>
+          <p>Every detection rule was written after someone understood an attack pattern well enough to encode it. Novel techniques, rare attacker tooling, and enterprise-specific attack paths may have no corresponding detection rule. Detection logic that was correctly written at deployment may become outdated as the environment changes, attackers modify techniques, or logging configurations shift. Threat hunting operates independently of the rule library, applying analyst reasoning to raw telemetry to find what no rule was written to catch.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Telemetry and Coverage Gaps</h4>
+          <p>Automated detection is bounded by what the environment logs. Endpoints without EDR agents, network segments without flow visibility, cloud workloads without audit logging, and applications that log minimally or not at all are blind spots that attackers can exploit indefinitely without surfacing an alert. Threat hunting helps identify these coverage gaps as a byproduct of investigation — when a hunt cannot follow an attacker's path because the data does not exist, that gap is documented and addressed.</p>
+        </div>
+      </section>
+
+      <!-- SECTION 3: How Threat Hunting Works -->
+      <section class="kb-section" id="how-it-works" aria-labelledby="s-how">
+        <h2 id="s-how">How Threat Hunting Works</h2>
+        <p>Threat hunts follow a structured investigative workflow that transforms a theory about attacker behavior into actionable findings and, ultimately, improved detection capability. The process is iterative — each hunt builds on previous ones, and findings from every hunt contribute to the organization's long-term security posture whether or not an active threat is discovered.</p>
+        <p>The following diagram illustrates the core hunt workflow from initial hypothesis through investigation to detection improvement.</p>
+
+        <div class="arch-flow">
+          <div class="arch-step"><span class="step-num">01</span><span class="step-name">Hypothesis</span></div>
+          <div class="arch-step"><span class="step-num">02</span><span class="step-name">Data Collection</span></div>
+          <div class="arch-step"><span class="step-num">03</span><span class="step-name">Investigation</span></div>
+          <div class="arch-step"><span class="step-num">04</span><span class="step-name">Analysis</span></div>
+          <div class="arch-step"><span class="step-num">05</span><span class="step-name">Detection Uplift</span></div>
+        </div>
+
+        <h3>Hypothesis Development</h3>
+        <p>Every hunt begins with a hypothesis: a specific, testable theory about how an adversary might be operating in the environment. Well-formed hypotheses are grounded in attacker tradecraft. They might be derived from a recently published threat intelligence report, from a known technique documented in MITRE ATT&amp;CK, from an anomaly spotted during routine operations, or from understanding of which techniques would be most valuable to an attacker targeting the organization's specific assets and environment. A hypothesis such as "if an attacker has compromised a developer workstation, they would likely attempt lateral movement to build systems using standard administrative tools" is specific enough to produce meaningful investigative queries.</p>
+
+        <h3>Data Collection</h3>
+        <p>With the hypothesis defined, analysts identify and collect the telemetry most likely to contain evidence relevant to the investigation. The relevant data set depends on the hypothesis: endpoint process execution logs for investigating suspicious PowerShell usage, authentication event logs for investigating lateral movement, network flow data for investigating command-and-control communications, or cloud audit logs for investigating abnormal API activity. The quality and completeness of available data directly determines what the hunt can find. Hunts conducted against partial or low-fidelity telemetry will surface partial or low-confidence findings.</p>
+
+        <h3>Investigation</h3>
+        <p>Analysts query the collected data to search for patterns, anomalies, and behaviors consistent with the hypothesis. Investigation typically involves filtering for unusual process lineage, querying for statistical outliers in authentication or access patterns, comparing observed activity against known-good baselines, correlating events across multiple data sources to reconstruct attacker behavior, and applying knowledge of normal operating system and application behavior to identify deviations. Each finding either strengthens the hypothesis, weakens it, or introduces a new lead worth pursuing. Skilled hunters follow the evidence rather than forcing it to fit the original hypothesis.</p>
+
+        <h3>Analysis and Escalation</h3>
+        <p>Findings are analyzed to determine their significance. Confirmed attacker activity is escalated to incident response. Suspicious but unconfirmed findings generate additional hunts or are flagged for monitoring. False leads are documented so the same investigative path is not repeated unnecessarily. Throughout this phase, hunters build a clear picture of what the evidence supports and what it does not.</p>
+
+        <h3>Detection Improvement</h3>
+        <p>Every hunt, whether it finds an active threat or not, produces detection intelligence. Verified attack patterns become new SIEM correlation rules, EDR behavioral detections, or network monitoring signatures. Identified telemetry gaps inform logging and coverage improvements. Documented false leads help tune future investigations. The detection environment becomes measurably stronger with each hunt cycle, which is why organizations with mature hunt programs consistently demonstrate faster mean time to detect over time.</p>
+      </section>
+
+      <!-- SECTION 4: Methodologies -->
+      <section class="kb-section" id="methodologies" aria-labelledby="s-meth">
+        <h2 id="s-meth">Threat Hunting Methodologies</h2>
+        <p>Threat hunters apply different investigative approaches depending on available data, the threat context driving the hunt, and the maturity of the organization's hunting program. Most hunts draw from multiple methodologies simultaneously, using each where it contributes most effectively to the investigation.</p>
+
+        <div class="tier-grid">
+          <div class="tier-card">
+            <span class="tier-badge tier-1">Method 01</span>
+            <h4>Hypothesis-Driven</h4>
+            <p>The analyst formulates a specific theory about adversary behavior and designs queries to confirm or eliminate it. This is the most structured approach and produces the most targeted results. Strong hypotheses are derived from attacker tradecraft, intelligence reporting, or environmental knowledge.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-2">Method 02</span>
+            <h4>Intelligence-Driven</h4>
+            <p>Threat reports, adversary profiles, and recently disclosed TTPs guide the investigation. If a threat group known to target the organization's sector has published techniques or IOCs, hunts are built around those specifics. This approach is most effective when threat intelligence is current and sector-relevant.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-3">Method 03</span>
+            <h4>Indicator-Based</h4>
+            <p>Known indicators of compromise — IP addresses, file hashes, domains, registry keys, or other artifacts — are used to search for attacker infrastructure or tooling already identified in threat intelligence feeds or previous investigations. Most effective for campaigns with published IOCs.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-4">Method 04</span>
+            <h4>Behavioral Hunting</h4>
+            <p>Rather than specific indicators, analysts search for anomalous behavior patterns — unusual process execution chains, abnormal authentication sequences, atypical outbound connection patterns, or access activity outside established norms. This approach surfaces novel threats with no known IOCs or signatures.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-5">Method 05</span>
+            <h4>Baseline Deviation</h4>
+            <p>Analysts establish what normal looks like for specific systems, accounts, or network segments, then hunt for statistically significant deviations from those baselines. Particularly effective in stable, well-understood environments where attacker activity stands out against predictable normal behavior.</p>
+          </div>
+        </div>
+
+        <h3>Intelligence-Driven Hunting in Depth</h3>
+        <p>Intelligence-driven hunting is particularly valuable because it applies external knowledge of attacker behavior to the specific context of the organization's environment. When a threat intelligence report documents a new technique used by an APT group targeting the organization's sector, hunters can immediately construct queries to determine whether that technique has been used against their infrastructure — without waiting for a detection rule to be written, tested, and deployed. This closes the gap between threat intelligence publication and defensive action, often reducing that window from weeks to hours.</p>
+
+        <h3>Behavioral Hunting in Depth</h3>
+        <p>Behavioral hunting is the highest-skill methodology and the most capable of surfacing genuinely novel threats. Rather than asking "does this match a known pattern," behavioral hunting asks "is this consistent with how this system, account, or segment normally operates." A process spawning a child process that has no historical precedent on that host, an account authenticating to a system it has never touched, a service account performing interactive logon — these observations require no signatures to be suspicious. They require an analyst who knows what normal looks like and recognizes when something does not fit.</p>
+      </section>
+
+      <!-- SECTION 5: MITRE ATT&CK -->
+      <section class="kb-section" id="mitre" aria-labelledby="s-mitre">
+        <h2 id="s-mitre">Threat Hunting and MITRE ATT&amp;CK</h2>
+        <p>The MITRE ATT&amp;CK framework is one of the most operationally valuable resources in threat hunting. It documents adversary tactics, techniques, and procedures drawn from real-world intrusion observations, organized into a structured matrix covering the full attack lifecycle from initial access through impact. For threat hunters, ATT&amp;CK provides a shared vocabulary for adversary behavior and a structured catalog from which to derive hypotheses.</p>
+        <p>When building hypothesis-driven hunts, analysts select techniques from ATT&amp;CK relevant to their threat model — the adversaries most likely to target their organization and the techniques those adversaries are known to use — and construct data queries designed to surface evidence of those specific behaviors. When investigating anomalies discovered during a hunt, analysts map observed activity to ATT&amp;CK techniques to understand what stage of the attack lifecycle the behavior represents and what likely follows.</p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>ATT&amp;CK Tactic</th>
+              <th>Example Technique</th>
+              <th>Hunting Approach</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Execution</strong></td>
+              <td>PowerShell (T1059.001)</td>
+              <td>Hunt for encoded commands, download cradles, unusual parent processes, and execution without user context</td>
+            </tr>
+            <tr>
+              <td><strong>Persistence</strong></td>
+              <td>Scheduled Task / Job (T1053)</td>
+              <td>Search for scheduled tasks created by non-administrative processes or with execution paths pointing to unusual locations</td>
+            </tr>
+            <tr>
+              <td><strong>Defense Evasion</strong></td>
+              <td>Masquerading (T1036)</td>
+              <td>Identify processes with names matching system binaries executing from non-standard paths</td>
+            </tr>
+            <tr>
+              <td><strong>Lateral Movement</strong></td>
+              <td>Pass the Hash (T1550.002)</td>
+              <td>Hunt for accounts authenticating to multiple systems in short succession using NTLM from workstations</td>
+            </tr>
+            <tr>
+              <td><strong>Command and Control</strong></td>
+              <td>Encrypted Channel (T1573)</td>
+              <td>Identify long-duration or beaconing HTTPS connections to recently registered domains or low-reputation infrastructure</td>
+            </tr>
+            <tr>
+              <td><strong>Exfiltration</strong></td>
+              <td>Exfiltration Over C2 Channel (T1041)</td>
+              <td>Correlate large or sustained outbound transfer volumes with established C2 connection patterns</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>ATT&amp;CK also supports systematic detection gap analysis. By mapping current detection coverage against the full technique matrix, security teams can identify which techniques have no corresponding detection content and prioritize those gaps for both hunt development and permanent detection rule creation.</p>
+      </section>
+
+      <!-- SECTION 6: Tools and Data Sources -->
+      <section class="kb-section" id="tools" aria-labelledby="s-tools">
+        <h2 id="s-tools">Tools and Data Sources</h2>
+        <p>Threat hunting is only as effective as the telemetry available to investigate. Hunters depend on comprehensive, high-fidelity data across endpoint, network, identity, and cloud domains. Gaps in coverage translate directly to gaps in detection capability that even the most skilled analyst cannot compensate for.</p>
+
+        <h3>Endpoint Detection and Response (EDR)</h3>
+        <p>EDR platforms are typically the primary data source for host-based hunts. They capture process execution with full command-line arguments, parent-child process relationships, file system activity, registry changes, network connections initiated from the host, and user account activity. This granular visibility enables hunters to reconstruct attacker activity at the endpoint level with a fidelity that traditional event logging cannot match. EDR data is the foundation for most investigations involving execution, persistence, privilege escalation, defense evasion, and lateral movement techniques.</p>
+
+        <h3>SIEM Platforms</h3>
+        <p>SIEM platforms aggregate and index log data from across the environment, enabling analysts to query large data volumes across disparate sources within a unified interface. For threat hunting, the SIEM serves as the primary investigation environment where analysts run complex queries against authentication logs, application logs, security device logs, and aggregated EDR data. Query languages such as Splunk SPL, Microsoft KQL, and Elastic EQL give hunters the ability to express sophisticated behavioral patterns across billions of events.</p>
+
+        <h3>Network Traffic Analysis</h3>
+        <p>Network telemetry provides visibility into attacker activity that endpoint monitoring alone cannot supply. Full packet capture, NetFlow data, and DNS query logs enable hunters to identify command-and-control beaconing patterns, detect lateral movement through unusual authentication across network segments, identify data exfiltration by volume and destination, and surface reconnaissance activity. Network visibility is particularly critical in environments where endpoint coverage is incomplete.</p>
+
+        <h3>Threat Intelligence Feeds</h3>
+        <p>Threat intelligence feeds provide current IOCs, adversary profiles, and TTP documentation that seed hypothesis development and support indicator-based hunting. Feeds from government sources such as CISA, commercial threat intelligence providers, and information sharing communities contribute external knowledge of adversary behavior that hunters apply to their specific environment. Intelligence is most valuable when it is current, sector-relevant, and includes enough technical context to support meaningful hypothesis construction.</p>
+
+        <h3>Identity and Authentication Logs</h3>
+        <p>Authentication event logs — Windows Security Event Log, Azure AD sign-in logs, Okta audit logs, VPN authentication records — provide critical visibility into lateral movement, credential misuse, and account compromise. Hunters working lateral movement hypotheses depend on authentication telemetry to reconstruct how an attacker moved through the environment. Impossible travel detection, multi-system authentication sequences, and off-hours logon patterns are all authentication-log findings that frequently surface active intrusions.</p>
+      </section>
+
+      <!-- SECTION 7: Real-World Use Cases -->
+      <section class="kb-section" id="usecases" aria-labelledby="s-use">
+        <h2 id="s-use">Real-World Threat Hunting Use Cases</h2>
+        <p>Threat hunting produces results across a wide range of attack scenarios. The following examples represent the types of intrusions that active hunting surfaces in operational environments — investigations where the attacker was operating without triggering any automated alert and was found only because a hunter asked the right question.</p>
+
+        <div class="usecase-card">
+          <h4>Discovering a Long-Dwell Intrusion via Lateral Movement Hunt</h4>
+          <p>A threat hunter investigating lateral movement hypotheses queries authentication logs for accounts that have authenticated to more than three systems they had never previously accessed within any 24-hour period. One account, a developer credential, shows authentication to six internal build servers and a source code repository host over a three-day window — all systems outside the account's historical access scope. Investigation of endpoint telemetry on the originating workstation reveals a malicious document executed six weeks earlier that had delivered a remote access tool operating entirely in memory, generating no file artifacts and no alerts. The attacker had maintained persistent access for over a month before the hunt surfaced the lateral movement evidence.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Identifying Encoded PowerShell Execution</h4>
+          <p>A hunter querying for PowerShell processes launched with Base64-encoded command arguments discovers a pattern across four workstations: PowerShell executing encoded commands spawned by Microsoft Word at irregular intervals over a two-week period. The commands decode to a download cradle fetching a payload from an attacker-controlled domain. The EDR product had not flagged the activity because the payload was delivered as a reflectively loaded DLL with no on-disk presence. The hunt finding surfaces an active phishing-based compromise with a persistence mechanism that had evaded every deployed detection control.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Detecting Command-and-Control Beaconing</h4>
+          <p>A network-focused hunter investigates for C2 beaconing by querying NetFlow data for connections exhibiting regular periodicity to external destinations — outbound HTTPS connections occurring at intervals of approximately 60 seconds over multiple days. Three internal hosts show this pattern to the same external IP range, recently registered under a privacy-protected registrar. Cross-referencing with endpoint data reveals the hosts are running a legitimate software update agent that has been compromised and repurposed to beacon to attacker infrastructure. The hunt finding enables immediate containment and a retrospective investigation that reconstructs the full intrusion timeline.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Surfacing Credential Misuse by a Departing Employee</h4>
+          <p>Following an intelligence tip about a departing employee with access to sensitive intellectual property, a hunter investigates authentication and file access patterns for the account over the preceding 30 days. The data reveals a sustained pattern of access to shared drives outside the employee's project scope, file copy operations involving product design documents, and multiple large archive operations — all occurring during off-hours and all outside any established access pattern for the account. The investigation surfaces active data theft in progress and enables HR and legal to take action before the employee's departure date.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Identifying Malicious Scheduled Task Persistence</h4>
+          <p>A hunt targeting persistence mechanisms queries for scheduled tasks created within the past 30 days where the creating process was not a recognized administrative tool and the execution path points to a user-writable directory. The query returns a task on a finance department workstation created by an Office application process, executing a script from the user's AppData directory at system startup. Investigation reveals the task was created during the opening of a weaponized spreadsheet distributed through a targeted phishing email. The task had been running for 18 days without triggering any automated alert.</p>
+        </div>
+      </section>
+
+      <!-- SECTION 8: Limitations and Challenges -->
+      <section class="kb-section" id="limitations" aria-labelledby="s-lim">
+        <h2 id="s-lim">Challenges and Limitations</h2>
+        <p>Threat hunting is resource-intensive and requires a level of skill and organizational investment that not every security program can sustain from the outset. Understanding these challenges realistically helps teams build hunt programs that deliver consistent value rather than sporadic, high-effort exercises with limited operational impact.</p>
+
+        <div class="callout-warning">
+          <strong>&#9888; Analyst Skill and Expertise Requirements</strong>
+          <p>Effective threat hunting requires analysts with deep knowledge of adversary tactics, operating system internals, network protocols, and data analysis techniques. A hunter who does not understand how Windows process injection works cannot effectively hunt for it. This depth of expertise takes years to develop and is consistently among the most difficult capabilities to staff in security operations. Organizations that expect junior analysts to conduct hypothesis-driven hunts without significant mentorship and structured methodology support will see poor results and wasted investigative time.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>&#9888; Data Volume and Query Complexity</strong>
+          <p>Large environments generate telemetry at scales that make naive hunting approaches computationally impractical. Querying six months of endpoint process execution logs across 5,000 hosts for a behavioral pattern requires purpose-built tooling, efficient query structures, and significant infrastructure. Organizations without investment in data platforms capable of supporting interactive queries against large historical datasets will find their hunters waiting hours for query results that need to come back in minutes for effective investigation.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>&#9888; Telemetry Coverage Gaps</strong>
+          <p>Hunts are bounded by what the environment logs. An attacker operating exclusively through network segments with no flow visibility, on endpoints without EDR agents, or through applications with no audit logging cannot be found by a hunt regardless of analyst skill. Coverage gaps are a structural constraint on hunt effectiveness, and identifying them is itself valuable — but closing them requires infrastructure investment that may extend well beyond the security operations team's authority. Organizations conducting their first hunts frequently discover that their logging environment is significantly less complete than assumed.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>&#9888; Baseline and Environmental Familiarity</strong>
+          <p>Behavioral hunting depends entirely on knowing what normal looks like. New environments, recently merged organizations, and infrastructure undergoing rapid change present significant challenges for hunters who have not built familiarity with the operational baseline. An authentication pattern that would be instantly suspicious to a hunter who knows the environment well may look routine to someone without that context. Building environmental familiarity takes time and deliberate effort, and it must be maintained as the environment evolves.</p>
+        </div>
+
+        <p>These limitations reinforce why mature security organizations build dedicated threat hunting programs with trained staff, defined methodologies, structured data environments, and operational support from leadership. Ad hoc hunting conducted by analysts already carrying full alert triage workloads rarely achieves the depth or consistency needed to realize the capability's full value.</p>
+      </section>
+
+      <!-- SECTION 9: Integration with SOC -->
+      <section class="kb-section" id="architecture" aria-labelledby="s-arch">
+        <h2 id="s-arch">Threat Hunting in Modern Security Operations</h2>
+        <p>Threat hunting does not replace automated detection. It complements it. The two capabilities operate at different layers of the defensive model and address different categories of attacker behavior. Together they cover a significantly larger portion of the threat landscape than either can address alone.</p>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Threat Hunting's Role</th>
+              <th>Integration Benefit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SIEM</strong></td>
+              <td>Primary investigation environment for querying aggregated telemetry across the hunt workflow</td>
+              <td>Hunt findings directly produce new correlation rules and detection logic that permanently improve the SIEM detection capability for the techniques investigated</td>
+            </tr>
+            <tr>
+              <td><strong>EDR / XDR</strong></td>
+              <td>Primary source of high-fidelity endpoint telemetry supporting host-based hypothesis investigation</td>
+              <td>Hunters surface attacker techniques not covered by existing EDR behavioral rules, producing detection content that closes specific coverage gaps identified through the hunt</td>
+            </tr>
+            <tr>
+              <td><strong>Threat Intelligence</strong></td>
+              <td>Seeds hypothesis development with current adversary context, enabling intelligence-driven hunts against recent TTPs</td>
+              <td>Closes the gap between threat intelligence publication and defensive action, applying external knowledge directly to the organization's telemetry without waiting for rule deployment cycles</td>
+            </tr>
+            <tr>
+              <td><strong>Incident Response</strong></td>
+              <td>Receives escalations from hunt findings when active threats are confirmed; hunters provide investigative context and scoping data</td>
+              <td>Hunt findings include a reconstructed attacker timeline and identified scope that accelerates IR triage and containment, reducing mean time to respond for discovered intrusions</td>
+            </tr>
+            <tr>
+              <td><strong>Detection Engineering</strong></td>
+              <td>Consumes hunt findings as source material for new detection rules, behavioral signatures, and coverage gap documentation</td>
+              <td>Creates a direct pipeline from human analytical findings to permanent, automated detection content, continuously raising the floor on what the environment can detect autonomously</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Many organizations are formalizing this integration by structuring their hunt team as a dedicated function with a defined mandate to feed the detection engineering pipeline, report coverage gaps to security architecture, and escalate confirmed findings to incident response. This positions threat hunting not as an occasional activity but as a continuous operational function that strengthens every other layer of the security program over time.</p>
+      </section>
+
+      <!-- SECTION 10: Key Takeaways -->
+      <section class="kb-section" id="takeaways" aria-labelledby="s-take">
+        <h2 id="s-take">Key Takeaways</h2>
+        <ul class="takeaway-list">
+          <li>Threat hunting is a proactive, analyst-led investigation practice designed to find adversaries operating in an environment before automated detection systems surface them — addressing the structural gap between what attackers do and what detection tools were configured to catch.</li>
+          <li>Effective hunting is hypothesis-driven. Analysts develop specific theories about attacker behavior based on threat intelligence, knowledge of adversary tradecraft, and familiarity with their environment, then pursue telemetry evidence to confirm or eliminate those theories.</li>
+          <li>The MITRE ATT&amp;CK framework is a core operational resource for threat hunting, providing a structured catalog of adversary techniques from which hunters derive hypotheses, contextualize findings, and measure detection coverage across the full attack lifecycle.</li>
+          <li>Hunt value is not measured only by finding active threats. Every hunt produces detection intelligence — new rules, tuning guidance, coverage gap identification, and documented investigative paths — that permanently improves the organization's automated detection capability regardless of whether an active adversary was present.</li>
+          <li>Threat hunting is bounded by telemetry quality and coverage. Analysts cannot hunt what the environment does not log. Identifying and systematically closing coverage gaps is a critical secondary outcome of every hunt program and one of the most durable contributions threat hunting makes to long-term security posture.</li>
+          <li>Threat hunting is most effective when integrated with SIEM, EDR, threat intelligence, incident response, and detection engineering functions. The hunt team is not a standalone capability — it is a force multiplier that makes every other layer of the security program more effective over time through the detection content, coverage improvements, and analytical depth it produces.</li>
+          <li>Building a capable threat hunting program requires investment in analyst expertise, data infrastructure, and operational process. Organizations that treat hunting as an ad hoc activity layered on top of an already-stretched SOC team consistently underachieve relative to those that staff and equip hunting as a dedicated function with a defined operational mandate.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 11: References -->
+      <section class="kb-section" id="references" aria-labelledby="s-ref">
+        <h2 id="s-ref">References</h2>
+        <ol class="ref-list">
+          <li>MITRE ATT&amp;CK. <em>Enterprise Matrix.</em> <a href="https://attack.mitre.org/" target="_blank" rel="noopener noreferrer">attack.mitre.org</a></li>
+          <li>Cybersecurity and Infrastructure Security Agency. <em>Improving Cybersecurity of Critical Infrastructure.</em> <a href="https://www.cisa.gov/topics/cybersecurity-best-practices" target="_blank" rel="noopener noreferrer">cisa.gov</a></li>
+          <li>National Institute of Standards and Technology. <em>NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide.</em> <a href="https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>MITRE ATT&amp;CK. <em>Tactic: Lateral Movement (TA0008).</em> <a href="https://attack.mitre.org/tactics/TA0008/" target="_blank" rel="noopener noreferrer">attack.mitre.org</a></li>
+          <li>MITRE ATT&amp;CK. <em>Technique: Command and Scripting Interpreter: PowerShell (T1059.001).</em> <a href="https://attack.mitre.org/techniques/T1059/001/" target="_blank" rel="noopener noreferrer">attack.mitre.org</a></li>
+          <li>National Security Agency. <em>Detecting and Preventing Web Shell Malware.</em> <a href="https://media.defense.gov/2020/Jun/09/2002313081/-1/-1/0/CSI-DETECT-AND-PREVENT-WEB-SHELL-MALWARE.PDF" target="_blank" rel="noopener noreferrer">media.defense.gov</a></li>
+          <li>TacRaven Solutions. <em>TacRaven Cybersecurity Knowledge Base.</em> <a href="https://tacraven.com/knowledge-base.html" target="_blank" rel="noopener noreferrer">tacraven.com/knowledge-base.html</a></li>
+        </ol>
+      </section>
+
+      <!-- SECTION 12: Related Topics -->
+      <section class="kb-section" id="related" aria-labelledby="s-rel">
+        <h2 id="s-rel">Related Topics</h2>
+        <div class="related-grid">
+          <a href="/threat-intelligence.html" class="related-link"><span class="rl-label">Threat Intelligence</span><span class="rl-title">What is Threat Intelligence?</span></a>
+          <a href="/siem.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is SIEM?</span></a>
+          <a href="/edr.html" class="related-link"><span class="rl-label">Endpoint Security</span><span class="rl-title">What is EDR?</span></a>
+          <a href="/xdr.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is XDR?</span></a>
+          <a href="/incident-response.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is Incident Response?</span></a>
+          <a href="/detection-engineering.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is Detection Engineering?</span></a>
+          <a href="/soc.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is a SOC?</span></a>
+          <a href="/ueba.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is UEBA?</span></a>
+        </div>
+      </section>
+
+    </article>
+
+    <aside aria-label="Article navigation">
+      <div class="sidebar-card sidebar-toc-card">
+        <button class="toc-toggle-btn" id="tocToggle" aria-expanded="false" aria-controls="tocDrawer">
+          Contents <i class="toc-chevron">&#9662;</i>
+        </button>
+        <h3 class="toc-heading" style="display:none;" aria-hidden="true">Contents</h3>
+        <div class="toc-drawer" id="tocDrawer">
+          <div class="toc-drawer-inner">
+            <ul class="toc-list" id="tocList">
+              <li><a href="#overview">Executive Overview</a></li>
+              <li><a href="#detection-gap">The Automated Detection Gap</a></li>
+              <li><a href="#how-it-works">How Threat Hunting Works</a></li>
+              <li><a href="#methodologies">Hunting Methodologies</a></li>
+              <li><a href="#mitre">MITRE ATT&amp;CK</a></li>
+              <li><a href="#tools">Tools &amp; Data Sources</a></li>
+              <li><a href="#usecases">Real-World Use Cases</a></li>
+              <li><a href="#limitations">Challenges &amp; Limitations</a></li>
+              <li><a href="#architecture">Modern Security Operations</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+              <li><a href="#references">References</a></li>
+              <li><a href="#related">Related Topics</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Quick Reference</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.65;">
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">FUNCTION</strong><br>
+          Proactive Adversary Detection &amp; Intrusion Discovery<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">CORE METHODOLOGIES</strong><br>
+          Hypothesis-Driven &nbsp;&#183;&nbsp; Intelligence-Driven &nbsp;&#183;&nbsp; Indicator-Based &nbsp;&#183;&nbsp; Behavioral &nbsp;&#183;&nbsp; Baseline Deviation<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">KEY DATA SOURCES</strong><br>
+          EDR &nbsp;&#183;&nbsp; SIEM &nbsp;&#183;&nbsp; Network Flows &nbsp;&#183;&nbsp; Auth Logs &nbsp;&#183;&nbsp; Threat Intel<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">KEY FRAMEWORK</strong><br>
+          MITRE ATT&amp;CK Enterprise Matrix<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">RELATED ARCHITECTURE</strong><br>
+          SOC &nbsp;&#183;&nbsp; SIEM &nbsp;&#183;&nbsp; EDR &nbsp;&#183;&nbsp; XDR &nbsp;&#183;&nbsp; Detection Engineering
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="divider" />
+
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">TacRaven Solutions</span>
+          <p>TacRaven Solutions is committed to advancing cybersecurity education. We partner with academic institutions and training programs to help build the next generation of cyber professionals, bridging the gap between classroom instruction and real-world operational practice.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/learning-hub">Learning Hub</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/threat-map">Threat Map</a></li>
+            <li><a href="/intel/weekly/index.html">Weekly Reports</a></li>
+            <li><a href="/knowledge-base.html">Knowledge Base</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/careers.html">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+        <p class="footer-tagline">Intelligence-Driven Cybersecurity</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      function applyTocLayout() {
+        var btn = document.getElementById('tocToggle');
+        var heading = document.querySelector('.toc-heading');
+        var drawer = document.getElementById('tocDrawer');
+        if (!btn || !heading || !drawer) return;
+        if (window.innerWidth > 900) {
+          btn.style.display = 'none'; heading.style.display = 'block'; heading.removeAttribute('aria-hidden');
+          drawer.classList.add('open'); drawer.style.maxHeight = 'none'; drawer.style.opacity = '1';
+          drawer.style.overflow = 'visible'; drawer.style.transition = 'none';
+        } else {
+          btn.style.display = 'flex'; heading.style.display = 'none'; heading.setAttribute('aria-hidden', 'true');
+          drawer.style.transition = ''; drawer.style.overflow = '';
+          if (!drawer.classList.contains('open')) { drawer.style.maxHeight = '0'; drawer.style.opacity = '0'; }
+        }
+      }
+      applyTocLayout();
+      window.addEventListener('resize', applyTocLayout);
+      var tocBtn = document.getElementById('tocToggle');
+      var tocDrawer = document.getElementById('tocDrawer');
+      if (tocBtn && tocDrawer) {
+        tocBtn.addEventListener('click', function () {
+          var isOpen = tocDrawer.classList.toggle('open');
+          tocBtn.classList.toggle('open', isOpen);
+          tocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        tocDrawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (window.innerWidth <= 900) { tocDrawer.classList.remove('open'); tocBtn.classList.remove('open'); tocBtn.setAttribute('aria-expanded', 'false'); }
+          });
+        });
+      }
+      var sectionIds = ['overview','detection-gap','how-it-works','methodologies','mitre','tools','usecases','limitations','architecture','takeaways','references','related'];
+      var tocLinks = {};
+      sectionIds.forEach(function (id) { var link = document.querySelector('#tocList a[href="#' + id + '"]'); if (link) tocLinks[id] = link; });
+      var activeId = null;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            if (id !== activeId) {
+              if (activeId && tocLinks[activeId]) tocLinks[activeId].classList.remove('toc-active');
+              activeId = id;
+              if (tocLinks[id]) tocLinks[id].classList.add('toc-active');
+            }
+          }
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      sectionIds.forEach(function (id) { var el = document.getElementById(id); if (el) observer.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>

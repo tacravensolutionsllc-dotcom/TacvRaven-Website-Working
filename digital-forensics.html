@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is Digital Forensics? | TacRaven Cybersecurity Knowledge Base</title>
+  <meta name="description" content="Learn how digital forensics investigators collect, preserve, and analyze electronic evidence from endpoints, memory, and network logs to reconstruct cyber incidents and support legal proceedings." />
+  <meta name="keywords" content="digital forensics, DFIR, forensic investigation, evidence collection, chain of custody, memory forensics, network forensics, incident response, cyber forensics, forensic analysis" />
+  <meta name="author" content="TacRaven Solutions" />
+  <link rel="canonical" href="https://tacraven.com/digital-forensics.html" />
+  <meta property="og:title" content="What is Digital Forensics? | TacRaven Cybersecurity Knowledge Base" />
+  <meta property="og:description" content="Explore how digital forensics investigators collect, preserve, and analyze electronic evidence from endpoints, memory, and network logs to reconstruct attacks and support legal proceedings." />
+  <meta property="og:url" content="https://tacraven.com/digital-forensics.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What is Digital Forensics? | TacRaven Cybersecurity Knowledge Base" />
+  <meta name="twitter:description" content="Explore how digital forensics investigators collect, preserve, and analyze electronic evidence from endpoints, memory, and network logs to reconstruct attacks and support legal proceedings." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What is Digital Forensics? Forensic Investigation of Cyber Incidents Explained",
+    "description": "Learn how digital forensics investigators collect, preserve, and analyze electronic evidence from endpoints, memory, and network logs to reconstruct cyber incidents and support legal proceedings.",
+    "url": "https://tacraven.com/digital-forensics.html",
+    "datePublished": "2025-01-01",
+    "dateModified": "2025-06-01",
+    "author": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" },
+    "publisher": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://tacraven.com/digital-forensics.html" },
+    "articleSection": "Security Operations",
+    "educationalLevel": "Advanced",
+    "about": { "@type": "Thing", "name": "Digital Forensics" }
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PEYM947EG8');
+  </script>
+
+  <style>
+    :root {
+      --black: #0a0a0a; --dark: #111111; --dark-card: #161616; --dark-border: #1f1f1f;
+      --gold: #c9a84c; --gold-light: #e2c06e; --gold-dim: #8a6e2f; --red: #c0392b;
+      --text: #d4d4d4; --text-muted: #7a7a7a; --text-dim: #4a4a4a; --white: #f0f0f0;
+      --font-display: 'Courier New', Courier, monospace;
+      --font-body: Georgia, 'Times New Roman', serif;
+      --font-ui: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--black); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.75; min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
+    .top-bar { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.97); border-bottom: 1px solid var(--dark-border); backdrop-filter: blur(6px); padding: 12px 24px; }
+    .btn-back { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid var(--gold-dim); border-radius: 2px; padding: 8px 18px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .btn-back:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); color: var(--gold-light); }
+    .btn-back::before { content: '\2190'; font-size: 0.85rem; }
+    .hero { position: relative; z-index: 1; padding: 72px 24px 56px; border-bottom: 1px solid var(--dark-border); background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%); }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .breadcrumb { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 20px; }
+    .breadcrumb a { color: var(--gold-dim); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: bold; color: var(--white); letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px; }
+    .hero h1 .accent { color: var(--gold); }
+    .hero-subtitle { font-family: var(--font-ui); font-size: 1.05rem; color: var(--text-muted); max-width: 680px; margin-bottom: 28px; line-height: 1.6; }
+    .hero-intro { font-size: 1rem; color: var(--text); max-width: 780px; margin-bottom: 32px; border-left: 3px solid var(--gold-dim); padding-left: 18px; }
+    .meta-bar { display: flex; flex-wrap: wrap; gap: 10px; }
+    .meta-tag { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border: 1px solid #3a3a3a; border-radius: 2px; color: #c8c8c8; background: #1e1e1e; }
+    .meta-tag.cat { border-color: var(--gold); color: var(--gold-light); }
+    .page-body { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 56px 24px 80px; display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start; }
+    article { min-width: 0; }
+    .kb-section { margin-bottom: 52px; }
+    .kb-section h2 { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--dark-border); display: flex; align-items: center; gap: 10px; }
+    .kb-section h2::before { content: '//'; color: var(--gold); font-size: 0.85rem; }
+    .kb-section h3 { font-family: var(--font-ui); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-light); margin: 28px 0 10px; }
+    .kb-section p { margin-bottom: 16px; color: var(--text); }
+    .card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 22px 26px; margin-bottom: 16px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+    .card-small { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; }
+    .card-small h4 { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .card-small p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+    .usecase-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-left: 3px solid var(--gold-dim); border-radius: 4px; padding: 20px 24px; margin-bottom: 18px; }
+    .usecase-card h4 { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .usecase-card p { font-size: 0.9rem; color: var(--text); margin-bottom: 0; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 14px; }
+    .compare-table th { font-family: var(--font-display); letter-spacing: 1px; text-transform: uppercase; font-size: 0.72rem; color: var(--gold); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--gold-dim); background: var(--dark); }
+    .compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--dark-border); color: var(--text); vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.04); }
+    .takeaway-list { list-style: none; padding: 0; }
+    .takeaway-list li { padding: 12px 16px 12px 44px; position: relative; border-bottom: 1px solid var(--dark-border); font-size: 0.95rem; color: var(--text); }
+    .takeaway-list li:last-child { border-bottom: none; }
+    .takeaway-list li::before { content: '\25BA'; position: absolute; left: 16px; color: var(--gold); font-size: 0.65rem; top: 16px; }
+    .arch-flow { display: flex; flex-wrap: wrap; gap: 0; margin: 18px 0; align-items: stretch; }
+    .arch-step { flex: 1; min-width: 100px; background: var(--dark-card); border: 1px solid var(--dark-border); padding: 14px 12px; text-align: center; position: relative; }
+    .arch-step:not(:last-child)::after { content: '\2192'; position: absolute; right: -13px; top: 50%; transform: translateY(-50%); color: var(--gold-dim); font-size: 0.9rem; z-index: 2; }
+    .arch-step .step-num { font-family: var(--font-display); font-size: 0.62rem; letter-spacing: 2px; color: var(--gold-dim); display: block; margin-bottom: 6px; }
+    .arch-step .step-name { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 1px; color: var(--gold-light); text-transform: uppercase; }
+    .callout-warning { background: rgba(192,57,43,0.08); border: 1px solid rgba(192,57,43,0.25); border-left: 3px solid var(--red); border-radius: 4px; padding: 16px 20px; margin-bottom: 14px; }
+    .callout-warning strong { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e05c4a; display: block; margin-bottom: 6px; }
+    .callout-warning p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+    .tier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+    .tier-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; }
+    .tier-badge { display: inline-block; font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; margin-bottom: 10px; }
+    .tier-1 { background: rgba(201,168,76,0.12); color: var(--gold-light); border: 1px solid var(--gold-dim); }
+    .tier-2 { background: rgba(39,174,96,0.12); color: #2ecc71; border: 1px solid #27ae60; }
+    .tier-3 { background: rgba(52,152,219,0.12); color: #5dade2; border: 1px solid #2e86c1; }
+    .tier-4 { background: rgba(155,89,182,0.12); color: #bb8fce; border: 1px solid #8e44ad; }
+    .tier-5 { background: rgba(230,126,34,0.12); color: #f0a860; border: 1px solid #ca6f1e; }
+    .tier-card h4 { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .tier-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+    .ref-list { list-style: none; padding: 0; counter-reset: refs; }
+    .ref-list li { counter-increment: refs; padding: 10px 0 10px 36px; border-bottom: 1px solid var(--dark-border); font-size: 0.84rem; color: var(--text-muted); position: relative; }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-list li::before { content: '[' counter(refs) ']'; position: absolute; left: 0; color: var(--gold-dim); font-family: var(--font-display); font-size: 0.72rem; }
+    .ref-list a { color: var(--gold-dim); text-decoration: none; }
+    .ref-list a:hover { color: var(--gold); }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 14px; }
+    .related-link { display: block; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .related-link:hover { border-color: var(--gold-dim); background: rgba(201,168,76,0.05); }
+    .related-link .rl-label { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #888888; display: block; margin-bottom: 6px; }
+    .related-link .rl-title { font-family: var(--font-ui); font-size: 0.88rem; color: var(--gold-light); font-weight: bold; }
+    aside { position: sticky; top: 80px; }
+    .sidebar-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 20px; margin-bottom: 20px; }
+    .sidebar-card h3 { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--dark-border); }
+    .toc-list { list-style: none; padding: 0; }
+    .toc-list li { margin-bottom: 2px; }
+    .toc-list a { font-family: var(--font-ui); font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: block; padding: 5px 8px; border-radius: 2px; transition: color 0.15s, background 0.15s; }
+    .toc-list a:hover { color: var(--gold-light); background: rgba(201,168,76,0.06); }
+    .toc-list a.toc-active { color: var(--gold-light); background: rgba(201,168,76,0.08); border-left: 2px solid var(--gold); padding-left: 6px; }
+    .toc-toggle-btn { display: none; width: 100%; font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 12px 16px; cursor: pointer; text-align: left; margin-bottom: 0; align-items: center; justify-content: space-between; }
+    .toc-toggle-btn .toc-chevron { display: inline-block; transition: transform 0.25s; font-style: normal; font-size: 0.8rem; }
+    .toc-toggle-btn.open .toc-chevron { transform: rotate(180deg); }
+    .toc-drawer { overflow: hidden; max-height: 0; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0; }
+    .toc-drawer.open { max-height: 600px; opacity: 1; }
+    .toc-drawer-inner { padding-top: 4px; }
+    @media (max-width: 900px) { .toc-toggle-btn { display: flex; } .sidebar-toc-card .toc-list { border-top: 1px solid var(--dark-border); margin-top: 0; padding-top: 8px; } }
+    footer { position: relative; z-index: 1; background: var(--dark); border-top: 1px solid var(--dark-border); padding: 48px 24px 28px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--dark-border); }
+    .footer-brand .logo { font-family: var(--font-display); font-size: 1rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; display: block; }
+    .footer-brand p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+    .footer-col h4 { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 12px; }
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 6px; }
+    .footer-col ul a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-col ul a:hover { color: var(--gold-light); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1px; color: var(--text-dim); }
+    .footer-tagline { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); }
+    .divider { border: none; border-top: 1px solid var(--dark-border); margin: 0; }
+    @media (max-width: 900px) { .page-body { grid-template-columns: 1fr; } aside { position: static; order: -1; } .footer-top { grid-template-columns: 1fr; gap: 28px; } .arch-step:not(:last-child)::after { display: none; } }
+    @media (max-width: 640px) { .arch-step { min-width: 80px; } .compare-table { font-size: 0.78rem; } .hero h1 { letter-spacing: -0.5px; } }
+    @media print { .top-bar, aside, footer { display: none; } body { background: white; color: black; } .page-body { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="/knowledge-base.html" class="btn-back">Return to Knowledge Base</a>
+  </div>
+
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <p class="breadcrumb">
+        <a href="/">Home</a> &nbsp;/&nbsp;
+        <a href="/knowledge-base.html">TacRaven Cybersecurity Knowledge Base</a> &nbsp;/&nbsp;
+        What is Digital Forensics?
+      </p>
+      <h1>What is <span class="accent">Digital Forensics</span>?</h1>
+      <p class="hero-subtitle">Understanding digital forensic investigation — how analysts collect and preserve electronic evidence, reconstruct attack timelines, examine endpoints, memory, and network logs, and support both incident response and legal proceedings with forensically sound methodology.</p>
+      <p class="hero-intro">
+        Every cyber incident leaves a trail. Attackers interact with systems, traverse networks, modify files, and authenticate to services — and each of those actions generates artifacts that can be identified, recovered, and analyzed. The challenge is knowing where to look, how to preserve what you find without altering it, and how to assemble scattered artifacts into a coherent account of what actually happened. Digital forensics is the discipline that solves that problem. Rooted in law enforcement investigation procedures and adapted for the speed and complexity of modern IT environments, digital forensics gives investigators a structured methodology for extracting truth from digital systems — whether the goal is containing a breach, attributing an attack, or building a case for legal action.
+      </p>
+      <div class="meta-bar">
+        <span class="meta-tag cat">Security Operations</span>
+        <span class="meta-tag">Difficulty: Advanced</span>
+        <span class="meta-tag">Read Time: ~9 Minutes</span>
+        <span class="meta-tag">Updated: 2025</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-body">
+    <article>
+
+      <!-- Section 1 -->
+      <section class="kb-section" id="overview" aria-labelledby="s-overview">
+        <h2 id="s-overview">Executive Overview</h2>
+        <p><strong>Digital forensics</strong> is the process of collecting, preserving, analyzing, and presenting electronic evidence from digital systems in a manner that maintains integrity and supports accurate, defensible conclusions. The discipline draws on principles from both information security and traditional forensic science, applying rigorous procedural standards to investigation work that may ultimately be presented in legal or regulatory contexts.</p>
+        <p>Forensic investigations apply across a broad range of digital environments: desktop and server operating systems, mobile devices, network infrastructure, cloud platforms, and embedded systems. Wherever data is stored or transmitted, digital forensics provides methods to examine it. The discipline is not limited to a single technology category or threat type — any incident that involves a digital system is a candidate for forensic analysis.</p>
+        <div class="card">
+          <p>At its core, digital forensics acts as the <strong>analytical foundation of incident investigation</strong>. While incident response focuses on containing and remediating an active threat, forensics focuses on understanding what happened, how it happened, and to what extent. These objectives are complementary rather than competing — forensic findings directly inform response decisions — which is why the two disciplines are frequently combined into unified <strong>Digital Forensics and Incident Response (DFIR)</strong> capability within security operations organizations.</p>
+        </div>
+        <p>In modern security operations, digital forensics does not operate in isolation. It runs alongside threat hunting, security monitoring, and intelligence analysis, providing the deep analytical capability that complements detection and containment work. Organizations that invest in forensic capability gain not only the ability to resolve individual incidents, but the institutional knowledge to understand adversary behavior and progressively improve their defenses over time.</p>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="kb-section" id="goals" aria-labelledby="s-goals">
+        <h2 id="s-goals">Goals of Forensic Investigations</h2>
+        <p>Forensic investigations serve distinct objectives depending on context. In enterprise security, the primary goal is typically understanding what occurred during a cyber incident. In law enforcement or regulatory contexts, the goal extends to preserving evidence in a form that will withstand legal scrutiny. In many investigations both objectives apply simultaneously — a breach must be understood and contained, and the evidence gathered in doing so must be preserved in case litigation follows.</p>
+
+        <div class="usecase-card">
+          <h4>Attack Reconstruction</h4>
+          <p>Forensic analysis determines how an attacker gained initial access, what techniques they used to move through the environment, and what actions they took on their objectives. This reconstruction is the foundation of every other investigation objective — you cannot scope the compromise, attribute the activity, or improve defenses without first understanding the attack sequence from start to finish.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Scope Determination</h4>
+          <p>A critical early question in any significant incident is how far the attacker reached. Forensic analysis of lateral movement artifacts, authentication logs, and endpoint telemetry maps the full extent of compromise — identifying every system, account, and dataset the attacker touched, not just the initially identified entry points. Accurate scoping determines what must be remediated and what can be confirmed as unaffected.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Timeline Establishment</h4>
+          <p>Combining timestamps from file system metadata, event logs, network captures, and application records produces a unified chronological view of the incident from first access through detection. A precise timeline answers stakeholder questions about when exposure began, how long the attacker was present, and whether sensitive data was accessed during specific windows — all of which matter for both remediation and regulatory notification decisions.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Evidence Preservation for Legal Action</h4>
+          <p>When an incident may result in civil litigation, criminal referral, or regulatory enforcement, evidence must be collected and documented in ways that satisfy legal admissibility requirements. Forensic investigators working in this context apply chain of custody procedures, hash verification, and documentation standards designed to demonstrate that evidence has not been altered since collection — requirements that informal investigation processes do not meet.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Defense Improvement</h4>
+          <p>Forensic findings are not only retrospective. The artifacts recovered, techniques identified, and visibility gaps exposed during an investigation translate directly into detection logic improvements, control recommendations, and threat hunting hypotheses that strengthen the organization's posture against future attacks.</p>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="kb-section" id="process" aria-labelledby="s-process">
+        <h2 id="s-process">The Digital Forensics Process</h2>
+        <p>Digital forensics follows a structured investigation lifecycle. Deviating from this structure risks contaminating evidence, overlooking relevant artifacts, or producing findings that cannot be defended under scrutiny. The phases below represent the standard forensic methodology applied across investigation types and environments.</p>
+        <p>The following diagram illustrates the core forensic investigation lifecycle from initial identification through final reporting.</p>
+
+        <div class="arch-flow">
+          <div class="arch-step"><span class="step-num">01</span><span class="step-name">Identification</span></div>
+          <div class="arch-step"><span class="step-num">02</span><span class="step-name">Preservation</span></div>
+          <div class="arch-step"><span class="step-num">03</span><span class="step-name">Collection</span></div>
+          <div class="arch-step"><span class="step-num">04</span><span class="step-name">Analysis</span></div>
+          <div class="arch-step"><span class="step-num">05</span><span class="step-name">Reporting</span></div>
+        </div>
+
+        <h3>Identification</h3>
+        <p>The investigation begins by identifying potential sources of digital evidence relevant to the incident under investigation. This involves determining which systems, devices, logs, and data repositories may contain artifacts of interest, and prioritizing them based on relevance to the investigative questions being asked. Identification scoping decisions directly affect what evidence is available for analysis — systems not identified early may be overwritten or decommissioned before collection can occur.</p>
+
+        <h3>Preservation</h3>
+        <p>Before any data is collected, the investigator must ensure evidence remains unaltered. Preservation steps include isolating affected systems from the network when appropriate, capturing volatile data that will be lost when systems are powered down, and applying write-blocking controls to prevent accidental modification of storage media. The goal is to create a stable, documented snapshot of evidentiary data at a specific point in time.</p>
+
+        <div class="callout-warning">
+          <strong>&#9888; Volatile Evidence Priority</strong>
+          <p>Memory contents, active network connections, running process lists, and other volatile artifacts exist only while a system is powered on. Investigators must capture volatile data before collecting disk images or performing any action that might trigger a system restart. Failure to prioritize volatile evidence collection is one of the most common and consequential errors in forensic investigations — once the system is powered down, that evidence is permanently lost.</p>
+        </div>
+
+        <h3>Collection</h3>
+        <p>Data acquisition from identified sources is performed using forensically sound methods that preserve evidentiary integrity. For storage media, this typically means creating a verified bit-for-bit image of the entire device rather than copying individual files — capturing not only active files but deleted data remnants, slack space, and file system metadata. Each collected item is hash-verified to produce a cryptographic fingerprint confirming the copy matches the original.</p>
+
+        <h3>Analysis</h3>
+        <p>With evidence collected and verified, the analyst examines artifacts to answer the investigative questions established at the outset. Analysis is the most technically demanding phase and frequently requires working across multiple evidence sources simultaneously — correlating file system artifacts, log records, network captures, and memory contents to reconstruct a coherent picture of adversary activity. Analysis findings are documented continuously to support the reporting phase.</p>
+
+        <h3>Reporting</h3>
+        <p>Forensic findings must be documented in a clear, structured format appropriate for the intended audience. Investigation reports explain the evidence examined, the analytical methodology applied, and the basis for each conclusion drawn. In legal contexts, the report may be submitted as formal testimony and subjected to opposing expert scrutiny. Reports written without adequate methodology documentation or that assert conclusions unsupported by the evidence record do not survive this scrutiny.</p>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="kb-section" id="types" aria-labelledby="s-types">
+        <h2 id="s-types">Types of Digital Forensics</h2>
+        <p>Digital forensics encompasses several specialized disciplines, each focused on a different class of evidence source. Real investigations regularly require work across multiple disciplines simultaneously — an intrusion may leave artifacts on endpoints, in memory, in network traffic, and in cloud audit logs, all of which must be examined to reconstruct the full incident picture.</p>
+
+        <div class="tier-grid">
+          <div class="tier-card">
+            <span class="tier-badge tier-1">Computer Forensics</span>
+            <h4>Host &amp; File System</h4>
+            <p>Analysis of desktop and server operating systems, including file system artifacts, registry entries, prefetch data, user activity records, application logs, and OS-level artifacts that record what happened on a specific machine.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-2">Network Forensics</span>
+            <h4>Traffic &amp; Flows</h4>
+            <p>Examination of network traffic captures, flow records, firewall logs, DNS query logs, and proxy data to reconstruct attacker communications, identify command-and-control infrastructure, and trace data exfiltration paths.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-3">Memory Forensics</span>
+            <h4>Volatile RAM Analysis</h4>
+            <p>Analysis of captured RAM contents to uncover running processes, injected shellcode, decrypted credentials, active network connections, and malware artifacts that deliberately avoid writing to disk to evade detection.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-4">Mobile Forensics</span>
+            <h4>Devices &amp; Applications</h4>
+            <p>Extraction and analysis of data from smartphones and tablets, including call records, messages, application data, geolocation history, cloud-synchronized content, and device usage patterns.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-5">Cloud Forensics</span>
+            <h4>Hosted Infrastructure</h4>
+            <p>Investigation of cloud environments through audit log analysis, storage artifact review, identity and access activity examination, and coordination with cloud providers for evidence preservation in shared-responsibility architectures.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="kb-section" id="evidence-sources" aria-labelledby="s-evidence">
+        <h2 id="s-evidence">Common Sources of Digital Evidence</h2>
+        <p>Forensic investigators draw from a wide variety of evidence sources. The relevance of each source depends on the nature of the incident, the affected environment, and the actions the attacker took. Experienced investigators develop an understanding of which sources are most likely to contain useful artifacts for a given type of compromise and prioritize collection accordingly against the time pressure of an active investigation.</p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Evidence Source</th>
+              <th>Artifact Types</th>
+              <th>Forensic Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>System &amp; Security Event Logs</strong></td>
+              <td>Login events, process creation, privilege use, policy changes</td>
+              <td>Core timeline source for host-based activity reconstruction; critical for identifying account misuse and lateral movement</td>
+            </tr>
+            <tr>
+              <td><strong>Memory Dumps (RAM)</strong></td>
+              <td>Running processes, injected code, decrypted data, active connections</td>
+              <td>Only source for fileless malware artifacts and in-memory credential material; must be captured before system shutdown</td>
+            </tr>
+            <tr>
+              <td><strong>Disk Images</strong></td>
+              <td>File system metadata, deleted file remnants, user activity artifacts</td>
+              <td>Comprehensive host artifact repository; enables recovery of deleted evidence and reconstruction of user and attacker activity</td>
+            </tr>
+            <tr>
+              <td><strong>Network Traffic Captures</strong></td>
+              <td>Full packet content, protocol metadata, session reconstruction</td>
+              <td>Definitive record of attacker communications; enables identification of C2 channels and exfiltration destinations</td>
+            </tr>
+            <tr>
+              <td><strong>Authentication Logs</strong></td>
+              <td>Login attempts, credential use, MFA events, SSO activity</td>
+              <td>Essential for mapping attacker lateral movement and identifying compromised accounts across the environment</td>
+            </tr>
+            <tr>
+              <td><strong>EDR Telemetry</strong></td>
+              <td>Process trees, file writes, registry changes, network connections</td>
+              <td>High-fidelity endpoint timeline data; particularly valuable for reconstructing attacker tool execution sequences</td>
+            </tr>
+            <tr>
+              <td><strong>Cloud Audit Logs</strong></td>
+              <td>API calls, resource access, configuration changes, identity activity</td>
+              <td>Primary evidence source in cloud-hosted environments; records all control-plane activity including attacker persistence mechanisms</td>
+            </tr>
+            <tr>
+              <td><strong>Application Logs</strong></td>
+              <td>Web requests, database queries, application errors, user actions</td>
+              <td>Critical for investigating application-layer attacks including web shell deployment, SQL injection, and credential stuffing</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>No single evidence source provides a complete picture of an incident. The value of digital forensics lies in correlating artifacts across multiple sources to reconstruct a coherent attack timeline, identify gaps in the narrative, and establish what actually happened versus what initial indicators suggested. Investigations that rely on a single evidence type consistently produce incomplete findings.</p>
+      </section>
+
+      <!-- Section 6 -->
+      <section class="kb-section" id="tools" aria-labelledby="s-tools">
+        <h2 id="s-tools">Forensic Tools and Techniques</h2>
+        <p>Forensic investigation relies on a specialized toolset designed to acquire, process, and analyze digital evidence without altering it. Tools vary by forensic discipline and evidence type. Professional forensic analysts maintain familiarity with multiple tools across categories and understand the limitations of each — no single platform addresses every investigative requirement, and using a tool without understanding its collection methodology introduces the risk of evidence gaps that only become apparent late in an investigation.</p>
+
+        <div class="card-grid">
+          <div class="card-small">
+            <h4>Forensic Imaging</h4>
+            <p>Create verified, write-protected copies of storage media capturing all data including deleted files and unallocated space. Hash verification confirms collected images match the source exactly at the bit level.</p>
+          </div>
+          <div class="card-small">
+            <h4>Memory Analysis</h4>
+            <p>Examine RAM captures to identify running processes, network connections, injected shellcode, and credentials in volatile memory. Volatility and Rekall are widely used open-source frameworks for this discipline.</p>
+          </div>
+          <div class="card-small">
+            <h4>Log Analysis Platforms</h4>
+            <p>Search, filter, and correlate large volumes of log data across systems and time ranges. SIEM platforms and dedicated forensic log tools both serve this function within investigation workflows.</p>
+          </div>
+          <div class="card-small">
+            <h4>Timeline Tools</h4>
+            <p>Aggregate timestamps from file system metadata, registry entries, event logs, and other sources into a unified chronological view of system activity spanning the full investigation window.</p>
+          </div>
+          <div class="card-small">
+            <h4>Malware Analysis</h4>
+            <p>Examine suspicious files through static analysis of the binary itself and dynamic analysis of its runtime behavior in controlled sandbox environments to understand attacker tooling and capabilities.</p>
+          </div>
+          <div class="card-small">
+            <h4>Network Analysis</h4>
+            <p>Perform packet-level inspection of captured traffic, protocol decoding, and session reconstruction to understand attacker communications, exfiltration channels, and command-and-control infrastructure.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section class="kb-section" id="dfir" aria-labelledby="s-dfir">
+        <h2 id="s-dfir">Digital Forensics and Incident Response</h2>
+        <p>Digital forensics and incident response are closely related disciplines that are frequently executed in parallel during major security events. Their objectives are complementary rather than competing: incident response focuses on containing and remediating an active threat, while forensics focuses on understanding the full scope and mechanics of what occurred. Each informs the other — forensic findings shape response decisions, and response actions generate new evidence that forensics must account for.</p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Forensic Finding</th>
+              <th>Incident Response Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Initial Access Vector</strong></td>
+              <td>Identifies the entry point that must be closed to prevent reinfection or continued attacker access during remediation</td>
+            </tr>
+            <tr>
+              <td><strong>Lateral Movement Map</strong></td>
+              <td>Reveals the full scope of compromise, ensuring remediation addresses all affected systems rather than only initially identified ones</td>
+            </tr>
+            <tr>
+              <td><strong>Persistence Mechanisms</strong></td>
+              <td>Ensures remediation actually removes the attacker rather than only disrupting their immediate activity, preventing rapid re-establishment of access</td>
+            </tr>
+            <tr>
+              <td><strong>Data Access Timeline</strong></td>
+              <td>Determines whether sensitive data was accessed during the incident window, informing regulatory notification obligations and legal risk assessment</td>
+            </tr>
+            <tr>
+              <td><strong>Attacker Tooling</strong></td>
+              <td>Identifies malware families and attacker tools that may have been deployed across the environment, guiding comprehensive detection and removal efforts</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>In many organizations, forensics and incident response functions are performed by the same team, particularly in smaller security operations centers where specialization is constrained by headcount. In larger environments, a dedicated DFIR capability may exist as a distinct unit within the SOC or security engineering organization. Regardless of organizational structure, investigative and response workflows must be closely coordinated to ensure that response actions do not inadvertently destroy forensic evidence before it can be captured.</p>
+      </section>
+
+      <!-- Section 8 -->
+      <section class="kb-section" id="legal" aria-labelledby="s-legal">
+        <h2 id="s-legal">Legal and Compliance Considerations</h2>
+        <p>When forensic evidence may be used in legal proceedings, the standards for collection, handling, and documentation become significantly more rigorous than typical incident investigation requirements. Courts evaluate digital evidence on how it was collected, whether its integrity can be demonstrated, and whether the methodology used to analyze it meets recognized professional standards.</p>
+
+        <div class="usecase-card">
+          <h4>Chain of Custody</h4>
+          <p>Chain of custody documentation tracks every person who handled a piece of evidence, every location it occupied, and every action taken on it from the moment of collection through presentation. Any gap in this record creates an opportunity for opposing parties to challenge whether evidence may have been altered. Maintaining chain of custody requires contemporaneous documentation — notes created after the fact do not satisfy the standard.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Evidence Admissibility</h4>
+          <p>Admissibility depends on whether the collection process followed accepted forensic procedures and whether integrity can be demonstrated through hash verification and documentation. Evidence collected without write-blocking controls, without hash verification, or by investigators who cannot credibly explain their methodology is vulnerable to admissibility challenges that may exclude it from proceedings entirely.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Forensic Reporting Standards</h4>
+          <p>Reports intended for legal use must clearly explain the methodology applied, the evidence examined, the findings produced, and the analytical basis for each conclusion. Assertions without supporting evidence, conclusions that exceed what the evidence supports, and methodology descriptions too vague to explain how analysis was performed all create vulnerabilities when reports are subjected to expert review by opposing counsel.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Authorization and Legal Authority</h4>
+          <p>Investigators must have clear legal authority to access and collect the data they examine. In enterprise investigations, this typically derives from acceptable use policies and employment agreements, but edge cases involving personal devices, contractor systems, and cross-border data require careful legal review before collection begins. Cloud environments introduce additional complexity around what data the organization has contractual rights to collect from service providers.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>&#9888; Engage Legal Counsel Early</strong>
+          <p>Organizations should involve legal counsel early in any investigation that may result in civil litigation or regulatory enforcement. Forensic investigators operating in these contexts need clear guidance on scope, authority, and documentation requirements before beginning collection activities. Decisions made during the first hours of an investigation — about what to collect, what to preserve, and what to document — can determine whether evidence will be usable months later when legal proceedings begin.</p>
+        </div>
+      </section>
+
+      <!-- Section 9 -->
+      <section class="kb-section" id="challenges" aria-labelledby="s-challenges">
+        <h2 id="s-challenges">Challenges in Digital Forensics</h2>
+        <p>Digital forensic investigations are technically demanding and operationally complex. Investigators regularly encounter conditions that complicate evidence collection, analysis, and interpretation. Understanding these challenges is essential context for security teams building forensic capability and for analysts scoping the effort required for specific investigation types.</p>
+
+        <div class="usecase-card">
+          <h4>Encryption</h4>
+          <p>Encryption protects legitimate data but also conceals attacker activity. Files, communications, and storage volumes encrypted by the attacker or by the organization's own security controls may be inaccessible without the relevant keys. Full-disk encryption on endpoints without key escrow arrangements can make entire devices forensically unavailable. These limitations require investigators to rely more heavily on behavioral artifacts and metadata that encryption cannot obscure.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Evidence Volume</h4>
+          <p>Enterprise-scale incidents may involve terabytes of log data, hundreds of affected endpoints, and weeks of network traffic captures. Processing this volume within the time constraints of an active investigation requires tooling that scales to the task, prioritization frameworks that guide analysts toward the highest-value evidence first, and collection strategies that avoid acquiring data that adds processing burden without adding investigative value.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Anti-Forensic Techniques</h4>
+          <p>Sophisticated attackers deliberately cover their tracks. Common anti-forensic techniques include log deletion and tampering, file system timestamp modification, secure file deletion tools, living-off-the-land execution that avoids writing custom tools to disk, and the use of encrypted or anonymized communications infrastructure. These techniques increase the analytical challenge and may leave investigations with gaps in the evidence record that cannot be filled.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Cloud and Distributed Environments</h4>
+          <p>Cloud infrastructure presents jurisdictional, technical, and contractual challenges. Evidence may reside in infrastructure controlled by third-party providers, governed by service agreements that limit what investigators can access, in what format, and how quickly they can obtain it. Containerized and serverless workloads generate different artifact types than traditional endpoints and may have shorter default log retention windows. Multi-cloud environments multiply these complexities.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Evolving Technology Platforms</h4>
+          <p>Container orchestration environments, serverless function platforms, modern mobile operating systems, and novel device types each introduce forensic challenges that established methods and tools may not address. The gap between new technology adoption and mature forensic methodology for that technology is a persistent challenge for investigators working in cutting-edge environments, requiring continuous professional development to remain effective.</p>
+        </div>
+      </section>
+
+      <!-- Section 10 -->
+      <section class="kb-section" id="secops" aria-labelledby="s-secops">
+        <h2 id="s-secops">Digital Forensics in Modern Security Operations</h2>
+        <p>Digital forensics has evolved from a niche capability associated primarily with law enforcement into a core function of enterprise security operations. As threat actors grow more sophisticated and regulatory requirements around incident documentation expand, the demand for forensic capability within security teams has increased significantly. The discipline now sits at the intersection of detection, response, intelligence, and compliance — contributing to each without being reducible to any of them.</p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Security Function</th>
+              <th>Forensics Contribution</th>
+              <th>Benefit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Threat Hunting</strong></td>
+              <td>Provides the analytical techniques and evidence sources that hunters use to investigate hypotheses about undetected adversary presence</td>
+              <td>Enables structured, evidence-based hunting; forensic rigor improves confidence in hunt findings and reduces false conclusions</td>
+            </tr>
+            <tr>
+              <td><strong>Incident Response</strong></td>
+              <td>Determines root cause, scopes the compromise, identifies persistence mechanisms, and produces the evidentiary record that supports remediation decisions</td>
+              <td>Ensures response actions address the actual compromise rather than visible symptoms; prevents premature closure of incidents</td>
+            </tr>
+            <tr>
+              <td><strong>Security Monitoring</strong></td>
+              <td>Post-incident forensic analysis reveals how attackers evaded detection, informing improvements to detection logic and coverage gaps</td>
+              <td>Creates a feedback loop that continuously improves detection capability based on real attacker behavior observed in the environment</td>
+            </tr>
+            <tr>
+              <td><strong>Intelligence Analysis</strong></td>
+              <td>Forensic artifacts enable attribution of activity to known threat actors, mapping observed TTPs to MITRE ATT&amp;CK, and development of actionable adversary profiles</td>
+              <td>Transforms incident data into reusable threat intelligence that informs proactive defense across the organization</td>
+            </tr>
+            <tr>
+              <td><strong>Compliance and Legal</strong></td>
+              <td>Forensic documentation satisfies regulatory requirements for incident investigation and produces evidence that survives legal proceedings</td>
+              <td>Reduces organizational legal and regulatory risk; demonstrates due diligence to auditors, regulators, and courts</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Organizations that invest in forensic capability gain a clearer and more durable understanding of the threats they face. Forensic findings do not just resolve individual incidents — they generate institutional knowledge that improves every layer of the security program over time. The analyst who has performed dozens of forensic investigations carries an accumulated understanding of attacker behavior, artifact location, and investigation methodology that cannot be replicated by tooling or process documentation alone.</p>
+      </section>
+
+      <!-- Section 11: Takeaways -->
+      <section class="kb-section" id="takeaways" aria-labelledby="s-take">
+        <h2 id="s-take">Key Takeaways</h2>
+        <ul class="takeaway-list">
+          <li>Digital forensics is a structured discipline for collecting, preserving, analyzing, and presenting electronic evidence from digital systems — applicable to any incident involving a digital environment, from enterprise breaches to criminal investigations and regulatory enforcement actions.</li>
+          <li>The forensic investigation lifecycle — identification, preservation, collection, analysis, and reporting — is not bureaucratic overhead. It is a procedural safeguard for evidence integrity and analytical accuracy. Investigations that skip or compress phases consistently produce incomplete findings and evidence that cannot withstand legal scrutiny.</li>
+          <li>Chain of custody and evidence integrity are foundational requirements. Every action taken on or near evidence must be contemporaneously documented. Hash verification at collection and throughout the investigation lifecycle demonstrates that evidence has not been altered and forms the basis for admissibility in legal proceedings.</li>
+          <li>Digital forensics encompasses multiple specialized disciplines — computer, network, memory, mobile, and cloud forensics — each focused on different evidence sources. Real-world investigations require working across multiple disciplines simultaneously to reconstruct the full incident picture from correlated artifacts.</li>
+          <li>Anti-forensic techniques, encryption, large evidence volumes, and the complexity of cloud and distributed environments represent ongoing operational challenges that require specialized training, updated tooling, and continuous professional development. General IT skills are insufficient for professional forensic investigation work.</li>
+          <li>Digital forensics is not a standalone capability. Its value is highest when integrated into a broader security operations architecture that includes threat hunting, incident response, security monitoring, and intelligence analysis — with forensic findings feeding improvement across each function rather than remaining isolated within individual investigation reports.</li>
+        </ul>
+      </section>
+
+      <!-- Section 12: References -->
+      <section class="kb-section" id="references" aria-labelledby="s-ref">
+        <h2 id="s-ref">References</h2>
+        <ol class="ref-list">
+          <li>National Institute of Standards and Technology. <em>NIST SP 800-86: Guide to Integrating Forensic Techniques into Incident Response.</em> <a href="https://csrc.nist.gov/publications/detail/sp/800-86/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>National Institute of Standards and Technology. <em>NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide.</em> <a href="https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>MITRE ATT&amp;CK. <em>Enterprise Tactic: Defense Evasion.</em> <a href="https://attack.mitre.org/tactics/TA0005/" target="_blank" rel="noopener noreferrer">attack.mitre.org</a></li>
+          <li>Cybersecurity and Infrastructure Security Agency. <em>Federal Incident Notification Guidelines.</em> <a href="https://www.cisa.gov/federal-incident-notification-guidelines" target="_blank" rel="noopener noreferrer">cisa.gov</a></li>
+          <li>SANS Institute. <em>Digital Forensics and Incident Response Curriculum.</em> <a href="https://www.sans.org/cyber-security-courses/digital-forensics-incident-response/" target="_blank" rel="noopener noreferrer">sans.org</a></li>
+          <li>National Institute of Standards and Technology. <em>NIST SP 800-53 Rev. 5: Security and Privacy Controls for Information Systems and Organizations.</em> <a href="https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>TacRaven Solutions. <em>TacRaven Cybersecurity Knowledge Base.</em> <a href="https://tacraven.com/knowledge-base.html" target="_blank" rel="noopener noreferrer">tacraven.com/knowledge-base.html</a></li>
+        </ol>
+      </section>
+
+      <!-- Section 13: Related Topics -->
+      <section class="kb-section" id="related" aria-labelledby="s-rel">
+        <h2 id="s-rel">Related Topics</h2>
+        <div class="related-grid">
+          <a href="/incident-response.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is Incident Response?</span></a>
+          <a href="/threat-intelligence.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is Threat Intelligence?</span></a>
+          <a href="/siem.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is SIEM?</span></a>
+          <a href="/edr.html" class="related-link"><span class="rl-label">Endpoint Security</span><span class="rl-title">What is EDR?</span></a>
+          <a href="/soc.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">Security Operations Center</span></a>
+          <a href="/detection-engineering.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">Detection Engineering</span></a>
+          <a href="/vulnerability-management.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">Vulnerability Management</span></a>
+          <a href="/ueba.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is UEBA?</span></a>
+        </div>
+      </section>
+
+    </article>
+
+    <aside aria-label="Article navigation">
+      <div class="sidebar-card sidebar-toc-card">
+        <button class="toc-toggle-btn" id="tocToggle" aria-expanded="false" aria-controls="tocDrawer">
+          Contents <i class="toc-chevron">&#9662;</i>
+        </button>
+        <h3 class="toc-heading" style="display:none;" aria-hidden="true">Contents</h3>
+        <div class="toc-drawer" id="tocDrawer">
+          <div class="toc-drawer-inner">
+            <ul class="toc-list" id="tocList">
+              <li><a href="#overview">Executive Overview</a></li>
+              <li><a href="#goals">Goals of Investigations</a></li>
+              <li><a href="#process">The Forensics Process</a></li>
+              <li><a href="#types">Types of Digital Forensics</a></li>
+              <li><a href="#evidence-sources">Evidence Sources</a></li>
+              <li><a href="#tools">Tools and Techniques</a></li>
+              <li><a href="#dfir">Forensics and IR</a></li>
+              <li><a href="#legal">Legal Considerations</a></li>
+              <li><a href="#challenges">Challenges</a></li>
+              <li><a href="#secops">Modern Security Operations</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+              <li><a href="#references">References</a></li>
+              <li><a href="#related">Related Topics</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Quick Reference</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.65;">
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">FUNCTION</strong><br>
+          Electronic Evidence Collection, Preservation &amp; Analysis<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">CORE DISCIPLINES</strong><br>
+          Computer &nbsp;&#183;&nbsp; Network &nbsp;&#183;&nbsp; Memory &nbsp;&#183;&nbsp; Mobile &nbsp;&#183;&nbsp; Cloud<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">EVIDENCE SOURCES</strong><br>
+          Event Logs &nbsp;&#183;&nbsp; Disk Images &nbsp;&#183;&nbsp; RAM Dumps &nbsp;&#183;&nbsp; PCAP &nbsp;&#183;&nbsp; EDR Telemetry<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">KEY INTEGRATIONS</strong><br>
+          Incident Response &nbsp;&#183;&nbsp; SIEM &nbsp;&#183;&nbsp; EDR &nbsp;&#183;&nbsp; Threat Intel<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">RELATED STANDARDS</strong><br>
+          NIST SP 800-86 &nbsp;&#183;&nbsp; NIST SP 800-61 &nbsp;&#183;&nbsp; MITRE ATT&amp;CK
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="divider" />
+
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">TacRaven Solutions</span>
+          <p>TacRaven Solutions is committed to advancing cybersecurity education. We partner with academic institutions and training programs to help build the next generation of cyber professionals, bridging the gap between classroom instruction and real-world operational practice.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/learning-hub">Learning Hub</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/threat-map">Threat Map</a></li>
+            <li><a href="/intel/weekly/index.html">Weekly Reports</a></li>
+            <li><a href="/knowledge-base.html">Knowledge Base</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/careers.html">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+        <p class="footer-tagline">Intelligence-Driven Cybersecurity</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      function applyTocLayout() {
+        var btn = document.getElementById('tocToggle');
+        var heading = document.querySelector('.toc-heading');
+        var drawer = document.getElementById('tocDrawer');
+        if (!btn || !heading || !drawer) return;
+        if (window.innerWidth > 900) {
+          btn.style.display = 'none'; heading.style.display = 'block'; heading.removeAttribute('aria-hidden');
+          drawer.classList.add('open'); drawer.style.maxHeight = 'none'; drawer.style.opacity = '1';
+          drawer.style.overflow = 'visible'; drawer.style.transition = 'none';
+        } else {
+          btn.style.display = 'flex'; heading.style.display = 'none'; heading.setAttribute('aria-hidden', 'true');
+          drawer.style.transition = ''; drawer.style.overflow = '';
+          if (!drawer.classList.contains('open')) { drawer.style.maxHeight = '0'; drawer.style.opacity = '0'; }
+        }
+      }
+      applyTocLayout();
+      window.addEventListener('resize', applyTocLayout);
+      var tocBtn = document.getElementById('tocToggle');
+      var tocDrawer = document.getElementById('tocDrawer');
+      if (tocBtn && tocDrawer) {
+        tocBtn.addEventListener('click', function () {
+          var isOpen = tocDrawer.classList.toggle('open');
+          tocBtn.classList.toggle('open', isOpen);
+          tocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        tocDrawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (window.innerWidth <= 900) { tocDrawer.classList.remove('open'); tocBtn.classList.remove('open'); tocBtn.setAttribute('aria-expanded', 'false'); }
+          });
+        });
+      }
+      var sectionIds = ['overview','goals','process','types','evidence-sources','tools','dfir','legal','challenges','secops','takeaways','references','related'];
+      var tocLinks = {};
+      sectionIds.forEach(function (id) { var link = document.querySelector('#tocList a[href="#' + id + '"]'); if (link) tocLinks[id] = link; });
+      var activeId = null;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            if (id !== activeId) {
+              if (activeId && tocLinks[activeId]) tocLinks[activeId].classList.remove('toc-active');
+              activeId = id;
+              if (tocLinks[id]) tocLinks[id].classList.add('toc-active');
+            }
+          }
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      sectionIds.forEach(function (id) { var el = document.getElementById(id); if (el) observer.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>

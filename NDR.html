@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── PRIMARY META ── -->
+  <title>What Is Network Detection and Response (NDR)? | TacRaven Knowledge Base</title>
+  <meta name="description" content="Learn what Network Detection and Response (NDR) is, how it analyzes network traffic to detect threats, and how organizations use NDR platforms to identify malicious activity inside modern networks." />
+  <meta name="keywords" content="NDR, network detection and response, network security, lateral movement, threat detection, behavioral analytics, XDR, Zero Trust" />
+  <meta name="author" content="TacRaven Solutions" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="canonical" href="https://tacraven.com/knowledge-base/ndr.html" />
+
+  <!-- ── OPEN GRAPH ── -->
+  <meta property="og:title" content="What Is Network Detection and Response (NDR)? | TacRaven Knowledge Base" />
+  <meta property="og:description" content="How NDR platforms analyze network traffic to detect threats, identify lateral movement, and strengthen modern security operations." />
+  <meta property="og:url" content="https://tacraven.com/knowledge-base/ndr.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="TacRaven Solutions" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://tacraven.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Network Detection and Response guide — TacRaven Solutions" />
+  <meta property="article:published_time" content="2025-01-01T00:00:00Z" />
+  <meta property="article:modified_time" content="2025-03-01T00:00:00Z" />
+  <meta property="article:author" content="TacRaven Solutions" />
+  <meta property="article:section" content="Cybersecurity" />
+  <meta property="article:tag" content="NDR" />
+  <meta property="article:tag" content="Network Security" />
+  <meta property="article:tag" content="Threat Detection" />
+  <meta property="article:tag" content="Lateral Movement" />
+
+  <!-- ── TWITTER / X CARD ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What Is Network Detection and Response (NDR)? | TacRaven Solutions" />
+  <meta name="twitter:description" content="How NDR platforms analyze network traffic to detect threats, identify lateral movement, and strengthen modern security operations." />
+  <meta name="twitter:image" content="https://tacraven.com/og-image.png" />
+  <meta name="twitter:image:alt" content="Network Detection and Response guide — TacRaven Solutions" />
+  <meta name="twitter:site" content="@TacRaven" />
+
+  <!-- ── JSON-LD STRUCTURED DATA ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://tacraven.com/knowledge-base/ndr.html#article",
+        "headline": "What Is Network Detection and Response (NDR)?",
+        "description": "A comprehensive guide to Network Detection and Response covering how NDR platforms detect threats in network traffic, key capabilities, deployment considerations, and integration with modern security architecture.",
+        "image": "https://tacraven.com/og-image.png",
+        "author": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com" },
+        "publisher": { "@type": "Organization", "name": "TacRaven Solutions", "url": "https://tacraven.com", "logo": { "@type": "ImageObject", "url": "https://tacraven.com/assets/logo.png" } },
+        "datePublished": "2025-01-01",
+        "dateModified": "2025-03-01",
+        "mainEntityOfPage": "https://tacraven.com/knowledge-base/ndr.html",
+        "url": "https://tacraven.com/knowledge-base/ndr.html",
+        "keywords": ["NDR", "network detection and response", "network security", "lateral movement", "threat detection", "behavioral analytics", "XDR", "Zero Trust"],
+        "articleSection": "Security Technologies",
+        "inLanguage": "en-US",
+        "isPartOf": { "@type": "WebSite", "name": "TacRaven Solutions Knowledge Base", "url": "https://tacraven.com/knowledge-base.html" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://tacraven.com/knowledge-base/ndr.html#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tacraven.com" },
+          { "@type": "ListItem", "position": 2, "name": "Knowledge Base", "item": "https://tacraven.com/knowledge-base.html" },
+          { "@type": "ListItem", "position": 3, "name": "Security Technologies", "item": "https://tacraven.com/knowledge-base.html#security-technologies" },
+          { "@type": "ListItem", "position": 4, "name": "NDR", "item": "https://tacraven.com/knowledge-base/ndr.html" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://tacraven.com/knowledge-base/ndr.html#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is Network Detection and Response (NDR)?", "acceptedAnswer": { "@type": "Answer", "text": "Network Detection and Response (NDR) is a cybersecurity technology that continuously monitors and analyzes network traffic to detect threats, investigate suspicious activity, and support incident response. NDR platforms use behavioral analytics, machine learning, and threat intelligence to identify malicious behavior within both east-west and north-south network traffic." } },
+          { "@type": "Question", "name": "How is NDR different from IDS/IPS?", "acceptedAnswer": { "@type": "Answer", "text": "Traditional IDS and IPS tools rely primarily on known threat signatures and operate at the network perimeter. NDR platforms apply behavioral analytics and machine learning across all internal network traffic, including east-west lateral movement between internal systems. NDR also provides forensic investigation capabilities and active response integrations that IDS/IPS tools do not offer." } },
+          { "@type": "Question", "name": "What is east-west traffic and why does NDR focus on it?", "acceptedAnswer": { "@type": "Answer", "text": "East-west traffic refers to communications between internal systems within the same network. After gaining initial access, attackers move laterally through east-west traffic to reach high-value targets. Traditional perimeter tools do not monitor this traffic, making NDR's focus on east-west communications critical for detecting post-compromise activity." } },
+          { "@type": "Question", "name": "How does NDR analyze encrypted traffic?", "acceptedAnswer": { "@type": "Answer", "text": "NDR platforms detect threats in encrypted traffic using metadata analysis, TLS certificate inspection, behavioral signals, and traffic pattern analysis including JA3 fingerprinting — without decrypting the communications." } },
+          { "@type": "Question", "name": "How does NDR fit into a Zero Trust architecture?", "acceptedAnswer": { "@type": "Answer", "text": "NDR supports Zero Trust by providing continuous visibility into all internal network communications. NDR detects when legitimate credentials or trusted systems are being misused — a common indicator of compromise — enabling organizations to enforce Zero Trust principles with behavioral evidence rather than relying solely on identity verification." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── GA4 ── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PEYM947EG8', {
+      page_title: 'NDR Knowledge Base Page',
+      page_location: 'https://tacraven.com/knowledge-base/ndr.html'
+    });
+  </script>
+
+  <style>
+    :root {
+      --black: #0a0a0a; --dark: #111111; --dark-card: #161616; --dark-border: #1f1f1f;
+      --gold: #c9a84c; --gold-light: #e2c06e; --gold-dim: #8a6e2f; --red: #c0392b;
+      --text: #d4d4d4; --text-muted: #7a7a7a; --text-dim: #4a4a4a; --white: #f0f0f0;
+      --font-display: 'Courier New', Courier, monospace;
+      --font-body: Georgia, 'Times New Roman', serif;
+      --font-ui: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--black); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.75; min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
+
+    /* ── TOP BAR ── */
+    .top-bar { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.97); border-bottom: 1px solid var(--dark-border); backdrop-filter: blur(6px); padding: 12px 24px; }
+    .btn-back { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid var(--gold-dim); border-radius: 2px; padding: 8px 18px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .btn-back:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); color: var(--gold-light); }
+    .btn-back::before { content: '\2190'; font-size: 0.85rem; }
+
+    /* ── HERO ── */
+    .hero { position: relative; z-index: 1; padding: 72px 24px 56px; border-bottom: 1px solid var(--dark-border); background: linear-gradient(180deg, rgba(201,168,76,0.04) 0%, transparent 100%); }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .breadcrumb { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; margin-bottom: 20px; }
+    .breadcrumb a { color: var(--gold-dim); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: bold; color: var(--white); letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px; }
+    .hero h1 .accent { color: var(--gold); }
+    .hero-subtitle { font-family: var(--font-ui); font-size: 1.05rem; color: var(--text-muted); max-width: 680px; margin-bottom: 28px; line-height: 1.6; }
+    .hero-intro { font-size: 1rem; color: var(--text); max-width: 780px; margin-bottom: 32px; border-left: 3px solid var(--gold-dim); padding-left: 18px; }
+    .meta-bar { display: flex; flex-wrap: wrap; gap: 10px; }
+    .meta-tag { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border: 1px solid #3a3a3a; border-radius: 2px; color: #c8c8c8; background: #1e1e1e; }
+    .meta-tag.cat { border-color: var(--gold); color: var(--gold-light); }
+
+    /* ── PAGE BODY LAYOUT ── */
+    .page-body { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 56px 24px 80px; display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start; }
+    article { min-width: 0; }
+
+    /* ── KB SECTIONS ── */
+    .kb-section { margin-bottom: 52px; }
+    .kb-section h2 { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--dark-border); display: flex; align-items: center; gap: 10px; }
+    .kb-section h2::before { content: '//'; color: var(--gold); font-size: 0.85rem; }
+    .kb-section h3 { font-family: var(--font-ui); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-light); margin: 28px 0 10px; }
+    .kb-section p { margin-bottom: 16px; color: var(--text); }
+
+    /* ── CARDS ── */
+    .card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 22px 26px; margin-bottom: 16px; }
+    .usecase-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-left: 3px solid var(--gold-dim); border-radius: 4px; padding: 20px 24px; margin-bottom: 18px; }
+    .usecase-card h4 { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .usecase-card p { font-size: 0.9rem; color: var(--text); margin-bottom: 0; }
+
+    /* ── FEATURE LIST ── */
+    .feature-list { list-style: none; padding: 0; margin: 12px 0 0; }
+    .feature-list li { padding: 10px 0 10px 28px; position: relative; border-bottom: 1px solid var(--dark-border); font-size: 0.9rem; color: var(--text); }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list li::before { content: '\25BA'; position: absolute; left: 8px; color: var(--gold); font-size: 0.6rem; top: 15px; }
+
+    /* ── TIER GRID (capabilities) ── */
+    .tier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+    .tier-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; }
+    .tier-badge { display: inline-block; font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; margin-bottom: 10px; }
+    .tier-1 { background: rgba(201,168,76,0.12); color: var(--gold-light); border: 1px solid var(--gold-dim); }
+    .tier-2 { background: rgba(39,174,96,0.12); color: #2ecc71; border: 1px solid #27ae60; }
+    .tier-3 { background: rgba(52,152,219,0.12); color: #5dade2; border: 1px solid #2e86c1; }
+    .tier-4 { background: rgba(155,89,182,0.12); color: #bb8fce; border: 1px solid #8e44ad; }
+    .tier-5 { background: rgba(230,126,34,0.12); color: #f0a860; border: 1px solid #ca6f1e; }
+    .tier-card h4 { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .tier-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* ── COMPARE TABLE ── */
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 14px; }
+    .compare-table th { font-family: var(--font-display); letter-spacing: 1px; text-transform: uppercase; font-size: 0.72rem; color: var(--gold); text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--gold-dim); background: var(--dark); }
+    .compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--dark-border); color: var(--text); vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.04); }
+    .compare-table td:first-child { font-family: var(--font-display); font-weight: 700; color: var(--white); font-size: 0.8rem; white-space: nowrap; }
+
+    /* ── ARCH FLOW ── */
+    .arch-flow { display: flex; flex-wrap: wrap; gap: 0; margin: 18px 0; align-items: stretch; }
+    .arch-step { flex: 1; min-width: 100px; background: var(--dark-card); border: 1px solid var(--dark-border); padding: 14px 12px; text-align: center; position: relative; }
+    .arch-step:not(:last-child)::after { content: '\2192'; position: absolute; right: -13px; top: 50%; transform: translateY(-50%); color: var(--gold-dim); font-size: 0.9rem; z-index: 2; }
+    .arch-step .step-num { font-family: var(--font-display); font-size: 0.62rem; letter-spacing: 2px; color: var(--gold-dim); display: block; margin-bottom: 6px; }
+    .arch-step .step-name { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 1px; color: var(--gold-light); text-transform: uppercase; }
+
+    /* ── CALLOUT WARNING ── */
+    .callout-warning { background: rgba(192,57,43,0.08); border: 1px solid rgba(192,57,43,0.25); border-left: 3px solid var(--red); border-radius: 4px; padding: 16px 20px; margin-bottom: 14px; }
+    .callout-warning strong { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e05c4a; display: block; margin-bottom: 6px; }
+    .callout-warning p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+
+    /* ── ATT&CK CALLOUT ── */
+    .attck-callout { background: var(--dark-card); border: 1px solid var(--gold-dim); border-radius: 4px; padding: 14px 18px; margin: 16px 0; display: flex; align-items: flex-start; gap: 14px; }
+    .attck-badge { font-family: var(--font-display); font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #0a0a0a; background: var(--gold); padding: 3px 8px; border-radius: 2px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .attck-body { flex: 1; }
+    .attck-id { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; color: var(--gold); letter-spacing: 1px; margin-bottom: 4px; }
+    .attck-desc { font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+    .attck-desc strong { color: var(--text); }
+
+    /* ── SCENARIO ACCORDIONS ── */
+    .scenario-accordion { margin: 18px 0 0; border: 1px solid var(--dark-border); border-radius: 4px; overflow: hidden; }
+    .scenario-trigger { width: 100%; background: var(--dark); border: none; padding: 14px 18px; display: flex; align-items: center; gap: 12px; cursor: pointer; text-align: left; transition: background 0.2s; }
+    .scenario-trigger:hover { background: rgba(201,168,76,0.06); }
+    .scenario-tag { font-family: var(--font-display); font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #0a0a0a; background: var(--gold); padding: 3px 8px; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
+    .scenario-trigger-text { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 1px; color: var(--gold-light); flex: 1; }
+    .scenario-chevron { width: 16px; height: 16px; flex-shrink: 0; fill: none; stroke: var(--gold-dim); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.25s ease; }
+    .scenario-accordion.open .scenario-chevron { transform: rotate(180deg); }
+    .scenario-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; background: var(--dark-card); }
+    .scenario-accordion.open .scenario-body { max-height: 900px; }
+    .scenario-inner { padding: 18px 20px 20px; border-top: 1px solid var(--dark-border); }
+    .scenario-steps { display: flex; flex-direction: column; gap: 0; }
+    .scenario-step { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--dark-border); }
+    .scenario-step:last-child { border-bottom: none; }
+    .scenario-step-num { font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; color: var(--gold); letter-spacing: 2px; min-width: 24px; padding-top: 2px; }
+    .scenario-step-content { flex: 1; }
+    .scenario-step-platform { font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
+    .scenario-step-desc { font-size: 0.88rem; color: var(--text); line-height: 1.55; margin: 0; }
+
+    /* ── TAKEAWAY LIST ── */
+    .takeaway-list { list-style: none; padding: 0; }
+    .takeaway-list li { padding: 12px 16px 12px 44px; position: relative; border-bottom: 1px solid var(--dark-border); font-size: 0.95rem; color: var(--text); }
+    .takeaway-list li:last-child { border-bottom: none; }
+    .takeaway-list li::before { content: '\25BA'; position: absolute; left: 16px; color: var(--gold); font-size: 0.65rem; top: 16px; }
+
+    /* ── REF LIST ── */
+    .ref-list { list-style: none; padding: 0; counter-reset: refs; }
+    .ref-list li { counter-increment: refs; padding: 10px 0 10px 36px; border-bottom: 1px solid var(--dark-border); font-size: 0.84rem; color: var(--text-muted); position: relative; }
+    .ref-list li:last-child { border-bottom: none; }
+    .ref-list li::before { content: '[' counter(refs) ']'; position: absolute; left: 0; color: var(--gold-dim); font-family: var(--font-display); font-size: 0.72rem; }
+    .ref-list a { color: var(--gold-dim); text-decoration: none; }
+    .ref-list a:hover { color: var(--gold); }
+
+    /* ── RELATED GRID ── */
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 14px; }
+    .related-link { display: block; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 18px; text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+    .related-link:hover { border-color: var(--gold-dim); background: rgba(201,168,76,0.05); }
+    .related-link .rl-label { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #888888; display: block; margin-bottom: 6px; }
+    .related-link .rl-title { font-family: var(--font-ui); font-size: 0.88rem; color: var(--gold-light); font-weight: bold; }
+
+    /* ── CTA INLINE BUTTON ── */
+    .cta-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: transparent; border: 1px solid var(--gold-dim); border-radius: 2px; padding: 9px 18px; text-decoration: none; margin-top: 10px; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+    .cta-btn:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); color: var(--gold-light); }
+    .cta-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── CTA BLOCK ── */
+    .cta-block { background: var(--dark-card); border: 1px solid var(--dark-border); border-top: 2px solid var(--gold-dim); border-radius: 4px; padding: 32px 28px; margin: 36px 0 0; }
+    .cta-block h3 { font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .cta-block p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px; }
+
+    /* ── SITUATION SELECTOR ── */
+    .selector-wrap { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; overflow: hidden; margin-bottom: 36px; }
+    .selector-header { padding: 18px 22px 0; }
+    .selector-title { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .selector-options { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 22px 16px; border-bottom: 1px solid var(--dark-border); }
+    .selector-opt { background: var(--dark); border: 1px solid var(--dark-border); color: var(--text-muted); border-radius: 2px; padding: 7px 14px; font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.18s, color 0.18s, border-color 0.18s; }
+    .selector-opt:hover { background: rgba(201,168,76,0.06); color: var(--gold); border-color: var(--gold-dim); }
+    .selector-opt.active { background: rgba(201,168,76,0.12); color: var(--gold-light); border-color: var(--gold); }
+    .selector-result { padding: 20px 22px 22px; min-height: 120px; }
+    .selector-result-inner { display: none; }
+    .selector-result-inner.visible { display: block; }
+    .selector-result-tag { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 6px; }
+    .selector-result-heading { font-family: var(--font-display); font-size: 0.88rem; letter-spacing: 1px; color: var(--gold-light); margin-bottom: 10px; }
+    .selector-result-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 12px; }
+    .selector-result-body strong { color: var(--text); }
+    .selector-placeholder { font-size: 0.85rem; color: var(--text-dim); font-style: italic; padding-top: 8px; }
+
+    /* ── FEEDBACK WIDGET ── */
+    .feedback-wrap { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 16px 22px; margin: 36px 0 0; }
+    .feedback-label { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); flex: 1; }
+    .feedback-btns { display: flex; gap: 8px; }
+    .feedback-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--dark); border: 1px solid var(--dark-border); color: var(--text-muted); border-radius: 2px; padding: 7px 16px; font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: background 0.18s, color 0.18s, border-color 0.18s; }
+    .feedback-btn:hover { background: rgba(201,168,76,0.08); color: var(--gold); border-color: var(--gold-dim); }
+    .feedback-btn.voted-yes { background: rgba(39,174,96,0.1); color: #2ecc71; border-color: #27ae60; cursor: default; }
+    .feedback-btn.voted-no  { background: rgba(192,57,43,0.1); color: #e05c4a; border-color: var(--red); cursor: default; }
+    .feedback-btn svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .feedback-thanks { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 1px; color: var(--gold); display: none; }
+    .feedback-thanks.visible { display: inline; }
+
+    /* ── SIDEBAR ── */
+    aside { position: sticky; top: 80px; }
+    .sidebar-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 20px; margin-bottom: 20px; }
+    .sidebar-card h3 { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--dark-border); }
+    .toc-list { list-style: none; padding: 0; }
+    .toc-list li { margin-bottom: 2px; }
+    .toc-list a { font-family: var(--font-ui); font-size: 0.78rem; color: var(--text-muted); text-decoration: none; display: block; padding: 5px 8px; border-radius: 2px; transition: color 0.15s, background 0.15s; }
+    .toc-list a:hover { color: var(--gold-light); background: rgba(201,168,76,0.06); }
+    .toc-list a.toc-active { color: var(--gold-light); background: rgba(201,168,76,0.08); border-left: 2px solid var(--gold); padding-left: 6px; }
+    .toc-toggle-btn { display: none; width: 100%; font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 4px; padding: 12px 16px; cursor: pointer; text-align: left; margin-bottom: 0; align-items: center; justify-content: space-between; }
+    .toc-toggle-btn .toc-chevron { display: inline-block; transition: transform 0.25s; font-style: normal; font-size: 0.8rem; }
+    .toc-toggle-btn.open .toc-chevron { transform: rotate(180deg); }
+    .toc-drawer { overflow: hidden; max-height: 0; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0; }
+    .toc-drawer.open { max-height: 600px; opacity: 1; }
+    .toc-drawer-inner { padding-top: 4px; }
+    @media (max-width: 900px) { .toc-toggle-btn { display: flex; } .sidebar-toc-card .toc-list { border-top: 1px solid var(--dark-border); margin-top: 0; padding-top: 8px; } }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--dark-border); margin: 0 0 36px; }
+
+    /* ── FOOTER ── */
+    footer { position: relative; z-index: 1; background: var(--dark); border-top: 1px solid var(--dark-border); padding: 48px 24px 28px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--dark-border); }
+    .footer-brand .logo { font-family: var(--font-display); font-size: 1rem; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; display: block; }
+    .footer-brand p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+    .footer-col h4 { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 12px; }
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 6px; }
+    .footer-col ul a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-col ul a:hover { color: var(--gold-light); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 1px; color: var(--text-dim); }
+    .footer-tagline { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dim); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) { .page-body { grid-template-columns: 1fr; } aside { position: static; order: -1; } .footer-top { grid-template-columns: 1fr; gap: 28px; } .arch-step:not(:last-child)::after { display: none; } }
+    @media (max-width: 640px) { .arch-step { min-width: 80px; } .compare-table { font-size: 0.78rem; } .hero h1 { letter-spacing: -0.5px; } }
+    @media print { .top-bar, aside, footer { display: none; } body { background: white; color: black; } .page-body { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="/knowledge-base.html" class="btn-back">Return to Knowledge Base</a>
+  </div>
+
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <p class="breadcrumb">
+        <a href="/">Home</a> &nbsp;/&nbsp;
+        <a href="/knowledge-base.html">TacRaven Cybersecurity Knowledge Base</a> &nbsp;/&nbsp;
+        What is NDR?
+      </p>
+      <h1>What is <span class="accent">NDR</span>?</h1>
+      <p class="hero-subtitle">Understanding Network Detection and Response -- how NDR platforms analyze network traffic to detect threats inside modern networks, identify lateral movement, and strengthen security operations where perimeter tools leave off.</p>
+      <p class="hero-intro">
+        Perimeter defenses were built on an assumption that no longer holds: that threats come from outside the network. Today's attackers gain initial access and then move quietly through internal systems for days or weeks before triggering any detectable alarm. Network Detection and Response (NDR) is the technology category designed to close that gap -- continuously analyzing traffic inside the network to surface malicious behavior that firewalls, gateways, and log-based tools cannot see.
+      </p>
+      <div class="meta-bar">
+        <span class="meta-tag cat">Security Technologies</span>
+        <span class="meta-tag">Difficulty: Intermediate</span>
+        <span class="meta-tag">Read Time: ~6 Minutes</span>
+        <span class="meta-tag">Updated: 2025</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-body">
+    <article>
+
+      <!-- SITUATION SELECTOR -->
+      <div class="selector-wrap" id="situationSelector">
+        <div class="selector-header">
+          <div class="selector-title">// Where Does NDR Fit in My Environment?</div>
+        </div>
+        <div class="selector-options" role="group" aria-label="Environment type selector">
+          <button class="selector-opt" data-key="no-visibility" type="button">Limited network visibility</button>
+          <button class="selector-opt" data-key="lateral-concern" type="button">Worried about lateral movement</button>
+          <button class="selector-opt" data-key="siem-only" type="button">SIEM-only shop right now</button>
+          <button class="selector-opt" data-key="post-breach" type="button">Recovering from an incident</button>
+          <button class="selector-opt" data-key="zero-trust" type="button">Building Zero Trust</button>
+          <button class="selector-opt" data-key="defense-ic" type="button">Defense / IC environment</button>
+        </div>
+        <div class="selector-result" id="situationResult" aria-live="polite">
+          <p class="selector-placeholder">Select your situation above to see where NDR adds the most value.</p>
+
+          <div class="selector-result-inner" data-result="no-visibility">
+            <div class="selector-result-tag">Recommended Focus</div>
+            <div class="selector-result-heading">Start with Sensor Placement and Baseline Establishment</div>
+            <p class="selector-result-body">Without network telemetry, you are flying blind after any perimeter breach. The first NDR priority is deploying sensors at network aggregation points and allowing the platform time to build behavioral baselines. Even partial east-west coverage is dramatically better than none. Pair NDR outputs with your <strong>SIEM</strong> from day one to give analysts correlated context on every alert.</p>
+            <a href="#how-ndr-works" class="cta-btn">Read: How NDR Works</a>
+          </div>
+
+          <div class="selector-result-inner" data-result="lateral-concern">
+            <div class="selector-result-tag">Recommended Focus</div>
+            <div class="selector-result-heading">NDR Is Your Primary Defense Against Lateral Movement</div>
+            <p class="selector-result-body">Lateral movement happens in east-west traffic that SIEM log correlation and endpoint tools routinely miss. NDR's behavioral models detect the authentication anomalies, unusual service access, and abnormal internal connection patterns that characterize post-compromise traversal. Prioritize detection tuning around <strong>credential misuse</strong> and <strong>internal reconnaissance</strong> patterns once the behavioral baseline is established.</p>
+            <a href="#use-cases" class="cta-btn">Read: Real-World Use Cases</a>
+          </div>
+
+          <div class="selector-result-inner" data-result="siem-only">
+            <div class="selector-result-tag">Recommended Focus</div>
+            <div class="selector-result-heading">NDR Fills the Telemetry Gap Your SIEM Cannot</div>
+            <p class="selector-result-body">A SIEM ingests logs -- but logs are generated by individual systems and often do not capture what is happening between them. NDR contributes raw network telemetry: who talked to whom, how much data moved, and whether the behavior matches established baselines. This is especially valuable for detecting <strong>C2 beaconing</strong> and <strong>data exfiltration</strong> that never generates a single log event on any endpoint.</p>
+            <a href="#ndr-vs-tools" class="cta-btn">Read: NDR vs Other Tools</a>
+          </div>
+
+          <div class="selector-result-inner" data-result="post-breach">
+            <div class="selector-result-tag">Recommended Focus</div>
+            <div class="selector-result-heading">Use NDR for Scope Determination and Persistence Hunting</div>
+            <p class="selector-result-body">After a confirmed breach, the most urgent question is scope: how far did the attacker get, what systems did they touch, and are they still present? NDR's forensic capabilities -- stored traffic history, connection records, and behavioral timelines -- let investigators reconstruct attacker activity backward from the point of discovery. If NDR was not deployed before the incident, instrument the environment now to detect any <strong>residual access or persistence mechanisms</strong>.</p>
+            <a href="#capabilities" class="cta-btn">Read: Key Capabilities</a>
+          </div>
+
+          <div class="selector-result-inner" data-result="zero-trust">
+            <div class="selector-result-tag">Recommended Focus</div>
+            <div class="selector-result-heading">NDR Provides the Continuous Verification Zero Trust Requires</div>
+            <p class="selector-result-body">Zero Trust declares that no user or system is implicitly trusted -- but that principle is only enforceable with continuous monitoring of actual behavior. NDR watches how every authenticated entity behaves on the network after access is granted. When a trusted account begins communicating with unusual internal systems or exfiltrating data to an unexpected destination, NDR surfaces it. Without network behavioral visibility, Zero Trust remains a policy on paper.</p>
+            <a href="#architecture" class="cta-btn">Read: NDR in Modern Architecture</a>
+          </div>
+
+          <div class="selector-result-inner" data-result="defense-ic">
+            <div class="selector-result-tag">Recommended Focus</div>
+            <div class="selector-result-heading">Air-Gap and Enclave Visibility Are NDR's Home Field</div>
+            <p class="selector-result-body">Defense and intelligence environments face sophisticated, persistent adversaries who specifically target network blind spots. NDR's passive sensor architecture is well-suited for sensitive enclaves where agent deployment is restricted or air-gap policies limit external connectivity. Focus on <strong>east-west segmentation monitoring</strong> between classification levels, unusual protocol usage, and covert channel detection.</p>
+            <a href="#use-cases" class="cta-btn">Read: Real-World Use Cases</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 1: Visibility Problem -->
+      <section class="kb-section" id="visibility-problem" aria-labelledby="s-vis">
+        <h2 id="s-vis">The Visibility Problem in Modern Networks</h2>
+        <p>For most of cybersecurity's history, the defensive model was straightforward: build a strong perimeter and keep threats out. Firewalls, intrusion prevention systems, and gateway tools were designed for exactly this model. They monitored what entered and exited the network and blocked traffic that matched known threat signatures.</p>
+        <p>That model assumed attackers were always on the outside. It no longer reflects how modern intrusions unfold.</p>
+        <p>Today's threat actors are patient and methodical. Once they gain initial access -- through a phishing email, a compromised credential, a supply chain compromise, or an unpatched vulnerability -- they rarely move immediately toward their objective. Instead, they operate quietly within the network: mapping systems, escalating privileges, harvesting credentials, and staging data for exfiltration. This internal activity is called <strong>lateral movement</strong>, and it is the phase where the most damaging breaches are decided.</p>
+        <p>Lateral movement happens in east-west traffic -- communications between internal systems. Traditional perimeter defenses never examine this traffic. By the time conventional tools detect a compromise, an attacker may have been active for weeks, with deep access to high-value systems. Closing this visibility gap is the core problem that Network Detection and Response was built to address.</p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- SECTION 2: What Is NDR? -->
+      <section class="kb-section" id="what-is-ndr" aria-labelledby="s-ndr">
+        <h2 id="s-ndr">What Is Network Detection and Response (NDR)?</h2>
+        <p><strong>Network Detection and Response (NDR)</strong> is a category of cybersecurity technology that continuously monitors and analyzes network traffic to detect threats, investigate suspicious activity, and support incident response. Where perimeter tools guard the boundary, NDR focuses on what is happening inside the network -- between systems, across segments, and through encrypted channels.</p>
+        <p>NDR solutions ingest raw network traffic or flow data, process it in near real time, and apply multiple detection techniques to identify behavior that deviates from established norms or matches known threat patterns. Unlike signature-based tools that look for exact matches to known attack fingerprints, mature NDR platforms use a combination of approaches to detect both known threats and novel attack techniques.</p>
+        <div class="card">
+          <p>At its core, NDR functions as an <strong>internal network intelligence layer</strong>. Deployed across east-west and north-south traffic paths, NDR gives security teams continuous visibility into how every networked system actually behaves -- including systems that generate no logs, do not support agents, and are not covered by any other detection control in the environment.</p>
+        </div>
+        <h3>Core NDR Detection Techniques</h3>
+        <ul class="feature-list">
+          <li><strong>Traffic Analysis:</strong> Inspecting network packets, flow records, and protocol metadata to understand communication patterns -- who is talking to whom, how much data is moving, and whether protocols are being used as designed.</li>
+          <li><strong>Behavioral Analytics:</strong> Establishing baselines of normal activity for individual hosts, user accounts, and network segments, then flagging deviations that may indicate compromise or misuse.</li>
+          <li><strong>Machine Learning:</strong> Training models on historical traffic data to identify subtle anomalies -- communication timing, data volume outliers, unusual connection sequences -- that rule-based systems would miss entirely.</li>
+          <li><strong>Threat Intelligence Correlation:</strong> Matching observed network indicators against known malicious infrastructure: attacker IP addresses, command-and-control domains, malware communication signatures, and campaign-specific patterns.</li>
+        </ul>
+        <p>NDR platforms monitor both <strong>east-west traffic</strong> -- lateral communications between internal systems -- and <strong>north-south traffic</strong> -- data moving between internal systems and external destinations. This dual visibility distinguishes NDR from perimeter-focused tools and makes it uniquely effective at detecting post-compromise activity before it reaches its objective.</p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- SECTION 3: How NDR Works -->
+      <section class="kb-section" id="how-ndr-works" aria-labelledby="s-how">
+        <h2 id="s-how">How NDR Works</h2>
+        <p>NDR solutions are built around a pipeline that collects, processes, and analyzes network data continuously and at scale. While implementations vary by vendor and deployment environment, most NDR platforms share a common operational architecture built around the same core components.</p>
+        <p>The following illustrates the core operational flow of an NDR deployment, from initial data collection through multi-layer detection and analyst-led response.</p>
+
+        <div class="arch-flow">
+          <div class="arch-step"><span class="step-num">01</span><span class="step-name">Sensor Collection</span></div>
+          <div class="arch-step"><span class="step-num">02</span><span class="step-name">Protocol Decoding</span></div>
+          <div class="arch-step"><span class="step-num">03</span><span class="step-name">Behavior Modeling</span></div>
+          <div class="arch-step"><span class="step-num">04</span><span class="step-name">Threat Detection</span></div>
+          <div class="arch-step"><span class="step-num">05</span><span class="step-name">Analyst Response</span></div>
+        </div>
+
+        <h3>Network Sensors</h3>
+        <p>Physical or virtual sensors are deployed at strategic points across the network -- typically at core switching layers, data center interconnects, and segment boundaries. Sensors operate passively, capturing traffic without disrupting network operations. In cloud environments, equivalent telemetry is collected through virtual taps, flow log integrations, and cloud provider monitoring APIs.</p>
+
+        <h3>Traffic Collection and Protocol Decoding</h3>
+        <p>Sensors forward raw packet data, NetFlow or IPFIX records, or enriched metadata to a central analysis platform. Collected traffic is decoded at the protocol level: the platform identifies what applications and services are communicating, whether protocols are being used as designed, and whether any protocol violations or unusual encapsulation patterns are present that might indicate tunneling or covert channels.</p>
+
+        <h3>Behavior Modeling</h3>
+        <p>The platform constructs behavioral models for individual hosts, user accounts, and network segments over time. These baselines account for time-of-day patterns, typical data transfer volumes, expected service connections, and normal peer communication patterns. A database server that never communicates with workstations suddenly making internal connections to dozens of endpoints is an immediate anomaly -- even when the traffic is structurally valid and uses a legitimate protocol.</p>
+
+        <h3>Multi-Layer Threat Detection</h3>
+        <p>NDR platforms apply multiple detection engines simultaneously. Signature-based rules flag known threat indicators in real time. Behavioral rules surface suspicious patterns: port scans, credential spraying, unusual data staging. Unsupervised machine learning identifies anomalies outside any predefined category. Alerts are generated with contextual detail -- affected hosts, activity timeline, observed techniques -- giving analysts the information needed to make fast, accurate triage decisions.</p>
+
+        <div class="scenario-accordion" data-accordion>
+          <button class="scenario-trigger" aria-expanded="false">
+            <span class="scenario-tag">Scenario</span>
+            <span class="scenario-trigger-text">NDR in Action: Detecting a Beaconing Implant</span>
+            <svg class="scenario-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="scenario-body">
+            <div class="scenario-inner">
+              <div class="scenario-steps">
+                <div class="scenario-step">
+                  <div class="scenario-step-num">01</div>
+                  <div class="scenario-step-content">
+                    <div class="scenario-step-platform">Implant Establishes C2</div>
+                    <p class="scenario-step-desc">An employee opens a malicious document delivered via a targeted phishing email. A macro executes a second-stage loader that drops a lightweight implant on the workstation. The implant begins sending periodic HTTPS beacons to an attacker-controlled server hosted on a legitimate cloud provider, firing every 4 minutes and 12 seconds.</p>
+                  </div>
+                </div>
+                <div class="scenario-step">
+                  <div class="scenario-step-num">02</div>
+                  <div class="scenario-step-content">
+                    <div class="scenario-step-platform">NDR Detects the Pattern</div>
+                    <p class="scenario-step-desc">The NDR platform analyzes outbound traffic from the infected workstation. Although the HTTPS traffic appears legitimate and the destination IP has not been flagged in any threat intelligence feed, the behavioral model flags the connection: the timing interval is machine-precise, the payload sizes are unusually consistent, and the destination domain was registered three weeks ago. A beaconing anomaly alert fires with full timeline context.</p>
+                  </div>
+                </div>
+                <div class="scenario-step">
+                  <div class="scenario-step-num">03</div>
+                  <div class="scenario-step-content">
+                    <div class="scenario-step-platform">Analyst Investigation</div>
+                    <p class="scenario-step-desc">The SOC analyst reviews the alert and pulls the full traffic timeline for the affected host. Historical records show beaconing began immediately after the malicious document was opened three hours earlier. The analyst isolates the workstation via EDR integration and submits the destination domain and TLS certificate fingerprint to threat intelligence for enrichment and campaign correlation.</p>
+                  </div>
+                </div>
+                <div class="scenario-step">
+                  <div class="scenario-step-num">04</div>
+                  <div class="scenario-step-content">
+                    <div class="scenario-step-platform">Scope Determination</div>
+                    <p class="scenario-step-desc">The analyst uses NDR's historical traffic data to search for other workstations communicating with the same attacker infrastructure. Two additional hosts are identified with matching beacon patterns -- evidence of a broader phishing campaign. All three endpoints are isolated and the incident is escalated for full forensic investigation and remediation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="attck-callout">
+          <span class="attck-badge">ATT&amp;CK</span>
+          <div class="attck-body">
+            <div class="attck-id">T1566.001 — Spearphishing Attachment &rarr; T1059.005 — Visual Basic &rarr; T1071.001 — Web Protocols C2</div>
+            <p class="attck-desc">The scenario maps a common post-initial-access kill chain. The phishing document (<strong>T1566.001</strong>) delivers a macro-enabled dropper (<strong>T1059.005</strong>) that establishes HTTPS-based command and control (<strong>T1071.001</strong>). NDR detects this through timing analysis and behavioral anomaly detection even when signature-based tools see nothing suspicious -- because the traffic is structurally valid HTTPS originating from a clean, enrolled host.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- SECTION 4: Key Capabilities -->
+      <section class="kb-section" id="capabilities" aria-labelledby="s-cap">
+        <h2 id="s-cap">Key Capabilities of NDR</h2>
+        <p>Mature NDR platforms deliver a range of capabilities that extend well beyond basic traffic monitoring. The following functions represent the core value organizations rely on NDR to provide across detection, investigation, and response workflows.</p>
+
+        <div class="tier-grid">
+          <div class="tier-card">
+            <span class="tier-badge tier-1">Detection</span>
+            <h4>Threat Detection</h4>
+            <p>Identifies C2 communications, protocol abuse, port scanning, and anomalous data transfers across internal and perimeter traffic using signatures, behavioral rules, and ML simultaneously.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-2">Lateral Movement</span>
+            <h4>Lateral Movement Detection</h4>
+            <p>Surfaces post-compromise traversal through unusual authentication patterns, unexpected peer-to-peer connections, and access to services a host has never touched -- invisible to endpoint logs alone.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-3">Encrypted Traffic</span>
+            <h4>Encrypted Traffic Analysis</h4>
+            <p>Analyzes threats concealed within HTTPS and other encrypted channels using metadata analysis, TLS certificate inspection, traffic timing, and JA3 fingerprinting -- without decryption.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-4">Forensics</span>
+            <h4>Incident Investigation</h4>
+            <p>Provides forensic-grade network visibility: reconstruct attacker activity backward from discovery, identify all affected hosts, and build a complete event timeline from stored traffic records.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-5">Behavioral Analytics</span>
+            <h4>Behavioral Modeling</h4>
+            <p>Builds and maintains normal behavior baselines for hosts, accounts, and segments over time -- flagging statistical deviations that indicate compromise or misuse even without signatures.</p>
+          </div>
+          <div class="tier-card">
+            <span class="tier-badge tier-1">Intelligence</span>
+            <h4>Threat Intelligence Correlation</h4>
+            <p>Correlates live network traffic against curated feeds of malicious IPs, domains, and active campaign IOCs to rapidly identify known threat infrastructure without analyst effort.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- SECTION 5: NDR vs Other Tools -->
+      <section class="kb-section" id="ndr-vs-tools" aria-labelledby="s-compare">
+        <h2 id="s-compare">NDR vs. Traditional Network Security Tools</h2>
+        <p>NDR is frequently compared to adjacent security technologies. Understanding the distinctions clarifies where NDR adds unique value and why it functions best as part of an integrated security stack rather than a standalone replacement for any single existing tool.</p>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Technology</th>
+              <th>Primary Function</th>
+              <th>Key Difference from NDR</th>
+              <th>NDR Relationship</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>IDS</strong></td>
+              <td>Detects known threats using signatures against network traffic</td>
+              <td>Signature-only; no behavioral or ML detection; no response capability; limited east-west coverage</td>
+              <td>NDR replaces and extends IDS with behavioral and ML detection layers</td>
+            </tr>
+            <tr>
+              <td><strong>IPS</strong></td>
+              <td>Blocks known malicious traffic inline at perimeter boundaries</td>
+              <td>Prevention-focused at the edge; no internal traffic visibility; cannot detect behavioral anomalies</td>
+              <td>NDR detects what bypasses or already passed the perimeter inline block</td>
+            </tr>
+            <tr>
+              <td><strong>SIEM</strong></td>
+              <td>Aggregates and correlates log events from across the environment</td>
+              <td>Log-centric; dependent on systems generating and forwarding logs; no raw network telemetry</td>
+              <td>NDR feeds network telemetry into SIEM for enriched, correlated detection and investigation</td>
+            </tr>
+            <tr>
+              <td><strong>EDR</strong></td>
+              <td>Monitors endpoint processes, file activity, and host-based behavior</td>
+              <td>Host-centric; cannot observe network behavior between systems; limited to enrolled endpoints only</td>
+              <td>NDR and EDR provide complementary network and endpoint telemetry layers</td>
+            </tr>
+            <tr>
+              <td><strong>NTA / NetFlow</strong></td>
+              <td>Aggregates flow-level metadata for capacity planning and basic visibility</td>
+              <td>No behavioral analytics or threat detection; metadata-only; no packet-level analysis capability</td>
+              <td>NDR extends NTA with full detection and response on the same underlying telemetry</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>The critical takeaway is that NDR is not a replacement for SIEM, EDR, or perimeter controls. It fills a distinct telemetry gap those tools leave unaddressed. When all three layers -- endpoint, log, and network -- feed into a coordinated SOC workflow, analysts gain the cross-domain context needed to detect sophisticated attacks that deliberately avoid generating clean signals in any single data source.</p>
+
+        <div class="attck-callout">
+          <span class="attck-badge">ATT&amp;CK</span>
+          <div class="attck-body">
+            <div class="attck-id">T1021.002 — SMB/Windows Admin Shares &rarr; T1550.002 — Pass the Hash &rarr; T1046 — Network Service Discovery</div>
+            <p class="attck-desc">Classic lateral movement techniques generate distinct network signatures. <strong>SMB-based movement (T1021.002)</strong> produces internal authentication traffic NDR models flag when originating from unexpected hosts. <strong>Pass-the-hash (T1550.002)</strong> is invisible to endpoint tools on the originating system but observable as unusual internal authentication at the network layer. <strong>Network scanning (T1046)</strong> generates connection attempt patterns no legitimate process replicates at volume.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- SECTION 6: Use Cases -->
+      <section class="kb-section" id="use-cases" aria-labelledby="s-use">
+        <h2 id="s-use">Real-World NDR Use Cases</h2>
+        <p>Organizations deploy NDR to address detection challenges that other tools cannot adequately cover. The following use cases represent the most common scenarios where NDR provides measurable detection and investigative value.</p>
+
+        <div class="usecase-card">
+          <h4>Command and Control Traffic Detection</h4>
+          <p>Malware implants must communicate with attacker infrastructure to receive instructions, exfiltrate data, and stage follow-on tools. Even when C2 traffic is encrypted and routed through legitimate cloud hosting providers, NDR's behavioral models identify telltale signatures: machine-precise beaconing intervals, unusually consistent payload sizes, and communication with domains that are newly registered or have unusual certificate characteristics. Many C2 channels are caught by NDR when every other detection layer misses them entirely.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Compromised Internal System Identification</h4>
+          <p>Infected or compromised hosts often exhibit behavioral changes at the network level before any alert fires in a SIEM or endpoint tool. Unusual scanning of internal subnets, unexpected service connections, and abnormal outbound data volumes are all observable patterns NDR identifies early -- providing defenders a window for containment before the attacker escalates privileges or completes their objective.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Data Exfiltration Detection</h4>
+          <p>Large or unusual data transfers to external destinations -- particularly those occurring during off-hours, involving cloud storage services inconsistent with normal business use, or using protocols not typically seen from a given host -- are detectable patterns NDR surfaces reliably. This is especially critical for detecting slow-and-low exfiltration techniques designed to blend with normal data transfer activity over extended periods.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Lateral Movement Monitoring</h4>
+          <p>After establishing a foothold, attackers pivot through internal systems using credential theft, remote service exploitation, and administrative tools like PsExec or WMI. NDR tracks authentication patterns, internal service access, and connection graphs -- flagging when an endpoint begins communicating with systems it has no historical relationship with, or when credential use patterns suddenly change in ways that indicate compromise.</p>
+        </div>
+
+        <div class="usecase-card">
+          <h4>Defense and Intelligence Enclave Monitoring</h4>
+          <p>Defense and intelligence environments face sophisticated, persistent adversaries who specifically target network blind spots. NDR's passive sensor architecture is well-suited for sensitive enclaves where agent deployment is restricted or air-gap policies limit external connectivity -- providing east-west segmentation monitoring between classification levels and covert channel detection without requiring active instrumentation of monitored systems.</p>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- SECTION 7: Benefits -->
+      <section class="kb-section" id="benefits" aria-labelledby="s-ben">
+        <h2 id="s-ben">Benefits of NDR</h2>
+        <p>Organizations that deploy NDR gain capabilities that are structurally difficult to achieve through other means -- not because other tools are inadequate, but because network-level visibility requires network-level telemetry that only purpose-built sensors can collect.</p>
+
+        <h3>Improved Network Visibility</h3>
+        <p>NDR surfaces communication patterns, connection relationships, and data transfer behaviors that were previously invisible to security teams. Analyst awareness extends beyond log events to include the behavioral record of every networked system -- including systems that generate no logs, do not support agents, and are not covered by any other security control in the environment.</p>
+
+        <h3>Faster Threat Detection</h3>
+        <p>Behavioral analytics and machine learning allow NDR platforms to detect threats in near real time -- dramatically reducing the dwell time between initial compromise and detection compared to approaches dependent solely on log correlation or reactive incident discovery. Shorter dwell times directly reduce the scope, cost, and recovery time of security incidents.</p>
+
+        <h3>Stronger Incident Response</h3>
+        <p>When an incident is confirmed, NDR provides the network evidence that accelerates investigation and scope determination. Analysts can trace attacker activity backward through stored traffic history, identify every affected system in the blast radius, and build an accurate event timeline -- work that would otherwise require days of log correlation across dozens of individual systems.</p>
+
+        <h3>Advanced Threat Coverage</h3>
+        <p>Sophisticated adversaries deliberately avoid generating the signature-based alerts that conventional tools rely on. NDR's behavioral approach is resilient against threat actors who operate carefully below the threshold of obvious indicators -- detecting the subtle network-level artifacts that patient, skilled attackers cannot fully suppress regardless of how carefully they operate.</p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- SECTION 8: Limitations -->
+      <section class="kb-section" id="limitations" aria-labelledby="s-lim">
+        <h2 id="s-lim">Limitations of NDR</h2>
+        <p>NDR is a powerful detection capability, but deploying it effectively requires understanding the operational challenges it introduces. Organizations that approach NDR deployment without realistic expectations often underutilize the technology or abandon tuning efforts before the investment delivers value.</p>
+
+        <div class="callout-warning">
+          <strong>&#9888; Data Volume and Infrastructure Cost</strong>
+          <p>High-speed enterprise networks generate enormous volumes of traffic. Processing and retaining this data -- particularly when full packet capture rather than flow-level metadata is required -- creates significant infrastructure and storage requirements. Cost scales with network throughput, and large distributed environments require careful architecture planning to avoid gaps in coverage or unsustainable cost growth.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>&#9888; Tuning Complexity and Alert Fidelity</strong>
+          <p>Behavioral baselines require time to establish and continuous maintenance as the environment changes -- new system deployments, application rollouts, seasonal traffic patterns, and organizational changes all require recalibration. Poorly tuned NDR deployments generate high false positive volumes. Analyst teams that spend significant time dismissing low-fidelity alerts lose confidence in the system and begin treating it as background noise, negating much of the detection value it should provide.</p>
+        </div>
+
+        <div class="callout-warning">
+          <strong>&#9888; Analyst Skill Dependency</strong>
+          <p>NDR surfaces complex network-level findings that require experience to interpret correctly. Unlike a simple signature alert with a clear verdict, behavioral detections often require contextual judgment: does this traffic pattern represent a real threat, a misconfigured system, a new business application, or expected administrative activity? The analytical value of an NDR deployment is closely tied to the capability and experience of the team operating it.</p>
+        </div>
+
+        <p>These limitations reinforce the principle that NDR works best when integrated thoughtfully into an organization's overall security program -- aligned with existing SOC workflows, SIEM correlation, and EDR coverage -- rather than treated as a standalone silver bullet for network security.</p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- SECTION 9: Modern Architecture -->
+      <section class="kb-section" id="architecture" aria-labelledby="s-arch">
+        <h2 id="s-arch">NDR in Modern Security Architecture</h2>
+        <p>NDR has evolved from a standalone network monitoring tool into a foundational telemetry source within modern security architectures. Its role is increasingly defined by how it integrates with the broader security frameworks and operational programs that organizations are building around it.</p>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Architecture</th>
+              <th>NDR Role</th>
+              <th>Integration Benefit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Zero Trust</strong></td>
+              <td>Provides continuous behavioral monitoring across all internal communications, detecting when legitimate credentials or authorized systems are being misused</td>
+              <td>Converts "never trust, always verify" from an identity policy into an operationally enforced network posture backed by behavioral evidence</td>
+            </tr>
+            <tr>
+              <td><strong>Security Operations Center</strong></td>
+              <td>Functions as a primary source of network telemetry feeding analyst workflows -- enriching SIEM correlation and providing network-level context for accurate triage</td>
+              <td>Generates the hunting data proactive threat hunters use to search for threats automated detections have missed, particularly during long dwell-time intrusions</td>
+            </tr>
+            <tr>
+              <td><strong>XDR</strong></td>
+              <td>Provides the network layer of the XDR data model, enabling cross-domain correlation between endpoint behavioral signals and network-level evidence</td>
+              <td>Connects network evidence to endpoint and identity signals, building complete attacker narratives no single telemetry source could produce on its own</td>
+            </tr>
+            <tr>
+              <td><strong>Cloud Security</strong></td>
+              <td>Extends detection coverage to cloud infrastructure through virtual taps, flow log integrations, and cloud provider monitoring APIs</td>
+              <td>Unifies monitoring across hybrid environments so threats targeting cloud workloads receive the same analyst attention as on-premises network threats</td>
+            </tr>
+            <tr>
+              <td><strong>SIEM / SOAR</strong></td>
+              <td>Feeds raw network telemetry and behavioral alerts into SIEM for enriched, correlated detection -- network data that logs from individual systems cannot provide</td>
+              <td>Leverages existing SIEM and SOAR investments, adding a network evidence layer to platforms the organization has already deployed and operationalized</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The net effect is that NDR strengthens detection and response capability across the full breadth of a modern IT environment -- from on-premises infrastructure to cloud workloads -- without requiring the organization to independently staff and manage every platform involved. As enterprise environments grow more complex and attack surfaces expand, this architectural flexibility becomes progressively more valuable.</p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- SECTION 10: Key Takeaways -->
+      <section class="kb-section" id="takeaways" aria-labelledby="s-take">
+        <h2 id="s-take">Key Takeaways</h2>
+        <ul class="takeaway-list">
+          <li>NDR analyzes network traffic continuously to detect malicious and anomalous behavior that perimeter and log-based tools cannot observe -- addressing the east-west visibility gap that exists in virtually every enterprise network.</li>
+          <li>The technology is specifically designed to detect post-compromise lateral movement: the internal traversal phase where the most damaging breaches are decided, long before attackers reach their final objective.</li>
+          <li>Core detection techniques include behavioral analytics, machine learning, traffic analysis, signature matching, and threat intelligence correlation applied simultaneously -- providing coverage across known threats and novel attack techniques with no prior signature.</li>
+          <li>NDR does not replace SIEM, EDR, or perimeter controls -- it fills a distinct telemetry gap that those tools leave unaddressed by design. The greatest value comes when all three layers feed into a coordinated SOC workflow.</li>
+          <li>Key use cases include C2 beaconing detection, lateral movement identification, compromised host discovery, data exfiltration monitoring, and forensic scope determination during active incidents.</li>
+          <li>Effective NDR deployment requires proper sensor placement, baseline tuning time, skilled analysts, and integration with broader SOC workflows. Organizations that deploy NDR without investment in these supporting elements consistently underutilize the technology.</li>
+          <li>NDR is a foundational component of Zero Trust enforcement, SOC operations, and XDR data models in modern security architecture -- a role that becomes more central as enterprise environments grow more complex and distributed.</li>
+        </ul>
+      </section>
+
+      <!-- FEEDBACK WIDGET -->
+      <div class="feedback-wrap" role="region" aria-label="Page feedback">
+        <span class="feedback-label">Was this article helpful?</span>
+        <div class="feedback-btns">
+          <button class="feedback-btn" id="feedbackYes" type="button">
+            <svg viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+            Yes
+          </button>
+          <button class="feedback-btn" id="feedbackNo" type="button">
+            <svg viewBox="0 0 24 24"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>
+            No
+          </button>
+        </div>
+        <span class="feedback-thanks" id="feedbackThanks">Thanks for your feedback!</span>
+      </div>
+
+      <!-- CTA BLOCK -->
+      <div class="cta-block">
+        <h3>// Analyze Threats with BlackFeather</h3>
+        <p>BlackFeather provides air-gapped threat intelligence analysis and MITRE ATT&amp;CK mapping for defense and intelligence professionals -- zero cloud dependency, single-file deployment.</p>
+        <a href="/blackfeather" class="cta-btn">Learn About BlackFeather</a>
+        <a href="/talonprep" class="cta-btn" style="margin-left:10px;">Free Security+ Study Tool</a>
+      </div>
+
+      <!-- REFERENCES -->
+      <section class="kb-section" id="references" aria-labelledby="s-ref" style="margin-top:36px;">
+        <h2 id="s-ref">References</h2>
+        <ol class="ref-list">
+          <li>National Institute of Standards and Technology. <em>NIST SP 800-61 Rev. 2: Computer Security Incident Handling Guide.</em> <a href="https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>Cybersecurity and Infrastructure Security Agency. <em>Incident Response Recommendations and Best Practices.</em> <a href="https://www.cisa.gov/resources-tools/resources/incident-response-recommendations-and-best-practices" target="_blank" rel="noopener noreferrer">cisa.gov</a></li>
+          <li>MITRE ATT&amp;CK. <em>Enterprise Tactics and Techniques.</em> <a href="https://attack.mitre.org/tactics/enterprise/" target="_blank" rel="noopener noreferrer">attack.mitre.org</a></li>
+          <li>National Institute of Standards and Technology. <em>NIST SP 800-207: Zero Trust Architecture.</em> <a href="https://csrc.nist.gov/publications/detail/sp/800-207/final" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a></li>
+          <li>Cybersecurity and Infrastructure Security Agency. <em>Zero Trust Maturity Model.</em> <a href="https://www.cisa.gov/zero-trust-maturity-model" target="_blank" rel="noopener noreferrer">cisa.gov</a></li>
+          <li>TacRaven Solutions. <em>TacRaven Cybersecurity Knowledge Base.</em> <a href="https://tacraven.com/knowledge-base.html" target="_blank" rel="noopener noreferrer">tacraven.com/knowledge-base.html</a></li>
+        </ol>
+      </section>
+
+      <!-- RELATED TOPICS -->
+      <section class="kb-section" id="related" aria-labelledby="s-rel">
+        <h2 id="s-rel">Related Topics</h2>
+        <div class="related-grid">
+          <a href="/knowledge-base/siem.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is SIEM?</span></a>
+          <a href="/knowledge-base/soar.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is SOAR?</span></a>
+          <a href="/knowledge-base/edr.html" class="related-link"><span class="rl-label">Endpoint Security</span><span class="rl-title">What is EDR?</span></a>
+          <a href="/knowledge-base/xdr.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is XDR?</span></a>
+          <a href="/knowledge-base/mdr.html" class="related-link"><span class="rl-label">Security Services</span><span class="rl-title">What is MDR?</span></a>
+          <a href="/knowledge-base/ueba.html" class="related-link"><span class="rl-label">Security Operations</span><span class="rl-title">What is UEBA?</span></a>
+          <a href="/security-operations.html" class="related-link"><span class="rl-label">Security Architecture</span><span class="rl-title">Modern Security Operations</span></a>
+          <a href="/knowledge-base/zero-trust.html" class="related-link"><span class="rl-label">Security Architecture</span><span class="rl-title">Zero Trust Architecture</span></a>
+        </div>
+      </section>
+
+    </article>
+
+    <aside aria-label="Article navigation">
+      <div class="sidebar-card sidebar-toc-card">
+        <button class="toc-toggle-btn" id="tocToggle" aria-expanded="false" aria-controls="tocDrawer">
+          Contents <i class="toc-chevron">&#9662;</i>
+        </button>
+        <h3 class="toc-heading" style="display:none;" aria-hidden="true">Contents</h3>
+        <div class="toc-drawer" id="tocDrawer">
+          <div class="toc-drawer-inner">
+            <ul class="toc-list" id="tocList">
+              <li><a href="#visibility-problem">The Visibility Problem</a></li>
+              <li><a href="#what-is-ndr">What Is NDR?</a></li>
+              <li><a href="#how-ndr-works">How NDR Works</a></li>
+              <li><a href="#capabilities">Key Capabilities</a></li>
+              <li><a href="#ndr-vs-tools">NDR vs. Other Tools</a></li>
+              <li><a href="#use-cases">Real-World Use Cases</a></li>
+              <li><a href="#benefits">Benefits of NDR</a></li>
+              <li><a href="#limitations">Limitations of NDR</a></li>
+              <li><a href="#architecture">Modern Security Architecture</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+              <li><a href="#references">References</a></li>
+              <li><a href="#related">Related Topics</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Quick Reference</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.65;">
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">FUNCTION</strong><br>
+          Continuous Network Traffic Analysis &amp; Threat Detection<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">CORE CAPABILITIES</strong><br>
+          Behavioral Analytics &nbsp;&#183;&nbsp; ML Detection &nbsp;&#183;&nbsp; Lateral Movement &nbsp;&#183;&nbsp; C2 Detection &nbsp;&#183;&nbsp; Forensic Investigation<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">TRAFFIC COVERAGE</strong><br>
+          East-West (Internal) &nbsp;&#183;&nbsp; North-South (Perimeter) &nbsp;&#183;&nbsp; Encrypted Channels<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">KEY INTEGRATIONS</strong><br>
+          SIEM &nbsp;&#183;&nbsp; EDR &nbsp;&#183;&nbsp; XDR &nbsp;&#183;&nbsp; SOAR &nbsp;&#183;&nbsp; Threat Intelligence<br><br>
+          <strong style="color:var(--gold-light); font-family:var(--font-display); font-size:0.72rem; letter-spacing:1px;">RELATED ARCHITECTURE</strong><br>
+          Zero Trust &nbsp;&#183;&nbsp; SOC &nbsp;&#183;&nbsp; MDR &nbsp;&#183;&nbsp; Cloud Security &nbsp;&#183;&nbsp; XDR
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <hr class="divider" style="margin:0;" />
+
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo">TacRaven Solutions</span>
+          <p>TacRaven Solutions is committed to advancing cybersecurity education. We partner with academic institutions and training programs to help build the next generation of cyber professionals, bridging the gap between classroom instruction and real-world operational practice.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/learning-hub">Learning Hub</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/threat-map">Threat Map</a></li>
+            <li><a href="/intel/weekly/index.html">Weekly Reports</a></li>
+            <li><a href="/knowledge-base.html">Knowledge Base</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/careers.html">Careers</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 TacRaven Solutions LLC. All rights reserved.</p>
+        <p class="footer-tagline">Intelligence-Driven Cybersecurity</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── TOC TOGGLE + ACTIVE STATE ──
+    (function () {
+      function applyTocLayout() {
+        var btn = document.getElementById('tocToggle');
+        var heading = document.querySelector('.toc-heading');
+        var drawer = document.getElementById('tocDrawer');
+        if (!btn || !heading || !drawer) return;
+        if (window.innerWidth > 900) {
+          btn.style.display = 'none'; heading.style.display = 'block'; heading.removeAttribute('aria-hidden');
+          drawer.classList.add('open'); drawer.style.maxHeight = 'none'; drawer.style.opacity = '1';
+          drawer.style.overflow = 'visible'; drawer.style.transition = 'none';
+        } else {
+          btn.style.display = 'flex'; heading.style.display = 'none'; heading.setAttribute('aria-hidden', 'true');
+          drawer.style.transition = ''; drawer.style.overflow = '';
+          if (!drawer.classList.contains('open')) { drawer.style.maxHeight = '0'; drawer.style.opacity = '0'; }
+        }
+      }
+      applyTocLayout();
+      window.addEventListener('resize', applyTocLayout);
+      var tocBtn = document.getElementById('tocToggle');
+      var tocDrawer = document.getElementById('tocDrawer');
+      if (tocBtn && tocDrawer) {
+        tocBtn.addEventListener('click', function () {
+          var isOpen = tocDrawer.classList.toggle('open');
+          tocBtn.classList.toggle('open', isOpen);
+          tocBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        tocDrawer.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            if (window.innerWidth <= 900) { tocDrawer.classList.remove('open'); tocBtn.classList.remove('open'); tocBtn.setAttribute('aria-expanded', 'false'); }
+          });
+        });
+      }
+      var sectionIds = ['visibility-problem','what-is-ndr','how-ndr-works','capabilities','ndr-vs-tools','use-cases','benefits','limitations','architecture','takeaways','references','related'];
+      var tocLinks = {};
+      sectionIds.forEach(function (id) { var link = document.querySelector('#tocList a[href="#' + id + '"]'); if (link) tocLinks[id] = link; });
+      var activeId = null;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            if (id !== activeId) {
+              if (activeId && tocLinks[activeId]) tocLinks[activeId].classList.remove('toc-active');
+              activeId = id;
+              if (tocLinks[id]) tocLinks[id].classList.add('toc-active');
+            }
+          }
+        });
+      }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+      sectionIds.forEach(function (id) { var el = document.getElementById(id); if (el) observer.observe(el); });
+    })();
+
+    // ── SCENARIO ACCORDIONS ──
+    (function() {
+      document.querySelectorAll('[data-accordion]').forEach(function(acc) {
+        var trigger = acc.querySelector('.scenario-trigger');
+        if (!trigger) return;
+        trigger.addEventListener('click', function() {
+          var isOpen = acc.classList.contains('open');
+          acc.classList.toggle('open', !isOpen);
+          trigger.setAttribute('aria-expanded', String(!isOpen));
+          if (typeof gtag !== 'undefined') {
+            var labelEl = acc.querySelector('.scenario-trigger-text');
+            if (!isOpen) gtag('event', 'scenario_expanded', { event_category: 'Engagement', event_label: labelEl ? labelEl.textContent.trim() : 'Unknown' });
+          }
+        });
+      });
+    })();
+
+    // ── SITUATION SELECTOR ──
+    (function() {
+      var opts        = document.querySelectorAll('.selector-opt');
+      var results     = document.querySelectorAll('.selector-result-inner');
+      var placeholder = document.querySelector('.selector-placeholder');
+      opts.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var key = this.getAttribute('data-key');
+          opts.forEach(function(b) { b.classList.remove('active'); });
+          this.classList.add('active');
+          if (placeholder) placeholder.style.display = 'none';
+          results.forEach(function(r) { r.classList.remove('visible'); });
+          var target = document.querySelector('[data-result="' + key + '"]');
+          if (target) target.classList.add('visible');
+          if (typeof gtag !== 'undefined') gtag('event', 'situation_selected', { event_category: 'Engagement', event_label: key });
+        });
+      });
+    })();
+
+    // ── FEEDBACK WIDGET ──
+    (function() {
+      var yesBtn = document.getElementById('feedbackYes');
+      var noBtn  = document.getElementById('feedbackNo');
+      var thanks = document.getElementById('feedbackThanks');
+      function vote(val) {
+        if (yesBtn) yesBtn.classList.remove('voted-yes');
+        if (noBtn)  noBtn.classList.remove('voted-no');
+        if (val === 'yes' && yesBtn) yesBtn.classList.add('voted-yes');
+        if (val === 'no'  && noBtn)  noBtn.classList.add('voted-no');
+        if (thanks) thanks.classList.add('visible');
+        if (typeof gtag !== 'undefined') gtag('event', 'article_feedback', { event_category: 'Engagement', event_label: val, article_id: 'ndr' });
+      }
+      if (yesBtn) yesBtn.addEventListener('click', function() { vote('yes'); });
+      if (noBtn)  noBtn.addEventListener('click',  function() { vote('no'); });
+    })();
+
+    // ── SCROLL DEPTH + SECTION VIEWS + TIME ON PAGE ──
+    (function() {
+      var scrollMilestones = [25, 50, 75, 90];
+      var firedMilestones  = new Set();
+      function getScrollPct() {
+        var el = document.documentElement;
+        var scrolled = el.scrollTop || document.body.scrollTop;
+        var total    = el.scrollHeight - el.clientHeight;
+        return total > 0 ? Math.round((scrolled / total) * 100) : 0;
+      }
+      window.addEventListener('scroll', function() {
+        var pct = getScrollPct();
+        scrollMilestones.forEach(function(m) {
+          if (pct >= m && !firedMilestones.has(m)) {
+            firedMilestones.add(m);
+            if (typeof gtag !== 'undefined') gtag('event', 'scroll_depth', { event_category: 'Engagement', event_label: m + '%', scroll_depth_pct: m });
+          }
+        });
+      }, { passive: true });
+      [30, 60, 120, 300].forEach(function(s) {
+        setTimeout(function() {
+          if (typeof gtag !== 'undefined') gtag('event', 'time_on_page', { event_category: 'Engagement', event_label: s + 's', seconds_on_page: s });
+        }, s * 1000);
+      });
+    })();
+  </script>
+
+</body>
+</html>
