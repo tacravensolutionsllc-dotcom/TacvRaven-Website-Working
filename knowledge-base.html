@@ -13,9 +13,21 @@
   <meta property="og:image" content="https://tacraven.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="TacRaven Solutions – Cybersecurity Knowledge Base" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://tacraven.com/og-image.png" />
   <link rel="canonical" href="https://tacraven.com/knowledge-base.html" />
+
+  <!-- ===================================================
+       GOOGLE ANALYTICS 4
+  =================================================== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEYM947EG8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PEYM947EG8');
+  </script>
 
   <!-- ===================================================
        JSON-LD STRUCTURED DATA - ItemList schema
@@ -29,7 +41,7 @@
     "name": "Cybersecurity Knowledge Base",
     "description": "Plain-language explanations of the most important cybersecurity technologies, frameworks, and operational concepts.",
     "url": "https://tacraven.com/knowledge-base.html",
-    "numberOfItems": 24,
+    "numberOfItems": 38,
     "itemListElement": [
       { "@type": "ListItem", "position": 1,  "name": "What is SIEM?",                       "url": "https://tacraven.com/siem.html" },
       { "@type": "ListItem", "position": 2,  "name": "What is EDR?",                        "url": "https://tacraven.com/edr.html" },
@@ -51,10 +63,24 @@
       { "@type": "ListItem", "position": 18, "name": "What is Cloud Security?",             "url": "https://tacraven.com/cloud-security.html" },
       { "@type": "ListItem", "position": 19, "name": "What is CSPM?",                       "url": "https://tacraven.com/cspm.html" },
       { "@type": "ListItem", "position": 20, "name": "What is DevSecOps?",                  "url": "https://tacraven.com/devsecops.html" },
-      { "@type": "ListItem", "position": 21, "name": "Security Technologies Guide",         "url": "https://tacraven.com/understand-security-technologies.html" },
-      { "@type": "ListItem", "position": 22, "name": "Compliance & Security Frameworks Guide", "url": "https://tacraven.com/understand-compliance-frameworks.html" },
-      { "@type": "ListItem", "position": 23, "name": "Security Operations Guide",           "url": "https://tacraven.com/understanding-security-operations.html" },
-      { "@type": "ListItem", "position": 24, "name": "Cloud & Identity Security Guide",     "url": "https://tacraven.com/understand-cloud-identity-security.html" }
+      { "@type": "ListItem", "position": 21, "name": "What is SASE?",                        "url": "https://tacraven.com/SASE.html" },
+      { "@type": "ListItem", "position": 22, "name": "What is NDR?",                         "url": "https://tacraven.com/NDR.html" },
+      { "@type": "ListItem", "position": 23, "name": "What is MDR?",                         "url": "https://tacraven.com/MDR.html" },
+      { "@type": "ListItem", "position": 24, "name": "What is UEBA?",                        "url": "https://tacraven.com/UEBA.html" },
+      { "@type": "ListItem", "position": 25, "name": "What is NIST 800-53?",                 "url": "https://tacraven.com/NIST-800-53.html" },
+      { "@type": "ListItem", "position": 26, "name": "What is HIPAA?",                       "url": "https://tacraven.com/HIPAA.html" },
+      { "@type": "ListItem", "position": 27, "name": "What is FedRAMP?",                     "url": "https://tacraven.com/FEDRAMP.html" },
+      { "@type": "ListItem", "position": 28, "name": "What is Purple Teaming?",              "url": "https://tacraven.com/purple-teaming.html" },
+      { "@type": "ListItem", "position": 29, "name": "What is Digital Forensics?",           "url": "https://tacraven.com/digital-forensics.html" },
+      { "@type": "ListItem", "position": 30, "name": "What is Threat Hunting?",              "url": "https://tacraven.com/threat-hunting.html" },
+      { "@type": "ListItem", "position": 31, "name": "What is CNAPP?",                       "url": "https://tacraven.com/CNAPP.html" },
+      { "@type": "ListItem", "position": 32, "name": "What is CIEM?",                        "url": "https://tacraven.com/CIEM.html" },
+      { "@type": "ListItem", "position": 33, "name": "What is Identity Federation?",         "url": "https://tacraven.com/identity-federation.html" },
+      { "@type": "ListItem", "position": 34, "name": "What is CASB?",                        "url": "https://tacraven.com/CASB.html" },
+      { "@type": "ListItem", "position": 35, "name": "Security Technologies Guide",         "url": "https://tacraven.com/understand-security-technologies.html" },
+      { "@type": "ListItem", "position": 36, "name": "Compliance & Security Frameworks Guide", "url": "https://tacraven.com/understand-compliance-frameworks.html" },
+      { "@type": "ListItem", "position": 37, "name": "Security Operations Guide",           "url": "https://tacraven.com/understanding-security-operations.html" },
+      { "@type": "ListItem", "position": 38, "name": "Cloud & Identity Security Guide",     "url": "https://tacraven.com/understand-cloud-identity-security.html" }
     ]
   }
   </script>
@@ -1720,7 +1746,7 @@
       <div class="category-header">
         <div class="category-icon">🛡</div>
         <h2>Security <span>Technologies</span></h2>
-        <span class="category-count">5 Topics</span>
+        <span class="category-count">9 Topics</span>
       </div>
 
       <!-- PILLAR PAGE BANNER -->
@@ -1820,6 +1846,70 @@
 
         <!-- ▼ ADD NEW SECURITY TECHNOLOGY CARDS HERE ▼ -->
 
+        <!-- CARD: SASE -->
+        <article class="topic-card" data-title="What is SASE?" data-desc="Understand how Secure Access Service Edge converges networking and security into a cloud-delivered service." data-difficulty="intermediate" data-url="/SASE.html" onclick="location.href='/SASE.html'" tabindex="0" role="button" aria-label="What is SASE? - Intermediate - 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Security Tech</span>
+            <button class="card-share" aria-label="Copy link to SASE article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/SASE.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is SASE?</div>
+          <p class="card-desc">Understand how Secure Access Service Edge converges SD-WAN, CASB, FWaaS, and Zero Trust into a unified cloud-delivered security and networking architecture.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/zero-trust.html" onclick="event.stopPropagation()">Zero Trust</a><a href="/CASB.html" onclick="event.stopPropagation()">CASB</a></div>
+          <a href="/SASE.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: NDR -->
+        <article class="topic-card" data-title="What is NDR?" data-desc="Explore how Network Detection and Response tools monitor east-west traffic to catch threats that bypass the perimeter." data-difficulty="intermediate" data-url="/NDR.html" onclick="location.href='/NDR.html'" tabindex="0" role="button" aria-label="What is NDR? - Intermediate - 7 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Security Tech</span>
+            <button class="card-share" aria-label="Copy link to NDR article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/NDR.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is NDR?</div>
+          <p class="card-desc">Explore how Network Detection and Response platforms use ML and behavioral analytics to monitor east-west traffic and surface threats that evade perimeter controls.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/xdr.html" onclick="event.stopPropagation()">XDR</a><a href="/siem.html" onclick="event.stopPropagation()">SIEM</a></div>
+          <a href="/NDR.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: MDR -->
+        <article class="topic-card" data-title="What is MDR?" data-desc="Learn how Managed Detection and Response services provide 24/7 threat monitoring and response for organizations without a full in-house SOC." data-difficulty="beginner" data-url="/MDR.html" onclick="location.href='/MDR.html'" tabindex="0" role="button" aria-label="What is MDR? - Beginner - 7 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Security Tech</span>
+            <button class="card-share" aria-label="Copy link to MDR article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/MDR.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is MDR?</div>
+          <p class="card-desc">Learn how Managed Detection and Response services deliver continuous threat monitoring, investigation, and response as an outsourced function for organizations without a full-time SOC.</p>
+          <div class="card-meta">
+            <span class="diff diff-beginner">Beginner</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/edr.html" onclick="event.stopPropagation()">EDR</a><a href="/xdr.html" onclick="event.stopPropagation()">XDR</a></div>
+          <a href="/MDR.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: UEBA -->
+        <article class="topic-card" data-title="What is UEBA?" data-desc="Discover how User and Entity Behavior Analytics detects insider threats and compromised accounts through behavioral baselines." data-difficulty="advanced" data-url="/UEBA.html" onclick="location.href='/UEBA.html'" tabindex="0" role="button" aria-label="What is UEBA? - Advanced - 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Security Tech</span>
+            <button class="card-share" aria-label="Copy link to UEBA article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/UEBA.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is UEBA?</div>
+          <p class="card-desc">Discover how User and Entity Behavior Analytics establishes behavioral baselines and uses ML to flag anomalous activity indicative of insider threats, compromised credentials, or account takeovers.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/siem.html" onclick="event.stopPropagation()">SIEM</a><a href="/detection-engineering.html" onclick="event.stopPropagation()">Detection Engineering</a></div>
+          <a href="/UEBA.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
       </div>
     </section>
 
@@ -1833,7 +1923,7 @@
       <div class="category-header">
         <div class="category-icon">📋</div>
         <h2>Compliance <span>&amp; Frameworks</span></h2>
-        <span class="category-count">5 Topics</span>
+        <span class="category-count">8 Topics</span>
       </div>
 
       <!-- PILLAR PAGE BANNER -->
@@ -1933,6 +2023,54 @@
 
         <!-- ▼ ADD NEW COMPLIANCE CARDS HERE ▼ -->
 
+        <!-- CARD: NIST 800-53 -->
+        <article class="topic-card" data-title="What is NIST 800-53?" data-desc="Explore the catalog of security and privacy controls that forms the backbone of federal information system compliance." data-difficulty="advanced" data-url="/NIST-800-53.html" onclick="location.href='/NIST-800-53.html'" tabindex="0" role="button" aria-label="What is NIST 800-53? - Advanced - 10 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Compliance</span>
+            <button class="card-share" aria-label="Copy link to NIST 800-53 article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/NIST-800-53.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is NIST 800-53?</div>
+          <p class="card-desc">Explore the comprehensive catalog of security and privacy controls in NIST SP 800-53 that forms the foundation for federal agency and contractor information system compliance.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/nist-csf.html" onclick="event.stopPropagation()">NIST CSF</a><a href="/FEDRAMP.html" onclick="event.stopPropagation()">FedRAMP</a></div>
+          <a href="/NIST-800-53.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: HIPAA -->
+        <article class="topic-card" data-title="What is HIPAA?" data-desc="Understand the Health Insurance Portability and Accountability Act and its security and privacy requirements for healthcare data." data-difficulty="intermediate" data-url="/HIPAA.html" onclick="location.href='/HIPAA.html'" tabindex="0" role="button" aria-label="What is HIPAA? - Intermediate - 9 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Compliance</span>
+            <button class="card-share" aria-label="Copy link to HIPAA article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/HIPAA.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is HIPAA?</div>
+          <p class="card-desc">Understand the HIPAA Security and Privacy Rules, what constitutes protected health information, and the technical and administrative safeguards that covered entities must implement.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/soc2.html" onclick="event.stopPropagation()">SOC 2</a><a href="/nist-csf.html" onclick="event.stopPropagation()">NIST CSF</a></div>
+          <a href="/HIPAA.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: FEDRAMP -->
+        <article class="topic-card" data-title="What is FedRAMP?" data-desc="Learn how the Federal Risk and Authorization Management Program standardizes cloud security assessment for government use." data-difficulty="advanced" data-url="/FEDRAMP.html" onclick="location.href='/FEDRAMP.html'" tabindex="0" role="button" aria-label="What is FedRAMP? - Advanced - 10 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Compliance</span>
+            <button class="card-share" aria-label="Copy link to FedRAMP article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/FEDRAMP.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is FedRAMP?</div>
+          <p class="card-desc">Learn how the Federal Risk and Authorization Management Program provides a standardized approach to security assessment, authorization, and continuous monitoring for cloud products used by U.S. federal agencies.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/NIST-800-53.html" onclick="event.stopPropagation()">NIST 800-53</a><a href="/cmmc.html" onclick="event.stopPropagation()">CMMC</a></div>
+          <a href="/FEDRAMP.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
       </div>
     </section>
 
@@ -1946,7 +2084,7 @@
       <div class="category-header">
         <div class="category-icon">⚡</div>
         <h2>Security <span>Operations</span></h2>
-        <span class="category-count">5 Topics</span>
+        <span class="category-count">8 Topics</span>
       </div>
 
       <!-- PILLAR PAGE BANNER -->
@@ -2046,6 +2184,54 @@
 
         <!-- ▼ ADD NEW SECURITY OPERATIONS CARDS HERE ▼ -->
 
+        <!-- CARD: THREAT HUNTING -->
+        <article class="topic-card" data-title="What is Threat Hunting?" data-desc="Learn how threat hunters proactively search for hidden adversaries and attacker TTPs lurking inside enterprise networks." data-difficulty="advanced" data-url="/threat-hunting.html" onclick="location.href='/threat-hunting.html'" tabindex="0" role="button" aria-label="What is Threat Hunting? - Advanced - 9 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Sec Ops</span>
+            <button class="card-share" aria-label="Copy link to Threat Hunting article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/threat-hunting.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is Threat Hunting?</div>
+          <p class="card-desc">Learn how threat hunters proactively seek out adversaries that have evaded automated detection by forming hypotheses, pivoting on TTPs, and searching across log and telemetry data.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/threat-intelligence.html" onclick="event.stopPropagation()">Threat Intelligence</a><a href="/detection-engineering.html" onclick="event.stopPropagation()">Detection Engineering</a></div>
+          <a href="/threat-hunting.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: DIGITAL FORENSICS -->
+        <article class="topic-card" data-title="What is Digital Forensics?" data-desc="Explore how digital forensics investigators collect, preserve, and analyze evidence from compromised systems." data-difficulty="advanced" data-url="/digital-forensics.html" onclick="location.href='/digital-forensics.html'" tabindex="0" role="button" aria-label="What is Digital Forensics? - Advanced - 10 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Sec Ops</span>
+            <button class="card-share" aria-label="Copy link to Digital Forensics article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/digital-forensics.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is Digital Forensics?</div>
+          <p class="card-desc">Explore how DFIR investigators collect, preserve, and analyze artifacts from compromised systems - including memory, disk images, and network captures - to reconstruct attacker timelines.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/incident-response.html" onclick="event.stopPropagation()">Incident Response</a><a href="/threat-hunting.html" onclick="event.stopPropagation()">Threat Hunting</a></div>
+          <a href="/digital-forensics.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: PURPLE TEAMING -->
+        <article class="topic-card" data-title="What is Purple Teaming?" data-desc="Learn how purple team exercises unite offensive and defensive security to improve detection coverage and control effectiveness." data-difficulty="advanced" data-url="/purple-teaming.html" onclick="location.href='/purple-teaming.html'" tabindex="0" role="button" aria-label="What is Purple Teaming? - Advanced - 9 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Sec Ops</span>
+            <button class="card-share" aria-label="Copy link to Purple Teaming article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/purple-teaming.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is Purple Teaming?</div>
+          <p class="card-desc">Learn how purple team exercises bridge red and blue teams to collaboratively test detection coverage, validate security controls, and close gaps against real-world adversary TTPs.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/detection-engineering.html" onclick="event.stopPropagation()">Detection Engineering</a><a href="/threat-intelligence.html" onclick="event.stopPropagation()">Threat Intelligence</a></div>
+          <a href="/purple-teaming.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
       </div>
     </section>
 
@@ -2059,7 +2245,7 @@
       <div class="category-header">
         <div class="category-icon">☁</div>
         <h2>Cloud <span>&amp; Identity</span></h2>
-        <span class="category-count">5 Topics</span>
+        <span class="category-count">9 Topics</span>
       </div>
 
       <!-- PILLAR PAGE BANNER -->
@@ -2158,6 +2344,70 @@
         </article>
 
         <!-- ▼ ADD NEW CLOUD & IDENTITY CARDS HERE ▼ -->
+
+        <!-- CARD: CNAPP -->
+        <article class="topic-card" data-title="What is CNAPP?" data-desc="Discover how Cloud-Native Application Protection Platforms unify CSPM, CWPP, and CIEM into a single cloud security platform." data-difficulty="advanced" data-url="/CNAPP.html" onclick="location.href='/CNAPP.html'" tabindex="0" role="button" aria-label="What is CNAPP? - Advanced - 9 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Cloud / Identity</span>
+            <button class="card-share" aria-label="Copy link to CNAPP article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/CNAPP.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is CNAPP?</div>
+          <p class="card-desc">Discover how Cloud-Native Application Protection Platforms consolidate CSPM, CWPP, CIEM, and container security into a unified platform for full-lifecycle cloud workload protection.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/cspm.html" onclick="event.stopPropagation()">CSPM</a><a href="/CIEM.html" onclick="event.stopPropagation()">CIEM</a></div>
+          <a href="/CNAPP.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: CIEM -->
+        <article class="topic-card" data-title="What is CIEM?" data-desc="Understand Cloud Infrastructure Entitlement Management and how it identifies and remediates excessive permissions in cloud environments." data-difficulty="advanced" data-url="/CIEM.html" onclick="location.href='/CIEM.html'" tabindex="0" role="button" aria-label="What is CIEM? - Advanced - 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Cloud / Identity</span>
+            <button class="card-share" aria-label="Copy link to CIEM article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/CIEM.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is CIEM?</div>
+          <p class="card-desc">Understand how Cloud Infrastructure Entitlement Management identifies over-privileged identities, enforces least-privilege access, and remediates toxic permission combinations across multi-cloud environments.</p>
+          <div class="card-meta">
+            <span class="diff diff-advanced">Advanced</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/iam.html" onclick="event.stopPropagation()">IAM</a><a href="/CNAPP.html" onclick="event.stopPropagation()">CNAPP</a></div>
+          <a href="/CIEM.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: IDENTITY FEDERATION -->
+        <article class="topic-card" data-title="What is Identity Federation?" data-desc="Learn how identity federation enables single sign-on across organizational boundaries using SAML, OIDC, and trust frameworks." data-difficulty="intermediate" data-url="/identity-federation.html" onclick="location.href='/identity-federation.html'" tabindex="0" role="button" aria-label="What is Identity Federation? - Intermediate - 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Cloud / Identity</span>
+            <button class="card-share" aria-label="Copy link to Identity Federation article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/identity-federation.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is Identity Federation?</div>
+          <p class="card-desc">Learn how identity federation enables cross-domain single sign-on using SAML, OAuth 2.0, and OIDC, and why federated trust models are essential for modern enterprise and cloud authentication.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/iam.html" onclick="event.stopPropagation()">IAM</a><a href="/zero-trust.html" onclick="event.stopPropagation()">Zero Trust</a></div>
+          <a href="/identity-federation.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
+
+        <!-- CARD: CASB -->
+        <article class="topic-card" data-title="What is CASB?" data-desc="Explore how Cloud Access Security Brokers enforce security policies between users and cloud services, providing visibility into shadow IT." data-difficulty="intermediate" data-url="/CASB.html" onclick="location.href='/CASB.html'" tabindex="0" role="button" aria-label="What is CASB? - Intermediate - 8 min read">
+          <div class="card-top-row">
+            <span class="card-badge">Cloud / Identity</span>
+            <button class="card-share" aria-label="Copy link to CASB article" title="Copy link" onclick="event.stopPropagation(); copyCardLink(this, '/CASB.html')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+          </div>
+          <div class="card-title">What is CASB?</div>
+          <p class="card-desc">Explore how Cloud Access Security Brokers sit between users and SaaS applications to enforce data loss prevention, threat protection, compliance, and visibility into shadow IT usage.</p>
+          <div class="card-meta">
+            <span class="diff diff-intermediate">Intermediate</span>
+            <span class="card-read-time"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</span>
+          </div>
+          <div class="card-related"><span class="card-related-label">Related:</span><a href="/SASE.html" onclick="event.stopPropagation()">SASE</a><a href="/cloud-security.html" onclick="event.stopPropagation()">Cloud Security</a></div>
+          <a href="/CASB.html" class="btn btn-card" tabindex="-1">Learn More ›</a>
+        </article>
 
       </div>
     </section>
