@@ -1,0 +1,228 @@
+{
+  "metadata": {
+    "week": {
+      "year": 2026,
+      "week": 12
+    },
+    "weekStart": "2026-03-16T00:00:00.000Z",
+    "monthName": "March",
+    "monthShort": "MAR",
+    "generated": "2026-03-16T06:06:04.502Z",
+    "threatLevel": {
+      "level": "GUARDED",
+      "class": "guarded",
+      "score": 47
+    }
+  },
+  "stats": {
+    "kevCount": 3,
+    "ransomwareCount": 0,
+    "c2Count": 1,
+    "malwareFamilies": 1
+  },
+  "trends": {
+    "kev": {
+      "current": 3,
+      "lastWeek": 3,
+      "change": 0,
+      "average": 2.9,
+      "history": [
+        2,
+        3,
+        4,
+        2,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    "ransomware": {
+      "current": 0,
+      "lastWeek": 2,
+      "change": -100,
+      "average": 1.3,
+      "history": [
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        0
+      ]
+    },
+    "c2": {
+      "current": 1,
+      "lastWeek": 13,
+      "change": -92,
+      "average": 13.6,
+      "history": [
+        16,
+        18,
+        14,
+        20,
+        12,
+        15,
+        13,
+        1
+      ]
+    }
+  },
+  "data": {
+    "recentKEVs": [
+      {
+        "cveID": "CVE-2026-3910",
+        "vendorProject": "Google",
+        "product": "Chromium V8",
+        "vulnerabilityName": "Google Chromium V8 Improper Restriction of Operations Within the Bounds of a Memory Buffer Vulnerability",
+        "dateAdded": "2026-03-13",
+        "shortDescription": "Google Chromium V8 contains an improper restriction of operations within the bounds of a memory buffer vulnerability that could allow a remote attacker to execute arbitrary code inside a sandbox via a crafted HTML page. This vulnerability could affect multiple web browsers that utilize Chromium, including, but not limited to, Google Chrome, Microsoft Edge, and Opera.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-27",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://chromereleases.googleblog.com/2026/03/stable-channel-update-for-desktop_12.html ; https://nvd.nist.gov/vuln/detail/CVE-2026-3910",
+        "cwes": [
+          "CWE-119"
+        ]
+      },
+      {
+        "cveID": "CVE-2026-3909",
+        "vendorProject": "Google",
+        "product": "Skia",
+        "vulnerabilityName": "Google Skia Out-of-Bounds Write Vulnerability",
+        "dateAdded": "2026-03-13",
+        "shortDescription": "Google Skia contains an out-of-bounds write vulnerability that could allow a remote attacker to perform out of bounds memory access via a crafted HTML page. This vulnerability affects Google Chrome and ChromeOS, Android, Flutter, and possibly other products.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-27",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "This vulnerability affects a common open-source component, third-party library, or a protocol used by different products. Please check with specific vendors for information on patching status. For more information, please see: https://chromereleases.googleblog.com/2026/03/stable-channel-update-for-desktop_12.html#:~:text=Google%20is%20aware ; https://nvd.nist.gov/vuln/detail/CVE-2026-3909",
+        "cwes": [
+          "CWE-787"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-68613",
+        "vendorProject": "n8n",
+        "product": "n8n",
+        "vulnerabilityName": "n8n Improper Control of Dynamically-Managed Code Resources Vulnerability",
+        "dateAdded": "2026-03-11",
+        "shortDescription": "n8n contains an improper control of dynamically managed code resources vulnerability in its workflow expression evaluation system that allows for remote code execution.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-25",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://github.com/n8n-io/n8n/security/advisories/GHSA-v98v-ff95-f3cp ; https://nvd.nist.gov/vuln/detail/CVE-2025-68613",
+        "cwes": [
+          "CWE-913"
+        ]
+      }
+    ],
+    "ransomwareKEVs": [],
+    "onlineC2s": [
+      {
+        "ip_address": "50.16.16.211",
+        "port": 443,
+        "status": "online",
+        "hostname": "ec2-50-16-16-211.compute-1.amazonaws.com",
+        "as_number": 14618,
+        "as_name": "AMAZON-AES",
+        "country": "US",
+        "first_seen": "2025-12-30 13:56:31",
+        "last_online": "2026-03-12",
+        "malware": "QakBot"
+      }
+    ],
+    "c2ByFamily": {
+      "QakBot": 1
+    },
+    "c2ByCountry": {
+      "US": 1
+    },
+    "newsCoverage": {
+      "CVE-2026-3910": [
+        {
+          "title": "Google Fixes Two Chrome Zero-Days Exploited in the Wild Affecting Skia and V8",
+          "link": "https://thehackernews.com/2026/03/google-fixes-two-chrome-zero-days.html",
+          "pubDate": "Fri, 13 Mar 2026 14:47:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "New \"LeakyLooker\" Flaws in Google Looker Studio Could Enable Cross-Tenant SQL Queries",
+          "link": "https://thehackernews.com/2026/03/new-leakylooker-flaws-in-google-looker.html",
+          "pubDate": "Tue, 10 Mar 2026 18:50:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Most Google Cloud Attacks Start With Bug Exploitation",
+          "link": "https://www.darkreading.com/cloud-security/google-cloud-attacks-bug-exploitation",
+          "pubDate": "Fri, 13 Mar 2026 13:20:58 GMT",
+          "source": "Dark Reading"
+        }
+      ],
+      "CVE-2026-3909": [
+        {
+          "title": "Google Fixes Two Chrome Zero-Days Exploited in the Wild Affecting Skia and V8",
+          "link": "https://thehackernews.com/2026/03/google-fixes-two-chrome-zero-days.html",
+          "pubDate": "Fri, 13 Mar 2026 14:47:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "New \"LeakyLooker\" Flaws in Google Looker Studio Could Enable Cross-Tenant SQL Queries",
+          "link": "https://thehackernews.com/2026/03/new-leakylooker-flaws-in-google-looker.html",
+          "pubDate": "Tue, 10 Mar 2026 18:50:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Most Google Cloud Attacks Start With Bug Exploitation",
+          "link": "https://www.darkreading.com/cloud-security/google-cloud-attacks-bug-exploitation",
+          "pubDate": "Fri, 13 Mar 2026 13:20:58 GMT",
+          "source": "Dark Reading"
+        }
+      ],
+      "CVE-2025-68613": [
+        {
+          "title": "CISA Flags Actively Exploited n8n RCE Bug as 24,700 Instances Remain Exposed",
+          "link": "https://thehackernews.com/2026/03/cisa-flags-actively-exploited-n8n-rce.html",
+          "pubDate": "Thu, 12 Mar 2026 10:48:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Critical n8n Flaws Allow Remote Code Execution and Exposure of Stored Credentials",
+          "link": "https://thehackernews.com/2026/03/critical-n8n-flaws-allow-remote-code.html",
+          "pubDate": "Wed, 11 Mar 2026 20:21:00 +0530",
+          "source": "Hacker News"
+        }
+      ]
+    },
+    "tacticCounts": {
+      "TA0001": 4,
+      "TA0002": 1,
+      "TA0003": 1,
+      "TA0006": 1,
+      "TA0011": 1
+    },
+    "techniqueCounts": {
+      "T1190": 3,
+      "T1566.001": 1,
+      "T1059.001": 1,
+      "T1547.001": 1,
+      "T1555.003": 1,
+      "T1071.001": 1
+    }
+  },
+  "sources": {
+    "cisaKev": {
+      "retrieved": "2026-03-16T06:06:03.820Z",
+      "count": 1542
+    },
+    "feodo": {
+      "retrieved": "2026-03-16T06:06:04.060Z",
+      "count": 1
+    },
+    "news": {
+      "retrieved": "2026-03-16T06:06:04.498Z",
+      "count": 140
+    }
+  }
+}
