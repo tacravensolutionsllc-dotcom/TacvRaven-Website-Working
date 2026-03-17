@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- CORE SITE -->
   <url>
     <loc>https://tacraven.com/</loc>
     <priority>1.0</priority>
@@ -16,11 +17,51 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- TOOLS -->
+  <url>
+    <loc>https://tacraven.com/soc-forge.html</loc>
+    <priority>1.0</priority>
+  </url>
+
   <url>
     <loc>https://tacraven.com/talonprep.html</loc>
     <priority>0.9</priority>
   </url>
 
+  <url>
+    <loc>https://tacraven.com/netforge.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- LEARNING + KNOWLEDGE -->
+  <url>
+    <loc>https://tacraven.com/knowledge-base.html</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://tacraven.com/learning-paths.html</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- BLOG + CONTENT -->
+  <url>
+    <loc>https://tacraven.com/Blog.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- INTELLIGENCE SECTIONS -->
+  <url>
+    <loc>https://tacraven.com/intel/weekly/</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://tacraven.com/intel/blackwing/</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- LEGAL -->
   <url>
     <loc>https://tacraven.com/privacy.html</loc>
   </url>
