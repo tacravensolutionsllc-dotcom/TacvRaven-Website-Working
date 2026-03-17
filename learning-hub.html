@@ -2422,7 +2422,7 @@
            ======================================== */
         .sticky-cta {
             position: fixed;
-            bottom: -80px;
+            bottom: 0;
             left: 0;
             right: 0;
             background: rgba(10, 10, 15, 0.95);
@@ -2430,11 +2430,12 @@
             border-top: 1px solid rgba(212, 160, 18, 0.2);
             padding: 16px 0;
             z-index: 999;
-            transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(110%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .sticky-cta.visible {
-            bottom: 0;
+            transform: translateY(0);
         }
 
         .sticky-cta-content {
@@ -2493,6 +2494,7 @@
             cursor: pointer;
             padding: 8px;
             transition: color 0.3s ease;
+            flex-shrink: 0;
         }
 
         .sticky-cta-close:hover {
@@ -2515,6 +2517,17 @@
             }
             .sticky-cta-actions .btn {
                 flex: 1;
+            }
+            .sticky-cta-close {
+                position: absolute;
+                top: 10px;
+                right: 12px;
+                padding: 10px;
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     
@@ -3128,7 +3141,7 @@
                 </p>
                 
                 <p class="hero-description">
-                    Pass your Security+ and Network+ exams with TalonPrep and NetForge+, then explore our Careers Blog for salary insights, career paths, and job market trends — no account required, no cost, no catch.
+                    Pass your Security+, Network+, and CySA+ exams with TalonPrep, NetForge+, and SOC-Forge, then explore our Careers Blog for salary insights, career paths, and job market trends — no account required, no cost, no catch.
                 </p>
                 
                 <div class="hero-cta">
@@ -3443,6 +3456,73 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- SOC-Forge Card -->
+                <div class="learning-card reveal delay-3">
+                    <div class="learning-card-header">
+                        <div class="learning-card-icon">
+                            <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:8px;">
+                                <rect width="80" height="80" rx="10" fill="#0a0a0a"/>
+                                <rect x="8" y="8" width="64" height="64" rx="8" fill="#111" stroke="#d4a012" stroke-width="1.5"/>
+                                <!-- Shield outline -->
+                                <path d="M40 16 L58 24 L58 42 Q58 56 40 64 Q22 56 22 42 L22 24 Z" fill="none" stroke="#d4a012" stroke-width="2.5" stroke-linejoin="round"/>
+                                <!-- Inner shield fill -->
+                                <path d="M40 20 L55 27 L55 42 Q55 53 40 60 Q25 53 25 42 L25 27 Z" fill="rgba(212,160,18,0.08)"/>
+                                <!-- Radar sweep lines -->
+                                <circle cx="40" cy="42" r="10" fill="none" stroke="rgba(212,160,18,0.35)" stroke-width="1"/>
+                                <circle cx="40" cy="42" r="6"  fill="none" stroke="rgba(212,160,18,0.25)" stroke-width="1"/>
+                                <!-- Center dot -->
+                                <circle cx="40" cy="42" r="2.5" fill="#d4a012"/>
+                                <!-- FORGE text -->
+                                <text x="40" y="75" text-anchor="middle" font-family="monospace" font-size="7" fill="#d4a012" letter-spacing="2">SOC</text>
+                            </svg>
+                        </div>
+                        <div class="learning-card-header-content">
+                            <span class="learning-card-badge badge-free">Free</span>
+                            <h3>SOC-Forge</h3>
+                        </div>
+                    </div>
+                    <div class="learning-card-body">
+                        <p>Master the CompTIA CySA+ CS0-003 exam with scenario-driven practice questions built for SOC analysts, threat hunters, and blue team defenders.</p>
+
+                        <div class="learning-card-stats">
+                            <div class="learning-card-stat">
+                                <div class="learning-card-stat-value">400+</div>
+                                <div class="learning-card-stat-label">Questions</div>
+                            </div>
+                            <div class="learning-card-stat">
+                                <div class="learning-card-stat-value">5</div>
+                                <div class="learning-card-stat-label">Domains</div>
+                            </div>
+                            <div class="learning-card-stat">
+                                <div class="learning-card-stat-value">∞</div>
+                                <div class="learning-card-stat-label">Attempts</div>
+                            </div>
+                        </div>
+
+                        <ul class="learning-card-features">
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Scenario-Based
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Domain Quizzes
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Flashcard Mode
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                Timed Exams
+                            </li>
+                        </ul>
+                        <div class="learning-card-cta">
+                            <a href="soc-forge.html" class="btn btn-primary">Start Practicing</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -3487,14 +3567,14 @@
                 <details class="faq-dropdown">
                     <summary>Is it really 100% free?</summary>
                     <div class="faq-dropdown-content">
-                        Yes, completely free - no credit card, no "freemium" upsells, no premium tier. TalonPrep and NetForge+ are lead magnets for our professional tools (BlackFeather & Corvus Engine). We want you to pass your cert and remember us when you're in a SOC someday.
+                        Yes, completely free - no credit card, no "freemium" upsells, no premium tier. TalonPrep, NetForge+, and SOC-Forge are lead magnets for our professional tools (BlackFeather &amp; Corvus Engine). We want you to pass your cert and remember us when you're in a SOC someday.
                     </div>
                 </details>
 
                 <details class="faq-dropdown">
                     <summary>Are questions updated for current exams?</summary>
                     <div class="faq-dropdown-content">
-                        Yes. TalonPrep covers the current Security+ SY0-701 objectives. NetForge+ covers the current Network+ N10-009 objectives. We update questions as CompTIA updates their exam objectives.
+                        Yes. TalonPrep covers the current Security+ SY0-701 objectives. NetForge+ covers the current Network+ N10-009 objectives. SOC-Forge covers the current CySA+ CS0-003 objectives. We update questions as CompTIA updates their exam objectives.
                     </div>
                 </details>
 
@@ -3515,7 +3595,7 @@
                 <details class="faq-dropdown">
                     <summary>How many questions are there?</summary>
                     <div class="faq-dropdown-content">
-                        TalonPrep has 400+ Security+ questions across all 6 domains. NetForge+ has 820+ Network+ questions plus interactive PBQ labs. We're continuously adding more based on user feedback and exam updates.
+                        TalonPrep has 400+ Security+ questions across all 6 domains. NetForge+ has 820+ Network+ questions plus interactive PBQ labs. SOC-Forge has 400+ CySA+ scenario-driven questions across all 5 domains. We're continuously adding more based on user feedback and exam updates.
                     </div>
                 </details>
 
@@ -3648,6 +3728,8 @@
                         <li><a href="tools.html#blackfeather">BlackFeather</a></li>
                         <li><a href="tools.html#corvus">Corvus Engine</a></li>
                         <li><a href="talonprep.html">TalonPrep</a></li>
+                        <li><a href="netforge.html">NetForge+</a></li>
+                        <li><a href="soc-forge.html">SOC-Forge</a></li>
                         <li><a href="tools.html">All Tools</a></li>
                         <li><a href="pricing.html">Programs</a></li>
                     </ul>
@@ -3698,12 +3780,13 @@
                     </div>
                     <div>
                         <h4>Ready to start practicing?</h4>
-                        <p>1,200+ questions across Security+ and Network+ - completely free</p>
+                        <p>1,500+ questions across Security+, Network+ and CySA+ - completely free</p>
                     </div>
                 </div>
                 <div class="sticky-cta-actions">
                     <a href="talonprep.html" class="btn btn-primary">Try TalonPrep</a>
                     <a href="netforge.html" class="btn btn-secondary">Try NetForge+</a>
+                    <a href="soc-forge.html" class="btn btn-secondary">Try SOC-Forge</a>
                     <button class="sticky-cta-close" id="sticky-cta-close" aria-label="Close">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="18" y1="6" x2="6" y2="18"/>
