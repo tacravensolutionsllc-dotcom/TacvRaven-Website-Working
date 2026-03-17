@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-17T10:00:14.804110",
-  "count": 21,
+  "generated": "2026-03-17T18:43:45.777975",
+  "count": 22,
   "posts": [
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
@@ -19,6 +19,26 @@
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
       "featured": true
+    },
+    {
+      "title": "Critical Infrastructure Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking critical infrastructure expertise. How to get it.",
+      "date": "2026-03-17",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Critical Infrastructure",
+        "critical",
+        "infrastructure"
+      ],
+      "filepath": "posts/2026/03/critical-infrastructure-skills-are-in-demandheres-why.html",
+      "slug": "critical-infrastructure-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": false
     },
     {
       "title": "The Rise of Government\u2014And the Careers Fighting It",
