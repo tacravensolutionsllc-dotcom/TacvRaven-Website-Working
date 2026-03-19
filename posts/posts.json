@@ -1,7 +1,26 @@
 {
-  "generated": "2026-03-17T18:43:45.777975",
-  "count": 22,
+  "generated": "2026-03-19T09:54:05.785554",
+  "count": 23,
   "posts": [
+    {
+      "title": "The Rise of Ai\u2014And the Careers Fighting It",
+      "excerpt": "How AI is creating new job opportunities.",
+      "date": "2026-03-19",
+      "category": "Career Paths",
+      "category_slug": "career-paths",
+      "category_css": "cp",
+      "tags": [
+        "Career Paths",
+        "Cybersecurity",
+        "Career",
+        "Ai",
+        "AI"
+      ],
+      "filepath": "posts/2026/03/the-rise-of-aiand-the-careers-fighting-it.html",
+      "slug": "the-rise-of-aiand-the-careers-fighting-it",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/03/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Critical Infrastructure Skills Are in Demand\u2014Here's Why",
