@@ -1,0 +1,412 @@
+{
+  "metadata": {
+    "week": {
+      "year": 2026,
+      "week": 13
+    },
+    "weekStart": "2026-03-23T00:00:00.000Z",
+    "monthName": "March",
+    "monthShort": "MAR",
+    "generated": "2026-03-23T05:54:26.865Z",
+    "threatLevel": {
+      "level": "CRITICAL",
+      "class": "critical",
+      "score": 147
+    }
+  },
+  "stats": {
+    "kevCount": 8,
+    "ransomwareCount": 1,
+    "c2Count": 1,
+    "malwareFamilies": 1
+  },
+  "trends": {
+    "kev": {
+      "current": 8,
+      "lastWeek": 3,
+      "change": 167,
+      "average": 3.5,
+      "history": [
+        2,
+        3,
+        4,
+        2,
+        3,
+        3,
+        3,
+        8
+      ]
+    },
+    "ransomware": {
+      "current": 1,
+      "lastWeek": 2,
+      "change": -50,
+      "average": 1.4,
+      "history": [
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1
+      ]
+    },
+    "c2": {
+      "current": 1,
+      "lastWeek": 13,
+      "change": -92,
+      "average": 13.6,
+      "history": [
+        16,
+        18,
+        14,
+        20,
+        12,
+        15,
+        13,
+        1
+      ]
+    }
+  },
+  "data": {
+    "recentKEVs": [
+      {
+        "cveID": "CVE-2025-32432",
+        "vendorProject": "Craft CMS",
+        "product": "Craft CMS",
+        "vulnerabilityName": "Craft CMS Code Injection Vulnerability",
+        "dateAdded": "2026-03-20",
+        "shortDescription": "Craft CMS contains a code injection vulnerability that allows a remote attacker to execute arbitrary code.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-03",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://craftcms.com/knowledge-base/craft-cms-cve-2025-32432 ; https://github.com/craftcms/cms/security/advisories/GHSA-f3gw-9ww9-jmc3 ; https://nvd.nist.gov/vuln/detail/CVE-2025-32432",
+        "cwes": [
+          "CWE-94"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-54068",
+        "vendorProject": "Laravel",
+        "product": "Livewire",
+        "vulnerabilityName": "Laravel Livewire Code Injection Vulnerability",
+        "dateAdded": "2026-03-20",
+        "shortDescription": "Laravel Livewire contain a code injection vulnerability that could allow unauthenticated attackers to achieve remote command execution in specific scenarios.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-03",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://github.com/livewire/livewire/security/advisories/GHSA-29cq-5w36-x7w3 ; https://github.com/livewire/livewire/commit/ef04be759da41b14d2d129e670533180a44987dc ; https://nvd.nist.gov/vuln/detail/CVE-2025-54068",
+        "cwes": [
+          "CWE-94"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-43510",
+        "vendorProject": "Apple",
+        "product": "Multiple Products",
+        "vulnerabilityName": "Apple Multiple Products Improper Locking Vulnerability",
+        "dateAdded": "2026-03-20",
+        "shortDescription": "Apple watchOS, iOS, iPadOS, macOS, visionOS, and tvOS contain an improper locking vulnerability that could allow a malicious application to cause unexpected changes in memory shared between processes.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-03",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://support.apple.com/en-us/125632 ; https://support.apple.com/en-us/125633 ; https://support.apple.com/en-us/125634 ; https://support.apple.com/en-us/125635 ; https://support.apple.com/en-us/125636 ; https://support.apple.com/en-us/125637 ; https://support.apple.com/en-us/125638 ; https://support.apple.com/en-us/125639 ; https://nvd.nist.gov/vuln/detail/CVE-2025-43510",
+        "cwes": [
+          "CWE-667"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-43520",
+        "vendorProject": "Apple",
+        "product": "Multiple Products",
+        "vulnerabilityName": "Apple Multiple Products Classic Buffer Overflow Vulnerability",
+        "dateAdded": "2026-03-20",
+        "shortDescription": "Apple watchOS, iOS, iPadOS, macOS, visionOS, tvOS, and iPadOS contain a classic buffer overflow vulnerability which could allow a malicious application to cause unexpected system termination or write kernel memory.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-03",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://support.apple.com/en-us/125632 ; https://support.apple.com/en-us/125633 ; https://support.apple.com/en-us/125634 ; https://support.apple.com/en-us/125635 ; https://support.apple.com/en-us/125636 ; https://support.apple.com/en-us/125637 ; https://support.apple.com/en-us/125638 ; https://support.apple.com/en-us/125639 ; https://nvd.nist.gov/vuln/detail/CVE-2025-43520",
+        "cwes": [
+          "CWE-120"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-31277",
+        "vendorProject": "Apple",
+        "product": "Multiple Products",
+        "vulnerabilityName": "Apple Multiple Products Buffer Overflow Vulnerability",
+        "dateAdded": "2026-03-20",
+        "shortDescription": "Apple Safari, iOS, watchOS, visionOS, iPadOS, macOS, and tvOS contain a buffer overflow vulnerability that could allow the processing of maliciously crafted web content which may lead to memory corruption.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-03",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://support.apple.com/en-us/124147 ; https://support.apple.com/en-us/124149 ; https://support.apple.com/en-us/124152 ; https://support.apple.com/en-us/124153 ; https://support.apple.com/en-us/124155 ; https://nvd.nist.gov/vuln/detail/CVE-2025-31277",
+        "cwes": [
+          "CWE-119"
+        ]
+      },
+      {
+        "cveID": "CVE-2026-20131",
+        "vendorProject": "Cisco",
+        "product": "Secure Firewall Management Center (FMC)",
+        "vulnerabilityName": "Cisco Secure Firewall Management Center (FMC) Software and Cisco Security Cloud Control (SCC) Firewall Management Deserialization of Untrusted Data Vulnerability",
+        "dateAdded": "2026-03-19",
+        "shortDescription": "Cisco Secure Firewall Management Center (FMC) Software and Cisco Security Cloud Control (SCC) Firewall Management contain a deserialization of untrusted data vulnerability in the web-based management interface that could allow an unauthenticated, remote attacker to execute arbitrary Java code as root on an affected device.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-22",
+        "knownRansomwareCampaignUse": "Known",
+        "notes": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-fmc-rce-NKhnULJh ; https://nvd.nist.gov/vuln/detail/CVE-2026-20131",
+        "cwes": [
+          "CWE-502"
+        ]
+      },
+      {
+        "cveID": "CVE-2025-66376",
+        "vendorProject": "Synacor",
+        "product": "Zimbra Collaboration Suite (ZCS)",
+        "vulnerabilityName": "Synacor Zimbra Collaboration Suite (ZCS) Cross-Site Scripting Vulnerability",
+        "dateAdded": "2026-03-18",
+        "shortDescription": "Synacor Zimbra Collaboration Suite (ZCS) contains a cross-site scripting vulnerability in the Classic UI where attackers could abuse Cascading Style Sheets (CSS) @import directives in email HTML.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-01",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://wiki.zimbra.com/wiki/Zimbra_Security_Advisories ; https://nvd.nist.gov/vuln/detail/CVE-2025-66376",
+        "cwes": [
+          "CWE-79"
+        ]
+      },
+      {
+        "cveID": "CVE-2026-20963",
+        "vendorProject": "Microsoft",
+        "product": "SharePoint",
+        "vulnerabilityName": "Microsoft SharePoint Deserialization of Untrusted Data Vulnerability",
+        "dateAdded": "2026-03-18",
+        "shortDescription": "Microsoft SharePoint contains a deserialization of untrusted data vulnerability that allows an unauthorized attacker to execute code over a network.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-21",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-20963 ; https://nvd.nist.gov/vuln/detail/CVE-2026-20963",
+        "cwes": [
+          "CWE-502"
+        ]
+      }
+    ],
+    "ransomwareKEVs": [
+      {
+        "cveID": "CVE-2026-20131",
+        "vendorProject": "Cisco",
+        "product": "Secure Firewall Management Center (FMC)",
+        "vulnerabilityName": "Cisco Secure Firewall Management Center (FMC) Software and Cisco Security Cloud Control (SCC) Firewall Management Deserialization of Untrusted Data Vulnerability",
+        "dateAdded": "2026-03-19",
+        "shortDescription": "Cisco Secure Firewall Management Center (FMC) Software and Cisco Security Cloud Control (SCC) Firewall Management contain a deserialization of untrusted data vulnerability in the web-based management interface that could allow an unauthenticated, remote attacker to execute arbitrary Java code as root on an affected device.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-22",
+        "knownRansomwareCampaignUse": "Known",
+        "notes": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-fmc-rce-NKhnULJh ; https://nvd.nist.gov/vuln/detail/CVE-2026-20131",
+        "cwes": [
+          "CWE-502"
+        ]
+      }
+    ],
+    "onlineC2s": [
+      {
+        "ip_address": "50.16.16.211",
+        "port": 443,
+        "status": "online",
+        "hostname": "ec2-50-16-16-211.compute-1.amazonaws.com",
+        "as_number": 14618,
+        "as_name": "AMAZON-AES",
+        "country": "US",
+        "first_seen": "2025-12-30 13:56:31",
+        "last_online": "2026-03-12",
+        "malware": "QakBot"
+      }
+    ],
+    "c2ByFamily": {
+      "QakBot": 1
+    },
+    "c2ByCountry": {
+      "US": 1
+    },
+    "newsCoverage": {
+      "CVE-2025-32432": [
+        {
+          "title": "CISA Flags Apple, Craft CMS, Laravel Bugs in KEV, Orders Patching by April 3, 2026",
+          "link": "https://thehackernews.com/2026/03/cisa-flags-apple-craft-cms-laravel-bugs.html",
+          "pubDate": "Sat, 21 Mar 2026 13:55:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2025-54068": [
+        {
+          "title": "CISA Flags Apple, Craft CMS, Laravel Bugs in KEV, Orders Patching by April 3, 2026",
+          "link": "https://thehackernews.com/2026/03/cisa-flags-apple-craft-cms-laravel-bugs.html",
+          "pubDate": "Sat, 21 Mar 2026 13:55:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2025-43510": [
+        {
+          "title": "CISA Flags Apple, Craft CMS, Laravel Bugs in KEV, Orders Patching by April 3, 2026",
+          "link": "https://thehackernews.com/2026/03/cisa-flags-apple-craft-cms-laravel-bugs.html",
+          "pubDate": "Sat, 21 Mar 2026 13:55:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Apple Warns Older iPhones Vulnerable to Coruna, DarkSword Exploit Kit Attacks",
+          "link": "https://thehackernews.com/2026/03/apple-warns-older-iphones-vulnerable-to.html",
+          "pubDate": "Fri, 20 Mar 2026 10:46:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Apple Fixes WebKit Vulnerability Enabling Same-Origin Policy Bypass on iOS and macOS",
+          "link": "https://thehackernews.com/2026/03/apple-fixes-webkit-vulnerability.html",
+          "pubDate": "Wed, 18 Mar 2026 12:01:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Chinese Hackers Target Southeast Asian Militaries with AppleChris and MemFun Malware",
+          "link": "https://thehackernews.com/2026/03/chinese-hackers-target-southeast-asian.html",
+          "pubDate": "Fri, 13 Mar 2026 23:03:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2025-43520": [
+        {
+          "title": "CISA Flags Apple, Craft CMS, Laravel Bugs in KEV, Orders Patching by April 3, 2026",
+          "link": "https://thehackernews.com/2026/03/cisa-flags-apple-craft-cms-laravel-bugs.html",
+          "pubDate": "Sat, 21 Mar 2026 13:55:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Apple Warns Older iPhones Vulnerable to Coruna, DarkSword Exploit Kit Attacks",
+          "link": "https://thehackernews.com/2026/03/apple-warns-older-iphones-vulnerable-to.html",
+          "pubDate": "Fri, 20 Mar 2026 10:46:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Apple Fixes WebKit Vulnerability Enabling Same-Origin Policy Bypass on iOS and macOS",
+          "link": "https://thehackernews.com/2026/03/apple-fixes-webkit-vulnerability.html",
+          "pubDate": "Wed, 18 Mar 2026 12:01:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Chinese Hackers Target Southeast Asian Militaries with AppleChris and MemFun Malware",
+          "link": "https://thehackernews.com/2026/03/chinese-hackers-target-southeast-asian.html",
+          "pubDate": "Fri, 13 Mar 2026 23:03:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2025-31277": [
+        {
+          "title": "CISA Flags Apple, Craft CMS, Laravel Bugs in KEV, Orders Patching by April 3, 2026",
+          "link": "https://thehackernews.com/2026/03/cisa-flags-apple-craft-cms-laravel-bugs.html",
+          "pubDate": "Sat, 21 Mar 2026 13:55:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Apple Warns Older iPhones Vulnerable to Coruna, DarkSword Exploit Kit Attacks",
+          "link": "https://thehackernews.com/2026/03/apple-warns-older-iphones-vulnerable-to.html",
+          "pubDate": "Fri, 20 Mar 2026 10:46:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Apple Fixes WebKit Vulnerability Enabling Same-Origin Policy Bypass on iOS and macOS",
+          "link": "https://thehackernews.com/2026/03/apple-fixes-webkit-vulnerability.html",
+          "pubDate": "Wed, 18 Mar 2026 12:01:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Chinese Hackers Target Southeast Asian Militaries with AppleChris and MemFun Malware",
+          "link": "https://thehackernews.com/2026/03/chinese-hackers-target-southeast-asian.html",
+          "pubDate": "Fri, 13 Mar 2026 23:03:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2026-20131": [
+        {
+          "title": "CISA Warns of Zimbra, SharePoint Flaw Exploits; Cisco Zero-Day Hit in Ransomware Attacks",
+          "link": "https://thehackernews.com/2026/03/cisa-warns-of-zimbra-sharepoint-flaw.html",
+          "pubDate": "Thu, 19 Mar 2026 11:35:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Interlock Ransomware Exploits Cisco FMC Zero-Day CVE-2026-20131 for Root Access",
+          "link": "https://thehackernews.com/2026/03/interlock-ransomware-exploits-cisco-fmc.html",
+          "pubDate": "Wed, 18 Mar 2026 21:30:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Interlock Ransomware Targets Cisco Enterprise Firewalls",
+          "link": "https://www.darkreading.com/threat-intelligence/interlock-ransomware-targets-cisco-enterprise-firewalls",
+          "pubDate": "Fri, 20 Mar 2026 13:00:00 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Fake PoCs, Misunderstood Risks Cause Cisco SD-WAN Chaos",
+          "link": "https://www.darkreading.com/vulnerabilities-threats/fake-pocs-risks-cisco-sd-wan",
+          "pubDate": "Fri, 13 Mar 2026 19:19:38 GMT",
+          "source": "Dark Reading"
+        }
+      ],
+      "CVE-2025-66376": [],
+      "CVE-2026-20963": [
+        {
+          "title": "CISA Warns of Zimbra, SharePoint Flaw Exploits; Cisco Zero-Day Hit in Ransomware Attacks",
+          "link": "https://thehackernews.com/2026/03/cisa-warns-of-zimbra-sharepoint-flaw.html",
+          "pubDate": "Thu, 19 Mar 2026 11:35:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "DRILLAPP Backdoor Targets Ukraine, Abuses Microsoft Edge Debugging for Stealth Espionage",
+          "link": "https://thehackernews.com/2026/03/drillapp-backdoor-targets-ukraine.html",
+          "pubDate": "Mon, 16 Mar 2026 14:37:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft Patches 83 CVEs in March Update",
+          "link": "https://www.darkreading.com/application-security/microsoft-patches-83-cves-march-update",
+          "pubDate": "Wed, 11 Mar 2026 01:08:31 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Microsoft Patch Tuesday, March 2026 Edition",
+          "link": "https://krebsonsecurity.com/2026/03/microsoft-patch-tuesday-march-2026-edition/",
+          "pubDate": "Wed, 11 Mar 2026 00:32:51 +0000",
+          "source": "Krebs"
+        }
+      ]
+    },
+    "tacticCounts": {
+      "TA0001": 9,
+      "TA0002": 1,
+      "TA0003": 1,
+      "TA0006": 1,
+      "TA0011": 1
+    },
+    "techniqueCounts": {
+      "T1190": 8,
+      "T1566.001": 1,
+      "T1059.001": 1,
+      "T1547.001": 1,
+      "T1555.003": 1,
+      "T1071.001": 1
+    }
+  },
+  "sources": {
+    "cisaKev": {
+      "retrieved": "2026-03-23T05:54:25.848Z",
+      "count": 1551
+    },
+    "feodo": {
+      "retrieved": "2026-03-23T05:54:26.063Z",
+      "count": 1
+    },
+    "news": {
+      "retrieved": "2026-03-23T05:54:26.862Z",
+      "count": 140
+    }
+  }
+}
