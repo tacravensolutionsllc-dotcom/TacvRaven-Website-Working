@@ -1,0 +1,228 @@
+{
+  "metadata": {
+    "week": {
+      "year": 2026,
+      "week": 14
+    },
+    "weekStart": "2026-03-30T00:00:00.000Z",
+    "monthName": "March",
+    "monthShort": "MAR",
+    "generated": "2026-03-30T06:15:11.371Z",
+    "threatLevel": {
+      "level": "GUARDED",
+      "class": "guarded",
+      "score": 47
+    }
+  },
+  "stats": {
+    "kevCount": 3,
+    "ransomwareCount": 0,
+    "c2Count": 1,
+    "malwareFamilies": 1
+  },
+  "trends": {
+    "kev": {
+      "current": 3,
+      "lastWeek": 3,
+      "change": 0,
+      "average": 2.9,
+      "history": [
+        2,
+        3,
+        4,
+        2,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    "ransomware": {
+      "current": 0,
+      "lastWeek": 2,
+      "change": -100,
+      "average": 1.3,
+      "history": [
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        0
+      ]
+    },
+    "c2": {
+      "current": 1,
+      "lastWeek": 13,
+      "change": -92,
+      "average": 13.6,
+      "history": [
+        16,
+        18,
+        14,
+        20,
+        12,
+        15,
+        13,
+        1
+      ]
+    }
+  },
+  "data": {
+    "recentKEVs": [
+      {
+        "cveID": "CVE-2025-53521",
+        "vendorProject": "F5",
+        "product": "BIG-IP",
+        "vulnerabilityName": "F5 BIG-IP Unspecified Vulnerability",
+        "dateAdded": "2026-03-27",
+        "shortDescription": "F5 BIG-IP APM contains an unspecified vulnerability that could allow a threat actor to achieve remote code execution.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-03-30",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "Please adhere to F5’s guidelines to assess exposure and mitigate risks. Check for signs of potential compromise on all internet accessible F5 products affected by this vulnerability. For more information please see: https://my.f5.com/manage/s/article/K000156741 ; https://my.f5.com/manage/s/article/K000160486 ; https://my.f5.com/manage/s/article/K11438344 ; https://nvd.nist.gov/vuln/detail/CVE-2025-53521",
+        "cwes": []
+      },
+      {
+        "cveID": "CVE-2026-33634",
+        "vendorProject": "Aquasecurity",
+        "product": "Trivy",
+        "vulnerabilityName": "Aquasecurity Trivy Embedded Malicious Code Vulnerability",
+        "dateAdded": "2026-03-26",
+        "shortDescription": "Aquasecurity Trivy contains an embedded malicious code vulnerability that could allow an attacker to gain access to everything in the CI/CD environment, including all tokens, SSH keys, cloud credentials, database passwords, and any sensitive configuration in memory.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-09",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "This vulnerability involves a supply‑chain compromise in a product that may be used across multiple products and environments. Additional vendor‑provided guidance must be followed to ensure full remediation. For more information, please see: https://github.com/advisories/GHSA-69fq-xp46-6x23 ; https://nvd.nist.gov/vuln/detail/CVE-2026-33634",
+        "cwes": [
+          "CWE-506"
+        ]
+      },
+      {
+        "cveID": "CVE-2026-33017",
+        "vendorProject": "Langflow",
+        "product": "Langflow",
+        "vulnerabilityName": "Langflow Code Injection Vulnerability",
+        "dateAdded": "2026-03-25",
+        "shortDescription": "Langflow contains a code injection vulnerability that could allow building public flows without requiring authentication.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-08",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://github.com/langflow-ai/langflow/security/advisories/GHSA-vwmf-pq79-vjvx ; https://nvd.nist.gov/vuln/detail/CVE-2026-33017",
+        "cwes": [
+          "CWE-94",
+          "CWE-95",
+          "CWE-306"
+        ]
+      }
+    ],
+    "ransomwareKEVs": [],
+    "onlineC2s": [
+      {
+        "ip_address": "50.16.16.211",
+        "port": 443,
+        "status": "online",
+        "hostname": "ec2-50-16-16-211.compute-1.amazonaws.com",
+        "as_number": 14618,
+        "as_name": "AMAZON-AES",
+        "country": "US",
+        "first_seen": "2025-12-30 13:56:31",
+        "last_online": "2026-03-12",
+        "malware": "QakBot"
+      }
+    ],
+    "c2ByFamily": {
+      "QakBot": 1
+    },
+    "c2ByCountry": {
+      "US": 1
+    },
+    "newsCoverage": {
+      "CVE-2025-53521": [
+        {
+          "title": "CISA Adds CVE-2025-53521 to KEV After Active F5 BIG-IP APM Exploitation",
+          "link": "https://thehackernews.com/2026/03/cisa-adds-cve-2025-53521-to-kev-after.html",
+          "pubDate": "Sat, 28 Mar 2026 12:37:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2026-33634": [
+        {
+          "title": "TeamPCP Backdoors LiteLLM Versions 1.82.7–1.82.8 via Trivy CI/CD Compromise",
+          "link": "https://thehackernews.com/2026/03/teampcp-backdoors-litellm-versions.html",
+          "pubDate": "Tue, 24 Mar 2026 23:51:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Trivy Hack Spreads Infostealer via Docker, Triggers Worm and Kubernetes Wiper",
+          "link": "https://thehackernews.com/2026/03/trivy-hack-spreads-infostealer-via.html",
+          "pubDate": "Mon, 23 Mar 2026 14:01:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Trivy Supply Chain Attack Triggers Self-Spreading CanisterWorm Across 47 npm Packages",
+          "link": "https://thehackernews.com/2026/03/trivy-supply-chain-attack-triggers-self.html",
+          "pubDate": "Sat, 21 Mar 2026 13:55:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Trivy Security Scanner GitHub Actions Breached, 75 Tags Hijacked to Steal CI/CD Secrets",
+          "link": "https://thehackernews.com/2026/03/trivy-security-scanner-github-actions.html",
+          "pubDate": "Fri, 20 Mar 2026 23:17:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Trivy Supply Chain Attack Targets CI/CD Secrets",
+          "link": "https://www.darkreading.com/application-security/trivy-supply-chain-attack-targets-ci-cd-secrets",
+          "pubDate": "Mon, 23 Mar 2026 21:43:59 GMT",
+          "source": "Dark Reading"
+        }
+      ],
+      "CVE-2026-33017": [
+        {
+          "title": "Critical Langflow Flaw CVE-2026-33017 Triggers Attacks within 20 Hours of Disclosure",
+          "link": "https://thehackernews.com/2026/03/critical-langflow-flaw-cve-2026-33017.html",
+          "pubDate": "Fri, 20 Mar 2026 20:45:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Critical Flaw in Langflow AI Platform Under Attack",
+          "link": "https://www.darkreading.com/vulnerabilities-threats/critical-flaw-langflow-ai-platform-under-attack",
+          "pubDate": "Thu, 26 Mar 2026 19:14:05 GMT",
+          "source": "Dark Reading"
+        }
+      ]
+    },
+    "tacticCounts": {
+      "TA0001": 4,
+      "TA0002": 1,
+      "TA0003": 1,
+      "TA0006": 1,
+      "TA0011": 1
+    },
+    "techniqueCounts": {
+      "T1190": 3,
+      "T1566.001": 1,
+      "T1059.001": 1,
+      "T1547.001": 1,
+      "T1555.003": 1,
+      "T1071.001": 1
+    }
+  },
+  "sources": {
+    "cisaKev": {
+      "retrieved": "2026-03-30T06:15:10.693Z",
+      "count": 1554
+    },
+    "feodo": {
+      "retrieved": "2026-03-30T06:15:10.977Z",
+      "count": 1
+    },
+    "news": {
+      "retrieved": "2026-03-30T06:15:11.367Z",
+      "count": 140
+    }
+  }
+}
