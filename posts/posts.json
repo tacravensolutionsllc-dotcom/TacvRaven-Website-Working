@@ -1,7 +1,26 @@
 {
-  "generated": "2026-03-29T09:44:59.255664",
-  "count": 23,
+  "generated": "2026-03-31T10:09:28.149939",
+  "count": 24,
   "posts": [
+    {
+      "title": "The Rise of Vulnerability\u2014And the Careers Fighting It",
+      "excerpt": "How vulnerability is creating new job opportunities.",
+      "date": "2026-03-31",
+      "category": "Career Paths",
+      "category_slug": "career-paths",
+      "category_css": "cp",
+      "tags": [
+        "Career Paths",
+        "Cybersecurity",
+        "Career",
+        "Vulnerability",
+        "vulnerability"
+      ],
+      "filepath": "posts/2026/03/the-rise-of-vulnerabilityand-the-careers-fighting-it.html",
+      "slug": "the-rise-of-vulnerabilityand-the-careers-fighting-it",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/03/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Ai\u2014And the Careers Fighting It",
