@@ -525,7 +525,13 @@ gtag('config', 'AW-11131482291');
     margin-top: 2px;
     flex-shrink: 0;
   }
-  .hero-actions { animation: fadeUp 0.7s 0.4s ease both; }
+  .hero-actions {
+    animation: fadeUp 0.7s 0.4s ease both;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
   .btn-primary {
     display: inline-block;
     font-family: 'Rajdhani', sans-serif;
@@ -561,20 +567,23 @@ gtag('config', 'AW-11131482291');
   .btn-primary:hover::before { left: 125%; }
   .btn-secondary {
     display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--gold);
     background: transparent;
-    padding: 18px 28px;
+    padding: 17px 28px;
     text-decoration: none;
-    border: 1px solid var(--gold-dim);
-    margin-left: 12px;
-    transition: all 0.2s;
+    border: none;
+    outline: 1px solid var(--gold-dim);
+    outline-offset: -1px;
+    transition: all 0.25s ease;
     cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   }
-  .btn-secondary:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+  .btn-secondary:hover { outline-color: var(--gold); color: var(--gold-bright); background: rgba(201,168,76,0.07); }
   .trust-line {
     font-family: var(--font-mono);
     font-size: 0.62rem;
@@ -1302,7 +1311,7 @@ gtag('config', 'AW-11131482291');
       <li><a href="/tools.html" class="nav-link">Tools</a></li>
       <li><a href="/pricing.html" class="nav-link active">Programs</a></li>
     </ul>
-    <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="nav-cta">Start Training</a>
+    <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="nav-cta">Start Your Cyber Career</a>
     <button class="mobile-menu-btn" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -1321,7 +1330,7 @@ gtag('config', 'AW-11131482291');
   <a href="/cyber-news.html" class="mobile-nav-link">News</a>
   <a href="/tools.html" class="mobile-nav-link">Tools</a>
   <a href="/pricing.html" class="mobile-nav-link">Programs</a>
-  <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="mobile-nav-link" style="color:var(--gold);">Start Training →</a>
+  <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="mobile-nav-link" style="color:var(--gold);">Start Your Cyber Career →</a>
 </div>
 
 <!-- RavenEye Threat Ticker -->
@@ -1367,17 +1376,21 @@ gtag('config', 'AW-11131482291');
           <span class="tag">TRCIA I — Foundational Certification</span>
           <span class="blink"></span>
         </div>
-        <h1>Become a<br><em>Cybersecurity</em><br>Intelligence<br>Analyst</h1>
-        <p class="hero-sub">Earn the TRCIA I Foundational Certification and learn how real analysts think, assess, and respond to threats. <strong style="color:var(--white);">Founding cohort access will not remain open.</strong></p>
+        <h1>Become a <span class="gold">Cybersecurity Analyst</span><br><em>No Experience Required</em></h1>
+        <p class="hero-sub">Train like a real SOC analyst. Build job-ready cybersecurity skills and break into the field faster — even with no experience.</p>
         <ul class="hero-bullets">
-          <li>Learn SOC triage and threat detection</li>
-          <li>Analyze real attack patterns and adversary behaviors</li>
-          <li>Build job-ready cybersecurity analyst skills</li>
+          <li>Beginner-friendly — no prior experience required</li>
+          <li>Self-paced training you can complete on your schedule</li>
+          <li>TRCIA I Certification included upon passing</li>
+          <li>Built on real-world SOC and threat intelligence workflows</li>
+          <li>80% pass requirement ensures real competency</li>
         </ul>
         <div class="hero-actions">
-          <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Start Your Analyst Training Now</a>
+          <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Start Your Cyber Career</a>
           <a href="#program" class="btn-secondary">View Curriculum</a>
         </div>
+        <p style="font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.1em;color:var(--grey);text-transform:uppercase;margin-top:14px;">No experience required &nbsp;•&nbsp; Self-paced &nbsp;•&nbsp; Certification included</p>
+        <p style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;color:var(--grey-light);text-transform:uppercase;margin-top:10px;">Designed to prepare you for SOC analyst and cyber intelligence roles.</p>
         <p class="trust-line">▸ Built for serious learners — this is performance-based training, not passive content.</p>
       </div>
       <div class="hero-right">
@@ -1388,12 +1401,38 @@ gtag('config', 'AW-11131482291');
             <strong class="price-current">$349</strong>
             <div class="price-label">Founding Cohort Pricing</div>
           </div>
-          <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Join the Founding Cohort Today</a>
-          <p style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-light);text-align:center;margin-top:14px;">You can keep studying — or start operating.</p>
+          <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Start Your Cyber Career</a>
+          <p class="guarantee-line" style="margin-top:10px;">7-Day Risk-Free Guarantee</p>
+          <p style="font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-light);text-align:center;margin-top:10px;">You can keep studying — or start operating.</p>
 
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     TRUST BLOCK
+════════════════════════════════════════════════ -->
+<section style="background:var(--panel);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:36px 0;">
+  <div class="container">
+    <ul style="list-style:none;display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:center;margin:0;padding:0;">
+      <li style="display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">
+        <span style="color:var(--gold);">▸</span> Beginner Friendly — No Experience Required
+      </li>
+      <li style="display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">
+        <span style="color:var(--gold);">▸</span> Self-Paced — Train on Your Schedule
+      </li>
+      <li style="display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">
+        <span style="color:var(--gold);">▸</span> TRCIA I Certification Included
+      </li>
+      <li style="display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">
+        <span style="color:var(--gold);">▸</span> Real-World SOC &amp; Threat Intelligence Simulations
+      </li>
+      <li style="display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">
+        <span style="color:var(--gold);">▸</span> 80% Pass Requirement — Certification Means Something
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -1441,7 +1480,7 @@ gtag('config', 'AW-11131482291');
     <div class="mid-cta-inner">
       <h3>This is where most candidates fall behind.</h3>
       <p>Start building real analyst skills today. Enrollment window is closing — founding cohort pricing will not return.</p>
-      <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Start Your Analyst Training Now</a>
+      <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Start Your Cyber Career</a>
       <p class="mid-cta-guarantee">Built for serious learners — this is not passive training. Results come from execution.</p>
     </div>
   </div>
@@ -1459,7 +1498,7 @@ gtag('config', 'AW-11131482291');
         <p>TRCIA I is not another certification course with a question bank. It's a structured intelligence analyst training program built on the same tradecraft frameworks used in real-world security operations.</p>
         <p>Every module is designed around decision-making under uncertainty — the core skill that separates an analyst who gets hired from one who doesn't.</p>
         <span class="exec-trigger" style="margin-bottom:20px;display:block;">▸ This is where most candidates fail — and where you separate.</span>
-        <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary" style="margin-top:8px;">Start Your Analyst Training Now</a>
+        <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary" style="margin-top:8px;">Start Your Cyber Career</a>
       </div>
       <div class="solution-right">
         <div class="feature-item">
@@ -1562,7 +1601,7 @@ gtag('config', 'AW-11131482291');
     <div class="mid-cta-inner">
       <h3>This is where most candidates fall behind.</h3>
       <p>Start building real analyst skills today. The founding cohort window is closing — this pricing will not return.</p>
-      <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Start Your Analyst Training Now</a>
+      <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Start Training Now</a>
       <p class="mid-cta-guarantee">Built for serious learners — this is not passive training. Results come from execution.</p>
     </div>
   </div>
@@ -1795,10 +1834,46 @@ gtag('config', 'AW-11131482291');
 
 
 <!-- ═══════════════════════════════════════════════
+     OUTCOME CLARITY
+════════════════════════════════════════════════ -->
+<section style="padding:80px 0;background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:40px;">
+      <span class="tag" style="margin-bottom:16px;display:inline-block;">Skills Gained</span>
+      <h2>What You Will Be<br><span class="gold">Able to Do</span></h2>
+      <p>By the time you earn TRCIA I, these aren't just concepts — they're capabilities you can demonstrate.</p>
+    </div>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+      <li style="display:flex;align-items:flex-start;gap:14px;padding:16px 20px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);">
+        <span style="color:var(--gold);font-family:var(--font-mono);font-size:0.8rem;margin-top:2px;flex-shrink:0;">→</span>
+        <span style="font-family:var(--font-body);font-size:0.95rem;color:var(--white);">Analyze cybersecurity threats and identify adversary behaviors in real log data</span>
+      </li>
+      <li style="display:flex;align-items:flex-start;gap:14px;padding:16px 20px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);">
+        <span style="color:var(--gold);font-family:var(--font-mono);font-size:0.8rem;margin-top:2px;flex-shrink:0;">→</span>
+        <span style="font-family:var(--font-body);font-size:0.95rem;color:var(--white);">Understand SOC workflows — triage alerts, escalate incidents, and work under operational pressure</span>
+      </li>
+      <li style="display:flex;align-items:flex-start;gap:14px;padding:16px 20px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);">
+        <span style="color:var(--gold);font-family:var(--font-mono);font-size:0.8rem;margin-top:2px;flex-shrink:0;">→</span>
+        <span style="font-family:var(--font-body);font-size:0.95rem;color:var(--white);">Conduct threat intelligence assessments using structured analytic techniques</span>
+      </li>
+      <li style="display:flex;align-items:flex-start;gap:14px;padding:16px 20px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);">
+        <span style="color:var(--gold);font-family:var(--font-mono);font-size:0.8rem;margin-top:2px;flex-shrink:0;">→</span>
+        <span style="font-family:var(--font-body);font-size:0.95rem;color:var(--white);">Build analyst-style reports that communicate findings to both technical and non-technical audiences</span>
+      </li>
+      <li style="display:flex;align-items:flex-start;gap:14px;padding:16px 20px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);">
+        <span style="color:var(--gold);font-family:var(--font-mono);font-size:0.8rem;margin-top:2px;flex-shrink:0;">→</span>
+        <span style="font-family:var(--font-body);font-size:0.95rem;color:var(--white);">Think and operate like a real cybersecurity analyst — not just recite definitions</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
      PRICING
 ════════════════════════════════════════════════ -->
 <section class="pricing-section">
   <div class="container">
+    <p style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey-light);text-align:center;margin-bottom:24px;">Designed for beginners transitioning into cybersecurity roles — no prior experience required</p>
     <div class="section-header" style="text-align:center;">
       <span class="tag" style="margin-bottom:16px;display:inline-block;">Investment</span>
       <h2>Founding Cohort<br><span class="gold">Pricing</span></h2>
@@ -1820,9 +1895,10 @@ gtag('config', 'AW-11131482291');
         <li>Structured analytic techniques reference materials</li>
         <li>Lifetime access to course content</li>
       </ul>
-      <p class="urgency-sub">⚠ This pricing will not return — founding cohort access is closing</p>
+      <p class="urgency-sub">⚠ Founding cohort pricing — limited enrollment</p>
       <p style="font-family:var(--font-body);font-size:1rem;color:var(--white);line-height:1.5;margin-bottom:20px;font-style:italic;">This is the difference between knowing cybersecurity and working in it.</p>
-      <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Secure Your Spot — Start Now</a>
+      <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Start Your Cyber Career</a>
+      <p class="pricing-guarantee" style="color:var(--gold-dim);margin-top:12px;">7-Day Risk-Free Guarantee</p>
       <p class="pricing-guarantee">This program is designed for those ready to apply, not just consume.</p>
     </div>
   </div>
@@ -1837,8 +1913,9 @@ gtag('config', 'AW-11131482291');
     <h2>Stop Studying.<br><span class="gold">Start</span><br>Operating.</h2>
     <p>This is where the gap between knowing cybersecurity and doing cybersecurity gets closed. Your cohort is open. Your training starts today.</p>
     <p style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);max-width:520px;margin:0 auto 36px;position:relative;">You already know where passive learning leads. This is where that changes.</p>
-    <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Secure Your Spot — Start Now</a>
-    <p class="final-cta-urgency">⚠ Enrollment window closing soon — founding cohort access will not remain open</p>
+    <a href="https://tacravencyberacademy.learnworlds.com/course/cstia" class="btn-primary">Start Your Cyber Career</a>
+    <p class="final-cta-guarantee">7-Day Risk-Free Guarantee</p>
+    <p class="final-cta-urgency">⚠ Founding cohort pricing — limited enrollment</p>
 
   </div>
 </section>
