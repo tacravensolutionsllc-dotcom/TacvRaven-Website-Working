@@ -1905,4 +1905,80 @@ gtag('config', 'G-PEYM947EG8');
   })();
 </script>
 
+<script>
+  // ── Button Sound Effects (Web Audio API — zero dependencies) ──────────────
+  (function() {
+    var ctx = null;
+
+    function getCtx() {
+      if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+      return ctx;
+    }
+
+    // Tactical click — short punchy thud with a high transient
+    function playClick() {
+      var c = getCtx();
+      var now = c.currentTime;
+
+      // High transient tick
+      var osc1 = c.createOscillator();
+      var gain1 = c.createGain();
+      osc1.connect(gain1); gain1.connect(c.destination);
+      osc1.type = 'square';
+      osc1.frequency.setValueAtTime(1200, now);
+      osc1.frequency.exponentialRampToValueAtTime(200, now + 0.06);
+      gain1.gain.setValueAtTime(0.18, now);
+      gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+      osc1.start(now); osc1.stop(now + 0.08);
+
+      // Low body thud
+      var osc2 = c.createOscillator();
+      var gain2 = c.createGain();
+      osc2.connect(gain2); gain2.connect(c.destination);
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(90, now);
+      osc2.frequency.exponentialRampToValueAtTime(40, now + 0.12);
+      gain2.gain.setValueAtTime(0.3, now);
+      gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+      osc2.start(now); osc2.stop(now + 0.12);
+    }
+
+    // Soft hover — quiet high-freq blip
+    function playHover() {
+      var c = getCtx();
+      var now = c.currentTime;
+      var osc = c.createOscillator();
+      var gain = c.createGain();
+      osc.connect(gain); gain.connect(c.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(900, now);
+      osc.frequency.exponentialRampToValueAtTime(1100, now + 0.04);
+      gain.gain.setValueAtTime(0.06, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+      osc.start(now); osc.stop(now + 0.07);
+    }
+
+    function attachSounds(el) {
+      var hovered = false;
+      el.addEventListener('mouseenter', function() {
+        if (!hovered) { hovered = true; playHover(); }
+      });
+      el.addEventListener('mouseleave', function() { hovered = false; });
+      el.addEventListener('mousedown', function() { playClick(); });
+      el.addEventListener('touchstart', function() { playClick(); }, { passive: true });
+    }
+
+    function init() {
+      document.querySelectorAll('.btn-primary, .btn-secondary, .nav-cta, .mobile-menu-btn').forEach(attachSounds);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  // ─────────────────────────────────────────────────────────────────────────
+</script>
+
 </html>
