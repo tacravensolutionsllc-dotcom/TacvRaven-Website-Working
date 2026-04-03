@@ -1,7 +1,26 @@
 {
-  "generated": "2026-04-01T10:10:46.788137",
-  "count": 25,
+  "generated": "2026-04-03T09:56:52.026254",
+  "count": 26,
   "posts": [
+    {
+      "title": "What Ics Means for Your Security Career",
+      "excerpt": "Recent developments in ICS and how they affect job seekers.",
+      "date": "2026-04-03",
+      "category": "Industry Trends",
+      "category_slug": "industry-trends",
+      "category_css": "tr",
+      "tags": [
+        "Industry Trends",
+        "Cybersecurity",
+        "Career",
+        "Ics",
+        "ICS"
+      ],
+      "filepath": "posts/2026/04/what-ics-means-for-your-security-career.html",
+      "slug": "what-ics-means-for-your-security-career",
+      "read_time": 11,
+      "featured": true
+    },
     {
       "title": "What Cloud Means for Your Security Career",
       "excerpt": "Recent developments in cloud and how they affect job seekers.",
@@ -19,7 +38,7 @@
       "filepath": "posts/2026/04/what-cloud-means-for-your-security-career.html",
       "slug": "what-cloud-means-for-your-security-career",
       "read_time": 11,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Vulnerability\u2014And the Careers Fighting It",
