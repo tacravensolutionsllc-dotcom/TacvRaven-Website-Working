@@ -1,7 +1,26 @@
 {
-  "generated": "2026-04-07T10:11:45.574099",
-  "count": 27,
+  "generated": "2026-04-09T10:17:06.510816",
+  "count": 28,
   "posts": [
+    {
+      "title": "Iot Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking IoT expertise. How to get it.",
+      "date": "2026-04-09",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Iot",
+        "IoT"
+      ],
+      "filepath": "posts/2026/04/iot-skills-are-in-demandheres-why.html",
+      "slug": "iot-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/04/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "What Ics Means for Your Security Career",
