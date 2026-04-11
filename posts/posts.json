@@ -1,7 +1,25 @@
 {
-  "generated": "2026-04-09T10:17:06.510816",
+  "generated": "2026-04-11T09:50:24.149470",
   "count": 28,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-04-11",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/04/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "Iot Skills Are in Demand\u2014Here's Why",
       "excerpt": "Employers are actively seeking IoT expertise. How to get it.",
@@ -19,24 +37,6 @@
       "filepath": "posts/2026/04/iot-skills-are-in-demandheres-why.html",
       "slug": "iot-skills-are-in-demandheres-why",
       "read_time": 12,
-      "featured": true
-    },
-    {
-      "title": "How to Break Into Cybersecurity Without a Degree",
-      "excerpt": "You don't need a CS degree. Here's the realistic path.",
-      "date": "2026-04-07",
-      "category": "Getting Started",
-      "category_slug": "getting-started",
-      "category_css": "gs",
-      "tags": [
-        "Getting Started",
-        "Cybersecurity",
-        "Career",
-        "breaking_in"
-      ],
-      "filepath": "posts/2026/04/how-to-break-into-cybersecurity-without-a-degree.html",
-      "slug": "how-to-break-into-cybersecurity-without-a-degree",
-      "read_time": 13,
       "featured": false
     },
     {
