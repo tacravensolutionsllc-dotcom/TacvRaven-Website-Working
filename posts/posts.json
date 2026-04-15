@@ -1,7 +1,26 @@
 {
-  "generated": "2026-04-13T10:51:11.783418",
-  "count": 28,
+  "generated": "2026-04-15T10:21:04.311283",
+  "count": 29,
   "posts": [
+    {
+      "title": "Soc Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking SOC expertise. How to get it.",
+      "date": "2026-04-15",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Soc",
+        "SOC"
+      ],
+      "filepath": "posts/2026/04/soc-skills-are-in-demandheres-why.html",
+      "slug": "soc-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/04/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Iot Skills Are in Demand\u2014Here's Why",
