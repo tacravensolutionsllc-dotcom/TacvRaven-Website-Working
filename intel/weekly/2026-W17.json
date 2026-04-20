@@ -1,0 +1,325 @@
+{
+  "metadata": {
+    "week": {
+      "year": 2026,
+      "week": 17
+    },
+    "weekStart": "2026-04-20T00:00:00.000Z",
+    "monthName": "April",
+    "monthShort": "APR",
+    "generated": "2026-04-20T06:31:47.065Z",
+    "threatLevel": {
+      "level": "GUARDED",
+      "class": "guarded",
+      "score": 47
+    }
+  },
+  "stats": {
+    "kevCount": 3,
+    "ransomwareCount": 0,
+    "c2Count": 1,
+    "malwareFamilies": 1
+  },
+  "trends": {
+    "kev": {
+      "current": 3,
+      "lastWeek": 3,
+      "change": 0,
+      "average": 2.9,
+      "history": [
+        2,
+        3,
+        4,
+        2,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    "ransomware": {
+      "current": 0,
+      "lastWeek": 2,
+      "change": -100,
+      "average": 1.3,
+      "history": [
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        0
+      ]
+    },
+    "c2": {
+      "current": 1,
+      "lastWeek": 13,
+      "change": -92,
+      "average": 13.6,
+      "history": [
+        16,
+        18,
+        14,
+        20,
+        12,
+        15,
+        13,
+        1
+      ]
+    }
+  },
+  "data": {
+    "recentKEVs": [
+      {
+        "cveID": "CVE-2026-34197",
+        "vendorProject": "Apache",
+        "product": "ActiveMQ",
+        "vulnerabilityName": "Apache ActiveMQ Improper Input Validation Vulnerability",
+        "dateAdded": "2026-04-16",
+        "shortDescription": "Apache ActiveMQ contains an improper input validation vulnerability that allows for code injection.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-30",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://activemq.apache.org/security-advisories.data/CVE-2026-34197-announcement.txt ; https://nvd.nist.gov/vuln/detail/CVE-2026-34197",
+        "cwes": [
+          "CWE-20",
+          "CWE-94"
+        ]
+      },
+      {
+        "cveID": "CVE-2009-0238",
+        "vendorProject": "Microsoft",
+        "product": "Office",
+        "vulnerabilityName": "Microsoft Office Remote Code Execution",
+        "dateAdded": "2026-04-14",
+        "shortDescription": "Microsoft Office Excel contains a remote code execution vulnerability that could allow an attacker to take complete control of an affected system if a user opens a specially crafted Excel file that includes a malformed object.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-28",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://learn.microsoft.com/en-us/security-updates/securitybulletins/2009/ms09-009 ; https://nvd.nist.gov/vuln/detail/CVE-2009-0238",
+        "cwes": [
+          "CWE-94"
+        ]
+      },
+      {
+        "cveID": "CVE-2026-32201",
+        "vendorProject": "Microsoft",
+        "product": "SharePoint Server",
+        "vulnerabilityName": "Microsoft SharePoint Server Improper Input Validation Vulnerability",
+        "dateAdded": "2026-04-14",
+        "shortDescription": "Microsoft SharePoint Server contains an improper input validation vulnerability that allows an unauthorized attacker to perform spoofing over a network.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-04-28",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-32201 ; https://nvd.nist.gov/vuln/detail/CVE-2026-32201",
+        "cwes": [
+          "CWE-20"
+        ]
+      }
+    ],
+    "ransomwareKEVs": [],
+    "onlineC2s": [
+      {
+        "ip_address": "50.16.16.211",
+        "port": 443,
+        "status": "online",
+        "hostname": "ec2-50-16-16-211.compute-1.amazonaws.com",
+        "as_number": 14618,
+        "as_name": "AMAZON-AES",
+        "country": "US",
+        "first_seen": "2025-12-30 13:56:31",
+        "last_online": "2026-03-12",
+        "malware": "QakBot"
+      }
+    ],
+    "c2ByFamily": {
+      "QakBot": 1
+    },
+    "c2ByCountry": {
+      "US": 1
+    },
+    "newsCoverage": {
+      "CVE-2026-34197": [
+        {
+          "title": "Apache ActiveMQ CVE-2026-34197 Added to CISA KEV Amid Active Exploitation",
+          "link": "https://thehackernews.com/2026/04/apache-activemq-cve-2026-34197-added-to.html",
+          "pubDate": "Fri, 17 Apr 2026 08:52:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "ThreatsDay Bulletin: Hybrid P2P Botnet, 13-Year-Old Apache RCE and 18 More Stories",
+          "link": "https://thehackernews.com/2026/04/threatsday-bulletin-hybrid-p2p-botnet.html",
+          "pubDate": "Thu, 09 Apr 2026 18:27:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2009-0238": [
+        {
+          "title": "Three Microsoft Defender Zero-Days Actively Exploited; Two Still Unpatched",
+          "link": "https://thehackernews.com/2026/04/three-microsoft-defender-zero-days.html",
+          "pubDate": "Fri, 17 Apr 2026 18:51:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "April Patch Tuesday Fixes Critical Flaws Across SAP, Adobe, Microsoft, Fortinet, and More",
+          "link": "https://thehackernews.com/2026/04/april-patch-tuesday-fixes-critical.html",
+          "pubDate": "Wed, 15 Apr 2026 18:07:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft Issues Patches for SharePoint Zero-Day and 168 Other New Vulnerabilities",
+          "link": "https://thehackernews.com/2026/04/microsoft-issues-patches-for-sharepoint.html",
+          "pubDate": "Wed, 15 Apr 2026 14:10:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "CISA Adds 6 Known Exploited Flaws in Fortinet, Microsoft, and Adobe Software",
+          "link": "https://thehackernews.com/2026/04/cisa-adds-6-known-exploited-flaws-in.html",
+          "pubDate": "Tue, 14 Apr 2026 11:09:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft's Original Windows Secure Boot Certificate Is Expiring",
+          "link": "https://www.darkreading.com/endpoint-security/microsoftoriginal-windows-secure-boot-certificates-expire",
+          "pubDate": "Thu, 16 Apr 2026 15:16:30 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Microsoft, Salesforce Patch AI Agent Data Leak Flaws",
+          "link": "https://www.darkreading.com/cloud-security/microsoft-salesforce-patch-ai-agent-data-leak-flaws",
+          "pubDate": "Wed, 15 Apr 2026 12:00:00 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Microsoft Bets $10B to Boost Japan's AI, Cybersecurity",
+          "link": "https://www.darkreading.com/cloud-security/microsoft-bets-10-billion-to-boost-japan-s-ai-cybersecurity",
+          "pubDate": "Wed, 15 Apr 2026 00:00:08 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Privilege Elevation Dominates Massive Microsoft Patch Update",
+          "link": "https://www.darkreading.com/vulnerabilities-threats/privilege-elevation-dominates-microsoft-patch-update",
+          "pubDate": "Tue, 14 Apr 2026 21:22:07 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "'BlueHammer' Windows Zero-Day Exploit Signals Microsoft Bug Disclosure Issues",
+          "link": "https://www.darkreading.com/vulnerabilities-threats/bluehammer-windows-exploit-microsoft-bug-disclosure-issues",
+          "pubDate": "Thu, 09 Apr 2026 20:13:34 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Russia Hacked Routers to Steal Microsoft Office Tokens",
+          "link": "https://krebsonsecurity.com/2026/04/russia-hacked-routers-to-steal-microsoft-office-tokens/",
+          "pubDate": "Tue, 07 Apr 2026 17:02:44 +0000",
+          "source": "Krebs"
+        },
+        {
+          "title": "Microsoft Patch Tuesday, March 2026 Edition",
+          "link": "https://krebsonsecurity.com/2026/03/microsoft-patch-tuesday-march-2026-edition/",
+          "pubDate": "Wed, 11 Mar 2026 00:32:51 +0000",
+          "source": "Krebs"
+        }
+      ],
+      "CVE-2026-32201": [
+        {
+          "title": "Three Microsoft Defender Zero-Days Actively Exploited; Two Still Unpatched",
+          "link": "https://thehackernews.com/2026/04/three-microsoft-defender-zero-days.html",
+          "pubDate": "Fri, 17 Apr 2026 18:51:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "April Patch Tuesday Fixes Critical Flaws Across SAP, Adobe, Microsoft, Fortinet, and More",
+          "link": "https://thehackernews.com/2026/04/april-patch-tuesday-fixes-critical.html",
+          "pubDate": "Wed, 15 Apr 2026 18:07:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft Issues Patches for SharePoint Zero-Day and 168 Other New Vulnerabilities",
+          "link": "https://thehackernews.com/2026/04/microsoft-issues-patches-for-sharepoint.html",
+          "pubDate": "Wed, 15 Apr 2026 14:10:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "CISA Adds 6 Known Exploited Flaws in Fortinet, Microsoft, and Adobe Software",
+          "link": "https://thehackernews.com/2026/04/cisa-adds-6-known-exploited-flaws-in.html",
+          "pubDate": "Tue, 14 Apr 2026 11:09:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft's Original Windows Secure Boot Certificate Is Expiring",
+          "link": "https://www.darkreading.com/endpoint-security/microsoftoriginal-windows-secure-boot-certificates-expire",
+          "pubDate": "Thu, 16 Apr 2026 15:16:30 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Microsoft, Salesforce Patch AI Agent Data Leak Flaws",
+          "link": "https://www.darkreading.com/cloud-security/microsoft-salesforce-patch-ai-agent-data-leak-flaws",
+          "pubDate": "Wed, 15 Apr 2026 12:00:00 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Microsoft Bets $10B to Boost Japan's AI, Cybersecurity",
+          "link": "https://www.darkreading.com/cloud-security/microsoft-bets-10-billion-to-boost-japan-s-ai-cybersecurity",
+          "pubDate": "Wed, 15 Apr 2026 00:00:08 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Privilege Elevation Dominates Massive Microsoft Patch Update",
+          "link": "https://www.darkreading.com/vulnerabilities-threats/privilege-elevation-dominates-microsoft-patch-update",
+          "pubDate": "Tue, 14 Apr 2026 21:22:07 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "'BlueHammer' Windows Zero-Day Exploit Signals Microsoft Bug Disclosure Issues",
+          "link": "https://www.darkreading.com/vulnerabilities-threats/bluehammer-windows-exploit-microsoft-bug-disclosure-issues",
+          "pubDate": "Thu, 09 Apr 2026 20:13:34 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Russia Hacked Routers to Steal Microsoft Office Tokens",
+          "link": "https://krebsonsecurity.com/2026/04/russia-hacked-routers-to-steal-microsoft-office-tokens/",
+          "pubDate": "Tue, 07 Apr 2026 17:02:44 +0000",
+          "source": "Krebs"
+        },
+        {
+          "title": "Microsoft Patch Tuesday, March 2026 Edition",
+          "link": "https://krebsonsecurity.com/2026/03/microsoft-patch-tuesday-march-2026-edition/",
+          "pubDate": "Wed, 11 Mar 2026 00:32:51 +0000",
+          "source": "Krebs"
+        }
+      ]
+    },
+    "tacticCounts": {
+      "TA0001": 4,
+      "TA0002": 1,
+      "TA0003": 1,
+      "TA0006": 1,
+      "TA0011": 1
+    },
+    "techniqueCounts": {
+      "T1190": 3,
+      "T1566.001": 1,
+      "T1059.001": 1,
+      "T1547.001": 1,
+      "T1555.003": 1,
+      "T1071.001": 1
+    }
+  },
+  "sources": {
+    "cisaKev": {
+      "retrieved": "2026-04-20T06:31:45.901Z",
+      "count": 1569
+    },
+    "feodo": {
+      "retrieved": "2026-04-20T06:31:46.192Z",
+      "count": 1
+    },
+    "news": {
+      "retrieved": "2026-04-20T06:31:47.063Z",
+      "count": 140
+    }
+  }
+}
