@@ -1,7 +1,26 @@
 {
-  "generated": "2026-04-27T11:09:18.592584",
-  "count": 29,
+  "generated": "2026-04-29T11:00:01.936381",
+  "count": 30,
   "posts": [
+    {
+      "title": "Security Job Market: April 2026 Update",
+      "excerpt": "Latest hiring trends, salary data, and what's changed.",
+      "date": "2026-04-29",
+      "category": "Salaries",
+      "category_slug": "salaries",
+      "category_css": "sal",
+      "tags": [
+        "Salaries",
+        "Cybersecurity",
+        "Career",
+        "Soc",
+        "SOC"
+      ],
+      "filepath": "posts/2026/04/security-job-market-april-2026-update.html",
+      "slug": "security-job-market-april-2026-update",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/04/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Soc Skills Are in Demand\u2014Here's Why",
