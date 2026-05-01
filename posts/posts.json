@@ -1,7 +1,25 @@
 {
-  "generated": "2026-04-29T11:00:01.936381",
-  "count": 30,
+  "generated": "2026-05-01T10:26:20.190881",
+  "count": 31,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-05-01",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/05/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "Security Job Market: April 2026 Update",
       "excerpt": "Latest hiring trends, salary data, and what's changed.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/04/security-job-market-april-2026-update.html",
       "slug": "security-job-market-april-2026-update",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
