@@ -1,0 +1,280 @@
+{
+  "metadata": {
+    "week": {
+      "year": 2026,
+      "week": 19
+    },
+    "weekStart": "2026-05-04T00:00:00.000Z",
+    "monthName": "May",
+    "monthShort": "MAY",
+    "generated": "2026-05-04T07:34:38.227Z",
+    "threatLevel": {
+      "level": "ELEVATED",
+      "class": "elevated",
+      "score": 62
+    }
+  },
+  "stats": {
+    "kevCount": 4,
+    "ransomwareCount": 0,
+    "c2Count": 1,
+    "malwareFamilies": 1
+  },
+  "trends": {
+    "kev": {
+      "current": 4,
+      "lastWeek": 3,
+      "change": 33,
+      "average": 3,
+      "history": [
+        2,
+        3,
+        4,
+        2,
+        3,
+        3,
+        3,
+        4
+      ]
+    },
+    "ransomware": {
+      "current": 0,
+      "lastWeek": 2,
+      "change": -100,
+      "average": 1.3,
+      "history": [
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        0
+      ]
+    },
+    "c2": {
+      "current": 1,
+      "lastWeek": 13,
+      "change": -92,
+      "average": 13.6,
+      "history": [
+        16,
+        18,
+        14,
+        20,
+        12,
+        15,
+        13,
+        1
+      ]
+    }
+  },
+  "data": {
+    "recentKEVs": [
+      {
+        "cveID": "CVE-2026-31431",
+        "vendorProject": "Linux",
+        "product": "Kernel",
+        "vulnerabilityName": "Linux Kernel Incorrect Resource Transfer Between Spheres Vulnerability",
+        "dateAdded": "2026-05-01",
+        "shortDescription": "Linux Kernel contains an incorrect resource transfer between spheres vulnerability that could allow for privilege escalation.",
+        "requiredAction": "\"Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-05-15",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://lore.kernel.org/linux-cve-announce/2026042214-CVE-2026-31431-3d65@gregkh/; https://xint.io/blog/copy-fail-linux-distributions#the-fix-6 ; https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/about/ ; https://nvd.nist.gov/vuln/detail/CVE-2026-31431",
+        "cwes": [
+          "CWE-699"
+        ]
+      },
+      {
+        "cveID": "CVE-2026-41940",
+        "vendorProject": "WebPros",
+        "product": "cPanel & WHM and WP2 (WordPress Squared)",
+        "vulnerabilityName": "WebPros cPanel & WHM and WP2 (WordPress Squared) Missing Authentication for Critical Function Vulnerability",
+        "dateAdded": "2026-04-30",
+        "shortDescription": "WebPros cPanel & WHM (WebHost Manager) and WP2 (WordPress Squared) contain an authentication bypass vulnerability in the login flow that allows unauthenticated remote attackers to gain unauthorized access to the control panel.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-05-03",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://support.cpanel.net/hc/en-us/articles/40073787579671-cPanel-WHM-Security-Update-04-28-2026 ; https://docs.cpanel.net/release-notes/release-notes/ ; https://docs.wpsquared.com/changelogs/versions/changelog/#13617 ; https://nvd.nist.gov/vuln/detail/CVE-2026-41940\"",
+        "cwes": [
+          "CWE-306"
+        ]
+      },
+      {
+        "cveID": "CVE-2024-1708",
+        "vendorProject": "ConnectWise",
+        "product": "ScreenConnect",
+        "vulnerabilityName": "ConnectWise ScreenConnect Path Traversal Vulnerability",
+        "dateAdded": "2026-04-28",
+        "shortDescription": "ConnectWise ScreenConnect contains a path traversal vulnerability which could allow an attacker to execute remote code or directly impact confidential data and critical systems.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-05-12",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://www.connectwise.com/company/trust/security-bulletins/connectwise-screenconnect-23.9.8 ; https://nvd.nist.gov/vuln/detail/CVE-2024-1708",
+        "cwes": [
+          "CWE-22"
+        ]
+      },
+      {
+        "cveID": "CVE-2026-32202",
+        "vendorProject": "Microsoft",
+        "product": "Windows",
+        "vulnerabilityName": "Microsoft Windows Protection Mechanism Failure Vulnerability",
+        "dateAdded": "2026-04-28",
+        "shortDescription": "Microsoft Windows Shell contains a protection mechanism failure vulnerability that allows an unauthorized attacker to perform spoofing over a network.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-05-12",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-32202 ; https://nvd.nist.gov/vuln/detail/CVE-2026-32202",
+        "cwes": [
+          "CWE-693"
+        ]
+      }
+    ],
+    "ransomwareKEVs": [],
+    "onlineC2s": [
+      {
+        "ip_address": "50.16.16.211",
+        "port": 443,
+        "status": "online",
+        "hostname": "ec2-50-16-16-211.compute-1.amazonaws.com",
+        "as_number": 14618,
+        "as_name": "AMAZON-AES",
+        "country": "US",
+        "first_seen": "2025-12-30 13:56:31",
+        "last_online": "2026-03-12",
+        "malware": "QakBot"
+      }
+    ],
+    "c2ByFamily": {
+      "QakBot": 1
+    },
+    "c2ByCountry": {
+      "US": 1
+    },
+    "newsCoverage": {
+      "CVE-2026-31431": [
+        {
+          "title": "CISA Adds Actively Exploited Linux Root Access Bug CVE-2026-31431 to KEV",
+          "link": "https://thehackernews.com/2026/05/cisa-adds-actively-exploited-linux-root.html",
+          "pubDate": "Sun, 03 May 2026 11:56:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "New Linux 'Copy Fail' Vulnerability Enables Root Access on Major Distributions",
+          "link": "https://thehackernews.com/2026/04/new-linux-copy-fail-vulnerability.html",
+          "pubDate": "Thu, 30 Apr 2026 14:54:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "VECT 2.0 Ransomware Irreversibly Destroys Files Over 131KB on Windows, Linux, ESXi",
+          "link": "https://thehackernews.com/2026/04/vect-20-ransomware-irreversibly.html",
+          "pubDate": "Tue, 28 Apr 2026 19:31:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Another AI-Assisted Software Scan Yields 9-Year-Old Linux Bug",
+          "link": "https://www.darkreading.com/vulnerabilities-threats/ai-assisted-software-scan-linux-bug",
+          "pubDate": "Thu, 30 Apr 2026 20:41:18 GMT",
+          "source": "Dark Reading"
+        }
+      ],
+      "CVE-2026-41940": [],
+      "CVE-2024-1708": [
+        {
+          "title": "CISA Adds Actively Exploited ConnectWise and Windows Flaws to KEV",
+          "link": "https://thehackernews.com/2026/04/cisa-adds-actively-exploited.html",
+          "pubDate": "Wed, 29 Apr 2026 14:16:00 +0530",
+          "source": "Hacker News"
+        }
+      ],
+      "CVE-2026-32202": [
+        {
+          "title": "CISA Adds Actively Exploited ConnectWise and Windows Flaws to KEV",
+          "link": "https://thehackernews.com/2026/04/cisa-adds-actively-exploited.html",
+          "pubDate": "Wed, 29 Apr 2026 14:16:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "VECT 2.0 Ransomware Irreversibly Destroys Files Over 131KB on Windows, Linux, ESXi",
+          "link": "https://thehackernews.com/2026/04/vect-20-ransomware-irreversibly.html",
+          "pubDate": "Tue, 28 Apr 2026 19:31:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft Patches Entra ID Role Flaw That Enabled Service Principal Takeover",
+          "link": "https://thehackernews.com/2026/04/microsoft-patches-entra-id-role-flaw.html",
+          "pubDate": "Tue, 28 Apr 2026 12:07:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft Confirms Active Exploitation of Windows Shell CVE-2026-32202",
+          "link": "https://thehackernews.com/2026/04/microsoft-confirms-active-exploitation.html",
+          "pubDate": "Tue, 28 Apr 2026 11:20:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "UNC6692 Impersonates IT Help Desk via Microsoft Teams to Deploy SNOW Malware",
+          "link": "https://thehackernews.com/2026/04/unc6692-impersonates-it-helpdesk-via.html",
+          "pubDate": "Thu, 23 Apr 2026 23:46:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Unpatched 'PhantomRPC' Flaw in Windows Enables Privilege Escalation",
+          "link": "https://www.darkreading.com/vulnerabilities-threats/unpatched-phantomrpc-flaw-windows-privilege-escalation",
+          "pubDate": "Mon, 27 Apr 2026 15:31:41 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Exploits Turn Windows Defender Into Attacker Tool",
+          "link": "https://www.darkreading.com/cyberattacks-data-breaches/exploits-turn-windows-defender-attacker-tool",
+          "pubDate": "Tue, 21 Apr 2026 19:12:40 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Russia Hacked Routers to Steal Microsoft Office Tokens",
+          "link": "https://krebsonsecurity.com/2026/04/russia-hacked-routers-to-steal-microsoft-office-tokens/",
+          "pubDate": "Tue, 07 Apr 2026 17:02:44 +0000",
+          "source": "Krebs"
+        },
+        {
+          "title": "Microsoft Patch Tuesday, March 2026 Edition",
+          "link": "https://krebsonsecurity.com/2026/03/microsoft-patch-tuesday-march-2026-edition/",
+          "pubDate": "Wed, 11 Mar 2026 00:32:51 +0000",
+          "source": "Krebs"
+        }
+      ]
+    },
+    "tacticCounts": {
+      "TA0001": 5,
+      "TA0002": 1,
+      "TA0003": 1,
+      "TA0006": 1,
+      "TA0011": 1
+    },
+    "techniqueCounts": {
+      "T1190": 4,
+      "T1566.001": 1,
+      "T1059.001": 1,
+      "T1547.001": 1,
+      "T1555.003": 1,
+      "T1071.001": 1
+    }
+  },
+  "sources": {
+    "cisaKev": {
+      "retrieved": "2026-05-04T07:34:36.925Z",
+      "count": 1587
+    },
+    "feodo": {
+      "retrieved": "2026-05-04T07:34:37.057Z",
+      "count": 1
+    },
+    "news": {
+      "retrieved": "2026-05-04T07:34:38.225Z",
+      "count": 140
+    }
+  }
+}
