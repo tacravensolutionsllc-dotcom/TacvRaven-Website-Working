@@ -2,139 +2,145 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://tacraven.com/intel/blackwing/</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/04/antivirus-software-vulnerabilities.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/04/cloud-security-maturity-models.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/04/long-term-persistence-methods-used-by-apts.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/04/security-data-lake-architecture.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/04/deception-technologies-and-honeypots.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/04/supply-chain-attacks-through-updates.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/04/social-engineering-specialist-groups.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/04/credential-stuffing-operations.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/04/certificate-authority-compromise.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/04/ci-cd-pipeline-compromise-risks.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://tacraven.com/intel/blackwing/2026/05/oil-and-gas-pipeline-security.html</loc>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/05/cryptographic-implementation-flaws.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/apt-exploitation-of-trust-relationships.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/apt-persistence-mechanism-analysis.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/ransomware-impact-on-supply-chains.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/secrets-management-in-cloud-environments.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/telecom-equipment-supply-chain.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/securing-cloud-development-pipelines.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/criminal-forum-dynamics.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/detection-engineering-fundamentals.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/cloud-finops-security-integration.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/apt-infrastructure-takedown-analysis.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tacraven.com/intel/blackwing/2026/03/cyber-operations-against-dissidents.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
