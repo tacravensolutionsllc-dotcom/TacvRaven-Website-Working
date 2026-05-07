@@ -1,7 +1,27 @@
 {
-  "generated": "2026-05-05T10:50:14.909764",
-  "count": 31,
+  "generated": "2026-05-07T11:12:07.265563",
+  "count": 32,
   "posts": [
+    {
+      "title": "Security Job Market: May 2026 Update",
+      "excerpt": "Latest hiring trends, salary data, and what's changed.",
+      "date": "2026-05-07",
+      "category": "Salaries",
+      "category_slug": "salaries",
+      "category_css": "sal",
+      "tags": [
+        "Salaries",
+        "Cybersecurity",
+        "Career",
+        "Critical Infrastructure",
+        "critical",
+        "infrastructure"
+      ],
+      "filepath": "posts/2026/05/security-job-market-may-2026-update.html",
+      "slug": "security-job-market-may-2026-update",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +38,7 @@
       "filepath": "posts/2026/05/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Security Job Market: April 2026 Update",
