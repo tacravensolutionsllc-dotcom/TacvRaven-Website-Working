@@ -1,7 +1,26 @@
 {
-  "generated": "2026-05-07T11:12:07.265563",
-  "count": 32,
+  "generated": "2026-05-09T10:11:57.874968",
+  "count": 33,
   "posts": [
+    {
+      "title": "The Rise of Ot\u2014And the Careers Fighting It",
+      "excerpt": "How OT is creating new job opportunities.",
+      "date": "2026-05-09",
+      "category": "Career Paths",
+      "category_slug": "career-paths",
+      "category_css": "cp",
+      "tags": [
+        "Career Paths",
+        "Cybersecurity",
+        "Career",
+        "Ot",
+        "OT"
+      ],
+      "filepath": "posts/2026/05/the-rise-of-otand-the-careers-fighting-it.html",
+      "slug": "the-rise-of-otand-the-careers-fighting-it",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "Security Job Market: May 2026 Update",
       "excerpt": "Latest hiring trends, salary data, and what's changed.",
@@ -20,7 +39,7 @@
       "filepath": "posts/2026/05/security-job-market-may-2026-update.html",
       "slug": "security-job-market-may-2026-update",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
