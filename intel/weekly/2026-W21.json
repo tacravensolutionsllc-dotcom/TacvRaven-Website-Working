@@ -1,0 +1,223 @@
+{
+  "metadata": {
+    "week": {
+      "year": 2026,
+      "week": 21
+    },
+    "weekStart": "2026-05-18T00:00:00.000Z",
+    "monthName": "May",
+    "monthShort": "MAY",
+    "generated": "2026-05-18T08:30:43.485Z",
+    "threatLevel": {
+      "level": "GUARDED",
+      "class": "guarded",
+      "score": 32
+    }
+  },
+  "stats": {
+    "kevCount": 2,
+    "ransomwareCount": 0,
+    "c2Count": 1,
+    "malwareFamilies": 1
+  },
+  "trends": {
+    "kev": {
+      "current": 2,
+      "lastWeek": 3,
+      "change": -33,
+      "average": 2.8,
+      "history": [
+        2,
+        3,
+        4,
+        2,
+        3,
+        3,
+        3,
+        2
+      ]
+    },
+    "ransomware": {
+      "current": 0,
+      "lastWeek": 2,
+      "change": -100,
+      "average": 1.3,
+      "history": [
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        0
+      ]
+    },
+    "c2": {
+      "current": 1,
+      "lastWeek": 13,
+      "change": -92,
+      "average": 13.6,
+      "history": [
+        16,
+        18,
+        14,
+        20,
+        12,
+        15,
+        13,
+        1
+      ]
+    }
+  },
+  "data": {
+    "recentKEVs": [
+      {
+        "cveID": "CVE-2026-42897",
+        "vendorProject": "Microsoft",
+        "product": "Microsoft",
+        "vulnerabilityName": "Microsoft Exchange Server Cross-Site Scripting Vulnerability",
+        "dateAdded": "2026-05-15",
+        "shortDescription": "Microsoft Exchange Server contains a cross-site scripting vulnerability during web page generation in Outlook Web Access and when certain interaction conditions are met, arbitrary JavaScript can be executed in the browser context.",
+        "requiredAction": "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",
+        "dueDate": "2026-05-29",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-42897 ; https://learn.microsoft.com/en-us/exchange/plan-and-deploy/post-installation-tasks/security-best-practices/exchange-emergency-mitigation-service ; https://nvd.nist.gov/vuln/detail/CVE-2026-42897",
+        "cwes": [
+          "CWE-79"
+        ]
+      },
+      {
+        "cveID": "CVE-2026-20182",
+        "vendorProject": "Cisco",
+        "product": "Catalyst SD-WAN",
+        "vulnerabilityName": "Cisco Catalyst SD-WAN Controller Authentication Bypass Vulnerability",
+        "dateAdded": "2026-05-14",
+        "shortDescription": "Cisco Catalyst SD-WAN Controller & Manager contain an authentication bypass vulnerability that allows an unauthenticated, remote attacker to bypass authentication and obtain administrative privileges on an affected system.",
+        "requiredAction": "Please adhere to CISA’s guidelines to assess exposure and mitigate risks associated with Cisco SD-WAN devices as outlined in CISA’s Emergency Directive 26-03 (URL listed below in Notes) and CISA’s Hunt & Hardening Guidance for Cisco SD-WAN Devices (URL listed below in Notes). Adhere to the applicable BOD 22-01 guidance for cloud services or discontinue use of the product if mitigations are not available.",
+        "dueDate": "2026-05-17",
+        "knownRansomwareCampaignUse": "Unknown",
+        "notes": "CISA Mitigation Instructions: https://www.cisa.gov/news-events/directives/ed-26-03-mitigate-vulnerabilities-cisco-sd-wan-systems ; https://www.cisa.gov/news-events/directives/supplemental-direction-ed-26-03-hunt-and-hardening-guidance-cisco-sd-wan-systems ; https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-rpa2-v69WY2SW ; https://nvd.nist.gov/vuln/detail/CVE-2026-20182",
+        "cwes": [
+          "CWE-287"
+        ]
+      }
+    ],
+    "ransomwareKEVs": [],
+    "onlineC2s": [
+      {
+        "ip_address": "50.16.16.211",
+        "port": 443,
+        "status": "online",
+        "hostname": "ec2-50-16-16-211.compute-1.amazonaws.com",
+        "as_number": 14618,
+        "as_name": "AMAZON-AES",
+        "country": "US",
+        "first_seen": "2025-12-30 13:56:31",
+        "last_online": "2026-03-12",
+        "malware": "QakBot"
+      }
+    ],
+    "c2ByFamily": {
+      "QakBot": 1
+    },
+    "c2ByCountry": {
+      "US": 1
+    },
+    "newsCoverage": {
+      "CVE-2026-42897": [
+        {
+          "title": "On-Prem Microsoft Exchange Server CVE-2026-42897 Exploited via Crafted Email",
+          "link": "https://thehackernews.com/2026/05/on-prem-microsoft-exchange-server-cve.html",
+          "pubDate": "Fri, 15 May 2026 11:49:04 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft's MDASH AI System Finds 16 Windows Flaws Fixed in Patch Tuesday",
+          "link": "https://thehackernews.com/2026/05/microsofts-mdash-ai-system-finds-16.html",
+          "pubDate": "Wed, 13 May 2026 19:16:02 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Azerbaijani Energy Firm Hit by Repeated Microsoft Exchange Exploitation",
+          "link": "https://thehackernews.com/2026/05/azerbaijani-energy-firm-hit-by-repeated.html",
+          "pubDate": "Wed, 13 May 2026 18:30:00 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Microsoft Patches 138 Vulnerabilities, Including DNS and Netlogon RCE Flaws",
+          "link": "https://thehackernews.com/2026/05/microsoft-patches-138-vulnerabilities.html",
+          "pubDate": "Wed, 13 May 2026 16:06:10 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "It's Patch Tuesday for Microsoft &amp; Not a Zero-Day In Sight",
+          "link": "https://www.darkreading.com/application-security/patch-tuesday-microsoft-zero-day-sight",
+          "pubDate": "Tue, 12 May 2026 21:03:04 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Microsoft Edge Stores Passwords in Process Memory, Posing Enterprise Risk",
+          "link": "https://www.darkreading.com/cyber-risk/microsoft-edge-passwords-enterprise-risk",
+          "pubDate": "Tue, 05 May 2026 14:57:51 GMT",
+          "source": "Dark Reading"
+        },
+        {
+          "title": "Russia Hacked Routers to Steal Microsoft Office Tokens",
+          "link": "https://krebsonsecurity.com/2026/04/russia-hacked-routers-to-steal-microsoft-office-tokens/",
+          "pubDate": "Tue, 07 Apr 2026 17:02:44 +0000",
+          "source": "Krebs"
+        }
+      ],
+      "CVE-2026-20182": [
+        {
+          "title": "CISA Adds Cisco SD-WAN CVE-2026-20182 to KEV After Admin Access Exploits",
+          "link": "https://thehackernews.com/2026/05/cisa-adds-cisco-sd-wan-cve-2026-20182.html",
+          "pubDate": "Fri, 15 May 2026 10:58:03 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Cisco Catalyst SD-WAN Controller Auth Bypass Actively Exploited to Gain Admin Access",
+          "link": "https://thehackernews.com/2026/05/cisco-catalyst-sd-wan-controller-auth.html",
+          "pubDate": "Thu, 14 May 2026 23:15:20 +0530",
+          "source": "Hacker News"
+        },
+        {
+          "title": "Maximum Severity Cisco SD-WAN Bug Exploited in the Wild",
+          "link": "https://www.darkreading.com/vulnerabilities-threats/maximum-severity-cisco-sd-wan-bug-exploited",
+          "pubDate": "Thu, 14 May 2026 20:25:31 GMT",
+          "source": "Dark Reading"
+        }
+      ]
+    },
+    "tacticCounts": {
+      "TA0001": 3,
+      "TA0002": 1,
+      "TA0003": 1,
+      "TA0006": 1,
+      "TA0011": 1
+    },
+    "techniqueCounts": {
+      "T1190": 2,
+      "T1566.001": 1,
+      "T1059.001": 1,
+      "T1547.001": 1,
+      "T1555.003": 1,
+      "T1071.001": 1
+    }
+  },
+  "sources": {
+    "cisaKev": {
+      "retrieved": "2026-05-18T08:30:42.968Z",
+      "count": 1592
+    },
+    "feodo": {
+      "retrieved": "2026-05-18T08:30:43.164Z",
+      "count": 1
+    },
+    "news": {
+      "retrieved": "2026-05-18T08:30:43.482Z",
+      "count": 140
+    }
+  }
+}
