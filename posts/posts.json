@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-29T12:20:27.269339",
+  "generated": "2026-05-31T11:03:13.312880",
   "count": 35,
   "posts": [
     {
       "title": "Security Job Market: May 2026 Update",
       "excerpt": "Latest hiring trends, salary data, and what's changed.",
-      "date": "2026-05-29",
+      "date": "2026-05-31",
       "category": "Salaries",
       "category_slug": "salaries",
       "category_css": "sal",
@@ -13,8 +13,8 @@
         "Salaries",
         "Cybersecurity",
         "Career",
-        "Ot",
-        "OT"
+        "Ai",
+        "AI"
       ],
       "filepath": "posts/2026/05/security-job-market-may-2026-update.html",
       "slug": "security-job-market-may-2026-update",
