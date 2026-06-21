@@ -1,7 +1,26 @@
 {
-  "generated": "2026-06-01T15:27:05.563616",
-  "count": 36,
+  "generated": "2026-06-21T14:41:34.383062",
+  "count": 37,
   "posts": [
+    {
+      "title": "Ot Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking OT expertise. How to get it.",
+      "date": "2026-06-21",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Ot",
+        "OT"
+      ],
+      "filepath": "posts/2026/06/ot-skills-are-in-demandheres-why.html",
+      "slug": "ot-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/06/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Security Job Market: May 2026 Update",
