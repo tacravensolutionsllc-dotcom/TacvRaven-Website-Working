@@ -1,7 +1,26 @@
 {
-  "generated": "2026-06-23T12:10:35.276376",
-  "count": 38,
+  "generated": "2026-06-25T11:43:25.264818",
+  "count": 39,
   "posts": [
+    {
+      "title": "Security Job Market: June 2026 Update",
+      "excerpt": "Latest hiring trends, salary data, and what's changed.",
+      "date": "2026-06-25",
+      "category": "Salaries",
+      "category_slug": "salaries",
+      "category_css": "sal",
+      "tags": [
+        "Salaries",
+        "Cybersecurity",
+        "Career",
+        "Ics",
+        "ICS"
+      ],
+      "filepath": "posts/2026/06/security-job-market-june-2026-update.html",
+      "slug": "security-job-market-june-2026-update",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "The Rise of Ai\u2014And the Careers Fighting It",
       "excerpt": "How AI is creating new job opportunities.",
@@ -19,7 +38,7 @@
       "filepath": "posts/2026/06/the-rise-of-aiand-the-careers-fighting-it.html",
       "slug": "the-rise-of-aiand-the-careers-fighting-it",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Ot Skills Are in Demand\u2014Here's Why",
