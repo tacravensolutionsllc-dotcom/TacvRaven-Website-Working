@@ -1,7 +1,25 @@
 {
-  "generated": "2026-06-25T11:43:25.264818",
+  "generated": "2026-06-27T10:59:57.944473",
   "count": 39,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-06-27",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/06/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "Security Job Market: June 2026 Update",
       "excerpt": "Latest hiring trends, salary data, and what's changed.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/06/security-job-market-june-2026-update.html",
       "slug": "security-job-market-june-2026-update",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Ai\u2014And the Careers Fighting It",
@@ -57,24 +75,6 @@
       "filepath": "posts/2026/06/ot-skills-are-in-demandheres-why.html",
       "slug": "ot-skills-are-in-demandheres-why",
       "read_time": 12,
-      "featured": false
-    },
-    {
-      "title": "How to Break Into Cybersecurity Without a Degree",
-      "excerpt": "You don't need a CS degree. Here's the realistic path.",
-      "date": "2026-06-01",
-      "category": "Getting Started",
-      "category_slug": "getting-started",
-      "category_css": "gs",
-      "tags": [
-        "Getting Started",
-        "Cybersecurity",
-        "Career",
-        "breaking_in"
-      ],
-      "filepath": "posts/2026/06/how-to-break-into-cybersecurity-without-a-degree.html",
-      "slug": "how-to-break-into-cybersecurity-without-a-degree",
-      "read_time": 13,
       "featured": false
     },
     {
