@@ -1,7 +1,26 @@
 {
-  "generated": "2026-06-27T10:59:57.944473",
-  "count": 39,
+  "generated": "2026-06-29T13:10:55.185570",
+  "count": 40,
   "posts": [
+    {
+      "title": "What Government Means for Your Security Career",
+      "excerpt": "Recent developments in government and how they affect job seekers.",
+      "date": "2026-06-29",
+      "category": "Industry Trends",
+      "category_slug": "industry-trends",
+      "category_css": "tr",
+      "tags": [
+        "Industry Trends",
+        "Cybersecurity",
+        "Career",
+        "Government",
+        "government"
+      ],
+      "filepath": "posts/2026/06/what-government-means-for-your-security-career.html",
+      "slug": "what-government-means-for-your-security-career",
+      "read_time": 11,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/06/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Security Job Market: June 2026 Update",
