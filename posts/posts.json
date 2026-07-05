@@ -1,7 +1,26 @@
 {
-  "generated": "2026-07-03T11:36:05.416495",
-  "count": 41,
+  "generated": "2026-07-05T11:07:31.724747",
+  "count": 42,
   "posts": [
+    {
+      "title": "The Rise of Cloud\u2014And the Careers Fighting It",
+      "excerpt": "How cloud is creating new job opportunities.",
+      "date": "2026-07-05",
+      "category": "Career Paths",
+      "category_slug": "career-paths",
+      "category_css": "cp",
+      "tags": [
+        "Career Paths",
+        "Cybersecurity",
+        "Career",
+        "Cloud",
+        "cloud"
+      ],
+      "filepath": "posts/2026/07/the-rise-of-cloudand-the-careers-fighting-it.html",
+      "slug": "the-rise-of-cloudand-the-careers-fighting-it",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/07/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "What Government Means for Your Security Career",
