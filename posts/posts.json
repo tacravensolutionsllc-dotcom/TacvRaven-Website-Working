@@ -1,7 +1,25 @@
 {
-  "generated": "2026-07-07T11:56:27.515214",
+  "generated": "2026-07-09T12:15:26.372697",
   "count": 43,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-07-09",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/07/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "What Ai Means for Your Security Career",
       "excerpt": "Recent developments in AI and how they affect job seekers.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/07/what-ai-means-for-your-security-career.html",
       "slug": "what-ai-means-for-your-security-career",
       "read_time": 11,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Cloud\u2014And the Careers Fighting It",
@@ -38,24 +56,6 @@
       "filepath": "posts/2026/07/the-rise-of-cloudand-the-careers-fighting-it.html",
       "slug": "the-rise-of-cloudand-the-careers-fighting-it",
       "read_time": 12,
-      "featured": false
-    },
-    {
-      "title": "How to Break Into Cybersecurity Without a Degree",
-      "excerpt": "You don't need a CS degree. Here's the realistic path.",
-      "date": "2026-07-03",
-      "category": "Getting Started",
-      "category_slug": "getting-started",
-      "category_css": "gs",
-      "tags": [
-        "Getting Started",
-        "Cybersecurity",
-        "Career",
-        "breaking_in"
-      ],
-      "filepath": "posts/2026/07/how-to-break-into-cybersecurity-without-a-degree.html",
-      "slug": "how-to-break-into-cybersecurity-without-a-degree",
-      "read_time": 13,
       "featured": false
     },
     {
