@@ -1,7 +1,26 @@
 {
-  "generated": "2026-07-15T10:55:30.575204",
-  "count": 43,
+  "generated": "2026-07-17T10:51:51.247932",
+  "count": 44,
   "posts": [
+    {
+      "title": "The Rise of Ot\u2014And the Careers Fighting It",
+      "excerpt": "How OT is creating new job opportunities.",
+      "date": "2026-07-17",
+      "category": "Career Paths",
+      "category_slug": "career-paths",
+      "category_css": "cp",
+      "tags": [
+        "Career Paths",
+        "Cybersecurity",
+        "Career",
+        "Ot",
+        "OT"
+      ],
+      "filepath": "posts/2026/07/the-rise-of-otand-the-careers-fighting-it.html",
+      "slug": "the-rise-of-otand-the-careers-fighting-it",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/07/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "What Ai Means for Your Security Career",
