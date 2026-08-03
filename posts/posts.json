@@ -1,7 +1,26 @@
 {
-  "generated": "2026-08-01T10:43:32.259387",
-  "count": 45,
+  "generated": "2026-08-03T12:30:05.450834",
+  "count": 46,
   "posts": [
+    {
+      "title": "The Rise of Government\u2014And the Careers Fighting It",
+      "excerpt": "How government is creating new job opportunities.",
+      "date": "2026-08-03",
+      "category": "Career Paths",
+      "category_slug": "career-paths",
+      "category_css": "cp",
+      "tags": [
+        "Career Paths",
+        "Cybersecurity",
+        "Career",
+        "Government",
+        "government"
+      ],
+      "filepath": "posts/2026/08/the-rise-of-governmentand-the-careers-fighting-it.html",
+      "slug": "the-rise-of-governmentand-the-careers-fighting-it",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/08/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
