@@ -1,7 +1,26 @@
 {
-  "generated": "2026-08-03T12:30:05.450834",
-  "count": 46,
+  "generated": "2026-08-05T11:24:25.857931",
+  "count": 47,
   "posts": [
+    {
+      "title": "What Soc Means for Your Security Career",
+      "excerpt": "Recent developments in SOC and how they affect job seekers.",
+      "date": "2026-08-05",
+      "category": "Industry Trends",
+      "category_slug": "industry-trends",
+      "category_css": "tr",
+      "tags": [
+        "Industry Trends",
+        "Cybersecurity",
+        "Career",
+        "Soc",
+        "SOC"
+      ],
+      "filepath": "posts/2026/08/what-soc-means-for-your-security-career.html",
+      "slug": "what-soc-means-for-your-security-career",
+      "read_time": 11,
+      "featured": true
+    },
     {
       "title": "The Rise of Government\u2014And the Careers Fighting It",
       "excerpt": "How government is creating new job opportunities.",
@@ -19,7 +38,7 @@
       "filepath": "posts/2026/08/the-rise-of-governmentand-the-careers-fighting-it.html",
       "slug": "the-rise-of-governmentand-the-careers-fighting-it",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
