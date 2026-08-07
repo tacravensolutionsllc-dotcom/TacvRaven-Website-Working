@@ -1,7 +1,25 @@
 {
-  "generated": "2026-08-05T11:24:25.857931",
+  "generated": "2026-08-07T10:04:25.453826",
   "count": 47,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-08-07",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/08/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "What Soc Means for Your Security Career",
       "excerpt": "Recent developments in SOC and how they affect job seekers.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/08/what-soc-means-for-your-security-career.html",
       "slug": "what-soc-means-for-your-security-career",
       "read_time": 11,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Government\u2014And the Careers Fighting It",
@@ -38,24 +56,6 @@
       "filepath": "posts/2026/08/the-rise-of-governmentand-the-careers-fighting-it.html",
       "slug": "the-rise-of-governmentand-the-careers-fighting-it",
       "read_time": 12,
-      "featured": false
-    },
-    {
-      "title": "How to Break Into Cybersecurity Without a Degree",
-      "excerpt": "You don't need a CS degree. Here's the realistic path.",
-      "date": "2026-08-01",
-      "category": "Getting Started",
-      "category_slug": "getting-started",
-      "category_css": "gs",
-      "tags": [
-        "Getting Started",
-        "Cybersecurity",
-        "Career",
-        "breaking_in"
-      ],
-      "filepath": "posts/2026/08/how-to-break-into-cybersecurity-without-a-degree.html",
-      "slug": "how-to-break-into-cybersecurity-without-a-degree",
-      "read_time": 13,
       "featured": false
     },
     {
