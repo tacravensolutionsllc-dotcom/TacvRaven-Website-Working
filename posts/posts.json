@@ -1,7 +1,26 @@
 {
-  "generated": "2026-08-09T09:45:43.293978",
-  "count": 47,
+  "generated": "2026-08-11T10:03:36.049072",
+  "count": 48,
   "posts": [
+    {
+      "title": "Security Job Market: August 2026 Update",
+      "excerpt": "Latest hiring trends, salary data, and what's changed.",
+      "date": "2026-08-11",
+      "category": "Salaries",
+      "category_slug": "salaries",
+      "category_css": "sal",
+      "tags": [
+        "Salaries",
+        "Cybersecurity",
+        "Career",
+        "Ai",
+        "AI"
+      ],
+      "filepath": "posts/2026/08/security-job-market-august-2026-update.html",
+      "slug": "security-job-market-august-2026-update",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/08/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "What Soc Means for Your Security Career",
