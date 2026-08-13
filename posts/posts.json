@@ -1,7 +1,26 @@
 {
-  "generated": "2026-08-11T10:03:36.049072",
-  "count": 48,
+  "generated": "2026-08-13T10:12:56.709518",
+  "count": 49,
   "posts": [
+    {
+      "title": "Cloud Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking cloud expertise. How to get it.",
+      "date": "2026-08-13",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Cloud",
+        "cloud"
+      ],
+      "filepath": "posts/2026/08/cloud-skills-are-in-demandheres-why.html",
+      "slug": "cloud-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "Security Job Market: August 2026 Update",
       "excerpt": "Latest hiring trends, salary data, and what's changed.",
@@ -19,7 +38,7 @@
       "filepath": "posts/2026/08/security-job-market-august-2026-update.html",
       "slug": "security-job-market-august-2026-update",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
