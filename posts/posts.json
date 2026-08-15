@@ -1,7 +1,25 @@
 {
-  "generated": "2026-08-13T10:12:56.709518",
+  "generated": "2026-08-15T09:30:19.079979",
   "count": 49,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-08-15",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/08/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "Cloud Skills Are in Demand\u2014Here's Why",
       "excerpt": "Employers are actively seeking cloud expertise. How to get it.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/08/cloud-skills-are-in-demandheres-why.html",
       "slug": "cloud-skills-are-in-demandheres-why",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Security Job Market: August 2026 Update",
@@ -38,24 +56,6 @@
       "filepath": "posts/2026/08/security-job-market-august-2026-update.html",
       "slug": "security-job-market-august-2026-update",
       "read_time": 12,
-      "featured": false
-    },
-    {
-      "title": "How to Break Into Cybersecurity Without a Degree",
-      "excerpt": "You don't need a CS degree. Here's the realistic path.",
-      "date": "2026-08-09",
-      "category": "Getting Started",
-      "category_slug": "getting-started",
-      "category_css": "gs",
-      "tags": [
-        "Getting Started",
-        "Cybersecurity",
-        "Career",
-        "breaking_in"
-      ],
-      "filepath": "posts/2026/08/how-to-break-into-cybersecurity-without-a-degree.html",
-      "slug": "how-to-break-into-cybersecurity-without-a-degree",
-      "read_time": 13,
       "featured": false
     },
     {
