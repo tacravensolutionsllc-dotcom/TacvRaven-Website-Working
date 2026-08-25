@@ -1,7 +1,26 @@
 {
-  "generated": "2026-08-23T09:32:29.139114",
+  "generated": "2026-08-25T09:40:28.782389",
   "count": 50,
   "posts": [
+    {
+      "title": "Security Job Market: August 2026 Update",
+      "excerpt": "Latest hiring trends, salary data, and what's changed.",
+      "date": "2026-08-25",
+      "category": "Salaries",
+      "category_slug": "salaries",
+      "category_css": "sal",
+      "tags": [
+        "Salaries",
+        "Cybersecurity",
+        "Career",
+        "Vulnerability",
+        "vulnerability"
+      ],
+      "filepath": "posts/2026/08/security-job-market-august-2026-update.html",
+      "slug": "security-job-market-august-2026-update",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/08/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Ai\u2014And the Careers Fighting It",
@@ -55,25 +74,6 @@
       ],
       "filepath": "posts/2026/08/cloud-skills-are-in-demandheres-why.html",
       "slug": "cloud-skills-are-in-demandheres-why",
-      "read_time": 12,
-      "featured": false
-    },
-    {
-      "title": "Security Job Market: August 2026 Update",
-      "excerpt": "Latest hiring trends, salary data, and what's changed.",
-      "date": "2026-08-11",
-      "category": "Salaries",
-      "category_slug": "salaries",
-      "category_css": "sal",
-      "tags": [
-        "Salaries",
-        "Cybersecurity",
-        "Career",
-        "Ai",
-        "AI"
-      ],
-      "filepath": "posts/2026/08/security-job-market-august-2026-update.html",
-      "slug": "security-job-market-august-2026-update",
       "read_time": 12,
       "featured": false
     },
