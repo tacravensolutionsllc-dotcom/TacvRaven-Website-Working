@@ -1,7 +1,26 @@
 {
-  "generated": "2026-08-27T19:43:27.531409",
-  "count": 50,
+  "generated": "2026-08-29T14:18:20.388619",
+  "count": 51,
   "posts": [
+    {
+      "title": "Vulnerability Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking vulnerability expertise. How to get it.",
+      "date": "2026-08-29",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Vulnerability",
+        "vulnerability"
+      ],
+      "filepath": "posts/2026/08/vulnerability-skills-are-in-demandheres-why.html",
+      "slug": "vulnerability-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/08/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Security Job Market: August 2026 Update",
