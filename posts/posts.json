@@ -1,7 +1,27 @@
 {
-  "generated": "2026-08-31T16:57:02.748958",
-  "count": 51,
+  "generated": "2026-09-01T14:03:06.273953",
+  "count": 52,
   "posts": [
+    {
+      "title": "The Rise of Artificial Intelligence\u2014And the Careers Fighting It",
+      "excerpt": "How artificial intelligence is creating new job opportunities.",
+      "date": "2026-09-01",
+      "category": "Career Paths",
+      "category_slug": "career-paths",
+      "category_css": "cp",
+      "tags": [
+        "Career Paths",
+        "Cybersecurity",
+        "Career",
+        "Artificial Intelligence",
+        "artificial",
+        "intelligence"
+      ],
+      "filepath": "posts/2026/09/the-rise-of-artificial-intelligenceand-the-careers-fighting-it.html",
+      "slug": "the-rise-of-artificial-intelligenceand-the-careers-fighting-it",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "The Rise of Ai\u2014And the Careers Fighting It",
       "excerpt": "How AI is creating new job opportunities.",
@@ -19,7 +39,7 @@
       "filepath": "posts/2026/08/the-rise-of-aiand-the-careers-fighting-it.html",
       "slug": "the-rise-of-aiand-the-careers-fighting-it",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Vulnerability Skills Are in Demand\u2014Here's Why",
