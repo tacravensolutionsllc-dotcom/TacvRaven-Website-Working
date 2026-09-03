@@ -1,7 +1,25 @@
 {
-  "generated": "2026-09-01T14:03:06.273953",
-  "count": 52,
+  "generated": "2026-09-03T13:27:16.616234",
+  "count": 53,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-09-03",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/09/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "The Rise of Artificial Intelligence\u2014And the Careers Fighting It",
       "excerpt": "How artificial intelligence is creating new job opportunities.",
@@ -20,7 +38,7 @@
       "filepath": "posts/2026/09/the-rise-of-artificial-intelligenceand-the-careers-fighting-it.html",
       "slug": "the-rise-of-artificial-intelligenceand-the-careers-fighting-it",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Ai\u2014And the Careers Fighting It",
