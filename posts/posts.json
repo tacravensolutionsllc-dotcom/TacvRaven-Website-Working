@@ -1,7 +1,26 @@
 {
-  "generated": "2026-09-19T13:00:01.379014",
-  "count": 54,
+  "generated": "2026-09-21T15:47:57.054183",
+  "count": 55,
   "posts": [
+    {
+      "title": "Ot Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking OT expertise. How to get it.",
+      "date": "2026-09-21",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Ot",
+        "OT"
+      ],
+      "filepath": "posts/2026/09/ot-skills-are-in-demandheres-why.html",
+      "slug": "ot-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/09/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Vulnerability\u2014And the Careers Fighting It",
