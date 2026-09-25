@@ -1,7 +1,25 @@
 {
-  "generated": "2026-09-23T14:09:45.713298",
+  "generated": "2026-09-25T14:31:20.410765",
   "count": 56,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-09-25",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/09/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "The Rise of Ot\u2014And the Careers Fighting It",
       "excerpt": "How OT is creating new job opportunities.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/09/the-rise-of-otand-the-careers-fighting-it.html",
       "slug": "the-rise-of-otand-the-careers-fighting-it",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Ot Skills Are in Demand\u2014Here's Why",
@@ -38,24 +56,6 @@
       "filepath": "posts/2026/09/ot-skills-are-in-demandheres-why.html",
       "slug": "ot-skills-are-in-demandheres-why",
       "read_time": 12,
-      "featured": false
-    },
-    {
-      "title": "How to Break Into Cybersecurity Without a Degree",
-      "excerpt": "You don't need a CS degree. Here's the realistic path.",
-      "date": "2026-09-19",
-      "category": "Getting Started",
-      "category_slug": "getting-started",
-      "category_css": "gs",
-      "tags": [
-        "Getting Started",
-        "Cybersecurity",
-        "Career",
-        "breaking_in"
-      ],
-      "filepath": "posts/2026/09/how-to-break-into-cybersecurity-without-a-degree.html",
-      "slug": "how-to-break-into-cybersecurity-without-a-degree",
-      "read_time": 13,
       "featured": false
     },
     {
