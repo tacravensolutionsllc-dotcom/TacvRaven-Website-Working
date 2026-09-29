@@ -1,7 +1,26 @@
 {
-  "generated": "2026-09-27T14:37:43.012232",
+  "generated": "2026-09-29T15:35:24.320930",
   "count": 56,
   "posts": [
+    {
+      "title": "Ot Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking OT expertise. How to get it.",
+      "date": "2026-09-29",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Ot",
+        "OT"
+      ],
+      "filepath": "posts/2026/09/ot-skills-are-in-demandheres-why.html",
+      "slug": "ot-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/09/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Ot\u2014And the Careers Fighting It",
@@ -36,25 +55,6 @@
       ],
       "filepath": "posts/2026/09/the-rise-of-otand-the-careers-fighting-it.html",
       "slug": "the-rise-of-otand-the-careers-fighting-it",
-      "read_time": 12,
-      "featured": false
-    },
-    {
-      "title": "Ot Skills Are in Demand\u2014Here's Why",
-      "excerpt": "Employers are actively seeking OT expertise. How to get it.",
-      "date": "2026-09-21",
-      "category": "Skills",
-      "category_slug": "skills",
-      "category_css": "sk",
-      "tags": [
-        "Skills",
-        "Cybersecurity",
-        "Career",
-        "Ot",
-        "OT"
-      ],
-      "filepath": "posts/2026/09/ot-skills-are-in-demandheres-why.html",
-      "slug": "ot-skills-are-in-demandheres-why",
       "read_time": 12,
       "featured": false
     },
