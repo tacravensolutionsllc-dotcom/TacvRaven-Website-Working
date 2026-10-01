@@ -1,7 +1,26 @@
 {
-  "generated": "2026-09-29T15:35:24.320930",
-  "count": 56,
+  "generated": "2026-10-01T16:12:43.458972",
+  "count": 57,
   "posts": [
+    {
+      "title": "What Phishing Means for Your Security Career",
+      "excerpt": "Recent developments in phishing and how they affect job seekers.",
+      "date": "2026-10-01",
+      "category": "Industry Trends",
+      "category_slug": "industry-trends",
+      "category_css": "tr",
+      "tags": [
+        "Industry Trends",
+        "Cybersecurity",
+        "Career",
+        "Phishing",
+        "phishing"
+      ],
+      "filepath": "posts/2026/10/what-phishing-means-for-your-security-career.html",
+      "slug": "what-phishing-means-for-your-security-career",
+      "read_time": 11,
+      "featured": true
+    },
     {
       "title": "Ot Skills Are in Demand\u2014Here's Why",
       "excerpt": "Employers are actively seeking OT expertise. How to get it.",
@@ -19,7 +38,7 @@
       "filepath": "posts/2026/09/ot-skills-are-in-demandheres-why.html",
       "slug": "ot-skills-are-in-demandheres-why",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
