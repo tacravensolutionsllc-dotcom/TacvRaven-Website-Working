@@ -1,7 +1,25 @@
 {
-  "generated": "2026-10-01T16:12:43.458972",
-  "count": 57,
+  "generated": "2026-10-03T14:13:03.761852",
+  "count": 58,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-10-03",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/10/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "What Phishing Means for Your Security Career",
       "excerpt": "Recent developments in phishing and how they affect job seekers.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/10/what-phishing-means-for-your-security-career.html",
       "slug": "what-phishing-means-for-your-security-career",
       "read_time": 11,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Ot Skills Are in Demand\u2014Here's Why",
