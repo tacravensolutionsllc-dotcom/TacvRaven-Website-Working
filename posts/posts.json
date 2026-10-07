@@ -1,7 +1,26 @@
 {
-  "generated": "2026-10-05T18:11:43.490354",
-  "count": 58,
+  "generated": "2026-10-07T16:15:10.641234",
+  "count": 59,
   "posts": [
+    {
+      "title": "What Ics Means for Your Security Career",
+      "excerpt": "Recent developments in ICS and how they affect job seekers.",
+      "date": "2026-10-07",
+      "category": "Industry Trends",
+      "category_slug": "industry-trends",
+      "category_css": "tr",
+      "tags": [
+        "Industry Trends",
+        "Cybersecurity",
+        "Career",
+        "Ics",
+        "ICS"
+      ],
+      "filepath": "posts/2026/10/what-ics-means-for-your-security-career.html",
+      "slug": "what-ics-means-for-your-security-career",
+      "read_time": 11,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/10/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "What Phishing Means for Your Security Career",
