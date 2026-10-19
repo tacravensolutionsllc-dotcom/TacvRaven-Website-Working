@@ -1,7 +1,26 @@
 {
-  "generated": "2026-10-17T12:50:20.694904",
-  "count": 60,
+  "generated": "2026-10-19T16:20:54.723286",
+  "count": 61,
   "posts": [
+    {
+      "title": "The Rise of Breach\u2014And the Careers Fighting It",
+      "excerpt": "How breach is creating new job opportunities.",
+      "date": "2026-10-19",
+      "category": "Career Paths",
+      "category_slug": "career-paths",
+      "category_css": "cp",
+      "tags": [
+        "Career Paths",
+        "Cybersecurity",
+        "Career",
+        "Breach",
+        "breach"
+      ],
+      "filepath": "posts/2026/10/the-rise-of-breachand-the-careers-fighting-it.html",
+      "slug": "the-rise-of-breachand-the-careers-fighting-it",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/10/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "What Ai Means for Your Security Career",
