@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-21T14:24:59.729482",
+  "generated": "2026-10-23T14:09:03.766937",
   "count": 62,
   "posts": [
     {
       "title": "Security Job Market: October 2026 Update",
       "excerpt": "Latest hiring trends, salary data, and what's changed.",
-      "date": "2026-10-21",
+      "date": "2026-10-23",
       "category": "Salaries",
       "category_slug": "salaries",
       "category_css": "sal",
@@ -13,8 +13,8 @@
         "Salaries",
         "Cybersecurity",
         "Career",
-        "Ransomware",
-        "ransomware"
+        "Ot",
+        "OT"
       ],
       "filepath": "posts/2026/10/security-job-market-october-2026-update.html",
       "slug": "security-job-market-october-2026-update",
