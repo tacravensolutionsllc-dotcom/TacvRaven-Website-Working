@@ -1,7 +1,26 @@
 {
-  "generated": "2026-10-23T14:09:03.766937",
-  "count": 62,
+  "generated": "2026-10-25T13:38:01.509500",
+  "count": 63,
   "posts": [
+    {
+      "title": "Ai Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking AI expertise. How to get it.",
+      "date": "2026-10-25",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Ai",
+        "AI"
+      ],
+      "filepath": "posts/2026/10/ai-skills-are-in-demandheres-why.html",
+      "slug": "ai-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "Security Job Market: October 2026 Update",
       "excerpt": "Latest hiring trends, salary data, and what's changed.",
@@ -19,7 +38,7 @@
       "filepath": "posts/2026/10/security-job-market-october-2026-update.html",
       "slug": "security-job-market-october-2026-update",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Breach\u2014And the Careers Fighting It",
