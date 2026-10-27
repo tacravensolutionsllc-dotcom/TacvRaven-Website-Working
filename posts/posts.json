@@ -1,7 +1,25 @@
 {
-  "generated": "2026-10-25T13:38:01.509500",
+  "generated": "2026-10-27T15:14:13.692821",
   "count": 63,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-10-27",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/10/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "Ai Skills Are in Demand\u2014Here's Why",
       "excerpt": "Employers are actively seeking AI expertise. How to get it.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/10/ai-skills-are-in-demandheres-why.html",
       "slug": "ai-skills-are-in-demandheres-why",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "Security Job Market: October 2026 Update",
@@ -57,24 +75,6 @@
       "filepath": "posts/2026/10/the-rise-of-breachand-the-careers-fighting-it.html",
       "slug": "the-rise-of-breachand-the-careers-fighting-it",
       "read_time": 12,
-      "featured": false
-    },
-    {
-      "title": "How to Break Into Cybersecurity Without a Degree",
-      "excerpt": "You don't need a CS degree. Here's the realistic path.",
-      "date": "2026-10-17",
-      "category": "Getting Started",
-      "category_slug": "getting-started",
-      "category_css": "gs",
-      "tags": [
-        "Getting Started",
-        "Cybersecurity",
-        "Career",
-        "breaking_in"
-      ],
-      "filepath": "posts/2026/10/how-to-break-into-cybersecurity-without-a-degree.html",
-      "slug": "how-to-break-into-cybersecurity-without-a-degree",
-      "read_time": 13,
       "featured": false
     },
     {
