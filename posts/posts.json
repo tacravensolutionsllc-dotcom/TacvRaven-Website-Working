@@ -1,7 +1,25 @@
 {
-  "generated": "2026-10-31T15:12:57.809503",
-  "count": 63,
+  "generated": "2026-11-01T15:54:10.968662",
+  "count": 64,
   "posts": [
+    {
+      "title": "How to Break Into Cybersecurity Without a Degree",
+      "excerpt": "You don't need a CS degree. Here's the realistic path.",
+      "date": "2026-11-01",
+      "category": "Getting Started",
+      "category_slug": "getting-started",
+      "category_css": "gs",
+      "tags": [
+        "Getting Started",
+        "Cybersecurity",
+        "Career",
+        "breaking_in"
+      ],
+      "filepath": "posts/2026/11/how-to-break-into-cybersecurity-without-a-degree.html",
+      "slug": "how-to-break-into-cybersecurity-without-a-degree",
+      "read_time": 13,
+      "featured": true
+    },
     {
       "title": "The Rise of Breach\u2014And the Careers Fighting It",
       "excerpt": "How breach is creating new job opportunities.",
@@ -19,7 +37,7 @@
       "filepath": "posts/2026/10/the-rise-of-breachand-the-careers-fighting-it.html",
       "slug": "the-rise-of-breachand-the-careers-fighting-it",
       "read_time": 12,
-      "featured": true
+      "featured": false
     },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
