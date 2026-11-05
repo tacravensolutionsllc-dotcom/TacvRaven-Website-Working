@@ -1,7 +1,26 @@
 {
-  "generated": "2026-11-03T16:55:18.333743",
-  "count": 64,
+  "generated": "2026-11-05T17:14:49.222921",
+  "count": 65,
   "posts": [
+    {
+      "title": "Ai Skills Are in Demand\u2014Here's Why",
+      "excerpt": "Employers are actively seeking AI expertise. How to get it.",
+      "date": "2026-11-05",
+      "category": "Skills",
+      "category_slug": "skills",
+      "category_css": "sk",
+      "tags": [
+        "Skills",
+        "Cybersecurity",
+        "Career",
+        "Ai",
+        "AI"
+      ],
+      "filepath": "posts/2026/11/ai-skills-are-in-demandheres-why.html",
+      "slug": "ai-skills-are-in-demandheres-why",
+      "read_time": 12,
+      "featured": true
+    },
     {
       "title": "How to Break Into Cybersecurity Without a Degree",
       "excerpt": "You don't need a CS degree. Here's the realistic path.",
@@ -18,7 +37,7 @@
       "filepath": "posts/2026/11/how-to-break-into-cybersecurity-without-a-degree.html",
       "slug": "how-to-break-into-cybersecurity-without-a-degree",
       "read_time": 13,
-      "featured": true
+      "featured": false
     },
     {
       "title": "The Rise of Breach\u2014And the Careers Fighting It",
